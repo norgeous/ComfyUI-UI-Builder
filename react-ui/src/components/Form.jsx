@@ -1,4 +1,3 @@
-import { Flex } from '@mantine/core';
 import { useAppContext } from '../contexts/AppContext';
 import Select from './Select';
 import FormControls from './FormControls';
@@ -21,8 +20,8 @@ const Form = () => {
   } = useAppContext();
 
   return (
-    <Flex
-      gap="md"
+    <div
+      // gap="md"
       direction="column"
     >
       <Select
@@ -41,7 +40,7 @@ const Form = () => {
         interruptLoading={interruptLoading}
       />
 
-    </Flex>
+    </div>
 
   );
 };
