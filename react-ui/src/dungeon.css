@@ -10,7 +10,6 @@ html {
     top:0;
     bottom:0;
     width: 460px;
-    z-index: 2;
     transition: left 0.3s ease-out;
     background-color: #222A30;
     overflow-y: auto;

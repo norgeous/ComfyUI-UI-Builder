@@ -7,24 +7,24 @@ const FormControls = ({
   isGenerating,
   interruptLoading,
 }) => (
-  <Button.Group>
+  <>
     <Button
-      fullWidth
+      // fullWidth
       onClick={executePrompt}
-      loading={promptLoading || isGenerating}
+      // loading={promptLoading || isGenerating}
     >
       Generate
     </Button>
     {isGenerating && (
       <Button
-        variant="outline"
+        // variant="outline"
         onClick={executeInterrupt}
-        loading={interruptLoading}
+        // loading={interruptLoading}
       >
         Interrupt
       </Button>
     )}
-  </Button.Group>
+  </>
 );
 
 export default FormControls;
