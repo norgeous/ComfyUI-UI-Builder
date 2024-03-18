@@ -1,0 +1,53 @@
+import { useState, useEffect, useCallback } from 'react';
+
+const useComfyApi = ({
+  fetchUrl,
+  options,
+  enabled = true,
+  adapter = (res) => res,
+}) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+  const [data, setData] = useState();
+
+  const executeFetch = useCallback(() => {
+    if (fetchUrl) {
+      setLoading(true);
+      setError();
+      fetch(fetchUrl, {
+        method: 'GET',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        ...options,
+      })
+        .then(async (res) => {
+          setLoading(false);
+          const json = await res.json();
+          if (res.status !== 200) setError(json.node_errors['1'].errors[0].details);
+          return json;
+        })
+        .then((res) => setData(adapter(res)))
+        .catch((err) => {
+          console.error(err); // eslint-disable-line no-console
+          setLoading(false);
+          setError(err.message);
+        });
+    }
+  }, [fetchUrl, options, adapter]);
+
+  useEffect(() => {
+    if (enabled) executeFetch();
+  }, [enabled, executeFetch]);
+
+  return {
+    executeFetch,
+    loading,
+    error,
+    data,
+  };
+};
+
+export default useComfyApi;
