@@ -1,32 +1,24 @@
 /* eslint-disable react/no-unknown-property */
 
+import PropTypes from 'prop-types';
+
 const Accordion = ({ sections }) => (
   <div uk-accordion="collapsible: false">
-    <div>
-      <a className="uk-accordion-title" href>Generation parms</a>
-      <div className="uk-accordion-content uk-grid-small" uk-grid>
-        content 1
+    {sections.map(({ title, children }) => (
+      <div key={title}>
+        <a className="uk-accordion-title" href>{title}</a>
+        <div className="uk-accordion-content uk-grid-small" uk-grid>
+          {children}
+        </div>
       </div>
-    </div>
-    <div>
-      <a className="uk-accordion-title" href>Setting</a>
-      <div className="uk-accordion-content uk-grid-small" uk-grid>
-        content 2
-      </div>
-    </div>
-    <div>
-      <a className="uk-accordion-title" href>Character</a>
-      <div className="uk-accordion-content uk-grid-small" uk-grid>
-        content 3
-      </div>
-    </div>
-    <div>
-      <a className="uk-accordion-title" href>Custom</a>
-      <div className="uk-accordion-content uk-grid-small" uk-grid>
-        content 4
-      </div>
-    </div>
+    ))}
   </div>
 );
+Accordion.propTypes = {
+  sections: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    children: PropTypes.node,
+  })),
+};
 
 export default Accordion;

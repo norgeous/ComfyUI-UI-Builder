@@ -14,13 +14,15 @@ const App = () => {
   return (
     <>
     <aside id="left-col" className="uk-light uk-visible@m">
-      <h4 className="uk-text-center uk-margin-remove-vertical text-light">Comfy Dungeon<small><sup> v0.1.0</sup></small></h4>
+      <h4 className="uk-text-center uk-margin-remove-vertical text-light">
+        Comfy Dungeon
+        {' '}
+        <small><sup>v0.1.1</sup></small>
+      </h4>
 
       <div className="left-content-box left-nav-wrap">
-        <Form />
-
-
         <FormBuilder />
+        <Form />
       </div>
 
         </aside>
