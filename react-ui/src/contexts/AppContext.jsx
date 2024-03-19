@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { useDisclosure } from '@mantine/hooks';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
@@ -13,8 +12,6 @@ const AppContext = createContext({});
 export const AppProvider = ({
   children,
 }) => {
-  const [opened, { toggle }] = useDisclosure();
-
   const {
     isGenerating,
     progress,
@@ -59,9 +56,6 @@ export const AppProvider = ({
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         clientId,
-
-        opened,
-        toggle,
 
         isGenerating,
         progress,
