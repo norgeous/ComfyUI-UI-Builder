@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
@@ -78,6 +79,9 @@ export const AppProvider = ({
       {children}
     </AppContext.Provider>
   );
+};
+AppProvider.propTypes = {
+  children: PropTypes.node,
 };
 
 export const useAppContext = () => useContext(AppContext);

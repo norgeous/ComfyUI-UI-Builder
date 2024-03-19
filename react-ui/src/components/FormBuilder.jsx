@@ -1,11 +1,13 @@
+import Accordion from './Accordion';
 import Select from './Select';
 
 const components = {
-  Select
+  Select,
 };
 
 const FormBuilder = ({ formConfig }) => {
-  return <components.Select options={[{label:'option 1', value: 1}]} />;
+  return <Accordion />;
+  // return <components.Select options={[{label:'option 1', value: 1}]} />;
 };
 
 export default FormBuilder;
