@@ -13,12 +13,19 @@ const App = () => {
 
   return (
     <>
-        <div>🧌 Comfy Dungeon</div>
+    <aside id="left-col" className="uk-light uk-visible@m">
+      <h4 className="uk-text-center uk-margin-remove-vertical text-light">
+        Comfy Dungeon
+        {' '}
+        <small><sup>v0.1.1</sup></small>
+      </h4>
 
-        {/* <Form /> */}
-
-
+      <div className="left-content-box left-nav-wrap">
         <FormBuilder />
+        <Form />
+      </div>
+
+        </aside>
 
           {isGenerating && <progress value={progress * 100} />}
 
