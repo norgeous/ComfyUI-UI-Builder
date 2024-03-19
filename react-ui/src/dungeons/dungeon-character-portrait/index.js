@@ -3,9 +3,88 @@ import workflowBasic from './basic_portrait.json';
 const config = {
   formConfig: [
     {
-      name: 'ckpt',
-      type: 'select',
-      options: (context) => context.ckptOptions,
+      title: 'Generation parms',
+      children: [
+        {
+          name: 'ckpt',
+          type: 'select',
+          label: 'Checkpoint',
+          options: (context) => context.ckptOptions,
+        },
+        {
+          name: 'quality',
+          type: 'range',
+          label: 'Quality',
+          defaultValue: 1,
+          min: 1,
+          max: 4,
+          step: 1,
+          minLabel: 'Speed',
+          maxLabel: 'Accuracy',
+        },
+        {
+          name: 'batchSize',
+          type: 'range',
+          label: 'Results per generation',
+          defaultValue: 1,
+          min: 1,
+          max: 4,
+          step: 1,
+        },
+        {
+          name: 'model',
+          type: 'select',
+          label: 'Style & Model',
+          options: [
+            { label: 'Illustration - Fast', value: 'ProteusV0.3-LCM' },
+            { label: 'Illustration - Accurate', value: 'ProteusV0.3' },
+            { label: 'Anime - Fast', value: 'ProteusV0.3-LCM-Anime' },
+            { label: 'Anime - Accurate', value: 'ProteusV0.3-Anime' },
+            { label: 'Cinematic', value: 'DreamShaperXLTurboV2-Cinematic' },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Setting',
+      children: [
+        {
+          name: 'setting',
+          type: 'select',
+          label: 'Setting',
+          options: [
+            { label: 'Fantasy', value: 'fantasy' },
+          ],
+        },
+        {
+          name: 'background',
+          type: 'select',
+          label: 'Background',
+          options: [
+            { label: '-- undefined --', value: '' },
+            { label: 'Cave', value: 'inside a cave' },
+            { label: 'Desert', value: 'in the desert' },
+            { label: 'Dungeon', value: 'inside a dungeon' },
+            { label: 'Flames', value: 'flames in background' },
+            { label: 'Forest', value: 'forest in background' },
+            { label: 'Glacier', value: 'on a glacier' },
+            { label: 'Magical aura', value: 'magical aura in background' },
+            { label: 'Mountains', value: 'mountains in background' },
+            { label: 'Plain background', value: 'flat plain background' },
+            { label: 'Study', value: 'in the study, scrolls and potions' },
+            { label: 'Temple', value: 'inside a temple' },
+            { label: 'Town', value: 'on the streets of an old town' },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Character',
+      children: [],
+    },
+    {
+      title: 'Custom',
+      children: [],
     },
     // {
     //   name: 'gender',

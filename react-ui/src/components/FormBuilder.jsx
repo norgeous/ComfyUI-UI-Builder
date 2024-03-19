@@ -11,7 +11,13 @@ const FormBuilder = ({ formConfig }) => {
       sections={[
         {
           title: 'Generation parms',
-          children: <div className="uk-width-1-2@s">content 1</div>,
+          children: (
+            <>
+              <div className="uk-width-1-2@s">content a</div>
+              <div className="uk-width-1-2@s">content b</div>
+              <div className="uk-width-1-1@s">content c</div>
+            </>
+          ),
         },
         {
           title: 'Setting',
