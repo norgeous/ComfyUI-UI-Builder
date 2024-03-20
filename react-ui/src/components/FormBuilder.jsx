@@ -2,9 +2,7 @@
 import PropTypes from 'prop-types';
 import Accordion from './Accordion';
 import Select from './Select';
-import Select2 from './Select2';
 import Range from './Range';
-import Range2 from './Range2';
 import { useAppContext } from '../contexts/AppContext';
 
 const Spacer = () => null;
@@ -12,9 +10,7 @@ const Missing = ({ type }) => <div className="uk-width-1-2@s">component type <st
 
 const components = {
   select: Select,
-  select2: Select2,
   range: Range,
-  range2: Range2,
   spacer: Spacer,
 };
 

@@ -32,20 +32,13 @@ export const AppProvider = ({
 
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({ ...formState, ...adjustment });
-  const adapted = config.adapter(formState);
-  // console.log({ adapted })
 
   const [ckpt, setCkpt] = useState(''); // TODO: use one state for all formData
 
   const handleSelectCkpt = (value) => setCkpt(value);
 
-  // const formData = {
-  //   ckpt,
-  //   gender: 0,
-  // };
-
   const bodyData = {
-    // prompt: config.adapter(formData),
+    prompt: config.adapter(formState),
     client_id: clientId,
   };
 

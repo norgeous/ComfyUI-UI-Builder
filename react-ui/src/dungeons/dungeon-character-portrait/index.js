@@ -6,7 +6,7 @@ const config = {
       title: 'Generation params',
       children: [
         {
-          type: 'range2',
+          type: 'range',
           name: 'quality',
           initialState: { quality: 1 },
           label: 'Quality',
@@ -20,7 +20,7 @@ const config = {
           maxLabel: 'Accuracy',
         },
         {
-          type: 'range2',
+          type: 'range',
           name: 'batchSize',
           initialState: { batchSize: 1 },
           label: 'Results per generation',
@@ -32,7 +32,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'model',
           initialState: {
             model: 'ProteusV0.3',
@@ -79,7 +79,7 @@ const config = {
       title: 'Scene', // previously called "setting"
       children: [
         {
-          type: 'select2',
+          type: 'select',
           name: 'style', // previously called "setting"
           initialState: { style: 'fantasy' },
           label: 'Style',
@@ -89,7 +89,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'background',
           initialState: { background: '' },
           label: 'Background',
@@ -110,7 +110,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'mood',
           initialState: { mood: '' },
           label: 'Mood',
@@ -124,7 +124,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'colorHint',
           initialState: { colorHint: '' },
           label: 'Color hint',
@@ -160,7 +160,7 @@ const config = {
       title: 'Character',
       children: [
         {
-          type: 'range2',
+          type: 'range',
           name: 'gender',
           initialState: {
             gender: 0,
@@ -200,7 +200,7 @@ const config = {
           maxLabel: 'Masculinity',
         },
         {
-          type: 'range2',
+          type: 'range',
           name: 'age',
           initialState: { age: '30yo' },
           label: 'Age',
@@ -214,7 +214,7 @@ const config = {
           maxLabel: 'Old',
         },
         {
-          type: 'range2',
+          type: 'range',
           name: 'bodyStructure',
           initialState: { bodyStructure: '' },
           label: 'Body structure',
@@ -232,7 +232,7 @@ const config = {
           type: 'spacer',
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'race',
           initialState: {
             race: 'human',
@@ -294,7 +294,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'ethnicBias',
           initialState: { ethnicBias: '' },
           label: 'Ethnic bias',
@@ -332,7 +332,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'characterClass',
           initialState: { characterClass: 'fighter' },
           label: 'Class',
@@ -349,7 +349,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'clothing',
           initialState: { clothing: '' },
           label: 'Clothing / Armor', // rename to Attire?
@@ -367,7 +367,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'hairstyle',
           initialState: { hairstyle: '', hairLength: '', canColourHair: false },
           label: 'Hairstyle',
@@ -392,7 +392,7 @@ const config = {
           ],
         },
         {
-          type: 'select2',
+          type: 'select',
           name: 'hairColor',
           initialState: { hairColor: '' },
           label: 'Hair color',
