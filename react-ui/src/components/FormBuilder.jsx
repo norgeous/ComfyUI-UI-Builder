@@ -19,7 +19,7 @@ const FormBuilder = ({ formConfig }) => {
   const sections = formConfig.map(({ title, children }) => {
     return {
       title,
-      children: children.map(({ type, adapter, name, ...props }, index) => {
+      children: children.map(({ type, adapter, name, initialState, ...props }, index) => {
         const Component = components[type];
         if (!Component) return <Missing key={index} type={type} />
         return (

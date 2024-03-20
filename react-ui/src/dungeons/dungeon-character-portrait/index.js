@@ -486,8 +486,6 @@ blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
 nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
 {{BACKGROUND}} author, signature, 3d`;
 
-    console.log(positivePrompt);
-
     // override things in workflow
     workflowBasic['1'].inputs.ckpt_name = ckpt;
     workflowBasic['4'].inputs.text = positivePrompt;

@@ -80,6 +80,8 @@ export const AppProvider = ({
 
         executeInterrupt,
         interruptLoading,
+
+        bodyData,
       }}
     >
       {children}
