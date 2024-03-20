@@ -31,7 +31,9 @@ export const AppProvider = ({
   } = useCkptOptions();
 
   const [formState, setFormState] = useState(formInitialState);
-  const updateFormState = (adjustment) => setFormState({ ...formState, ...adjustment })
+  const updateFormState = (adjustment) => setFormState({ ...formState, ...adjustment });
+  const adapted = config.adapter(formState);
+  // console.log({ adapted })
 
   const [ckpt, setCkpt] = useState(''); // TODO: use one state for all formData
 

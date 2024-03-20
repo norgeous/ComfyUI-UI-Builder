@@ -133,7 +133,12 @@ const config = {
         {
           type: 'range',
           name: 'gender',
-          initialState: { gender: 0 },
+          initialState: {
+            gender: 0,
+            isFemale: true,
+            genderPositive: 'female',
+            genderNegative: 'horror, ',
+          },
           label: 'Gender',
           info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
           min: 0,
@@ -191,11 +196,13 @@ const config = {
         {
           type: 'range',
           name: 'bodyStructure',
+          initialState: {
+            bodyStructure: '',
+          },
           label: 'Body structure',
           min: 0,
           max: 3,
           step: 1,
-          defaultValue: 1,
           minLabel: 'Slender',
           maxLabel: 'Chubby',
           adapter: ({ bodyStructure, isFemale, isStocky }) => {
@@ -246,7 +253,12 @@ const config = {
         {
           type: 'select',
           name: 'race',
-          initialState: { race: 'human' },
+          initialState: {
+            race: 'human',
+            isStocky: false,
+            racePositive: 'human',
+            raceNegative: '(elf, long pointy ears:1.2)',
+          },
           label: 'Race',
           options: [
             { label: 'Dwarf', value: 'dwarf' },
@@ -291,7 +303,7 @@ const config = {
               },
             };
 
-            const {racePositive,raceNegative} = converter[race];
+            const { racePositive, raceNegative } = converter[race];
 
             return {
               race,
@@ -444,7 +456,7 @@ const config = {
   ],
   adapter: ({
     ckpt,
-    setting, // always "Fantasy" at the moment
+    sceneType,
     stylePositive,
     styleNegative,
     age,
@@ -459,7 +471,7 @@ const config = {
     const ethnicOptions = ethnicBias?.split(',') || [];
     const randomEthnicBias = ethnicOptions[Math.floor(Math.random() * ethnicOptions.length)];
 
-    const positivePrompt = `${setting} ${stylePositive} closeup of a ${age} \
+    const positivePrompt = `${sceneType} ${stylePositive} closeup of a ${age} \
     ${bodyStructure} ${randomEthnicBias} ${racePositive} ${genderPositive} \
     {{CLASS}} {{HAIR_COLOR}} {{HAIRSTYLE}} {{GEAR}}. {{RACE_HELPER}} \
     {{BACKGROUND}} High quality, detailed, high resolution{{SETTING_HELPER}}. \
@@ -469,6 +481,8 @@ const config = {
     blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
     nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \\
     {{BACKGROUND}} author, signature, 3d`;
+
+    console.log({ positivePrompt, negativePrompt });
 
     // override things in workflow
     workflowBasic['1'].inputs.ckpt_name = ckpt;
