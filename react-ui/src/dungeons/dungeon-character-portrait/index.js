@@ -3,14 +3,14 @@ import workflowBasic from './basic_portrait.json';
 const config = {
   formConfig: [
     {
-      title: 'Generation parms',
+      title: 'Generation params',
       children: [
-        {
-          name: 'ckpt',
-          type: 'select',
-          label: 'Checkpoint',
-          options: (context) => context.ckptOptions,
-        },
+        // {
+        //   name: 'ckpt',
+        //   type: 'select',
+        //   label: 'Checkpoint',
+        //   options: (context) => context.ckptOptions,
+        // },
         {
           name: 'quality',
           type: 'range',
@@ -93,7 +93,6 @@ const config = {
     //   max: 3,
     //   step: 1,
     //   defaultValue: 0,
-    // eslint-disable-next-line max-len
     //   info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
     // },
     // {

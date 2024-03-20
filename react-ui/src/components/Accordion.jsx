@@ -6,8 +6,8 @@ const Accordion = ({ sections }) => (
   <div uk-accordion="collapsible: false">
     {sections.map(({ title, children }) => (
       <div key={title}>
-        <a className="uk-accordion-title" href>{title}</a>
-        <div className="uk-accordion-content uk-grid-small" uk-grid>
+        <a className="uk-accordion-title">{title}</a>
+        <div className="uk-accordion-content uk-grid-small" uk-grid="true">
           {children}
         </div>
       </div>
