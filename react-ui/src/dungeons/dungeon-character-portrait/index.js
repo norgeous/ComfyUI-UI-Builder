@@ -490,8 +490,8 @@ nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
 
     // override things in workflow
     workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = ckpt;
-    workflowBasic['4'].inputs.text = positivePrompt;
-    workflowBasic['5'].inputs.text = negativePrompt;
+    workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
+    workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
 
 
     // return the adapted workflow

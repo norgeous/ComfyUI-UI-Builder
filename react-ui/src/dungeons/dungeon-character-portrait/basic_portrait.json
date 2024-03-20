@@ -21,7 +21,7 @@
     },
     "class_type": "CLIPTextEncodeSDXL+",
     "_meta": {
-      "title": "🔧 SDXLCLIPTextEncode"
+      "title": "Positive Prompt"
     }
   },
   "5": {
@@ -37,7 +37,7 @@
     },
     "class_type": "CLIPTextEncodeSDXL+",
     "_meta": {
-      "title": "🔧 SDXLCLIPTextEncode"
+      "title": "Negative Prompt"
     }
   },
   "6": {
