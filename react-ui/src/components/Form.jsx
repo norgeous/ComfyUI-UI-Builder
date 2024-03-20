@@ -1,5 +1,4 @@
 import { useAppContext } from '../contexts/AppContext';
-import Select from './Select';
 import FormControls from './FormControls';
 
 const Form = () => {
@@ -20,18 +19,7 @@ const Form = () => {
   } = useAppContext();
 
   return (
-    <div
-      // gap="md"
-      direction="column"
-    >
-      <Select
-        label="Select Checkpoint"
-        options={ckptOptions}
-        loading={ckptOptionsLoading}
-        error={ckptOptionsError || promptError}
-        onChange={handleSelectCkpt}
-      />
-
+    <div>
       <FormControls
         executePrompt={executePrompt}
         executeInterrupt={executeInterrupt}
@@ -39,7 +27,6 @@ const Form = () => {
         isGenerating={isGenerating}
         interruptLoading={interruptLoading}
       />
-
     </div>
 
   );

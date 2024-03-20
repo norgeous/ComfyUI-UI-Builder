@@ -5,17 +5,11 @@ const config = {
     {
       title: 'Generation params',
       children: [
-        // {
-        //   name: 'ckpt',
-        //   type: 'select',
-        //   label: 'Checkpoint',
-        //   options: (context) => context.ckptOptions,
-        // },
         {
           type: 'range',
           name: 'quality',
+          initialState: { quality: 1 },
           label: 'Quality',
-          defaultValue: 1,
           min: 1,
           max: 4,
           step: 1,
@@ -25,8 +19,8 @@ const config = {
         {
           type: 'range',
           name: 'batchSize',
+          initialState: { batchSize: 1 },
           label: 'Results per generation',
-          defaultValue: 1,
           min: 1,
           max: 4,
           step: 1,
@@ -34,6 +28,7 @@ const config = {
         {
           type: 'select',
           name: 'model',
+          initialState: { model: 'ProteusV0.3' },
           label: 'Style & Model',
           options: [
             { label: 'Illustration - Fast', value: 'ProteusV0.3-LCM' },
@@ -52,19 +47,22 @@ const config = {
       ],
     },
     {
-      title: 'Setting',
+      title: 'Scene',
       children: [
         {
           type: 'select',
-          name: 'setting',
-          label: 'Setting',
+          name: 'sceneType', // aka "setting"
+          initialState: { sceneType: 'fantasy' },
+          label: 'Type',
           options: [
             { label: 'Fantasy', value: 'fantasy' },
+            { label: 'Sci-Fi', value: 'Sci-Fi' },
           ],
         },
         {
           type: 'select',
           name: 'background',
+          initialState: { background: '' },
           label: 'Background',
           options: [
             { label: '-- undefined --', value: '' },
@@ -85,6 +83,7 @@ const config = {
         {
           type: 'select',
           name: 'mood',
+          initialState: { mood: '' },
           label: 'Mood',
           options: [
             { label: 'Angry', value: 'angry evil' },
@@ -98,6 +97,7 @@ const config = {
         {
           type: 'select',
           name: 'colorHint',
+          initialState: { colorHint: '' },
           label: 'Color hint',
           info: 'The picture will have a predominat color.',
           options: [
@@ -133,12 +133,12 @@ const config = {
         {
           type: 'range',
           name: 'gender',
+          initialState: { gender: 0 },
           label: 'Gender',
           info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
           min: 0,
           max: 3,
           step: 1,
-          defaultValue: 0,
           minLabel: 'Femininity',
           maxLabel: 'Masculinity',
           adapter: ({ gender }) => {
@@ -160,7 +160,7 @@ const config = {
                 genderNegative: '',
               },
             };
-            const isFemale = gender === 0 || gender === 1;
+            const isFemale = gender === '0' || gender === '1';
             const { genderPositive, genderNegative } = converter[gender];
 
             return {
@@ -174,11 +174,11 @@ const config = {
         {
           type: 'range',
           name: 'age',
+          initialState: { age: 1 },
           label: 'Age',
           min: 0,
           max: 3,
           step: 1,
-          defaultValue: 1,
           minLabel: 'Young',
           maxLabel: 'Old',
           // valueConvert: {
@@ -198,70 +198,56 @@ const config = {
           defaultValue: 1,
           minLabel: 'Slender',
           maxLabel: 'Chubby',
-          // valueConvert: {
-          //   0: { bodyStructure: 'slender' },
-          //   1: {
-          //     bodyStructure: '',
-          //     bodyStructureHGD: 'stocky', // for halfling / gnome / dwarf
-          //   },
-          //   2: {
-          //     bodyStructureMale: 'strong',
-          //     bodyStructureFemale: 'strong muscular',
-          //     bodyStructureMaleHGD: 'stocky strong', // for male halfling / gnome / dwarf
-          //     bodyStructureFemaleHGD: 'stocky strong muscular', // for female halfling / gnome / dwarf
-          //   },
-          //   3: {
-          //     bodyStructure: 'chubby',
-          //     bodyStructureHGD: 'stocky chubby', // for halfling / gnome / dwarf
-          //   },
-          // },
           adapter: ({ bodyStructure, isFemale, isStocky }) => {
             // 0 slender
-            if (bodyStructure === 0) return {
+            if (bodyStructure === '0') return {
               bodyStructure: 'slender',
             };
 
             // 1 not stocky
-            if (bodyStructure === 1 && !isStocky) return {
+            if (bodyStructure === '1' && !isStocky) return {
               bodyStructure: '',
             };
             // 1 stocky
-            if (bodyStructure === 1 && isStocky) return {
+            if (bodyStructure === '1' && isStocky) return {
               bodyStructure: 'stocky',
             };
 
             // 2 male not stocky
-            if (bodyStructure === 2 && !isStocky && !isFemale) return {
+            if (bodyStructure === '2' && !isStocky && !isFemale) return {
               bodyStructure: 'strong',
             };
             // 2 female not stocky
-            if (bodyStructure === 2 && !isStocky && isFemale) return {
+            if (bodyStructure === '2' && !isStocky && isFemale) return {
               bodyStructure: 'strong muscular',
             };
             // 2 male stocky
-            if (bodyStructure === 2 && isStocky && !isFemale) return {
+            if (bodyStructure === '2' && isStocky && !isFemale) return {
               bodyStructure: ' stocky strong',
             };
             // 2 female stocky
-            if (bodyStructure === 2 && isStocky && isFemale) return {
+            if (bodyStructure === '2' && isStocky && isFemale) return {
               bodyStructure: 'stocky strong muscular',
             };
 
             // 3 not stocky
-            if (bodyStructure === 3 && !isStocky) return {
+            if (bodyStructure === '3' && !isStocky) return {
               bodyStructure: 'chubby',
             };
             // 3 stocky
-            if (bodyStructure === 3 && isStocky) return {
+            if (bodyStructure === '3' && isStocky) return {
               bodyStructure: 'stocky chubby',
             };
           },
         },
         {
+          type: 'spacer',
+        },
+        {
           type: 'select',
           name: 'race',
+          initialState: { race: 'human' },
           label: 'Race',
-          defaultValue: 'human',
           options: [
             { label: 'Dwarf', value: 'dwarf' },
             { label: 'Elf', value: 'elf' },
@@ -318,6 +304,7 @@ const config = {
         {
           type: 'select',
           name: 'ethnicBias',
+          initialState: { ethnicBias: '' },
           label: 'Ethnic bias',
           info: 'Adds a random ethnicity to the character based on the area selected. It\'s a light conditioning that helps making the generations more interesting; it doesn\'t guarantee an exact nationality.',
           options: [
@@ -352,11 +339,107 @@ const config = {
             { label: 'Mela/Micro/Poly-nesia', value: 'Fijian,Papua New Guinean,Solomon Islander,Vanuatuan,Kiribati,Marshallese,Micronesian,Nauruan,Palauan,Samoan,Tongan,Tuvaluan' },
           ],
         },
+        {
+          type: 'select',
+          name: 'characterClass',
+          initialState: { characterClass: 'fighter' },
+          label: 'Class',
+          options: [
+            { label: 'Cleric', value: 'cleric' },
+            { label: 'Fighter', value: 'fighter' },
+            { label: 'Mage', value: 'mage' },
+            { label: 'Noble person', value: 'noble person' },
+            { label: 'Paladin', value: 'paladin' },
+            { label: 'Peasant', value: 'peasant' },
+            { label: 'Ranger', value: 'ranger' },
+            { label: 'Shaman', value: 'shaman' },
+            { label: 'Thief', value: 'thief' },
+          ],
+        },
+        {
+          type: 'select',
+          name: 'clothing',
+          initialState: { clothing: '' },
+          label: 'Clothing / Armor', // rename to Attire?
+          options: [
+            { label: '-- undefined --', value: '' },
+            { label: 'Casual clothing', value: 'casual clothing' },
+            { label: 'Elegant clothing', value: 'elegant garments' },
+            { label: 'Furs', value: 'furs clothing' },
+            { label: 'Light armor', value: 'a leather armor' },
+            { label: 'Minimal', value: 'minimal simple clothing' },
+            { label: 'Heavy armor', value: 'a heavy armor' },
+            { label: 'Noble clothing', value: 'noble clothing' },
+            { label: 'Rags', value: 'rags' },
+            { label: 'Robe', value: 'a robe' },
+          ],
+        },
+        {
+          type: 'select',
+          name: 'hairstyle',
+          initialState: { hairstyle: '' },
+          label: 'Hairstyle',
+          options: [
+            { label: '-- undefined --', value: '' },
+            { label: 'Bald', value: 'bald' },
+            { label: 'Braids', value: 'simple braid hairstyle' },
+            { label: 'Buzz cut', value: 'buzz haircut' },
+            { label: 'Cornrows', value: 'cornrows hairstyle' },
+            { label: 'Curly Long', value: 'long {{COLOR}} curly hair' },
+            { label: 'Curly Short', value: 'short {{COLOR}} curly hair' },
+            { label: 'Dreadlocks', value: 'dreadlocks hairstyle' },
+            { label: 'Long hair', value: 'long {{COLOR}} hair' },
+            { label: 'Long disheveled', value: 'long {{COLOR}} disheveled hair' },
+            { label: 'Long straight', value: 'long {{COLOR}} straight hair' },
+            { label: 'Mohawk', value: 'short mohawk hairstyle' },
+            { label: 'Pixie cut', value: 'pixie haircut' },
+            { label: 'Ponytail', value: 'ponytail hairstyle' },
+            { label: 'Short hair', value: 'short {{COLOR}} hair' },
+            { label: 'Short disheveled', value: 'short {{COLOR}} disheveled hair' },
+            { label: 'Short straight', value: 'short {{COLOR}} straight hair' },
+          ],
+          adapter: ({ hairColor, hairstyle }) => ({
+            hair: hairstyle.replace('{{COLOR}}', hairColor),
+          }),
+        },
+        {
+          type: 'select',
+          name: 'hairColor',
+          initialState: { hairColor: '' },
+          label: 'Hair color',
+          options: [
+            { label: '-- undefined --', value: '' },
+            { label: 'Blond', value: 'blond' },
+            { label: 'Dark Blond', value: 'dark blond' },
+            { label: 'Medium Brown', value: 'medium brown' },
+            { label: 'Dark Brown', value: 'dark brown' },
+            { label: 'Reddish Brown', value: 'reddish brown' },
+            { label: 'Red', value: 'red' },
+            { label: 'Black', value: 'black' },
+            { label: 'Graying', value: 'canescent' },
+            { label: 'Gray', value: 'gray' },
+            { label: 'White', value: 'white' },
+          ],
+        },
       ],
     },
     {
       title: 'Custom',
-      children: [],
+      children: [
+        {
+          type: 'selectckpt',
+          name: 'ckpt',
+          initialState: { ckpt: undefined },
+          label: 'Checkpoint',
+        },
+        {
+          type: 'textarea',
+          name: 'customPrompt',
+          initialState: { customPrompt: '' },
+          label: 'Custom Prompt',
+          info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
+        },
+      ],
     },
   ],
   adapter: ({

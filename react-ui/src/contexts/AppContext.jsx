@@ -10,6 +10,11 @@ import uuidv4 from '../utils/uuidv4';
 const clientId = uuidv4();
 const AppContext = createContext({});
 
+const formInitialState = config.formConfig.reduce((acc, { children }) => ({
+  ...acc,
+  ...children.reduce((acc2, { initialState }) => ({ ...acc2, ...initialState }), {}),
+}), {});
+
 export const AppProvider = ({
   children,
 }) => {
@@ -24,6 +29,9 @@ export const AppProvider = ({
     error: ckptOptionsError,
     ckptOptions,
   } = useCkptOptions();
+
+  const [formState, setFormState] = useState(formInitialState);
+  const updateFormState = (adjustment) => setFormState({ ...formState, ...adjustment })
 
   const [ckpt, setCkpt] = useState(''); // TODO: use one state for all formData
 
@@ -57,6 +65,9 @@ export const AppProvider = ({
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         clientId,
+
+        formState,
+        updateFormState,
 
         isGenerating,
         progress,

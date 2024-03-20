@@ -8,6 +8,7 @@ import './App.css';
 
 const App = () => {
   const {
+    formState,
     isGenerating,
     progress,
     output,
@@ -38,6 +39,7 @@ const App = () => {
           src={`http://127.0.0.1:8188/view?filename=${output.images[0].filename}&type=output&subfolder=${output.images[0].subfolder}&rand=123`}
         />
       )}
+      <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
     </>
   );
 };

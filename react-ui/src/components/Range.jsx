@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+
 const Range = ({
   options,
   loading,
