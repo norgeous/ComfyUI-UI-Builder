@@ -38,8 +38,8 @@ export const AppProvider = ({
   const handleSelectCkpt = (value) => setCkpt(value);
 
   const bodyData = {
-    prompt: config.adapter(formState),
     client_id: clientId,
+    prompt: config.adapter(formState),
   };
 
   const {

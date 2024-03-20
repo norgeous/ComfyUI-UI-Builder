@@ -486,10 +486,13 @@ blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
 nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
 {{BACKGROUND}} author, signature, 3d`;
 
+    const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
+
     // override things in workflow
-    workflowBasic['1'].inputs.ckpt_name = ckpt;
+    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = ckpt;
     workflowBasic['4'].inputs.text = positivePrompt;
     workflowBasic['5'].inputs.text = negativePrompt;
+
 
     // return the adapted workflow
     return workflowBasic;
