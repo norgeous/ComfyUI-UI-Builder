@@ -6,24 +6,30 @@ const config = {
       title: 'Generation params',
       children: [
         {
-          type: 'range',
+          type: 'range2',
           name: 'quality',
           initialState: { quality: 1 },
           label: 'Quality',
-          min: 1,
-          max: 4,
-          step: 1,
+          options: [
+            { quality: 1 },
+            { quality: 2 },
+            { quality: 3 },
+            { quality: 4 },
+          ],
           minLabel: 'Speed',
           maxLabel: 'Accuracy',
         },
         {
-          type: 'range',
+          type: 'range2',
           name: 'batchSize',
           initialState: { batchSize: 1 },
           label: 'Results per generation',
-          min: 1,
-          max: 4,
-          step: 1,
+          options: [
+            { batchSize: 1 },
+            { batchSize: 2 },
+            { batchSize: 3 },
+            { batchSize: 4 },
+          ],
         },
         {
           type: 'select',
@@ -131,7 +137,7 @@ const config = {
       title: 'Character',
       children: [
         {
-          type: 'range',
+          type: 'range2',
           name: 'gender',
           initialState: {
             gender: 0,
@@ -141,117 +147,109 @@ const config = {
           },
           label: 'Gender',
           info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
-          min: 0,
-          max: 3,
-          step: 1,
+          options: [
+            { 
+              gender: 0,
+              isFemale: true,
+              genderPositive: 'female',
+              genderNegative: 'horror, ',
+            },
+            { 
+              gender: 1,
+              isFemale: true,
+              genderPositive: '(masculine:1.1) female',
+              genderNegative: 'beard, ',
+            },
+            {
+              gender: 2,
+              isFemale: false, // male
+              genderPositive: '(queer:0.9) feminine male',
+              genderNegative: 'zombie, beard, ',
+            },
+            {
+              gender: 3,
+              isFemale: false, // male
+              genderPositive: 'male',
+              genderNegative: '',
+            },
+          ],
           minLabel: 'Femininity',
           maxLabel: 'Masculinity',
-          adapter: ({ gender }) => {
-            const converter = {
-              0: {
-                genderPositive: 'female',
-                genderNegative: 'horror, ',
-              },
-              1: {
-                genderPositive: '(masculine:1.1) female',
-                genderNegative: 'beard, ',
-              },
-              2: {
-                genderPositive: '(queer:0.9) feminine male',
-                genderNegative: 'zombie, beard, ',
-              },
-              3: {
-                genderPositive: 'male',
-                genderNegative: '',
-              },
-            };
-            const isFemale = gender === '0' || gender === '1';
-            const { genderPositive, genderNegative } = converter[gender];
-
-            return {
-              gender, // value between 0 and 3
-              isFemale, // boolean
-              genderPositive, // pos prompt text fragment
-              genderNegative, // neg prompt text fragment
-            };
-          },
         },
         {
-          type: 'range',
+          type: 'range2',
           name: 'age',
-          initialState: { age: 1 },
+          initialState: { age: '30yo' },
           label: 'Age',
-          min: 0,
-          max: 3,
-          step: 1,
+          options: [
+            { age: 'young' }, 
+            { age: '30yo' }, 
+            { age: '45yo' }, 
+            { age: '60yo' },
+          ],
           minLabel: 'Young',
           maxLabel: 'Old',
-          // valueConvert: {
-          //   0: { age: 'young' },
-          //   1: { age: '30yo' },
-          //   2: { age: '45yo' },
-          //   3: { age: '60yo' },
-          // },
         },
         {
-          type: 'range',
+          type: 'range2',
           name: 'bodyStructure',
-          initialState: {
-            bodyStructure: '',
-          },
+          initialState: { bodyStructure: '' },
           label: 'Body structure',
-          min: 0,
-          max: 3,
-          step: 1,
+          options: [
+            { bodyStructure: 'slender' },
+          ],
+          // min: 0,
+          // max: 3,
+          // step: 1,
           minLabel: 'Slender',
           maxLabel: 'Chubby',
-          adapter: ({ bodyStructure, isFemale, isStocky }) => {
-            // 0 slender
-            if (bodyStructure === '0') return {
-              bodyStructure: 'slender',
-            };
+          // adapter: ({ bodyStructure, isFemale, isStocky }) => {
+          //   // 0 slender
+          //   if (bodyStructure === '0') return {
+          //     ,
+          //   };
 
-            // 1 not stocky
-            if (bodyStructure === '1' && !isStocky) return {
-              bodyStructure: '',
-            };
-            // 1 stocky
-            if (bodyStructure === '1' && isStocky) return {
-              bodyStructure: 'stocky',
-            };
+          //   // 1 not stocky
+          //   if (bodyStructure === '1' && !isStocky) return {
+          //     bodyStructure: '',
+          //   };
+          //   // 1 stocky
+          //   if (bodyStructure === '1' && isStocky) return {
+          //     bodyStructure: 'stocky',
+          //   };
 
-            // 2 male not stocky
-            if (bodyStructure === '2' && !isStocky && !isFemale) return {
-              bodyStructure: 'strong',
-            };
-            // 2 female not stocky
-            if (bodyStructure === '2' && !isStocky && isFemale) return {
-              bodyStructure: 'strong muscular',
-            };
-            // 2 male stocky
-            if (bodyStructure === '2' && isStocky && !isFemale) return {
-              bodyStructure: ' stocky strong',
-            };
-            // 2 female stocky
-            if (bodyStructure === '2' && isStocky && isFemale) return {
-              bodyStructure: 'stocky strong muscular',
-            };
+          //   // 2 male not stocky
+          //   if (bodyStructure === '2' && !isStocky && !isFemale) return {
+          //     bodyStructure: 'strong',
+          //   };
+          //   // 2 female not stocky
+          //   if (bodyStructure === '2' && !isStocky && isFemale) return {
+          //     bodyStructure: 'strong muscular',
+          //   };
+          //   // 2 male stocky
+          //   if (bodyStructure === '2' && isStocky && !isFemale) return {
+          //     bodyStructure: ' stocky strong',
+          //   };
+          //   // 2 female stocky
+          //   if (bodyStructure === '2' && isStocky && isFemale) return {
+          //     bodyStructure: 'stocky strong muscular',
+          //   };
 
-            // 3 not stocky
-            if (bodyStructure === '3' && !isStocky) return {
-              bodyStructure: 'chubby',
-            };
-            // 3 stocky
-            if (bodyStructure === '3' && isStocky) return {
-              bodyStructure: 'stocky chubby',
-            };
-          },
+          //   // 3 not stocky
+          //   if (bodyStructure === '3' && !isStocky) return {
+          //     bodyStructure: 'chubby',
+          //   };
+          //   // 3 stocky
+          //   if (bodyStructure === '3' && isStocky) return {
+          //     bodyStructure: 'stocky chubby',
+          //   };
+          // },
         },
         {
           type: 'spacer',
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'race',
           initialState: {
             race: 'human',
@@ -261,57 +259,56 @@ const config = {
           },
           label: 'Race',
           options: [
-            { label: 'Dwarf', value: 'dwarf' },
-            { label: 'Elf', value: 'elf' },
-            { label: 'Gnome', value: 'gnome' },
-            { label: 'Half-Elf', value: 'half-elf' },
-            { label: 'Halfling', value: 'halfling' },
-            { label: 'Human', value: 'human' },
-            { label: 'Tiefling', value: 'tiefling' },
+            {
+              label: 'Dwarf',
+              race: 'dwarf',
+              isStocky: true,
+              racePositive: 'dwarf',
+              raceNegative: '',
+            },
+            {
+              label: 'Elf',
+              race: 'elf',
+              isStocky: false,
+              racePositive: 'elven', // have to use Elven instead of Elf to avoid Christmas contamination
+              raceNegative: 'green, beard, christmas',
+            },
+            {
+              label: 'Gnome',
+              race: 'gnome',
+              isStocky: true,
+              racePositive: 'gnome',
+              raceNegative: 'garden',
+            },
+            {
+              label: 'Half-Elf',
+              race: 'half-elf',
+              isStocky: false,
+              racePositive: 'half-elf, pointy ears.',
+              raceNegative: '',
+            },
+            {
+              label: 'Halfling',
+              race: 'halfling',
+              isStocky: true,
+              racePositive: 'halfling, pointy ears.',
+              raceNegative: '',
+            },
+            {
+              label: 'Human',
+              race: 'human',
+              isStocky: false,
+              racePositive: 'human',
+              raceNegative: '(elf, long pointy ears:1.2)',
+            },
+            {
+              label: 'Tiefling',
+              race: 'tiefling',
+              isStocky: false,
+              racePositive: 'tiefling',
+              raceNegative: '',
+            },
           ],
-          adapter: ({ race }) => {
-            const isStocky = ['halfling','gnome','dwarf'].includes(race);
-
-            const converter = {
-              dwarf: {
-                racePositive: 'dwarf',
-                raceNegative: '',
-              },
-              elf: {
-                racePositive: 'elven', // have to use Elven instead of Elf to avoid Christmas contamination
-                raceNegative: 'green, beard, christmas',
-              },
-              gnome: {
-                racePositive: 'gnome',
-                raceNegative: 'garden',
-              },
-              'half-elf': {
-                racePositive: 'half-elf, pointy ears.',
-                raceNegative: '',
-              },
-              halfling: {
-                racePositive: 'halfling, pointy ears.',
-                raceNegative: '',
-              },
-              human: {
-                racePositive: 'human',
-                raceNegative: '(elf, long pointy ears:1.2)',
-              },
-              tiefling: {
-                racePositive: 'tiefling',
-                raceNegative: '',
-              },
-            };
-
-            const { racePositive, raceNegative } = converter[race];
-
-            return {
-              race,
-              isStocky,
-              racePositive,
-              raceNegative,
-            };
-          },
         },
         {
           type: 'select',
@@ -482,7 +479,7 @@ const config = {
     nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \\
     {{BACKGROUND}} author, signature, 3d`;
 
-    console.log({ positivePrompt, negativePrompt });
+    // console.log({ positivePrompt, negativePrompt });
 
     // override things in workflow
     workflowBasic['1'].inputs.ckpt_name = ckpt;

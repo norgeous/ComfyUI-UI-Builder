@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
 const Select = ({
   options,
-  loading,
+  // loading,
   label,
   info,
-  defaultValue,
+  // defaultValue,
   onChange,
   ...props
 }) => (
@@ -23,7 +24,12 @@ const Select = ({
         </div>
       </>
     )}
-    <select className="uk-select" defaultValue={defaultValue} onChange={onChange}>
+    <select
+      {...props}
+      className="uk-select"
+      // defaultValue={defaultValue}
+      onChange={event => onChange({[name]: event.target.value})}
+    >
       {options.map(({ value, label }, index) => (
         <option key={index} value={value}>{label}</option>
       ))}
