@@ -13,7 +13,7 @@ const FormBuilder = ({ formConfig }) => {
       title,
       children: children.map(({ type, ...props }, index) => {
         const Component = components[type];
-        if (!Component) return `component type ${type} not found`;
+        if (!Component) return <div key={index}>component type <strong>{type}</strong> not found</div>;
         return <Component key={index} {...props} />;
       }),
     };
