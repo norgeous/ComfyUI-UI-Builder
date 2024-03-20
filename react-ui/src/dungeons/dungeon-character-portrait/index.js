@@ -32,103 +32,126 @@ const config = {
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'model',
-          initialState: { model: 'ProteusV0.3' },
+          initialState: {
+            model: 'ProteusV0.3',
+            stylePositive: '',
+            styleNegative: '',
+          },
           label: 'Style & Model',
           options: [
-            { label: 'Illustration - Fast', value: 'ProteusV0.3-LCM' },
-            { label: 'Illustration - Accurate', value: 'ProteusV0.3' },
-            { label: 'Anime - Fast', value: 'ProteusV0.3-LCM-Anime' },
-            { label: 'Anime - Accurate', value: 'ProteusV0.3-Anime' },
-            { label: 'Cinematic', value: 'DreamShaperXLTurboV2-Cinematic' },
+            {
+              label: 'Illustration - Fast',
+              model: 'ProteusV0.3-LCM',
+              stylePositive: 'illustration digital painting',
+              styleNegative: 'photo, anime, '
+            },
+            {
+              label: 'Illustration - Accurate',
+              model: 'ProteusV0.3',
+              stylePositive: '',
+              styleNegative: '',
+            },
+            {
+              label: 'Anime - Fast',
+              model: 'ProteusV0.3-LCM-Anime',
+              stylePositive: '',
+              styleNegative: '',
+            },
+            {
+              label: 'Anime - Accurate',
+              model: 'ProteusV0.3-Anime',
+              stylePositive: '',
+              styleNegative: '',
+            },
+            {
+              label: 'Cinematic',
+              model: 'DreamShaperXLTurboV2-Cinematic',
+              stylePositive: '',
+              styleNegative: '',
+            },
           ],
-          // valueConvert: {
-          //   'ProteusV0.3-LCM': {
-          //     stylePositive: 'illustration digital painting',
-          //     styleNegative: 'photo, anime, ',
-          //   },
-          // },
         },
       ],
     },
     {
-      title: 'Scene',
+      title: 'Scene', // previously called "setting"
       children: [
         {
-          type: 'select',
-          name: 'sceneType', // aka "setting"
-          initialState: { sceneType: 'fantasy' },
-          label: 'Type',
+          type: 'select2',
+          name: 'style', // previously called "setting"
+          initialState: { style: 'fantasy' },
+          label: 'Style',
           options: [
-            { label: 'Fantasy', value: 'fantasy' },
-            { label: 'Sci-Fi', value: 'Sci-Fi' },
+            { label: 'Fantasy', style: 'fantasy' },
+            { label: 'Sci-Fi', style: 'sci-fi' }, // new
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'background',
           initialState: { background: '' },
           label: 'Background',
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Cave', value: 'inside a cave' },
-            { label: 'Desert', value: 'in the desert' },
-            { label: 'Dungeon', value: 'inside a dungeon' },
-            { label: 'Flames', value: 'flames in background' },
-            { label: 'Forest', value: 'forest in background' },
-            { label: 'Glacier', value: 'on a glacier' },
-            { label: 'Magical aura', value: 'magical aura in background' },
-            { label: 'Mountains', value: 'mountains in background' },
-            { label: 'Plain background', value: 'flat plain background' },
-            { label: 'Study', value: 'in the study, scrolls and potions' },
-            { label: 'Temple', value: 'inside a temple' },
-            { label: 'Town', value: 'on the streets of an old town' },
+            { label: '-- undefined --', background: '' },
+            { label: 'Cave', background: 'inside a cave' },
+            { label: 'Desert', background: 'in the desert' },
+            { label: 'Dungeon', background: 'inside a dungeon' },
+            { label: 'Flames', background: 'flames in background' },
+            { label: 'Forest', background: 'forest in background' },
+            { label: 'Glacier', background: 'on a glacier' },
+            { label: 'Magical aura', background: 'magical aura in background' },
+            { label: 'Mountains', background: 'mountains in background' },
+            { label: 'Plain background', background: 'flat plain background' },
+            { label: 'Study', background: 'in the study, scrolls and potions' },
+            { label: 'Temple', background: 'inside a temple' },
+            { label: 'Town', background: 'on the streets of an old town' },
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'mood',
           initialState: { mood: '' },
           label: 'Mood',
           options: [
-            { label: 'Angry', value: 'angry evil' },
-            { label: 'Somber', value: 'wise thoughtful serious mood' },
-            { label: 'Neutral', value: '' },
-            { label: 'Cunning', value: 'cunning smirk mood' },
-            { label: 'Serene', value: 'serene joyful dreamy' },
-            { label: 'Happy', value: 'happy jovial (smiling:0.85)' },
+            { label: 'Angry', mood: 'angry evil' },
+            { label: 'Somber', mood: 'wise thoughtful serious mood' },
+            { label: 'Neutral', mood: '' },
+            { label: 'Cunning', mood: 'cunning smirk mood' },
+            { label: 'Serene', mood: 'serene joyful dreamy' },
+            { label: 'Happy', mood: 'happy jovial (smiling:0.85)' },
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'colorHint',
           initialState: { colorHint: '' },
           label: 'Color hint',
           info: 'The picture will have a predominat color.',
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Burgundy', value: 'burgundy' },
-            { label: 'Scarlet', value: 'scarlet red' },
-            { label: 'Pink', value: 'pink' },
-            { label: 'Beige', value: 'beige' },
-            { label: 'Brown', value: 'brown' },
-            { label: 'Orange', value: 'orange' },
-            { label: 'Yellow', value: 'yellow' },
-            { label: 'Green', value: 'green' },
-            { label: 'Emerald', value: 'emerald' },
-            { label: 'Aquamarine', value: 'aquamarine' },
-            { label: 'Cerulean', value: 'cerulean' },
-            { label: 'Blue', value: 'blue' },
-            { label: 'Purple', value: 'purple' },
-            { label: 'Magenta', value: 'magenta' },
-            { label: 'White', value: 'white' },
-            { label: 'Gray', value: 'gray' },
-            { label: 'Black', value: 'black' },
-            { label: 'Bronze', value: 'bronze' },
-            { label: 'Copper', value: 'copper' },
-            { label: 'Silver', value: 'silver' },
-            { label: 'Gold', value: 'gold' },
+            { label: '-- undefined --', colorHint: '' },
+            { label: 'Burgundy', colorHint: 'burgundy' },
+            { label: 'Scarlet', colorHint: 'scarlet red' },
+            { label: 'Pink', colorHint: 'pink' },
+            { label: 'Beige', colorHint: 'beige' },
+            { label: 'Brown', colorHint: 'brown' },
+            { label: 'Orange', colorHint: 'orange' },
+            { label: 'Yellow', colorHint: 'yellow' },
+            { label: 'Green', colorHint: 'green' },
+            { label: 'Emerald', colorHint: 'emerald' },
+            { label: 'Aquamarine', colorHint: 'aquamarine' },
+            { label: 'Cerulean', colorHint: 'cerulean' },
+            { label: 'Blue', colorHint: 'blue' },
+            { label: 'Purple', colorHint: 'purple' },
+            { label: 'Magenta', colorHint: 'magenta' },
+            { label: 'White', colorHint: 'white' },
+            { label: 'Gray', colorHint: 'gray' },
+            { label: 'Black', colorHint: 'black' },
+            { label: 'Bronze', colorHint: 'bronze' },
+            { label: 'Copper', colorHint: 'copper' },
+            { label: 'Silver', colorHint: 'silver' },
+            { label: 'Gold', colorHint: 'gold' },
           ],
         },
       ],
@@ -197,53 +220,13 @@ const config = {
           label: 'Body structure',
           options: [
             { bodyStructure: 'slender' },
+            { bodyStructure: '' },
+            { bodyStructure: 'strong' },
+            { bodyStructure: 'chubby' },
+            
           ],
-          // min: 0,
-          // max: 3,
-          // step: 1,
           minLabel: 'Slender',
           maxLabel: 'Chubby',
-          // adapter: ({ bodyStructure, isFemale, isStocky }) => {
-          //   // 0 slender
-          //   if (bodyStructure === '0') return {
-          //     ,
-          //   };
-
-          //   // 1 not stocky
-          //   if (bodyStructure === '1' && !isStocky) return {
-          //     bodyStructure: '',
-          //   };
-          //   // 1 stocky
-          //   if (bodyStructure === '1' && isStocky) return {
-          //     bodyStructure: 'stocky',
-          //   };
-
-          //   // 2 male not stocky
-          //   if (bodyStructure === '2' && !isStocky && !isFemale) return {
-          //     bodyStructure: 'strong',
-          //   };
-          //   // 2 female not stocky
-          //   if (bodyStructure === '2' && !isStocky && isFemale) return {
-          //     bodyStructure: 'strong muscular',
-          //   };
-          //   // 2 male stocky
-          //   if (bodyStructure === '2' && isStocky && !isFemale) return {
-          //     bodyStructure: ' stocky strong',
-          //   };
-          //   // 2 female stocky
-          //   if (bodyStructure === '2' && isStocky && isFemale) return {
-          //     bodyStructure: 'stocky strong muscular',
-          //   };
-
-          //   // 3 not stocky
-          //   if (bodyStructure === '3' && !isStocky) return {
-          //     bodyStructure: 'chubby',
-          //   };
-          //   // 3 stocky
-          //   if (bodyStructure === '3' && isStocky) return {
-          //     bodyStructure: 'stocky chubby',
-          //   };
-          // },
         },
         {
           type: 'spacer',
@@ -311,123 +294,120 @@ const config = {
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'ethnicBias',
           initialState: { ethnicBias: '' },
           label: 'Ethnic bias',
           info: 'Adds a random ethnicity to the character based on the area selected. It\'s a light conditioning that helps making the generations more interesting; it doesn\'t guarantee an exact nationality.',
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Completely Random', value: '' },
+            { label: '-- undefined --', ethnicBias: '' },
+            { label: 'Completely Random', ethnicBias: '' },
 
-            { label: 'Africa: Eastern', value: 'Eritrean,Djiboutian,Ethiopian,Somali,Kenyan,Ugandan,Rwandan,Burundian,Tanzanian,Malagasy,Mauritian,Seychellois' },
-            { label: 'Africa: Middle', value: 'Chadian,Sudanese,Central African,Cameroonian,Gabonese,Equatorial Guinean,Sao Tomean,Angolan,Congolese,Zambian,Malawian,Mozambican,Madagascan,Comorian,Mauritian,Seychellois' },
-            { label: 'Africa: Northen', value: 'Egyptian,Libyan,Tunisian,Algerian,Moroccan,Mauritanian,Sahrawi,Tuareg' },
-            { label: 'Africa: Southern', value: 'Namibian,South African,Botswanan,Zimbabwean,Zambian,Malawian,Mozambican,Swazi,Lesotho,Basotho' },
-            { label: 'Africa: Western', value: 'Mauritanian,Senegalese,Malian,Nigerien,Burkinabe,Ivorian,Ghanaian,Togolese,Beninese,Nigerian,Cameroonian,Equatorial Guinean,Sao Tomean,Gabonese,Congolese' },
+            { label: 'Africa: Eastern', ethnicBias: 'Eritrean,Djiboutian,Ethiopian,Somali,Kenyan,Ugandan,Rwandan,Burundian,Tanzanian,Malagasy,Mauritian,Seychellois' },
+            { label: 'Africa: Middle', ethnicBias: 'Chadian,Sudanese,Central African,Cameroonian,Gabonese,Equatorial Guinean,Sao Tomean,Angolan,Congolese,Zambian,Malawian,Mozambican,Madagascan,Comorian,Mauritian,Seychellois' },
+            { label: 'Africa: Northen', ethnicBias: 'Egyptian,Libyan,Tunisian,Algerian,Moroccan,Mauritanian,Sahrawi,Tuareg' },
+            { label: 'Africa: Southern', ethnicBias: 'Namibian,South African,Botswanan,Zimbabwean,Zambian,Malawian,Mozambican,Swazi,Lesotho,Basotho' },
+            { label: 'Africa: Western', ethnicBias: 'Mauritanian,Senegalese,Malian,Nigerien,Burkinabe,Ivorian,Ghanaian,Togolese,Beninese,Nigerian,Cameroonian,Equatorial Guinean,Sao Tomean,Gabonese,Congolese' },
 
-            { label: 'America: Central', value: 'Belizean,Costa Rican,Salvadoran,Guatemalan,Honduran,Nicaraguan,Panamanian' },
-            { label: 'America: Northern', value: 'Antiguan,Bahamian,Barbadian,Cuban,Dominican,Dominican,Grenadian,Haitian,Jamaican,Kittian and Nevisian,Lucian,Vincentian,Trinidadian and Tobagonian' },
-            { label: 'America: Sourthern', value: 'Argentine,Bolivian,Brazilian,Chilean,Colombian,Ecuadorian,Guyanese,Paraguayan,Peruvian,Surinamese,Uruguayan,Venezuelan' },
+            { label: 'America: Central', ethnicBias: 'Belizean,Costa Rican,Salvadoran,Guatemalan,Honduran,Nicaraguan,Panamanian' },
+            { label: 'America: Northern', ethnicBias: 'Antiguan,Bahamian,Barbadian,Cuban,Dominican,Dominican,Grenadian,Haitian,Jamaican,Kittian and Nevisian,Lucian,Vincentian,Trinidadian and Tobagonian' },
+            { label: 'America: Sourthern', ethnicBias: 'Argentine,Bolivian,Brazilian,Chilean,Colombian,Ecuadorian,Guyanese,Paraguayan,Peruvian,Surinamese,Uruguayan,Venezuelan' },
 
-            { label: 'Asia: Central', value: 'Kazakhstani,Kyrgyzstani,Tajikistani,Turkmen,Uzbekistani' },
-            { label: 'Asia: Eastern', value: 'Chinese,Japanese,Korean,Mongolian,Taiwanese' },
-            { label: 'Asia: South-Eastern', value: 'Bangladeshi,Bhutanese,Indian,Maldivian,Nepalese,Pakistani,Sri Lankan' },
-            { label: 'Asia: Southern', value: 'Burmese,Cambodian,Filipino,Indonesian,Laotian,Malaysian,Singaporean,Thai,Timorese,Vietnamese' },
-            { label: 'Asia: Western', value: 'Afghan,Armenian,Azerbaijani,Bahraini,Cypriot,Georgian,Iranian,Iraqi,Israeli,Jordanian,Kuwaiti,Lebanese,Omani,Palestinian,Qatari,Saudi,Syrian,Turkish,Emirati,Yemeni' },
+            { label: 'Asia: Central', ethnicBias: 'Kazakhstani,Kyrgyzstani,Tajikistani,Turkmen,Uzbekistani' },
+            { label: 'Asia: Eastern', ethnicBias: 'Chinese,Japanese,Korean,Mongolian,Taiwanese' },
+            { label: 'Asia: South-Eastern', ethnicBias: 'Bangladeshi,Bhutanese,Indian,Maldivian,Nepalese,Pakistani,Sri Lankan' },
+            { label: 'Asia: Southern', ethnicBias: 'Burmese,Cambodian,Filipino,Indonesian,Laotian,Malaysian,Singaporean,Thai,Timorese,Vietnamese' },
+            { label: 'Asia: Western', ethnicBias: 'Afghan,Armenian,Azerbaijani,Bahraini,Cypriot,Georgian,Iranian,Iraqi,Israeli,Jordanian,Kuwaiti,Lebanese,Omani,Palestinian,Qatari,Saudi,Syrian,Turkish,Emirati,Yemeni' },
 
-            { label: 'Australia & New Zealand', value: 'Australian,Fijian,I-Kiribati,Marshallese,Micronesian,Nauruan,New Zealander,Palauan,Papua New Guinean,Samoan,Solomon Islander,Tongan,Tuvaluan,Vanuatuan' },
+            { label: 'Australia & New Zealand', ethnicBias: 'Australian,Fijian,I-Kiribati,Marshallese,Micronesian,Nauruan,New Zealander,Palauan,Papua New Guinean,Samoan,Solomon Islander,Tongan,Tuvaluan,Vanuatuan' },
 
-            { label: 'European: Eastern', value: 'Belarusian,Bulgarian,Czech,Hungarian,Polish,Moldovan,Romanian,Russian,Slovak,Ukrainian' },
-            { label: 'European: Northern', value: 'Estonian,Latvian,Lithuanian' },
-            { label: 'European: Southern', value: 'Albanian,Bosnian,Croatian,Greek,Italian,Maltese,Montenegrin,North Macedonian,Portuguese,Serbian,Slovenian,Spanish' },
-            { label: 'European: Western', value: 'Austrian,Belgian,Dutch,French,German,Liechtensteiner,Luxembourger,Monacan,Swiss' },
-            { label: 'European: Islandic', value: 'Icelandic,Irish,Manx,British' },
+            { label: 'European: Eastern', ethnicBias: 'Belarusian,Bulgarian,Czech,Hungarian,Polish,Moldovan,Romanian,Russian,Slovak,Ukrainian' },
+            { label: 'European: Northern', ethnicBias: 'Estonian,Latvian,Lithuanian' },
+            { label: 'European: Southern', ethnicBias: 'Albanian,Bosnian,Croatian,Greek,Italian,Maltese,Montenegrin,North Macedonian,Portuguese,Serbian,Slovenian,Spanish' },
+            { label: 'European: Western', ethnicBias: 'Austrian,Belgian,Dutch,French,German,Liechtensteiner,Luxembourger,Monacan,Swiss' },
+            { label: 'European: Islandic', ethnicBias: 'Icelandic,Irish,Manx,British' },
 
-            // { label: 'Carribean', value: 'Cuban,Dominican,Haitian,Jamaican,Puerto Rican,Trinidadian' },
-            { label: 'Mela/Micro/Poly-nesia', value: 'Fijian,Papua New Guinean,Solomon Islander,Vanuatuan,Kiribati,Marshallese,Micronesian,Nauruan,Palauan,Samoan,Tongan,Tuvaluan' },
+            // { label: 'Carribean', ethnicBias: 'Cuban,Dominican,Haitian,Jamaican,Puerto Rican,Trinidadian' },
+            { label: 'Mela/Micro/Poly-nesia', ethnicBias: 'Fijian,Papua New Guinean,Solomon Islander,Vanuatuan,Kiribati,Marshallese,Micronesian,Nauruan,Palauan,Samoan,Tongan,Tuvaluan' },
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'characterClass',
           initialState: { characterClass: 'fighter' },
           label: 'Class',
           options: [
-            { label: 'Cleric', value: 'cleric' },
-            { label: 'Fighter', value: 'fighter' },
-            { label: 'Mage', value: 'mage' },
-            { label: 'Noble person', value: 'noble person' },
-            { label: 'Paladin', value: 'paladin' },
-            { label: 'Peasant', value: 'peasant' },
-            { label: 'Ranger', value: 'ranger' },
-            { label: 'Shaman', value: 'shaman' },
-            { label: 'Thief', value: 'thief' },
+            { label: 'Cleric', characterClass: 'cleric' },
+            { label: 'Fighter', characterClass: 'fighter' },
+            { label: 'Mage', characterClass: 'mage' },
+            { label: 'Noble person', characterClass: 'noble person' },
+            { label: 'Paladin', characterClass: 'paladin' },
+            { label: 'Peasant', characterClass: 'peasant' },
+            { label: 'Ranger', characterClass: 'ranger' },
+            { label: 'Shaman', characterClass: 'shaman' },
+            { label: 'Thief', characterClass: 'thief' },
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'clothing',
           initialState: { clothing: '' },
           label: 'Clothing / Armor', // rename to Attire?
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Casual clothing', value: 'casual clothing' },
-            { label: 'Elegant clothing', value: 'elegant garments' },
-            { label: 'Furs', value: 'furs clothing' },
-            { label: 'Light armor', value: 'a leather armor' },
-            { label: 'Minimal', value: 'minimal simple clothing' },
-            { label: 'Heavy armor', value: 'a heavy armor' },
-            { label: 'Noble clothing', value: 'noble clothing' },
-            { label: 'Rags', value: 'rags' },
-            { label: 'Robe', value: 'a robe' },
+            { label: '-- undefined --', clothing: '' },
+            { label: 'Casual clothing', clothing: 'casual clothing' },
+            { label: 'Elegant clothing', clothing: 'elegant garments' },
+            { label: 'Furs', clothing: 'furs clothing' },
+            { label: 'Light armor', clothing: 'a leather armor' },
+            { label: 'Minimal', clothing: 'minimal simple clothing' },
+            { label: 'Heavy armor', clothing: 'a heavy armor' },
+            { label: 'Noble clothing', clothing: 'noble clothing' },
+            { label: 'Rags', clothing: 'rags' },
+            { label: 'Robe', clothing: 'a robe' },
           ],
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'hairstyle',
-          initialState: { hairstyle: '' },
+          initialState: { hairstyle: '', hairLength: '', canColourHair: false },
           label: 'Hairstyle',
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Bald', value: 'bald' },
-            { label: 'Braids', value: 'simple braid hairstyle' },
-            { label: 'Buzz cut', value: 'buzz haircut' },
-            { label: 'Cornrows', value: 'cornrows hairstyle' },
-            { label: 'Curly Long', value: 'long {{COLOR}} curly hair' },
-            { label: 'Curly Short', value: 'short {{COLOR}} curly hair' },
-            { label: 'Dreadlocks', value: 'dreadlocks hairstyle' },
-            { label: 'Long hair', value: 'long {{COLOR}} hair' },
-            { label: 'Long disheveled', value: 'long {{COLOR}} disheveled hair' },
-            { label: 'Long straight', value: 'long {{COLOR}} straight hair' },
-            { label: 'Mohawk', value: 'short mohawk hairstyle' },
-            { label: 'Pixie cut', value: 'pixie haircut' },
-            { label: 'Ponytail', value: 'ponytail hairstyle' },
-            { label: 'Short hair', value: 'short {{COLOR}} hair' },
-            { label: 'Short disheveled', value: 'short {{COLOR}} disheveled hair' },
-            { label: 'Short straight', value: 'short {{COLOR}} straight hair' },
+            { label: '-- undefined --', hairstyle: '', hairLength: '', canColourHair: false },
+            { label: 'Bald', hairstyle: 'bald', hairLength: '', canColourHair: false },
+            { label: 'Braids', hairstyle: 'simple braid hairstyle', hairLength: '', canColourHair: false },
+            { label: 'Buzz cut', hairstyle: 'buzz haircut', hairLength: '', canColourHair: false },
+            { label: 'Cornrows', hairstyle: 'cornrows hairstyle', hairLength: '', canColourHair: false },
+            { label: 'Curly Long', hairstyle: 'curly hair' , hairLength: 'long', canColourHair: true },
+            { label: 'Curly Short', hairstyle: 'curly hair' , hairLength: 'short', canColourHair: true },
+            { label: 'Dreadlocks', hairstyle: 'dreadlocks hairstyle', hairLength: '', canColourHair: false },
+            { label: 'Long hair', hairstyle: 'hair' , hairLength: 'long', canColourHair: true },
+            { label: 'Long disheveled', hairstyle: 'disheveled hair' , hairLength: 'long', canColourHair: true },
+            { label: 'Long straight', hairstyle: 'straight hair' , hairLength: 'long', canColourHair: true },
+            { label: 'Mohawk', hairstyle: 'short mohawk hairstyle', hairLength: '', canColourHair: false },
+            { label: 'Pixie cut', hairstyle: 'pixie haircut', hairLength: '', canColourHair: false },
+            { label: 'Ponytail', hairstyle: 'ponytail hairstyle', hairLength: '', canColourHair: false },
+            { label: 'Short hair', hairstyle: 'hair' , hairLength: 'short', canColourHair: true },
+            { label: 'Short disheveled', hairstyle: 'disheveled hair' , hairLength: 'short', canColourHair: true },
+            { label: 'Short straight', hairstyle: 'straight hair' , hairLength: 'short', canColourHair: true },
           ],
-          adapter: ({ hairColor, hairstyle }) => ({
-            hair: hairstyle.replace('{{COLOR}}', hairColor),
-          }),
         },
         {
-          type: 'select',
+          type: 'select2',
           name: 'hairColor',
           initialState: { hairColor: '' },
           label: 'Hair color',
           options: [
-            { label: '-- undefined --', value: '' },
-            { label: 'Blond', value: 'blond' },
-            { label: 'Dark Blond', value: 'dark blond' },
-            { label: 'Medium Brown', value: 'medium brown' },
-            { label: 'Dark Brown', value: 'dark brown' },
-            { label: 'Reddish Brown', value: 'reddish brown' },
-            { label: 'Red', value: 'red' },
-            { label: 'Black', value: 'black' },
-            { label: 'Graying', value: 'canescent' },
-            { label: 'Gray', value: 'gray' },
-            { label: 'White', value: 'white' },
+            { label: '-- undefined --', hairColor: '' },
+            { label: 'Blond', hairColor: 'blond' },
+            { label: 'Dark Blond', hairColor: 'dark blond' },
+            { label: 'Medium Brown', hairColor: 'medium brown' },
+            { label: 'Dark Brown', hairColor: 'dark brown' },
+            { label: 'Reddish Brown', hairColor: 'reddish brown' },
+            { label: 'Red', hairColor: 'red' },
+            { label: 'Black', hairColor: 'black' },
+            { label: 'Graying', hairColor: 'canescent' },
+            { label: 'Gray', hairColor: 'gray' },
+            { label: 'White', hairColor: 'white' },
           ],
         },
       ],
@@ -453,7 +433,7 @@ const config = {
   ],
   adapter: ({
     ckpt,
-    sceneType,
+    style,
     stylePositive,
     styleNegative,
     age,
@@ -463,23 +443,50 @@ const config = {
     raceNegative,
     genderPositive,
     genderNegative,
+    characterClass,
+    isStocky,
+    isFemale,
+    hairLength,
+    canColourHair,
+    hairColor,
+    hairstyle,
+    gear,
+    background,
+    mood,
+    atmosphere,
   }) => {
-
     const ethnicOptions = ethnicBias?.split(',') || [];
     const randomEthnicBias = ethnicOptions[Math.floor(Math.random() * ethnicOptions.length)];
 
-    const positivePrompt = `${sceneType} ${stylePositive} closeup of a ${age} \
-    ${bodyStructure} ${randomEthnicBias} ${racePositive} ${genderPositive} \
-    {{CLASS}} {{HAIR_COLOR}} {{HAIRSTYLE}} {{GEAR}}. {{RACE_HELPER}} \
-    {{BACKGROUND}} High quality, detailed, high resolution{{SETTING_HELPER}}. \
-    {{MOOD}}{{ATMOSPHERE}}`;
+    const positivePrompt = [
+      style,
+      stylePositive,
+      'closeup of a',
+      age,
+      ...(isStocky ? ['stocky'] : []),
+      bodyStructure,
+      ...(isFemale && bodyStructure === 'strong' ? ['muscular'] : []),
+      randomEthnicBias,
+      racePositive,
+      genderPositive,
+      characterClass,
+      hairLength,
+      ...(canColourHair ? [hairColor]: []),
+      hairstyle,
+      gear,
+      '. ',
+      background,
+      'High quality, detailed, high resolution',
+      mood,
+      atmosphere,
+    ].filter(value => value).join(' ');
 
     const negativePrompt = `${styleNegative} ${raceNegative} rendering, \
-    blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
-    nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \\
-    {{BACKGROUND}} author, signature, 3d`;
+blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
+nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
+{{BACKGROUND}} author, signature, 3d`;
 
-    // console.log({ positivePrompt, negativePrompt });
+    console.log(positivePrompt);
 
     // override things in workflow
     workflowBasic['1'].inputs.ckpt_name = ckpt;

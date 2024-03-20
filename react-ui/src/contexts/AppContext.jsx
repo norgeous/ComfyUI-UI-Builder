@@ -39,13 +39,13 @@ export const AppProvider = ({
 
   const handleSelectCkpt = (value) => setCkpt(value);
 
-  const formData = {
-    ckpt,
-    gender: 0,
-  };
+  // const formData = {
+  //   ckpt,
+  //   gender: 0,
+  // };
 
   const bodyData = {
-    prompt: config.adapter(formData),
+    // prompt: config.adapter(formData),
     client_id: clientId,
   };
 
