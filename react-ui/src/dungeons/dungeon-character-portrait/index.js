@@ -484,6 +484,14 @@ const config = {
   ],
   adapter: ({
     ckpt,
+    seed,
+    batchSize,
+    quality,
+    baseSteps,
+    stepMultiplier,
+    cfg,
+    samplerName,
+    scheduler,
     style,
     stylePositive,
     styleNegative,
@@ -579,6 +587,12 @@ const config = {
     workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = ckpt;
     workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
     workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
+    workflowBasic[getIdByNodeTitle('Empty Latent Image')].inputs.batch_size = batchSize;
+    workflowBasic[getIdByNodeTitle('KSampler')].inputs.seed = seed;
+    workflowBasic[getIdByNodeTitle('KSampler')].inputs.steps = baseSteps + Math.round(quality * stepMultiplier);
+    workflowBasic[getIdByNodeTitle('KSampler')].inputs.cfg = cfg;
+    workflowBasic[getIdByNodeTitle('KSampler')].inputs.sampler_name = samplerName;
+    workflowBasic[getIdByNodeTitle('KSampler')].inputs.scheduler = scheduler;
 
     // return the adapted workflow
     return workflowBasic;
