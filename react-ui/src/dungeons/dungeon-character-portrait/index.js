@@ -133,22 +133,25 @@ const config = {
         {
           type: 'select',
           name: 'background',
-          initialState: { background: '' },
+          initialState: {
+            background: '',
+            backgroundNegative: '',
+          },
           label: 'Background',
           options: [
-            { label: '-- undefined --', background: '' },
-            { label: 'Cave', background: 'inside a cave' },
-            { label: 'Desert', background: 'in the desert' },
-            { label: 'Dungeon', background: 'inside a dungeon' },
-            { label: 'Flames', background: 'flames in background' },
-            { label: 'Forest', background: 'forest in background' },
-            { label: 'Glacier', background: 'on a glacier' },
-            { label: 'Magical aura', background: 'magical aura in background' },
-            { label: 'Mountains', background: 'mountains in background' },
-            { label: 'Plain background', background: 'flat plain background' },
-            { label: 'Study', background: 'in the study, scrolls and potions' },
-            { label: 'Temple', background: 'inside a temple' },
-            { label: 'Town', background: 'on the streets of an old town' },
+            { label: '-- undefined --', background: '', backgroundNegative: '' },
+            { label: 'Cave', background: 'inside a cave', backgroundNegative: 'flat background' },
+            { label: 'Desert', background: 'in the desert', backgroundNegative: 'flat background' },
+            { label: 'Dungeon', background: 'inside a dungeon', backgroundNegative: 'flat background' },
+            { label: 'Flames', background: 'flames in background', backgroundNegative: 'flat background' },
+            { label: 'Forest', background: 'forest in background', backgroundNegative: 'flat background' },
+            { label: 'Glacier', background: 'on a glacier', backgroundNegative: 'flat background' },
+            { label: 'Magical aura', background: 'magical aura in background', backgroundNegative: 'flat background' },
+            { label: 'Mountains', background: 'mountains in background', backgroundNegative: 'flat background' },
+            { label: 'Plain background', background: 'flat plain background', backgroundNegative: 'flat background' },
+            { label: 'Study', background: 'in the study, scrolls and potions', backgroundNegative: 'flat background' },
+            { label: 'Temple', background: 'inside a temple', backgroundNegative: 'flat background' },
+            { label: 'Town', background: 'on the streets of an old town', backgroundNegative: 'flat background' },
           ],
         },
         {
@@ -500,6 +503,7 @@ const config = {
     hairstyle,
     clothing,
     background,
+    backgroundNegative,
     mood,
     stylePost,
     colorHint,
@@ -543,10 +547,31 @@ const config = {
       positivePrompt3,
     ].join('. ').trim();
 
-    const negativePrompt = `${styleNegative} ${raceNegative} rendering, \
-blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
-niles, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
-{{BACKGROUND}} author, signature, 3d`;
+    const negativePrompt = [
+      styleNegative,
+      raceNegative,
+      'rendering',
+      'blurry',
+      'noisy',
+      'deformed',
+      'text',
+      genderNegative,
+      'scars',
+      'blood',
+      'dirty',
+      'niles',
+      'naked',
+      'boobs',
+      'cleavage',
+      'face mask',
+      'zippers',
+      'ill',
+      'lazy eye',
+      backgroundNegative,
+      'author',
+      'signature',
+      '3d',
+    ].join(', ');
 
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
 
@@ -554,7 +579,6 @@ niles, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
     workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = ckpt;
     workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
     workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
-
 
     // return the adapted workflow
     return workflowBasic;
