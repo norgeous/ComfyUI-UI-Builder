@@ -33,43 +33,79 @@ const config = {
         },
         {
           type: 'select',
-          name: 'model',
+          name: 'preset',
           initialState: {
+            preset: 'illustration-accurate',
             model: 'ProteusV0.3',
-            stylePositive: '',
-            styleNegative: '',
+            stylePositive: 'illustration digital painting',
+            styleNegative: 'photo, anime,',
+            baseSteps: 14,
+            stepMultiplier: 14,
+            cfg: 6.5,
+            samplerName: 'dpmpp_2m',
+            scheduler: 'exponential',
           },
           label: 'Style & Model',
           options: [
             {
               label: 'Illustration - Fast',
-              model: 'ProteusV0.3-LCM',
+              preset: 'illustration-fast',
+              model: 'ProteusV0.3',
               stylePositive: 'illustration digital painting',
-              styleNegative: 'photo, anime, '
+              styleNegative: 'photo, anime,',
+              baseSteps: 4,
+              stepMultiplier: 4,
+              cfg: 2.5,
+              samplerName: 'lcm',
+              scheduler: 'normal',
             },
             {
               label: 'Illustration - Accurate',
+              preset: 'illustration-accurate',
               model: 'ProteusV0.3',
-              stylePositive: '',
-              styleNegative: '',
+              stylePositive: 'illustration digital painting',
+              styleNegative: 'photo, anime,',
+              baseSteps: 14,
+              stepMultiplier: 14,
+              cfg: 6.5,
+              samplerName: 'dpmpp_2m',
+              scheduler: 'exponential',
             },
             {
               label: 'Anime - Fast',
-              model: 'ProteusV0.3-LCM-Anime',
-              stylePositive: '',
-              styleNegative: '',
+              preset: 'anime-fast',
+              model: 'ProteusV0.3',
+              stylePositive: 'anime illustration',
+              styleNegative: 'photo, fanart,',
+              baseSteps: 4,
+              stepMultiplier: 4,
+              cfg: 2.5,
+              samplerName: 'lcm',
+              scheduler: 'normal',
             },
             {
               label: 'Anime - Accurate',
-              model: 'ProteusV0.3-Anime',
-              stylePositive: '',
-              styleNegative: '',
+              preset: 'anime-accurate',
+              model: 'ProteusV0.3',
+              stylePositive: 'anime illustration',
+              styleNegative: 'photo, fanart,',
+              baseSteps: 14,
+              stepMultiplier: 14,
+              cfg: 6.5,
+              samplerName: 'dpmpp_2m',
+              scheduler: 'exponential',
             },
             {
               label: 'Cinematic',
-              model: 'DreamShaperXLTurboV2-Cinematic',
-              stylePositive: '',
-              styleNegative: '',
+              preset: 'cinematic',
+              model: 'DreamShaperXLTurboV2',
+              stylePositive: 'film still cinematic photo',
+              styleNegative: 'illustration, anime, cosplay,',
+              baseSteps: 6,
+              stepMultiplier: 4,
+              cfg: 2,
+              samplerName: 'dpmpp_sde',
+              scheduler: 'karras',
             },
           ],
         },
@@ -81,11 +117,17 @@ const config = {
         {
           type: 'select',
           name: 'style', // previously called "setting"
-          initialState: { style: 'fantasy' },
+          initialState: {
+            style: 'fantasy',
+            stylePost: '(D&D:1.1), (Lord of the rings:0.9)',
+          },
           label: 'Style',
           options: [
-            { label: 'Fantasy', style: 'fantasy' },
-            { label: 'Sci-Fi', style: 'sci-fi' }, // new
+            {
+              label: 'Fantasy',
+              style: 'fantasy',
+              stylePost: '(D&D:1.1), (Lord of the rings:0.9)',
+            },
           ],
         },
         {
@@ -355,15 +397,15 @@ const config = {
           label: 'Clothing / Armor', // rename to Attire?
           options: [
             { label: '-- undefined --', clothing: '' },
-            { label: 'Casual clothing', clothing: 'casual clothing' },
-            { label: 'Elegant clothing', clothing: 'elegant garments' },
-            { label: 'Furs', clothing: 'furs clothing' },
-            { label: 'Light armor', clothing: 'a leather armor' },
-            { label: 'Minimal', clothing: 'minimal simple clothing' },
-            { label: 'Heavy armor', clothing: 'a heavy armor' },
-            { label: 'Noble clothing', clothing: 'noble clothing' },
-            { label: 'Rags', clothing: 'rags' },
-            { label: 'Robe', clothing: 'a robe' },
+            { label: 'Casual clothing', clothing: 'wearing casual clothing' },
+            { label: 'Elegant clothing', clothing: 'wearing elegant garments' },
+            { label: 'Furs', clothing: 'wearing furs clothing' },
+            { label: 'Light armor', clothing: 'wearing a leather armor' },
+            { label: 'Minimal', clothing: 'wearing minimal simple clothing' },
+            { label: 'Heavy armor', clothing: 'wearing a heavy armor' },
+            { label: 'Noble clothing', clothing: 'wearing noble clothing' },
+            { label: 'Rags', clothing: 'wearing rags' },
+            { label: 'Robe', clothing: 'wearing a robe' },
           ],
         },
         {
@@ -422,6 +464,12 @@ const config = {
           label: 'Checkpoint',
         },
         {
+          type: 'seed',
+          name: 'seed',
+          initialState: { seed: 1337 },
+          label: 'Seed',
+        },
+        {
           type: 'textarea',
           name: 'customPrompt',
           initialState: { customPrompt: '' },
@@ -450,15 +498,16 @@ const config = {
     canColourHair,
     hairColor,
     hairstyle,
-    gear,
+    clothing,
     background,
     mood,
-    atmosphere,
+    stylePost,
+    colorHint,
   }) => {
     const ethnicOptions = ethnicBias?.split(',') || [];
     const randomEthnicBias = ethnicOptions[Math.floor(Math.random() * ethnicOptions.length)];
 
-    const positivePrompt = [
+    const positivePrompt1 = [
       style,
       stylePositive,
       'closeup of a',
@@ -470,20 +519,33 @@ const config = {
       racePositive,
       genderPositive,
       characterClass,
+      ...(hairstyle ? ['with'] : []),
       hairLength,
       ...(canColourHair ? [hairColor]: []),
       hairstyle,
-      gear,
-      '. ',
+      clothing,
       background,
-      'High quality, detailed, high resolution',
-      mood,
-      atmosphere,
     ].filter(value => value).join(' ');
+
+    const positivePrompt2 = [
+      'High quality, detailed, high resolution,',
+      stylePost,
+    ].filter(value => value).join(' ');
+
+    const positivePrompt3 = [
+      mood,
+      colorHint,
+    ].filter(value => value).join(' ');
+
+    const positivePrompt = [
+      positivePrompt1,
+      positivePrompt2,
+      positivePrompt3,
+    ].join('. ').trim();
 
     const negativePrompt = `${styleNegative} ${raceNegative} rendering, \
 blurry, noisy, deformed, text, ${genderNegative}, scars, blood, dirty, \
-nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
+niles, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, \
 {{BACKGROUND}} author, signature, 3d`;
 
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 

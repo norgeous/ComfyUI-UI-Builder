@@ -21,7 +21,7 @@ const App = () => {
         <h4 className="uk-text-center uk-margin-remove-vertical text-light">
           Comfy Dungeon
           {' '}
-          <small><sup>v0.1.1</sup></small>
+          <small><sup>v0.2.0</sup></small>
         </h4>
 
         <div className="left-content-box left-nav-wrap">
