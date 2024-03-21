@@ -12,7 +12,7 @@ const App = () => {
     isGenerating,
     progress,
     output,
-    bodyData,
+    // bodyData,
   } = useAppContext();
 
   return (
@@ -41,7 +41,7 @@ const App = () => {
         />
       )}
       <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
-      <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre>
+      {/* <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
     </>
   );
 };
