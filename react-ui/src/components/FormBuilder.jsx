@@ -20,11 +20,11 @@ const FormBuilder = ({ formConfig }) => {
     return {
       title,
       // eslint-disable-next-line no-unused-vars
-      children: children.map(({ type, adapter, name, initialState, ...props }, index) => {
+      children: children.map(({ type, adapter, name, initialState, colSpan, ...props }, index) => {
         const Component = components[type];
         if (!Component) return <Missing key={index} type={type} />
         return (
-          <div key={index} className="uk-width-1-2@s">
+          <div key={index} className={`uk-width-1-${colSpan == 2 ? 1 : 2}@s`}>
             <Component
               {...props}
               name={name}

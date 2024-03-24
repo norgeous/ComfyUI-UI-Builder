@@ -11,10 +11,10 @@ const config = {
           initialState: { quality: 1 },
           label: 'Quality',
           options: [
+            { quality: 0.25 },
+            { quality: 0.5 },
+            { quality: 0.75 },
             { quality: 1 },
-            { quality: 2 },
-            { quality: 3 },
-            { quality: 4 },
           ],
           minLabel: 'Speed',
           maxLabel: 'Accuracy',
@@ -30,6 +30,7 @@ const config = {
             { batchSize: 3 },
             { batchSize: 4 },
           ],
+          pipLabels: ['1', '2', '3', '4'],
         },
         {
           type: 'select',
@@ -46,6 +47,7 @@ const config = {
             scheduler: 'exponential',
           },
           label: 'Style & Model',
+          colSpan: 2,
           options: [
             {
               label: 'Illustration - Fast',
@@ -416,6 +418,7 @@ const config = {
           name: 'hairstyle',
           initialState: { hairstyle: '', hairLength: '', canColourHair: false },
           label: 'Hairstyle',
+          info: 'Please note that some hairstyles work better (or at all) with a specific gender and/or ethnicity.',
           options: [
             { label: '-- undefined --', hairstyle: '', hairLength: '', canColourHair: false },
             { label: 'Bald', hairstyle: 'bald', hairLength: '', canColourHair: false },
@@ -461,6 +464,13 @@ const config = {
       title: 'Custom',
       children: [
         {
+          type: 'textarea',
+          name: 'customPrompt',
+          initialState: { customPrompt: '' },
+          label: 'Custom Prompt',
+          info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
+        },
+        {
           type: 'selectckpt',
           name: 'ckpt',
           initialState: { ckpt: undefined },
@@ -471,13 +481,6 @@ const config = {
           name: 'seed',
           initialState: { seed: 1337 },
           label: 'Seed',
-        },
-        {
-          type: 'textarea',
-          name: 'customPrompt',
-          initialState: { customPrompt: '' },
-          label: 'Custom Prompt',
-          info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
         },
       ],
     },
@@ -584,7 +587,7 @@ const config = {
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
 
     // override things in workflow
-    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = ckpt;
+    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = 'XL1.0\\ProteusV0.3.safetensors';//ckpt;
     workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
     workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
     workflowBasic[getIdByNodeTitle('Empty Latent Image')].inputs.batch_size = batchSize;

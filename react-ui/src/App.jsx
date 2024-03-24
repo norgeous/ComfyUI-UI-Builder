@@ -12,7 +12,7 @@ const App = () => {
     isGenerating,
     progress,
     output,
-    // bodyData,
+    bodyData,
   } = useAppContext();
 
   return (
@@ -35,13 +35,13 @@ const App = () => {
 
       {output && (
         <img
-          style={{ aspectRatio: 1, width: '100%', maxWidth: 1024 }}
+          style={{ marginLeft: 460, aspectRatio: 1, width: '100%', maxWidth: 1024 }}
           alt=""
           src={`http://127.0.0.1:8188/view?filename=${output.images[0].filename}&type=output&subfolder=${output.images[0].subfolder}&rand=123`}
         />
       )}
       <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
-      {/* <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
+      <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre>
     </>
   );
 };

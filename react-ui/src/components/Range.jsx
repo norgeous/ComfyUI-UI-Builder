@@ -9,6 +9,7 @@ const Range = ({
   info,
   minLabel,
   maxLabel,
+  pipLabels,
   value,
   onChange,
   ...props
@@ -37,18 +38,21 @@ const Range = ({
         onChange={handleChange}
         {...props}
       />
-      {minLabel && maxLabel && (
-        <div className="uk-form-label uk-grid-small uk-text-muted uk-flex uk-flex-between">
+      <div className="uk-form-label uk-grid-small uk-text-muted uk-flex uk-flex-between" style={{ padding: pipLabels ? '0 4px' : 0 }}>
+        {minLabel && (
           <div>
             <span uk-icon="icon: arrow-left"></span>
             {minLabel}
           </div>
+        )}
+        {pipLabels?.map(pipLabel => <div key={pipLabel}>{pipLabel}</div>)}
+        {maxLabel && (
           <div>
             {maxLabel}
             <span uk-icon="icon: arrow-right"></span>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </label>
   );
 };
