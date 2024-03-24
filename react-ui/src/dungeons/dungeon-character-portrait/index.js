@@ -14,7 +14,7 @@ const config = {
             gender: 0,
             isFemale: true,
             genderPositive: 'female',
-            genderNegative: 'horror, ',
+            genderNegative: 'horror',
           },
           label: 'Gender',
           info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
@@ -467,8 +467,8 @@ const config = {
       children: [
         {
           type: 'selectckpt',
-          name: 'ckpt',
-          initialState: { ckpt: '' },
+          name: 'ckptOverride',
+          initialState: { ckptOverride: '' },
           label: 'Checkpoint override',
           info: 'Override the model from "Preset" (experimental)',
           colSpan: 2,
@@ -498,10 +498,12 @@ const config = {
   ],
   adapter: ({
     comfyUiData: {
+      ckptNames,
       ckptOptions,
     },
     formState: {
-      ckpt,
+      ckptOverride,
+      model,
       seed,
       batchSize,
       quality,
@@ -535,6 +537,7 @@ const config = {
       colorHint,
     },
   }) => {
+    const checkpoint = ckptOverride || ckptNames.find(ckptName => ckptName.includes(model));
     const ethnicOptions = ethnicBias?.split(',') || [];
     const randomEthnicBias = ethnicOptions[Math.floor(Math.random() * ethnicOptions.length)];
 
@@ -603,7 +606,7 @@ const config = {
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
 
     // override things in workflow
-    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = 'XL1.0\\ProteusV0.3.safetensors'; // ckpt;
+    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = checkpoint;
     workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
     workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
     workflowBasic[getIdByNodeTitle('Empty Latent Image')].inputs.batch_size = batchSize;
