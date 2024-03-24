@@ -46,7 +46,7 @@ const config = {
             samplerName: 'dpmpp_2m',
             scheduler: 'exponential',
           },
-          label: 'Style & Model',
+          label: 'Preset',
           colSpan: 2,
           options: [
             {
