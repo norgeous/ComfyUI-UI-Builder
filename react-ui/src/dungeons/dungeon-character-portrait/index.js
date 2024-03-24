@@ -479,7 +479,7 @@ const config = {
         {
           type: 'seed',
           name: 'seed',
-          initialState: { seed: 1337 },
+          initialState: { seed: 9482966021 },
           label: 'Seed',
         },
       ],
