@@ -13,7 +13,8 @@ const FormControls = ({
       onClick={executePrompt}
       // loading={promptLoading || isGenerating}
     >
-      Generate
+      <span uk-icon="icon: bolt"></span>{/* eslint-disable-line react/no-unknown-property */}
+      Roll
     </Button>
     {isGenerating && (
       <Button
