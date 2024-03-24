@@ -19,10 +19,12 @@ const App = () => {
     <>
       <aside id="left-col" className="uk-light uk-visible@m">
         <h4 className="uk-text-center uk-margin-remove-vertical text-light">
-          Comfy Dungeon
+          {config.name}
           {' '}
-          <small><sup>v0.2.0</sup></small>
+          <small><sup>{config.version}</sup></small>
         </h4>
+
+        <Progress value={progress} />
 
         <div className="left-content-box left-nav-wrap">
           <FormBuilder formConfig={config.formConfig}/>
@@ -31,7 +33,6 @@ const App = () => {
 
       </aside>
 
-      <Progress value={progress} />
 
       {output && (
         <img

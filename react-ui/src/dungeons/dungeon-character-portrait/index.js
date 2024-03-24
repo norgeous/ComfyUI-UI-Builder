@@ -1,6 +1,8 @@
 import workflowBasic from './basic_portrait.json';
 
 const config = {
+  name: 'Comfy Dungeon',
+  version: 'v0.2.1',
   formConfig: [
     {
       title: 'Character',
@@ -477,12 +479,19 @@ const config = {
           initialState: { customPrompt: '' },
           label: 'Custom Prompt',
           info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
+          colSpan: 2,
         },
         {
-          type: 'seed',
+          type: 'number',
           name: 'seed',
           initialState: { seed: 9482966021 },
           label: 'Seed',
+        },
+        {
+          type: 'checkbox',
+          name: 'enableSeedRandomisation',
+          initialState: { enableSeedRandomisation: true },
+          label: 'Random',
         },
       ],
     },

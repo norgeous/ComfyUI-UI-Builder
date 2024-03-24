@@ -4,6 +4,9 @@ import Accordion from './Accordion';
 import Select from './Select';
 import SelectCkpt from './SelectCkpt';
 import Range from './Range';
+import Textarea from './Textarea';
+import Num from './Num';
+import Checkbox from './Checkbox';
 import { useAppContext } from '../contexts/AppContext';
 
 const Spacer = () => null;
@@ -13,6 +16,9 @@ const components = {
   select: Select,
   selectckpt: SelectCkpt,
   range: Range,
+  textarea: Textarea,
+  number: Num,
+  checkbox: Checkbox,
   spacer: Spacer,
 };
 
