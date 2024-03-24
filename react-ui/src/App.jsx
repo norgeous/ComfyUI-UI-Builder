@@ -10,7 +10,6 @@ import './App.css';
 const App = () => {
   const {
     formState,
-    isGenerating,
     progress,
     output,
     bodyData,

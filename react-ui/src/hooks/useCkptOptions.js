@@ -7,7 +7,10 @@ const useCkptOptions = () => {
     adapter: useCallback((res) => res.CheckpointLoaderSimple.input.required.ckpt_name[0], []),
   });
 
-  const ckptOptions = data?.map((ckptName) => ({ label: ckptName, value: ckptName })) || [];
+  const ckptOptions = [
+    { label: '-- undefined --', ckpt: '' },
+    ...data?.map((ckptName) => ({ label: ckptName, ckpt: ckptName })) || [],
+  ];
 
   return { loading, error, ckptOptions };
 };

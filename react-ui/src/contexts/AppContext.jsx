@@ -33,13 +33,13 @@ export const AppProvider = ({
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({ ...formState, ...adjustment });
 
-  const [ckpt, setCkpt] = useState(''); // TODO: use one state for all formData
+  // const [ckpt, setCkpt] = useState(''); // TODO: use one state for all formData
 
-  const handleSelectCkpt = (value) => setCkpt(value);
+  // const handleSelectCkpt = (value) => setCkpt(value);
 
   const bodyData = {
     client_id: clientId,
-    prompt: config.adapter(formState),
+    prompt: config.adapter({ comfyUiData: ckptOptions, formState }),
   };
 
   const {
@@ -71,8 +71,8 @@ export const AppProvider = ({
         ckptOptionsLoading,
         ckptOptionsError,
         ckptOptions,
-        ckpt,
-        handleSelectCkpt,
+        // ckpt,
+        // handleSelectCkpt,
 
         executePrompt,
         promptLoading,

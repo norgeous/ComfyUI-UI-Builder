@@ -2,14 +2,16 @@
 import PropTypes from 'prop-types';
 import Accordion from './Accordion';
 import Select from './Select';
+import SelectCkpt from './SelectCkpt';
 import Range from './Range';
 import { useAppContext } from '../contexts/AppContext';
 
 const Spacer = () => null;
-const Missing = ({ type }) => <div className="uk-width-1-2@s">component type <strong>{type}</strong> not found</div>;
+const Missing = ({ type }) => <div className="uk-width-1-1@s">component type <strong>{type}</strong> not found</div>;
 
 const components = {
   select: Select,
+  selectckpt: SelectCkpt,
   range: Range,
   spacer: Spacer,
 };
@@ -31,7 +33,7 @@ const FormBuilder = ({ formConfig }) => {
               value={formState[name]}
               onChange={data => {
                 const newFormState = { ...formState, ...data};
-                const adapted = adapter?.(newFormState);
+                const adapted = adapter?.(newFormState); // not used atm
                 if (adapted) updateFormState(adapted);
                 else updateFormState(data);
               }}
