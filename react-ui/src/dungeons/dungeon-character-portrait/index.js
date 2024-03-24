@@ -1,4 +1,5 @@
 import workflowBasic from './basic_portrait.json';
+import workflowBasicLcm from './basic_portrait_lcm.json';
 
 const config = {
   name: 'Comfy Dungeon',
@@ -10,14 +11,9 @@ const config = {
         {
           type: 'range',
           name: 'gender',
-          initialState: {
-            gender: 0,
-            isFemale: true,
-            genderPositive: 'female',
-            genderNegative: 'horror',
-          },
           label: 'Gender',
           info: 'Femininity/Masculinity slider trait is temptative, the result may not be what you expect.',
+          initialOptionIndex: 0,
           options: [
             { 
               gender: 0,
@@ -50,8 +46,8 @@ const config = {
         {
           type: 'range',
           name: 'age',
-          initialState: { age: '30yo' },
           label: 'Age',
+          initialOptionIndex: 1,
           options: [
             { age: 'young' }, 
             { age: '30yo' }, 
@@ -64,8 +60,8 @@ const config = {
         {
           type: 'range',
           name: 'bodyStructure',
-          initialState: { bodyStructure: '' },
           label: 'Body structure',
+          initialOptionIndex: 1,
           options: [
             { bodyStructure: 'slender' },
             { bodyStructure: '' },
@@ -82,13 +78,8 @@ const config = {
         {
           type: 'select',
           name: 'race',
-          initialState: {
-            race: 'human',
-            isStocky: false,
-            racePositive: 'human',
-            raceNegative: '(elf, long pointy ears:1.2), Christmas, garden',
-          },
           label: 'Race',
+          initialOptionIndex: 5,
           options: [
             {
               label: 'Dwarf',
@@ -144,9 +135,9 @@ const config = {
         {
           type: 'select',
           name: 'ethnicBias',
-          initialState: { ethnicBias: '' },
           label: 'Ethnic bias',
           info: 'Adds a random ethnicity to the character based on the area selected. It\'s a light conditioning that helps making the generations more interesting; it doesn\'t guarantee an exact nationality.',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', ethnicBias: '' },
             { label: 'Completely Random', ethnicBias: '' },
@@ -182,8 +173,8 @@ const config = {
         {
           type: 'select',
           name: 'characterClass',
-          initialState: { characterClass: 'fighter' },
           label: 'Class',
+          initialOptionIndex: 1,
           options: [
             { label: 'Cleric', characterClass: 'cleric' },
             { label: 'Fighter', characterClass: 'fighter' },
@@ -199,8 +190,8 @@ const config = {
         {
           type: 'select',
           name: 'clothing',
-          initialState: { clothing: '' },
-          label: 'Clothing / Armor', // rename to Attire?
+          label: 'Clothing / Armor',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', clothing: '' },
             { label: 'Casual clothing', clothing: 'wearing casual clothing' },
@@ -217,9 +208,9 @@ const config = {
         {
           type: 'select',
           name: 'hairstyle',
-          initialState: { hairstyle: '', hairLength: '', canColourHair: false },
           label: 'Hairstyle',
-          info: 'Please note that some hairstyles work better (or at all) with a specific gender and/or ethnicity.',
+          info: 'Please note that some hairstyles work better (or at all) with a specific gender and / or ethnicity.',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', hairstyle: '', hairLength: '', canColourHair: false },
             { label: 'Bald', hairstyle: 'bald', hairLength: '', canColourHair: false },
@@ -243,8 +234,8 @@ const config = {
         {
           type: 'select',
           name: 'hairColor',
-          initialState: { hairColor: '' },
           label: 'Hair color',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', hairColor: '' },
             { label: 'Blond', hairColor: 'blond' },
@@ -262,16 +253,13 @@ const config = {
       ],
     },
     {
-      title: 'Scene', // previously called "setting"
+      title: 'Scene',
       children: [
         {
           type: 'select',
           name: 'style', // previously called "setting"
-          initialState: {
-            style: 'fantasy',
-            stylePost: '(D&D:1.1), (Lord of the rings:0.8)',
-          },
           label: 'Style',
+          initialOptionIndex: 0,
           options: [
             {
               label: 'Fantasy',
@@ -283,11 +271,8 @@ const config = {
         {
           type: 'select',
           name: 'background',
-          initialState: {
-            background: '',
-            backgroundNegative: '',
-          },
           label: 'Background',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', background: '', backgroundNegative: '' },
             { label: 'Cave', background: 'inside a cave', backgroundNegative: 'flat background' },
@@ -307,8 +292,8 @@ const config = {
         {
           type: 'select',
           name: 'mood',
-          initialState: { mood: '' },
           label: 'Mood',
+          initialOptionIndex: 2,
           options: [
             { label: 'Angry', mood: 'angry evil' },
             { label: 'Somber', mood: 'wise thoughtful serious mood' },
@@ -321,9 +306,9 @@ const config = {
         {
           type: 'select',
           name: 'colorHint',
-          initialState: { colorHint: '' },
           label: 'Color hint',
-          info: 'The picture will have a predominat color.',
+          info: 'The picture will have a predominant color.',
+          initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', colorHint: '' },
             { label: 'Burgundy', colorHint: 'burgundy' },
@@ -357,8 +342,8 @@ const config = {
         {
           type: 'range',
           name: 'quality',
-          initialState: { quality: 1 },
           label: 'Quality',
+          initialOptionIndex: 3,
           options: [
             { quality: 0.25 },
             { quality: 0.5 },
@@ -371,8 +356,8 @@ const config = {
         {
           type: 'range',
           name: 'batchSize',
-          initialState: { batchSize: 1 },
           label: 'Results per generation',
+          initialOptionIndex: 0,
           options: [
             { batchSize: 1 },
             { batchSize: 2 },
@@ -384,19 +369,9 @@ const config = {
         {
           type: 'select',
           name: 'preset',
-          initialState: {
-            preset: 'illustration-accurate',
-            model: 'ProteusV0.3',
-            stylePositive: 'illustration digital painting',
-            styleNegative: 'photo, anime',
-            baseSteps: 14,
-            stepMultiplier: 14,
-            cfg: 6.5,
-            samplerName: 'dpmpp_2m',
-            scheduler: 'exponential',
-          },
           label: 'Preset',
           colSpan: 2,
+          initialOptionIndex: 1,
           options: [
             {
               label: 'Illustration - Fast',
@@ -468,30 +443,30 @@ const config = {
         {
           type: 'selectckpt',
           name: 'ckptOverride',
-          initialState: { ckptOverride: '' },
           label: 'Checkpoint override',
           info: 'Override the model from "Preset" (experimental)',
           colSpan: 2,
+          initialState: { ckptOverride: '' },
         },
         {
           type: 'textarea',
           name: 'customPrompt',
-          initialState: { customPrompt: '' },
           label: 'Custom Prompt',
           info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
           colSpan: 2,
+          initialState: { customPrompt: '' },
         },
         {
           type: 'number',
           name: 'seed',
-          initialState: { seed: 9482966021 },
           label: 'Seed',
+          initialState: { seed: 9482966021 },
         },
         {
           type: 'checkbox',
           name: 'enableSeedRandomisation',
-          initialState: { enableSeedRandomisation: true },
           label: 'Random',
+          initialState: { enableSeedRandomisation: true },
         },
       ],
     },
