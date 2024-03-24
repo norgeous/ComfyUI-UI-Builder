@@ -460,19 +460,19 @@ const config = {
             },
           ],
         },
-        {
-          type: 'selectckpt',
-          name: 'ckpt',
-          initialState: { ckpt: '' },
-          label: 'Checkpoint override',
-          info: 'override the model from "Preset"',
-          colSpan: 2,
-        },
       ],
     },
     {
       title: 'Custom',
       children: [
+        {
+          type: 'selectckpt',
+          name: 'ckpt',
+          initialState: { ckpt: '' },
+          label: 'Checkpoint override',
+          info: 'Override the model from "Preset" (experimental)',
+          colSpan: 2,
+        },
         {
           type: 'textarea',
           name: 'customPrompt',
