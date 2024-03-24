@@ -39,7 +39,7 @@ const config = {
             preset: 'illustration-accurate',
             model: 'ProteusV0.3',
             stylePositive: 'illustration digital painting',
-            styleNegative: 'photo, anime,',
+            styleNegative: 'photo, anime',
             baseSteps: 14,
             stepMultiplier: 14,
             cfg: 6.5,
@@ -54,7 +54,7 @@ const config = {
               preset: 'illustration-fast',
               model: 'ProteusV0.3',
               stylePositive: 'illustration digital painting',
-              styleNegative: 'photo, anime,',
+              styleNegative: 'photo, anime',
               baseSteps: 4,
               stepMultiplier: 4,
               cfg: 2.5,
@@ -66,7 +66,7 @@ const config = {
               preset: 'illustration-accurate',
               model: 'ProteusV0.3',
               stylePositive: 'illustration digital painting',
-              styleNegative: 'photo, anime,',
+              styleNegative: 'photo, anime',
               baseSteps: 14,
               stepMultiplier: 14,
               cfg: 6.5,
@@ -78,7 +78,7 @@ const config = {
               preset: 'anime-fast',
               model: 'ProteusV0.3',
               stylePositive: 'anime illustration',
-              styleNegative: 'photo, fanart,',
+              styleNegative: 'photo, fanart',
               baseSteps: 4,
               stepMultiplier: 4,
               cfg: 2.5,
@@ -90,7 +90,7 @@ const config = {
               preset: 'anime-accurate',
               model: 'ProteusV0.3',
               stylePositive: 'anime illustration',
-              styleNegative: 'photo, fanart,',
+              styleNegative: 'photo, fanart',
               baseSteps: 14,
               stepMultiplier: 14,
               cfg: 6.5,
@@ -102,7 +102,7 @@ const config = {
               preset: 'cinematic',
               model: 'DreamShaperXLTurboV2',
               stylePositive: 'film still cinematic photo',
-              styleNegative: 'illustration, anime, cosplay,',
+              styleNegative: 'illustration, anime, cosplay',
               baseSteps: 6,
               stepMultiplier: 4,
               cfg: 2,
@@ -121,14 +121,14 @@ const config = {
           name: 'style', // previously called "setting"
           initialState: {
             style: 'fantasy',
-            stylePost: '(D&D:1.1), (Lord of the rings:0.9)',
+            stylePost: '(D&D:1.1), (Lord of the rings:0.8)',
           },
           label: 'Style',
           options: [
             {
               label: 'Fantasy',
               style: 'fantasy',
-              stylePost: '(D&D:1.1), (Lord of the rings:0.9)',
+              stylePost: '(D&D:1.1), (Lord of the rings:0.8)',
             },
           ],
         },
@@ -222,19 +222,19 @@ const config = {
               gender: 0,
               isFemale: true,
               genderPositive: 'female',
-              genderNegative: 'horror, ',
+              genderNegative: 'horror',
             },
             { 
               gender: 1,
               isFemale: true,
               genderPositive: '(masculine:1.1) female',
-              genderNegative: 'beard, ',
+              genderNegative: 'beard',
             },
             {
               gender: 2,
               isFemale: false, // male
               genderPositive: '(queer:0.9) feminine male',
-              genderNegative: 'zombie, beard, ',
+              genderNegative: 'zombie, beard',
             },
             {
               gender: 3,
@@ -285,7 +285,7 @@ const config = {
             race: 'human',
             isStocky: false,
             racePositive: 'human',
-            raceNegative: '(elf, long pointy ears:1.2)',
+            raceNegative: '(elf, long pointy ears:1.2), Christmas, garden',
           },
           label: 'Race',
           options: [
@@ -301,7 +301,7 @@ const config = {
               race: 'elf',
               isStocky: false,
               racePositive: 'elven', // have to use Elven instead of Elf to avoid Christmas contamination
-              raceNegative: 'green, beard, christmas',
+              raceNegative: 'green, beard, Christmas',
             },
             {
               label: 'Gnome',
@@ -329,7 +329,7 @@ const config = {
               race: 'human',
               isStocky: false,
               racePositive: 'human',
-              raceNegative: '(elf, long pointy ears:1.2)',
+              raceNegative: '(elf, long pointy ears:1.2), Christmas, garden', // it only needs "Christmas, garden" to retain similar image in README
             },
             {
               label: 'Tiefling',
@@ -570,7 +570,7 @@ const config = {
       'scars',
       'blood',
       'dirty',
-      'niles',
+      'nipples',
       'naked',
       'boobs',
       'cleavage',
@@ -582,12 +582,12 @@ const config = {
       'author',
       'signature',
       '3d',
-    ].join(', ');
+    ].filter(value => value).join(', ');
 
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
 
     // override things in workflow
-    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = 'XL1.0\\ProteusV0.3.safetensors';//ckpt;
+    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = 'XL1.0\\ProteusV0.3.safetensors'; // ckpt;
     workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
     workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
     workflowBasic[getIdByNodeTitle('Empty Latent Image')].inputs.batch_size = batchSize;
