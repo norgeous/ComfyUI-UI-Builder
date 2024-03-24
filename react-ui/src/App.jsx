@@ -1,5 +1,6 @@
 import { useAppContext } from './contexts/AppContext';
 import Form from './components/Form';
+import Progress from './components/Progress';
 import FormBuilder from './components/FormBuilder';
 
 import config from './dungeons/dungeon-character-portrait';
@@ -31,7 +32,7 @@ const App = () => {
 
       </aside>
 
-      {isGenerating && <progress value={progress * 100} />}
+      <Progress value={progress} />
 
       {output && (
         <img
