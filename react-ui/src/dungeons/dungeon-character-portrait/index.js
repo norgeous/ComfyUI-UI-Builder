@@ -1,3 +1,4 @@
+import prng from '../../utils/prng';
 import workflowBasic from './basic_portrait.json';
 import workflowBasicLcm from './basic_portrait_lcm.json';
 
@@ -140,7 +141,7 @@ const config = {
           initialOptionIndex: 0,
           options: [
             { label: '-- undefined --', ethnicBias: '' },
-            { label: 'Completely Random', ethnicBias: '' },
+            // { label: 'Completely Random', ethnicBias: '' },
 
             { label: 'Africa: Eastern', ethnicBias: 'Eritrean,Djiboutian,Ethiopian,Somali,Kenyan,Ugandan,Rwandan,Burundian,Tanzanian,Malagasy,Mauritian,Seychellois' },
             { label: 'Africa: Middle', ethnicBias: 'Chadian,Sudanese,Central African,Cameroonian,Gabonese,Equatorial Guinean,Sao Tomean,Angolan,Congolese,Zambian,Malawian,Mozambican,Madagascan,Comorian,Mauritian,Seychellois' },
@@ -474,7 +475,6 @@ const config = {
   adapter: ({
     comfyUiData: {
       ckptNames,
-      ckptOptions,
     },
     formState: {
       ckptOverride,
@@ -514,7 +514,9 @@ const config = {
   }) => {
     const checkpoint = ckptOverride || ckptNames.find(ckptName => ckptName.includes(model));
     const ethnicOptions = ethnicBias?.split(',') || [];
-    const randomEthnicBias = ethnicOptions[Math.floor(Math.random() * ethnicOptions.length)];
+    const next = prng(seed);
+    const ethnicOptionsSortRandom = ethnicOptions.sort(() => 0.5 - next());
+    const [randomEthnicBias1, randomEthnicBias2] = ethnicOptionsSortRandom;
 
     const positivePrompt1 = [
       style,
@@ -524,7 +526,7 @@ const config = {
       ...(isStocky ? ['stocky'] : []),
       bodyStructure,
       ...(isFemale && bodyStructure === 'strong' ? ['muscular'] : []),
-      randomEthnicBias,
+      ...(randomEthnicBias1 ? [`(${randomEthnicBias1}, ${randomEthnicBias2}:0.7)`] : []),
       racePositive,
       genderPositive,
       characterClass,
