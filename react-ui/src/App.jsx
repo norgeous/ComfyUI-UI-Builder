@@ -6,45 +6,43 @@ import FormBuilder from './components/FormBuilder';
 import config from './dungeons/dungeon-character-portrait';
 
 import './App.css';
+import { Container, Sidebar, Main } from './components/Layout';
+import Carousel from './components/Carousel';
 
 const App = () => {
   const {
-    formState,
     progress,
     output,
-    bodyData,
+    // formState,
+    // bodyData,
   } = useAppContext();
 
   return (
-    <>
-      <aside id="left-col" className="uk-light uk-visible@m">
+    <Container>
+      <Sidebar className="uk-light">
         <h4 className="uk-text-center uk-margin-remove-vertical text-light">
           {config.name}
           {' '}
           <small><sup>{config.version}</sup></small>
         </h4>
 
-        <Progress value={progress} />
 
         <div className="left-content-box left-nav-wrap">
           <FormBuilder formConfig={config.formConfig}/>
           <Form />
         </div>
 
-      </aside>
+      </Sidebar>
 
+      <Main>
+        <Progress value={progress} />
 
-      {output?.images.map(({ filename, subfolder }) => (
-        <img
-          key={filename}
-          style={{ marginLeft: 460, aspectRatio: 1, width: '100%', maxWidth: 1024 }}
-          src={`http://127.0.0.1:8188/view?filename=${filename}&type=output&subfolder=${subfolder}`}
-          alt=""
-        />
-      ))}
-      {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
-      <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
-    </>
+        <Carousel images={output?.images || []} />
+
+        {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
+        <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
+      </Main>
+    </Container>
   );
 };
 

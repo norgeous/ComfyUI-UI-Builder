@@ -3,7 +3,7 @@ html {
     background-size: 32px 32px;
     background-image: radial-gradient(circle, #3d454b 1px, rgba(0, 0, 0, 0) 1px);
 }
-
+/* 
 #left-col {
     position: fixed;
     left: 0;
@@ -13,7 +13,7 @@ html {
     transition: left 0.3s ease-out;
     background-color: #222A30;
     overflow-y: auto;
-}
+} */
 
 #content {
     position: relative;
