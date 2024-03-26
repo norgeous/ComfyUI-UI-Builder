@@ -31,6 +31,6 @@ export const Content = styled.div`
   
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;

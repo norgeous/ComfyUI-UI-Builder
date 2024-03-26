@@ -30,14 +30,22 @@ const Range = ({
         value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
       />
-      <div className="uk-form-label uk-grid-small uk-text-muted uk-flex uk-flex-between" style={{ padding: pipLabels ? '0 4px' : 0 }}>
+      <div
+        className="uk-text-muted"
+        style={{
+          padding: pipLabels ? '0 8px' : 0,
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
+      >
         {minLabel && (
           <div>
             <span uk-icon="icon: arrow-left"></span>
             {minLabel}
           </div>
         )}
-        {pipLabels?.map(pipLabel => <div key={pipLabel}>{pipLabel}</div>)}
+        {pipLabels?.map(pipLabel => <div key={pipLabel} style={{ width: 0, textAlign: 'center', 
+  display: 'flex', justifyContent: 'center' }}>{pipLabel}</div>)}
         {maxLabel && (
           <div>
             {maxLabel}

@@ -15,7 +15,7 @@ const Carousel = ({ images }) => {
       {images.map(({ filename, subfolder }) => (
         <img
           key={filename}
-          style={{ display: 'block', aspectRatio: 1, width: '100%', maxWidth: 1024 }}
+          style={{ display: 'block', aspectRatio: 1, width: '100%', maxWidth: 512 }}
           src={`http://127.0.0.1:8188/view?filename=${filename}&type=output&subfolder=${subfolder}`}
           alt=""
         />
