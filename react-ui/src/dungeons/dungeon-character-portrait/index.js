@@ -1,6 +1,6 @@
 import prng from '../../utils/prng';
 import workflowBasic from './basic_portrait.json';
-import workflowBasicLcm from './basic_portrait_lcm.json';
+// import workflowBasicLcm from './basic_portrait_lcm.json';
 
 const config = {
   name: 'Comfy Dungeon',
