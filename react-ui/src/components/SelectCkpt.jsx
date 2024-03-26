@@ -1,4 +1,4 @@
-import { useAppContext } from '../contexts/AppContext';
+import useAppContext from '../hooks/useAppContext';
 import Select from './Select';
 
 const SelectCkpt = ({ ...props }) => {

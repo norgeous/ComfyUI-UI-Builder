@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
@@ -8,7 +8,7 @@ import config from '../dungeons/dungeon-character-portrait';
 import uuidv4 from '../utils/uuidv4';
 
 const clientId = uuidv4();
-const AppContext = createContext({});
+export const AppContext = createContext({});
 
 const formInitialState = config.formConfig.reduce((acc, { children }) => ({
   ...acc,
@@ -23,7 +23,7 @@ const formInitialState = config.formConfig.reduce((acc, { children }) => ({
   }, {}),
 }), {});
 
-export const AppProvider = ({
+const AppProvider = ({
   children,
 }) => {
   const {
@@ -101,4 +101,4 @@ AppProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export const useAppContext = () => useContext(AppContext);
+export default AppProvider;

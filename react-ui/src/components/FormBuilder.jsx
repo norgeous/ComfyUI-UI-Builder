@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
+import useAppContext from '../hooks/useAppContext';
 import Accordion from './Accordion';
 import Select from './Select';
 import SelectCkpt from './SelectCkpt';
@@ -7,7 +8,6 @@ import Range from './Range';
 import Textarea from './Textarea';
 import Num from './Num';
 import Checkbox from './Checkbox';
-import { useAppContext } from '../contexts/AppContext';
 
 const Spacer = () => null;
 const Missing = ({ type }) => <div className="uk-width-1-1@s">component type <strong>{type}</strong> not found</div>;

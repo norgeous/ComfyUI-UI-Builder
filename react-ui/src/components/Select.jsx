@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
+import PropTypes from 'prop-types';
+import Label from './Label';
 
 const Select = ({
   name,
-  options,
-  // loading,
   label,
   info,
+  options,
   value,
   onChange,
   ...props
@@ -18,20 +17,7 @@ const Select = ({
   };
 
   return (
-    <label className="uk-form-label">
-      {label}
-      {info && (
-        <>
-          {' '}
-          <button uk-icon="icon: question" type="button"></button>
-          <div
-            className="uk-card uk-card-small uk-card-body uk-card-default"
-            uk-drop="pos: right-top; mode: click;"
-          >
-            {info}
-          </div>
-        </>
-      )}
+    <Label label={label} info={info}>
       <select
         {...props}
         className="uk-select"
@@ -42,8 +28,16 @@ const Select = ({
           <option key={index} value={index}>{label}</option>
         ))}
       </select>
-    </label>
+    </Label>
   );
+};
+Select.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  options: PropTypes.array,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Select;
