@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import Label from './Label';
+import Label from '../Label';
 
 const Textarea = ({ name, label, info, onChange, ...props }) => {
   const handleChange = (event) => onChange({ [name]: String(event.target.value) });
@@ -10,7 +10,7 @@ const Textarea = ({ name, label, info, onChange, ...props }) => {
       <textarea
         {...props}
         className="uk-input"
-        style={{ width: '100%' }}
+        style={{ width: '100%', minWidth: '100%' }}
         rows={4}
         onChange={handleChange}
       />

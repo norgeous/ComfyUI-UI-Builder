@@ -2,12 +2,13 @@
 import PropTypes from 'prop-types';
 import useAppContext from '../hooks/useAppContext';
 import Accordion from './Accordion';
-import Select from './Select';
-import SelectCkpt from './SelectCkpt';
-import Range from './Range';
-import Textarea from './Textarea';
-import Num from './Num';
-import Checkbox from './Checkbox';
+
+import Select from './form-fields/Select';
+import SelectCkpt from './form-fields/SelectCkpt';
+import Range from './form-fields/Range';
+import Textarea from './form-fields/Textarea';
+import Num from './form-fields/Num';
+import Checkbox from './form-fields/Checkbox';
 
 const Spacer = () => null;
 const Missing = ({ type }) => <div className="uk-width-1-1@s">component type <strong>{type}</strong> not found</div>;

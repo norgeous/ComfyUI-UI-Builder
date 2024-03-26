@@ -436,6 +436,18 @@ const config = {
             },
           ],
         },
+        {
+          type: 'number',
+          name: 'seed',
+          label: 'Seed',
+          initialState: { seed: 9482966021 },
+        },
+        {
+          type: 'checkbox',
+          name: 'enableSeedRandomisation',
+          label: 'Random',
+          initialState: { enableSeedRandomisation: true },
+        },
       ],
     },
     {
@@ -456,18 +468,6 @@ const config = {
           info: 'Keep it simple. Don\'t be too discoursive, write the element that you\'d want to add. Eg: "red scarf" or "silver tiara". You might need to add strength with the syntax "(silver tiara:1.2)".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of "crown" try with "wearing a silver crown on his head".',
           colSpan: 2,
           initialState: { customPrompt: '' },
-        },
-        {
-          type: 'number',
-          name: 'seed',
-          label: 'Seed',
-          initialState: { seed: 9482966021 },
-        },
-        {
-          type: 'checkbox',
-          name: 'enableSeedRandomisation',
-          label: 'Random',
-          initialState: { enableSeedRandomisation: true },
         },
       ],
     },

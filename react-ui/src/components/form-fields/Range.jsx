@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
-import Label from './Label';
+import Label from '../Label';
 
 const Range = ({
   name,
