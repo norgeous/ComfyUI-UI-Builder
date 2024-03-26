@@ -17,7 +17,7 @@ const useComfyWs = (clientId) => {
       },
       executed: (data) => {
         setIsGenerating(false);
-        setProgress(1);
+        setProgress(0);
         setOutput(data.data.output);
       },
       execution_interrupted: () => {

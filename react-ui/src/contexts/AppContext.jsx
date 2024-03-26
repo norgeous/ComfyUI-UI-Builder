@@ -67,7 +67,7 @@ const AppProvider = ({
 
   return (
     <AppContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
+       
       value={{
         clientId,
 

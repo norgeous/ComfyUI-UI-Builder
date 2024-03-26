@@ -31,7 +31,7 @@ const useComfyApi = ({
         })
         .then((res) => setData(adapter(res)))
         .catch((err) => {
-          console.error(err); // eslint-disable-line no-console
+          console.error(err);  
           setLoading(false);
           setError(err.message);
         });

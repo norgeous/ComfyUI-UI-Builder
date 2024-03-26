@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
+import Label from './Label';
+
 const Range = ({
   name,
   options,
@@ -17,17 +19,7 @@ const Range = ({
   const handleChange = (event) => onChange(options[Number(event.target.value)]);
 
   return (
-    <label className="uk-form-label">
-      {label}
-      {info && (
-        <>
-          {' '}
-          <button uk-icon="icon: question" type="button"></button>
-          <div className="uk-card uk-card-small uk-card-body uk-card-default" uk-drop="pos: right-top; mode: click;">
-            {info}
-          </div>
-        </>
-      )}
+    <Label label={label} info={info}>
       <input
         className="uk-range"
         type="range"
@@ -53,7 +45,7 @@ const Range = ({
           </div>
         )}
       </div>
-    </label>
+    </Label>
   );
 };
 

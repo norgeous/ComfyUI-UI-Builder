@@ -1,5 +1,9 @@
-const Checkbox = ({ ...props }) => (
-  <input type="checkbox" {...props}/>
+const Checkbox = ({ label, ...props }) => (
+  <label>
+    <input className="uk-checkbox" type="checkbox" {...props}/>
+    {' '}
+    {label}
+  </label>
 );
 
 export default Checkbox;
