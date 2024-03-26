@@ -2,12 +2,12 @@ import useAppContext from './hooks/useAppContext';
 import Form from './components/Form';
 import Progress from './components/Progress';
 import FormBuilder from './components/FormBuilder';
+import { Container, Sidebar, Main, Content } from './components/Layout';
+import Carousel from './components/Carousel';
 
 import config from './dungeons/dungeon-character-portrait';
 
 import './App.css';
-import { Container, Sidebar, Main } from './components/Layout';
-import Carousel from './components/Carousel';
 
 const App = () => {
   const {
@@ -26,7 +26,6 @@ const App = () => {
           <small><sup>{config.version}</sup></small>
         </h4>
 
-
         <div className="left-content-box left-nav-wrap">
           <FormBuilder formConfig={config.formConfig}/>
           <Form />
@@ -37,10 +36,12 @@ const App = () => {
       <Main>
         <Progress value={progress} />
 
-        <Carousel images={output?.images || []} />
+        <Content>
+          <Carousel images={output?.images || []} />
+          {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
+          <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
+        </Content>
 
-        {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
-        <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
       </Main>
     </Container>
   );

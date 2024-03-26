@@ -364,8 +364,10 @@ const config = {
             { batchSize: 2 },
             { batchSize: 3 },
             { batchSize: 4 },
+            { batchSize: 8 },
+            { batchSize: 9 },
           ],
-          pipLabels: ['1', '2', '3', '4'],
+          pipLabels: ['1', '2', '3', '4', 8, 9],
         },
         {
           type: 'select',

@@ -23,3 +23,14 @@ export const Main = styled.main`
   background-size: 32px 32px;
   background-image: radial-gradient(circle,#3d454b 1px,#0000 1px);
 `;
+
+
+export const Content = styled.div`
+  flex: 1 0;
+  overflow-y: auto;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
