@@ -21,6 +21,7 @@ const Range = ({
   return (
     <Label label={label} info={info}>
       <input
+        {...props}
         className="uk-range"
         type="range"
         min="0"
@@ -28,7 +29,6 @@ const Range = ({
         step="1"
         value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
-        {...props}
       />
       <div className="uk-form-label uk-grid-small uk-text-muted uk-flex uk-flex-between" style={{ padding: pipLabels ? '0 4px' : 0 }}>
         {minLabel && (

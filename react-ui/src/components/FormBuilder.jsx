@@ -38,6 +38,7 @@ const FormBuilder = ({ formConfig }) => {
               name={name}
               value={formState[name]}
               onChange={data => {
+                console.log(data)
                 const newFormState = { ...formState, ...data};
                 const adapted = adapter?.(newFormState); // not used atm
                 if (adapted) updateFormState(adapted);
