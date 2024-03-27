@@ -17,7 +17,7 @@
 ## Future
 
 - add air-bnb
-- code tidy up, fix all prop-types, linting, etc
+- code tidy up, fix all prop-types, linting, uik-kit warnings, etc
 - save current form data to LS
   - reset to defaults
 - workflow switcher (dungeon, example2, etc)
