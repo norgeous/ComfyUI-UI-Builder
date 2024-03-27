@@ -6,6 +6,7 @@ const config = {
   name: 'Comfy Dungeon',
   version: 'v0.2.1-uib',
   emoji: '🧌',
+  description: 'Build D&D Character Portraits',
   formConfig: [
     {
       title: 'Character',
