@@ -16,15 +16,15 @@
 
 ## Future
 
+- workflow switcher (dungeon, example2, etc)
+  - alternative layouts abstraction
+  - fastgen example?
 - update system (and uib workflows) to work with comfy ui workflow v0.4
 - debug prompt / workflow checkbox
 - add air-bnb
 - code tidy up, fix all prop-types, linting, uik-kit warnings, etc
 - save current formData to LS
   - reset to defaults
-- workflow switcher (dungeon, example2, etc)
-  - alternative layouts abstraction
-  - fastgen example?
 - pwa?
 - README redo, how to make UIB workflows
 - github CI build process
