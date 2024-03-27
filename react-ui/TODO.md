@@ -24,7 +24,7 @@
   - alternative layouts abstraction
   - fastgen example?
 - pwa
-- README redo
+- README redo, how to make UIB workflows
 - github CI build process
 
 ## Ideas
