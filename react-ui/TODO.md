@@ -2,14 +2,12 @@
 
 ## Now
 
-- mobile view (switch to mobile first)
-- revise sidebar layout (full height with scroll section)
+- making seed randomisation work
 
 ## Next
 
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
-- making seed randomisation work
 - dungeon LCM needs to work, mode:4 is bypass
 - dungeon lora finder, similar to ckpt finder (in case the user has folders in the lora folder)
 - click image to zoom / carousel function
