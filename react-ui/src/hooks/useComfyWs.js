@@ -6,9 +6,6 @@ const useComfyWs = (clientId) => {
   const [output, setOutput] = useState();
 
   useEffect(() => {
-    // const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    // const serverAddress = `${window.location.hostname}:${window.location.port}`;
-    // const socket = new WebSocket(`${protocol}//${serverAddress}/ws?clientId=${clientId}`);
     const socket = new WebSocket(`/ws?clientId=${clientId}`);
 
     const socketMessageActions = {
