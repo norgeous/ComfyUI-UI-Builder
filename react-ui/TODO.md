@@ -8,6 +8,7 @@
 ## Next
 
 - loader spinner, interrupt and queue features
+  - using multiple instances, how should queue work? clientId adjustments...
 - making seed randomisation work
 - dungeon LCM needs to work
 - dungeon lora finder, similar to ckpt finder
@@ -21,7 +22,6 @@
   - reset to defaults
 - workflow switcher (dungeon, example2, etc)
   - fastgen example?
-- using multiple instances, how should queue work? clientId adjustments...
 - pwa
 - README redo
 - github CI build process
