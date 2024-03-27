@@ -5,7 +5,7 @@ export const Page = styled.div`
   grid-template-rows: 50% 50%;
   height: 100svh;
   @media (min-width: 640px) {
-    grid-template-columns: 400px auto;
+    grid-template-columns: 360px auto;
   }
 `;
 
@@ -23,15 +23,16 @@ export const Main = styled.main`
 `;
 
 export const Controls = styled.aside`
-  /* overflow-y: auto; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-rows: 40px auto 40px;
   background-color: #222A30;
+  height: 50svh;
   @media (min-width: 640px) {
     height: 100svh;
   }
 `;
-
 
 export const Content = styled.div`
   flex: 1 0;

@@ -40,9 +40,9 @@ const App = () => {
           <small><sup>{config.version}</sup></small>
         </h4>
 
-        <div className="left-content-box left-nav-wrap">
-          <FormBuilder formConfig={config.formConfig}/>
-        </div>
+        {/* <div className="left-content-box left-nav-wrap"> */}
+        <FormBuilder formConfig={config.formConfig}/>
+        {/* </div> */}
 
         <Form />
       </Controls>

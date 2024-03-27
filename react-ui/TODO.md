@@ -35,6 +35,7 @@
 - image input (for ipa)
 - video input (for animatediff)
 - video output
+- adjust weight with CTRL+UP or CTRL+DOWN
 
 ## Ideas
 
