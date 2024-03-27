@@ -4,7 +4,7 @@ import workflowBasic from './basic_portrait.json';
 
 const config = {
   name: 'Comfy Dungeon',
-  version: 'v0.2.1',
+  version: 'v0.2.1-uib',
   formConfig: [
     {
       title: 'Character',
