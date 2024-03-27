@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ImagesContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(${({ cols }) => cols}, 1fr);
-  gap: 20px;
+  gap: 10px;
   max-height: 100%;
   aspect-ratio: ${({ cols, rows }) => `${cols} / ${rows}`};
   place-items: center;

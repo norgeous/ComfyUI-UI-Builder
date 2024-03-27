@@ -1,7 +1,7 @@
 import useComfyApi from './useComfyApi';
 
 const useComfyPrompt = ({ bodyData }) => useComfyApi({
-  fetchUrl: 'http://127.0.0.1:8188/prompt',
+  fetchUrl: '/prompt',
   options: {
     method: 'POST',
     body: JSON.stringify(bodyData),

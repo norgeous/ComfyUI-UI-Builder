@@ -515,6 +515,7 @@ const config = {
       mood,
       stylePost,
       colorHint,
+      customPrompt,
     },
   }) => {
     const checkpoint = ckptOverride || ckptNames.find(ckptName => ckptName.includes(model));
@@ -558,6 +559,7 @@ const config = {
       positivePrompt1,
       positivePrompt2,
       positivePrompt3,
+      customPrompt,
     ].join('. ').trim();
 
     const negativePrompt = [

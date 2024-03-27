@@ -3,7 +3,7 @@ import useComfyApi from './useComfyApi';
 
 const useCkptOptions = () => {
   const { loading, error, data: ckptNames = [] } = useComfyApi({
-    fetchUrl: 'http://127.0.0.1:8188/object_info/CheckpointLoaderSimple',
+    fetchUrl: '/object_info/CheckpointLoaderSimple',
     adapter: useCallback((res) => res.CheckpointLoaderSimple.input.required.ckpt_name[0], []),
   });
 

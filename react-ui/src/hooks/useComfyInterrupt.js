@@ -1,7 +1,7 @@
 import useComfyApi from './useComfyApi';
 
 const useComfyInterrupt = () => useComfyApi({
-  fetchUrl: 'http://127.0.0.1:8188/interrupt',
+  fetchUrl: '/interrupt',
   options: {
     method: 'POST',
   },
