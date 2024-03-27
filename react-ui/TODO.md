@@ -23,7 +23,7 @@
 - workflow switcher (dungeon, example2, etc)
   - alternative layouts abstraction
   - fastgen example?
-- pwa
+- pwa?
 - README redo, how to make UIB workflows
 - github CI build process
 
