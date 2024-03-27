@@ -21,6 +21,7 @@
 - save current form data to LS
   - reset to defaults
 - workflow switcher (dungeon, example2, etc)
+  - alternative layouts abstraction
   - fastgen example?
 - pwa
 - README redo
@@ -28,6 +29,6 @@
 
 ## Ideas
 
-- swap component set / alternative layouts
+- swap component set
 - import / export uib workflows, can it be refactored into json only?
 - interface builder?
