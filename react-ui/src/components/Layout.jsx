@@ -1,28 +1,37 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const Sidebar = styled.aside`
-  flex: 0 0 460px;
-  display: flex;
-  flex-direction: column;
+export const Page = styled.div`
+  display: grid;
+  grid-template-rows: 50% 50%;
   height: 100svh;
-  background-color: #222A30;
-  overflow-y: auto;
+  @media (min-width: 640px) {
+    grid-template-columns: 400px auto;
+  }
 `;
 
 export const Main = styled.main`
-  flex: 1 0;
+  @media (min-width: 640px) {
+    order: 2; // change the order on desktop, so that controls are first
+    height: 100svh;
+  }
   display: flex;
   flex-direction: column;
-  height: 100svh;
   background-color: #181b1d;
   background-size: 32px 32px;
-  background-image: radial-gradient(circle,#3d454b 1px,#0000 1px);
+  background-position: center;
+  background-image: radial-gradient(circle, #3d454b 1px, #0000 1px);
 `;
+
+export const Controls = styled.aside`
+  /* overflow-y: auto; */
+  display: flex;
+  flex-direction: column;
+  background-color: #222A30;
+  @media (min-width: 640px) {
+    height: 100svh;
+  }
+`;
+
 
 export const Content = styled.div`
   flex: 1 0;

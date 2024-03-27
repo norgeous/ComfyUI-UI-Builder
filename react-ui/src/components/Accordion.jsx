@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types';
 
 const Accordion = ({ sections }) => (
-  <div uk-accordion="collapsible: false">
+  <div uk-accordion="collapsible: true">
     {sections.map(({ title, children }) => (
       <div key={title}>
         <a className="uk-accordion-title">{title}</a>

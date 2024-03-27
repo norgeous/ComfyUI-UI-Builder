@@ -2,12 +2,14 @@ import useAppContext from './hooks/useAppContext';
 import Form from './components/Form';
 import Progress from './components/Progress';
 import FormBuilder from './components/FormBuilder';
-import { Container, Sidebar, Main, Content } from './components/Layout';
+import { Page, Main, Controls, Content } from './components/Layout';
 import Carousel from './components/Carousel';
 
 import config from './dungeons/dungeon-character-portrait';
 
 import './App.css';
+
+const StatusBar = () => 'StatusBar';
 
 const App = () => {
   const {
@@ -18,21 +20,7 @@ const App = () => {
   } = useAppContext();
 
   return (
-    <Container>
-      <Sidebar className="uk-light">
-        <h4 className="uk-text-center uk-margin-remove-vertical text-light">
-          {config.name}
-          {' '}
-          <small><sup>{config.version}</sup></small>
-        </h4>
-
-        <div className="left-content-box left-nav-wrap">
-          <FormBuilder formConfig={config.formConfig}/>
-          <Form />
-        </div>
-
-      </Sidebar>
-
+    <Page>
       <Main>
         <Progress value={progress} />
 
@@ -42,8 +30,23 @@ const App = () => {
           <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
         </Content>
 
+        <StatusBar />
       </Main>
-    </Container>
+
+      <Controls className="uk-light">
+        <h4 className="uk-text-center uk-margin-remove-vertical text-light">
+          {config.name}
+          {' '}
+          <small><sup>{config.version}</sup></small>
+        </h4>
+
+        <div className="left-content-box left-nav-wrap">
+          <FormBuilder formConfig={config.formConfig}/>
+        </div>
+
+        <Form />
+      </Controls>
+    </Page>
   );
 };
 
