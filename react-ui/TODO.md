@@ -22,7 +22,11 @@
 - update system (and uib workflows) to work with comfy ui workflow v0.4
 - debug prompt / workflow checkbox
 - add air-bnb
-- code tidy up, fix all prop-types, linting, uik-kit warnings, etc
+- code tidy up
+  - fix all prop-types
+  - fix linting
+  - fix uik-kit warnings
+- error handling of missing ckpt or lora
 - save current formData to LS
   - reset to defaults
 - pwa?
