@@ -26,6 +26,9 @@
 - pwa?
 - README redo, how to make UIB workflows
 - github CI build process
+- image input (for ipa)
+- video input (for animatediff)
+- video output
 
 ## Ideas
 
