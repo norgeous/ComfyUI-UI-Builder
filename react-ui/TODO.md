@@ -16,8 +16,8 @@
 ## Future
 
 - workflow switcher (dungeon, example2, etc)
-  - alternative layouts abstraction
   - fastgen example?
+  - alternative layouts abstraction
 - debug prompt / workflow checkbox
 - add air-bnb
 - code tidy up
