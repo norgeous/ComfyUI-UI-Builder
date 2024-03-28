@@ -448,6 +448,7 @@ const config = {
           name: 'seed',
           label: 'Seed',
           initialState: { seed: 9482966021 },
+          adapter: ({ seed }) => ({ seed, enableSeedRandomisation: false }),
         },
         {
           type: 'checkbox',

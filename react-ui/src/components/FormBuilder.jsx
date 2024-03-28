@@ -40,7 +40,7 @@ const FormBuilder = ({ formConfig }) => {
               value={formState[name]}
               onChange={data => {
                 const newFormState = { ...formState, ...data};
-                const adapted = adapter?.(newFormState); // not used atm
+                const adapted = adapter?.(newFormState);
                 if (adapted) updateFormState(adapted);
                 else updateFormState(data);
               }}

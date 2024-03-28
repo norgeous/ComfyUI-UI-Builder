@@ -1,31 +1,48 @@
+/* eslint-disable react/prop-types */
+import useAppContext from '../hooks/useAppContext';
 import Button from './Button';
 
 const FormControls = ({
   executePrompt,
   executeInterrupt,
-  promptLoading,
+  // promptLoading,
   isGenerating,
-  interruptLoading,
-}) => (
-  <>
-    <Button
-      // fullWidth
-      onClick={executePrompt}
-      // loading={promptLoading || isGenerating}
-    >
-      <span uk-icon="icon: bolt"></span>{/* eslint-disable-line react/no-unknown-property */}
-      Roll
-    </Button>
-    {isGenerating && (
+  // interruptLoading,
+}) => {
+  const {
+    formState: { enableSeedRandomisation },
+    updateFormState,
+  } = useAppContext();
+
+  const handleClick = () => {
+    executePrompt();
+    if (enableSeedRandomisation) {
+      const newSeed = Math.floor(Math.random() * 10**10);
+      updateFormState({ seed: newSeed });
+    }
+  };
+
+  return (
+    <>
       <Button
-        // variant="outline"
-        onClick={executeInterrupt}
-        // loading={interruptLoading}
+        // fullWidth
+        onClick={handleClick}
+        // loading={promptLoading || isGenerating}
       >
-        Interrupt
+        <span uk-icon="icon: bolt"></span>{/* eslint-disable-line react/no-unknown-property */}
+        Roll
       </Button>
-    )}
-  </>
-);
+      {isGenerating && (
+        <Button
+          // variant="outline"
+          onClick={executeInterrupt}
+          // loading={interruptLoading}
+        >
+          Interrupt
+        </Button>
+      )}
+    </>
+  );
+};
 
 export default FormControls;

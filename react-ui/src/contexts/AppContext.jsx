@@ -49,7 +49,10 @@ const AppProvider = ({
 
   const bodyData = {
     client_id: clientId,
-    prompt: config.adapter({ comfyUiData, formState }),
+    prompt: config.adapter({
+      comfyUiData,
+      formState,
+    }),
   };
 
   const {
@@ -67,7 +70,6 @@ const AppProvider = ({
 
   return (
     <AppContext.Provider
-       
       value={{
         clientId,
 
