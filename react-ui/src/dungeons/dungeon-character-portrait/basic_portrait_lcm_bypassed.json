@@ -173,7 +173,7 @@
           "shape": 3
         }
       ],
-      "title": "pos",
+      "title": "Positive Prompt",
       "properties": {
         "Node name for S&R": "CLIPTextEncodeSDXL+"
       },
@@ -215,7 +215,7 @@
           "shape": 3
         }
       ],
-      "title": "neg",
+      "title": "Negative Prompt",
       "properties": {
         "Node name for S&R": "CLIPTextEncodeSDXL+"
       },
