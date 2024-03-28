@@ -12,7 +12,7 @@ const Form = () => {
 
     executePrompt,
     promptLoading,
-    // promptError,
+    promptError,
 
     executeInterrupt,
     interruptLoading,
@@ -20,6 +20,7 @@ const Form = () => {
 
   return (
     <div>
+      {promptError}
       <FormControls
         executePrompt={executePrompt}
         executeInterrupt={executeInterrupt}
