@@ -23,13 +23,11 @@ const App = () => {
     <Page>
       <Main>
         <Progress value={progress} />
-
         <Content>
           <Carousel images={output?.images || []} />
           {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
           <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
         </Content>
-
         <StatusBar />
       </Main>
 
@@ -39,11 +37,7 @@ const App = () => {
           {' '}
           <small><sup>{config.version}</sup></small>
         </h4>
-
-        {/* <div className="left-content-box left-nav-wrap"> */}
         <FormBuilder formConfig={config.formConfig}/>
-        {/* </div> */}
-
         <Form />
       </Controls>
     </Page>

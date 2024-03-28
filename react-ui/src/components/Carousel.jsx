@@ -12,7 +12,6 @@ const ImagesContainer = styled.section`
 
 const Img = styled.img`
   display: block;
-  max-height: inherit;
 `;
 
 const Carousel = ({ images }) => {

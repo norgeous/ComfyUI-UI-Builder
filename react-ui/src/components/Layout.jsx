@@ -5,7 +5,7 @@ export const Page = styled.div`
   grid-template-rows: 50% 50%;
   height: 100svh;
   @media (min-width: 640px) {
-    grid-template-columns: 360px auto;
+    grid-template-columns: 460px auto;
   }
 `;
 

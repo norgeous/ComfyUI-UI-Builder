@@ -1,6 +1,6 @@
 import prng from '../../utils/prng';
 import workflowBasic from './basic_portrait.json';
-// import workflowBasicLcm from './basic_portrait_lcm.json';
+import workflowBasicLcmBypassed from './basic_portrait_lcm_bypassed.json';
 
 const config = {
   name: 'Comfy Dungeon',
@@ -592,6 +592,10 @@ const config = {
     ].filter(value => value).join(', ');
 
     const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
+    const getIndexByTitleOrType = key => workflowBasicLcmBypassed.nodes.findIndex(({ title, type }) => [title, type].includes(key));
+
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('CheckpointLoaderSimple')].widgets_values[0] = checkpoint;
+    console.log(workflowBasicLcmBypassed);
 
     // override things in workflow
     workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = checkpoint;

@@ -1,7 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
-
+import styled from 'styled-components';
 import Label from '../Label';
+
+const Sublabel = styled.div`
+  padding: ${({pipLabels}) => pipLabels ? '0 8px' : 0};
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 4px;
+`;
+
+const Pip = styled.div`
+  width: 0;
+  display: flex;
+  justify-content: center; 
+  text-align: center;
+`;
 
 const Range = ({
   name,
@@ -30,13 +45,9 @@ const Range = ({
         value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
       />
-      <div
+      <Sublabel
         className="uk-text-muted"
-        style={{
-          padding: pipLabels ? '0 8px' : 0,
-          display: 'flex',
-          justifyContent: 'space-between'
-        }}
+        pipLabels={pipLabels}
       >
         {minLabel && (
           <div>
@@ -44,15 +55,14 @@ const Range = ({
             {minLabel}
           </div>
         )}
-        {pipLabels?.map(pipLabel => <div key={pipLabel} style={{ width: 0, textAlign: 'center', 
-  display: 'flex', justifyContent: 'center' }}>{pipLabel}</div>)}
+        {pipLabels?.map(pipLabel => <Pip key={pipLabel}>{pipLabel}</Pip>)}
         {maxLabel && (
           <div>
             {maxLabel}
             <span uk-icon="icon: arrow-right"></span>
           </div>
         )}
-      </div>
+      </Sublabel>
     </Label>
   );
 };

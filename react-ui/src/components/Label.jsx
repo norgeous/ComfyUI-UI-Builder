@@ -12,7 +12,7 @@ const Label = ({
         <>
           {' '}
           {/* eslint-disable-next-line react/no-unknown-property */}
-          <button uk-icon="icon: question" type="button"></button>
+          <button uk-icon="icon: question; ratio: 0.6" type="button"></button>
           {/* eslint-disable-next-line react/no-unknown-property */}
           <div className="uk-card uk-card-small uk-card-body uk-card-default" uk-drop="pos: right-top; mode: click;">
             {info}

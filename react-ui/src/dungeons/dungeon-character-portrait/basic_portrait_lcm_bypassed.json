@@ -173,6 +173,7 @@
           "shape": 3
         }
       ],
+      "title": "pos",
       "properties": {
         "Node name for S&R": "CLIPTextEncodeSDXL+"
       },
@@ -214,6 +215,7 @@
           "shape": 3
         }
       ],
+      "title": "neg",
       "properties": {
         "Node name for S&R": "CLIPTextEncodeSDXL+"
       },
