@@ -6,12 +6,11 @@ import { Page, Main, Controls, Content } from './components/Layout';
 import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
 
-import config from './dungeons/dungeon-character-portrait';
-
 import './App.css';
 
 const App = () => {
   const {
+    config,
     progress,
     output,
   } = useAppContext();

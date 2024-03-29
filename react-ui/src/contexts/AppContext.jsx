@@ -1,33 +1,27 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import useConfig from '../hooks/useConfig';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
 import useCkptOptions from '../hooks/useCkptOptions';
 import useObjectInfo from '../hooks/useObjectInfo';
-import config from '../dungeons/dungeon-character-portrait';
 import uuidv4 from '../utils/uuidv4';
 import comfyWorkflowToComfyPrompt from '../utils/comfyWorkflowToComfyPrompt';
 
 const clientId = uuidv4();
-export const AppContext = createContext({});
 
-const formInitialState = config.formConfig.reduce((acc, { children }) => ({
-  ...acc,
-  ...children.reduce((acc2, { initialState, initialOptionIndex, options }) => {
-    // eslint-disable-next-line no-unused-vars
-    const { label, ...optionFragment } = options?.[initialOptionIndex] || {};
-    return ({
-      ...acc2,
-      ...initialState,
-      ...optionFragment,
-    });
-  }, {}),
-}), {});
+export const AppContext = createContext({});
 
 const AppProvider = ({
   children,
 }) => {
+  const {
+    config,
+    configs,
+    setConfig,
+  } = useConfig();
+
   const {
     isGenerating,
     progress,
@@ -44,7 +38,19 @@ const AppProvider = ({
     ckptOptions,
   } = useCkptOptions();
 
-  const comfyUiData = { ckptNames, objectInfo };
+
+  const formInitialState = config.formConfig.reduce((acc, { children }) => ({
+    ...acc,
+    ...children.reduce((acc2, { initialState, initialOptionIndex, options }) => {
+      // eslint-disable-next-line no-unused-vars
+      const { label, ...optionFragment } = options?.[initialOptionIndex] || {};
+      return ({
+        ...acc2,
+        ...initialState,
+        ...optionFragment,
+      });
+    }, {}),
+  }), {});
 
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({
@@ -52,15 +58,17 @@ const AppProvider = ({
     ...adjustment,
   });
 
+  const comfyUiData = { ckptNames, objectInfo };
+
   const bodyData = {
     client_id: clientId,
-    prompt: comfyWorkflowToComfyPrompt({
-      comfyWorkflow: config.adapter({
-        comfyUiData,
-        formState,
-      }),
-      objectInfo,
-    }),
+    // prompt: comfyWorkflowToComfyPrompt({
+    //   comfyWorkflow: config.adapter({
+    //     comfyUiData,
+    //     formState,
+    //   }),
+    //   objectInfo,
+    // }),
   };
 
   const {
@@ -80,6 +88,10 @@ const AppProvider = ({
     <AppContext.Provider
       value={{
         clientId,
+
+        config,
+        configs,
+        setConfig,
 
         formState,
         updateFormState,
