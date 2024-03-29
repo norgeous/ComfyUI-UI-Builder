@@ -468,6 +468,22 @@
     {
       "destination": "KSampler > scheduler",
       "actions": "get:scheduler"
+    },
+    {
+      "destination": "LoraLoader > mode",
+      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
+    },
+    {
+      "destination": "LoraLoader > lora_name",
+      "actions": ["get:samplerName", "ifEquals:lcm", "raw:lcm-lora-sdxl", "findInLoraNames"]
+    },
+    {
+      "destination": "ModelSamplingDiscrete > mode",
+      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
+    },
+    {
+      "destination": "RescaleCFG > mode",
+      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
     }
   ]
 }
