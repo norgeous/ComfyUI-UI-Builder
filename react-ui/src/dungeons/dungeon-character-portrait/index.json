@@ -1,0 +1,1072 @@
+{
+  "baseWorkflow": "./basic_portrait_lcm_bypassed-workflow.json",
+  "name": "Comfy Dungeon",
+  "version": "v0.2.1-uib",
+  "emoji": "🧌",
+  "description": "Build D&D Character Portraits",
+  "formConfig": [
+    {
+      "title": "Character",
+      "children": [
+        {
+          "type": "range",
+          "name": "gender",
+          "label": "Gender",
+          "info": "Femininity/Masculinity slider trait is temptative, the result may not be what you expect.",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "gender": 0,
+              "isFemale": true,
+              "genderPositive": "female",
+              "genderNegative": "horror"
+            },
+            {
+              "gender": 1,
+              "isFemale": true,
+              "genderPositive": "(masculine:1.1) female",
+              "genderNegative": "beard"
+            },
+            {
+              "gender": 2,
+              "isFemale": false,
+              "genderPositive": "(queer:0.9) feminine male",
+              "genderNegative": "zombie, beard"
+            },
+            {
+              "gender": 3,
+              "isFemale": false,
+              "genderPositive": "male",
+              "genderNegative": ""
+            }
+          ],
+          "minLabel": "Femininity",
+          "maxLabel": "Masculinity"
+        },
+        {
+          "type": "range",
+          "name": "age",
+          "label": "Age",
+          "initialOptionIndex": 1,
+          "options": [
+            {
+              "age": "young"
+            },
+            {
+              "age": "30yo"
+            },
+            {
+              "age": "45yo"
+            },
+            {
+              "age": "60yo"
+            }
+          ],
+          "minLabel": "Young",
+          "maxLabel": "Old"
+        },
+        {
+          "type": "range",
+          "name": "bodyStructure",
+          "label": "Body structure",
+          "initialOptionIndex": 1,
+          "options": [
+            {
+              "bodyStructure": "slender",
+              "isMuscular": false
+            },
+            {
+              "bodyStructure": "",
+              "isMuscular": false
+            },
+            {
+              "bodyStructure": "strong",
+              "isMuscular": true
+            },
+            {
+              "bodyStructure": "chubby",
+              "isMuscular": false
+            }
+          ],
+          "minLabel": "Slender",
+          "maxLabel": "Chubby"
+        },
+        {
+          "type": "spacer"
+        },
+        {
+          "type": "select",
+          "name": "race",
+          "label": "Race",
+          "initialOptionIndex": 5,
+          "options": [
+            {
+              "label": "Dwarf",
+              "race": "dwarf",
+              "isStocky": true,
+              "racePositive": "dwarf",
+              "raceNegative": ""
+            },
+            {
+              "label": "Elf",
+              "race": "elf",
+              "isStocky": false,
+              "racePositive": "elven",
+              "raceNegative": "green, beard, Christmas"
+            },
+            {
+              "label": "Gnome",
+              "race": "gnome",
+              "isStocky": true,
+              "racePositive": "gnome",
+              "raceNegative": "garden"
+            },
+            {
+              "label": "Half-Elf",
+              "race": "half-elf",
+              "isStocky": false,
+              "racePositive": "half-elf, pointy ears.",
+              "raceNegative": ""
+            },
+            {
+              "label": "Halfling",
+              "race": "halfling",
+              "isStocky": true,
+              "racePositive": "halfling, pointy ears.",
+              "raceNegative": ""
+            },
+            {
+              "label": "Human",
+              "race": "human",
+              "isStocky": false,
+              "racePositive": "human",
+              "raceNegative": "(elf, long pointy ears:1.2), Christmas, garden"
+            },
+            {
+              "label": "Tiefling",
+              "race": "tiefling",
+              "isStocky": false,
+              "racePositive": "tiefling",
+              "raceNegative": ""
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "ethnicBias",
+          "label": "Ethnic bias",
+          "info": "Adds a random ethnicity to the character based on the area selected. It's a light conditioning that helps making the generations more interesting; it doesn't guarantee an exact nationality.",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "ethnicBias": ""
+            },
+            {
+              "label": "Africa: Eastern",
+              "ethnicBias": "Eritrean,Djiboutian,Ethiopian,Somali,Kenyan,Ugandan,Rwandan,Burundian,Tanzanian,Malagasy,Mauritian,Seychellois"
+            },
+            {
+              "label": "Africa: Middle",
+              "ethnicBias": "Chadian,Sudanese,Central African,Cameroonian,Gabonese,Equatorial Guinean,Sao Tomean,Angolan,Congolese,Zambian,Malawian,Mozambican,Madagascan,Comorian,Mauritian,Seychellois"
+            },
+            {
+              "label": "Africa: Northen",
+              "ethnicBias": "Egyptian,Libyan,Tunisian,Algerian,Moroccan,Mauritanian,Sahrawi,Tuareg"
+            },
+            {
+              "label": "Africa: Southern",
+              "ethnicBias": "Namibian,South African,Botswanan,Zimbabwean,Zambian,Malawian,Mozambican,Swazi,Lesotho,Basotho"
+            },
+            {
+              "label": "Africa: Western",
+              "ethnicBias": "Mauritanian,Senegalese,Malian,Nigerien,Burkinabe,Ivorian,Ghanaian,Togolese,Beninese,Nigerian,Cameroonian,Equatorial Guinean,Sao Tomean,Gabonese,Congolese"
+            },
+            {
+              "label": "America: Central",
+              "ethnicBias": "Belizean,Costa Rican,Salvadoran,Guatemalan,Honduran,Nicaraguan,Panamanian"
+            },
+            {
+              "label": "America: Northern",
+              "ethnicBias": "Antiguan,Bahamian,Barbadian,Cuban,Dominican,Dominican,Grenadian,Haitian,Jamaican,Kittian and Nevisian,Lucian,Vincentian,Trinidadian and Tobagonian"
+            },
+            {
+              "label": "America: Sourthern",
+              "ethnicBias": "Argentine,Bolivian,Brazilian,Chilean,Colombian,Ecuadorian,Guyanese,Paraguayan,Peruvian,Surinamese,Uruguayan,Venezuelan"
+            },
+            {
+              "label": "Asia: Central",
+              "ethnicBias": "Kazakhstani,Kyrgyzstani,Tajikistani,Turkmen,Uzbekistani"
+            },
+            {
+              "label": "Asia: Eastern",
+              "ethnicBias": "Chinese,Japanese,Korean,Mongolian,Taiwanese"
+            },
+            {
+              "label": "Asia: South-Eastern",
+              "ethnicBias": "Bangladeshi,Bhutanese,Indian,Maldivian,Nepalese,Pakistani,Sri Lankan"
+            },
+            {
+              "label": "Asia: Southern",
+              "ethnicBias": "Burmese,Cambodian,Filipino,Indonesian,Laotian,Malaysian,Singaporean,Thai,Timorese,Vietnamese"
+            },
+            {
+              "label": "Asia: Western",
+              "ethnicBias": "Afghan,Armenian,Azerbaijani,Bahraini,Cypriot,Georgian,Iranian,Iraqi,Israeli,Jordanian,Kuwaiti,Lebanese,Omani,Palestinian,Qatari,Saudi,Syrian,Turkish,Emirati,Yemeni"
+            },
+            {
+              "label": "Australia & New Zealand",
+              "ethnicBias": "Australian,Fijian,I-Kiribati,Marshallese,Micronesian,Nauruan,New Zealander,Palauan,Papua New Guinean,Samoan,Solomon Islander,Tongan,Tuvaluan,Vanuatuan"
+            },
+            {
+              "label": "European: Eastern",
+              "ethnicBias": "Belarusian,Bulgarian,Czech,Hungarian,Polish,Moldovan,Romanian,Russian,Slovak,Ukrainian"
+            },
+            {
+              "label": "European: Northern",
+              "ethnicBias": "Estonian,Latvian,Lithuanian"
+            },
+            {
+              "label": "European: Southern",
+              "ethnicBias": "Albanian,Bosnian,Croatian,Greek,Italian,Maltese,Montenegrin,North Macedonian,Portuguese,Serbian,Slovenian,Spanish"
+            },
+            {
+              "label": "European: Western",
+              "ethnicBias": "Austrian,Belgian,Dutch,French,German,Liechtensteiner,Luxembourger,Monacan,Swiss"
+            },
+            {
+              "label": "European: Islandic",
+              "ethnicBias": "Icelandic,Irish,Manx,British"
+            },
+            {
+              "label": "Mela/Micro/Poly-nesia",
+              "ethnicBias": "Fijian,Papua New Guinean,Solomon Islander,Vanuatuan,Kiribati,Marshallese,Micronesian,Nauruan,Palauan,Samoan,Tongan,Tuvaluan"
+            }
+          ],
+          "usePrngSubset": 2,
+          "weight": 0.7
+        },
+        {
+          "type": "select",
+          "name": "characterClass",
+          "label": "Class",
+          "initialOptionIndex": 1,
+          "options": [
+            {
+              "label": "Cleric",
+              "characterClass": "cleric"
+            },
+            {
+              "label": "Fighter",
+              "characterClass": "fighter"
+            },
+            {
+              "label": "Mage",
+              "characterClass": "mage"
+            },
+            {
+              "label": "Noble person",
+              "characterClass": "noble person"
+            },
+            {
+              "label": "Paladin",
+              "characterClass": "paladin"
+            },
+            {
+              "label": "Peasant",
+              "characterClass": "peasant"
+            },
+            {
+              "label": "Ranger",
+              "characterClass": "ranger"
+            },
+            {
+              "label": "Shaman",
+              "characterClass": "shaman"
+            },
+            {
+              "label": "Thief",
+              "characterClass": "thief"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "clothing",
+          "label": "Clothing / Armor",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "clothing": ""
+            },
+            {
+              "label": "Casual clothing",
+              "clothing": "wearing casual clothing"
+            },
+            {
+              "label": "Elegant clothing",
+              "clothing": "wearing elegant garments"
+            },
+            {
+              "label": "Furs",
+              "clothing": "wearing furs clothing"
+            },
+            {
+              "label": "Light armor",
+              "clothing": "wearing a leather armor"
+            },
+            {
+              "label": "Minimal",
+              "clothing": "wearing minimal simple clothing"
+            },
+            {
+              "label": "Heavy armor",
+              "clothing": "wearing a heavy armor"
+            },
+            {
+              "label": "Noble clothing",
+              "clothing": "wearing noble clothing"
+            },
+            {
+              "label": "Rags",
+              "clothing": "wearing rags"
+            },
+            {
+              "label": "Robe",
+              "clothing": "wearing a robe"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "hairstyle",
+          "label": "Hairstyle",
+          "info": "Please note that some hairstyles work better (or at all) with a specific gender and / or ethnicity.",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "hairstyle": "",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Bald",
+              "hairstyle": "bald",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Braids",
+              "hairstyle": "simple braid hairstyle",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Buzz cut",
+              "hairstyle": "buzz haircut",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Cornrows",
+              "hairstyle": "cornrows hairstyle",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Curly Long",
+              "hairstyle": "curly hair",
+              "hairLength": "long",
+              "canColorHair": true
+            },
+            {
+              "label": "Curly Short",
+              "hairstyle": "curly hair",
+              "hairLength": "short",
+              "canColorHair": true
+            },
+            {
+              "label": "Dreadlocks",
+              "hairstyle": "dreadlocks hairstyle",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Long hair",
+              "hairstyle": "hair",
+              "hairLength": "long",
+              "canColorHair": true
+            },
+            {
+              "label": "Long disheveled",
+              "hairstyle": "disheveled hair",
+              "hairLength": "long",
+              "canColorHair": true
+            },
+            {
+              "label": "Long straight",
+              "hairstyle": "straight hair",
+              "hairLength": "long",
+              "canColorHair": true
+            },
+            {
+              "label": "Mohawk",
+              "hairstyle": "short mohawk hairstyle",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Pixie cut",
+              "hairstyle": "pixie haircut",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Ponytail",
+              "hairstyle": "ponytail hairstyle",
+              "hairLength": "",
+              "canColorHair": false
+            },
+            {
+              "label": "Short hair",
+              "hairstyle": "hair",
+              "hairLength": "short",
+              "canColorHair": true
+            },
+            {
+              "label": "Short disheveled",
+              "hairstyle": "disheveled hair",
+              "hairLength": "short",
+              "canColorHair": true
+            },
+            {
+              "label": "Short straight",
+              "hairstyle": "straight hair",
+              "hairLength": "short",
+              "canColorHair": true
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "hairColor",
+          "label": "Hair color",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "hairColor": ""
+            },
+            {
+              "label": "Blond",
+              "hairColor": "blond"
+            },
+            {
+              "label": "Dark Blond",
+              "hairColor": "dark blond"
+            },
+            {
+              "label": "Medium Brown",
+              "hairColor": "medium brown"
+            },
+            {
+              "label": "Dark Brown",
+              "hairColor": "dark brown"
+            },
+            {
+              "label": "Reddish Brown",
+              "hairColor": "reddish brown"
+            },
+            {
+              "label": "Red",
+              "hairColor": "red"
+            },
+            {
+              "label": "Black",
+              "hairColor": "black"
+            },
+            {
+              "label": "Graying",
+              "hairColor": "canescent"
+            },
+            {
+              "label": "Gray",
+              "hairColor": "gray"
+            },
+            {
+              "label": "White",
+              "hairColor": "white"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Scene",
+      "children": [
+        {
+          "type": "select",
+          "name": "style",
+          "label": "Style",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "Fantasy",
+              "style": "fantasy",
+              "stylePost": "(D&D:1.1), (Lord of the rings:0.8)"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "background",
+          "label": "Background",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "background": "",
+              "backgroundNegative": ""
+            },
+            {
+              "label": "Cave",
+              "background": "inside a cave",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Desert",
+              "background": "in the desert",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Dungeon",
+              "background": "inside a dungeon",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Flames",
+              "background": "flames in background",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Forest",
+              "background": "forest in background",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Glacier",
+              "background": "on a glacier",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Magical aura",
+              "background": "magical aura in background",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Mountains",
+              "background": "mountains in background",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Plain background",
+              "background": "flat plain background",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Study",
+              "background": "in the study, scrolls and potions",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Temple",
+              "background": "inside a temple",
+              "backgroundNegative": "flat background"
+            },
+            {
+              "label": "Town",
+              "background": "on the streets of an old town",
+              "backgroundNegative": "flat background"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "mood",
+          "label": "Mood",
+          "initialOptionIndex": 2,
+          "options": [
+            {
+              "label": "Angry",
+              "mood": "angry evil"
+            },
+            {
+              "label": "Somber",
+              "mood": "wise thoughtful serious mood"
+            },
+            {
+              "label": "Neutral",
+              "mood": ""
+            },
+            {
+              "label": "Cunning",
+              "mood": "cunning smirk mood"
+            },
+            {
+              "label": "Serene",
+              "mood": "serene joyful dreamy"
+            },
+            {
+              "label": "Happy",
+              "mood": "happy jovial (smiling:0.85)"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "name": "colorHint",
+          "label": "Color hint",
+          "info": "The picture will have a predominant color.",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "-- undefined --",
+              "colorHint": ""
+            },
+            {
+              "label": "Burgundy",
+              "colorHint": "burgundy"
+            },
+            {
+              "label": "Scarlet",
+              "colorHint": "scarlet red"
+            },
+            {
+              "label": "Pink",
+              "colorHint": "pink"
+            },
+            {
+              "label": "Beige",
+              "colorHint": "beige"
+            },
+            {
+              "label": "Brown",
+              "colorHint": "brown"
+            },
+            {
+              "label": "Orange",
+              "colorHint": "orange"
+            },
+            {
+              "label": "Yellow",
+              "colorHint": "yellow"
+            },
+            {
+              "label": "Green",
+              "colorHint": "green"
+            },
+            {
+              "label": "Emerald",
+              "colorHint": "emerald"
+            },
+            {
+              "label": "Aquamarine",
+              "colorHint": "aquamarine"
+            },
+            {
+              "label": "Cerulean",
+              "colorHint": "cerulean"
+            },
+            {
+              "label": "Blue",
+              "colorHint": "blue"
+            },
+            {
+              "label": "Purple",
+              "colorHint": "purple"
+            },
+            {
+              "label": "Magenta",
+              "colorHint": "magenta"
+            },
+            {
+              "label": "White",
+              "colorHint": "white"
+            },
+            {
+              "label": "Gray",
+              "colorHint": "gray"
+            },
+            {
+              "label": "Black",
+              "colorHint": "black"
+            },
+            {
+              "label": "Bronze",
+              "colorHint": "bronze"
+            },
+            {
+              "label": "Copper",
+              "colorHint": "copper"
+            },
+            {
+              "label": "Silver",
+              "colorHint": "silver"
+            },
+            {
+              "label": "Gold",
+              "colorHint": "gold"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Generation params",
+      "children": [
+        {
+          "type": "range",
+          "name": "quality",
+          "label": "Quality",
+          "initialOptionIndex": 3,
+          "options": [
+            {
+              "quality": 0.25
+            },
+            {
+              "quality": 0.5
+            },
+            {
+              "quality": 0.75
+            },
+            {
+              "quality": 1
+            }
+          ],
+          "minLabel": "Speed",
+          "maxLabel": "Accuracy"
+        },
+        {
+          "type": "range",
+          "name": "batchSize",
+          "label": "Results per generation",
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "batchSize": 1
+            },
+            {
+              "batchSize": 2
+            },
+            {
+              "batchSize": 3
+            },
+            {
+              "batchSize": 4
+            },
+            {
+              "batchSize": 5
+            },
+            {
+              "batchSize": 6
+            },
+            {
+              "batchSize": 7
+            },
+            {
+              "batchSize": 8
+            },
+            {
+              "batchSize": 9
+            }
+          ],
+          "pipLabels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "type": "select",
+          "name": "preset",
+          "label": "Preset",
+          "colSpan": 2,
+          "initialOptionIndex": 1,
+          "options": [
+            {
+              "label": "Illustration - Fast",
+              "preset": "illustration-fast",
+              "model": "ProteusV0.3",
+              "stylePositive": "illustration digital painting",
+              "styleNegative": "photo, anime",
+              "baseSteps": 4,
+              "stepMultiplier": 4,
+              "cfg": 2.5,
+              "samplerName": "lcm",
+              "scheduler": "normal"
+            },
+            {
+              "label": "Illustration - Accurate",
+              "preset": "illustration-accurate",
+              "model": "ProteusV0.3",
+              "stylePositive": "illustration digital painting",
+              "styleNegative": "photo, anime",
+              "baseSteps": 14,
+              "stepMultiplier": 14,
+              "cfg": 6.5,
+              "samplerName": "dpmpp_2m",
+              "scheduler": "exponential"
+            },
+            {
+              "label": "Anime - Fast",
+              "preset": "anime-fast",
+              "model": "ProteusV0.3",
+              "stylePositive": "anime illustration",
+              "styleNegative": "photo, fanart",
+              "baseSteps": 4,
+              "stepMultiplier": 4,
+              "cfg": 2.5,
+              "samplerName": "lcm",
+              "scheduler": "normal"
+            },
+            {
+              "label": "Anime - Accurate",
+              "preset": "anime-accurate",
+              "model": "ProteusV0.3",
+              "stylePositive": "anime illustration",
+              "styleNegative": "photo, fanart",
+              "baseSteps": 14,
+              "stepMultiplier": 14,
+              "cfg": 6.5,
+              "samplerName": "dpmpp_2m",
+              "scheduler": "exponential"
+            },
+            {
+              "label": "Cinematic",
+              "preset": "cinematic",
+              "model": "DreamShaperXLTurboV2",
+              "stylePositive": "film still cinematic photo",
+              "styleNegative": "illustration, anime, cosplay",
+              "baseSteps": 6,
+              "stepMultiplier": 4,
+              "cfg": 2,
+              "samplerName": "dpmpp_sde",
+              "scheduler": "karras"
+            }
+          ]
+        },
+        {
+          "type": "number",
+          "name": "seed",
+          "label": "Seed",
+          "initialState": {
+            "seed": 9482966021
+          },
+          "onChange": {
+            "enableSeedRandomisation": false
+          }
+        },
+        {
+          "type": "checkbox",
+          "name": "enableSeedRandomisation",
+          "label": "Random",
+          "initialState": {
+            "enableSeedRandomisation": true
+          }
+        }
+      ]
+    },
+    {
+      "title": "Custom",
+      "children": [
+        {
+          "type": "selectckpt",
+          "name": "ckptOverride",
+          "label": "Checkpoint override",
+          "info": "Override the model from \"Preset\" (experimental)",
+          "colSpan": 2,
+          "initialState": {
+            "ckptOverride": ""
+          }
+        },
+        {
+          "type": "textarea",
+          "name": "customPrompt",
+          "label": "Custom Prompt",
+          "info": "Keep it simple. Don't be too discoursive, write the element that you'd want to add. Eg: \"red scarf\" or \"silver tiara\". You might need to add strength with the syntax \"(silver tiara:1.2)\".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of \"crown\" try with \"wearing a silver crown on his head\".",
+          "colSpan": 2,
+          "initialState": {
+            "customPrompt": ""
+          }
+        }
+      ]
+    }
+  ],
+  "adapterConfig": [
+    {
+      "name": "model",
+      "adaptWith": ["findInCkptNames"],
+      "destination": "CheckpointLoaderSimple > ckpt_name"
+    },
+    {
+      "name": "ckptOverride",
+      "destination": "CheckpointLoaderSimple > ckpt_name"
+    },
+    {
+      "name": "style",
+      "destination": "Positive Prompt > text > 0"
+    },
+    {
+      "name": "stylePositive",
+      "destination": "Positive Prompt > text > 1"
+    },
+    {
+      "value": "closeup of a",
+      "destination": "Positive Prompt > text > 2"
+    },
+    {
+      "value": "stocky",
+      "conditions": ["isStocky"],
+      "destination": "Positive Prompt > text > 3"
+    },
+    {
+      "name": "bodyStructure",
+      "destination": "Positive Prompt > text > 4"
+    },
+    {
+      "value": "muscular",
+      "conditions": ["isFemale", "isMuscular"],
+      "destination": "Positive Prompt > text > 5"
+    },
+    {
+      "name": "ethnicBias",
+      "destination": "Positive Prompt > text > 6"
+    },
+    {
+      "name": "racePositive",
+      "destination": "Positive Prompt > text > 7"
+    },
+    {
+      "name": "genderPositive",
+      "destination": "Positive Prompt > text > 8"
+    },
+    {
+      "name": "characterClass",
+      "destination": "Positive Prompt > text > 9"
+    },
+    {
+      "value": "with",
+      "conditions": ["hairstyle"],
+      "destination": "Positive Prompt > text > 10"
+    },
+    {
+      "name": "hairLength",
+      "destination": "Positive Prompt > text > 11"
+    },
+    {
+      "name": "hairColor",
+      "conditions": ["canColorHair"],
+      "destination": "Positive Prompt > text > 12"
+    },
+    {
+      "name": "hairStyle",
+      "destination": "Positive Prompt > text > 13"
+    },
+    {
+      "name": "clothing",
+      "destination": "Positive Prompt > text > 14"
+    },
+    {
+      "name": "background",
+      "destination": "Positive Prompt > text > 15"
+    },
+    {
+      "value": ".",
+      "destination": "Positive Prompt > text > 16"
+    },
+    {
+      "value": "High quality, detailed, high resolution,",
+      "destination": "Positive Prompt > text > 17"
+    },
+    {
+      "name": "stylePost",
+      "destination": "Positive Prompt > text > 18"
+    },
+    {
+      "value": ".",
+      "destination": "Positive Prompt > text > 19"
+    },
+    {
+      "name": "mood",
+      "destination": "Positive Prompt > text > 20"
+    },
+    {
+      "name": "colorHint",
+      "destination": "Positive Prompt > text > 21"
+    },
+    {
+      "value": ".",
+      "destination": "Positive Prompt > text > 22"
+    },
+    {
+      "name": "styleNegative",
+      "destination": "Negative Prompt > text > 0"
+    },
+    {
+      "name": "raceNegative",
+      "destination": "Negative Prompt > text > 1"
+    },
+    {
+      "value": "rendering, blurry, noisy, deformed, text",
+      "destination": "Negative Prompt > text > 2"
+    },
+    {
+      "name": "genderNegative",
+      "destination": "Negative Prompt > text > 3"
+    },
+    {
+      "value": "scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye",
+      "destination": "Negative Prompt > text > 4"
+    },
+    {
+      "name": "backgroundNegative",
+      "destination": "Negative Prompt > text > 5"
+    },
+    {
+      "value": "author, signature, 3d.",
+      "destination": "Negative Prompt > text > 6"
+    },
+    {
+      "name": "batchSize",
+      "destination": "EmptyLatentImage > batch_size"
+    },
+    {
+      "name": "seed",
+      "destination": "KSampler > seed"
+    },
+    {
+      "name": "steps",
+      "destination": "KSampler > steps"
+    },
+    {
+      "name": "cfg",
+      "destination": "KSampler > cfg"
+    },
+    {
+      "name": "samplerName",
+      "destination": "KSampler > sampler_name"
+    },
+    {
+      "name": "scheduler",
+      "destination": "KSampler > scheduler"
+    }
+  ]
+}

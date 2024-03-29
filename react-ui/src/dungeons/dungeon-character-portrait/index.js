@@ -6,9 +6,7 @@ const config = {
   version: 'v0.2.1-uib',
   emoji: '🧌',
   description: 'Build D&D Character Portraits',
-  workflowMapping: [
-    {  },
-  ],
+  baseWorkflow: './basic_portrait_lcm_bypassed-workflow.json',
   formConfig: [
     {
       title: 'Character',
@@ -68,10 +66,10 @@ const config = {
           label: 'Body structure',
           initialOptionIndex: 1,
           options: [
-            { bodyStructure: 'slender' },
-            { bodyStructure: '' },
-            { bodyStructure: 'strong' },
-            { bodyStructure: 'chubby' },
+            { bodyStructure: 'slender', isMuscular: false  },
+            { bodyStructure: '', isMuscular: false },
+            { bodyStructure: 'strong', isMuscular: true },
+            { bodyStructure: 'chubby', isMuscular: false  },
             
           ],
           minLabel: 'Slender',
@@ -174,6 +172,8 @@ const config = {
             // { label: 'Carribean', ethnicBias: 'Cuban,Dominican,Haitian,Jamaican,Puerto Rican,Trinidadian' },
             { label: 'Mela/Micro/Poly-nesia', ethnicBias: 'Fijian,Papua New Guinean,Solomon Islander,Vanuatuan,Kiribati,Marshallese,Micronesian,Nauruan,Palauan,Samoan,Tongan,Tuvaluan' },
           ],
+          usePrngSubset: 2, // split ethnicBias value over commas, and choose 2 values using prng based on "seed" or 0
+          weight: 0.7, // adjust prompt weight of value
         },
         {
           type: 'select',
@@ -450,7 +450,7 @@ const config = {
           name: 'seed',
           label: 'Seed',
           initialState: { seed: 9482966021 },
-          adapter: ({ seed }) => ({ seed, enableSeedRandomisation: false }),
+          onChange: { enableSeedRandomisation: false },
         },
         {
           type: 'checkbox',
@@ -481,6 +481,52 @@ const config = {
         },
       ],
     },
+  ],
+  adapterConfig: [
+    { name: 'model', adaptWith: ['findInCkptNames'], destination: 'CheckpointLoaderSimple > ckpt_name' },
+    { name: 'ckptOverride', destination: 'CheckpointLoaderSimple > ckpt_name' },
+
+    // construct positive prompt from captured values
+    { name: 'style', destination: 'Positive Prompt > text > 0' },
+    { name: 'stylePositive', destination: 'Positive Prompt > text > 1' },
+    { value: 'closeup of a', destination: 'Positive Prompt > text > 2' },
+    { value: 'stocky', conditions: ['isStocky'], destination: 'Positive Prompt > text > 3' }, // boolean
+    { name: 'bodyStructure', destination: 'Positive Prompt > text > 4' },
+    { value: 'muscular', conditions: ['isFemale', 'isMuscular'], destination: 'Positive Prompt > text > 5' }, // boolean
+    { name: 'ethnicBias', destination: 'Positive Prompt > text > 6' }, // TODO: needs to be pseudorandom sub selection
+    { name: 'racePositive', destination: 'Positive Prompt > text > 7' },
+    { name: 'genderPositive', destination: 'Positive Prompt > text > 8' },
+    { name: 'characterClass', destination: 'Positive Prompt > text > 9' },
+    { value: 'with', conditions: ['hairstyle'], destination: 'Positive Prompt > text > 10' }, // include "with" if boolean hairstyle is true
+    { name: 'hairLength', destination: 'Positive Prompt > text > 11' },
+    { name: 'hairColor', conditions: ['canColorHair'], destination: 'Positive Prompt > text > 12' },
+    { name: 'hairStyle', destination: 'Positive Prompt > text > 13' },
+    { name: 'clothing', destination: 'Positive Prompt > text > 14' },
+    { name: 'background', destination: 'Positive Prompt > text > 15' },
+    { value: '.', destination: 'Positive Prompt > text > 16' },
+    { value: 'High quality, detailed, high resolution,', destination: 'Positive Prompt > text > 17' },
+    { name: 'stylePost', destination: 'Positive Prompt > text > 18' },
+    { value: '.', destination: 'Positive Prompt > text > 19' },
+    { name: 'mood', destination: 'Positive Prompt > text > 20' },
+    { name: 'colorHint', destination: 'Positive Prompt > text > 21' },
+    { value: '.', destination: 'Positive Prompt > text > 22' },
+
+    // construct negative prompt from captured values
+    { name: 'styleNegative', destination: 'Negative Prompt > text > 0' },
+    { name: 'raceNegative', destination: 'Negative Prompt > text > 1' },
+    { value: 'rendering, blurry, noisy, deformed, text', destination: 'Negative Prompt > text > 2' },
+    { name: 'genderNegative', destination: 'Negative Prompt > text > 3' },
+    { value: 'scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye', destination: 'Negative Prompt > text > 4' },
+    { name: 'backgroundNegative', destination: 'Negative Prompt > text > 5' },
+    { value: 'author, signature, 3d.', destination: 'Negative Prompt > text > 6' },
+
+    // set KSampler settings
+    { name: 'batchSize', destination: 'EmptyLatentImage > batch_size' },
+    { name: 'seed', destination: 'KSampler > seed' },
+    { name: 'steps', destination: 'KSampler > steps' }, // TODO: adaptWith
+    { name: 'cfg', destination: 'KSampler > cfg' },
+    { name: 'samplerName', destination: 'KSampler > sampler_name' },
+    { name: 'scheduler', destination: 'KSampler > scheduler' },
   ],
   adapter: ({
     comfyUiData: {
