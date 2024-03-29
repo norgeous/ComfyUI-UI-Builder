@@ -867,20 +867,14 @@
           "type": "number",
           "name": "seed",
           "label": "Seed",
-          "initialState": {
-            "seed": 9482966021
-          },
-          "onChange": {
-            "enableSeedRandomisation": false
-          }
+          "initialState": { "seed": 9482966021 },
+          "onChange": { "enableSeedRandomisation": false }
         },
         {
           "type": "checkbox",
           "name": "enableSeedRandomisation",
           "label": "Random",
-          "initialState": {
-            "enableSeedRandomisation": true
-          }
+          "initialState": { "enableSeedRandomisation": true }
         }
       ]
     },
@@ -912,160 +906,170 @@
   ],
   "adapterConfig": [
     {
-      "name": "model",
-      "adaptWith": ["findInCkptNames"],
+      "valueFrom": ["getFinal:ckptOverride", "findInCkptNames:model"],
       "destination": "CheckpointLoaderSimple > ckpt_name"
     },
     {
-      "name": "ckptOverride",
-      "destination": "CheckpointLoaderSimple > ckpt_name"
-    },
-    {
-      "name": "style",
+      "valueFrom": ["get:style"],
       "destination": "Positive Prompt > text > 0"
     },
     {
-      "name": "stylePositive",
+      "valueFrom": ["get:stylePositive"],
       "destination": "Positive Prompt > text > 1"
     },
     {
-      "value": "closeup of a",
+      "valueFrom": ["raw:closeup of a"],
       "destination": "Positive Prompt > text > 2"
     },
     {
-      "value": "stocky",
-      "conditions": ["isStocky"],
+      "valueFrom": ["if:isStocky", "raw:stocky"],
       "destination": "Positive Prompt > text > 3"
     },
     {
-      "name": "bodyStructure",
+      "valueFrom": ["get:bodyStructure"],
       "destination": "Positive Prompt > text > 4"
     },
     {
-      "value": "muscular",
-      "conditions": ["isFemale", "isMuscular"],
+      "valueFrom": ["if:isFemale", "if:isMuscular", "raw:muscular"],
       "destination": "Positive Prompt > text > 5"
     },
     {
-      "name": "ethnicBias",
+      "valueFrom": ["get:ethnicBias"],
       "destination": "Positive Prompt > text > 6"
     },
     {
-      "name": "racePositive",
+      "valueFrom": ["get:racePositive"],
       "destination": "Positive Prompt > text > 7"
     },
     {
-      "name": "genderPositive",
+      "valueFrom": ["get:genderPositive"],
       "destination": "Positive Prompt > text > 8"
     },
     {
-      "name": "characterClass",
+      "valueFrom": ["get:characterClass"],
       "destination": "Positive Prompt > text > 9"
     },
     {
-      "value": "with",
-      "conditions": ["hairstyle"],
+      "valueFrom": ["if:hairstyle", "raw:with"],
       "destination": "Positive Prompt > text > 10"
     },
     {
-      "name": "hairLength",
+      "valueFrom": ["get:hairLength"],
       "destination": "Positive Prompt > text > 11"
     },
     {
-      "name": "hairColor",
-      "conditions": ["canColorHair"],
+      "valueFrom": ["if:canColorHair", "get:hairColor"],
       "destination": "Positive Prompt > text > 12"
     },
     {
-      "name": "hairStyle",
+      "valueFrom": ["get:hairStyle"],
       "destination": "Positive Prompt > text > 13"
     },
     {
-      "name": "clothing",
+      "valueFrom": ["get:clothing"],
       "destination": "Positive Prompt > text > 14"
     },
     {
-      "name": "background",
+      "valueFrom": ["get:background"],
       "destination": "Positive Prompt > text > 15"
     },
     {
-      "value": ".",
+      "valueFrom": ["raw:."],
       "destination": "Positive Prompt > text > 16"
     },
     {
-      "value": "High quality, detailed, high resolution,",
+      "valueFrom": ["raw:High quality, detailed, high resolution"],
       "destination": "Positive Prompt > text > 17"
     },
     {
-      "name": "stylePost",
+      "valueFrom": ["get:stylePost"],
       "destination": "Positive Prompt > text > 18"
     },
     {
-      "value": ".",
+      "valueFrom": ["raw:."],
       "destination": "Positive Prompt > text > 19"
     },
     {
-      "name": "mood",
+      "valueFrom": ["get:mood"],
       "destination": "Positive Prompt > text > 20"
     },
     {
-      "name": "colorHint",
+      "valueFrom": ["get:colorHint"],
       "destination": "Positive Prompt > text > 21"
     },
     {
-      "value": ".",
+      "valueFrom": ["raw:."],
       "destination": "Positive Prompt > text > 22"
     },
     {
-      "name": "styleNegative",
+      "valueFrom": ["get:customPrompt"],
+      "destination": "Positive Prompt > text > 23"
+    },
+
+    {
+      "valueFrom": ["get:styleNegative"],
       "destination": "Negative Prompt > text > 0"
     },
     {
-      "name": "raceNegative",
+      "valueFrom": ["get:raceNegative"],
       "destination": "Negative Prompt > text > 1"
     },
     {
-      "value": "rendering, blurry, noisy, deformed, text",
+      "valueFrom": ["raw:rendering, blurry, noisy, deformed, text"],
       "destination": "Negative Prompt > text > 2"
     },
     {
-      "name": "genderNegative",
+      "valueFrom": ["get:genderNegative"],
       "destination": "Negative Prompt > text > 3"
     },
     {
-      "value": "scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye",
+      "valueFrom": ["raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye"],
       "destination": "Negative Prompt > text > 4"
     },
     {
-      "name": "backgroundNegative",
+      "valueFrom": ["get:backgroundNegative"],
       "destination": "Negative Prompt > text > 5"
     },
     {
-      "value": "author, signature, 3d.",
+      "valueFrom": ["raw:author, signature, 3d."],
       "destination": "Negative Prompt > text > 6"
     },
+
     {
-      "name": "batchSize",
+      "destination": "Negative Prompt > text",
+      "valuesFrom": [
+        ["get:styleNegative"],
+        ["get:raceNegative"],
+        ["raw:rendering, blurry, noisy, deformed, text"],
+        ["get:genderNegative"],
+        ["raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye"],
+        ["get:backgroundNegative"],
+        ["raw:author, signature, 3d."]
+      ]
+    },
+
+    {
+      "valueFrom": ["get:batchSize"],
       "destination": "EmptyLatentImage > batch_size"
     },
     {
-      "name": "seed",
+      "valueFrom": ["get:seed"],
       "destination": "KSampler > seed"
     },
     {
-      "name": "steps",
+      "valueFrom": ["multiply:quality,stepMultiplier", "round", "add:baseSteps"],
       "destination": "KSampler > steps"
     },
     {
-      "name": "cfg",
+      "valueFrom": ["get:cfg"],
       "destination": "KSampler > cfg"
     },
     {
-      "name": "samplerName",
+      "valueFrom": ["get:samplerName"],
       "destination": "KSampler > sampler_name"
     },
     {
-      "name": "scheduler",
+      "valueFrom": ["get:scheduler"],
       "destination": "KSampler > scheduler"
     }
   ]
