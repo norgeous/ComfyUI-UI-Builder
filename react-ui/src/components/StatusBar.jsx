@@ -20,6 +20,7 @@ const Pre = styled.pre`
   padding: 40px;
   margin: 0;
   border: 0;
+  z-index: 10;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -29,7 +30,7 @@ const Debug = ({ label, data }) => {
 
   return (
     <>
-      <button onClick={toggle}>{label}</button>
+      <button onClick={toggle}>🐞 {label}</button>
       {open && (
         <Pre onClick={toggle}>
           {JSON.stringify(data, null, 2)}
@@ -41,12 +42,16 @@ const Debug = ({ label, data }) => {
 
 const StatusBar = () => {
   const {
+    isGenerating,
+    progress,
     formState,
     bodyData,
   } = useAppContext();
 
   return (
     <Bar>
+      {isGenerating && 'GENERATING!'}
+      {Math.round(progress * 100)}%
       <Debug label="formState" data={formState} />
       <Debug label="bodyData" data={bodyData} />
     </Bar>
