@@ -17,7 +17,7 @@
 
 - workflow switcher (dungeon, example2, etc)
   - fastgen example?
-  - alternative layouts abstraction
+  - alternative layouts abstraction?
 - debug prompt / workflow checkbox
 - add air-bnb
 - code tidy up

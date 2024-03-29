@@ -7,6 +7,7 @@ import useCkptOptions from '../hooks/useCkptOptions';
 import useObjectInfo from '../hooks/useObjectInfo';
 import config from '../dungeons/dungeon-character-portrait';
 import uuidv4 from '../utils/uuidv4';
+import comfyWorkflowToComfyPrompt from '../utils/comfyWorkflowToComfyPrompt';
 
 const clientId = uuidv4();
 export const AppContext = createContext({});
@@ -53,9 +54,12 @@ const AppProvider = ({
 
   const bodyData = {
     client_id: clientId,
-    prompt: config.adapter({
-      comfyUiData,
-      formState,
+    prompt: comfyWorkflowToComfyPrompt({
+      comfyWorkflow: config.adapter({
+        comfyUiData,
+        formState,
+      }),
+      objectInfo,
     }),
   };
 
