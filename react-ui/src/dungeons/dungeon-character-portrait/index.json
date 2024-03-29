@@ -906,72 +906,72 @@
   ],
   "adapterConfig": [
     {
-      "valueFrom": ["getFinal:ckptOverride", "findInCkptNames:model"],
+      "actions": ["get:ckptOverride", ["ifNot:ckptOverride", "findInCkptNames:model"]],
       "destination": "CheckpointLoaderSimple > ckpt_name"
     },
     {
-      "valuesFrom": [
-        ["get:style"],
-        ["get:stylePositive"],
-        ["raw:closeup of a"],
+      "actions": [
+        "get:style",
+        "get:stylePositive",
+        "raw:closeup of a",
         ["if:isStocky", "raw:stocky"],
-        ["get:bodyStructure"],
+        "get:bodyStructure",
         ["if:isFemale", "if:isMuscular", "raw:muscular"],
-        ["get:ethnicBias"],
-        ["get:racePositive"],
-        ["get:genderPositive"],
-        ["get:characterClass"],
+        "get:ethnicBias",
+        "get:racePositive",
+        "get:genderPositive",
+        "get:characterClass",
         ["if:hairstyle", "raw:with"],
-        ["get:hairLength"],
+        "get:hairLength",
         ["if:canColorHair", "get:hairColor"],
-        ["get:hairStyle"],
-        ["get:clothing"],
-        ["get:background"],
-        ["raw:."],
-        ["raw:High quality, detailed, high resolution"],
-        ["get:stylePost"],
-        ["raw:."],
-        ["get:mood"],
-        ["get:colorHint"],
-        ["raw:."],
-        ["get:customPrompt"]
+        "get:hairStyle",
+        "get:clothing",
+        "get:background",
+        "raw:.",
+        "raw:High quality, detailed, high resolution",
+        "get:stylePost",
+        "raw:.",
+        "get:mood",
+        "get:colorHint",
+        "raw:.",
+        "get:customPrompt"
       ],
       "destination": "Positive Prompt > text"
     },
     {
-      "valuesFrom": [
-        ["get:styleNegative"],
-        ["get:raceNegative"],
-        ["raw:rendering, blurry, noisy, deformed, text"],
-        ["get:genderNegative"],
-        ["raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye"],
-        ["get:backgroundNegative"],
-        ["raw:author, signature, 3d."]
+      "actions": [
+        "get:styleNegative",
+        "get:raceNegative",
+        "raw:rendering, blurry, noisy, deformed, text",
+        "get:genderNegative",
+        "raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye",
+        "get:backgroundNegative",
+        "raw:author, signature, 3d."
       ],
       "destination": "Negative Prompt > text"
     },
     {
-      "valueFrom": ["get:batchSize"],
+      "actions": "get:batchSize",
       "destination": "EmptyLatentImage > batch_size"
     },
     {
-      "valueFrom": ["get:seed"],
+      "actions": "get:seed",
       "destination": "KSampler > seed"
     },
     {
-      "valueFrom": ["multiply:quality,stepMultiplier", "round", "add:baseSteps"],
+      "actions": ["multiply:quality,stepMultiplier", "round", "add:baseSteps"],
       "destination": "KSampler > steps"
     },
     {
-      "valueFrom": ["get:cfg"],
+      "actions": "get:cfg",
       "destination": "KSampler > cfg"
     },
     {
-      "valueFrom": ["get:samplerName"],
+      "actions": "get:samplerName",
       "destination": "KSampler > sampler_name"
     },
     {
-      "valueFrom": ["get:scheduler"],
+      "actions": "get:scheduler",
       "destination": "KSampler > scheduler"
     }
   ]
