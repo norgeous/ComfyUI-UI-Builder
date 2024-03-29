@@ -910,133 +910,35 @@
       "destination": "CheckpointLoaderSimple > ckpt_name"
     },
     {
-      "valueFrom": ["get:style"],
-      "destination": "Positive Prompt > text > 0"
+      "valuesFrom": [
+        ["get:style"],
+        ["get:stylePositive"],
+        ["raw:closeup of a"],
+        ["if:isStocky", "raw:stocky"],
+        ["get:bodyStructure"],
+        ["if:isFemale", "if:isMuscular", "raw:muscular"],
+        ["get:ethnicBias"],
+        ["get:racePositive"],
+        ["get:genderPositive"],
+        ["get:characterClass"],
+        ["if:hairstyle", "raw:with"],
+        ["get:hairLength"],
+        ["if:canColorHair", "get:hairColor"],
+        ["get:hairStyle"],
+        ["get:clothing"],
+        ["get:background"],
+        ["raw:."],
+        ["raw:High quality, detailed, high resolution"],
+        ["get:stylePost"],
+        ["raw:."],
+        ["get:mood"],
+        ["get:colorHint"],
+        ["raw:."],
+        ["get:customPrompt"]
+      ],
+      "destination": "Positive Prompt > text"
     },
     {
-      "valueFrom": ["get:stylePositive"],
-      "destination": "Positive Prompt > text > 1"
-    },
-    {
-      "valueFrom": ["raw:closeup of a"],
-      "destination": "Positive Prompt > text > 2"
-    },
-    {
-      "valueFrom": ["if:isStocky", "raw:stocky"],
-      "destination": "Positive Prompt > text > 3"
-    },
-    {
-      "valueFrom": ["get:bodyStructure"],
-      "destination": "Positive Prompt > text > 4"
-    },
-    {
-      "valueFrom": ["if:isFemale", "if:isMuscular", "raw:muscular"],
-      "destination": "Positive Prompt > text > 5"
-    },
-    {
-      "valueFrom": ["get:ethnicBias"],
-      "destination": "Positive Prompt > text > 6"
-    },
-    {
-      "valueFrom": ["get:racePositive"],
-      "destination": "Positive Prompt > text > 7"
-    },
-    {
-      "valueFrom": ["get:genderPositive"],
-      "destination": "Positive Prompt > text > 8"
-    },
-    {
-      "valueFrom": ["get:characterClass"],
-      "destination": "Positive Prompt > text > 9"
-    },
-    {
-      "valueFrom": ["if:hairstyle", "raw:with"],
-      "destination": "Positive Prompt > text > 10"
-    },
-    {
-      "valueFrom": ["get:hairLength"],
-      "destination": "Positive Prompt > text > 11"
-    },
-    {
-      "valueFrom": ["if:canColorHair", "get:hairColor"],
-      "destination": "Positive Prompt > text > 12"
-    },
-    {
-      "valueFrom": ["get:hairStyle"],
-      "destination": "Positive Prompt > text > 13"
-    },
-    {
-      "valueFrom": ["get:clothing"],
-      "destination": "Positive Prompt > text > 14"
-    },
-    {
-      "valueFrom": ["get:background"],
-      "destination": "Positive Prompt > text > 15"
-    },
-    {
-      "valueFrom": ["raw:."],
-      "destination": "Positive Prompt > text > 16"
-    },
-    {
-      "valueFrom": ["raw:High quality, detailed, high resolution"],
-      "destination": "Positive Prompt > text > 17"
-    },
-    {
-      "valueFrom": ["get:stylePost"],
-      "destination": "Positive Prompt > text > 18"
-    },
-    {
-      "valueFrom": ["raw:."],
-      "destination": "Positive Prompt > text > 19"
-    },
-    {
-      "valueFrom": ["get:mood"],
-      "destination": "Positive Prompt > text > 20"
-    },
-    {
-      "valueFrom": ["get:colorHint"],
-      "destination": "Positive Prompt > text > 21"
-    },
-    {
-      "valueFrom": ["raw:."],
-      "destination": "Positive Prompt > text > 22"
-    },
-    {
-      "valueFrom": ["get:customPrompt"],
-      "destination": "Positive Prompt > text > 23"
-    },
-
-    {
-      "valueFrom": ["get:styleNegative"],
-      "destination": "Negative Prompt > text > 0"
-    },
-    {
-      "valueFrom": ["get:raceNegative"],
-      "destination": "Negative Prompt > text > 1"
-    },
-    {
-      "valueFrom": ["raw:rendering, blurry, noisy, deformed, text"],
-      "destination": "Negative Prompt > text > 2"
-    },
-    {
-      "valueFrom": ["get:genderNegative"],
-      "destination": "Negative Prompt > text > 3"
-    },
-    {
-      "valueFrom": ["raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye"],
-      "destination": "Negative Prompt > text > 4"
-    },
-    {
-      "valueFrom": ["get:backgroundNegative"],
-      "destination": "Negative Prompt > text > 5"
-    },
-    {
-      "valueFrom": ["raw:author, signature, 3d."],
-      "destination": "Negative Prompt > text > 6"
-    },
-
-    {
-      "destination": "Negative Prompt > text",
       "valuesFrom": [
         ["get:styleNegative"],
         ["get:raceNegative"],
@@ -1045,9 +947,9 @@
         ["raw:scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye"],
         ["get:backgroundNegative"],
         ["raw:author, signature, 3d."]
-      ]
+      ],
+      "destination": "Negative Prompt > text"
     },
-
     {
       "valueFrom": ["get:batchSize"],
       "destination": "EmptyLatentImage > batch_size"
