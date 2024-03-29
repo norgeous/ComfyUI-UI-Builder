@@ -906,7 +906,11 @@
   ],
   "adapterConfig": [
     {
-      "actions": ["get:ckptOverride", ["ifNot:ckptOverride", "findInCkptNames:model"]],
+      "actions": ["get:model", "findInCkptNames"],
+      "destination": "CheckpointLoaderSimple > ckpt_name"
+    },
+    {
+      "actions": "get:ckptOverride",
       "destination": "CheckpointLoaderSimple > ckpt_name"
     },
     {
@@ -916,7 +920,7 @@
         "raw:closeup of a",
         ["if:isStocky", "raw:stocky"],
         "get:bodyStructure",
-        ["if:isFemale", "if:isMuscular", "raw:muscular"],
+        ["if:isFemale,isMuscular", "raw:muscular"],
         "get:ethnicBias",
         "get:racePositive",
         "get:genderPositive",
