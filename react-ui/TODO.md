@@ -6,6 +6,9 @@
 - dungeon LCM needs to work, mode:4 is bypass
 - dungeon lora finder, similar to ckpt finder (in case the user has folders in the lora folder)
 - import / export uib workflows, can it be refactored into json only?
+- workflow switcher (dungeon, example2, etc)
+  - fastgen example?
+  - alternative layouts abstraction?
 
 ## Next
 
@@ -16,9 +19,6 @@
 
 ## Future
 
-- workflow switcher (dungeon, example2, etc)
-  - fastgen example?
-  - alternative layouts abstraction?
 - debug prompt / workflow checkbox
 - add air-bnb
 - code tidy up
