@@ -1,0 +1,9 @@
+{
+  "baseWorkflow": "./basic_portrait_lcm_bypassed-workflow.json",
+  "name": "Example",
+  "version": "v0.0.0",
+  "emoji": "🎥",
+  "description": "Example description",
+  "formConfig": [],
+  "adapterConfig": []
+}
