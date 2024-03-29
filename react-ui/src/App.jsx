@@ -27,6 +27,8 @@ const App = () => {
 
       <Controls className="uk-light">
         <h4 className="uk-text-center uk-margin-remove-vertical text-light">
+          {config.emoji}
+          {' '}
           {config.name}
           {' '}
           <small><sup>{config.version}</sup></small>
