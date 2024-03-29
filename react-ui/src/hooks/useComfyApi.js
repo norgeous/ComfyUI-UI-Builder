@@ -49,7 +49,7 @@ const useComfyApi = ({
 
   useEffect(() => {
     if (enabled) executeFetch();
-  }, [enabled, executeFetch]);
+  }, [enabled]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     executeFetch,

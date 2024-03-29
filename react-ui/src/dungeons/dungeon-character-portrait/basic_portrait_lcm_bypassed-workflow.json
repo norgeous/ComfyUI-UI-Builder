@@ -46,7 +46,7 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        ""
+        "XL1.0\\ProteusV0.3.safetensors"
       ]
     },
     {
@@ -98,7 +98,7 @@
         "Node name for S&R": "LoraLoader"
       },
       "widgets_values": [
-        "lcm-lora-sdxl.safetensors",
+        "XL1.0\\lcm-lora-sdxl.safetensors",
         1,
         1
       ]
@@ -181,7 +181,7 @@
         1024,
         1024,
         4,
-        ""
+        "fantasy illustration digital painting closeup of a 30yo human female fighter. High quality, detailed, high resolution, (D&D:1.1), (Lord of the rings:0.8). ."
       ]
     },
     {
@@ -223,7 +223,7 @@
         1024,
         1024,
         4,
-        ""
+        "photo, anime, (elf, long pointy ears:1.2), Christmas, garden, rendering, blurry, noisy, deformed, text, horror, scars, blood, dirty, nipples, naked, boobs, cleavage, face mask, zippers, ill, lazy eye, author, signature, 3d"
       ]
     },
     {
@@ -309,12 +309,12 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        0,
+        9482966021,
         "randomize",
-        8,
-        2.5,
-        "lcm",
-        "normal",
+        28,
+        6.5,
+        "dpmpp_2m",
+        "exponential",
         1
       ]
     },

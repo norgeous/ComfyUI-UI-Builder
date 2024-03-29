@@ -1,6 +1,5 @@
 import prng from '../../utils/prng';
-import workflowBasic from './basic_portrait.json';
-import workflowBasicLcmBypassed from './basic_portrait_lcm_bypassed.json';
+import workflowBasicLcmBypassed from './basic_portrait_lcm_bypassed-workflow.json';
 
 const config = {
   name: 'Comfy Dungeon',
@@ -483,6 +482,7 @@ const config = {
   adapter: ({
     comfyUiData: {
       ckptNames,
+      objectInfo,
     },
     formState: {
       ckptOverride,
@@ -591,25 +591,82 @@ const config = {
       '3d',
     ].filter(value => value).join(', ');
 
-    const getIdByNodeTitle = (title) => Object.entries(workflowBasic).find(([, node]) => node._meta.title === title)[0]; 
     const getIndexByTitleOrType = key => workflowBasicLcmBypassed.nodes.findIndex(({ title, type }) => [title, type].includes(key));
 
-    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('CheckpointLoaderSimple')].widgets_values[0] = checkpoint;
-    console.log(workflowBasicLcmBypassed);
-
     // override things in workflow
-    workflowBasic[getIdByNodeTitle('Load Checkpoint')].inputs.ckpt_name = checkpoint;
-    workflowBasic[getIdByNodeTitle('Positive Prompt')].inputs.text = positivePrompt;
-    workflowBasic[getIdByNodeTitle('Negative Prompt')].inputs.text = negativePrompt;
-    workflowBasic[getIdByNodeTitle('Empty Latent Image')].inputs.batch_size = batchSize;
-    workflowBasic[getIdByNodeTitle('KSampler')].inputs.seed = seed;
-    workflowBasic[getIdByNodeTitle('KSampler')].inputs.steps = baseSteps + Math.round(quality * stepMultiplier);
-    workflowBasic[getIdByNodeTitle('KSampler')].inputs.cfg = cfg;
-    workflowBasic[getIdByNodeTitle('KSampler')].inputs.sampler_name = samplerName;
-    workflowBasic[getIdByNodeTitle('KSampler')].inputs.scheduler = scheduler;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('CheckpointLoaderSimple')].widgets_values[0] = checkpoint;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('Positive Prompt')].widgets_values[3] = positivePrompt;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('Negative Prompt')].widgets_values[3] = negativePrompt;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('EmptyLatentImage')].widgets_values[2] = batchSize;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('KSampler')].widgets_values[0] = seed;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('KSampler')].widgets_values[2] = baseSteps + Math.round(quality * stepMultiplier);
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('KSampler')].widgets_values[3] = cfg;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('KSampler')].widgets_values[4] = samplerName;
+    workflowBasicLcmBypassed.nodes[getIndexByTitleOrType('KSampler')].widgets_values[5] = scheduler;
+
+
+
+
+
+
+
+
+    const linkLookup = workflowBasicLcmBypassed.nodes.reduce((acc, { id, mode, inputs, outputs }) => ({
+      ...acc,
+      ...outputs?.reduce((acc2, { links, name }, index) => ({
+        ...acc2,
+        ...links.reduce((acc3, link) => ({
+          ...acc3,
+          [link]: {
+            link: [String(id), index],
+            bypassTo: mode === 4 && inputs.find(({type}) => type === name).link,
+          },
+        }), {}),
+      }), {}),
+    }), {});
+
+    const getLink = (linkId) => {
+      const { link, bypassTo } = linkLookup[linkId];
+      if (bypassTo) return getLink(bypassTo); // cursed
+      return link;
+    };
+
+    // console.log({ bypassLookup, linkLookup }, getLink(6));
+
+    const prompt = structuredClone(workflowBasicLcmBypassed).nodes.reduce((acc, { id, type, mode, inputs, widgets_values }) => {
+      if (mode === 4) return acc; // bypass nodes
+
+      const keys = Object.keys(objectInfo[type]?.input?.required || {});
+
+      // console.log(type, keys, {workflowBasicLcmBypassed})
+
+      const indexOfSeed = keys.indexOf('seed');
+      if (type === 'KSampler' && indexOfSeed !== -1) keys.splice(indexOfSeed+1, 0, 'control_after_generate');
+
+      const newInputs = keys.reduce((acc2, key) => {
+        const linkId = inputs?.find(({ name }) => name === key)?.link; // linkId or undefined
+        const value = linkId ? getLink(linkId) : widgets_values.shift();
+        return({ ...acc2, [key]: value });
+      }, {});
+
+      return {
+        ...acc,
+        [id]: {
+          class_type: type,
+          inputs: newInputs,
+        },
+      };
+    }, {});
+
+
+
+
+
+
+    // console.log({ prompt });
 
     // return the adapted workflow
-    return workflowBasic;
+    return prompt;
   },
 };
 

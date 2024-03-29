@@ -4,6 +4,7 @@ import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
 import useCkptOptions from '../hooks/useCkptOptions';
+import useObjectInfo from '../hooks/useObjectInfo';
 import config from '../dungeons/dungeon-character-portrait';
 import uuidv4 from '../utils/uuidv4';
 
@@ -32,6 +33,9 @@ const AppProvider = ({
     output,
   } = useComfyWs(clientId);
 
+  const { objectInfo } = useObjectInfo();
+  // console.log(objectInfo)
+
   const {
     loading: ckptOptionsLoading,
     error: ckptOptionsError,
@@ -39,7 +43,7 @@ const AppProvider = ({
     ckptOptions,
   } = useCkptOptions();
 
-  const comfyUiData = { ckptNames, ckptOptions };
+  const comfyUiData = { ckptNames, objectInfo };
 
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({
@@ -84,6 +88,8 @@ const AppProvider = ({
         ckptOptionsError,
         ckptNames,
         ckptOptions,
+
+        objectInfo,
 
         executePrompt,
         promptLoading,

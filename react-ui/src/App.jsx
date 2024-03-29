@@ -4,19 +4,16 @@ import Progress from './components/Progress';
 import FormBuilder from './components/FormBuilder';
 import { Page, Main, Controls, Content } from './components/Layout';
 import Carousel from './components/Carousel';
+import StatusBar from './components/StatusBar';
 
 import config from './dungeons/dungeon-character-portrait';
 
 import './App.css';
 
-const StatusBar = () => 'StatusBar';
-
 const App = () => {
   const {
     progress,
     output,
-    // formState,
-    // bodyData,
   } = useAppContext();
 
   return (
@@ -25,8 +22,6 @@ const App = () => {
         <Progress value={progress} />
         <Content>
           <Carousel images={output?.images || []} />
-          {/* <pre style={{ marginLeft: 460 }}>{JSON.stringify({formState},null,2)}</pre>
-          <pre style={{ marginLeft: 460, whiteSpace: 'pre-wrap' }}>{JSON.stringify({bodyData},null,2)}</pre> */}
         </Content>
         <StatusBar />
       </Main>
