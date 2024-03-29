@@ -754,33 +754,15 @@
           "label": "Results per generation",
           "initialOptionIndex": 0,
           "options": [
-            {
-              "batchSize": 1
-            },
-            {
-              "batchSize": 2
-            },
-            {
-              "batchSize": 3
-            },
-            {
-              "batchSize": 4
-            },
-            {
-              "batchSize": 5
-            },
-            {
-              "batchSize": 6
-            },
-            {
-              "batchSize": 7
-            },
-            {
-              "batchSize": 8
-            },
-            {
-              "batchSize": 9
-            }
+            { "batchSize": 1 },
+            { "batchSize": 2 },
+            { "batchSize": 3 },
+            { "batchSize": 4 },
+            { "batchSize": 5 },
+            { "batchSize": 6 },
+            { "batchSize": 7 },
+            { "batchSize": 8 },
+            { "batchSize": 9 }
           ],
           "pipLabels": [
             1,
