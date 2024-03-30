@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 const Sublabel = styled.div`
-  padding: ${({pipLabels}) => pipLabels ? '0 8px' : 0};
+  padding: ${({isPips}) => isPips ? '0 8px' : 0};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -24,14 +24,20 @@ const Range = ({
   // loading,
   label,
   info,
-  minLabel,
-  maxLabel,
-  pipLabels,
+  // minLabel,
+  // maxLabel,
+  // pipLabels,
   value,
   onChange,
   ...props
 }) => {
   const handleChange = (event) => onChange(options[Number(event.target.value)]);
+
+
+  const isPips = options.every(({label}) => label);
+
+  const minLabel = options[0].label;
+  const maxLabel = options[options.length - 1].label;
 
   return (
     <Label label={label} info={info}>
@@ -47,17 +53,24 @@ const Range = ({
       />
       <Sublabel
         className="uk-text-muted"
-        pipLabels={pipLabels}
+        isPips={isPips}
       >
-        {minLabel && (
-          <div>
+        {!isPips && minLabel && (
+          <div onClick={() => onChange(options[0])}>
             <span uk-icon="icon: arrow-left"></span>
             {minLabel}
           </div>
         )}
-        {pipLabels?.map(pipLabel => <Pip key={pipLabel}>{pipLabel}</Pip>)}
-        {maxLabel && (
-          <div>
+        {isPips && options?.map(({ label }, index) => (
+          <Pip
+            key={label}
+            onClick={() => onChange(options[index])}
+          >
+            {label}
+          </Pip>
+        ))}
+        {!isPips && maxLabel && (
+          <div onClick={() => onChange(options[options.length - 1])}>
             {maxLabel}
             <span uk-icon="icon: arrow-right"></span>
           </div>
