@@ -15,10 +15,10 @@
           "info": "Femininity / Masculinity slider trait is tentative, the result may not be what you expect.",
           "initialOptionIndex": 0,
           "options": [
-            { "label": "Femininity", "isFemale": true, "genderPositive": "female", "genderNegative": "horror" },
-            { "isFemale": true, "genderPositive": "(masculine:1.1) female", "genderNegative": "beard" },
-            { "isFemale": false, "genderPositive": "(queer:0.9) feminine male", "genderNegative": "zombie, beard" },
-            { "label": "Masculinity", "isFemale": false, "genderPositive": "male", "genderNegative": "" }
+            { "label": "Femininity", "gender": "a", "isFemale": true, "genderPositive": "female", "genderNegative": "horror" },
+            { "gender": "b", "isFemale": true, "genderPositive": "(masculine:1.1) female", "genderNegative": "beard" },
+            { "gender": "c", "isFemale": false, "genderPositive": "(queer:0.9) feminine male", "genderNegative": "zombie, beard" },
+            { "label": "Masculinity", "gender": "d", "isFemale": false, "genderPositive": "male", "genderNegative": "" }
           ]
         },
         {
