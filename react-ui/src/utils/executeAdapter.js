@@ -87,10 +87,6 @@ const executeAdapter = ({
     return insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value);
   }, structuredClone(baseWorkflow));
 
-
-  console.table([adapted[1].value, adaptedWorkflow.nodes[3].widgets_values[3]]);
-
-
   return adaptedWorkflow;
 };
 
