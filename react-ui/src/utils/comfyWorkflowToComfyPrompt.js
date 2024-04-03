@@ -64,6 +64,7 @@ const comfyWorkflowToComfyPrompt = ({
 export default comfyWorkflowToComfyPrompt;
 
 const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
+  // console.log(workflow.nodes[3].widgets_values[3]);
   const [nodeName, fieldName] = destination.split(' > ');
 
   const keys = getKeys(objectInfo, nodeName);
