@@ -9,6 +9,7 @@ const Sublabel = styled.div`
   justify-content: space-between;
   font-size: 12px;
   margin-top: 4px;
+  cursor: pointer;
 `;
 
 const Pip = styled.div`
@@ -16,6 +17,7 @@ const Pip = styled.div`
   display: flex;
   justify-content: center; 
   text-align: center;
+  cursor: pointer;
 `;
 
 const Range = ({
