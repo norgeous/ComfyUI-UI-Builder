@@ -10,18 +10,32 @@ const executeAdapter = ({
   if (!comfyUiData.objectInfo) return;
 
   const operations = {
+    // append formState string value to previous
     get: (previous, targets) => [previous, formState[targets[0]]].filter(v => v).join(' '),
+
+    // append raw string value to previous
     raw: (previous, text) => [previous, text[0]].filter(v => v).join(' '),
+
+    // check if the targets are defined in formState, if it fails, skip following steps and return the previous value
     if: (previous, targets) => {
       if (targets.every(target => formState[target] || formState[target] === 0)) return previous;
-      // else console.log('if condition FAILED for', targets)
+      else console.log('if condition FAILED for', targets)
     },
+
     ifEquals: (previous, targets) => {},
+
+    // clear the previous value
+    clear: () => undefined,
+
     num: (previous, targets) => {},
     multiply: (previous, targets) => {},
     round: (previous, targets) => {},
     add: (previous, targets) => {},
-    findInCkptNames: (previous, targets) => {},
+
+    // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
+    findInCkptNames: (previous) => comfyUiData.objectInfo['CheckpointLoaderSimple'].input.required.ckpt_name[0].find(ckpt => ckpt.includes(previous)),
+
+    //
     findInLoraNames: (previous, targets) => {},
   };
   
@@ -34,7 +48,7 @@ const executeAdapter = ({
   const processSteps = (previous, steps) => {
     if (Array.isArray(steps)) {
       // process conditionals first / adapt steps with conditionals
-      // if condition fails remove the steps that follow it
+      // if condition fails remove itself and the steps that follow it
       let ignoreNext = false;
       const adaptedSteps = steps.reduce((acc, step) => {
         if (Array.isArray(step)) return [...acc, step]; // return unmodifed step
@@ -45,6 +59,7 @@ const executeAdapter = ({
         if (conditionals.includes(op)) {
           const value = operations[op](previous, params?.split(','));
           if (!value) ignoreNext = true; // ignore all steps in this array that follow a failed if condition
+          console.log('checked', {op, params, value, ignoreNext, previous})
           return acc;
         }
         return [...acc, step]; // else return unmodifed step

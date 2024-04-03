@@ -398,11 +398,11 @@
   "adapterConfig": [
     {
       "destination": "CheckpointLoaderSimple > ckpt_name",
-      "actions": ["get:model", "findInCkptNames"]
-    },
-    {
-      "destination": "CheckpointLoaderSimple > ckpt_name",
-      "actions": "get:ckptOverride"
+      "actions": [
+        "get:model",
+        "findInCkptNames",
+        ["if:ckptOverride", "clear", "get:ckptOverride"]
+      ]
     },
     {
       "destination": "Positive Prompt > text",
