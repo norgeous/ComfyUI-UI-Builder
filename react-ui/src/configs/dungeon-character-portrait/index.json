@@ -455,7 +455,7 @@
     },
     {
       "destination": "KSampler > steps",
-      "actions": ["multiply:quality,stepMultiplier", "round", "add:baseSteps"]
+      "actions": ["get:quality", "multiply:stepMultiplier", "round", "add:baseSteps"]
     },
     {
       "destination": "KSampler > cfg",

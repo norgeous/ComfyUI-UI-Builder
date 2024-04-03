@@ -22,15 +22,20 @@ const executeAdapter = ({
       else console.log('if condition FAILED for', targets)
     },
 
+    // check if the previous value equals value in formState
     ifEquals: (previous, targets) => {},
 
     // clear the previous value
     clear: () => undefined,
 
-    num: (previous, targets) => {},
-    multiply: (previous, targets) => {},
-    round: (previous, targets) => {},
-    add: (previous, targets) => {},
+    // multiply formState value with previous value
+    multiply: (previous, targets) => Number(previous) * Number(formState[targets[0]]),
+
+    // round a number
+    round: (previous) => Math.round(previous),
+
+    // add formState value to previous value
+    add: (previous, targets) => Number(previous) + Number(formState[targets[0]]),
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
     findInCkptNames: (previous) => comfyUiData.objectInfo['CheckpointLoaderSimple'].input.required.ckpt_name[0].find(ckpt => ckpt.includes(previous)),
