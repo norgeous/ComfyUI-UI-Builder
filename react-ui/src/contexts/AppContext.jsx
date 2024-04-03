@@ -1,13 +1,16 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import useConfig from '../hooks/useConfig';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
 import useCkptOptions from '../hooks/useCkptOptions';
 import useObjectInfo from '../hooks/useObjectInfo';
+import useBodyData from '../hooks/useBodyData';
+
 import uuidv4 from '../utils/uuidv4';
-import comfyWorkflowToComfyPrompt from '../utils/comfyWorkflowToComfyPrompt';
+import getFormInitialState from '../utils/getFormInitialState';
 
 const clientId = uuidv4();
 
@@ -21,15 +24,15 @@ const AppProvider = ({
     configs,
     setConfig,
   } = useConfig();
-
   const {
-    isGenerating,
-    progress,
-    output,
-  } = useComfyWs(clientId);
+    configData: {
+      formConfig,
+      adapterConfig,
+    },
+    baseWorkflow,
+  } = config;
 
   const { objectInfo } = useObjectInfo();
-  // console.log(objectInfo)
 
   const {
     loading: ckptOptionsLoading,
@@ -38,20 +41,7 @@ const AppProvider = ({
     ckptOptions,
   } = useCkptOptions();
 
-
-  const formInitialState = config.formConfig.reduce((acc, { children }) => ({
-    ...acc,
-    ...children.reduce((acc2, { initialState, initialOptionIndex, options }) => {
-      // eslint-disable-next-line no-unused-vars
-      const { label, ...optionFragment } = options?.[initialOptionIndex] || {};
-      return ({
-        ...acc2,
-        ...initialState,
-        ...optionFragment,
-      });
-    }, {}),
-  }), {});
-
+  const formInitialState = getFormInitialState(formConfig);
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({
     ...formState,
@@ -60,16 +50,13 @@ const AppProvider = ({
 
   const comfyUiData = { ckptNames, objectInfo };
 
-  const bodyData = {
-    client_id: clientId,
-    // prompt: comfyWorkflowToComfyPrompt({
-    //   comfyWorkflow: config.adapter({
-    //     comfyUiData,
-    //     formState,
-    //   }),
-    //   objectInfo,
-    // }),
-  };
+  const bodyData = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
+
+  const {
+    isGenerating,
+    progress,
+    output,
+  } = useComfyWs(clientId);
 
   const {
     executeFetch: executePrompt,
@@ -93,6 +80,7 @@ const AppProvider = ({
         configs,
         setConfig,
 
+        formConfig,
         formState,
         updateFormState,
 
@@ -114,6 +102,7 @@ const AppProvider = ({
         executeInterrupt,
         interruptLoading,
 
+        baseWorkflow,
         bodyData,
       }}
     >

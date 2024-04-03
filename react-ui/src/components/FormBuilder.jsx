@@ -25,7 +25,7 @@ const components = {
 
 const FormBuilder = ({ formConfig }) => {
   const { formState, updateFormState } = useAppContext();
-  const sections = formConfig.map(({ title, children }) => {
+  const sections = formConfig?.map(({ title, children }) => {
     return {
       title,
       // eslint-disable-next-line no-unused-vars

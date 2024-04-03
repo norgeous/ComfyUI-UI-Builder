@@ -8,7 +8,7 @@ const Settings = styled.section`
 
 const Accordion = ({ sections }) => (
   <Settings uk-accordion="collapsible: true">
-    {sections.map(({ title, children }) => (
+    {sections?.map(({ title, children }) => (
       <div key={title}>
         <a className="uk-accordion-title">{title}</a>
         <div className="uk-accordion-content uk-grid-small" uk-grid="true">

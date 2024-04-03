@@ -1,7 +1,7 @@
 import useComfyApi from './useComfyApi';
 
 const useObjectInfo = () => {
-  const { loading, error, data: objectInfo = {} } = useComfyApi({
+  const { loading, error, data: objectInfo } = useComfyApi({
     fetchUrl: '/object_info',
   });
 

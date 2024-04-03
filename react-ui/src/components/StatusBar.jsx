@@ -44,7 +44,10 @@ const StatusBar = () => {
   const {
     isGenerating,
     progress,
+    config,
+    formConfig,
     formState,
+    baseWorkflow,
     bodyData,
   } = useAppContext();
 
@@ -52,7 +55,10 @@ const StatusBar = () => {
     <Bar>
       {isGenerating && 'GENERATING!'}
       {Math.round(progress * 100)}%
+      <Debug label="config" data={config} />
+      <Debug label="formConfig" data={formConfig} />
       <Debug label="formState" data={formState} />
+      <Debug label="baseWorkflow" data={baseWorkflow} />
       <Debug label="bodyData" data={bodyData} />
     </Bar>
   );

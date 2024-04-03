@@ -1,5 +1,4 @@
 {
-  "baseWorkflow": "./basic_portrait_lcm_bypassed-workflow.json",
   "name": "Comfy Dungeon",
   "version": "v0.2.1-uib",
   "emoji": "🧌",

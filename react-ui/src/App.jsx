@@ -27,13 +27,13 @@ const App = () => {
 
       <Controls className="uk-light">
         <h4 className="uk-text-center uk-margin-remove-vertical text-light">
-          {config.emoji}
+          {config.configData.emoji}
           {' '}
-          {config.name}
+          {config.configData.name}
           {' '}
-          <small><sup>{config.version}</sup></small>
+          <small><sup>{config.configData.version}</sup></small>
         </h4>
-        <FormBuilder formConfig={config.formConfig}/>
+        <FormBuilder formConfig={config.configData.formConfig}/>
         <Form />
       </Controls>
     </Page>
