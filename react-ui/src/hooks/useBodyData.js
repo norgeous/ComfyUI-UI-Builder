@@ -13,9 +13,9 @@ const useBodyData = ({ clientId, comfyUiData, formState, baseWorkflow, adapterCo
     adapterConfig,
   });
 
-  console.log({comfyWorkflow,comfyUiData,formState});
+  // console.log({comfyWorkflow,comfyUiData,formState});
 
-  const prompt = comfyWorkflowToComfyPrompt({ comfyWorkflow });
+  const prompt = comfyWorkflowToComfyPrompt({ comfyWorkflow, objectInfo: comfyUiData.objectInfo });
 
   const bodyData = {
     client_id: clientId,

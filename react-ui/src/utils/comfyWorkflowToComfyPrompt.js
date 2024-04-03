@@ -1,5 +1,4 @@
 const getLinkLookup = comfyWorkflow => {
-  console.log('getLinkLookup', comfyWorkflow);
   const linkLookup = comfyWorkflow.nodes.reduce((acc, { id, mode, inputs, outputs }) => ({
     ...acc,
     ...outputs?.reduce((acc2, { links, name }, index) => ({
@@ -8,7 +7,7 @@ const getLinkLookup = comfyWorkflow => {
         ...acc3,
         [link]: {
           link: [String(id), index],
-          bypassTo: mode === 4 && inputs.find(({type}) => type === name).link,
+          bypassTo: mode === 4 && inputs?.find(({type}) => type === name).link,
         },
       }), {}),
     }), {}),
@@ -19,7 +18,7 @@ const getLinkLookup = comfyWorkflow => {
 
 const getLink = (linkLookup, linkId) => {
   const { link, bypassTo } = linkLookup[linkId];
-  if (bypassTo) return getLink(bypassTo); // cursed
+  if (bypassTo) return getLink(linkLookup, bypassTo); // cursed
   return link;
 };
 
@@ -37,7 +36,7 @@ const comfyWorkflowToComfyPrompt = ({
   comfyWorkflow,
   objectInfo,
 }) => {
-  const linkLookup = getLinkLookup(comfyWorkflow);
+  const linkLookup = getLinkLookup(structuredClone(comfyWorkflow));
 
   const comfyPrompt = structuredClone(comfyWorkflow).nodes.reduce((acc, { id, type, mode, inputs, widgets_values }) => {
     if (mode === 4) return acc; // bypass nodes
@@ -68,7 +67,6 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
   const [nodeName, fieldName] = destination.split(' > ');
 
   const keys = getKeys(objectInfo, nodeName);
-  // console.log('insertIntoComfyWorkFlow', {workflow});
 
   const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
     const { type, title, inputs, widgets_values } = node;
@@ -76,8 +74,6 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
     if ([type, title].includes(nodeName)) {
       const linkedInputNames = inputs?.map(({ name }) => name) || [];
 
-      // console.log({ destination, objectInfo, keys, inputs});
-      
       // keys minus linked inputs
       const widgetValueKeys = keys.filter(key => !linkedInputNames.includes(key));
 
