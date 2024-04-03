@@ -3,12 +3,15 @@
 import styled from 'styled-components';
 import Label from '../Label';
 
-const Sublabel = styled.div`
+const Sublabels = styled.div`
   padding: ${({isPips}) => isPips ? '0 8px' : 0};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   margin-top: 4px;
+`;
+
+const Sublabel = styled.div`
   cursor: pointer;
 `;
 
@@ -53,15 +56,15 @@ const Range = ({
         value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
       />
-      <Sublabel
+      <Sublabels
         className="uk-text-muted"
         isPips={isPips}
       >
         {!isPips && minLabel && (
-          <div onClick={() => onChange(options[0])}>
+          <Sublabel onClick={() => onChange(options[0])}>
             <span uk-icon="icon: arrow-left"></span>
             {minLabel}
-          </div>
+          </Sublabel>
         )}
         {isPips && options?.map(({ label }, index) => (
           <Pip
@@ -72,12 +75,12 @@ const Range = ({
           </Pip>
         ))}
         {!isPips && maxLabel && (
-          <div onClick={() => onChange(options[options.length - 1])}>
+          <Sublabel onClick={() => onChange(options[options.length - 1])}>
             {maxLabel}
             <span uk-icon="icon: arrow-right"></span>
-          </div>
+          </Sublabel>
         )}
-      </Sublabel>
+      </Sublabels>
     </Label>
   );
 };

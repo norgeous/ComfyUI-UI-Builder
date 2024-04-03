@@ -2,13 +2,10 @@
 
 ## Now
 
-- update system (and uib workflows) to work with comfy ui workflow v0.4
 - dungeon LCM needs to work, mode:4 is bypass
 - dungeon lora finder, similar to ckpt finder (in case the user has folders in the lora folder)
-- import / export uib workflows, can it be refactored into json only?
 - workflow switcher (dungeon, example2, etc)
   - fastgen example?
-  - alternative layouts abstraction?
 
 ## Next
 
@@ -40,3 +37,4 @@
 
 - swap component set
 - interface builder?
+- alternative layouts abstraction?

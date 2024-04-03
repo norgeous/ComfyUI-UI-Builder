@@ -258,6 +258,19 @@
       ]
     },
     {
+      "title": "Custom",
+      "children": [
+        {
+          "type": "textarea",
+          "name": "customPrompt",
+          "label": "Custom Prompt",
+          "info": "Keep it simple. Don't be too discoursive, write the element that you'd want to add. Eg: \"red scarf\" or \"silver tiara\". You might need to add strength with the syntax \"(silver tiara:1.2)\".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of \"crown\" try with \"wearing a silver crown on his head\".",
+          "colSpan": 2,
+          "initialState": { "customPrompt": "" }
+        }
+      ]
+    },
+    {
       "title": "Generation params",
       "children": [
         {
@@ -359,6 +372,14 @@
           ]
         },
         {
+          "type": "selectckpt",
+          "name": "ckptOverride",
+          "label": "Checkpoint override",
+          "info": "Override the model from \"Preset\" (experimental)",
+          "colSpan": 2,
+          "initialState": { "ckptOverride": "" }
+        },
+        {
           "type": "number",
           "name": "seed",
           "label": "Seed",
@@ -370,27 +391,6 @@
           "name": "enableSeedRandomisation",
           "label": "Random",
           "initialState": { "enableSeedRandomisation": false }
-        }
-      ]
-    },
-    {
-      "title": "Custom",
-      "children": [
-        {
-          "type": "selectckpt",
-          "name": "ckptOverride",
-          "label": "Checkpoint override",
-          "info": "Override the model from \"Preset\" (experimental)",
-          "colSpan": 2,
-          "initialState": { "ckptOverride": "" }
-        },
-        {
-          "type": "textarea",
-          "name": "customPrompt",
-          "label": "Custom Prompt",
-          "info": "Keep it simple. Don't be too discoursive, write the element that you'd want to add. Eg: \"red scarf\" or \"silver tiara\". You might need to add strength with the syntax \"(silver tiara:1.2)\".<br/>If the element is generic and could be misinterpreted try to give context. Eg: instead of \"crown\" try with \"wearing a silver crown on his head\".",
-          "colSpan": 2,
-          "initialState": { "customPrompt": "" }
         }
       ]
     }
