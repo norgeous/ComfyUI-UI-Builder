@@ -64,15 +64,15 @@ const comfyWorkflowToComfyPrompt = ({
 export default comfyWorkflowToComfyPrompt;
 
 const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
-  // console.log(workflow.nodes[3].widgets_values[3]);
   const [nodeName, fieldName] = destination.split(' > ');
 
-  const keys = getKeys(objectInfo, nodeName);
 
   const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
     const { type, title, inputs, widgets_values } = node;
 
     if ([type, title].includes(nodeName)) {
+      const keys = getKeys(objectInfo, type);
+      
       const linkedInputNames = inputs?.map(({ name }) => name) || [];
 
       // keys minus linked inputs
