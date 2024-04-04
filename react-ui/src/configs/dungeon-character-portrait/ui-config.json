@@ -364,7 +364,7 @@
             {
               "label": "Cinematic",
               "preset": "cinematic",
-              "model": "DreamShaperXLTurboV2",
+              "model": "DreamShaperXL",
               "stylePositive": "film still cinematic photo",
               "styleNegative": "illustration, anime, cosplay",
               "baseSteps": 6,

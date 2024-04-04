@@ -39,10 +39,10 @@ const executeAdapter = ({
     add: (previous, target) => Number(previous) + Number(formState[target]),
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
-    findInCkptNames: (previous) => comfyUiData.objectInfo['CheckpointLoaderSimple'].input.required.ckpt_name[0].find(ckpt => ckpt.includes(previous)),
+    findInCkptNames: (previous) => comfyUiData.objectInfo['CheckpointLoaderSimple'].input.required.ckpt_name[0].find(ckpt => ckpt.toLowerCase().includes(previous.toLowerCase())),
 
     // find the lora
-    findInLoraNames: (previous) => comfyUiData.objectInfo['LoraLoader'].input.required.lora_name[0].find(lora => lora.includes(previous)),
+    findInLoraNames: (previous) => comfyUiData.objectInfo['LoraLoader'].input.required.lora_name[0].find(lora => lora.toLowerCase().includes(previous.toLowerCase())),
   };
   
   const processStep = (previous, step) => {
