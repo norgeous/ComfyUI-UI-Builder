@@ -48,6 +48,7 @@ const StatusBar = () => {
     // formConfig,
     formState,
     baseWorkflow,
+    adaptedComfyWorkflow,
     bodyData,
   } = useAppContext();
 
@@ -59,6 +60,7 @@ const StatusBar = () => {
       {/* <Debug label="formConfig" data={formConfig} /> */}
       <Debug label="formState" data={formState} />
       <Debug label="baseWorkflow" data={baseWorkflow} />
+      <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
       <Debug label="bodyData" data={bodyData} />
     </Bar>
   );

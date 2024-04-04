@@ -50,7 +50,7 @@ const AppProvider = ({
 
   const comfyUiData = { ckptNames, objectInfo };
 
-  const bodyData = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
+  const { adaptedComfyWorkflow, bodyData } = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
 
   const {
     isGenerating,
@@ -103,6 +103,7 @@ const AppProvider = ({
         interruptLoading,
 
         baseWorkflow,
+        adaptedComfyWorkflow,
         bodyData,
       }}
     >

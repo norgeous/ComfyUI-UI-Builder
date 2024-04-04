@@ -319,7 +319,8 @@
               "stepMultiplier": 4,
               "cfg": 2.5,
               "samplerName": "lcm",
-              "scheduler": "normal"
+              "scheduler": "normal",
+              "isLcm": true
             },
             {
               "label": "Illustration - Accurate",
@@ -331,7 +332,8 @@
               "stepMultiplier": 14,
               "cfg": 6.5,
               "samplerName": "dpmpp_2m",
-              "scheduler": "exponential"
+              "scheduler": "exponential",
+              "isLcm": false
             },
             {
               "label": "Anime - Fast",
@@ -343,7 +345,8 @@
               "stepMultiplier": 4,
               "cfg": 2.5,
               "samplerName": "lcm",
-              "scheduler": "normal"
+              "scheduler": "normal",
+              "isLcm": true
             },
             {
               "label": "Anime - Accurate",
@@ -355,7 +358,8 @@
               "stepMultiplier": 14,
               "cfg": 6.5,
               "samplerName": "dpmpp_2m",
-              "scheduler": "exponential"
+              "scheduler": "exponential",
+              "isLcm": false
             },
             {
               "label": "Cinematic",
@@ -367,7 +371,8 @@
               "stepMultiplier": 4,
               "cfg": 2,
               "samplerName": "dpmpp_sde",
-              "scheduler": "karras"
+              "scheduler": "karras",
+              "isLcm": false
             }
           ]
         },
@@ -472,19 +477,19 @@
     },
     {
       "destination": "LoraLoader > mode",
-      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
+      "actions": ["num:4", ["if:isLcm", "num:0"]]
     },
     {
       "destination": "LoraLoader > lora_name",
-      "actions": ["get:samplerName", "ifEquals:lcm", "raw:lcm-lora-sdxl", "findInLoraNames"]
+      "actions": ["raw:lcm-lora-sdxl", "findInLoraNames"]
     },
     {
       "destination": "ModelSamplingDiscrete > mode",
-      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
+      "actions": ["num:4", ["if:isLcm", "num:0"]]
     },
     {
       "destination": "RescaleCFG > mode",
-      "actions": ["get:samplerName", "ifEquals:lcm", "num:0"]
+      "actions": ["num:4", ["if:isLcm", "num:0"]]
     }
   ]
 }

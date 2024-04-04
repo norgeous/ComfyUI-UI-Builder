@@ -1,4 +1,4 @@
-import { insertIntoComfyWorkFlow } from "./comfyWorkflowToComfyPrompt";
+import { insertIntoComfyWorkFlow } from './comfyWorkflowToComfyPrompt';
 
 const executeAdapter = ({
   comfyUiData,
@@ -17,14 +17,14 @@ const executeAdapter = ({
     // append raw string value to previous
     raw: (previous, text) => [previous, text].filter(v => v).join(' '),
 
+    // set a numeric value, ignores previous
+    num: (_, text) => Number(text),
+
     // check if the targets are defined in formState, if it fails, skip following steps and return the previous value
     if: (previous, target) => {
       if (formState[target] || formState[target] === 0) return previous;
       // else console.log('if condition FAILED for', targets);
     },
-
-    // check if the previous value equals value in formState
-    ifEquals: (previous, target) => {},
 
     // clear the previous value
     clear: () => undefined,
@@ -41,13 +41,13 @@ const executeAdapter = ({
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
     findInCkptNames: (previous) => comfyUiData.objectInfo['CheckpointLoaderSimple'].input.required.ckpt_name[0].find(ckpt => ckpt.includes(previous)),
 
-    //
-    findInLoraNames: (previous, target) => {},
+    // find the lora
+    findInLoraNames: (previous) => comfyUiData.objectInfo['LoraLoader'].input.required.lora_name[0].find(lora => lora.includes(previous)),
   };
   
   const processStep = (previous, step) => {
-    const [op, params] = step.split(':');
-    const value = operations[op](previous, params);
+    const [op, target] = step.split(':');
+    const value = operations[op](previous, target);
     return value;
   };
   
@@ -59,10 +59,9 @@ const executeAdapter = ({
       const adaptedSteps = steps.reduce((acc, step) => {
         if (Array.isArray(step)) return [...acc, step]; // return unmodifed step
         if (ignoreNext) return acc;
-        const [op, params] = step.split(':');
-        const conditionals = ['if', 'ifEquals'];
-        if (conditionals.includes(op)) {
-          const value = operations[op](previous, params);
+        const [op, target] = step.split(':');
+        if (op === 'if') {
+          const value = operations[op](previous, target);
           if (!value) ignoreNext = true; // ignore all steps in this array that follow a failed if condition
           return acc;
         }

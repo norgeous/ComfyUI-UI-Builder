@@ -66,11 +66,12 @@ export default comfyWorkflowToComfyPrompt;
 const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
   const [nodeName, fieldName] = destination.split(' > ');
 
-
   const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
     const { type, title, inputs, widgets_values } = node;
 
     if ([type, title].includes(nodeName)) {
+      if (fieldName === 'mode') node.mode = Number(value); // unbypass (mode = 0) or bypass (mode = 4) nodes
+      
       const keys = getKeys(objectInfo, type);
       
       const linkedInputNames = inputs?.map(({ name }) => name) || [];
