@@ -2,8 +2,6 @@
 
 ## Now
 
-- dungeon LCM needs to work, mode:4 is bypass
-- dungeon lora finder, similar to ckpt finder (in case the user has folders in the lora folder)
 - workflow switcher (dungeon, example2, etc)
   - fastgen example?
 
