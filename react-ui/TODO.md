@@ -14,7 +14,6 @@
 
 ## Future
 
-- debug prompt / workflow checkbox
 - add air-bnb
 - code tidy up
   - fix all prop-types
