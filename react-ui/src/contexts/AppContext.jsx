@@ -5,7 +5,7 @@ import useConfig from '../hooks/useConfig';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
-import useCkptOptions from '../hooks/useCkptOptions';
+// import useCkptOptions from '../hooks/useCkptOptions';
 import useObjectInfo from '../hooks/useObjectInfo';
 import useBodyData from '../hooks/useBodyData';
 
@@ -34,13 +34,6 @@ const AppProvider = ({
 
   const { objectInfo } = useObjectInfo();
 
-  const {
-    loading: ckptOptionsLoading,
-    error: ckptOptionsError,
-    ckptNames,
-    ckptOptions,
-  } = useCkptOptions();
-
   const formInitialState = getFormInitialState(formConfig);
   const [formState, setFormState] = useState(formInitialState);
   const updateFormState = (adjustment) => setFormState({
@@ -48,7 +41,9 @@ const AppProvider = ({
     ...adjustment,
   });
 
-  const comfyUiData = { ckptNames, objectInfo };
+  const comfyUiData = {
+    objectInfo,
+  };
 
   const { adaptedComfyWorkflow, bodyData } = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
 
@@ -88,10 +83,10 @@ const AppProvider = ({
         progress,
         output,
 
-        ckptOptionsLoading,
-        ckptOptionsError,
-        ckptNames,
-        ckptOptions,
+        // ckptOptionsLoading,
+        // ckptOptionsError,
+        // ckptNames,
+        // ckptOptions,
 
         objectInfo,
 

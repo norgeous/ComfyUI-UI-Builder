@@ -37,10 +37,11 @@ export const Controls = styled.aside`
 export const Content = styled.div`
   flex: 1 0;
   overflow-y: auto;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   max-height: calc(100svh - 7px - 40px);
   padding: 20px;
+  scroll-snap-type: both mandatory;
 `;

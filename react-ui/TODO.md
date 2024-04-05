@@ -7,10 +7,10 @@
 
 ## Next
 
+- click image to zoom / carousel function
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
   - ws reconnect
-- click image to zoom / carousel function
 
 ## Future
 

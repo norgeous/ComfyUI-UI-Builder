@@ -10,7 +10,6 @@ import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
 import Checkbox from './form-fields/Checkbox';
 
-const Spacer = () => null;
 const Missing = ({ type }) => <div className="uk-width-1-1@s">component type <strong>{type}</strong> not found</div>;
 
 const components = {
@@ -20,7 +19,6 @@ const components = {
   textarea: Textarea,
   number: Num,
   checkbox: Checkbox,
-  spacer: Spacer,
 };
 
 const FormBuilder = ({ formConfig }) => {

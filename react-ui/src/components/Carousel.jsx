@@ -1,33 +1,43 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 
-const ImagesContainer = styled.section`
-  display: grid;
-  grid-template-columns: repeat(${({ cols }) => cols}, 1fr);
-  gap: 10px;
-  max-height: 100%;
-  aspect-ratio: ${({ cols, rows }) => `${cols} / ${rows}`};
-  place-items: center;
-`;
+// const ImagesContainer = styled.section`
+//   width: 100%;
+//   height: 100%;
+// `;
 
 const Img = styled.img`
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  scroll-snap-align: center;
+  margin-bottom: 10px;
 `;
 
 const Carousel = ({ images }) => {
-  const cols = Math.ceil(Math.sqrt(images.length));
-  const rows = Math.ceil(images.length / cols);
+  const count = images.length || 5;
+  const cols = Math.ceil(Math.sqrt(count));
+  const rows = Math.ceil(count / cols);
 
   return (
-    <ImagesContainer cols={cols} rows={rows}>
+    <>
       {images.map(({ filename, subfolder }) => (
         <Img
           key={filename}
-          src={`http://127.0.0.1:8188/view?filename=${filename}&type=output&subfolder=${subfolder}`}
+          src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
           alt=""
         />
       ))}
-    </ImagesContainer>
+      <Img rows={rows} src="/view?filename=Dungeon_01426_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01427_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01428_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01429_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01430_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01431_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01432_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01433_.png" />
+      <Img rows={rows} src="/view?filename=Dungeon_01434_.png" />
+    </>
   );
 };
 

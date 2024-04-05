@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 
-const Checkbox = ({ name, label, value, onChange, ...props }) => {
-  const handleChange = (event) => onChange({ [name]: Boolean(event.currentTarget.checked) });
+const Checkbox = ({ name, value, onChange, options, ...props }) => {
+  const { label } = options.find(option => option[name] === value);
+
+  const handleChange = (event) => {
+    // eslint-disable-next-line no-unused-vars
+    const { label, ...newState } = options.find(option => option[name] === Boolean(event.currentTarget.checked));
+    onChange(newState);
+  };
 
   return (
     <label className="uk-form-label" style={{ display: 'block', marginTop: 32 }}>

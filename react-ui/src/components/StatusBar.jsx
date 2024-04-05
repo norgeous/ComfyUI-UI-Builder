@@ -9,6 +9,15 @@ const Bar = styled.div`
   gap: 5px;
   background: rgb(34, 42, 48);
   padding: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: scroll;
+`;
+
+const Button = styled.button`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const Pre = styled.pre`
@@ -30,7 +39,7 @@ const Debug = ({ label, data }) => {
 
   return (
     <>
-      <button onClick={toggle}>🐞 {label}</button>
+      <Button onClick={toggle} title={label}>🐞</Button>
       {open && (
         <Pre onClick={toggle}>
           {JSON.stringify(data, null, 2)}
