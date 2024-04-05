@@ -4,6 +4,7 @@
 
 - workflow switcher (dungeon, example2, etc)
   - fastgen example?
+  - ipadapter example?
 
 ## Next
 
