@@ -2,7 +2,6 @@
 
 ## Now
 
-- fix state when switching between UIs
 - click image to zoom / carousel function
 
 ## Next
