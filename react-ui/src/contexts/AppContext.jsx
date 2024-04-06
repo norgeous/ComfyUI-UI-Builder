@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useConfig from '../hooks/useConfig';
@@ -33,8 +33,9 @@ const AppProvider = ({
 
   const { objectInfo } = useObjectInfo();
 
-  const formInitialState = getFormInitialState(formConfig);
+  const formInitialState = useMemo(() => getFormInitialState(formConfig), [formConfig]);
   const [formState, setFormState] = useState(formInitialState);
+  useEffect(() => setFormState(formInitialState), [formInitialState]); // when switching UIs, reset formState to default
   const updateFormState = (adjustment) => setFormState({
     ...formState,
     ...adjustment,
