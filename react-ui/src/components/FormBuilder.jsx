@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import PropTypes from 'prop-types';
 import useAppContext from '../hooks/useAppContext';
 import Accordion from './Accordion';
 
@@ -21,8 +20,9 @@ const components = {
   checkbox: Checkbox,
 };
 
-const FormBuilder = ({ formConfig }) => {
-  const { formState, updateFormState } = useAppContext();
+const FormBuilder = () => {
+  const { config, formState, updateFormState } = useAppContext();
+  const { formConfig } = config.configData;
   const sections = formConfig?.map(({ title, children }) => {
     return {
       title,
@@ -49,10 +49,6 @@ const FormBuilder = ({ formConfig }) => {
     };
   });
   return <Accordion sections={sections} />;
-};
-
-FormBuilder.propTypes = {
-  formConfig: PropTypes.array,
 };
 
 export default FormBuilder;

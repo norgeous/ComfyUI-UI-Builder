@@ -1,8 +1,9 @@
 import useAppContext from './hooks/useAppContext';
+import { Page, Main, Controls, Content } from './components/Layout';
+import UiSelector from './components/UiSelector';
+import FormBuilder from './components/FormBuilder';
 import Form from './components/Form';
 import Progress from './components/Progress';
-import FormBuilder from './components/FormBuilder';
-import { Page, Main, Controls, Content } from './components/Layout';
 import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
 
@@ -10,7 +11,6 @@ import './App.css';
 
 const App = () => {
   const {
-    config,
     progress,
     output,
   } = useAppContext();
@@ -26,14 +26,8 @@ const App = () => {
       </Main>
 
       <Controls className="uk-light">
-        <h4 className="uk-text-center uk-margin-remove-vertical text-light">
-          {config.configData.emoji}
-          {' '}
-          {config.configData.name}
-          {' '}
-          <small><sup>{config.configData.version}</sup></small>
-        </h4>
-        <FormBuilder formConfig={config.configData.formConfig}/>
+        <UiSelector />
+        <FormBuilder />
         <Form />
       </Controls>
     </Page>
