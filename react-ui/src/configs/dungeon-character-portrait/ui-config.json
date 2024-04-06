@@ -394,8 +394,17 @@
         {
           "type": "checkbox",
           "name": "enableSeedRandomisation",
-          "label": "Random",
-          "initialState": { "enableSeedRandomisation": false }
+          "initialOptionIndex": 0,
+          "options": [
+            {
+              "label": "Random",
+              "enableSeedRandomisation": false
+            },
+            {
+              "label": "Random",
+              "enableSeedRandomisation": true
+            }
+          ]
         }
       ]
     }

@@ -5,7 +5,6 @@ import useConfig from '../hooks/useConfig';
 import useComfyWs from '../hooks/useComfyWs';
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
-// import useCkptOptions from '../hooks/useCkptOptions';
 import useObjectInfo from '../hooks/useObjectInfo';
 import useBodyData from '../hooks/useBodyData';
 
@@ -41,9 +40,7 @@ const AppProvider = ({
     ...adjustment,
   });
 
-  const comfyUiData = {
-    objectInfo,
-  };
+  const comfyUiData = { objectInfo };
 
   const { adaptedComfyWorkflow, bodyData } = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
 
@@ -82,11 +79,6 @@ const AppProvider = ({
         isGenerating,
         progress,
         output,
-
-        // ckptOptionsLoading,
-        // ckptOptionsError,
-        // ckptNames,
-        // ckptOptions,
 
         objectInfo,
 

@@ -6,6 +6,7 @@ import './Accordion.css';
 
 const AccordionContainer = styled.section`
   overflow-y: auto;
+  flex-grow: 1;
 `;
 
 const Accordion = ({ sections }) => (

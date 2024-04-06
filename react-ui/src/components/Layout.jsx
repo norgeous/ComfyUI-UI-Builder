@@ -23,8 +23,8 @@ export const Main = styled.main`
 `;
 
 export const Controls = styled.aside`
-  display: grid;
-  grid-template-rows: 48px auto 40px;
+  display: flex;
+  flex-direction: column;
   background-color: #222A30;
   height: 50svh;
   @media (min-width: 640px) {

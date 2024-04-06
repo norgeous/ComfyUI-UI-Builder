@@ -2,13 +2,10 @@
 
 ## Now
 
-- UiSelector (dungeon, example2, etc)
-  - fastgen example?
-  - ipadapter example?
+- click image to zoom / carousel function
 
 ## Next
 
-- click image to zoom / carousel function
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
   - ws reconnect
@@ -30,9 +27,12 @@
 - video input (for animatediff)
 - video output
 - adjust weight with CTRL+UP or CTRL+DOWN
+- more UIs
+  - fastgen example
+  - ipadapter example
 
 ## Ideas
 
-- swap component set
+- swap component set?
 - interface builder?
 - alternative layouts abstraction?
