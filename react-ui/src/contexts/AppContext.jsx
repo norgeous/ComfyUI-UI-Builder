@@ -23,6 +23,7 @@ const AppProvider = ({
     configs,
     setConfig,
   } = useConfig();
+
   const {
     configData: {
       formConfig,
