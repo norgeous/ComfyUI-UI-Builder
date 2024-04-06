@@ -2,7 +2,7 @@
 
 ## Now
 
-- workflow switcher (dungeon, example2, etc)
+- UiSelector (dungeon, example2, etc)
   - fastgen example?
   - ipadapter example?
 

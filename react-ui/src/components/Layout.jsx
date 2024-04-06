@@ -24,7 +24,7 @@ export const Main = styled.main`
 
 export const Controls = styled.aside`
   display: grid;
-  grid-template-rows: 40px auto 40px;
+  grid-template-rows: 48px auto 40px;
   background-color: #222A30;
   height: 50svh;
   @media (min-width: 640px) {
