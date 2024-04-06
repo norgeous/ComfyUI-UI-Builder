@@ -2,12 +2,14 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Settings = styled.section`
+import './Accordion.css';
+
+const AccordionContainer = styled.section`
   overflow-y: auto;
 `;
 
 const Accordion = ({ sections }) => (
-  <Settings uk-accordion="collapsible: false">
+  <AccordionContainer uk-accordion="collapsible: false">
     {sections?.map(({ title, children }) => (
       <div key={title}>
         <a className="uk-accordion-title">{title}</a>
@@ -16,7 +18,7 @@ const Accordion = ({ sections }) => (
         </div>
       </div>
     ))}
-  </Settings>
+  </AccordionContainer>
 );
 Accordion.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.shape({

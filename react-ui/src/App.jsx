@@ -7,8 +7,6 @@ import Progress from './components/Progress';
 import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
 
-import './App.css';
-
 const App = () => {
   const {
     progress,

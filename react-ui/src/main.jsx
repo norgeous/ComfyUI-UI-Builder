@@ -7,7 +7,6 @@ import App from './App'
 
 import 'uikit/dist/css/uikit.min.css';
 import './index.css';
-import './dungeon.css';
 
 UIkit.use(Icons);
 window.UIkit = UIkit;

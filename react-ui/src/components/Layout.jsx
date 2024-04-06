@@ -23,8 +23,6 @@ export const Main = styled.main`
 `;
 
 export const Controls = styled.aside`
-  /* display: flex;
-  flex-direction: column; */
   display: grid;
   grid-template-rows: 40px auto 40px;
   background-color: #222A30;
@@ -37,10 +35,6 @@ export const Controls = styled.aside`
 export const Content = styled.div`
   flex: 1 0;
   overflow-y: auto;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   max-height: calc(100svh - 7px - 40px);
   padding: 20px;
   scroll-snap-type: both mandatory;
