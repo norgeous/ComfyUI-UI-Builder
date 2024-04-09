@@ -21,14 +21,14 @@ const useComfyWs = (clientId) => {
       execution_interrupted: () => {
         setIsGenerating(false);
         setProgress(0);
-        console.log('Execution Interrupted');
+        console.log('Execution Interrupted'); // eslint-disable-line no-console
       },
       status: (data) => {
         setIsGenerating(data.data.status.exec_info.queue_remaining > 0);
       },
     };
 
-    socket.addEventListener('open', () => console.log('Connected to the ComfyUI websocket'));
+    socket.addEventListener('open', () => console.log('Connected to the ComfyUI websocket')); // eslint-disable-line no-console
 
     socket.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
