@@ -21,12 +21,19 @@ const SelectCkpt = ({ name, ...props }) => {
 
   return (
     <Select
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...props}
+      {...props} // eslint-disable-line react/jsx-props-no-spreading
       name={name}
       options={options}
     />
   );
+};
+
+SelectCkpt.defaultProps = {
+  name: undefined,
+};
+
+SelectCkpt.propTypes = {
+  name: PropTypes.string,
 };
 
 export default SelectCkpt;
