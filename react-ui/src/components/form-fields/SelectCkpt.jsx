@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types';
 import useAppContext from '../../hooks/useAppContext';
 import Select from './Select';
 
 const SelectCkpt = ({ name, ...props }) => {
   const { objectInfo } = useAppContext();
 
-  const ckptOptions = objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0].map((ckptName) => ({
-    label: ckptName,
-    [name]: ckptName,
-  }));
+  const ckptOptions = objectInfo
+    ?.CheckpointLoaderSimple
+    .input
+    .required
+    .ckpt_name[0].map((ckptName) => ({
+      label: ckptName,
+      [name]: ckptName,
+    }));
 
   const options = [
     { label: '-- undefined --', [name]: '' },
