@@ -3,7 +3,6 @@
 ## Now
 
 - code tidy up
-  - fix all prop-types
   - fix linting
   - fix uik-kit warnings
 - add prettier 
