@@ -3,7 +3,8 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
-    "airbnb", "airbnb/hooks",
+    "airbnb",
+    "airbnb/hooks",
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
