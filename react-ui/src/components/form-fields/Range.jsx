@@ -34,8 +34,7 @@ const Range = ({
 }) => {
   const handleChange = (event) => onChange(options[Number(event.target.value)]);
 
-  const isPips = options.every(({ label }) => label);
-
+  const isPips = options.every(({ label: pipLabel }) => pipLabel);
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
@@ -61,12 +60,12 @@ const Range = ({
             {minLabel}
           </Sublabel>
         )}
-        {isPips && options?.map(({ label }, index) => (
+        {isPips && options?.map(({ label: pipLabel }, index) => (
           <Pip
-            key={label}
+            key={pipLabel}
             onClick={() => onChange(options[index])}
           >
-            {label}
+            {pipLabel}
           </Pip>
         ))}
         {!isPips && maxLabel && (
