@@ -14,7 +14,7 @@ const prng = (seed = 0) => {
     prn = prn * cyv % mersenne8;
     prf = (prn - 1) / (mersenne8 - 1);
     return prf;
-  }
+  };
 
   // next();
 

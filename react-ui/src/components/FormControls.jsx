@@ -17,7 +17,7 @@ const FormControls = ({
   const handleClick = () => {
     executePrompt();
     if (enableSeedRandomisation) {
-      const newSeed = Math.floor(Math.random() * 10**10);
+      const newSeed = Math.floor(Math.random() * 10 ** 10);
       updateFormState({ seed: newSeed });
     }
   };
@@ -29,7 +29,8 @@ const FormControls = ({
         onClick={handleClick}
         // loading={promptLoading || isGenerating}
       >
-        <span uk-icon="icon: bolt"></span>{/* eslint-disable-line react/no-unknown-property */}
+        <span uk-icon="icon: bolt" />
+        { }
         Roll
       </Button>
       {isGenerating && (

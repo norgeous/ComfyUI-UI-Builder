@@ -64,7 +64,8 @@ const StatusBar = () => {
   return (
     <Bar>
       {isGenerating && 'GENERATING! '}
-      {Math.round(progress * 100)}%
+      {Math.round(progress * 100)}
+      %
       {/* <Debug label="config" data={config} /> */}
       {/* <Debug label="formConfig" data={formConfig} /> */}
       <Debug label="formState" data={formState} />

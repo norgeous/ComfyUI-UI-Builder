@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 

@@ -1,4 +1,6 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+import {
+  createContext, useEffect, useMemo, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import useConfig from '../hooks/useConfig';
@@ -44,7 +46,9 @@ const AppProvider = ({
 
   const comfyUiData = { objectInfo };
 
-  const { adaptedComfyWorkflow, bodyData } = useBodyData({ clientId, comfyUiData, formState, baseWorkflow, adapterConfig });
+  const { adaptedComfyWorkflow, bodyData } = useBodyData({
+    clientId, comfyUiData, formState, baseWorkflow, adapterConfig,
+  });
 
   const {
     isGenerating,

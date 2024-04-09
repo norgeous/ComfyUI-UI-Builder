@@ -1,5 +1,7 @@
-const getLinkLookup = comfyWorkflow => {
-  const linkLookup = comfyWorkflow.nodes.reduce((acc, { id, mode, inputs, outputs }) => ({
+const getLinkLookup = (comfyWorkflow) => {
+  const linkLookup = comfyWorkflow.nodes.reduce((acc, {
+    id, mode, inputs, outputs,
+  }) => ({
     ...acc,
     ...outputs?.reduce((acc2, { links, name }, index) => ({
       ...acc2,
@@ -7,7 +9,7 @@ const getLinkLookup = comfyWorkflow => {
         ...acc3,
         [link]: {
           link: [String(id), index],
-          bypassTo: mode === 4 && inputs?.find(({type}) => type === name).link,
+          bypassTo: mode === 4 && inputs?.find(({ type }) => type === name).link,
         },
       }), {}),
     }), {}),
@@ -38,7 +40,9 @@ const comfyWorkflowToComfyPrompt = ({
 }) => {
   const linkLookup = getLinkLookup(structuredClone(comfyWorkflow));
 
-  const comfyPrompt = structuredClone(comfyWorkflow).nodes.reduce((acc, { id, type, mode, inputs, widgets_values }) => {
+  const comfyPrompt = structuredClone(comfyWorkflow).nodes.reduce((acc, {
+    id, type, mode, inputs, widgets_values,
+  }) => {
     if (mode === 4) return acc; // bypass nodes
 
     const keys = getKeys(objectInfo, type);
@@ -46,7 +50,7 @@ const comfyWorkflowToComfyPrompt = ({
     const newInputs = keys.reduce((acc2, key) => {
       const linkId = inputs?.find(({ name }) => name === key)?.link; // linkId or undefined
       const value = linkId ? getLink(linkLookup, linkId) : widgets_values.shift();
-      return({ ...acc2, [key]: value });
+      return ({ ...acc2, [key]: value });
     }, {});
 
     return {
@@ -67,19 +71,21 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
   const [nodeName, fieldName] = destination.split(' > ');
 
   const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
-    const { type, title, inputs, widgets_values } = node;
+    const {
+      type, title, inputs, widgets_values,
+    } = node;
 
     if ([type, title].includes(nodeName)) {
       if (fieldName === 'mode') node.mode = Number(value); // unbypass (mode = 0) or bypass (mode = 4) nodes
-      
+
       const keys = getKeys(objectInfo, type);
-      
+
       const linkedInputNames = inputs?.map(({ name }) => name) || [];
 
       // keys minus linked inputs
-      const widgetValueKeys = keys.filter(key => !linkedInputNames.includes(key));
+      const widgetValueKeys = keys.filter((key) => !linkedInputNames.includes(key));
 
-      const index = widgetValueKeys.findIndex(key => key === fieldName);
+      const index = widgetValueKeys.findIndex((key) => key === fieldName);
       widgets_values[index] = value; // override widgets_values value
     }
 

@@ -8,21 +8,23 @@
 
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
-  - ws reconnect
-
-## Future
-
+  - ws reconnect / error message overlay or toaster
 - add air-bnb
 - code tidy up
   - fix all prop-types
   - fix linting
   - fix uik-kit warnings
 - error handling of missing ckpt or lora
-- save current formData to LS
-  - reset to defaults
-- pwa?
 - README redo, how to make UIB workflows
 - github CI build process
+
+## Future
+
+- save current formData to LS
+  - reset all to default button
+  - reset indivdual elements buttons?
+- pwa?
+ - connect to remote comfyui?
 - image input (for ipa)
 - video input (for animatediff)
 - video output

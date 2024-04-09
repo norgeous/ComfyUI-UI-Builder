@@ -17,19 +17,17 @@ const Img = styled.img`
   cursor: pointer;
 `;
 
-const Carousel = ({ images }) => {
-  return (
-    <>
-      {images.map(({ filename, subfolder }) => (
-        <Div key={filename}>
-          <Img
-            src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
-            alt=""
-          />
-        </Div>
-      ))}
-    </>
-  );
-};
+const Carousel = ({ images }) => (
+  <>
+    {images.map(({ filename, subfolder }) => (
+      <Div key={filename}>
+        <Img
+          src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
+          alt=""
+        />
+      </Div>
+    ))}
+  </>
+);
 
 export default Carousel;

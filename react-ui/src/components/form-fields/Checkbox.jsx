@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 
-const Checkbox = ({ name, value, onChange, options, ...props }) => {
-  const { label } = options.find(option => option[name] === value);
+const Checkbox = ({
+  name, value, onChange, options, ...props
+}) => {
+  const { label } = options.find((option) => option[name] === value);
 
   const handleChange = (event) => {
-    // eslint-disable-next-line no-unused-vars
-    const { label, ...newState } = options.find(option => option[name] === Boolean(event.currentTarget.checked));
+    const { label, ...newState } = options.find((option) => option[name] === Boolean(event.currentTarget.checked));
     onChange(newState);
   };
 

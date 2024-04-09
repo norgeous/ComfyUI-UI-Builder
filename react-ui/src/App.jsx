@@ -1,5 +1,7 @@
 import useAppContext from './hooks/useAppContext';
-import { Page, Main, Controls, Content } from './components/Layout';
+import {
+  Page, Main, Controls, Content,
+} from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
 import Form from './components/Form';

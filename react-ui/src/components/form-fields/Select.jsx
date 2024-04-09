@@ -11,7 +11,6 @@ const Select = ({
   ...props
 }) => {
   const handleChange = (event) => {
-    // eslint-disable-next-line no-unused-vars
     const { label, ...state } = options[Number(event.target.value)];
     onChange(state);
   };
@@ -21,7 +20,7 @@ const Select = ({
       <select
         {...props}
         className="uk-select"
-        value={String(options.map(option => option[name]).indexOf(value))}
+        value={String(options.map((option) => option[name]).indexOf(value))}
         onChange={handleChange}
       >
         {options.map(({ label }, index) => (

@@ -4,25 +4,23 @@ const Label = ({
   label,
   info,
   children,
-}) => {
-  return (
-    <label className="uk-form-label">
-      {label}
-      {info && (
-        <>
-          {' '}
-          {/* eslint-disable-next-line react/no-unknown-property */}
-          <button uk-icon="icon: question; ratio: 0.6" type="button"></button>
-          {/* eslint-disable-next-line react/no-unknown-property */}
-          <div className="uk-card uk-card-small uk-card-body uk-card-default" uk-drop="pos: right-top; mode: click;">
-            {info}
-          </div>
-        </>
-      )}
-      {children}
-    </label>
-  );
-};
+}) => (
+  <label className="uk-form-label">
+    {label}
+    {info && (
+    <>
+      {' '}
+      { }
+      <button uk-icon="icon: question; ratio: 0.6" type="button" />
+      { }
+      <div className="uk-card uk-card-small uk-card-body uk-card-default" uk-drop="pos: right-top; mode: click;">
+        {info}
+      </div>
+    </>
+    )}
+    {children}
+  </label>
+);
 Label.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,

@@ -9,7 +9,14 @@ import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
 import Checkbox from './form-fields/Checkbox';
 
-const Missing = ({ type }) => <div className="uk-width-1-1@s">component type <strong>{type}</strong> not found</div>;
+const Missing = ({ type }) => (
+  <div className="uk-width-1-1@s">
+    component type
+    <strong>{type}</strong>
+    {' '}
+    not found
+  </div>
+);
 
 const components = {
   select: Select,
@@ -23,31 +30,31 @@ const components = {
 const FormBuilder = () => {
   const { config, formState, updateFormState } = useAppContext();
   const { formConfig } = config.configData;
-  const sections = formConfig?.map(({ title, children }) => {
-    return {
-      title,
-      // eslint-disable-next-line no-unused-vars
-      children: children.map(({ type, adapter, name, initialState, colSpan, ...props }, index) => {
-        const Component = components[type];
-        if (!Component) return <Missing key={index} type={type} />
-        return (
-          <div key={index} className={`uk-width-1-${colSpan == 2 ? 1 : 2}@s`}>
-            <Component
-              {...props}
-              name={name}
-              value={formState[name]}
-              onChange={data => {
-                const newFormState = { ...formState, ...data};
-                const adapted = adapter?.(newFormState);
-                if (adapted) updateFormState(adapted);
-                else updateFormState(data);
-              }}
-            />
-          </div>
-        );
-      }),
-    };
-  });
+  const sections = formConfig?.map(({ title, children }) => ({
+    title,
+
+    children: children.map(({
+      type, adapter, name, initialState, colSpan, ...props
+    }, index) => {
+      const Component = components[type];
+      if (!Component) return <Missing key={index} type={type} />;
+      return (
+        <div key={index} className={`uk-width-1-${colSpan == 2 ? 1 : 2}@s`}>
+          <Component
+            {...props}
+            name={name}
+            value={formState[name]}
+            onChange={(data) => {
+              const newFormState = { ...formState, ...data };
+              const adapted = adapter?.(newFormState);
+              if (adapted) updateFormState(adapted);
+              else updateFormState(data);
+            }}
+          />
+        </div>
+      );
+    }),
+  }));
   return <Accordion sections={sections} />;
 };
 

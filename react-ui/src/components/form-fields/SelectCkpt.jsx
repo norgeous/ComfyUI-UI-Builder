@@ -5,7 +5,7 @@ import Select from './Select';
 const SelectCkpt = ({ name, ...props }) => {
   const { objectInfo } = useAppContext();
 
-  const ckptOptions = objectInfo?.['CheckpointLoaderSimple'].input.required.ckpt_name[0].map((ckptName) => ({
+  const ckptOptions = objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0].map((ckptName) => ({
     label: ckptName,
     [name]: ckptName,
   }));
@@ -15,7 +15,7 @@ const SelectCkpt = ({ name, ...props }) => {
     ...ckptOptions || [],
   ];
 
-  return <Select {...props} name={name} options={options} />
+  return <Select {...props} name={name} options={options} />;
 };
 
 export default SelectCkpt;
