@@ -20,6 +20,11 @@ const Accordion = ({ sections }) => (
     ))}
   </AccordionContainer>
 );
+
+Accordion.defaultProps = {
+  sections: [],
+};
+
 Accordion.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,

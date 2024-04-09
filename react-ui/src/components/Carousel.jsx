@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -29,5 +29,16 @@ const Carousel = ({ images }) => (
     ))}
   </>
 );
+
+Carousel.defaultProps = {
+  images: [],
+};
+
+Carousel.propTypes = {
+  images: PropTypes.arrayOf({
+    filename: PropTypes.string,
+    subfolder: PropTypes.string,
+  }),
+};
 
 export default Carousel;
