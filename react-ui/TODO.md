@@ -2,6 +2,10 @@
 
 ## Now
 
+- code tidy up
+  - fix all prop-types
+  - fix linting
+  - fix uik-kit warnings
 - click image to zoom / carousel function
 
 ## Next
@@ -9,10 +13,6 @@
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
   - ws reconnect / error message overlay or toaster
-- code tidy up
-  - fix all prop-types
-  - fix linting
-  - fix uik-kit warnings
 - error handling of missing ckpt or lora
 - README redo, how to make UIB workflows
 - github CI build process
