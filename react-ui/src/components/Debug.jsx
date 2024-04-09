@@ -36,4 +36,13 @@ const Debug = ({ label, data }) => {
   );
 };
 
+Debug.defaultProps = {
+  data: undefined,
+};
+
+Debug.propTypes = {
+  label: PropTypes.string.isRequired,
+  data: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+};
+
 export default Debug;
