@@ -11,7 +11,7 @@ const Select = ({
   ...props
 }) => {
   const handleChange = (event) => {
-    const { label, ...state } = options[Number(event.target.value)];
+    const { label: _, ...state } = options[Number(event.target.value)];
     onChange(state);
   };
 
@@ -24,19 +24,30 @@ const Select = ({
         value={String(options.map((option) => option[name]).indexOf(value))}
         onChange={handleChange}
       >
-        {options.map(({ label }, index) => (
-          <option key={index} value={index}>{label}</option>
+        {options.map(({ label: optionLabel }, index) => (
+          <option key={optionLabel} value={index}>{optionLabel}</option>
         ))}
       </select>
     </Label>
   );
 };
 
+Select.defaultProps = {
+  name: undefined,
+  label: undefined,
+  info: undefined,
+  options: [],
+  value: undefined,
+  onChange: () => {},
+};
+
 Select.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  options: PropTypes.array,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+  })),
   value: PropTypes.string,
   onChange: PropTypes.func,
 };
