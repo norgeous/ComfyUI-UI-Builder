@@ -4,7 +4,7 @@ import {
 } from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
-import Form from './components/Form';
+import FormControls from './components/FormControls';
 import Progress from './components/Progress';
 import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
@@ -28,7 +28,7 @@ const App = () => {
       <Controls className="uk-light">
         <UiSelector />
         <FormBuilder />
-        <Form />
+        <FormControls />
       </Controls>
     </Page>
   );

@@ -1,14 +1,12 @@
 import useAppContext from '../hooks/useAppContext';
 import Button from './Button';
 
-const FormControls = ({
-  executePrompt,
-  executeInterrupt,
-  // promptLoading,
-  isGenerating,
-  // interruptLoading,
-}) => {
+const FormControls = () => {
   const {
+    promptError,
+    isGenerating,
+    executePrompt,
+    executeInterrupt,
     formState: { enableSeedRandomisation },
     updateFormState,
   } = useAppContext();
@@ -22,7 +20,8 @@ const FormControls = ({
   };
 
   return (
-    <>
+    <div>
+      {promptError}
       <Button
         // fullWidth
         onClick={handleClick}
@@ -41,7 +40,7 @@ const FormControls = ({
           Interrupt
         </Button>
       )}
-    </>
+    </div>
   );
 };
 
