@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Label from '../Label';
 
@@ -25,9 +24,9 @@ const Pip = styled.div`
 
 const Range = ({
   name,
-  options,
   label,
   info,
+  options,
   value,
   onChange,
   ...props
@@ -77,6 +76,26 @@ const Range = ({
       </Sublabels>
     </Label>
   );
+};
+
+Range.defaultProps = {
+  name: undefined,
+  label: undefined,
+  info: undefined,
+  options: [],
+  value: undefined,
+  onChange: () => {},
+};
+
+Range.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+  })),
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Range;

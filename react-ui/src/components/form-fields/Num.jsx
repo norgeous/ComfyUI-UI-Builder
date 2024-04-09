@@ -23,4 +23,18 @@ const Num = ({
   );
 };
 
+Num.defaultProps = {
+  name: undefined,
+  label: undefined,
+  info: undefined,
+  onChange: () => {},
+};
+
+Num.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
 export default Num;

@@ -22,6 +22,12 @@ const Label = ({
   </label>
 );
 
+Label.defaultProps = {
+  label: undefined,
+  info: undefined,
+  children: null,
+};
+
 Label.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
