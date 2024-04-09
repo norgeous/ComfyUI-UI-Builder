@@ -11,12 +11,10 @@ const prng = (seed = 0) => {
   let prf = (prn - 1) / (mersenne8 - 1);
 
   const next = () => {
-    prn = prn * cyv % mersenne8;
+    prn = (prn * cyv) % mersenne8;
     prf = (prn - 1) / (mersenne8 - 1);
     return prf;
   };
-
-  // next();
 
   return next;
 };
