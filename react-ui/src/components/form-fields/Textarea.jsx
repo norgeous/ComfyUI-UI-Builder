@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import Label from '../Label';
 
 const Textarea = ({
@@ -10,6 +8,7 @@ const Textarea = ({
   return (
     <Label label={label} info={info}>
       <textarea
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
         className="uk-input"
         style={{

@@ -5,11 +5,6 @@ const Form = () => {
   const {
     isGenerating,
 
-    // ckptOptionsLoading,
-    // ckptOptionsError,
-    // ckptOptions,
-    // handleSelectCkpt,
-
     executePrompt,
     promptLoading,
     promptError,

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 const Checkbox = ({
   name, value, onChange, options, ...props
 }) => {

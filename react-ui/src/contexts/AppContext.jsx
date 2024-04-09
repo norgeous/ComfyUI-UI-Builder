@@ -38,7 +38,10 @@ const AppProvider = ({
 
   const formInitialState = useMemo(() => getFormInitialState(formConfig), [formConfig]);
   const [formState, setFormState] = useState(formInitialState);
-  useEffect(() => setFormState(formInitialState), [formInitialState]); // when switching UIs, reset formState to default
+
+  // when switching UIs, reset formState to default
+  useEffect(() => setFormState(formInitialState), [formInitialState]);
+
   const updateFormState = (adjustment) => setFormState({
     ...formState,
     ...adjustment,
@@ -104,6 +107,11 @@ const AppProvider = ({
     </AppContext.Provider>
   );
 };
+
+AppProvider.defaultProps = {
+  children: null,
+};
+
 AppProvider.propTypes = {
   children: PropTypes.node,
 };

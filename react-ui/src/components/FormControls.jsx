@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import useAppContext from '../hooks/useAppContext';
 import Button from './Button';
 

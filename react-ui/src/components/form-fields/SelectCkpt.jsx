@@ -1,7 +1,6 @@
 import useAppContext from '../../hooks/useAppContext';
 import Select from './Select';
 
-// eslint-disable-next-line react/prop-types
 const SelectCkpt = ({ name, ...props }) => {
   const { objectInfo } = useAppContext();
 
@@ -15,7 +14,14 @@ const SelectCkpt = ({ name, ...props }) => {
     ...ckptOptions || [],
   ];
 
-  return <Select {...props} name={name} options={options} />;
+  return (
+    <Select
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
+      name={name}
+      options={options}
+    />
+  );
 };
 
 export default SelectCkpt;

@@ -30,7 +30,7 @@ const useComfyApi = ({
 
           if (res.status !== 200 && resType === 'text/plain') {
             setError(await res.text());
-            return;
+            return undefined;
           }
 
           const json = await res.json();

@@ -32,7 +32,6 @@ const Pre = styled.pre`
   z-index: 10;
 `;
 
-// eslint-disable-next-line react/prop-types
 const Debug = ({ label, data }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);

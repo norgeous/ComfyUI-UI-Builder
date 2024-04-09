@@ -20,7 +20,8 @@ const executeAdapter = ({
     // set a numeric value, ignores previous
     num: (_, text) => Number(text),
 
-    // check if the targets are defined in formState, if it fails, skip following steps and return the previous value
+    // check if the targets are defined in formState
+    // if it fails, skip following steps and return the previous value
     if: (previous, target) => {
       if (formState[target] || formState[target] === 0) return previous;
       // else console.log('if condition FAILED for', targets);
@@ -62,7 +63,10 @@ const executeAdapter = ({
         const [op, target] = step.split(':');
         if (op === 'if') {
           const value = operations[op](previous, target);
-          if (!value) ignoreNext = true; // ignore all steps in this array that follow a failed if condition
+
+          // ignore all steps in this array that follow a failed if condition
+          if (!value) ignoreNext = true;
+
           return acc;
         }
         return [...acc, step]; // else return unmodifed step

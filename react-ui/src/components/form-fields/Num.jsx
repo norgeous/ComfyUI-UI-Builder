@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import Label from '../Label';
 
 const Num = ({
@@ -10,6 +8,7 @@ const Num = ({
   return (
     <Label label={label} info={info}>
       <input
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
         className="uk-input"
         type="number"
