@@ -2,7 +2,11 @@ import PropTypes from 'prop-types';
 import Label from '../Label';
 
 const Textarea = ({
-  name, label, info, onChange, ...props
+  name,
+  label,
+  info,
+  onChange,
+  ...props
 }) => {
   const handleChange = (event) => onChange({ [name]: String(event.target.value) });
 
@@ -19,6 +23,20 @@ const Textarea = ({
       />
     </Label>
   );
+};
+
+Textarea.defaultProps = {
+  name: undefined,
+  label: undefined,
+  info: undefined,
+  onChange: () => {},
+};
+
+Textarea.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Textarea;
