@@ -41,7 +41,11 @@ const comfyWorkflowToComfyPrompt = ({
   const linkLookup = getLinkLookup(structuredClone(comfyWorkflow));
 
   const comfyPrompt = structuredClone(comfyWorkflow).nodes.reduce((acc, {
-    id, type, mode, inputs, widgets_values,
+    id,
+    type,
+    mode,
+    inputs,
+    widgets_values, // eslint-disable-line camelcase
   }) => {
     if (mode === 4) return acc; // bypass nodes
 
@@ -49,6 +53,7 @@ const comfyWorkflowToComfyPrompt = ({
 
     const newInputs = keys.reduce((acc2, key) => {
       const linkId = inputs?.find(({ name }) => name === key)?.link; // linkId or undefined
+
       const value = linkId ? getLink(linkLookup, linkId) : widgets_values.shift();
       return ({ ...acc2, [key]: value });
     }, {});
@@ -72,7 +77,10 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
 
   const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
     const {
-      type, title, inputs, widgets_values,
+      type,
+      title,
+      inputs,
+      widgets_values, // eslint-disable-line camelcase
     } = node;
 
     if ([type, title].includes(nodeName)) {
@@ -86,6 +94,7 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
       const widgetValueKeys = keys.filter((key) => !linkedInputNames.includes(key));
 
       const index = widgetValueKeys.findIndex((key) => key === fieldName);
+      // eslint-disable-next-line camelcase
       widgets_values[index] = value; // override widgets_values value
     }
 

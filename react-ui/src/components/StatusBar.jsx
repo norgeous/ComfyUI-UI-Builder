@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 import useAppContext from '../hooks/useAppContext';
@@ -21,11 +22,11 @@ const Button = styled.button`
 `;
 
 const Pre = styled.pre`
-  white-space: pre-wrap;
   position: absolute;
+  inset: 0;
+  white-space: pre-wrap;
   background: #000e;
   color: green;
-  inset: 0;
   padding: 40px;
   margin: 0;
   border: 0;
@@ -52,8 +53,6 @@ const StatusBar = () => {
   const {
     isGenerating,
     progress,
-    // config,
-    // formConfig,
     formState,
     baseWorkflow,
     adaptedComfyWorkflow,
@@ -65,8 +64,6 @@ const StatusBar = () => {
       {isGenerating && 'GENERATING! '}
       {Math.round(progress * 100)}
       %
-      {/* <Debug label="config" data={config} /> */}
-      {/* <Debug label="formConfig" data={formConfig} /> */}
       <Debug label="formState" data={formState} />
       <Debug label="baseWorkflow" data={baseWorkflow} />
       <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />

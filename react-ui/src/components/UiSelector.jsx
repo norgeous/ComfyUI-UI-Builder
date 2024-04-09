@@ -14,9 +14,7 @@ const UiSelector = () => {
   } = useAppContext();
 
   const handleChange = ({ ui }) => {
-    console.log({ ui, configs });
     const newConfig = configs.find(({ configData: { name } }) => name === ui);
-    console.log({ config, configs, newConfig });
     setConfig(newConfig);
   };
 

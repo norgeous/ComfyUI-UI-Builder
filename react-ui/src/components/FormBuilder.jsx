@@ -38,8 +38,9 @@ const FormBuilder = () => {
       const Component = components[type];
       if (!Component) return <Missing key={index} type={type} />;
       return (
-        <div key={index} className={`uk-width-1-${colSpan == 2 ? 1 : 2}@s`}>
+        <div key={index} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
           <Component
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...props}
             name={name}
             value={formState[name]}

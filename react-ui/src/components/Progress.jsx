@@ -1,5 +1,7 @@
 const Progress = ({ ...props }) => (
   <progress
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
     style={{
       display: 'block',
       width: '100%',
@@ -9,7 +11,6 @@ const Progress = ({ ...props }) => (
       border: 0,
     }}
     max={1}
-    {...props}
   />
 );
 

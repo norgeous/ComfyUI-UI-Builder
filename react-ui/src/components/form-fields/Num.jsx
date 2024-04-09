@@ -1,7 +1,12 @@
+import PropTypes from 'prop-types';
 import Label from '../Label';
 
 const Num = ({
-  name, label, info, onChange, ...props
+  name,
+  label,
+  info,
+  onChange,
+  ...props
 }) => {
   const handleChange = (event) => onChange({ [name]: Number(event.target.value) });
 

@@ -21,6 +21,7 @@ const Label = ({
     {children}
   </label>
 );
+
 Label.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
