@@ -39,8 +39,7 @@ const useComfyApi = ({
         })
         .then((res) => setData(adapter(res)))
         .catch((err) => {
-          console.error('error in useComfyApi chain');
-          console.error(err);
+          console.error(err); // eslint-disable-line no-console
           setLoading(false);
           setError(err.message);
         });
