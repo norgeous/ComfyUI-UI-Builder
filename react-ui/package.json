@@ -13,7 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8",
-    "uikit": "^3.19.2"
+    "uikit": "^3.19.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.73",
@@ -21,11 +21,11 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.2.7"
+    "vite": "^5.2.8"
   }
 }
