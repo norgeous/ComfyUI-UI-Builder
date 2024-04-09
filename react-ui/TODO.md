@@ -9,7 +9,6 @@
 - loader spinner, interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
   - ws reconnect / error message overlay or toaster
-- add air-bnb
 - code tidy up
   - fix all prop-types
   - fix linting
