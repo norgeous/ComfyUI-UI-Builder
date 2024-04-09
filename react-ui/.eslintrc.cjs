@@ -3,8 +3,8 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
-    "airbnb",
-    "airbnb/hooks",
+    'airbnb',
+    'airbnb/hooks',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
@@ -23,5 +23,14 @@ module.exports = {
       namedComponents: 'arrow-function',
       unnamedComponents: 'arrow-function',
     }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        // only these files are allowed to import from devDeps
+        'devDependencies': [
+          'vite.config.js',
+        ],
+      },
+    ],
   },
-}
+};
