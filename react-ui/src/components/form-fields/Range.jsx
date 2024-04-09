@@ -26,12 +26,8 @@ const Pip = styled.div`
 const Range = ({
   name,
   options,
-  // loading,
   label,
   info,
-  // minLabel,
-  // maxLabel,
-  // pipLabels,
   value,
   onChange,
   ...props
@@ -46,7 +42,7 @@ const Range = ({
   return (
     <Label label={label} info={info}>
       <input
-        {...props}
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
         className="uk-range"
         type="range"
         min="0"
