@@ -30,6 +30,7 @@ const Select = ({
     </Label>
   );
 };
+
 Select.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
