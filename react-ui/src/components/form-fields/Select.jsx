@@ -18,6 +18,7 @@ const Select = ({
   return (
     <Label label={label} info={info}>
       <select
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
         className="uk-select"
         value={String(options.map((option) => option[name]).indexOf(value))}
