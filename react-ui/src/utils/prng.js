@@ -6,14 +6,14 @@ const sanitise = (seed) => {
   return newSeed > 0 ? newSeed : newSeed + (mersenne8 - 1);
 };
 
+const format = (num) => (num - 1) / (mersenne8 - 1); // format as fraction between 0 and 1
+
 const prng = (seed = 0) => {
   let prn = sanitise(seed);
-  let prf = (prn - 1) / (mersenne8 - 1);
 
   const next = () => {
-    prn = (prn * cyv) % mersenne8;
-    prf = (prn - 1) / (mersenne8 - 1);
-    return prf;
+    prn = (prn * cyv) % mersenne8; // generate pseudo random number
+    return format(prn);
   };
 
   return next;
