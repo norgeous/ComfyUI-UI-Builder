@@ -31,7 +31,6 @@ const FormBuilder = () => {
   const { formConfig } = config.configData;
   const sections = formConfig?.map(({ title, children }) => ({
     title,
-
     children: children.map(({
       type, adapter, name, initialState, colSpan, ...props
     }, index) => {
