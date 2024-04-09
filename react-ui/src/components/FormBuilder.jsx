@@ -1,13 +1,14 @@
 import useAppContext from '../hooks/useAppContext';
 import Accordion from './Accordion';
 
+import Missing from './form-fields/Missing';
+
 import Select from './form-fields/Select';
 import SelectCkpt from './form-fields/SelectCkpt';
 import Range from './form-fields/Range';
 import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
 import Checkbox from './form-fields/Checkbox';
-import Missing from './form-fields/Missing';
 
 const components = {
   select: Select,
