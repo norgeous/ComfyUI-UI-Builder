@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
+
+import Pyramid from './components/Pyramid';
 import AppProvider from './contexts/AppContext';
 import App from './App';
 
@@ -13,8 +15,9 @@ window.UIkit = UIkit;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppProvider>
+    <Pyramid>
+      <AppProvider />
       <App />
-    </AppProvider>
+    </Pyramid>
   </React.StrictMode>,
 );
