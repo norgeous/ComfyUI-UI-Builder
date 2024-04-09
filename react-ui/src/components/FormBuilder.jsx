@@ -7,15 +7,7 @@ import Range from './form-fields/Range';
 import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
 import Checkbox from './form-fields/Checkbox';
-
-const Missing = ({ type }) => (
-  <div className="uk-width-1-1@s">
-    component type
-    <strong>{type}</strong>
-    {' '}
-    not found
-  </div>
-);
+import Missing from './form-fields/Missing';
 
 const components = {
   select: Select,
@@ -33,14 +25,14 @@ const FormBuilder = () => {
     title,
     children: children.map(({
       type, adapter, name, initialState, colSpan, ...props
-    }, index) => {
-      const Component = components[type];
-      if (!Component) return <Missing key={index} type={type} />;
+    }) => {
+      const Component = components[type] || Missing;
+      // if (!Component) return <Missing key="missing" type={type} />;
       return (
-        <div key={index} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
+        <div key={name} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
           <Component
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...props}
+            {...props} // eslint-disable-line react/jsx-props-no-spreading
+            type={type}
             name={name}
             value={formState[name]}
             onChange={(data) => {
