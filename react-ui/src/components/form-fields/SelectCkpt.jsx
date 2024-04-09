@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import useAppContext from '../../hooks/useAppContext';
 import Select from './Select';
+import useAppContext from '../../hooks/useAppContext';
 
 const SelectCkpt = ({ name, ...props }) => {
   const { objectInfo } = useAppContext();
