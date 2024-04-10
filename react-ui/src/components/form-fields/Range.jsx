@@ -31,14 +31,14 @@ const Range = ({
   onChange,
   ...props
 }) => {
-  const handleChange = (event) => {
-    const { label: _, ...newState } = options[Number(event.target.value)];
-    onChange(newState);
-  };
-
   const isPips = options.every(({ label: pipLabel }) => pipLabel);
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
+
+  const handleChange = (event) => {
+    const { label: _, ...state } = options[Number(event.target.value)];
+    onChange(state);
+  };
 
   return (
     <Label label={label} info={info}>

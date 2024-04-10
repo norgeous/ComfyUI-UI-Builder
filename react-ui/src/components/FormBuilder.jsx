@@ -26,7 +26,7 @@ const FormBuilder = () => {
   const sections = formConfig?.map(({ title, children }) => ({
     title,
     children: children.map(({
-      type, adapter, name, initialState, colSpan, ...props
+      type, adapter, name, initialState, initialOptionIndex, colSpan, ...props
     }) => {
       const Component = components[type] || Missing;
       return (

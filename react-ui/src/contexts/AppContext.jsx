@@ -1,10 +1,10 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import useClientIdContext from '../hooks/useClientIdContext';
 import useConfigsContext from '../hooks/useConfigsContext';
 import useFormContext from '../hooks/useFormContext';
-import useObjectInfoContext from '../hooks/useObjectInfoContext';
+import { ObjectInfoContext } from './ObjectInfoContext';
 
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
     },
   } = useConfigsContext();
   const { formState } = useFormContext();
-  const { objectInfo } = useObjectInfoContext();
+  const { objectInfo } = useContext(ObjectInfoContext);
 
   const comfyUiData = { objectInfo };
 
