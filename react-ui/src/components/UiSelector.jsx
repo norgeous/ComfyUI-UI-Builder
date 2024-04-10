@@ -28,7 +28,7 @@ const UiSelector = () => {
       <Select
         options={options}
         name="ui"
-        value={configs.findIndex(c => c.configData.name === config.configData.name)}
+        value={configs.findIndex((c) => c.configData.name === config.configData.name)}
         onChange={handleChange}
       />
     </Header>

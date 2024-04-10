@@ -31,7 +31,10 @@ const Range = ({
   onChange,
   ...props
 }) => {
-  const handleChange = (event) => onChange(options[Number(event.target.value)]);
+  const handleChange = (event) => {
+    const { label: _, ...newState } = options[Number(event.target.value)];
+    onChange(newState);
+  };
 
   const isPips = options.every(({ label: pipLabel }) => pipLabel);
   const minLabel = options[0].label;

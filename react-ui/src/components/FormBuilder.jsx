@@ -29,7 +29,6 @@ const FormBuilder = () => {
       type, adapter, name, initialState, colSpan, ...props
     }) => {
       const Component = components[type] || Missing;
-      // if (!Component) return <Missing key="missing" type={type} />;
       return (
         <div key={name} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
           <Component

@@ -29,12 +29,12 @@ const useComfyApi = ({
           const resType = res.headers.get('content-type').split(';')[0];
 
           if (res.status !== 200 && resType === 'text/plain') {
-            setError(await res.text());
+            setError(`${res.status}: ${await res.text()}`);
             return undefined;
           }
 
           const json = await res.json();
-          if (res.status !== 200) setError(json.node_errors['1'].errors[0].details);
+          if (res.status !== 200) setError(`${res.status}: ${json.node_errors['1'].errors[0].details}`);
           return json;
         })
         .then((res) => setData(adapter(res)))

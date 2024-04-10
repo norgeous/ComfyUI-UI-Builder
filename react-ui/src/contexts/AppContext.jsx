@@ -22,8 +22,8 @@ const AppProvider = ({ children }) => {
       baseWorkflow,
     },
   } = useConfigsContext();
-  const { objectInfo } = useFormContext();
-  const { formState } = useObjectInfoContext();
+  const { formState } = useFormContext();
+  const { objectInfo } = useObjectInfoContext();
 
   const comfyUiData = { objectInfo };
 
