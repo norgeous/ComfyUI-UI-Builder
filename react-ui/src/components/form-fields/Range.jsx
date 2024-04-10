@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label from '../Label';
 
 const Sublabels = styled.div`
-  padding: ${({ isPips }) => (isPips ? '0 8px' : 0)};
+  padding: ${({ $isPips }) => ($isPips ? '0 8px' : 0)};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -54,7 +54,7 @@ const Range = ({
       />
       <Sublabels
         className="uk-text-muted"
-        isPips={isPips}
+        $isPips={isPips}
       >
         {!isPips && minLabel && (
           <Sublabel onClick={() => onChange(options[0])}>
