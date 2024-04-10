@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import useAppContext from '../hooks/useAppContext';
+import useConfigsContext from '../hooks/useConfigsContext';
 import Select from './form-fields/Select';
 
 const Header = styled.header`
@@ -11,7 +11,7 @@ const UiSelector = () => {
     config,
     configs,
     setConfig,
-  } = useAppContext();
+  } = useConfigsContext();
 
   const handleChange = ({ ui }) => {
     const newConfig = configs.find(({ configData: { name } }) => name === ui);
@@ -28,7 +28,7 @@ const UiSelector = () => {
       <Select
         options={options}
         name="ui"
-        value={config.configData.name}
+        value={configs.findIndex(c => c.configData.name === config.configData.name)}
         onChange={handleChange}
       />
     </Header>

@@ -1,14 +1,20 @@
+import useWsContext from '../hooks/useWsContext';
+import useFormContext from '../hooks/useFormContext';
 import useAppContext from '../hooks/useAppContext';
 import Button from './Button';
 
 const FormControls = () => {
+  const { isGenerating } = useWsContext();
+
   const {
-    promptError,
-    isGenerating,
-    executePrompt,
-    executeInterrupt,
     formState: { enableSeedRandomisation },
     updateFormState,
+  } = useFormContext();
+
+  const {
+    promptError,
+    executePrompt,
+    executeInterrupt,
   } = useAppContext();
 
   const handleClick = () => {

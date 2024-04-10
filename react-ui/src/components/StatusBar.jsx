@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import useWsContext from '../hooks/useWsContext';
 import useAppContext from '../hooks/useAppContext';
 import Debug from './Debug';
 
@@ -18,6 +19,9 @@ const StatusBar = () => {
   const {
     isGenerating,
     progress,
+  } = useWsContext();
+
+  const {
     formState,
     baseWorkflow,
     adaptedComfyWorkflow,

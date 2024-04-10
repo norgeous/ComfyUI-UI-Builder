@@ -45,7 +45,7 @@ Checkbox.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
   })),
-  value: PropTypes.string,
+  value: PropTypes.bool,
   onChange: PropTypes.func,
 };
 

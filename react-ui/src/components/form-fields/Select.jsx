@@ -48,7 +48,7 @@ Select.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
   })),
-  value: PropTypes.string,
+  value: PropTypes.number,
   onChange: PropTypes.func,
 };
 

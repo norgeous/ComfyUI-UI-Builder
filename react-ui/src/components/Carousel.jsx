@@ -35,10 +35,10 @@ Carousel.defaultProps = {
 };
 
 Carousel.propTypes = {
-  images: PropTypes.arrayOf({
+  images: PropTypes.arrayOf(PropTypes.shape({
     filename: PropTypes.string,
     subfolder: PropTypes.string,
-  }),
+  })),
 };
 
 export default Carousel;

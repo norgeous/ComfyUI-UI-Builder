@@ -1,63 +1,42 @@
-import {
-  createContext, useEffect, useMemo, useState,
-} from 'react';
+import { createContext } from 'react';
 import PropTypes from 'prop-types';
 
-import useConfig from '../hooks/useConfig';
-import useComfyWs from '../hooks/useComfyWs';
+import useClientIdContext from '../hooks/useClientIdContext';
+import useConfigsContext from '../hooks/useConfigsContext';
+import useFormContext from '../hooks/useFormContext';
+import useObjectInfoContext from '../hooks/useObjectInfoContext';
+
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
-import useObjectInfo from '../hooks/useObjectInfo';
 import useBodyData from '../hooks/useBodyData';
-
-import uuidv4 from '../utils/uuidv4';
-import getFormInitialState from '../utils/getFormInitialState';
-
-const clientId = uuidv4();
 
 export const AppContext = createContext({});
 
-const AppProvider = ({
-  children,
-}) => {
+const AppProvider = ({ children }) => {
+  const clientId = useClientIdContext();
   const {
-    config,
-    configs,
-    setConfig,
-  } = useConfig();
-
-  const {
-    configData: {
-      formConfig,
-      adapterConfig,
+    config: {
+      configData: {
+        adapterConfig,
+      },
+      baseWorkflow,
     },
-    baseWorkflow,
-  } = config;
-
-  const { objectInfo } = useObjectInfo();
-
-  const formInitialState = useMemo(() => getFormInitialState(formConfig), [formConfig]);
-  const [formState, setFormState] = useState(formInitialState);
-
-  // when switching UIs, reset formState to default
-  useEffect(() => setFormState(formInitialState), [formInitialState]);
-
-  const updateFormState = (adjustment) => setFormState({
-    ...formState,
-    ...adjustment,
-  });
+  } = useConfigsContext();
+  const { objectInfo } = useFormContext();
+  const { formState } = useObjectInfoContext();
 
   const comfyUiData = { objectInfo };
 
-  const { adaptedComfyWorkflow, bodyData } = useBodyData({
-    clientId, comfyUiData, formState, baseWorkflow, adapterConfig,
-  });
-
   const {
-    isGenerating,
-    progress,
-    output,
-  } = useComfyWs(clientId);
+    adaptedComfyWorkflow,
+    bodyData,
+  } = useBodyData({
+    clientId,
+    comfyUiData,
+    formState,
+    baseWorkflow,
+    adapterConfig,
+  });
 
   const {
     executeFetch: executePrompt,
@@ -74,23 +53,8 @@ const AppProvider = ({
 
   return (
     <AppContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
-        clientId,
-
-        config,
-        configs,
-        setConfig,
-
-        formConfig,
-        formState,
-        updateFormState,
-
-        isGenerating,
-        progress,
-        output,
-
-        objectInfo,
-
         executePrompt,
         promptLoading,
         promptError,
@@ -98,7 +62,6 @@ const AppProvider = ({
         executeInterrupt,
         interruptLoading,
 
-        baseWorkflow,
         adaptedComfyWorkflow,
         bodyData,
       }}

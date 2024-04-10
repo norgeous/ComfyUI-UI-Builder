@@ -1,4 +1,5 @@
-import useAppContext from '../hooks/useAppContext';
+import useConfigsContext from '../hooks/useConfigsContext';
+import useFormContext from '../hooks/useFormContext';
 import Accordion from './Accordion';
 
 import Missing from './form-fields/Missing';
@@ -20,8 +21,8 @@ const components = {
 };
 
 const FormBuilder = () => {
-  const { config, formState, updateFormState } = useAppContext();
-  const { formConfig } = config.configData;
+  const { config: { configData: { formConfig } } } = useConfigsContext();
+  const { formState, updateFormState } = useFormContext();
   const sections = formConfig?.map(({ title, children }) => ({
     title,
     children: children.map(({
