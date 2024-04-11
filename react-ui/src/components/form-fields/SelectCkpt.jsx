@@ -24,7 +24,7 @@ const SelectCkpt = ({ name, value, ...props }) => {
     <Select
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       name={name}
-      value={options.map((option) => option[name]).indexOf(value)}
+      value={value}
       options={options}
     />
   );
