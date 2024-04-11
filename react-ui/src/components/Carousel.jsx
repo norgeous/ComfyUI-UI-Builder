@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { WsContext } from '../contexts/WsContext';
 
 const Div = styled.div`
   width: 100%;
@@ -17,28 +18,22 @@ const Img = styled.img`
   cursor: pointer;
 `;
 
-const Carousel = ({ images }) => (
-  <>
-    {images.map(({ filename, subfolder }) => (
-      <Div key={filename}>
-        <Img
-          src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
-          alt=""
-        />
-      </Div>
-    ))}
-  </>
-);
+const Carousel = () => {
+  const { output } = useContext(WsContext);
+  const images = output?.images || [];
 
-Carousel.defaultProps = {
-  images: [],
-};
-
-Carousel.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({
-    filename: PropTypes.string,
-    subfolder: PropTypes.string,
-  })),
+  return (
+    <>
+      {images.map(({ filename, subfolder }) => (
+        <Div key={filename}>
+          <Img
+            src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
+            alt=""
+          />
+        </Div>
+      ))}
+    </>
+  );
 };
 
 export default Carousel;

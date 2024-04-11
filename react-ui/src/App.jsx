@@ -10,17 +10,14 @@ import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
 
 const App = () => {
-  const {
-    progress,
-    output,
-  } = useAppContext();
+  const { progress } = useAppContext();
 
   return (
     <Page>
       <Main>
         <Progress value={progress} />
         <Content>
-          <Carousel images={output?.images || []} />
+          <Carousel />
         </Content>
         <StatusBar />
       </Main>
