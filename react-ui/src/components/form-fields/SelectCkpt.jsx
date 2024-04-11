@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Select from './Select';
-import useAppContext from '../../hooks/useAppContext';
+import { ObjectInfoContext } from '../../contexts/ObjectInfoContext';
 
 const SelectCkpt = ({ name, value, ...props }) => {
-  const { objectInfo } = useAppContext();
+  const { objectInfo } = useContext(ObjectInfoContext);
 
   const ckptOptions = objectInfo
     ?.CheckpointLoaderSimple
