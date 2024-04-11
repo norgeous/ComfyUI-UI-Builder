@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useComfyWs = (clientId) => {
+  const [isWsConnected, setIsWsConnected] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0); // fraction, between 0 and 1
   const [output, setOutput] = useState();
@@ -13,6 +14,9 @@ const useComfyWs = (clientId) => {
         setIsGenerating(true);
         setProgress(data.data.value / data.data.max);
       },
+      execution_cached: () => {},
+      execution_start: () => {},
+      executing: () => {},
       executed: (data) => {
         setIsGenerating(false);
         setProgress(0);
@@ -29,6 +33,7 @@ const useComfyWs = (clientId) => {
     };
 
     socket.addEventListener('open', () => console.log('Connected to the ComfyUI websocket')); // eslint-disable-line no-console
+    socket.addEventListener('close', () => console.log('closed the ComfyUI websocket')); // eslint-disable-line no-console
 
     socket.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
@@ -36,7 +41,7 @@ const useComfyWs = (clientId) => {
     });
   }, [clientId]);
 
-  return { isGenerating, progress, output };
+  return { isWsConnected, isGenerating, progress, output };
 };
 
 export default useComfyWs;
