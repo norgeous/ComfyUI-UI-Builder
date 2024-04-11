@@ -32,8 +32,8 @@ const useComfyWs = (clientId) => {
       },
     };
 
-    socket.addEventListener('open', () => console.log('Connected to the ComfyUI websocket')); // eslint-disable-line no-console
-    socket.addEventListener('close', () => console.log('closed the ComfyUI websocket')); // eslint-disable-line no-console
+    socket.addEventListener('open', () => setIsWsConnected(true));
+    socket.addEventListener('close', () => setIsWsConnected(false));
 
     socket.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
@@ -41,7 +41,12 @@ const useComfyWs = (clientId) => {
     });
   }, [clientId]);
 
-  return { isWsConnected, isGenerating, progress, output };
+  return {
+    isWsConnected,
+    isGenerating,
+    progress,
+    output,
+  };
 };
 
 export default useComfyWs;

@@ -22,7 +22,7 @@ const Bar = styled.div`
 `;
 
 const StatusBar = () => {
-  const { isGenerating, progress } = useContext(WsContext);
+  const { isWsConnected, isGenerating, progress } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const { config: { baseWorkflow } } = useContext(ConfigsContext);
   const { objectInfoLoading, objectInfoError, objectInfo } = useContext(ObjectInfoContext);
@@ -30,9 +30,13 @@ const StatusBar = () => {
 
   return (
     <Bar>
+      {isWsConnected ? '🟢' : '🔴'}
+      {' '}
       {isGenerating && 'GENERATING! '}
+      {' '}
       {Math.round(progress * 100)}
       %
+      {' '}
       <Debug label="formState" data={formState} />
       <Debug label="baseWorkflow" data={baseWorkflow} />
       <Debug label="objectInfo" data={{ objectInfoLoading, objectInfoError, objectInfo }} />

@@ -13,6 +13,7 @@ const WsProvider = ({ children }) => {
   const clientId = useClientIdContext();
 
   const {
+    isWsConnected,
     isGenerating,
     progress,
     output,
@@ -22,6 +23,7 @@ const WsProvider = ({ children }) => {
     <WsContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
+        isWsConnected,
         isGenerating,
         progress,
         output,
