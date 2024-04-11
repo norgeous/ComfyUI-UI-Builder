@@ -1,4 +1,5 @@
-import useAppContext from './hooks/useAppContext';
+import { useContext } from 'react';
+import { WsContext } from './contexts/WsContext';
 import {
   Page, Main, Controls, Content,
 } from './components/Layout';
@@ -10,7 +11,7 @@ import Carousel from './components/Carousel';
 import StatusBar from './components/StatusBar';
 
 const App = () => {
-  const { progress } = useAppContext();
+  const { progress } = useContext(WsContext);
 
   return (
     <Page>
