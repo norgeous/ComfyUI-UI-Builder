@@ -10,6 +10,7 @@
       "type": "fileupload",
       "name": "image",
       "label": "Image",
+      "info": "Images are saved to the ComfyUI/input directory",
       "colSpan": 2,
       "initialState": { "image": "" }
     },

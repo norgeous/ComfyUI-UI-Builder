@@ -5,6 +5,7 @@ const useComfyApi = ({
   options,
   enabled = true,
   adapter = res => res,
+  onComplete = () => {},
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -41,7 +42,11 @@ const useComfyApi = ({
           }
           return json;
         })
-        .then(res => setData(adapter(res)))
+        .then(res => adapter(res))
+        .then(adaptedData => {
+          setData(adaptedData);
+          onComplete(adaptedData);
+        })
         .catch(err => {
           console.error(err); // eslint-disable-line no-console
           setLoading(false);

@@ -6,6 +6,7 @@ export const ObjectInfoContext = createContext({});
 
 const ObjectInfoProvider = ({ children }) => {
   const {
+    executeFetch: objectInfoExecuteFetch,
     loading: objectInfoLoading,
     error: objectInfoError,
     data: objectInfo,
@@ -17,6 +18,7 @@ const ObjectInfoProvider = ({ children }) => {
     <ObjectInfoContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
+        objectInfoExecuteFetch,
         objectInfoLoading,
         objectInfoError,
         objectInfo,

@@ -1,14 +1,13 @@
 {
   "name": "react-ui",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "view": "vite preview",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
-    "lint": "eslint . --ext .js,.jsx,.cjs --fix"
+    "lint": "eslint . --ext .js,.jsx,.cjs --fix",
+    "view": "vite preview"
   },
   "dependencies": {
     "prop-types": "^15.8.1",
