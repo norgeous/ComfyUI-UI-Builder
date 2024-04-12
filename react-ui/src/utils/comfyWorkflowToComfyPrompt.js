@@ -110,6 +110,7 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
       );
 
       const index = widgetValueKeys.findIndex(key => key === fieldName);
+
       // eslint-disable-next-line camelcase
       widgets_values[index] = value; // override widgets_values value
     }
