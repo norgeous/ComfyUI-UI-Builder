@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useComfyWs = (clientId) => {
   const [isWsConnected, setIsWsConnected] = useState(false);
+  const [lastWsMessage, setLastWsMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0); // fraction, between 0 and 1
   const [output, setOutput] = useState();
@@ -10,22 +11,31 @@ const useComfyWs = (clientId) => {
     const socket = new WebSocket(`/ws?clientId=${clientId}`);
 
     const socketMessageActions = {
-      progress: (data) => {
-        setIsGenerating(true);
-        setProgress(data.data.value / data.data.max);
+      execution_cached: () => {
+        setLastWsMessage('EXECUTION_CACHED');
       },
-      execution_cached: () => {},
-      execution_start: () => {},
-      executing: () => {},
+      execution_start: () => {
+        setLastWsMessage('EXECUTION_START');
+      },
+      executing: (data) => {
+        if (data.data.node) {
+          setLastWsMessage(`EXECUTING node ${data.data.node}`);
+        }
+      },
       executed: (data) => {
+        setLastWsMessage('EXECUTED');
         setIsGenerating(false);
         setProgress(0);
         setOutput(data.data.output);
       },
       execution_interrupted: () => {
+        setLastWsMessage('EXECUTION_INTERRUPTED');
         setIsGenerating(false);
         setProgress(0);
-        console.log('Execution Interrupted'); // eslint-disable-line no-console
+      },
+      progress: (data) => {
+        setIsGenerating(true);
+        setProgress(data.data.value / data.data.max);
       },
       status: (data) => {
         setIsGenerating(data.data.status.exec_info.queue_remaining > 0);
@@ -43,6 +53,7 @@ const useComfyWs = (clientId) => {
 
   return {
     isWsConnected,
+    lastWsMessage,
     isGenerating,
     progress,
     output,

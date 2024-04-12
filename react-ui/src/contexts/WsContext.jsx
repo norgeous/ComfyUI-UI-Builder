@@ -14,6 +14,7 @@ const WsProvider = ({ children }) => {
 
   const {
     isWsConnected,
+    lastWsMessage,
     isGenerating,
     progress,
     output,
@@ -24,6 +25,7 @@ const WsProvider = ({ children }) => {
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         isWsConnected,
+        lastWsMessage,
         isGenerating,
         progress,
         output,
