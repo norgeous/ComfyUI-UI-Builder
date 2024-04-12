@@ -2,10 +2,8 @@
 
 ## Now
 
-- code tidy up
-  - fix linting
-  - fix uik-kit warnings
-- lint on save / format on save vs code
+- fix linting
+- fix uik-kit warnings
 - lint staged + husky
 
 ## Next
