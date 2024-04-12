@@ -29,7 +29,9 @@ const Accordion = ({ items }) => {
     <AccordionContainer uk-accordion="collapsible: false">
       {sections?.map(({ title, children }) => (
         <div key={title}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="uk-accordion-title">{title}</a>
+          {/* eslint-disable-next-line react/no-unknown-property */}
           <div className="uk-accordion-content uk-grid-small" uk-grid="true">
             {children}
           </div>
