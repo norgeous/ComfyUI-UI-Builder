@@ -5,11 +5,12 @@ module.exports = {
     'eslint:recommended',
     'airbnb',
     'airbnb/hooks',
+    'prettier',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
@@ -19,17 +20,18 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'react/function-component-definition': ['error', {
-      namedComponents: 'arrow-function',
-      unnamedComponents: 'arrow-function',
-    }],
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       {
         // only these files are allowed to import from devDeps
-        'devDependencies': [
-          'vite.config.js',
-        ],
+        devDependencies: ['vite.config.js'],
       },
     ],
   },

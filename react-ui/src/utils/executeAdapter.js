@@ -12,10 +12,11 @@ const executeAdapter = ({
   const operations = {
     // append formState string value to previous
     // get: (previous, targets) => [previous, formState[targets[0]]].filter(v => v).join(' '),
-    get: (previous, target) => [previous, formState[target]].filter((v) => v).join(' '),
+    get: (previous, target) =>
+      [previous, formState[target]].filter(v => v).join(' '),
 
     // append raw string value to previous
-    raw: (previous, text) => [previous, text].filter((v) => v).join(' '),
+    raw: (previous, text) => [previous, text].filter(v => v).join(' '),
 
     // set a numeric value, ignores previous
     num: (_, text) => Number(text),
@@ -31,21 +32,26 @@ const executeAdapter = ({
     clear: () => undefined,
 
     // multiply formState value with previous value
-    multiply: (previous, target) => Number(previous) * Number(formState[target]),
+    multiply: (previous, target) =>
+      Number(previous) * Number(formState[target]),
 
     // round a number
-    round: (previous) => Math.round(previous),
+    round: previous => Math.round(previous),
 
     // add formState value to previous value
     add: (previous, target) => Number(previous) + Number(formState[target]),
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
-    findInCkptNames: (previous) => comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
-      (ckpt) => ckpt.toLowerCase().includes(previous.toLowerCase()),
-    ),
+    findInCkptNames: previous =>
+      comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
+        ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
+      ),
 
     // find the lora
-    findInLoraNames: (previous) => comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find((lora) => lora.toLowerCase().includes(previous.toLowerCase())),
+    findInLoraNames: previous =>
+      comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find(lora =>
+        lora.toLowerCase().includes(previous.toLowerCase()),
+      ),
   };
 
   const processStep = (previous, step) => {
@@ -88,7 +94,8 @@ const executeAdapter = ({
   }));
 
   const adaptedWorkflow = adapted.reduce(
-    (acc, { destination, value }) => insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),
+    (acc, { destination, value }) =>
+      insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),
     structuredClone(baseWorkflow),
   );
 
