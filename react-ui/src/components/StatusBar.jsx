@@ -13,6 +13,7 @@ const Bar = styled.div`
   padding: 2px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 5px;
   background: rgb(34, 42, 48);
   padding: 5px;
@@ -30,18 +31,21 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      {isWsConnected ? '🟢' : '🔴'}
-      {' '}
-      {isGenerating && 'GENERATING! '}
-      {' '}
-      {Math.round(progress * 100)}
-      %
-      {' '}
-      <Debug label="formState" data={formState} />
-      <Debug label="baseWorkflow" data={baseWorkflow} />
-      <Debug label="objectInfo" data={{ objectInfoLoading, objectInfoError, objectInfo }} />
-      <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
-      <Debug label="bodyData" data={bodyData} />
+      <div>
+        {isWsConnected ? '🟢' : '🔴'}
+        {' '}
+        {isGenerating && 'GENERATING! '}
+        {' '}
+        {Math.round(progress * 100)}
+        %
+      </div>
+      <div>
+        <Debug label="formState" data={formState} />
+        <Debug label="baseWorkflow" data={baseWorkflow} />
+        <Debug label="objectInfo" data={{ objectInfoLoading, objectInfoError, objectInfo }} />
+        <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
+        <Debug label="bodyData" data={bodyData} />
+      </div>
     </Bar>
   );
 };
