@@ -91,7 +91,7 @@
         {
           "label": "LCM",
           "isLcm": true,
-          "baseSteps": 4,
+          "baseSteps": 6,
           "stepMultiplier": 4,
           "cfg": 2.5,
           "samplerName": "lcm",
