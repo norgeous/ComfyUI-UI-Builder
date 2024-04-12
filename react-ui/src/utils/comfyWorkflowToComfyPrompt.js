@@ -64,10 +64,9 @@ const comfyWorkflowToComfyPrompt = ({ comfyWorkflow, objectInfo }) => {
       const newInputs = keys.reduce((acc2, key) => {
         const linkId = inputs?.find(({ name }) => name === key)?.link; // linkId or undefined
 
-        // eslint-disable-next-line camelcase
         const value = linkId
           ? getLink(linkLookup, linkId)
-          : widgets_values.shift();
+          : widgets_values.shift(); // eslint-disable-line camelcase
         return { ...acc2, [key]: value };
       }, {});
 

@@ -29,6 +29,7 @@ const FormControls = () => {
         onClick={handleClick}
         // loading={promptLoading || isGenerating}
       >
+        {/* eslint-disable-next-line react/no-unknown-property */}
         <span uk-icon="icon: bolt" />
         {}
         Roll
