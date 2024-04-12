@@ -10,7 +10,6 @@ import { AppContext } from '../contexts/AppContext';
 import Debug from './Debug';
 
 const Bar = styled.div`
-  padding: 2px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,6 +19,12 @@ const Bar = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: scroll;
+`;
+
+const Buggers = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 `;
 
 const StatusBar = () => {
@@ -39,13 +44,13 @@ const StatusBar = () => {
         {Math.round(progress * 100)}
         %
       </div>
-      <div>
+      <Buggers>
         <Debug label="formState" data={formState} />
         <Debug label="baseWorkflow" data={baseWorkflow} />
         <Debug label="objectInfo" data={{ objectInfoLoading, objectInfoError, objectInfo }} />
         <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
         <Debug label="bodyData" data={bodyData} />
-      </div>
+      </Buggers>
     </Bar>
   );
 };
