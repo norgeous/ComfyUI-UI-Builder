@@ -2,7 +2,11 @@ import comfyWorkflowToComfyPrompt from '../utils/comfyWorkflowToComfyPrompt';
 import executeAdapter from '../utils/executeAdapter';
 
 const useBodyData = ({
-  clientId, comfyUiData, formState, baseWorkflow, adapterConfig,
+  clientId,
+  comfyUiData,
+  formState,
+  baseWorkflow,
+  adapterConfig,
 }) => {
   // wait for comfy ui data
   if (!comfyUiData.objectInfo) return {};

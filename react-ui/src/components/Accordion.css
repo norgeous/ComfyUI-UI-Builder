@@ -1,13 +1,13 @@
 .uk-accordion > div {
-    margin-top: 0!important;
+  margin-top: 0 !important;
 }
 
 .uk-accordion-content {
-    padding: 15px!important;
+  padding: 15px !important;
 }
 
 .uk-accordion-title {
-    padding: 10px 12px;
-    border-bottom: 1px solid #394650;
-    background-color: #171d21;
+  padding: 10px 12px;
+  border-bottom: 1px solid #394650;
+  background-color: #171d21;
 }

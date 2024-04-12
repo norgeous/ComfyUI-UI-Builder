@@ -68,7 +68,7 @@
       "initialOptionIndex": 0,
       "options": [
         { "label": "1:1 Square", "size": 0, "width": 1024, "height": 1024 },
-        { "label": "16:9 Landscape", "size": 1, "width": 1344 , "height": 768 },
+        { "label": "16:9 Landscape", "size": 1, "width": 1344, "height": 768 },
         { "label": "16:9 Portrait", "size": 2, "width": 768, "height": 1344 }
       ]
     },
@@ -171,7 +171,12 @@
     },
     {
       "destination": "KSampler > steps",
-      "actions": ["get:quality", "multiply:stepMultiplier", "round", "add:baseSteps"]
+      "actions": [
+        "get:quality",
+        "multiply:stepMultiplier",
+        "round",
+        "add:baseSteps"
+      ]
     },
     {
       "destination": "KSampler > cfg",

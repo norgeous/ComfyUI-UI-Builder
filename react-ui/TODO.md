@@ -2,7 +2,6 @@
 
 ## Now
 
-- add prettier 
 - code tidy up
   - fix linting
   - fix uik-kit warnings
@@ -17,6 +16,8 @@
 - error handling of missing ckpt or lora
 - README redo, how to make UIB workflows
 - github CI build process
+- image input (for ipa)
+  - example UI
 
 ## Future
 
@@ -24,8 +25,7 @@
   - reset all to default button
   - reset indivdual elements buttons?
 - pwa?
- - connect to remote comfyui?
-- image input (for ipa)
+- connect to remote comfyui?
 - video input (for animatediff)
 - video output
 - adjust weight with CTRL+UP or CTRL+DOWN

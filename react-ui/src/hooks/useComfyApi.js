@@ -34,7 +34,11 @@ const useComfyApi = ({
           }
 
           const json = await res.json();
-          if (res.status !== 200) setError(`${res.status}: ${json.node_errors['1'].errors[0].details}`);
+          if (res.status !== 200) {
+            setError(
+              `${res.status}: ${json.node_errors['1'].errors[0].details}`,
+            );
+          }
           return json;
         })
         .then((res) => setData(adapter(res)))
