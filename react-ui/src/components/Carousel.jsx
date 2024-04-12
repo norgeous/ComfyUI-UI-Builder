@@ -23,7 +23,7 @@ const Div = styled.div`
 
 const Img = styled.img`
   display: block;
-  padding: 5px;
+  padding: 20px;
   max-width: 100%;
   max-height: 100%;
   cursor: pointer;
