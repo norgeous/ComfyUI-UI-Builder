@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 
 const useComfyWs = clientId => {
-  const [isWsConnected, setIsWsConnected] = useState(false);
+  const [wsStatus, setWsStatus] = useState('DEFAULT');
   const [lastWsMessage, setLastWsMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0); // fraction, between 0 and 1
   const [output, setOutput] = useState();
 
   useEffect(() => {
-    const socket = new WebSocket(`/ws?clientId=${clientId}`);
-
     const socketMessageActions = {
       execution_cached: () => {
         setLastWsMessage('EXECUTION_CACHED');
@@ -42,9 +40,10 @@ const useComfyWs = clientId => {
       },
     };
 
-    socket.addEventListener('open', () => setIsWsConnected(true));
-    socket.addEventListener('close', () => setIsWsConnected(false));
-
+    setWsStatus('CONNECTING');
+    const socket = new WebSocket(`/ws?clientId=${clientId}`);
+    socket.addEventListener('open', () => setWsStatus('CONNECTED'));
+    socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
     socket.addEventListener('message', event => {
       const data = JSON.parse(event.data);
       socketMessageActions[data.type]?.(data);
@@ -52,7 +51,7 @@ const useComfyWs = clientId => {
   }, [clientId]);
 
   return {
-    isWsConnected,
+    wsStatus,
     lastWsMessage,
     isGenerating,
     progress,

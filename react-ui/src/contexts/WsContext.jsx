@@ -12,14 +12,14 @@ export const WsContext = createContext({
 const WsProvider = ({ children }) => {
   const clientId = useClientIdContext();
 
-  const { isWsConnected, lastWsMessage, isGenerating, progress, output } =
+  const { wsStatus, lastWsMessage, isGenerating, progress, output } =
     useComfyWs(clientId);
 
   return (
     <WsContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
-        isWsConnected,
+        wsStatus,
         lastWsMessage,
         isGenerating,
         progress,

@@ -8,6 +8,7 @@ import { ObjectInfoContext } from '../contexts/ObjectInfoContext';
 import { AppContext } from '../contexts/AppContext';
 
 import Debug from './Debug';
+import StatusLight from './StatusLight';
 
 const Bar = styled.div`
   display: flex;
@@ -24,12 +25,11 @@ const Bar = styled.div`
 const Buggers = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const StatusBar = () => {
-  const { isWsConnected, lastWsMessage, isGenerating, progress } =
-    useContext(WsContext);
+  const { lastWsMessage, isGenerating, progress } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -41,7 +41,7 @@ const StatusBar = () => {
   return (
     <Bar>
       <div>
-        {isWsConnected ? '🟢' : '🔴'} {lastWsMessage}{' '}
+        <StatusLight /> {lastWsMessage}{' '}
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Buggers>
