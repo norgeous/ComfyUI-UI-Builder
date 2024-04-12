@@ -26,9 +26,9 @@ const UiSelector = () => {
   return (
     <Header className="uk-text-center uk-margin-remove-vertical text-light">
       <Select
-        options={options}
         name="ui"
-        value={configs.findIndex((c) => c.configData.name === config.configData.name)}
+        options={options}
+        value={config.configData.name}
         onChange={handleChange}
       />
     </Header>
