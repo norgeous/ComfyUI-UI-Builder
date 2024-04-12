@@ -4,13 +4,13 @@ export const Page = styled.div`
   display: grid;
   grid-template-rows: 50% 50%;
   height: 100svh;
-  @media (min-width: 640px) {
+  @media (min-width: 920px) {
     grid-template-columns: 460px auto;
   }
 `;
 
 export const Main = styled.main`
-  @media (min-width: 640px) {
+  @media (min-width: 920px) {
     order: 2; // change the order on desktop, so that controls are first
     height: 100svh;
   }
@@ -28,15 +28,12 @@ export const Controls = styled.aside`
   flex-direction: column;
   background-color: #222A30;
   height: 50svh;
-  @media (min-width: 640px) {
+  @media (min-width: 920px) {
     height: 100svh;
   }
 `;
 
 export const Content = styled.div`
-  flex: 1 0;
-  overflow-y: auto;
-  max-height: calc(100svh - 7px - 40px);
-  padding: 20px;
-  scroll-snap-type: both mandatory;
+  flex: 1;
+  max-height: calc(100% - 7px - 34px);
 `;
