@@ -1,16 +1,8 @@
 import PropTypes from 'prop-types';
 import Label from '../Label';
 
-const Select = ({
-  name,
-  label,
-  info,
-  options,
-  value,
-  onChange,
-  ...props
-}) => {
-  const handleChange = (event) => {
+const Select = ({ name, label, info, options, value, onChange, ...props }) => {
+  const handleChange = event => {
     const { label: _, ...state } = options[Number(event.target.value)];
     onChange(state);
   };
@@ -21,11 +13,13 @@ const Select = ({
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
         className="uk-select"
-        value={String(options.map((option) => option[name]).indexOf(value))}
+        value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
       >
         {options.map(({ label: optionLabel }, index) => (
-          <option key={optionLabel} value={index}>{optionLabel}</option>
+          <option key={optionLabel} value={index}>
+            {optionLabel}
+          </option>
         ))}
       </select>
     </Label>
@@ -45,9 +39,11 @@ Select.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-  })),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+    }),
+  ),
   value: PropTypes.number,
   onChange: PropTypes.func,
 };

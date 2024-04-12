@@ -16,9 +16,7 @@ const AppProvider = ({ children }) => {
   const clientId = useClientIdContext();
   const {
     config: {
-      configData: {
-        adapterConfig,
-      },
+      configData: { adapterConfig },
       baseWorkflow,
     },
   } = useConfigsContext();
@@ -27,10 +25,7 @@ const AppProvider = ({ children }) => {
 
   const comfyUiData = { objectInfo };
 
-  const {
-    adaptedComfyWorkflow,
-    bodyData,
-  } = useBodyData({
+  const { adaptedComfyWorkflow, bodyData } = useBodyData({
     clientId,
     comfyUiData,
     formState,

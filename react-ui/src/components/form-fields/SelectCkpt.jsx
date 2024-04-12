@@ -6,18 +6,17 @@ import { ObjectInfoContext } from '../../contexts/ObjectInfoContext';
 const SelectCkpt = ({ name, value, ...props }) => {
   const { objectInfo } = useContext(ObjectInfoContext);
 
-  const ckptOptions = objectInfo
-    ?.CheckpointLoaderSimple
-    .input
-    .required
-    .ckpt_name[0].map((ckptName) => ({
-      label: ckptName,
-      [name]: ckptName,
-    }));
+  const ckptOptions =
+    objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0].map(
+      ckptName => ({
+        label: ckptName,
+        [name]: ckptName,
+      }),
+    );
 
   const options = [
     { label: '-- undefined --', [name]: '' },
-    ...ckptOptions || [],
+    ...(ckptOptions || []),
   ];
 
   return (

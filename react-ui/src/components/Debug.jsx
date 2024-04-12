@@ -26,12 +26,10 @@ const Debug = ({ label, data }) => {
 
   return (
     <>
-      <Button onClick={toggle} title={label}>🐞</Button>
-      {open && (
-        <Pre onClick={toggle}>
-          {JSON.stringify(data, null, 2)}
-        </Pre>
-      )}
+      <Button onClick={toggle} title={label}>
+        🐞
+      </Button>
+      {open && <Pre onClick={toggle}>{JSON.stringify(data, null, 2)}</Pre>}
     </>
   );
 };

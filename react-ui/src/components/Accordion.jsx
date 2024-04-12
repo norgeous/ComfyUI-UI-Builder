@@ -10,17 +10,14 @@ const AccordionContainer = styled.section`
 
 const Accordion = ({ items }) => {
   const sections = items.reduce((acc, { group, component }) => {
-    const previousChildrenInGroup = acc
-      .find(({ title }) => title === group)?.children || [];
+    const previousChildrenInGroup =
+      acc.find(({ title }) => title === group)?.children || [];
 
     return [
       ...acc.filter(({ title }) => title !== group),
       {
         title: group,
-        children: [
-          ...previousChildrenInGroup,
-          component,
-        ],
+        children: [...previousChildrenInGroup, component],
       },
     ];
   }, []);
@@ -46,10 +43,12 @@ Accordion.defaultProps = {
 };
 
 Accordion.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    group: PropTypes.string,
-    component: PropTypes.node,
-  })),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      group: PropTypes.string,
+      component: PropTypes.node,
+    }),
+  ),
 };
 
 export default Accordion;

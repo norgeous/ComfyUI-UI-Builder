@@ -5,11 +5,7 @@ import useConfig from '../hooks/useConfig';
 export const ConfigsContext = createContext({});
 
 const ConfigsProvider = ({ children }) => {
-  const {
-    config,
-    configs,
-    setConfig,
-  } = useConfig();
+  const { config, configs, setConfig } = useConfig();
 
   return (
     <ConfigsContext.Provider

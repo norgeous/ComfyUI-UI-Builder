@@ -6,11 +6,13 @@ const Container = styled.div`
   height: 100%;
   overflow-y: auto;
   scroll-snap-type: both mandatory;
-  ${({ open }) => open && css`
-    position: fixed;
-    inset: 0;
-    background: #000e;
-  `}
+  ${({ open }) =>
+    open &&
+    css`
+      position: fixed;
+      inset: 0;
+      background: #000e;
+    `}
 `;
 
 const Div = styled.div`
@@ -35,7 +37,7 @@ const Carousel = () => {
   const images = output?.images || [];
 
   return (
-    <Container open={open} onClick={() => setOpen((o) => !o)}>
+    <Container open={open} onClick={() => setOpen(o => !o)}>
       {images.map(({ filename, subfolder }) => (
         <Div key={filename}>
           <Img

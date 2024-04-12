@@ -1,8 +1,6 @@
 import { useContext } from 'react';
 import { WsContext } from './contexts/WsContext';
-import {
-  Page, Main, Controls, Content,
-} from './components/Layout';
+import { Page, Main, Controls, Content } from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
 import FormControls from './components/FormControls';

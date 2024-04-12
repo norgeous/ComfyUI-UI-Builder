@@ -7,11 +7,7 @@ const Header = styled.header`
 `;
 
 const UiSelector = () => {
-  const {
-    config,
-    configs,
-    setConfig,
-  } = useConfigsContext();
+  const { config, configs, setConfig } = useConfigsContext();
 
   const handleChange = ({ ui }) => {
     const newConfig = configs.find(({ configData: { name } }) => name === ui);

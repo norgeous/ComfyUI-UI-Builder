@@ -11,11 +11,7 @@ const FormControls = () => {
     updateFormState,
   } = useFormContext();
 
-  const {
-    promptError,
-    executePrompt,
-    executeInterrupt,
-  } = useAppContext();
+  const { promptError, executePrompt, executeInterrupt } = useAppContext();
 
   const handleClick = () => {
     executePrompt();
@@ -34,7 +30,7 @@ const FormControls = () => {
         // loading={promptLoading || isGenerating}
       >
         <span uk-icon="icon: bolt" />
-        { }
+        {}
         Roll
       </Button>
       {isGenerating && (

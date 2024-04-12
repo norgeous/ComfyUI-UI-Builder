@@ -17,25 +17,17 @@ const Sublabel = styled.div`
 const Pip = styled.div`
   width: 0;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   text-align: center;
   cursor: pointer;
 `;
 
-const Range = ({
-  name,
-  label,
-  info,
-  options,
-  value,
-  onChange,
-  ...props
-}) => {
+const Range = ({ name, label, info, options, value, onChange, ...props }) => {
   const isPips = options.every(({ label: pipLabel }) => pipLabel);
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { label: _, ...state } = options[Number(event.target.value)];
     onChange(state);
   };
@@ -49,27 +41,22 @@ const Range = ({
         min="0"
         max={options.length - 1}
         step="1"
-        value={String(options.map((option) => option[name]).indexOf(value))}
+        value={String(options.map(option => option[name]).indexOf(value))}
         onChange={handleChange}
       />
-      <Sublabels
-        className="uk-text-muted"
-        $isPips={isPips}
-      >
+      <Sublabels className="uk-text-muted" $isPips={isPips}>
         {!isPips && minLabel && (
           <Sublabel onClick={() => onChange(options[0])}>
             <span uk-icon="icon: arrow-left" />
             {minLabel}
           </Sublabel>
         )}
-        {isPips && options?.map(({ label: pipLabel }, index) => (
-          <Pip
-            key={pipLabel}
-            onClick={() => onChange(options[index])}
-          >
-            {pipLabel}
-          </Pip>
-        ))}
+        {isPips &&
+          options?.map(({ label: pipLabel }, index) => (
+            <Pip key={pipLabel} onClick={() => onChange(options[index])}>
+              {pipLabel}
+            </Pip>
+          ))}
         {!isPips && maxLabel && (
           <Sublabel onClick={() => onChange(options[options.length - 1])}>
             {maxLabel}
@@ -94,9 +81,11 @@ Range.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-  })),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+    }),
+  ),
   value: PropTypes.number,
   onChange: PropTypes.func,
 };

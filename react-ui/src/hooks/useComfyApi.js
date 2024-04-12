@@ -4,7 +4,7 @@ const useComfyApi = ({
   fetchUrl,
   options,
   enabled = true,
-  adapter = (res) => res,
+  adapter = res => res,
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -23,7 +23,7 @@ const useComfyApi = ({
         },
         ...options,
       })
-        .then(async (res) => {
+        .then(async res => {
           setLoading(false);
 
           const resType = res.headers.get('content-type').split(';')[0];
@@ -41,8 +41,8 @@ const useComfyApi = ({
           }
           return json;
         })
-        .then((res) => setData(adapter(res)))
-        .catch((err) => {
+        .then(res => setData(adapter(res)))
+        .catch(err => {
           console.error(err); // eslint-disable-line no-console
           setLoading(false);
           setError(err.message);

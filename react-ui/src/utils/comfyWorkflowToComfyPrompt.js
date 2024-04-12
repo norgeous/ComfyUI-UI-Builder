@@ -1,8 +1,6 @@
-const getLinkLookup = (comfyWorkflow) => {
+const getLinkLookup = comfyWorkflow => {
   const linkLookup = comfyWorkflow.nodes.reduce(
-    (acc, {
-      id, mode, inputs, outputs,
-    }) => ({
+    (acc, { id, mode, inputs, outputs }) => ({
       ...acc,
       ...outputs?.reduce(
         (acc2, { links, name }, index) => ({
@@ -39,7 +37,8 @@ const getKeys = (objectInfo, type) => {
 
   // ksampler fix
   const indexOfSeed = keys.indexOf('seed');
-  if (type === 'KSampler' && indexOfSeed !== -1) keys.splice(indexOfSeed + 1, 0, 'control_after_generate');
+  if (type === 'KSampler' && indexOfSeed !== -1)
+    keys.splice(indexOfSeed + 1, 0, 'control_after_generate');
 
   return keys;
 };
@@ -91,7 +90,7 @@ export default comfyWorkflowToComfyPrompt;
 const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
   const [nodeName, fieldName] = destination.split(' > ');
 
-  const newWorkflowNodes = structuredClone(workflow).nodes.map((node) => {
+  const newWorkflowNodes = structuredClone(workflow).nodes.map(node => {
     const {
       type,
       title,
@@ -108,10 +107,10 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
 
       // keys minus linked inputs
       const widgetValueKeys = keys.filter(
-        (key) => !linkedInputNames.includes(key),
+        key => !linkedInputNames.includes(key),
       );
 
-      const index = widgetValueKeys.findIndex((key) => key === fieldName);
+      const index = widgetValueKeys.findIndex(key => key === fieldName);
       // eslint-disable-next-line camelcase
       widgets_values[index] = value; // override widgets_values value
     }

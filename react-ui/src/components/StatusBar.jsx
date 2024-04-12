@@ -28,30 +28,29 @@ const Buggers = styled.div`
 `;
 
 const StatusBar = () => {
-  const {
-    isWsConnected,
-    lastWsMessage,
-    isGenerating,
-    progress,
-  } = useContext(WsContext);
+  const { isWsConnected, lastWsMessage, isGenerating, progress } =
+    useContext(WsContext);
   const { formState } = useContext(FormContext);
-  const { config: { baseWorkflow } } = useContext(ConfigsContext);
-  const { objectInfoLoading, objectInfoError, objectInfo } = useContext(ObjectInfoContext);
+  const {
+    config: { baseWorkflow },
+  } = useContext(ConfigsContext);
+  const { objectInfoLoading, objectInfoError, objectInfo } =
+    useContext(ObjectInfoContext);
   const { adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
   return (
     <Bar>
       <div>
-        {isWsConnected ? '🟢' : '🔴'}
-        {' '}
-        {lastWsMessage}
-        {' '}
+        {isWsConnected ? '🟢' : '🔴'} {lastWsMessage}{' '}
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Buggers>
         <Debug label="formState" data={formState} />
         <Debug label="baseWorkflow" data={baseWorkflow} />
-        <Debug label="objectInfo" data={{ objectInfoLoading, objectInfoError, objectInfo }} />
+        <Debug
+          label="objectInfo"
+          data={{ objectInfoLoading, objectInfoError, objectInfo }}
+        />
         <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
         <Debug label="bodyData" data={bodyData} />
       </Buggers>

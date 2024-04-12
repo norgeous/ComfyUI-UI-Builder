@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types';
 import Label from '../Label';
 
-const Textarea = ({
-  name,
-  label,
-  info,
-  onChange,
-  ...props
-}) => {
-  const handleChange = (event) => onChange({ [name]: String(event.target.value) });
+const Textarea = ({ name, label, info, onChange, ...props }) => {
+  const handleChange = event =>
+    onChange({ [name]: String(event.target.value) });
 
   return (
     <Label label={label} info={info}>
@@ -17,7 +12,12 @@ const Textarea = ({
         {...props}
         className="uk-input"
         style={{
-          width: '100%', minWidth: '100%', height: 80, minHeight: 80, lineHeight: '21px', padding: '5px 10px',
+          width: '100%',
+          minWidth: '100%',
+          height: 80,
+          minHeight: 80,
+          lineHeight: '21px',
+          padding: '5px 10px',
         }}
         onChange={handleChange}
       />

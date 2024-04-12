@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useComfyWs = (clientId) => {
+const useComfyWs = clientId => {
   const [isWsConnected, setIsWsConnected] = useState(false);
   const [lastWsMessage, setLastWsMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -17,12 +17,12 @@ const useComfyWs = (clientId) => {
       execution_start: () => {
         setLastWsMessage('EXECUTION_START');
       },
-      executing: (data) => {
+      executing: data => {
         if (data.data.node) {
           setLastWsMessage(`EXECUTING node ${data.data.node}`);
         }
       },
-      executed: (data) => {
+      executed: data => {
         setLastWsMessage('EXECUTED');
         setIsGenerating(false);
         setProgress(0);
@@ -33,11 +33,11 @@ const useComfyWs = (clientId) => {
         setIsGenerating(false);
         setProgress(0);
       },
-      progress: (data) => {
+      progress: data => {
         setIsGenerating(true);
         setProgress(data.data.value / data.data.max);
       },
-      status: (data) => {
+      status: data => {
         setIsGenerating(data.data.status.exec_info.queue_remaining > 0);
       },
     };
@@ -45,7 +45,7 @@ const useComfyWs = (clientId) => {
     socket.addEventListener('open', () => setIsWsConnected(true));
     socket.addEventListener('close', () => setIsWsConnected(false));
 
-    socket.addEventListener('message', (event) => {
+    socket.addEventListener('message', event => {
       const data = JSON.parse(event.data);
       socketMessageActions[data.type]?.(data);
     });

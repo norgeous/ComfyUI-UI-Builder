@@ -12,13 +12,8 @@ export const WsContext = createContext({
 const WsProvider = ({ children }) => {
   const clientId = useClientIdContext();
 
-  const {
-    isWsConnected,
-    lastWsMessage,
-    isGenerating,
-    progress,
-    output,
-  } = useComfyWs(clientId);
+  const { isWsConnected, lastWsMessage, isGenerating, progress, output } =
+    useComfyWs(clientId);
 
   return (
     <WsContext.Provider
