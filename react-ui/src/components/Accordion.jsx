@@ -8,27 +8,45 @@ const AccordionContainer = styled.section`
   flex-grow: 1;
 `;
 
-const Accordion = ({ sections }) => (
-  <AccordionContainer uk-accordion="collapsible: false">
-    {sections?.map(({ title, children }) => (
-      <div key={title}>
-        <a className="uk-accordion-title">{title}</a>
-        <div className="uk-accordion-content uk-grid-small" uk-grid="true">
-          {children}
+const Accordion = ({ items }) => {
+  const sections = items.reduce((acc, { group, component }) => {
+    const previousChildrenInGroup = acc
+      .find(({ title }) => title === group)?.children || [];
+
+    return [
+      ...acc.filter(({ title }) => title !== group),
+      {
+        title: group,
+        children: [
+          ...previousChildrenInGroup,
+          component,
+        ],
+      },
+    ];
+  }, []);
+
+  return (
+    <AccordionContainer uk-accordion="collapsible: false">
+      {sections?.map(({ title, children }) => (
+        <div key={title}>
+          <a className="uk-accordion-title">{title}</a>
+          <div className="uk-accordion-content uk-grid-small" uk-grid="true">
+            {children}
+          </div>
         </div>
-      </div>
-    ))}
-  </AccordionContainer>
-);
+      ))}
+    </AccordionContainer>
+  );
+};
 
 Accordion.defaultProps = {
-  sections: [],
+  items: [],
 };
 
 Accordion.propTypes = {
-  sections: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    children: PropTypes.node,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    group: PropTypes.string,
+    component: PropTypes.node,
   })),
 };
 

@@ -1,15 +1,13 @@
 const getFormInitialState = (formConfig) => {
-  const formInitialState = formConfig.reduce((acc, { children }) => ({
-    ...acc,
-    ...children.reduce((acc2, { initialState, initialOptionIndex, options }) => {
+  const formInitialState = formConfig
+    .reduce((acc, { initialState, initialOptionIndex, options }) => {
       const { label, ...optionFragment } = options?.[initialOptionIndex] || {};
       return ({
-        ...acc2,
+        ...acc,
         ...initialState,
         ...optionFragment,
       });
-    }, {}),
-  }), {});
+    }, {});
 
   return formInitialState;
 };

@@ -23,31 +23,41 @@ const components = {
 const FormBuilder = () => {
   const { config: { configData: { formConfig } } } = useConfigsContext();
   const { formState, updateFormState } = useFormContext();
-  const sections = formConfig?.map(({ title, children }) => ({
-    title,
-    children: children.map(({
-      type, adapter, name, initialState, initialOptionIndex, colSpan, ...props
-    }) => {
-      const Component = components[type] || Missing;
-      return (
+  const items = formConfig?.map(({
+    group,
+    type,
+    adapter,
+    name,
+    initialState,
+    initialOptionIndex,
+    colSpan,
+    ...props
+  }) => {
+    const Component = components[type] || Missing;
+    const handleChange = (data) => {
+      const newFormState = { ...formState, ...data };
+      const adapted = adapter?.(newFormState);
+      if (adapted) updateFormState(adapted);
+      else updateFormState(data);
+    };
+
+    return {
+      group,
+      component: (
         <div key={name} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
           <Component
             {...props} // eslint-disable-line react/jsx-props-no-spreading
             type={type}
             name={name}
             value={formState[name]}
-            onChange={(data) => {
-              const newFormState = { ...formState, ...data };
-              const adapted = adapter?.(newFormState);
-              if (adapted) updateFormState(adapted);
-              else updateFormState(data);
-            }}
+            onChange={handleChange}
           />
         </div>
-      );
-    }),
-  }));
-  return <Accordion sections={sections} />;
+      ),
+    };
+  });
+
+  return <Accordion items={items} />;
 };
 
 export default FormBuilder;

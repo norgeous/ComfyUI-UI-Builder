@@ -6,125 +6,120 @@
   "tags": ["SDXL"],
   "formConfig": [
     {
-      "title": "Generation params",
-      "children": [
+      "group": "Generation params",
+      "type": "selectckpt",
+      "name": "ckpt",
+      "label": "Checkpoint",
+      "colSpan": 2,
+      "initialState": { "ckpt": "" }
+    },
+    {
+      "group": "Generation params",
+      "type": "textarea",
+      "name": "positivePrompt",
+      "label": "Positive Prompt",
+      "colSpan": 2,
+      "initialState": { "positivePrompt": "" }
+    },
+    {
+      "group": "Generation params",
+      "type": "textarea",
+      "name": "negativePrompt",
+      "label": "Negative Prompt",
+      "colSpan": 2,
+      "initialState": { "negativePrompt": "watermark, text" }
+    },
+    {
+      "group": "Generation params",
+      "type": "range",
+      "name": "quality",
+      "label": "Quality",
+      "initialOptionIndex": 3,
+      "options": [
+        { "label": "Speed", "quality": 0.25 },
+        { "quality": 0.5 },
+        { "quality": 0.75 },
+        { "label": "Accuracy", "quality": 1 }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "type": "range",
+      "name": "batchSize",
+      "label": "Results per generation",
+      "initialOptionIndex": 0,
+      "options": [
+        { "label": "1", "batchSize": 1 },
+        { "label": "2", "batchSize": 2 },
+        { "label": "3", "batchSize": 3 },
+        { "label": "4", "batchSize": 4 },
+        { "label": "5", "batchSize": 5 },
+        { "label": "6", "batchSize": 6 },
+        { "label": "7", "batchSize": 7 },
+        { "label": "8", "batchSize": 8 },
+        { "label": "9", "batchSize": 9 }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "type": "select",
+      "name": "size",
+      "label": "Size",
+      "initialOptionIndex": 0,
+      "options": [
+        { "label": "1:1 Square", "size": 0, "width": 1024, "height": 1024 },
+        { "label": "16:9 Landscape", "size": 1, "width": 1344 , "height": 768 },
+        { "label": "16:9 Portrait", "size": 2, "width": 768, "height": 1344 }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "type": "checkbox",
+      "name": "isLcm",
+      "info": "test",
+      "initialOptionIndex": 0,
+      "options": [
         {
-          "group": "Generation params",
-          "type": "selectckpt",
-          "name": "ckpt",
-          "label": "Checkpoint",
-          "colSpan": 2,
-          "initialState": { "ckpt": "" }
+          "label": "LCM",
+          "isLcm": false,
+          "baseSteps": 14,
+          "stepMultiplier": 14,
+          "cfg": 6.5,
+          "samplerName": "dpmpp_2m",
+          "scheduler": "exponential"
         },
         {
-          "group": "Generation params",
-          "type": "textarea",
-          "name": "positivePrompt",
-          "label": "Positive Prompt",
-          "colSpan": 2,
-          "initialState": { "positivePrompt": "" }
+          "label": "LCM",
+          "isLcm": true,
+          "baseSteps": 4,
+          "stepMultiplier": 4,
+          "cfg": 2.5,
+          "samplerName": "lcm",
+          "scheduler": "normal"
+        }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "type": "number",
+      "name": "seed",
+      "label": "Seed",
+      "initialState": { "seed": 1337 },
+      "onChange": { "enableSeedRandomisation": false }
+    },
+    {
+      "group": "Generation params",
+      "type": "checkbox",
+      "name": "enableSeedRandomisation",
+      "initialOptionIndex": 0,
+      "options": [
+        {
+          "label": "Random",
+          "enableSeedRandomisation": false
         },
         {
-          "group": "Generation params",
-          "type": "textarea",
-          "name": "negativePrompt",
-          "label": "Negative Prompt",
-          "colSpan": 2,
-          "initialState": { "negativePrompt": "watermark, text" }
-        },
-        {
-          "group": "Generation params",
-          "type": "range",
-          "name": "quality",
-          "label": "Quality",
-          "initialOptionIndex": 3,
-          "options": [
-            { "label": "Speed", "quality": 0.25 },
-            { "quality": 0.5 },
-            { "quality": 0.75 },
-            { "label": "Accuracy", "quality": 1 }
-          ]
-        },
-        {
-          "group": "Generation params",
-          "type": "range",
-          "name": "batchSize",
-          "label": "Results per generation",
-          "initialOptionIndex": 0,
-          "options": [
-            { "label": "1", "batchSize": 1 },
-            { "label": "2", "batchSize": 2 },
-            { "label": "3", "batchSize": 3 },
-            { "label": "4", "batchSize": 4 },
-            { "label": "5", "batchSize": 5 },
-            { "label": "6", "batchSize": 6 },
-            { "label": "7", "batchSize": 7 },
-            { "label": "8", "batchSize": 8 },
-            { "label": "9", "batchSize": 9 }
-          ]
-        },
-        {
-          "group": "Generation params",
-          "type": "select",
-          "name": "size",
-          "label": "Size",
-          "initialOptionIndex": 0,
-          "options": [
-            { "label": "1:1 Square", "size": 0, "width": 1024, "height": 1024 },
-            { "label": "16:9 Landscape", "size": 1, "width": 1344 , "height": 768 },
-            { "label": "16:9 Portrait", "size": 2, "width": 768, "height": 1344 }
-          ]
-        },
-        {
-          "group": "Generation params",
-          "type": "checkbox",
-          "name": "isLcm",
-          "info": "test",
-          "initialOptionIndex": 0,
-          "options": [
-            {
-              "label": "LCM",
-              "isLcm": false,
-              "baseSteps": 14,
-              "stepMultiplier": 14,
-              "cfg": 6.5,
-              "samplerName": "dpmpp_2m",
-              "scheduler": "exponential"
-            },
-            {
-              "label": "LCM",
-              "isLcm": true,
-              "baseSteps": 4,
-              "stepMultiplier": 4,
-              "cfg": 2.5,
-              "samplerName": "lcm",
-              "scheduler": "normal"
-            }
-          ]
-        },
-        {
-          "group": "Generation params",
-          "type": "number",
-          "name": "seed",
-          "label": "Seed",
-          "initialState": { "seed": 1337 },
-          "onChange": { "enableSeedRandomisation": false }
-        },
-        {
-          "group": "Generation params",
-          "type": "checkbox",
-          "name": "enableSeedRandomisation",
-          "initialOptionIndex": 0,
-          "options": [
-            {
-              "label": "Random",
-              "enableSeedRandomisation": false
-            },
-            {
-              "label": "Random",
-              "enableSeedRandomisation": true
-            }
-          ]
+          "label": "Random",
+          "enableSeedRandomisation": true
         }
       ]
     }
