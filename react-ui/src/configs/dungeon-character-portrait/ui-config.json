@@ -9,6 +9,7 @@
       "title": "Character",
       "children": [
         {
+          "group": "Character",
           "type": "range",
           "name": "gender",
           "label": "Gender",
@@ -22,6 +23,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "range",
           "name": "age",
           "label": "Age",
@@ -34,6 +36,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "range",
           "name": "bodyStructure",
           "label": "Body structure",
@@ -46,9 +49,7 @@
           ]
         },
         {
-          "type": "spacer"
-        },
-        {
+          "group": "Character",
           "type": "select",
           "name": "race",
           "label": "Race",
@@ -64,6 +65,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "select",
           "name": "ethnicBias",
           "label": "Ethnic bias",
@@ -96,6 +98,7 @@
           "weight": 0.7
         },
         {
+          "group": "Character",
           "type": "select",
           "name": "characterClass",
           "label": "Class",
@@ -113,6 +116,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "select",
           "name": "clothing",
           "label": "Clothing / Armor",
@@ -131,6 +135,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "select",
           "name": "hairstyle",
           "label": "Hairstyle",
@@ -157,6 +162,7 @@
           ]
         },
         {
+          "group": "Character",
           "type": "select",
           "name": "hairColor",
           "label": "Hair color",
@@ -181,6 +187,7 @@
       "title": "Scene",
       "children": [
         {
+          "group": "Scene",
           "type": "select",
           "name": "style",
           "label": "Style",
@@ -190,6 +197,7 @@
           ]
         },
         {
+          "group": "Scene",
           "type": "select",
           "name": "background",
           "label": "Background",
@@ -211,6 +219,7 @@
           ]
         },
         {
+          "group": "Scene",
           "type": "select",
           "name": "mood",
           "label": "Mood",
@@ -225,6 +234,7 @@
           ]
         },
         {
+          "group": "Scene",
           "type": "select",
           "name": "colorHint",
           "label": "Color hint",
@@ -261,6 +271,7 @@
       "title": "Custom",
       "children": [
         {
+          "group": "Custom",
           "type": "textarea",
           "name": "customPrompt",
           "label": "Custom Prompt",
@@ -274,6 +285,7 @@
       "title": "Generation params",
       "children": [
         {
+          "group": "Generation params",
           "type": "range",
           "name": "quality",
           "label": "Quality",
@@ -286,6 +298,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "range",
           "name": "batchSize",
           "label": "Results per generation",
@@ -303,6 +316,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "select",
           "name": "preset",
           "label": "Preset",
@@ -377,6 +391,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "selectckpt",
           "name": "ckptOverride",
           "label": "Checkpoint override",
@@ -385,6 +400,7 @@
           "initialState": { "ckptOverride": "" }
         },
         {
+          "group": "Generation params",
           "type": "number",
           "name": "seed",
           "label": "Seed",
@@ -392,6 +408,7 @@
           "onChange": { "enableSeedRandomisation": false }
         },
         {
+          "group": "Generation params",
           "type": "checkbox",
           "name": "enableSeedRandomisation",
           "initialOptionIndex": 0,

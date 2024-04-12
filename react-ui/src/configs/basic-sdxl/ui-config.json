@@ -9,6 +9,7 @@
       "title": "Generation params",
       "children": [
         {
+          "group": "Generation params",
           "type": "selectckpt",
           "name": "ckpt",
           "label": "Checkpoint",
@@ -16,6 +17,7 @@
           "initialState": { "ckpt": "" }
         },
         {
+          "group": "Generation params",
           "type": "textarea",
           "name": "positivePrompt",
           "label": "Positive Prompt",
@@ -23,6 +25,7 @@
           "initialState": { "positivePrompt": "" }
         },
         {
+          "group": "Generation params",
           "type": "textarea",
           "name": "negativePrompt",
           "label": "Negative Prompt",
@@ -30,6 +33,7 @@
           "initialState": { "negativePrompt": "watermark, text" }
         },
         {
+          "group": "Generation params",
           "type": "range",
           "name": "quality",
           "label": "Quality",
@@ -42,6 +46,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "range",
           "name": "batchSize",
           "label": "Results per generation",
@@ -59,6 +64,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "select",
           "name": "size",
           "label": "Size",
@@ -70,6 +76,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "checkbox",
           "name": "isLcm",
           "info": "test",
@@ -96,6 +103,7 @@
           ]
         },
         {
+          "group": "Generation params",
           "type": "number",
           "name": "seed",
           "label": "Seed",
@@ -103,6 +111,7 @@
           "onChange": { "enableSeedRandomisation": false }
         },
         {
+          "group": "Generation params",
           "type": "checkbox",
           "name": "enableSeedRandomisation",
           "initialOptionIndex": 0,
