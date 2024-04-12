@@ -2,9 +2,8 @@
 
 ## Now
 
-- fix linting
-- fix uik-kit warnings
-- lint staged + husky
+- image input (for ipa)
+  - example UI
 
 ## Next
 
@@ -14,8 +13,6 @@
 - error handling of missing ckpt or lora
 - README redo, how to make UIB workflows
 - github CI build process
-- image input (for ipa)
-  - example UI
 
 ## Future
 
@@ -27,12 +24,17 @@
 - video input (for animatediff)
 - video output
 - adjust weight with CTRL+UP or CTRL+DOWN
-- more UIs
-  - fastgen example
-  - ipadapter example
+- fix linting
+- fix uik-kit warnings
+- lint staged + husky
 
 ## Ideas
 
-- swap component set?
-- interface builder?
-- alternative layouts abstraction?
+- choose component set / theme / layout
+- alternative layouts abstraction
+- interface builder
+- more UIs
+  - fastgen example (real time prompting)
+  - ipadapter example
+  - differential diffusion inpainting example
+  - animatediff example

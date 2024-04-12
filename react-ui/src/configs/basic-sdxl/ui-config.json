@@ -7,6 +7,14 @@
   "formConfig": [
     {
       "group": "Generation params",
+      "type": "fileupload",
+      "name": "image",
+      "label": "Image",
+      "colSpan": 2,
+      "initialState": { "image": "" }
+    },
+    {
+      "group": "Generation params",
       "type": "selectckpt",
       "name": "ckpt",
       "label": "Checkpoint",

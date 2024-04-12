@@ -10,6 +10,7 @@ import Range from './form-fields/Range';
 import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
 import Checkbox from './form-fields/Checkbox';
+import FileUpload from './form-fields/FileUpload';
 
 const components = {
   select: Select,
@@ -18,6 +19,7 @@ const components = {
   textarea: Textarea,
   number: Num,
   checkbox: Checkbox,
+  fileupload: FileUpload,
 };
 
 const FormBuilder = () => {
