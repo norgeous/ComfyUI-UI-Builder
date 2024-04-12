@@ -2,13 +2,12 @@
 
 ## Now
 
+- add prettier 
 - code tidy up
   - fix linting
   - fix uik-kit warnings
-- add prettier 
 - lint on save / format on save vs code
 - lint staged + husky
-- click image to zoom / carousel function
 
 ## Next
 
