@@ -1,33 +1,27 @@
 import PropTypes from 'prop-types';
 
-const Checkbox = ({
-  name,
-  value,
-  onChange,
-  options,
-  ...props
-}) => {
-  const { label } = options.find((option) => option[name] === value);
+const Checkbox = ({ name, value, onChange, options, ...props }) => {
+  const { label } = options.find(option => option[name] === value);
 
-  const handleChange = (event) => {
-    const {
-      label: _,
-      ...newState
-    } = options.find((option) => option[name] === Boolean(event.currentTarget.checked));
+  const handleChange = event => {
+    const { label: _, ...newState } = options.find(
+      option => option[name] === Boolean(event.currentTarget.checked),
+    );
     onChange(newState);
   };
 
   return (
-    <label className="uk-form-label" style={{ display: 'block', marginTop: 32 }}>
+    <label
+      className="uk-form-label"
+      style={{ display: 'block', marginTop: 32 }}
+    >
       <input
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...props}
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
         className="uk-checkbox"
         type="checkbox"
         checked={value}
         onChange={handleChange}
-      />
-      {' '}
+      />{' '}
       {label}
     </label>
   );
@@ -42,9 +36,11 @@ Checkbox.defaultProps = {
 
 Checkbox.propTypes = {
   name: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-  })),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  ),
   value: PropTypes.bool,
   onChange: PropTypes.func,
 };
