@@ -36,9 +36,8 @@ const ImageUpload = ({ name, ...props }) => {
     file,
     enabled: file,
     onComplete: adaptedData => {
-      // console.log(adaptedData);
       objectInfoExecuteFetch(); // refetch the objectInfo (which contains the available images list)
-      props.onChange({ [name]: adaptedData.name });
+      props.onChange({ [name]: adaptedData.name }); // set the current image
     },
   });
 

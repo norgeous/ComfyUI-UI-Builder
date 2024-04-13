@@ -1,18 +1,42 @@
-import sdxlWorkflow from './basic-sdxl/workflow.json';
-import sdxlConfig from './basic-sdxl/ui-config.json';
+const files = import.meta.glob('./**/*.json');
 
-import dungeonWorkflow from './dungeon-character-portrait/workflow.json';
-import dungeonConfig from './dungeon-character-portrait/ui-config.json';
+const getConfigs = async () => {
+  const keys = Object.keys(files);
+  const directoryNames = [...new Set(keys.map(key => key.split('/')[1]))];
 
-const configList = [
-  {
-    baseWorkflow: sdxlWorkflow,
-    configData: sdxlConfig,
-  },
-  {
-    baseWorkflow: dungeonWorkflow,
-    configData: dungeonConfig,
-  },
-];
+  const values = Object.values(files);
+  const fileContents = await Promise.all(values)
+    .then(res => Promise.all(res.map(json => json())))
+    .then(res =>
+      res.map((jsonData, index) => ({
+        fileName: keys[index],
+        jsonData,
+      })),
+    );
 
-export default configList;
+  const configs = directoryNames.reduce(
+    (acc, directoryName) => [
+      ...acc,
+      {
+        directoryName,
+        baseWorkflow: fileContents.find(
+          ({ fileName }) =>
+            fileName.includes(directoryName) &&
+            fileName.includes('workflow.json'),
+        ).jsonData,
+        configData: fileContents.find(
+          ({ fileName }) =>
+            fileName.includes(directoryName) &&
+            fileName.includes('uiConfig.json'),
+        ).jsonData,
+      },
+    ],
+    [],
+  );
+
+  return configs;
+};
+
+const configs = await getConfigs();
+
+export default configs;

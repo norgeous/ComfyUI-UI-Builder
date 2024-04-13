@@ -36,14 +36,13 @@ const Carousel = () => {
   const { output } = useContext(WsContext);
   const images = output?.images || [];
 
+  if (!images.length) return null;
+
   return (
     <Container open={open} onClick={() => setOpen(o => !o)}>
       {images.map(({ filename, subfolder }) => (
         <Div key={filename}>
-          <Img
-            src={`/view?filename=${filename}&type=output&subfolder=${subfolder}`}
-            alt=""
-          />
+          <Img alt="" src={`/view?type=output&filename=${filename}`} />
         </Div>
       ))}
     </Container>

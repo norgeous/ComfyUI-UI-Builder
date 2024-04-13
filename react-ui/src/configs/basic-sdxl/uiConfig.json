@@ -11,7 +11,7 @@
       "name": "image",
       "label": "Image",
       "info": "Images are saved to the ComfyUI/input directory",
-      "colSpan": 2,
+      "colSpan": 1,
       "initialState": { "image": "" }
     },
     {
