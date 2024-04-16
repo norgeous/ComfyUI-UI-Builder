@@ -20,12 +20,14 @@ const UiSelector = () => {
     ui: name,
   }));
 
+  const value = config.configData.name;
+
   return (
     <Header className="uk-text-center uk-margin-remove-vertical text-light">
       <Select
         name="ui"
         options={options}
-        value={config.configData?.name}
+        value={value}
         onChange={handleChange}
       />
     </Header>

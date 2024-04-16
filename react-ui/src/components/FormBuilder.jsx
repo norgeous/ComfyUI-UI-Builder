@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { ConfigsContext } from '../contexts/ConfigsContext';
 import { FormContext } from '../contexts/FormContext';
 
 import Accordion from './Accordion';
@@ -25,9 +24,7 @@ const components = {
 };
 
 const FormBuilder = () => {
-  const { config } = useContext(ConfigsContext);
-  const { formConfig } = config.configData || {};
-  const { formState, updateFormState } = useContext(FormContext);
+  const { formConfig, formState, updateFormState } = useContext(FormContext);
   const items = formConfig?.map(
     ({
       group,
@@ -47,9 +44,6 @@ const FormBuilder = () => {
         if (adapted) updateFormState(adapted);
         else updateFormState(data);
       };
-
-      // console.log({ type, props, formState, value });
-      if (!value === undefined) return '';
 
       return {
         group,

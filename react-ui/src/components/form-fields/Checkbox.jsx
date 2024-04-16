@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const Checkbox = ({ name, value, onChange, options, ...props }) => {
-  // console.log('checkbox', { options, name, value });
   const { label } = options.find(option => option[name] === value) || {};
 
   const handleChange = event => {
@@ -20,7 +19,7 @@ const Checkbox = ({ name, value, onChange, options, ...props }) => {
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         className="uk-checkbox"
         type="checkbox"
-        checked={value}
+        checked={value || false}
         onChange={handleChange}
       />{' '}
       {label}

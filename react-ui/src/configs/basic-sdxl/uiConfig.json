@@ -20,6 +20,7 @@
       "name": "ckpt",
       "label": "Checkpoint",
       "colSpan": 2,
+      "initialOptionIndex": 0,
       "initialState": { "ckpt": "" }
     },
     {
@@ -76,9 +77,24 @@
       "label": "Size",
       "initialOptionIndex": 0,
       "options": [
-        { "label": "1:1 Square", "size": 0, "width": 1024, "height": 1024 },
-        { "label": "16:9 Landscape", "size": 1, "width": 1344, "height": 768 },
-        { "label": "16:9 Portrait", "size": 2, "width": 768, "height": 1344 }
+        {
+          "label": "1:1 Square",
+          "size": "1:1 Square",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "label": "16:9 Landscape",
+          "size": "16:9 Landscape",
+          "width": 1344,
+          "height": 768
+        },
+        {
+          "label": "16:9 Portrait",
+          "size": "16:9 Portrait",
+          "width": 768,
+          "height": 1344
+        }
       ]
     },
     {

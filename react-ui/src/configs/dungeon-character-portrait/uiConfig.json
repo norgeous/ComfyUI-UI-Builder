@@ -15,26 +15,26 @@
       "options": [
         {
           "label": "Femininity",
-          "gender": "a",
+          "gender": 0,
           "isFemale": true,
           "genderPositive": "female",
           "genderNegative": "horror"
         },
         {
-          "gender": "b",
+          "gender": 1,
           "isFemale": true,
           "genderPositive": "(masculine:1.1) female",
           "genderNegative": "beard"
         },
         {
-          "gender": "c",
+          "gender": 2,
           "isFemale": false,
           "genderPositive": "(queer:0.9) feminine male",
           "genderNegative": "zombie, beard"
         },
         {
           "label": "Masculinity",
-          "gender": "d",
+          "gender": 3,
           "isFemale": false,
           "genderPositive": "male",
           "genderNegative": ""
