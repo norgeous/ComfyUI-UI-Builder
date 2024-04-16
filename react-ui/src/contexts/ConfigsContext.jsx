@@ -1,11 +1,21 @@
-import { createContext } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import useConfig from '../hooks/useConfig';
+import getConfigs from '../configs';
 
 export const ConfigsContext = createContext({});
 
 const ConfigsProvider = ({ children }) => {
-  const { config, configs, setConfig } = useConfig();
+  const [configs, setConfigs] = useState([]);
+  const [config, setConfig] = useState({});
+
+  // async load the entire src/configs directory
+  useEffect(() => {
+    (async () => {
+      const aConfigs = await getConfigs();
+      setConfigs(aConfigs);
+      setConfig(aConfigs[0]);
+    })();
+  }, []);
 
   return (
     <ConfigsContext.Provider
