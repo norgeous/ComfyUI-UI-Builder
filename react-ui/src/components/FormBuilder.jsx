@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ConfigsContext } from '../contexts/ConfigsContext';
-import useFormContext from '../hooks/useFormContext';
+import { FormContext } from '../contexts/FormContext';
+
 import Accordion from './Accordion';
 
 import Missing from './form-fields/Missing';
@@ -26,7 +27,7 @@ const components = {
 const FormBuilder = () => {
   const { config } = useContext(ConfigsContext);
   const { formConfig } = config.configData || {};
-  const { formState, updateFormState } = useFormContext();
+  const { formState, updateFormState } = useContext(FormContext);
   const items = formConfig?.map(
     ({
       group,

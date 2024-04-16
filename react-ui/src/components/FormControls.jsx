@@ -1,5 +1,6 @@
+import { useContext } from 'react';
+import { FormContext } from '../contexts/FormContext';
 import useWsContext from '../hooks/useWsContext';
-import useFormContext from '../hooks/useFormContext';
 import useAppContext from '../hooks/useAppContext';
 import Button from './Button';
 
@@ -9,7 +10,7 @@ const FormControls = () => {
   const {
     formState: { enableSeedRandomisation },
     updateFormState,
-  } = useFormContext();
+  } = useContext(FormContext);
 
   const { promptError, executePrompt, executeInterrupt } = useAppContext();
 
