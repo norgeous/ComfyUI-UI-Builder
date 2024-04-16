@@ -1,12 +1,12 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import useConfigsContext from '../hooks/useConfigsContext';
+import { ConfigsContext } from './ConfigsContext';
 import getFormInitialState from '../utils/getFormInitialState';
 
 export const FormContext = createContext({});
 
 const FormProvider = ({ children }) => {
-  const { config } = useConfigsContext();
+  const { config } = useContext(ConfigsContext);
   const { formConfig } = config.configData || {};
 
   const formInitialState = useMemo(

@@ -1,4 +1,5 @@
-import useConfigsContext from '../hooks/useConfigsContext';
+import { useContext } from 'react';
+import { ConfigsContext } from '../contexts/ConfigsContext';
 import useFormContext from '../hooks/useFormContext';
 import Accordion from './Accordion';
 
@@ -23,7 +24,7 @@ const components = {
 };
 
 const FormBuilder = () => {
-  const { config } = useConfigsContext();
+  const { config } = useContext(ConfigsContext);
   const { formConfig } = config.configData || {};
   const { formState, updateFormState } = useFormContext();
   const items = formConfig?.map(

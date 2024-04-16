@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ConfigsContext } from './ConfigsContext';
 
 import useClientIdContext from '../hooks/useClientIdContext';
-import useConfigsContext from '../hooks/useConfigsContext';
 import useFormContext from '../hooks/useFormContext';
 import { ObjectInfoContext } from './ObjectInfoContext';
 
@@ -14,7 +14,7 @@ export const AppContext = createContext({});
 
 const AppProvider = ({ children }) => {
   const clientId = useClientIdContext();
-  const { config } = useConfigsContext();
+  const { config } = useContext(ConfigsContext);
   const { baseWorkflow } = config;
   const { adapterConfig } = config.configData || {};
   const { formState } = useFormContext();

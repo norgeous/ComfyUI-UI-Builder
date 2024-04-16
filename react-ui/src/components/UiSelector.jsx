@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
-import useConfigsContext from '../hooks/useConfigsContext';
+import { ConfigsContext } from '../contexts/ConfigsContext';
 import Select from './form-fields/Select';
 
 const Header = styled.header`
@@ -7,7 +8,7 @@ const Header = styled.header`
 `;
 
 const UiSelector = () => {
-  const { config, configs, setConfig } = useConfigsContext();
+  const { config, configs, setConfig } = useContext(ConfigsContext);
 
   const handleChange = ({ ui }) => {
     const newConfig = configs.find(({ configData: { name } }) => name === ui);
