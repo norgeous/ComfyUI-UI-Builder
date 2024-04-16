@@ -25,8 +25,6 @@ const FormProvider = ({ children }) => {
       ...adjustment,
     });
 
-  console.log({ formConfig, formInitialState, formState });
-
   return (
     <FormContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values

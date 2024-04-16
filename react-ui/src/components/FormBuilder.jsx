@@ -48,7 +48,7 @@ const FormBuilder = () => {
         else updateFormState(data);
       };
 
-      console.log({ type, props, formState, value });
+      // console.log({ type, props, formState, value });
       if (!value === undefined) return '';
 
       return {
@@ -67,8 +67,6 @@ const FormBuilder = () => {
       };
     },
   );
-
-  console.log(items);
 
   return <Accordion items={items} />;
 };
