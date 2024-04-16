@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState, useContext } from 'react';
+import { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ConfigsContext } from './ConfigsContext';
 import getFormInitialState from '../utils/getFormInitialState';
@@ -8,16 +8,13 @@ export const FormContext = createContext({});
 const FormProvider = ({ children }) => {
   const { config } = useContext(ConfigsContext);
   const { formConfig } = config.configData || {};
-
-  const formInitialState = useMemo(
-    () => getFormInitialState(formConfig),
-    [formConfig],
-  );
-
-  const [formState, setFormState] = useState(formInitialState);
+  const [formState, setFormState] = useState({});
 
   // when switching UIs, reset formState to default
-  useEffect(() => setFormState(formInitialState), [formInitialState]);
+  useEffect(() => {
+    const formInitialState = getFormInitialState(formConfig);
+    setFormState(formInitialState);
+  }, [formConfig]);
 
   const updateFormState = adjustment =>
     setFormState({
