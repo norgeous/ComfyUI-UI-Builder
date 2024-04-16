@@ -1,20 +1,17 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ConfigsContext } from './ConfigsContext';
-import getFormInitialState from '../utils/getFormInitialState';
 
 export const FormContext = createContext({});
 
 const FormProvider = ({ children }) => {
   const { config } = useContext(ConfigsContext);
-  const { formConfig } = config.configData || {};
-  const [formState, setFormState] = useState({});
+  const [formState, setFormState] = useState(config.formInitialState || {});
 
-  // when switching UIs, reset formState to default
+  // when switching UIs, reset formState to initial
   useEffect(() => {
-    const formInitialState = getFormInitialState(formConfig);
-    setFormState(formInitialState);
-  }, [formConfig]);
+    setFormState(config.formInitialState || {});
+  }, [config.formInitialState]);
 
   const updateFormState = adjustment =>
     setFormState({
@@ -26,7 +23,6 @@ const FormProvider = ({ children }) => {
     <FormContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
-        formConfig,
         formState,
         updateFormState,
       }}

@@ -1,3 +1,5 @@
+import getFormInitialState from '../utils/getFormInitialState';
+
 const files = import.meta.glob('./**/*.json');
 
 const getConfigs = async () => {
@@ -14,25 +16,29 @@ const getConfigs = async () => {
       })),
     );
 
-  const configs = directoryNames.reduce(
-    (acc, directoryName) => [
+  const configs = directoryNames.reduce((acc, directoryName) => {
+    const baseWorkflow = fileContents.find(
+      ({ fileName }) =>
+        fileName.includes(directoryName) && fileName.includes('workflow.json'),
+    ).jsonData;
+
+    const configData = fileContents.find(
+      ({ fileName }) =>
+        fileName.includes(directoryName) && fileName.includes('uiConfig.json'),
+    ).jsonData;
+
+    const formInitialState = getFormInitialState(configData.formConfig);
+
+    return [
       ...acc,
       {
         directoryName,
-        baseWorkflow: fileContents.find(
-          ({ fileName }) =>
-            fileName.includes(directoryName) &&
-            fileName.includes('workflow.json'),
-        ).jsonData,
-        configData: fileContents.find(
-          ({ fileName }) =>
-            fileName.includes(directoryName) &&
-            fileName.includes('uiConfig.json'),
-        ).jsonData,
+        baseWorkflow,
+        configData,
+        formInitialState,
       },
-    ],
-    [],
-  );
+    ];
+  }, []);
 
   return configs;
 };
