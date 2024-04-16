@@ -1,8 +1,17 @@
-import { useState } from 'react';
-import configs from '../configs';
+import { useState, useEffect } from 'react';
+import getConfigs from '../configs';
 
 const useConfig = () => {
-  const [config, setConfig] = useState(configs[0]);
+  const [configs, setConfigs] = useState([]);
+  const [config, setConfig] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      const aConfigs = await getConfigs();
+      setConfigs(aConfigs);
+      setConfig(aConfigs[0]);
+    })();
+  }, []);
 
   return {
     config,

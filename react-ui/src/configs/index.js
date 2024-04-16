@@ -37,6 +37,6 @@ const getConfigs = async () => {
   return configs;
 };
 
-const configs = await getConfigs();
+// const configs = await getConfigs();
 
-export default configs;
+export default getConfigs;

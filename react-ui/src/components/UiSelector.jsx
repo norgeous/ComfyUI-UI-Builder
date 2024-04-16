@@ -24,7 +24,7 @@ const UiSelector = () => {
       <Select
         name="ui"
         options={options}
-        value={config.configData.name}
+        value={config.configData?.name}
         onChange={handleChange}
       />
     </Header>

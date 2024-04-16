@@ -14,12 +14,9 @@ export const AppContext = createContext({});
 
 const AppProvider = ({ children }) => {
   const clientId = useClientIdContext();
-  const {
-    config: {
-      configData: { adapterConfig },
-      baseWorkflow,
-    },
-  } = useConfigsContext();
+  const { config } = useConfigsContext();
+  const { baseWorkflow } = config;
+  const { adapterConfig } = config.configData || {};
   const { formState } = useFormContext();
   const { objectInfo } = useContext(ObjectInfoContext);
 

@@ -23,11 +23,8 @@ const components = {
 };
 
 const FormBuilder = () => {
-  const {
-    config: {
-      configData: { formConfig },
-    },
-  } = useConfigsContext();
+  const { config } = useConfigsContext();
+  const { formConfig } = config.configData || {};
   const { formState, updateFormState } = useFormContext();
   const items = formConfig?.map(
     ({
@@ -41,12 +38,16 @@ const FormBuilder = () => {
       ...props
     }) => {
       const Component = components[type] || Missing;
+      const value = formState[name];
       const handleChange = data => {
         const newFormState = { ...formState, ...data };
         const adapted = adapter?.(newFormState);
         if (adapted) updateFormState(adapted);
         else updateFormState(data);
       };
+
+      console.log({ type, props, formState, value });
+      if (!value === undefined) return '';
 
       return {
         group,
@@ -56,7 +57,7 @@ const FormBuilder = () => {
               {...props} // eslint-disable-line react/jsx-props-no-spreading
               type={type}
               name={name}
-              value={formState[name]}
+              value={value}
               onChange={handleChange}
             />
           </div>
@@ -64,6 +65,8 @@ const FormBuilder = () => {
       };
     },
   );
+
+  console.log(items);
 
   return <Accordion items={items} />;
 };

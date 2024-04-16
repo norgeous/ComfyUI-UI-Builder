@@ -6,11 +6,8 @@ import getFormInitialState from '../utils/getFormInitialState';
 export const FormContext = createContext({});
 
 const FormProvider = ({ children }) => {
-  const {
-    config: {
-      configData: { formConfig },
-    },
-  } = useConfigsContext();
+  const { config } = useConfigsContext();
+  const { formConfig } = config.configData || {};
 
   const formInitialState = useMemo(
     () => getFormInitialState(formConfig),
@@ -27,6 +24,8 @@ const FormProvider = ({ children }) => {
       ...formState,
       ...adjustment,
     });
+
+  console.log({ formConfig, formInitialState, formState });
 
   return (
     <FormContext.Provider

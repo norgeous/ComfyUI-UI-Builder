@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
 const Checkbox = ({ name, value, onChange, options, ...props }) => {
-  const { label } = options.find(option => option[name] === value);
+  console.log('checkbox', { options, name, value });
+  const { label } = options.find(option => option[name] === value) || {};
 
   const handleChange = event => {
     const { label: _, ...newState } = options.find(
