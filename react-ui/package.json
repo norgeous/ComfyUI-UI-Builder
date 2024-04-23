@@ -6,8 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
-    "lint": "eslint . --ext .js,.jsx,.cjs --fix",
-    "view": "vite preview"
+    "lint": "eslint . --ext .js,.jsx,.cjs --fix"
   },
   "dependencies": {
     "prop-types": "^15.8.1",
