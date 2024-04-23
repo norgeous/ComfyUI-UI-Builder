@@ -10,7 +10,7 @@ import SelectCkpt from './form-fields/SelectCkpt';
 import Range from './form-fields/Range';
 import Textarea from './form-fields/Textarea';
 import Num from './form-fields/Num';
-import Checkbox from './form-fields/Checkbox';
+import Checkbox from './form-fields/Checkbox/Checkbox';
 import FileUpload from './form-fields/FileUpload';
 
 const components = {
