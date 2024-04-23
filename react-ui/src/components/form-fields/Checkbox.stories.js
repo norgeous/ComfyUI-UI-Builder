@@ -1,7 +1,7 @@
 import Checkbox from './Checkbox';
 
 export default {
-  title: 'Example/Checkbox',
+  title: 'uikit/Checkbox',
   component: Checkbox,
 };
 
