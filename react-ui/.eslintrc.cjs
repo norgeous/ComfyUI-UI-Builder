@@ -2,13 +2,14 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
-    'eslint:recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'prettier',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
+    "eslint:recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
   ignorePatterns: ['dist'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -31,7 +32,7 @@ module.exports = {
       'error',
       {
         // only these files are allowed to import from devDeps
-        devDependencies: ['vite.config.js'],
+        devDependencies: ['vite.config.js','**/*.stories.js'],
       },
     ],
   },

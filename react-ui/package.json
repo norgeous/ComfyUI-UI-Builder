@@ -6,17 +6,28 @@
     "dev": "vite",
     "build": "vite build",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
-    "lint": "eslint . --ext .js,.jsx,.cjs --fix"
+    "lint": "eslint . --ext .js,.jsx,.cjs --fix",
+    "sb": "storybook dev -p 6006",
+    "sb:build": "storybook build"
   },
   "dependencies": {
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8",
-    "uikit": "^3.19.4"
+    "uikit": "^3.20.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.77",
+    "@chromatic-com/storybook": "^1.3.3",
+    "@storybook/addon-essentials": "^8.0.9",
+    "@storybook/addon-interactions": "^8.0.9",
+    "@storybook/addon-links": "^8.0.9",
+    "@storybook/addon-onboarding": "^8.0.9",
+    "@storybook/blocks": "^8.0.9",
+    "@storybook/react": "^8.0.9",
+    "@storybook/react-vite": "^8.0.9",
+    "@storybook/test": "^8.0.9",
+    "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^8.57.0",
@@ -28,6 +39,8 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.2.8"
+    "eslint-plugin-storybook": "^0.8.0",
+    "storybook": "^8.0.9",
+    "vite": "^5.2.10"
   }
 }
