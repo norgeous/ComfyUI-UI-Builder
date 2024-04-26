@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import Label from '../Label';
 
 const Sublabels = styled.div`
@@ -12,6 +13,9 @@ const Sublabels = styled.div`
 
 const Sublabel = styled.div`
   cursor: pointer;
+  display: inline-flex;
+  place-items: center;
+  gap: 4px;
 `;
 
 const Pip = styled.div`
@@ -47,7 +51,7 @@ const Range = ({ name, label, info, options, value, onChange, ...props }) => {
       <Sublabels className="uk-text-muted" $isPips={isPips}>
         {!isPips && minLabel && (
           <Sublabel onClick={() => onChange(options[0])}>
-            <span uk-icon="icon: arrow-left" />
+            <FaArrowLeft />
             {minLabel}
           </Sublabel>
         )}
@@ -60,7 +64,7 @@ const Range = ({ name, label, info, options, value, onChange, ...props }) => {
         {!isPips && maxLabel && (
           <Sublabel onClick={() => onChange(options[options.length - 1])}>
             {maxLabel}
-            <span uk-icon="icon: arrow-right" />
+            <FaArrowRight />
           </Sublabel>
         )}
       </Sublabels>

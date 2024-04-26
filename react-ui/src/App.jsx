@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { WsContext } from './contexts/WsContext';
+import { GlobalStyle, Theme1Style } from './components/globalStyles';
 import { Page, Main, Controls, Content } from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
@@ -12,21 +13,25 @@ const App = () => {
   const { progress } = useContext(WsContext);
 
   return (
-    <Page>
-      <Main>
-        <Progress value={progress} />
-        <Content>
-          <Carousel />
-        </Content>
-        <StatusBar />
-      </Main>
+    <>
+      <GlobalStyle />
+      <Theme1Style />
+      <Page>
+        <Main>
+          <Progress value={progress} />
+          <Content>
+            <Carousel />
+          </Content>
+          <StatusBar />
+        </Main>
 
-      <Controls className="uk-light">
-        <UiSelector />
-        <FormBuilder />
-        <FormControls />
-      </Controls>
-    </Page>
+        <Controls className="uk-light">
+          <UiSelector />
+          <FormBuilder />
+          <FormControls />
+        </Controls>
+      </Page>
+    </>
   );
 };
 

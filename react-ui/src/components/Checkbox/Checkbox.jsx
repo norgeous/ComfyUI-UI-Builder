@@ -1,4 +1,19 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { FaCircleQuestion } from 'react-icons/fa6';
+
+const Label = styled.label`
+  display: block;
+  margin: 0;
+  display: inline-flex;
+  place-items: center;
+  gap: 4px;
+`;
+
+const Input = styled.input.attrs({ type: 'checkbox' })`
+  accent-color: #707;
+  margin: 0;
+`;
 
 const Checkbox = ({ name, value, onChange, options, ...props }) => {
   const { label } = options.find(option => option[name] === value) || {};
@@ -11,19 +26,15 @@ const Checkbox = ({ name, value, onChange, options, ...props }) => {
   };
 
   return (
-    <label
-      className="uk-form-label"
-      style={{ display: 'block', marginTop: 32 }}
-    >
-      <input
+    <Label className="uk-form-label">
+      <Input
         {...props} // eslint-disable-line react/jsx-props-no-spreading
-        className="uk-checkbox"
-        type="checkbox"
+        // className="uk-checkbox"
         checked={value || false}
         onChange={handleChange}
       />{' '}
-      {label}
-    </label>
+      {label} <FaCircleQuestion size={16} />
+    </Label>
   );
 };
 
