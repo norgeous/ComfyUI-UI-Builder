@@ -4,6 +4,7 @@ import InputSelect from './InputSelect';
 export default {
   title: 'InputSelect',
   component: InputSelect,
+  tags: ['autodocs'],
 };
 
 export const Default = {
