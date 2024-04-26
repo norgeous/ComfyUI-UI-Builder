@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
@@ -72,5 +73,25 @@ const InputText = ({
     </>
   );
 };
+InputText.defaultProps = {
+  id: undefined,
+  defaultValue: undefined,
+  label: undefined,
+  info: undefined,
+  options: [],
+  value: undefined,
+  onChange: () => {},
+  error: undefined,
+};
 
+InputText.propTypes = {
+  id: PropTypes.string,
+  defaultValue: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  error: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.number,
+  onChange: PropTypes.func,
+};
 export default InputText;
