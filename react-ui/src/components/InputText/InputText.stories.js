@@ -4,6 +4,7 @@ import InputText from './InputText';
 export default {
   title: 'InputText',
   component: InputText,
+  tags: ['autodocs'],
 };
 
 export const Default = {
