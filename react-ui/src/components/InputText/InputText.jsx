@@ -90,6 +90,7 @@ InputText.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   error: PropTypes.string,
+  /** auto completions array of strings */
   options: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.number,
   onChange: PropTypes.func,
