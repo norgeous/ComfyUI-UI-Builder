@@ -28,14 +28,11 @@ const Checkbox = ({
   error,
   ...props
 }) => {
-  const index =
-    typeof value === 'boolean' ? Number(value) : Number(defaultValue);
-  const label = options[index];
-  const handleChange = newValue => onChange(newValue);
+  const index = Number(value) ?? Number(defaultValue);
 
-  const handleReset = () => {
-    handleChange(defaultValue);
-  };
+  const label = options[index];
+
+  const handleReset = () => onChange(defaultValue);
 
   const showReset = Boolean(index) !== defaultValue;
 
@@ -51,7 +48,7 @@ const Checkbox = ({
         <Input
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           checked={Boolean(index)}
-          onChange={event => handleChange(event.currentTarget.checked)}
+          onChange={event => onChange(event.currentTarget.checked)}
         />{' '}
         {label}
       </Label>
@@ -69,11 +66,7 @@ Checkbox.defaultProps = {
 
 Checkbox.propTypes = {
   name: PropTypes.string,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  ),
+  options: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.bool,
   onChange: PropTypes.func,
 };
