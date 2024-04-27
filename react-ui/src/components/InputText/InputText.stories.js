@@ -20,7 +20,7 @@ export const Text = {
       'Option 6',
     ],
     defaultValue: '',
-    error: 'error text',
+    error: 'ERR!',
     onChange: fn(),
   },
 };
