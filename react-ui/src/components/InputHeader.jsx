@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { FaCircleQuestion } from 'react-icons/fa6';
+import styled, { keyframes } from 'styled-components';
+import { FaCircleQuestion, FaSpinner } from 'react-icons/fa6';
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,13 +25,35 @@ const Button = styled.button`
   font-size: 0.75rem; // 12px
   display: inline;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Label = styled.label`
   font-size: 0.875rem; // 14px
 `;
 
-const InputHeader = ({ id, label, info, showReset, handleReset }) => (
+const spin = keyframes`
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+`;
+
+const Loading = styled.div`
+  animation: ${spin} 800ms infinite linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InputHeader = ({
+  id,
+  label,
+  info,
+  isLoading,
+  showReset,
+  handleReset,
+}) => (
   <Wrapper>
     <WrapperLeft>
       <Label htmlFor={id}>{label}</Label>
@@ -39,6 +61,11 @@ const InputHeader = ({ id, label, info, showReset, handleReset }) => (
         <Button title={info} onClick={() => alert(info)}>
           <FaCircleQuestion size={14} />
         </Button>
+      )}
+      {isLoading && (
+        <Loading>
+          <FaSpinner size={14} />
+        </Loading>
       )}
     </WrapperLeft>
     {showReset && <Button onClick={handleReset}>reset</Button>}
@@ -49,6 +76,7 @@ InputHeader.defaultProps = {
   id: undefined,
   label: undefined,
   info: undefined,
+  isLoading: false,
   showReset: false,
   handleReset: () => {},
 };
@@ -57,6 +85,7 @@ InputHeader.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
+  isLoading: PropTypes.bool,
   showReset: PropTypes.bool,
   handleReset: PropTypes.func,
 };

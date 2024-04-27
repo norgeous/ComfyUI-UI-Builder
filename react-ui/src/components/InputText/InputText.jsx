@@ -7,13 +7,14 @@ import ErrorText from '../ErrorText';
 const Input = styled.input`
   display: block;
   box-sizing: border-box;
-  margin-top: 4px;
   width: 100%;
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--input-fg);
-  padding: 8px 4px;
   border-radius: var(--radius);
+  padding: 8px 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   &:focus {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;

@@ -6,13 +6,14 @@ import ErrorText from '../ErrorText';
 
 const Select = styled.select`
   display: block;
-  margin-top: 4px;
   width: 100%;
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--input-fg);
-  padding: 8px 4px;
   border-radius: var(--radius);
+  padding: 8px 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   &:focus {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
@@ -23,6 +24,7 @@ const InputSelect = ({
   id,
   label,
   info,
+  isLoading,
   defaultOptionIndex,
   options,
   value,
@@ -53,6 +55,7 @@ const InputSelect = ({
         id={id}
         label={label}
         info={info}
+        isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
       />
@@ -78,6 +81,7 @@ InputSelect.defaultProps = {
   defaultOptionIndex: 0,
   label: undefined,
   info: undefined,
+  isLoading: false,
   options: [],
   value: undefined,
   onChange: () => {},
@@ -89,6 +93,7 @@ InputSelect.propTypes = {
   defaultOptionIndex: PropTypes.number,
   label: PropTypes.string,
   info: PropTypes.string,
+  isLoading: PropTypes.bool,
   error: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({

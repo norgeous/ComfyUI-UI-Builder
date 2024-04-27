@@ -2,15 +2,14 @@ import { fn } from '@storybook/test';
 import InputText from './InputText';
 
 export default {
-  title: 'InputText',
+  title: 'Input/Text',
   component: InputText,
-  tags: ['autodocs'],
 };
 
-export const Default = {
+export const Text = {
   args: {
     id: 'demo',
-    label: 'My Label',
+    label: 'My InputText Label',
     info: 'info text',
     options: [
       'Option 1',
