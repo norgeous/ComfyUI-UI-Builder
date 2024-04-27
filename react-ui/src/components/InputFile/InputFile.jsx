@@ -19,7 +19,8 @@ const Button = styled.button`
   width: 100%;
   border: none;
   border-radius: var(--radius);
-  background: var(--input-outline);
+  background: var(--input-bg);
+  color: var(--input-fg);
   margin-bottom: 6px;
   padding: 8px;
   cursor: pointer;

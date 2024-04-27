@@ -21,14 +21,13 @@ const Checkbox = ({
   id,
   info,
   isLoading,
-  defaultOptionIndex,
+  defaultValue,
   value,
   onChange,
   options,
   error,
   ...props
 }) => {
-  const defaultValue = Boolean(defaultOptionIndex);
   const index =
     typeof value === 'boolean' ? Number(value) : Number(defaultValue);
   const label = options[index];
