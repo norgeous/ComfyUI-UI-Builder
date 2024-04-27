@@ -22,5 +22,7 @@ export const File = {
     defaultOptionIndex: 0,
     onFileUpload: fn(),
     isLoading: false,
+    error: 'ERR!',
+    info: 'help text',
   },
 };

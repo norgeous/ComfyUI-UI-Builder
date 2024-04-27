@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test';
+// import { fn } from '@storybook/test';
 import InputSelect from './InputSelect';
 import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
 
@@ -19,6 +19,8 @@ export const Select = {
       { label: 'Option 2', value: { testname: 'foobar' } },
     ],
     defaultOptionIndex: 0,
-    onChange: fn(),
+    error: 'ERR!',
+    info: 'help text',
+    // onChange: fn(),
   },
 };
