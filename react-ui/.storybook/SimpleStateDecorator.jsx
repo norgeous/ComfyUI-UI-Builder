@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { fn } from '@storybook/test';
 
 const SimpleStateDecorator = (Story, context) => {
   const [value, setValue] = useState(context.args.defaultValue);
   const handleChange = newValue => {
-    fn(() => newValue);
+    console.log(`SimpleStateDecorator > handleChange: ${newValue}`);
     setValue(newValue);
   };
 
