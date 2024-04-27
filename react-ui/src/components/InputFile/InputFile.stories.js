@@ -12,9 +12,8 @@ export const File = {
   args: {
     id: 'demo',
     label: 'My InputFile Label',
-    defaultValue: undefined,
+    defaultValue: 'https://placehold.co/600x400',
     options: [
-      { label: 'UNDEFINED', value: undefined },
       { label: 'Option 1', value: 'https://placehold.co/600x400' },
       { label: 'Option 2', value: 'https://placehold.co/600x500' },
       { label: 'Option 3', value: 'https://placehold.co/600x600' },

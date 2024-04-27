@@ -1,4 +1,3 @@
-import { fn } from '@storybook/test';
 import InputText from './InputText';
 import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
 
@@ -23,6 +22,5 @@ export const Text = {
     ],
     defaultValue: '',
     error: 'ERR!',
-    onChange: fn(),
   },
 };

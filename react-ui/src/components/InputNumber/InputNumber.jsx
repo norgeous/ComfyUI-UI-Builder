@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
 
-const Input = styled.input.attrs({ type: 'text' })`
+const Input = styled.input.attrs({ type: 'number' })`
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -21,15 +21,17 @@ const Input = styled.input.attrs({ type: 'text' })`
   }
 `;
 
-const InputText = ({
+const InputNumber = ({
   id,
   label,
   info,
+  isLoading,
   defaultValue,
   options,
   value,
   onChange,
   error,
+  ...props
 }) => {
   const ref = useRef();
 
@@ -46,47 +48,38 @@ const InputText = ({
         id={id}
         label={label}
         info={info}
+        isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
       />
       <Input
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
         id={id}
         value={value}
-        onChange={event => onChange(event.target.value)}
-        list={`${id}-list`}
+        onChange={event => onChange(Number(event.target.value))}
       />
-      {options && (
-        <datalist id={`${id}-list`}>
-          {options.map(option => (
-            <option key={option} aria-label={option} value={option} />
-          ))}
-        </datalist>
-      )}
       {error && <ErrorText>{error}</ErrorText>}
     </>
   );
 };
-InputText.defaultProps = {
+InputNumber.defaultProps = {
   id: undefined,
   defaultValue: undefined,
   label: undefined,
   info: undefined,
-  options: [],
   value: undefined,
   onChange: () => {},
   error: undefined,
 };
 
-InputText.propTypes = {
+InputNumber.propTypes = {
   id: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.number,
   label: PropTypes.string,
   info: PropTypes.string,
   error: PropTypes.string,
-  /** auto completions array of strings */
-  options: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.number,
   onChange: PropTypes.func,
 };
-export default InputText;
+export default InputNumber;
