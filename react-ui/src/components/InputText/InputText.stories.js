@@ -1,9 +1,11 @@
 import { fn } from '@storybook/test';
 import InputText from './InputText';
+import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/Text',
   component: InputText,
+  decorators: [SimpleStateDecorator],
 };
 
 export const Text = {

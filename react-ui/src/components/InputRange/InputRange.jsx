@@ -4,12 +4,20 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
 
+const Input = styled.input.attrs({ type: 'range' })`
+  accent-color: var(--input-outline);
+  margin: 0;
+  display: block;
+  width: 100%;
+`;
+
 const Sublabels = styled.div`
   padding: ${({ $isPips }) => ($isPips ? '0 8px' : 0)};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   margin-top: 4px;
+  opacity: 0.5;
 `;
 
 const Sublabel = styled.div`
@@ -33,6 +41,7 @@ const InputRange = ({
   info,
   isLoading,
   options,
+  defaultValue,
   value,
   onChange,
   error,
@@ -42,13 +51,15 @@ const InputRange = ({
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
-  const handleChange = event => {
-    const { label: _, ...state } = options[Number(event.target.value)];
-    onChange(state);
+  const handleChange = newValue => {
+    // const { value } = options[Number(event.target.value)];
+    onChange(newValue);
   };
 
   const showReset = true;
-  const handleReset = () => {};
+  const handleReset = () => onChange(defaultValue);
+
+  const index = options.findIndex(option => option.value === value);
 
   return (
     <>
@@ -60,17 +71,15 @@ const InputRange = ({
         showReset={showReset}
         handleReset={handleReset}
       />
-      <input
+      <Input
         {...props} // eslint-disable-line react/jsx-props-no-spreading
-        className="uk-range"
-        type="range"
         min="0"
-        max={options.length - 1}
         step="1"
-        value={String(options.map(option => option[name]).indexOf(value))}
-        onChange={handleChange}
+        max={options.length - 1}
+        value={index}
+        onChange={event => handleChange(options[event.target.value].value)}
       />
-      <Sublabels className="uk-text-muted" $isPips={isPips}>
+      <Sublabels $isPips={isPips}>
         {!isPips && minLabel && (
           <Sublabel onClick={() => onChange(options[0])}>
             <FaArrowLeft />

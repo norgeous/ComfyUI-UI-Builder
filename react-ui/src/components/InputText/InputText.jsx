@@ -36,7 +36,8 @@ const InputText = ({
 
   const handleChange = newValue => {
     setiValue(newValue);
-    onChange({ [id]: newValue });
+    // onChange({ [id]: newValue });
+    onChange(newValue);
   };
 
   const handleReset = () => {

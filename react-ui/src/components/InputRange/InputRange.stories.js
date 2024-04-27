@@ -1,4 +1,3 @@
-import { fn } from '@storybook/test';
 import InputRange from './InputRange';
 import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
 
@@ -12,15 +11,14 @@ export const Range = {
   args: {
     id: 'demo',
     label: 'My InputRange Label',
-    defaultValue: 'https://placehold.co/600x400',
+    defaultValue: 1,
     options: [
-      { label: 'Option 0 (default)', value: 'https://placehold.co/600x400' },
-      { label: 'Option 1', value: 'https://placehold.co/600x500' },
-      { label: 'Option 2', value: 'https://placehold.co/600x600' },
-      { label: 'Option X', value: `/view?type=input&filename=filename.jpg` },
+      { label: '1', value: 1 },
+      { label: '2', value: 2 },
+      { label: '3', value: 3 },
+      { label: 'X', value: { testname: 'foobar' } },
     ],
     defaultOptionIndex: 0,
-    onFileUpload: fn(),
     isLoading: false,
     error: 'ERR!',
     info: 'help text',

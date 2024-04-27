@@ -13,6 +13,7 @@ export const Checkbox = {
     info: 'helpful text...',
     options: ['My InputCheckbox Label (off)', 'My InputCheckbox Label (on)'],
     defaultOptionIndex: 1,
+    defaultValue: false,
     error: 'ERR!',
   },
 };
