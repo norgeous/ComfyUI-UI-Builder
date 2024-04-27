@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Select from '../InputSelect/InputSelect';
 import ErrorText from '../ErrorText';
 
-const Input = styled.input`
+const Input = styled.input.attrs({ type: 'file' })`
   display: none;
 `;
 
@@ -75,7 +75,6 @@ const ImageUpload = ({
       {value && <Img alt="" src={value} />}
       <Input
         ref={fileInputRef}
-        type="file"
         accept={allowedFileTypes.join(',')}
         onChange={handleFileChange}
       />

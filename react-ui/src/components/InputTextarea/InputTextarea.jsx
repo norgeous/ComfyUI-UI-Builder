@@ -1,10 +1,10 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
+import deepEqual from '../../utils/deepEqual';
 
-const Input = styled.input.attrs({ type: 'text' })`
+const Textarea = styled.textarea`
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -12,37 +12,33 @@ const Input = styled.input.attrs({ type: 'text' })`
   background: var(--input-bg);
   color: var(--input-fg);
   border-radius: var(--radius);
-  padding: 8px 4px;
   margin-top: 6px;
   margin-bottom: 6px;
   &:focus {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
   }
+  min-width: 100%;
+  height: 80px;
+  min-height: 80px;
+  line-height: 21px;
+  padding: 4px 8px;
 `;
 
-const InputText = ({
+const InputTextarea = ({
   id,
+  name,
   label,
   info,
   defaultValue,
-  options,
   value,
   onChange,
   error,
+  ...props
 }) => {
-  const ref = useRef();
+  const handleReset = () => onChange(defaultValue);
 
-  const handleChange = newValue => {
-    onChange(newValue);
-  };
-
-  const handleReset = () => {
-    ref.current.focus();
-    handleChange(defaultValue);
-  };
-
-  const showReset = value !== defaultValue;
+  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
   return (
     <>
@@ -53,44 +49,29 @@ const InputText = ({
         showReset={showReset}
         handleReset={handleReset}
       />
-      <Input
-        ref={ref}
+      <Textarea
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
-        list={`${id}-list`}
       />
-      {options && (
-        <datalist id={`${id}-list`}>
-          {options.map(option => (
-            <option key={option} aria-label={option} value={option} />
-          ))}
-        </datalist>
-      )}
       {error && <ErrorText>{error}</ErrorText>}
     </>
   );
 };
-InputText.defaultProps = {
-  id: undefined,
-  defaultValue: undefined,
+
+InputTextarea.defaultProps = {
+  name: undefined,
   label: undefined,
   info: undefined,
-  options: [],
-  value: undefined,
   onChange: () => {},
-  error: undefined,
 };
 
-InputText.propTypes = {
-  id: PropTypes.string,
-  defaultValue: PropTypes.string,
+InputTextarea.propTypes = {
+  name: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  error: PropTypes.string,
-  /** auto completions array of strings */
-  options: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.number,
   onChange: PropTypes.func,
 };
-export default InputText;
+
+export default InputTextarea;
