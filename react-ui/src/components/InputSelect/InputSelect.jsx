@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
+import deepEqual from '../../utils/deepEqual';
 
 const Select = styled.select`
   display: block;
@@ -25,29 +26,23 @@ const InputSelect = ({
   label,
   info,
   isLoading,
-  defaultOptionIndex,
+  defaultValue,
   options,
   value,
   onChange,
   error,
 }) => {
   const ref = useRef();
-  const [valueIndex, setValueIndex] = useState(value || defaultOptionIndex);
-
-  const handleChange = newValue => {
-    const index = Number(newValue);
-    setValueIndex(index);
-    const { value: optionValue } = options[index];
-    onChange({ index, value: optionValue });
-  };
+  const index = options.findIndex(
+    option => option.value === value || deepEqual(option.value, value),
+  );
 
   const handleReset = () => {
     ref.current.focus();
-    setValueIndex(defaultOptionIndex);
-    handleChange(defaultOptionIndex);
+    onChange(defaultValue);
   };
 
-  const showReset = valueIndex !== defaultOptionIndex;
+  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
   return (
     <>
@@ -62,11 +57,11 @@ const InputSelect = ({
       <Select
         id={id}
         ref={ref}
-        value={value || valueIndex}
-        onChange={event => handleChange(event.target.value)}
+        value={index}
+        onChange={event => onChange(options[event.target.value].value)}
       >
-        {options.map(({ label: optionLabel }, index) => (
-          <option key={optionLabel} value={String(index)}>
+        {options.map(({ label: optionLabel }, i) => (
+          <option key={optionLabel} value={String(i)}>
             {optionLabel}
           </option>
         ))}
@@ -78,11 +73,11 @@ const InputSelect = ({
 
 InputSelect.defaultProps = {
   id: undefined,
-  defaultOptionIndex: 0,
   label: undefined,
   info: undefined,
   isLoading: false,
   options: [],
+  defaultValue: undefined,
   value: undefined,
   onChange: () => {},
   error: undefined,
@@ -90,7 +85,6 @@ InputSelect.defaultProps = {
 
 InputSelect.propTypes = {
   id: PropTypes.string,
-  defaultOptionIndex: PropTypes.number,
   label: PropTypes.string,
   info: PropTypes.string,
   isLoading: PropTypes.bool,
@@ -98,10 +92,11 @@ InputSelect.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.shape({}),
+      value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  value: PropTypes.number,
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
 };
 

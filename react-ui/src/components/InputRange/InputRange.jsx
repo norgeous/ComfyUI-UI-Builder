@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
+import deepEqual from '../../utils/deepEqual';
 
 const Input = styled.input.attrs({ type: 'range' })`
   accent-color: var(--input-outline);
@@ -17,6 +18,7 @@ const Sublabels = styled.div`
   justify-content: space-between;
   font-size: 12px;
   margin-top: 4px;
+  margin-bottom: 6px;
   opacity: 0.5;
 `;
 
@@ -47,19 +49,16 @@ const InputRange = ({
   error,
   ...props
 }) => {
+  const index = options.findIndex(
+    option => option.value === value || deepEqual(option.value, value),
+  );
   const isPips = options.every(({ label: pipLabel }) => pipLabel);
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
-  const handleChange = newValue => {
-    // const { value } = options[Number(event.target.value)];
-    onChange(newValue);
-  };
-
-  const showReset = true;
   const handleReset = () => onChange(defaultValue);
 
-  const index = options.findIndex(option => option.value === value);
+  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
   return (
     <>
@@ -77,23 +76,23 @@ const InputRange = ({
         step="1"
         max={options.length - 1}
         value={index}
-        onChange={event => handleChange(options[event.target.value].value)}
+        onChange={event => onChange(options[event.target.value].value)}
       />
       <Sublabels $isPips={isPips}>
         {!isPips && minLabel && (
-          <Sublabel onClick={() => onChange(options[0])}>
+          <Sublabel onClick={() => onChange(options[0].value)}>
             <FaArrowLeft />
             {minLabel}
           </Sublabel>
         )}
         {isPips &&
-          options?.map(({ label: pipLabel }, index) => (
-            <Pip key={pipLabel} onClick={() => onChange(options[index])}>
+          options?.map(({ label: pipLabel, value: pipValue }) => (
+            <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
               {pipLabel}
             </Pip>
           ))}
         {!isPips && maxLabel && (
-          <Sublabel onClick={() => onChange(options[options.length - 1])}>
+          <Sublabel onClick={() => onChange(options[options.length - 1].value)}>
             {maxLabel}
             <FaArrowRight />
           </Sublabel>
@@ -109,6 +108,7 @@ InputRange.defaultProps = {
   label: undefined,
   info: undefined,
   options: [],
+  defaultValue: undefined,
   value: undefined,
   onChange: () => {},
 };
@@ -120,9 +120,11 @@ InputRange.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
+      value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
 };
 

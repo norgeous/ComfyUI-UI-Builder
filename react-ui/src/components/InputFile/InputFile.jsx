@@ -36,19 +36,18 @@ const allowedFileTypes = [
 ];
 
 const ImageUpload = ({
-  name,
+  id,
+  defaultValue,
   value,
-  onChange,
   options,
+  onChange,
   onFileUpload,
   error,
   ...props
 }) => {
   const fileInputRef = useRef();
 
-  const handleSelectChange = data => {
-    onChange(data.value);
-  };
+  const handleSelectChange = newValue => onChange(newValue);
 
   const handleFileChange = event => {
     if (event.target.files) {
@@ -64,8 +63,9 @@ const ImageUpload = ({
     <>
       <Select
         {...props} // eslint-disable-line react/jsx-props-no-spreading
-        name={name}
+        id={id}
         options={options}
+        value={value}
         onChange={handleSelectChange}
       />
       <Button onClick={() => fileInputRef.current.click()}>

@@ -13,12 +13,13 @@ export const Select = {
   args: {
     id: 'demo',
     label: 'My InputSelect Label',
+    defaultValue: { testname: 'foobar' },
     options: [
-      { label: 'Option 0 (default)', value: { testname: false } },
-      { label: 'Option 1', value: { testname: true } },
-      { label: 'Option 2', value: { testname: 'foobar' } },
+      { label: 'Option 1', value: { testname: false } },
+      { label: 'Option 2', value: { testname: true } },
+      { label: 'Option 3 (default)', value: { testname: 'foobar' } },
     ],
-    defaultOptionIndex: 0,
+    // defaultOptionIndex: 0,
     error: 'ERR!',
     info: 'help text',
     // onChange: fn(),
