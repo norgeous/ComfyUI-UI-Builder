@@ -2,6 +2,7 @@ import { useRef } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from '../InputSelect/InputSelect';
+import ErrorText from '../ErrorText';
 
 const Input = styled.input`
   display: none;
@@ -18,7 +19,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   border-radius: var(--radius);
-  background: grey;
+  background: var(--input-outline);
   margin-bottom: 6px;
   padding: 8px;
   cursor: pointer;
@@ -40,6 +41,7 @@ const ImageUpload = ({
   onChange,
   options,
   onFileUpload,
+  error,
   ...props
 }) => {
   const fileInputRef = useRef();
@@ -76,6 +78,7 @@ const ImageUpload = ({
         accept={allowedFileTypes.join(',')}
         onChange={handleFileChange}
       />
+      {error && <ErrorText>{error}</ErrorText>}
     </>
   );
 };

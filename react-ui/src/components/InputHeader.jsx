@@ -56,7 +56,7 @@ const InputHeader = ({
 }) => (
   <Wrapper>
     <WrapperLeft>
-      <Label htmlFor={id}>{label}</Label>
+      {label && <Label htmlFor={id}>{label}</Label>}
       {info && (
         <Button title={info} onClick={() => alert(info)}>
           <FaCircleQuestion size={14} />
