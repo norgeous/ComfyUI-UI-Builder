@@ -19,6 +19,7 @@ const Textarea = styled.textarea`
     outline-offset: 2px;
   }
   min-width: 100%;
+  max-width: 100%;
   height: 80px;
   min-height: 80px;
   line-height: 21px;
