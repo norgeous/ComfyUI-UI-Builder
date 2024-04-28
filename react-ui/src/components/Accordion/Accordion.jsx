@@ -5,6 +5,7 @@ import { useState } from 'react';
 const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
+  padding: 16px;
 `;
 
 const AccordionHeader = styled.button`
@@ -16,6 +17,12 @@ const AccordionHeader = styled.button`
   padding: 16px;
 `;
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+`;
+
 const AccordionSection = ({ title = '', children = null }) => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
@@ -24,7 +31,7 @@ const AccordionSection = ({ title = '', children = null }) => {
       <AccordionHeader onClick={toggle}>
         {title} ({isOpen ? 'open' : 'closed'})
       </AccordionHeader>
-      {isOpen && <div>{children}</div>}
+      {isOpen && <Grid>{children}</Grid>}
     </div>
   );
 };

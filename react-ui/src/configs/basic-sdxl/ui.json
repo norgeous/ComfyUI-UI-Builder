@@ -93,12 +93,13 @@
     {
       "group": "Generation params",
       "id": "lcm",
+      "label": "LCM",
       "info": "Faster generation with less steps, but sacrifices quality",
       "type": "checkbox",
       "defaultValueIndex": 1,
       "options": [
         {
-          "label": "LCM off",
+          "label": "off",
           "value": {
             "baseSteps": 14,
             "stepMultiplier": 14,
@@ -108,7 +109,7 @@
           }
         },
         {
-          "label": "LCM on",
+          "label": "on",
           "value": {
             "baseSteps": 6,
             "stepMultiplier": 4,
@@ -130,14 +131,12 @@
     {
       "group": "Generation params",
       "id": "enableSeedRandomisation",
+      "label": "Seed Control",
       "type": "checkbox",
       "defaultValueIndex": 0,
       "options": [
-        {
-          "label": "Fixed seed",
-          "value": false
-        },
-        { "label": "Random seed", "value": true }
+        { "label": "Fixed", "value": false },
+        { "label": "Random", "value": true }
       ]
     }
   ],

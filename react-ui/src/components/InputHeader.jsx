@@ -68,6 +68,7 @@ const InputHeader = ({
           <FaSpinner size={14} />
         </Loading>
       )}
+      {'\u00A0'}
     </WrapperLeft>
     {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrapper>

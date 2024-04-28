@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import styled, { css } from 'styled-components';
+
 import { FormContext } from '../contexts/FormContext';
 
 import Accordion from './Accordion/Accordion';
@@ -10,6 +12,14 @@ import InputRange from './InputRange/InputRange';
 import InputTextarea from './InputTextarea/InputTextarea';
 import InputNumber from './InputNumber/InputNumber';
 import InputCheckbox from './InputCheckbox/InputCheckbox';
+
+const Item = styled.div`
+  ${({ colSpan }) =>
+    colSpan === 2 &&
+    css`
+      grid-column: 1 / span 2;
+    `}
+`;
 
 const components = {
   select: InputSelect,
@@ -28,10 +38,7 @@ const FormBuilder = () => {
     ({
       group,
       type,
-      // adapter,
       id,
-      // initialState,
-      // initialOptionIndex,
       defaultValue,
       defaultValueIndex,
       colSpan,
@@ -41,17 +48,13 @@ const FormBuilder = () => {
       const value = formState[id];
       const handleChange = data => {
         const newState = { [id]: data };
-        // const newFormState = { ...formState, ...newState };
-        // const adapted = adapter?.(newFormState);
-        // if (adapted) updateFormState(adapted);
-        // else
         updateFormState(newState);
       };
 
       return {
         group,
         component: (
-          <div key={id} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
+          <Item key={id} colSpan={colSpan}>
             <Component
               {...props} // eslint-disable-line react/jsx-props-no-spreading
               type={type}
@@ -61,7 +64,7 @@ const FormBuilder = () => {
               value={value}
               onChange={handleChange}
             />
-          </div>
+          </Item>
         ),
       };
     },

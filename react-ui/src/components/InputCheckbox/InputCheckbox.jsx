@@ -23,6 +23,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const Checkbox = ({
+  label,
   info = undefined,
   isLoading = false,
   defaultValueIndex = undefined,
@@ -36,7 +37,7 @@ const Checkbox = ({
     option => option.value === value || deepEqual(option.value, value),
   );
 
-  const { label } = options[index];
+  const { label: checkboxLabel } = options[index];
 
   const handleReset = () => onChange(options[defaultValueIndex].value);
 
@@ -45,6 +46,7 @@ const Checkbox = ({
   return (
     <>
       <InputHeader
+        label={label}
         info={info}
         isLoading={isLoading}
         showReset={showReset}
@@ -58,7 +60,7 @@ const Checkbox = ({
             onChange(options[Number(event.currentTarget.checked)].value)
           }
         />{' '}
-        {label}
+        {checkboxLabel}
       </Label>
       {error && <ErrorText>{error}</ErrorText>}
     </>
@@ -66,6 +68,7 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
+  label: PropTypes.string,
   info: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({

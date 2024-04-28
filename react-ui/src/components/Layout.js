@@ -26,7 +26,7 @@ export const Main = styled.main`
 export const Controls = styled.aside`
   display: flex;
   flex-direction: column;
-  background-color: #222a30;
+  background-color: var(--page-bg);
   height: 50svh;
   @media (min-width: 920px) {
     height: 100svh;

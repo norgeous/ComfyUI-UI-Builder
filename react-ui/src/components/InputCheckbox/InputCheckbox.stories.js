@@ -11,6 +11,7 @@ export const Checkbox = {
   args: {
     id: 'demo',
     info: 'helpful text...',
+    label: 'LCM',
     options: [
       {
         label: 'LCM OFF',
