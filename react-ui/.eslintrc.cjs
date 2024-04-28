@@ -35,5 +35,8 @@ module.exports = {
         devDependencies: ['vite.config.js', '**/*.stories.js'],
       },
     ],
+    // Support for defaultProps will be removed from function components
+    // https://stackoverflow.com/questions/47774695/react-functional-component-default-props-vs-default-parameters
+    'react/require-default-props': ['error', { functions: 'defaultArguments' }],
   },
 };
