@@ -34,9 +34,13 @@ const Checkbox = ({
 }) => {
   // const index = Number(value) ?? Number(defaultValue);
 
-  const index = options.findIndex(
+  const maybe = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
   );
+
+  const index = maybe !== -1 ? maybe : 0;
+
+  console.log({ value, index, options });
 
   const { label } = options[index];
 

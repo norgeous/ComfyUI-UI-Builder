@@ -100,12 +100,12 @@
     {
       "group": "Generation params",
       "type": "checkbox",
-      "name": "isLcm",
-      "info": "test",
-      "initialOptionIndex": 0,
+      "id": "isLcm",
+      "info": "Faster generation with less steps, but sacrifices quality",
+      "defaultValueIndex": 0,
       "options": [
         {
-          "label": "LCM",
+          "label": "LCM off",
           "value": {
             "isLcm": false,
             "baseSteps": 14,
@@ -116,7 +116,7 @@
           }
         },
         {
-          "label": "LCM",
+          "label": "LCM on",
           "value": {
             "isLcm": true,
             "baseSteps": 6,
@@ -141,7 +141,10 @@
       "type": "checkbox",
       "name": "enableSeedRandomisation",
       "initialOptionIndex": 0,
-      "options": ["Random", "Random"]
+      "options": [
+        { "label": "Fixed", "value": { "enableSeedRandomisation": false } },
+        { "label": "Random", "value": { "enableSeedRandomisation": true } }
+      ]
     }
   ],
   "adapterConfig": [
