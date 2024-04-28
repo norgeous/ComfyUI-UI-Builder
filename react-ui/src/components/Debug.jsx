@@ -29,7 +29,13 @@ const Debug = ({ label, data = undefined }) => {
       <Button onClick={toggle} title={label}>
         🐞
       </Button>
-      {open && <Pre onClick={toggle}>{JSON.stringify(data, null, 2)}</Pre>}
+      {open && (
+        <Pre onClick={toggle}>
+          {label}
+          {'\n'}
+          {JSON.stringify(data, null, 2)}
+        </Pre>
+      )}
     </>
   );
 };
