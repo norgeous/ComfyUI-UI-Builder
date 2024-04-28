@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from '../InputSelect/InputSelect';
 import ErrorText from '../ErrorText';
@@ -36,14 +36,14 @@ const allowedFileTypes = [
   '.webp',
 ];
 
-const ImageUpload = ({
-  id,
-  defaultValue,
-  value,
-  options,
-  onChange,
-  onFileUpload,
-  error,
+const InputFile = ({
+  id = undefined,
+  defaultValue = undefined,
+  value = undefined,
+  options = [],
+  onChange = () => {},
+  onFileUpload = () => {},
+  error = undefined,
   ...props
 }) => {
   const fileInputRef = useRef();
@@ -84,4 +84,22 @@ const ImageUpload = ({
   );
 };
 
-export default ImageUpload;
+InputFile.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.string,
+    }),
+  ),
+  defaultValue: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onFileUpload: PropTypes.func,
+  error: PropTypes.string,
+  isLoading: PropTypes.bool,
+};
+
+export default InputFile;
