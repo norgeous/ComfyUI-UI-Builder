@@ -32,6 +32,8 @@ const FormBuilder = () => {
       id,
       initialState,
       initialOptionIndex,
+      defaultValue,
+      defaultValueIndex,
       colSpan,
       ...props
     }) => {

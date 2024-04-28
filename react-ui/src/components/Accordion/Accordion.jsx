@@ -13,10 +13,11 @@ const AccordionHeader = styled.button`
   border: 1px solid red;
   width: 100%;
   display: block;
+  padding: 16px;
 `;
 
 const AccordionSection = ({ title = '', children = null }) => {
-  const [isOpen, setIsOpen] = useState();
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div>

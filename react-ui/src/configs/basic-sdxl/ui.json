@@ -45,10 +45,10 @@
       "type": "range",
       "defaultValueIndex": 3,
       "options": [
-        { "label": "Speed", "quality": 0.25 },
-        { "quality": 0.5 },
-        { "quality": 0.75 },
-        { "label": "Accuracy", "quality": 1 }
+        { "label": "Speed", "value": 0.25 },
+        { "value": 0.5 },
+        { "value": 0.75 },
+        { "label": "Accuracy", "value": 1 }
       ]
     },
     {
@@ -58,15 +58,15 @@
       "type": "range",
       "defaultValueIndex": 0,
       "options": [
-        { "label": "1", "batchSize": 1 },
-        { "label": "2", "batchSize": 2 },
-        { "label": "3", "batchSize": 3 },
-        { "label": "4", "batchSize": 4 },
-        { "label": "5", "batchSize": 5 },
-        { "label": "6", "batchSize": 6 },
-        { "label": "7", "batchSize": 7 },
-        { "label": "8", "batchSize": 8 },
-        { "label": "9", "batchSize": 9 }
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 },
+        { "label": "3", "value": 3 },
+        { "label": "4", "value": 4 },
+        { "label": "5", "value": 5 },
+        { "label": "6", "value": 6 },
+        { "label": "7", "value": 7 },
+        { "label": "8", "value": 8 },
+        { "label": "9", "value": 9 }
       ]
     },
     {
@@ -78,35 +78,28 @@
       "options": [
         {
           "label": "1:1 Square",
-          "size": "1:1 Square",
-          "width": 1024,
-          "height": 1024
+          "value": { "width": 1024, "height": 1024 }
         },
         {
           "label": "16:9 Landscape",
-          "size": "16:9 Landscape",
-          "width": 1344,
-          "height": 768
+          "value": { "width": 1344, "height": 768 }
         },
         {
           "label": "16:9 Portrait",
-          "size": "16:9 Portrait",
-          "width": 768,
-          "height": 1344
+          "value": { "width": 768, "height": 1344 }
         }
       ]
     },
     {
       "group": "Generation params",
-      "id": "isLcm",
+      "id": "lcm",
       "info": "Faster generation with less steps, but sacrifices quality",
       "type": "checkbox",
-      "defaultValueIndex": 0,
+      "defaultValueIndex": 1,
       "options": [
         {
           "label": "LCM off",
           "value": {
-            "isLcm": false,
             "baseSteps": 14,
             "stepMultiplier": 14,
             "cfg": 6.5,
@@ -117,7 +110,6 @@
         {
           "label": "LCM on",
           "value": {
-            "isLcm": true,
             "baseSteps": 6,
             "stepMultiplier": 4,
             "cfg": 2.5,
@@ -143,9 +135,9 @@
       "options": [
         {
           "label": "Fixed seed",
-          "value": { "enableSeedRandomisation": false }
+          "value": false
         },
-        { "label": "Random seed", "value": { "enableSeedRandomisation": true } }
+        { "label": "Random seed", "value": true }
       ]
     }
   ],
