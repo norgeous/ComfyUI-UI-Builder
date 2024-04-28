@@ -22,14 +22,14 @@ const Input = styled.input.attrs({ type: 'text' })`
 `;
 
 const InputText = ({
-  id,
-  label,
-  info,
-  defaultValue,
-  options,
-  value,
-  onChange,
-  error,
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  defaultValue = undefined,
+  options = [],
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
 }) => {
   const ref = useRef();
 
@@ -66,16 +66,6 @@ const InputText = ({
       {error && <ErrorText>{error}</ErrorText>}
     </>
   );
-};
-InputText.defaultProps = {
-  id: undefined,
-  defaultValue: undefined,
-  label: undefined,
-  info: undefined,
-  options: [],
-  value: undefined,
-  onChange: () => {},
-  error: undefined,
 };
 
 InputText.propTypes = {
