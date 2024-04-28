@@ -42,7 +42,7 @@ const InputRange = ({
   label = undefined,
   info = undefined,
   options = [],
-  defaultValue = undefined,
+  defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
   isLoading = false,
@@ -56,9 +56,9 @@ const InputRange = ({
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
-  const handleReset = () => onChange(defaultValue);
+  const handleReset = () => onChange(options[defaultValueIndex].value);
 
-  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+  const showReset = index !== defaultValueIndex;
 
   return (
     <>
@@ -114,7 +114,7 @@ InputRange.propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
   isLoading: PropTypes.bool,

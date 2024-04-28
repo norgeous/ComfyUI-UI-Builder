@@ -40,7 +40,7 @@ const Checkbox = ({
 
   const handleReset = () => onChange(options[defaultValueIndex].value);
 
-  const showReset = Boolean(index) !== defaultValueIndex;
+  const showReset = index !== defaultValueIndex;
 
   return (
     <>
