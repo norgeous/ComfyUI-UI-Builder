@@ -1,13 +1,8 @@
-import { insertIntoComfyWorkFlow } from './comfyWorkflowToComfyPrompt';
+const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
+  if (!adapterConfig) return {};
 
-const executeAdapter = ({
-  comfyUiData,
-  formState,
-  baseWorkflow,
-  adapterConfig,
-}) => {
   // wait for comfy ui data
-  if (!comfyUiData.objectInfo) return undefined;
+  // if (!comfyUiData.objectInfo) return undefined;
 
   const operations = {
     // append formState string value to previous
@@ -42,16 +37,17 @@ const executeAdapter = ({
     add: (previous, target) => Number(previous) + Number(formState[target]),
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
-    findInCkptNames: previous =>
-      comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
-        ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
-      ),
-
+    findInCkptNames: previous => {
+      // comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
+      //   ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
+      // );
+    },
     // find the lora
-    findInLoraNames: previous =>
-      comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find(lora =>
-        lora.toLowerCase().includes(previous.toLowerCase()),
-      ),
+    findInLoraNames: previous => {
+      // comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find(lora =>
+      //   lora.toLowerCase().includes(previous.toLowerCase()),
+      // );
+    },
   };
 
   const processStep = (previous, step) => {
@@ -93,13 +89,9 @@ const executeAdapter = ({
     value: processSteps(undefined, actions),
   }));
 
-  const adaptedWorkflow = adapted.reduce(
-    (acc, { destination, value }) =>
-      insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),
-    structuredClone(baseWorkflow),
-  );
+  console.log({ adapted });
 
-  return { adapted, adaptedWorkflow };
+  return adapted;
 };
 
 export default executeAdapter;

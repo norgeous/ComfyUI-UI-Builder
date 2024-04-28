@@ -1,4 +1,6 @@
-import comfyWorkflowToComfyPrompt from '../utils/comfyWorkflowToComfyPrompt';
+import comfyWorkflowToComfyPrompt, {
+  insertIntoComfyWorkFlow,
+} from '../utils/comfyWorkflowToComfyPrompt';
 import executeAdapter from '../utils/executeAdapter';
 
 const useBodyData = ({
@@ -9,14 +11,20 @@ const useBodyData = ({
   adapterConfig,
 }) => {
   // wait for comfy ui data
-  if (!comfyUiData.objectInfo) return {};
+  // if (!comfyUiData.objectInfo) return {};
 
-  const { adapted, adaptedComfyWorkflow } = executeAdapter({
+  const adapted = executeAdapter({
     comfyUiData,
     formState,
-    baseWorkflow,
     adapterConfig,
   });
+
+  if (!comfyUiData.objectInfo) return { adapted };
+  const adaptedComfyWorkflow = adapted.reduce(
+    (acc, { destination, value }) =>
+      insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),
+    structuredClone(baseWorkflow),
+  );
 
   const prompt = comfyWorkflowToComfyPrompt({
     comfyWorkflow: adaptedComfyWorkflow,

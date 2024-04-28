@@ -44,6 +44,8 @@ const getKeys = (objectInfo, type) => {
 };
 
 const comfyWorkflowToComfyPrompt = ({ comfyWorkflow, objectInfo }) => {
+  if (!comfyWorkflow) return {};
+
   const linkLookup = getLinkLookup(structuredClone(comfyWorkflow));
 
   const comfyPrompt = structuredClone(comfyWorkflow).nodes.reduce(
