@@ -20,7 +20,7 @@ const AccordionHeader = styled.button`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 16px;
 `;
 
 const AccordionSection = ({ title = '', children = null }) => {
