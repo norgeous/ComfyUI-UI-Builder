@@ -40,7 +40,7 @@ const Checkbox = ({
 
   const index = maybe !== -1 ? maybe : 0;
 
-  console.log({ value, index, options });
+  // console.log({ value, index, options });
 
   const { label } = options[index];
 
