@@ -23,19 +23,20 @@ const components = {
 
 const FormBuilder = () => {
   const { formConfig, formState, updateFormState } = useContext(FormContext);
+
   const items = formConfig?.map(
     ({
       group,
       type,
       adapter,
-      name,
+      id,
       initialState,
       initialOptionIndex,
       colSpan,
       ...props
     }) => {
       const Component = components[type] || Missing;
-      const value = formState[name];
+      const value = formState[id];
       const handleChange = data => {
         const newFormState = { ...formState, ...data };
         const adapted = adapter?.(newFormState);
@@ -46,11 +47,11 @@ const FormBuilder = () => {
       return {
         group,
         component: (
-          <div key={name} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
+          <div key={id} className={`uk-width-1-${colSpan === 2 ? 1 : 2}@s`}>
             <Component
               {...props} // eslint-disable-line react/jsx-props-no-spreading
               type={type}
-              name={name}
+              id={id}
               value={value}
               onChange={handleChange}
             />

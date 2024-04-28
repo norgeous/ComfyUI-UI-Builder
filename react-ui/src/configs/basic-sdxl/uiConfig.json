@@ -3,7 +3,7 @@
   "version": "v0.0.0",
   "emoji": "🖼️",
   "description": "Basic SDXL with width / height controls",
-  "tags": ["SDXL"],
+  "tags": ["SDXL", "T2I"],
   "formConfig": [
     {
       "group": "Generation params",
@@ -72,8 +72,8 @@
     },
     {
       "group": "Generation params",
+      "id": "size",
       "type": "select",
-      "name": "size",
       "label": "Size",
       "initialOptionIndex": 0,
       "options": [
@@ -99,8 +99,8 @@
     },
     {
       "group": "Generation params",
-      "type": "checkbox",
       "id": "isLcm",
+      "type": "checkbox",
       "info": "Faster generation with less steps, but sacrifices quality",
       "defaultValueIndex": 0,
       "options": [
@@ -130,20 +130,23 @@
     },
     {
       "group": "Generation params",
+      "id": "seed",
       "type": "number",
-      "name": "seed",
       "label": "Seed",
       "initialState": { "seed": 1337 },
       "onChange": { "enableSeedRandomisation": false }
     },
     {
       "group": "Generation params",
+      "id": "enableSeedRandomisation",
       "type": "checkbox",
-      "name": "enableSeedRandomisation",
       "initialOptionIndex": 0,
       "options": [
-        { "label": "Fixed", "value": { "enableSeedRandomisation": false } },
-        { "label": "Random", "value": { "enableSeedRandomisation": true } }
+        {
+          "label": "Fixed seed",
+          "value": { "enableSeedRandomisation": false }
+        },
+        { "label": "Random seed", "value": { "enableSeedRandomisation": true } }
       ]
     }
   ],
