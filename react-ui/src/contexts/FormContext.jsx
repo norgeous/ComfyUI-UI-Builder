@@ -20,11 +20,12 @@ const FormProvider = ({ children = null }) => {
     setFormState(config.formInitialState || {});
   }, [config]);
 
-  const updateFormState = adjustment =>
+  const updateFormState = adjustment => {
     setFormState({
       ...formState,
       ...adjustment,
     });
+  };
 
   return (
     <FormContext.Provider
