@@ -58,6 +58,7 @@ const InputHeader = ({
     <WrapperLeft>
       {label && <Label htmlFor={id}>{label}</Label>}
       {info && (
+        // eslint-disable-next-line no-alert
         <Button title={info} onClick={() => alert(info)}>
           <FaCircleQuestion size={14} />
         </Button>
