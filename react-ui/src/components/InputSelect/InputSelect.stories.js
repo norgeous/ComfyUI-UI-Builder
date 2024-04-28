@@ -11,7 +11,7 @@ export const Select = {
   args: {
     id: 'demo',
     label: 'My InputSelect Label',
-    defaultValue: { testname: 'foobar' },
+    defaultValueIndex: 2,
     options: [
       { label: 'Option 1', value: { testname: false } },
       { label: 'Option 2', value: { testname: true } },

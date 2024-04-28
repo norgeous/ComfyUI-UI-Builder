@@ -27,7 +27,7 @@ const InputSelect = ({
   info = undefined,
   isLoading = false,
   options = [],
-  defaultValue = undefined,
+  defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
   error = undefined,
@@ -39,10 +39,10 @@ const InputSelect = ({
 
   const handleReset = () => {
     ref.current.focus();
-    onChange(defaultValue);
+    onChange(options[defaultValueIndex].value);
   };
 
-  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+  const showReset = index !== defaultValueIndex;
 
   return (
     <>
@@ -83,7 +83,7 @@ InputSelect.propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
 };
