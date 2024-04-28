@@ -15,7 +15,7 @@ export const Number = {
     defaultValue: 69,
     isLoading: false,
     error: 'ERR!',
-    min: 60,
+    min: 42,
     max: 420,
   },
 };

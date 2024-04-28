@@ -66,6 +66,7 @@ const ImageUpload = ({
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         options={options}
+        defaultValue={defaultValue}
         value={value}
         onChange={handleSelectChange}
       />
