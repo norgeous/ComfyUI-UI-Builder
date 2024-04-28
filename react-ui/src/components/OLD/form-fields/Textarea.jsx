@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Label from '../Label';
+import Label from '../../Label';
 
 const Textarea = ({ name, label, info, onChange, ...props }) => {
   const handleChange = event =>

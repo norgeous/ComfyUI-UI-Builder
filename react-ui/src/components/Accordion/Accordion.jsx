@@ -1,12 +1,43 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-import './Accordion.css';
+// .uk-accordion > div {
+//   margin-top: 0 !important;
+// }
+
+// .uk-accordion-content {
+//   padding: 15px !important;
+// }
+
+// .uk-accordion-title {
+//   padding: 10px 12px;
+//   border-bottom: 1px solid #394650;
+//   background-color: #171d21;
+// }
 
 const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
 `;
+const AccordionHeader = styled.button`
+  background: black;
+  color: white;
+  border: 1px solid red;
+`;
+
+const AccordionSection = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState();
+  const toggle = () => setIsOpen(!isOpen);
+  return (
+    <div>
+      <AccordionHeader onClick={toggle}>
+        {title} {isOpen ? 'open' : 'closed'}
+      </AccordionHeader>
+      {isOpen && <div>{children}</div>}
+    </div>
+  );
+};
 
 const Accordion = ({ items }) => {
   const sections = items.reduce((acc, { group, component }) => {
@@ -23,16 +54,11 @@ const Accordion = ({ items }) => {
   }, []);
 
   return (
-    <AccordionContainer uk-accordion="collapsible: false">
+    <AccordionContainer>
       {sections?.map(({ title, children }) => (
-        <div key={title}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="uk-accordion-title">{title}</a>
-          {/* eslint-disable-next-line react/no-unknown-property */}
-          <div className="uk-accordion-content uk-grid-small" uk-grid="true">
-            {children}
-          </div>
-        </div>
+        <AccordionSection key={title} title={title}>
+          {children}
+        </AccordionSection>
       ))}
     </AccordionContainer>
   );
