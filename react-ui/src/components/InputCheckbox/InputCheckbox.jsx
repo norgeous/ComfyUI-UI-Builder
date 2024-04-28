@@ -25,28 +25,22 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 const Checkbox = ({
   info = undefined,
   isLoading = false,
-  defaultValue = undefined,
+  defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
   options = [],
   error = undefined,
   ...props
 }) => {
-  // const index = Number(value) ?? Number(defaultValue);
-
-  const maybe = options.findIndex(
+  const index = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
   );
 
-  const index = maybe !== -1 ? maybe : 0;
-
-  // console.log({ value, index, options });
-
   const { label } = options[index];
 
-  const handleReset = () => onChange(defaultValue);
+  const handleReset = () => onChange(options[defaultValueIndex].value);
 
-  const showReset = Boolean(index) !== defaultValue;
+  const showReset = Boolean(index) !== defaultValueIndex;
 
   return (
     <>
@@ -60,7 +54,9 @@ const Checkbox = ({
         <Input
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           checked={Boolean(index)}
-          onChange={event => onChange(event.currentTarget.checked)}
+          onChange={event =>
+            onChange(options[Number(event.currentTarget.checked)].value)
+          }
         />{' '}
         {label}
       </Label>
@@ -77,7 +73,7 @@ Checkbox.propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
   error: PropTypes.string,

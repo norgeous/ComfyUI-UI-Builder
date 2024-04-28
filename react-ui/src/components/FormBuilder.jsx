@@ -28,10 +28,10 @@ const FormBuilder = () => {
     ({
       group,
       type,
-      adapter,
+      // adapter,
       id,
-      initialState,
-      initialOptionIndex,
+      // initialState,
+      // initialOptionIndex,
       defaultValue,
       defaultValueIndex,
       colSpan,
@@ -41,10 +41,11 @@ const FormBuilder = () => {
       const value = formState[id];
       const handleChange = data => {
         const newState = { [id]: data };
-        const newFormState = { ...formState, ...newState };
-        const adapted = adapter?.(newFormState);
-        if (adapted) updateFormState(adapted);
-        else updateFormState(newState);
+        // const newFormState = { ...formState, ...newState };
+        // const adapted = adapter?.(newFormState);
+        // if (adapted) updateFormState(adapted);
+        // else
+        updateFormState(newState);
       };
 
       return {
@@ -55,6 +56,8 @@ const FormBuilder = () => {
               {...props} // eslint-disable-line react/jsx-props-no-spreading
               type={type}
               id={id}
+              defaultValue={defaultValue}
+              defaultValueIndex={defaultValueIndex}
               value={value}
               onChange={handleChange}
             />
