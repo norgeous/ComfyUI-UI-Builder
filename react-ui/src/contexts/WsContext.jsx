@@ -9,7 +9,7 @@ export const WsContext = createContext({
   output: undefined,
 });
 
-const WsProvider = ({ children }) => {
+const WsProvider = ({ children = null }) => {
   const clientId = useClientIdContext();
 
   const { wsStatus, lastWsMessage, isGenerating, progress, output } =
@@ -29,10 +29,6 @@ const WsProvider = ({ children }) => {
       {children}
     </WsContext.Provider>
   );
-};
-
-WsProvider.defaultProps = {
-  children: null,
 };
 
 WsProvider.propTypes = {

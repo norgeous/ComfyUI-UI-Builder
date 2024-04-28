@@ -4,7 +4,7 @@ import useComfyApi from '../hooks/useComfyApi';
 
 export const ObjectInfoContext = createContext({});
 
-const ObjectInfoProvider = ({ children }) => {
+const ObjectInfoProvider = ({ children = null }) => {
   const {
     executeFetch: objectInfoExecuteFetch,
     loading: objectInfoLoading,
@@ -27,10 +27,6 @@ const ObjectInfoProvider = ({ children }) => {
       {children}
     </ObjectInfoContext.Provider>
   );
-};
-
-ObjectInfoProvider.defaultProps = {
-  children: null,
 };
 
 ObjectInfoProvider.propTypes = {

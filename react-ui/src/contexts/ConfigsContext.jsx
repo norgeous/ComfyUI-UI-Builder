@@ -16,7 +16,7 @@ export const ConfigsContext = createContext({
   setConfig: noop,
 });
 
-const ConfigsProvider = ({ children }) => {
+const ConfigsProvider = ({ children = null }) => {
   const [configs, setConfigs] = useState([]);
   const [config, setConfig] = useState({ configData: { formConfig: [] } });
 
@@ -42,8 +42,6 @@ const ConfigsProvider = ({ children }) => {
     </ConfigsContext.Provider>
   );
 };
-
-ConfigsProvider.defaultProps = { children: null };
 
 ConfigsProvider.propTypes = { children: PropTypes.node };
 

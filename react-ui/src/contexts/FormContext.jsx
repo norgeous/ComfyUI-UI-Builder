@@ -8,7 +8,7 @@ export const FormContext = createContext({
   updateFormState: () => {},
 });
 
-const FormProvider = ({ children }) => {
+const FormProvider = ({ children = null }) => {
   const { config } = useContext(ConfigsContext);
 
   const [formConfig, setFormConfig] = useState(config.configData.formConfig);
@@ -35,8 +35,6 @@ const FormProvider = ({ children }) => {
     </FormContext.Provider>
   );
 };
-
-FormProvider.defaultProps = { children: null };
 
 FormProvider.propTypes = { children: PropTypes.node };
 

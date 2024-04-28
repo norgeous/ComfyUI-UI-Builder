@@ -6,13 +6,11 @@ const clientId = uuidv4(); // generated every time the page refreshes
 
 export const ClientIdContext = createContext(clientId);
 
-const ClientIdProvider = ({ children }) => (
+const ClientIdProvider = ({ children = null }) => (
   <ClientIdContext.Provider value={clientId}>
     {children}
   </ClientIdContext.Provider>
 );
-
-ClientIdProvider.defaultProps = { children: null };
 
 ClientIdProvider.propTypes = { children: PropTypes.node };
 

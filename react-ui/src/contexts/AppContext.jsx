@@ -12,7 +12,7 @@ import useBodyData from '../hooks/useBodyData';
 
 export const AppContext = createContext({});
 
-const AppProvider = ({ children }) => {
+const AppProvider = ({ children = null }) => {
   const clientId = useClientIdContext();
   const { config } = useContext(ConfigsContext);
   const { baseWorkflow } = config;
@@ -61,10 +61,6 @@ const AppProvider = ({ children }) => {
       {children}
     </AppContext.Provider>
   );
-};
-
-AppProvider.defaultProps = {
-  children: null,
 };
 
 AppProvider.propTypes = {
