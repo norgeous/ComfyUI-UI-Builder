@@ -7,44 +7,43 @@
   "formConfig": [
     {
       "group": "Generation params",
-      "type": "fileupload",
-      "name": "image",
+      "id": "image",
       "label": "Image",
-      "info": "Images are saved to the ComfyUI/input directory",
-      "colSpan": 1,
-      "initialState": { "image": "" }
+      "info": "EXPERIMENTAL: Images are saved to the ComfyUI/input directory",
+      "type": "fileupload",
+      "defaultValue": "",
+      "colSpan": 2
     },
     {
       "group": "Generation params",
-      "type": "selectckpt",
-      "name": "ckpt",
+      "id": "ckpt",
       "label": "Checkpoint",
-      "colSpan": 2,
-      "initialOptionIndex": 0,
-      "initialState": { "ckpt": "" }
+      "info": "Choose a SDXL checkpoint",
+      "type": "selectckpt",
+      "colSpan": 2
     },
     {
       "group": "Generation params",
-      "type": "textarea",
-      "name": "positivePrompt",
+      "id": "positivePrompt",
       "label": "Positive Prompt",
-      "colSpan": 2,
-      "initialState": { "positivePrompt": "" }
-    },
-    {
-      "group": "Generation params",
       "type": "textarea",
-      "name": "negativePrompt",
-      "label": "Negative Prompt",
-      "colSpan": 2,
-      "initialState": { "negativePrompt": "watermark, text" }
+      "defaultValue": "",
+      "colSpan": 2
     },
     {
       "group": "Generation params",
-      "type": "range",
-      "name": "quality",
+      "id": "negativePrompt",
+      "label": "Negative Prompt",
+      "type": "textarea",
+      "defaultValue": "watermark, text",
+      "colSpan": 2
+    },
+    {
+      "group": "Generation params",
+      "id": "quality",
       "label": "Quality",
-      "initialOptionIndex": 3,
+      "type": "range",
+      "defaultValueIndex": 3,
       "options": [
         { "label": "Speed", "quality": 0.25 },
         { "quality": 0.5 },
@@ -54,10 +53,10 @@
     },
     {
       "group": "Generation params",
-      "type": "range",
-      "name": "batchSize",
+      "id": "batchSize",
       "label": "Results per generation",
-      "initialOptionIndex": 0,
+      "type": "range",
+      "defaultValueIndex": 0,
       "options": [
         { "label": "1", "batchSize": 1 },
         { "label": "2", "batchSize": 2 },
@@ -73,9 +72,9 @@
     {
       "group": "Generation params",
       "id": "size",
-      "type": "select",
       "label": "Size",
-      "initialOptionIndex": 0,
+      "type": "select",
+      "defaultValueIndex": 0,
       "options": [
         {
           "label": "1:1 Square",
@@ -100,8 +99,8 @@
     {
       "group": "Generation params",
       "id": "isLcm",
-      "type": "checkbox",
       "info": "Faster generation with less steps, but sacrifices quality",
+      "type": "checkbox",
       "defaultValueIndex": 0,
       "options": [
         {
@@ -131,16 +130,16 @@
     {
       "group": "Generation params",
       "id": "seed",
-      "type": "number",
       "label": "Seed",
-      "initialState": { "seed": 1337 },
+      "type": "number",
+      "defaultValue": 1337,
       "onChange": { "enableSeedRandomisation": false }
     },
     {
       "group": "Generation params",
       "id": "enableSeedRandomisation",
       "type": "checkbox",
-      "initialOptionIndex": 0,
+      "defaultValueIndex": 0,
       "options": [
         {
           "label": "Fixed seed",

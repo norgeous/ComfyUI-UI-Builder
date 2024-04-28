@@ -24,7 +24,7 @@ const getConfigs = async () => {
 
     const configData = fileContents.find(
       ({ fileName }) =>
-        fileName.includes(directoryName) && fileName.includes('uiConfig.json'),
+        fileName.includes(directoryName) && fileName.includes('ui.json'),
     ).jsonData;
 
     const formInitialState = getFormInitialState(configData.formConfig);
