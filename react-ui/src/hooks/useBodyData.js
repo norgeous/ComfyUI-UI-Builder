@@ -11,7 +11,7 @@ const useBodyData = ({
   // wait for comfy ui data
   if (!comfyUiData.objectInfo) return {};
 
-  const adaptedComfyWorkflow = executeAdapter({
+  const { adapted, adaptedComfyWorkflow } = executeAdapter({
     comfyUiData,
     formState,
     baseWorkflow,
@@ -28,7 +28,7 @@ const useBodyData = ({
     prompt,
   };
 
-  return { adaptedComfyWorkflow, bodyData };
+  return { adapted, adaptedComfyWorkflow, bodyData };
 };
 
 export default useBodyData;

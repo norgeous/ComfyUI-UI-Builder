@@ -99,7 +99,7 @@ const executeAdapter = ({
     structuredClone(baseWorkflow),
   );
 
-  return adaptedWorkflow;
+  return { adapted, adaptedWorkflow };
 };
 
 export default executeAdapter;

@@ -36,7 +36,7 @@ const StatusBar = () => {
   } = useContext(ConfigsContext);
   const { objectInfoLoading, objectInfoError, objectInfo } =
     useContext(ObjectInfoContext);
-  const { adaptedComfyWorkflow, bodyData } = useContext(AppContext);
+  const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
   return (
     <Bar>
@@ -46,6 +46,7 @@ const StatusBar = () => {
       </div>
       <Buggers>
         <Debug label="formState" data={formState} />
+        <Debug label="adapted" data={adapted} />
         <Debug label="baseWorkflow" data={baseWorkflow} />
         <Debug
           label="objectInfo"

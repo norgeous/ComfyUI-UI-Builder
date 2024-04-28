@@ -22,7 +22,7 @@ const AppProvider = ({ children = null }) => {
 
   const comfyUiData = { objectInfo };
 
-  const { adaptedComfyWorkflow, bodyData } = useBodyData({
+  const { adapted, adaptedComfyWorkflow, bodyData } = useBodyData({
     clientId,
     comfyUiData,
     formState,
@@ -54,6 +54,7 @@ const AppProvider = ({ children = null }) => {
         executeInterrupt,
         interruptLoading,
 
+        adapted,
         adaptedComfyWorkflow,
         bodyData,
       }}
