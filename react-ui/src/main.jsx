@@ -8,7 +8,7 @@ import ConfigsProvider from './contexts/ConfigsContext';
 import FormProvider from './contexts/FormContext';
 import ObjectInfoProvider from './contexts/ObjectInfoContext';
 import WsProvider from './contexts/WsContext';
-import AppProvider from './contexts/AppContext';
+import AppProvider from './contexts/AppProvider';
 
 import App from './App';
 

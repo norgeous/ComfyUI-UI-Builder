@@ -10,9 +10,6 @@ const useBodyData = ({
   baseWorkflow,
   adapterConfig,
 }) => {
-  // wait for comfy ui data
-  // if (!comfyUiData.objectInfo) return {};
-
   const adapted = executeAdapter({
     comfyUiData,
     formState,
@@ -20,6 +17,7 @@ const useBodyData = ({
   });
 
   if (!comfyUiData.objectInfo) return { adapted };
+
   const adaptedComfyWorkflow = adapted.reduce(
     (acc, { destination, value }) =>
       insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),

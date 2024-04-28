@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ConfigsContext } from './ConfigsContext';
 import { FormContext } from './FormContext';
@@ -10,7 +10,7 @@ import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
 import useBodyData from '../hooks/useBodyData';
 
-export const AppContext = createContext({});
+import AppContext from './AppContext';
 
 const AppProvider = ({ children = null }) => {
   const clientId = useClientIdContext();

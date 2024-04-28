@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { FormContext } from '../contexts/FormContext';
 import useWsContext from '../hooks/useWsContext';
-import useAppContext from '../hooks/useAppContext';
 import Button from './Button/Button';
+import AppContext from '../contexts/AppContext';
 
 const FormControls = () => {
   const { isGenerating } = useWsContext();
@@ -12,7 +12,8 @@ const FormControls = () => {
     updateFormState,
   } = useContext(FormContext);
 
-  const { promptError, executePrompt, executeInterrupt } = useAppContext();
+  const { promptError, executePrompt, executeInterrupt } =
+    useContext(AppContext);
 
   const handleClick = () => {
     executePrompt();

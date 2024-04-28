@@ -1,9 +1,6 @@
 const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
   if (!adapterConfig) return {};
 
-  // wait for comfy ui data
-  // if (!comfyUiData.objectInfo) return undefined;
-
   const operations = {
     // append formState string value to previous
     // get: (previous, targets) => [previous, formState[targets[0]]].filter(v => v).join(' '),
@@ -38,15 +35,17 @@ const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
     findInCkptNames: previous => {
-      // comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
-      //   ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
-      // );
+      if (!comfyUiData.objectInfo) return undefined;
+      return comfyUiData.objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
+        ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
+      );
     },
     // find the lora
     findInLoraNames: previous => {
-      // comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find(lora =>
-      //   lora.toLowerCase().includes(previous.toLowerCase()),
-      // );
+      if (!comfyUiData.objectInfo) return undefined;
+      return comfyUiData.objectInfo.LoraLoader.input.required.lora_name[0].find(
+        lora => lora.toLowerCase().includes(previous.toLowerCase()),
+      );
     },
   };
 

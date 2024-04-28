@@ -5,7 +5,7 @@ import { WsContext } from '../contexts/WsContext';
 import { FormContext } from '../contexts/FormContext';
 import { ConfigsContext } from '../contexts/ConfigsContext';
 import { ObjectInfoContext } from '../contexts/ObjectInfoContext';
-import { AppContext } from '../contexts/AppContext';
+import AppContext from '../contexts/AppContext';
 
 import Debug from './Debug';
 import StatusLight from './StatusLight';
