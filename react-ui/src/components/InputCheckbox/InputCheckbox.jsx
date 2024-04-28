@@ -23,7 +23,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const Checkbox = ({
-  label,
+  label = undefined,
   info = undefined,
   isLoading = false,
   defaultValueIndex = undefined,
