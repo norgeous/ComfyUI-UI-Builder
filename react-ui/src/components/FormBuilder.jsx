@@ -1,26 +1,26 @@
 import { useContext } from 'react';
 import { FormContext } from '../contexts/FormContext';
 
-import Accordion from './Accordion';
+import Accordion from './Accordion/Accordion';
 
-import Missing from './form-fields/Missing';
+import Missing from './OLD/form-fields/Missing';
 
-import Select from './form-fields/Select';
-import SelectCkpt from './form-fields/SelectCkpt';
-import Range from './form-fields/Range';
-import Textarea from './form-fields/Textarea';
-import Num from './form-fields/Num';
-import Checkbox from './form-fields/Checkbox/Checkbox';
-import FileUpload from './form-fields/FileUpload';
+import InputSelect from './InputSelect/InputSelect';
+// import SelectCkpt from './form-fields/SelectCkpt';
+// import Range from './form-fields/Range';
+// import Textarea from './form-fields/Textarea';
+// import Num from './form-fields/Num';
+// import Checkbox from './form-fields/Checkbox/Checkbox';
+// import FileUpload from './form-fields/FileUpload';
 
 const components = {
-  select: Select,
-  selectckpt: SelectCkpt,
-  range: Range,
-  textarea: Textarea,
-  number: Num,
-  checkbox: Checkbox,
-  fileupload: FileUpload,
+  select: InputSelect,
+  // selectckpt: SelectCkpt,
+  // range: Range,
+  // textarea: Textarea,
+  // number: Num,
+  // checkbox: Checkbox,
+  // fileupload: FileUpload,
 };
 
 const FormBuilder = () => {

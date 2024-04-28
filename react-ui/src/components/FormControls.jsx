@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { FormContext } from '../contexts/FormContext';
 import useWsContext from '../hooks/useWsContext';
 import useAppContext from '../hooks/useAppContext';
-import Button from './Button';
+import Button from './Button/Button';
 
 const FormControls = () => {
   const { isGenerating } = useWsContext();
