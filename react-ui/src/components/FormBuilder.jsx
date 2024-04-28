@@ -40,10 +40,11 @@ const FormBuilder = () => {
       const Component = components[type] || Missing;
       const value = formState[id];
       const handleChange = data => {
-        const newFormState = { ...formState, ...data };
+        const newState = { [id]: data };
+        const newFormState = { ...formState, ...newState };
         const adapted = adapter?.(newFormState);
         if (adapted) updateFormState(adapted);
-        else updateFormState(data);
+        else updateFormState(newState);
       };
 
       return {
