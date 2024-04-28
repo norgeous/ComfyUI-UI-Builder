@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputHeader from '../InputHeader';
 import ErrorText from '../ErrorText';
+import deepEqual from '../../utils/deepEqual';
 
 const Label = styled.label`
   display: block;
@@ -22,19 +23,22 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const Checkbox = ({
-  id,
-  info,
-  isLoading,
-  defaultValue,
-  value,
-  onChange,
-  options,
-  error,
+  info = undefined,
+  isLoading = false,
+  defaultValue = undefined,
+  value = undefined,
+  onChange = () => {},
+  options = [],
+  error = undefined,
   ...props
 }) => {
-  const index = Number(value) ?? Number(defaultValue);
+  // const index = Number(value) ?? Number(defaultValue);
 
-  const label = options[index];
+  const index = options.findIndex(
+    option => option.value === value || deepEqual(option.value, value),
+  );
+
+  const { label } = options[index];
 
   const handleReset = () => onChange(defaultValue);
 
@@ -61,18 +65,19 @@ const Checkbox = ({
   );
 };
 
-Checkbox.defaultProps = {
-  name: undefined,
-  options: [],
-  value: undefined,
-  onChange: () => {},
-};
-
 Checkbox.propTypes = {
-  name: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.bool,
+  info: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+    }),
+  ),
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
+  error: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 export default Checkbox;

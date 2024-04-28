@@ -6,6 +6,7 @@ const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
 `;
+
 const AccordionHeader = styled.button`
   background: black;
   color: white;
@@ -14,7 +15,7 @@ const AccordionHeader = styled.button`
   display: block;
 `;
 
-const AccordionSection = ({ title, children }) => {
+const AccordionSection = ({ title = '', children = null }) => {
   const [isOpen, setIsOpen] = useState();
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -27,17 +28,12 @@ const AccordionSection = ({ title, children }) => {
   );
 };
 
-AccordionSection.defaultProps = {
-  title: '',
-  children: null,
-};
-
 AccordionSection.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
 };
 
-const Accordion = ({ items }) => {
+const Accordion = ({ items = [] }) => {
   const sections = items.reduce((acc, { group, component }) => {
     const previousChildrenInGroup =
       acc.find(({ title }) => title === group)?.children || [];
@@ -60,10 +56,6 @@ const Accordion = ({ items }) => {
       ))}
     </AccordionContainer>
   );
-};
-
-Accordion.defaultProps = {
-  items: [],
 };
 
 Accordion.propTypes = {

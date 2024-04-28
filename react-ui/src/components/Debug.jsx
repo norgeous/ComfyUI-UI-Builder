@@ -20,7 +20,7 @@ const Pre = styled.pre`
   z-index: 10;
 `;
 
-const Debug = ({ label, data }) => {
+const Debug = ({ label, data = undefined }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
@@ -32,10 +32,6 @@ const Debug = ({ label, data }) => {
       {open && <Pre onClick={toggle}>{JSON.stringify(data, null, 2)}</Pre>}
     </>
   );
-};
-
-Debug.defaultProps = {
-  data: undefined,
 };
 
 Debug.propTypes = {

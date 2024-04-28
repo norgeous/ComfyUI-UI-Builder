@@ -47,12 +47,12 @@ const Loading = styled.div`
 `;
 
 const InputHeader = ({
-  id,
-  label,
-  info,
-  isLoading,
-  showReset,
-  handleReset,
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  isLoading = false,
+  showReset = false,
+  handleReset = () => {},
 }) => (
   <Wrapper>
     <WrapperLeft>
@@ -71,15 +71,6 @@ const InputHeader = ({
     {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrapper>
 );
-
-InputHeader.defaultProps = {
-  id: undefined,
-  label: undefined,
-  info: undefined,
-  isLoading: false,
-  showReset: false,
-  handleReset: () => {},
-};
 
 InputHeader.propTypes = {
   id: PropTypes.string,

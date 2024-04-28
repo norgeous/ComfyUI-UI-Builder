@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Missing = ({ type }) => (
+const Missing = ({ type = undefined }) => (
   <>
     component type <strong>{type}</strong> not found
   </>
 );
-
-Missing.defaultProps = {
-  type: undefined,
-};
 
 Missing.propTypes = {
   type: PropTypes.string,

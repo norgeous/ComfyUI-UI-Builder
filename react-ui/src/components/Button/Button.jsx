@@ -1,19 +1,13 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ children, ...props }) => (
+const Button = ({ children = null, ...props }) => (
   <button
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    {...props}
-    className="uk-button uk-button-danger"
+    {...props} // eslint-disable-line react/jsx-props-no-spreading
     type="button"
   >
     {children}
   </button>
 );
-
-Button.defaultProps = {
-  children: null,
-};
 
 Button.propTypes = {
   children: PropTypes.node,

@@ -22,15 +22,14 @@ const Input = styled.input.attrs({ type: 'number' })`
 `;
 
 const InputNumber = ({
-  id,
-  label,
-  info,
-  isLoading,
-  defaultValue,
-  options,
-  value,
-  onChange,
-  error,
+  id = undefined,
+  defaultValue = undefined,
+  label = undefined,
+  info = undefined,
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
+  isLoading = false,
   ...props
 }) => {
   const ref = useRef();
@@ -63,15 +62,6 @@ const InputNumber = ({
     </>
   );
 };
-InputNumber.defaultProps = {
-  id: undefined,
-  defaultValue: undefined,
-  label: undefined,
-  info: undefined,
-  value: undefined,
-  onChange: () => {},
-  error: undefined,
-};
 
 InputNumber.propTypes = {
   id: PropTypes.string,
@@ -81,5 +71,6 @@ InputNumber.propTypes = {
   error: PropTypes.string,
   value: PropTypes.number,
   onChange: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 export default InputNumber;

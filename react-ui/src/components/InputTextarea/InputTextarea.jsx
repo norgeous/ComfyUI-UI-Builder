@@ -27,14 +27,13 @@ const Textarea = styled.textarea`
 `;
 
 const InputTextarea = ({
-  id,
-  name,
-  label,
-  info,
-  defaultValue,
-  value,
-  onChange,
-  error,
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  defaultValue = undefined,
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
   ...props
 }) => {
   const handleReset = () => onChange(defaultValue);
@@ -61,18 +60,15 @@ const InputTextarea = ({
   );
 };
 
-InputTextarea.defaultProps = {
-  name: undefined,
-  label: undefined,
-  info: undefined,
-  onChange: () => {},
-};
-
 InputTextarea.propTypes = {
-  name: PropTypes.string,
+  id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
   onChange: PropTypes.func,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };
 
 export default InputTextarea;

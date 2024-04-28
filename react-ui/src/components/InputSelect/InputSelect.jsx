@@ -22,15 +22,15 @@ const Select = styled.select`
 `;
 
 const InputSelect = ({
-  id,
-  label,
-  info,
-  isLoading,
-  defaultValue,
-  options,
-  value,
-  onChange,
-  error,
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  isLoading = false,
+  options = [],
+  defaultValue = undefined,
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
 }) => {
   const ref = useRef();
   const index = options.findIndex(
@@ -69,18 +69,6 @@ const InputSelect = ({
       {error && <ErrorText>{error}</ErrorText>}
     </>
   );
-};
-
-InputSelect.defaultProps = {
-  id: undefined,
-  label: undefined,
-  info: undefined,
-  isLoading: false,
-  options: [],
-  defaultValue: undefined,
-  value: undefined,
-  onChange: () => {},
-  error: undefined,
 };
 
 InputSelect.propTypes = {

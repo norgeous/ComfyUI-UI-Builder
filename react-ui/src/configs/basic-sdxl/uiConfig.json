@@ -106,21 +106,25 @@
       "options": [
         {
           "label": "LCM",
-          "isLcm": false,
-          "baseSteps": 14,
-          "stepMultiplier": 14,
-          "cfg": 6.5,
-          "samplerName": "dpmpp_2m",
-          "scheduler": "exponential"
+          "value": {
+            "isLcm": false,
+            "baseSteps": 14,
+            "stepMultiplier": 14,
+            "cfg": 6.5,
+            "samplerName": "dpmpp_2m",
+            "scheduler": "exponential"
+          }
         },
         {
           "label": "LCM",
-          "isLcm": true,
-          "baseSteps": 6,
-          "stepMultiplier": 4,
-          "cfg": 2.5,
-          "samplerName": "lcm",
-          "scheduler": "normal"
+          "value": {
+            "isLcm": true,
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
         }
       ]
     },
@@ -137,16 +141,7 @@
       "type": "checkbox",
       "name": "enableSeedRandomisation",
       "initialOptionIndex": 0,
-      "options": [
-        {
-          "label": "Random",
-          "enableSeedRandomisation": false
-        },
-        {
-          "label": "Random",
-          "enableSeedRandomisation": true
-        }
-      ]
+      "options": ["Random", "Random"]
     }
   ],
   "adapterConfig": [

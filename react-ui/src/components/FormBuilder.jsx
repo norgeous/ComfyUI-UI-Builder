@@ -6,20 +6,18 @@ import Accordion from './Accordion/Accordion';
 import Missing from './OLD/form-fields/Missing';
 
 import InputSelect from './InputSelect/InputSelect';
-// import SelectCkpt from './form-fields/SelectCkpt';
-// import Range from './form-fields/Range';
-// import Textarea from './form-fields/Textarea';
-// import Num from './form-fields/Num';
-// import Checkbox from './form-fields/Checkbox/Checkbox';
-// import FileUpload from './form-fields/FileUpload';
+import InputRange from './InputRange/InputRange';
+import InputTextarea from './InputTextarea/InputTextarea';
+import InputNumber from './InputNumber/InputNumber';
+import InputCheckbox from './InputCheckbox/InputCheckbox';
 
 const components = {
   select: InputSelect,
+  range: InputRange,
+  textarea: InputTextarea,
+  number: InputNumber,
+  checkbox: InputCheckbox,
   // selectckpt: SelectCkpt,
-  // range: Range,
-  // textarea: Textarea,
-  // number: Num,
-  // checkbox: Checkbox,
   // fileupload: FileUpload,
 };
 

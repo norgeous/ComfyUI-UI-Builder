@@ -38,15 +38,15 @@ const Pip = styled.div`
 `;
 
 const InputRange = ({
-  id,
-  label,
-  info,
-  isLoading,
-  options,
-  defaultValue,
-  value,
-  onChange,
-  error,
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  options = [],
+  defaultValue = undefined,
+  value = undefined,
+  onChange = () => {},
+  isLoading = false,
+  error = undefined,
   ...props
 }) => {
   const index = options.findIndex(
@@ -103,20 +103,11 @@ const InputRange = ({
   );
 };
 
-InputRange.defaultProps = {
-  name: undefined,
-  label: undefined,
-  info: undefined,
-  options: [],
-  defaultValue: undefined,
-  value: undefined,
-  onChange: () => {},
-};
-
 InputRange.propTypes = {
-  name: PropTypes.string,
+  id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
+  error: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -126,6 +117,7 @@ InputRange.propTypes = {
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 export default InputRange;
