@@ -2,20 +2,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-// .uk-accordion > div {
-//   margin-top: 0 !important;
-// }
-
-// .uk-accordion-content {
-//   padding: 15px !important;
-// }
-
-// .uk-accordion-title {
-//   padding: 10px 12px;
-//   border-bottom: 1px solid #394650;
-//   background-color: #171d21;
-// }
-
 const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
@@ -24,6 +10,8 @@ const AccordionHeader = styled.button`
   background: black;
   color: white;
   border: 1px solid red;
+  width: 100%;
+  display: block;
 `;
 
 const AccordionSection = ({ title, children }) => {
@@ -32,11 +20,21 @@ const AccordionSection = ({ title, children }) => {
   return (
     <div>
       <AccordionHeader onClick={toggle}>
-        {title} {isOpen ? 'open' : 'closed'}
+        {title} ({isOpen ? 'open' : 'closed'})
       </AccordionHeader>
       {isOpen && <div>{children}</div>}
     </div>
   );
+};
+
+AccordionSection.defaultProps = {
+  title: '',
+  children: null,
+};
+
+AccordionSection.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
 };
 
 const Accordion = ({ items }) => {

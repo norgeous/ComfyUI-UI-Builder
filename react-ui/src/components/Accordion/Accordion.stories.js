@@ -1,11 +1,11 @@
-import Accordion from './Accordion';
+import component from './Accordion';
 
 export default {
   title: 'Layout/Accordion',
-  component: Accordion,
+  component,
 };
 
-export const Accordion1 = {
+export const Accordion = {
   args: {
     items: [
       { group: 'group1', component: 'component1' },
