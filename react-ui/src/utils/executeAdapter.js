@@ -89,8 +89,6 @@ const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
     value: processSteps(undefined, actions),
   }));
 
-  console.log({ adapted });
-
   return adapted;
 };
 
