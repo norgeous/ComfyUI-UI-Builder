@@ -11,7 +11,7 @@ export const Pips = {
   args: {
     id: 'demo',
     label: 'My InputRange Label',
-    defaultValue: { testname: 'foobar' },
+    defaultValueIndex: 5,
     options: [
       { label: '1', value: 1 },
       { label: '2', value: 2 },
@@ -32,7 +32,7 @@ export const Dual = {
   args: {
     id: 'demo',
     label: 'My InputRange Label',
-    defaultValue: { testname: 'foobar' },
+    defaultValueIndex: 2,
     options: [
       { label: 'Smallest Value', value: 1 },
       { value: 2 },

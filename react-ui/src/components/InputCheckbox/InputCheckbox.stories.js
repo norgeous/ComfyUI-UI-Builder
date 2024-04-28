@@ -12,9 +12,10 @@ export const Checkbox = {
     id: 'demo',
     info: 'helpful text...',
     label: 'LCM',
+    defaultValueIndex: 1,
     options: [
       {
-        label: 'LCM OFF',
+        label: 'Off',
         value: {
           isLcm: false,
           baseSteps: 14,
@@ -25,7 +26,7 @@ export const Checkbox = {
         },
       },
       {
-        label: 'LCM',
+        label: 'On',
         value: {
           isLcm: true,
           baseSteps: 6,
@@ -36,14 +37,6 @@ export const Checkbox = {
         },
       },
     ],
-    defaultValue: {
-      isLcm: true,
-      baseSteps: 6,
-      stepMultiplier: 4,
-      cfg: 2.5,
-      samplerName: 'lcm',
-      scheduler: 'normal',
-    },
     error: 'ERR!',
     isLoading: false,
   },
