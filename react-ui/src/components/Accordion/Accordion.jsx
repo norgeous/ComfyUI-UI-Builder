@@ -5,7 +5,7 @@ import { useState } from 'react';
 const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
-  padding: 16px;
+  padding: 8px;
 `;
 
 const AccordionHeader = styled.button`
@@ -21,7 +21,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding: 8px;
+  padding: 16px;
   border: 1px solid red;
 `;
 
