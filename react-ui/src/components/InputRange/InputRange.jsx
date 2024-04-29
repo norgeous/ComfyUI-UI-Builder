@@ -13,7 +13,7 @@ const Input = styled.input.attrs({ type: 'range' })`
 `;
 
 const Sublabels = styled.div`
-  padding: ${({ $isPips }) => ($isPips ? '0 8px' : 0)};
+  padding: ${({ $isPips }) => ($isPips ? '0 10px' : 0)};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
