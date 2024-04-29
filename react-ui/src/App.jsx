@@ -25,7 +25,7 @@ const App = () => {
           <StatusBar />
         </Main>
 
-        <Controls className="uk-light">
+        <Controls>
           {/* <UiSelector /> */}
           <FormBuilder />
           <FormControls />
