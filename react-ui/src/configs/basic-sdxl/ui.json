@@ -49,7 +49,8 @@
         { "label": "Speed", "value": 0.25 },
         { "value": 0.5 },
         { "value": 0.75 },
-        { "label": "Accuracy", "value": 1 }
+        { "value": 1 },
+        { "label": "Accuracy", "value": 2 }
       ]
     },
     {
