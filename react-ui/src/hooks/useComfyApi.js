@@ -53,7 +53,7 @@ const useComfyApi = ({
           setError(err.message);
         });
     }
-  }, [fetchUrl, options, adapter]);
+  }, [fetchUrl, options, adapter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (enabled) executeFetch();
