@@ -1,11 +1,23 @@
+const isObject = thing =>
+  typeof thing === 'object' && !Array.isArray(thing) && thing !== null;
+
+const flattenFormState = formState =>
+  Object.fromEntries(
+    Object.entries(formState).reduce((acc, [key, value]) => {
+      if (isObject(value)) return [...acc, ...Object.entries(value)]; // if value object, spread it and discard the key
+      return [...acc, [key, value]]; // else do nothing and return the unmodified
+    }, []),
+  );
+
 const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
   if (!adapterConfig) return {};
 
+  const flatFormState = flattenFormState(formState);
+
   const operations = {
     // append formState string value to previous
-    // get: (previous, targets) => [previous, formState[targets[0]]].filter(v => v).join(' '),
     get: (previous, target) =>
-      [previous, formState[target]].filter(v => v).join(' '),
+      [previous, flatFormState[target]].filter(v => v).join(' '),
 
     // append raw string value to previous
     raw: (previous, text) => [previous, text].filter(v => v).join(' '),
@@ -16,7 +28,7 @@ const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
     // check if the targets are defined in formState
     // if it fails, skip following steps and return the previous value
     if: (previous, target) => {
-      if (formState[target] || formState[target] === 0) return previous;
+      if (flatFormState[target] || flatFormState[target] === 0) return previous;
       return undefined;
     },
 
@@ -25,13 +37,13 @@ const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
 
     // multiply formState value with previous value
     multiply: (previous, target) =>
-      Number(previous) * Number(formState[target]),
+      Number(previous) * Number(flatFormState[target]),
 
     // round a number
     round: previous => Math.round(previous),
 
     // add formState value to previous value
-    add: (previous, target) => Number(previous) + Number(formState[target]),
+    add: (previous, target) => Number(previous) + Number(flatFormState[target]),
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
     findInCkptNames: previous => {
