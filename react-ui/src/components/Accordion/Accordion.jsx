@@ -22,6 +22,7 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 8px;
+  border: 1px solid red;
 `;
 
 const AccordionSection = ({ title = '', children = null }) => {
