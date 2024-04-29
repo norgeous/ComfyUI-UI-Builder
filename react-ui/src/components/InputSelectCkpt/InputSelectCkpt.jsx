@@ -1,42 +1,32 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import Select from './Select';
+import InputText from '../InputText/InputText';
 import { ObjectInfoContext } from '../../contexts/ObjectInfoContext';
 
-const SelectCkpt = ({ name, value, ...props }) => {
+const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
   const { objectInfo } = useContext(ObjectInfoContext);
 
   const ckptOptions =
     objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0].map(
       ckptName => ({
         label: ckptName,
-        [name]: ckptName,
+        value: ckptName,
       }),
     );
 
-  const options = [
-    { label: '-- undefined --', [name]: '' },
-    ...(ckptOptions || []),
-  ];
-
   return (
-    <Select
+    <InputText
       {...props} // eslint-disable-line react/jsx-props-no-spreading
-      name={name}
+      id={id}
       value={value}
-      options={options}
+      options={ckptOptions || []}
     />
   );
 };
 
-SelectCkpt.defaultProps = {
-  name: undefined,
-  value: undefined,
-};
-
-SelectCkpt.propTypes = {
-  name: PropTypes.string,
+InputSelectCkpt.propTypes = {
+  id: PropTypes.string,
   value: PropTypes.string,
 };
 
-export default SelectCkpt;
+export default InputSelectCkpt;

@@ -12,6 +12,7 @@ import InputRange from './InputRange/InputRange';
 import InputTextarea from './InputTextarea/InputTextarea';
 import InputNumber from './InputNumber/InputNumber';
 import InputCheckbox from './InputCheckbox/InputCheckbox';
+import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 
 const Item = styled.div`
   ${({ colSpan }) =>
@@ -27,7 +28,7 @@ const components = {
   textarea: InputTextarea,
   number: InputNumber,
   checkbox: InputCheckbox,
-  // selectckpt: SelectCkpt,
+  selectckpt: InputSelectCkpt,
   // fileupload: FileUpload,
 };
 

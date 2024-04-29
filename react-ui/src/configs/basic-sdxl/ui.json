@@ -20,6 +20,7 @@
       "label": "Checkpoint",
       "info": "Choose a SDXL checkpoint",
       "type": "selectckpt",
+      "defaultValue": "",
       "colSpan": 2
     },
     {
