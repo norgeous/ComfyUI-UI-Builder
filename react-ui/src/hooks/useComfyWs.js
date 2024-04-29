@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 
+const protocolConvert = { 'http:': 'ws:', 'https:': 'wss:' };
+
+const wsBase = [
+  protocolConvert[window.location.protocol],
+  '//',
+  window.location.host, // includes port
+].join('');
+
 const useComfyWs = clientId => {
   const [wsStatus, setWsStatus] = useState('DEFAULT');
   const [lastWsMessage, setLastWsMessage] = useState('');
@@ -41,7 +49,7 @@ const useComfyWs = clientId => {
     };
 
     setWsStatus('CONNECTING');
-    const socket = new WebSocket(`/ws?clientId=${clientId}`);
+    const socket = new WebSocket(`${wsBase}/ws?clientId=${clientId}`);
     socket.addEventListener('open', () => setWsStatus('CONNECTED'));
     socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
     socket.addEventListener('message', event => {

@@ -10,6 +10,8 @@ const useBodyData = ({
   baseWorkflow,
   adapterConfig,
 }) => {
+  if (!baseWorkflow) return {};
+
   const adapted = executeAdapter({
     comfyUiData,
     formState,
@@ -18,10 +20,12 @@ const useBodyData = ({
 
   if (!comfyUiData.objectInfo) return { adapted };
 
+  const clone = structuredClone({ ...baseWorkflow });
+
   const adaptedComfyWorkflow = adapted.reduce(
     (acc, { destination, value }) =>
       insertIntoComfyWorkFlow(acc, comfyUiData.objectInfo, destination, value),
-    structuredClone(baseWorkflow),
+    clone,
   );
 
   const prompt = comfyWorkflowToComfyPrompt({

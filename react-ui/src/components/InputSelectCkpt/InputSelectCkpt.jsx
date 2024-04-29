@@ -7,12 +7,13 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
   const { objectInfo } = useContext(ObjectInfoContext);
 
   const ckptOptions =
-    objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0].map(
-      ckptName => ({
-        label: ckptName,
-        value: ckptName,
-      }),
-    );
+    objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0];
+  // .map(
+  //   ckptName => ({
+  //     label: ckptName,
+  //     value: ckptName,
+  //   }),
+  // );
 
   return (
     <InputText

@@ -10,7 +10,7 @@ const flattenFormState = formState =>
   );
 
 const executeAdapter = ({ comfyUiData, formState, adapterConfig }) => {
-  if (!adapterConfig) return {};
+  if (!adapterConfig) return [];
 
   const flatFormState = flattenFormState(formState);
 
