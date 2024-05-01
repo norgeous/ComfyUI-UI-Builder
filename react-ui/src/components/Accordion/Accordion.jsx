@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { FaChevronUp } from 'react-icons/fa6';
 
 const AccordionContainer = styled.section`
   overflow-y: auto;
@@ -11,10 +12,32 @@ const AccordionContainer = styled.section`
 const AccordionHeader = styled.button`
   background: black;
   color: white;
-  border: 1px solid red;
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 16px;
+  cursor: pointer;
+  border: none;
+`;
+
+const Chevron = styled(FaChevronUp)`
+  transform: ${({ isOpen }) => (isOpen ? 'none' : 'rotate(180deg)')};
+  transition: transform 350ms;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const Wrapper2 = styled.div`
+  width: 100%;
+`;
+
+const Collapse = styled.div`
+  overflow: hidden;
+  max-height: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  transition: max-height 350ms;
 `;
 
 const Grid = styled.div`
@@ -22,19 +45,25 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 16px;
-  border: 1px solid red;
 `;
 
 const AccordionSection = ({ title = '', children = null }) => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <div>
+    <>
       <AccordionHeader onClick={toggle}>
-        {title} ({isOpen ? 'open' : 'closed'})
+        {title}
+        <Chevron isOpen={isOpen} />
       </AccordionHeader>
-      {isOpen && <Grid>{children}</Grid>}
-    </div>
+      <Wrapper>
+        <Wrapper2>
+          <Collapse isOpen={isOpen}>
+            <Grid>{children}</Grid>
+          </Collapse>
+        </Wrapper2>
+      </Wrapper>
+    </>
   );
 };
 
