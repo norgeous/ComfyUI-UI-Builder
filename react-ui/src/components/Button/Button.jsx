@@ -1,12 +1,22 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Btn = styled.button.attrs({ type: 'button' })`
+  background: var(--input-outline);
+  margin: 0;
+  border: none;
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  padding: 8px 4px;
+`;
 
 const Button = ({ children = null, ...props }) => (
-  <button
+  <Btn
     {...props} // eslint-disable-line react/jsx-props-no-spreading
-    type="button"
   >
     {children}
-  </button>
+  </Btn>
 );
 
 Button.propTypes = {
