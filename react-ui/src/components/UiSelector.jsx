@@ -10,8 +10,10 @@ const Header = styled.header`
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);
 
-  const handleChange = ({ ui }) => {
-    const newConfig = configs.find(({ configData: { name } }) => name === ui);
+  const handleChange = newValue => {
+    const newConfig = configs.find(
+      ({ configData: { name } }) => name === newValue,
+    );
     setConfig(newConfig);
   };
 
@@ -23,10 +25,10 @@ const UiSelector = () => {
   const value = config.configData.name;
 
   return (
-    <Header className="uk-text-center uk-margin-remove-vertical text-light">
+    <Header>
       <Select
-        name="ui"
         options={options}
+        defaultValueIndex={0}
         value={value}
         onChange={handleChange}
       />
