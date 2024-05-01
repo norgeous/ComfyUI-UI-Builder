@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import WsContext from './contexts/WsContext';
 import { GlobalStyle, Theme1Style } from './components/globalStyles';
 import { Page, Main, Controls, Content } from './components/Layout';
-// import UiSelector from './components/UiSelector';
+import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
 import FormControls from './components/FormControls';
 import Progress from './components/Progress/Progress';
@@ -26,7 +26,7 @@ const App = () => {
         </Main>
 
         <Controls>
-          {/* <UiSelector /> */}
+          <UiSelector />
           <FormBuilder />
           <FormControls />
         </Controls>
