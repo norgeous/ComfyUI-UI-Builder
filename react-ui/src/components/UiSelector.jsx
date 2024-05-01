@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import Select from './InputSelect/InputSelect';
+import Select from './form-fields/InputSelect/InputSelect';
 
 const Header = styled.header`
   padding: 10px;

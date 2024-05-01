@@ -18,6 +18,7 @@ const Pre = styled.pre`
   margin: 0;
   border: 0;
   z-index: 10;
+  overflow: scroll;
 `;
 
 const Debug = ({ label, data = undefined }) => {

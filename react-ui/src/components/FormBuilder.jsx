@@ -4,13 +4,13 @@ import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
 
 import Accordion from './Accordion/Accordion';
-import Missing from './OLD/form-fields/Missing';
-import InputSelect from './InputSelect/InputSelect';
-import InputRange from './InputRange/InputRange';
-import InputTextarea from './InputTextarea/InputTextarea';
-import InputNumber from './InputNumber/InputNumber';
-import InputCheckbox from './InputCheckbox/InputCheckbox';
-import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
+import Missing from './form-fields/Missing';
+import InputSelect from './form-fields/InputSelect/InputSelect';
+import InputRange from './form-fields/InputRange/InputRange';
+import InputTextarea from './form-fields/InputTextarea/InputTextarea';
+import InputNumber from './form-fields/InputNumber/InputNumber';
+import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
+import InputSelectCkpt from './form-fields/InputSelectCkpt/InputSelectCkpt';
 
 const Item = styled.div`
   ${({ colSpan }) =>

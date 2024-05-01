@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../InputHeader';
-import ErrorText from '../ErrorText';
+import InputHeader from '../../InputHeader';
+import ErrorText from '../../ErrorText';
 
 const Input = styled.input.attrs({ type: 'text' })`
   display: block;

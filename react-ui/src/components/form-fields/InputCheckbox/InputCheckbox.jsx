@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../InputHeader';
-import ErrorText from '../ErrorText';
-import deepEqual from '../../utils/deepEqual';
+import InputHeader from '../../InputHeader';
+import ErrorText from '../../ErrorText';
+import deepEqual from '../../../utils/deepEqual';
 
 const Label = styled.label`
   display: block;

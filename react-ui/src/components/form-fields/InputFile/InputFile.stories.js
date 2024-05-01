@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test';
 import InputFile from './InputFile';
-import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
+import SimpleStateDecorator from '../../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/File',

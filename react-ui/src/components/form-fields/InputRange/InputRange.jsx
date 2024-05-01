@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
-import InputHeader from '../InputHeader';
-import ErrorText from '../ErrorText';
-import deepEqual from '../../utils/deepEqual';
+import InputHeader from '../../InputHeader';
+import ErrorText from '../../ErrorText';
+import deepEqual from '../../../utils/deepEqual';
 
 const Input = styled.input.attrs({ type: 'range' })`
   accent-color: var(--input-outline);

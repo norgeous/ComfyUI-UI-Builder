@@ -1,5 +1,5 @@
 import InputText from './InputText';
-import SimpleStateDecorator from '../../../.storybook/SimpleStateDecorator';
+import SimpleStateDecorator from '../../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/Text',

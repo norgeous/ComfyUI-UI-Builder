@@ -39,10 +39,14 @@ const Carousel = () => {
   if (!images.length) return null;
 
   return (
-    <Container open={open} onClick={() => setOpen(o => !o)}>
+    <Container open={open} onClick={() => setOpen(false)}>
       {images.map(({ filename }) => (
         <Div key={filename}>
-          <Img alt="" src={`/view?type=output&filename=${filename}`} />
+          <Img
+            alt=""
+            src={`/view?type=output&filename=${filename}`}
+            onClick={() => setOpen(o => !o)}
+          />
         </Div>
       ))}
     </Container>

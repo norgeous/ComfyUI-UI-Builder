@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from '../InputSelect/InputSelect';
-import ErrorText from '../ErrorText';
+import ErrorText from '../../ErrorText';
 
 const Input = styled.input.attrs({ type: 'file' })`
   display: none;
