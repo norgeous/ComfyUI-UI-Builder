@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { WsContext } from './contexts/WsContext';
+import WsContext from './contexts/WsContext';
 import { GlobalStyle, Theme1Style } from './components/globalStyles';
 import { Page, Main, Controls, Content } from './components/Layout';
 // import UiSelector from './components/UiSelector';

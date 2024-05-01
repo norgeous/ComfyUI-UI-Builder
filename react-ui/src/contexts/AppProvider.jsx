@@ -1,19 +1,18 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ConfigsContext } from './ConfigsContext';
-import { FormContext } from './FormContext';
 
-import useClientIdContext from '../hooks/useClientIdContext';
-import { ObjectInfoContext } from './ObjectInfoContext';
+import ConfigsContext from '@/contexts/ConfigsContext';
+import FormContext from '@/contexts/FormContext';
+import ObjectInfoContext from '@/contexts/ObjectInfoContext';
+import AppContext from '@/contexts/AppContext';
+import ClientIdContext from '@/contexts/ClientIdContext';
 
 import useComfyPrompt from '../hooks/useComfyPrompt';
 import useComfyInterrupt from '../hooks/useComfyInterrupt';
 import useBodyData from '../hooks/useBodyData';
 
-import AppContext from './AppContext';
-
 const AppProvider = ({ children = null }) => {
-  const clientId = useClientIdContext();
+  const clientId = useContext(ClientIdContext);
   const { config } = useContext(ConfigsContext);
   const { baseWorkflow } = config;
   const { adapterConfig } = config.configData || {};

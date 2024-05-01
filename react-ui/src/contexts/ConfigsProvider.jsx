@@ -1,20 +1,7 @@
-import { createContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import ConfigsContext from './ConfigsContext';
 import getConfigs from '../configs';
-import noop from '../utils/noop';
-
-export const ConfigsContext = createContext({
-  config: {
-    directoryName: undefined,
-    baseWorkflow: undefined,
-    configData: {
-      formConfig: [],
-    },
-    formInitialState: {},
-  },
-  configs: [],
-  setConfig: noop,
-});
 
 const ConfigsProvider = ({ children = null }) => {
   const [configs, setConfigs] = useState([]);

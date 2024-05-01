@@ -1,12 +1,7 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ConfigsContext } from './ConfigsContext';
-
-export const FormContext = createContext({
-  formConfig: [],
-  formState: {},
-  updateFormState: () => {},
-});
+import ConfigsContext from './ConfigsContext';
+import FormContext from './FormContext';
 
 const FormProvider = ({ children = null }) => {
   const { config } = useContext(ConfigsContext);

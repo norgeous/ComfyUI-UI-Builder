@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { WsContext } from '../contexts/WsContext';
+import WsContext from '@/contexts/WsContext';
 
 const emojis = {
   DEFAULT: '⚫',

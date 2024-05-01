@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { WsContext } from '../../contexts/WsContext';
+import WsContext from '@/contexts/WsContext';
 
 const Container = styled.div`
   height: 100%;

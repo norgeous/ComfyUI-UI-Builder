@@ -1,12 +1,10 @@
 import { useContext } from 'react';
 import styled, { css } from 'styled-components';
 
-import { FormContext } from '../contexts/FormContext';
+import FormContext from '@/contexts/FormContext';
 
 import Accordion from './Accordion/Accordion';
-
 import Missing from './OLD/form-fields/Missing';
-
 import InputSelect from './InputSelect/InputSelect';
 import InputRange from './InputRange/InputRange';
 import InputTextarea from './InputTextarea/InputTextarea';

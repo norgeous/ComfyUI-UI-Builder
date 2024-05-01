@@ -1,8 +1,6 @@
-import { createContext } from 'react';
 import PropTypes from 'prop-types';
+import ObjectInfoContext from './ObjectInfoContext';
 import useComfyApi from '../hooks/useComfyApi';
-
-export const ObjectInfoContext = createContext({});
 
 const ObjectInfoProvider = ({ children = null }) => {
   const {

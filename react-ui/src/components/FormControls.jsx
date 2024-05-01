@@ -1,11 +1,13 @@
 import { useContext } from 'react';
-import { FormContext } from '../contexts/FormContext';
-import useWsContext from '../hooks/useWsContext';
+
+import AppContext from '@/contexts/AppContext';
+import FormContext from '@/contexts/FormContext';
+import WsContext from '@/contexts/WsContext';
+
 import Button from './Button/Button';
-import AppContext from '../contexts/AppContext';
 
 const FormControls = () => {
-  const { isGenerating } = useWsContext();
+  const { isGenerating } = useContext(WsContext);
 
   const {
     formState: { enableSeedRandomisation },

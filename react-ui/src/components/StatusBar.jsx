@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
-import { WsContext } from '../contexts/WsContext';
-import { FormContext } from '../contexts/FormContext';
-import { ConfigsContext } from '../contexts/ConfigsContext';
-import { ObjectInfoContext } from '../contexts/ObjectInfoContext';
-import AppContext from '../contexts/AppContext';
+import WsContext from '@/contexts/WsProvider';
+import FormContext from '@/contexts/FormContext';
+import ConfigsContext from '@/contexts/ConfigsContext';
+import ObjectInfoContext from '@/contexts/ObjectInfoProvider';
+import AppContext from '@/contexts/AppContext';
 
 import Debug from './Debug';
 import StatusLight from './StatusLight';

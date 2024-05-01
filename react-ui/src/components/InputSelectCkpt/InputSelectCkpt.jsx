@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import InputText from '../InputText/InputText';
-import { ObjectInfoContext } from '../../contexts/ObjectInfoContext';
+import ObjectInfoContext from '@/contexts/ObjectInfoContext';
+import InputText from '@/components/InputText/InputText';
 
 const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
   const { objectInfo } = useContext(ObjectInfoContext);

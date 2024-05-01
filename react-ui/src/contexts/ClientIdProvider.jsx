@@ -1,10 +1,8 @@
-import { createContext } from 'react';
 import PropTypes from 'prop-types';
+import ClientIdContext from './ClientIdContext';
 import uuidv4 from '../utils/uuidv4';
 
 const clientId = uuidv4(); // generated every time the page refreshes
-
-export const ClientIdContext = createContext(clientId);
 
 const ClientIdProvider = ({ children = null }) => (
   <ClientIdContext.Provider value={clientId}>
