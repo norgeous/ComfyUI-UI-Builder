@@ -49,8 +49,7 @@
         { "label": "Speed", "value": 0.25 },
         { "value": 0.5 },
         { "value": 0.75 },
-        { "value": 1 },
-        { "label": "Accuracy", "value": 2 }
+        { "label": "Accuracy", "value": 1 }
       ]
     },
     {
@@ -103,6 +102,7 @@
         {
           "label": "off",
           "value": {
+            "isLcm": false,
             "baseSteps": 14,
             "stepMultiplier": 14,
             "cfg": 6.5,
@@ -113,6 +113,7 @@
         {
           "label": "on",
           "value": {
+            "isLcm": true,
             "baseSteps": 6,
             "stepMultiplier": 4,
             "cfg": 2.5,
