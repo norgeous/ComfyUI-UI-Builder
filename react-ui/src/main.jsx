@@ -17,11 +17,11 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Pyramid>
-      <ClientIdProvider />
       <ConfigsProvider />
+      <ClientIdProvider />
+      <WsProvider />
       <ObjectInfoProvider />
       <FormProvider />
-      <WsProvider />
       <AppProvider />
       <App />
     </Pyramid>

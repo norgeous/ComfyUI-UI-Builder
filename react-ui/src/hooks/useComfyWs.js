@@ -13,7 +13,7 @@ const getWsUrl = port =>
 
 const useComfyWs = clientId => {
   const [wsStatus, setWsStatus] = useState('DEFAULT');
-  const [comfyPort, setComfyPort] = useState(ports[0]);
+  const [comfyUrl, setComfyUrl] = useState();
   const [lastWsMessage, setLastWsMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0); // fraction, between 0 and 1
@@ -61,7 +61,18 @@ const useComfyWs = clientId => {
         urls,
         onOpen: () => setWsStatus('CONNECTED'),
       });
-      setComfyPort(new URL(socket.url).port);
+
+      // set the running comfy instance url
+      setComfyUrl(
+        [
+          window.location.protocol,
+          '//',
+          window.location.hostname,
+          ':',
+          new URL(socket.url).port, // the port of the websocket
+        ].join(''),
+      );
+
       socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
       socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console
       socket.addEventListener('message', event => {
@@ -73,7 +84,7 @@ const useComfyWs = clientId => {
 
   return {
     wsStatus,
-    comfyPort,
+    comfyUrl,
     lastWsMessage,
     isGenerating,
     progress,

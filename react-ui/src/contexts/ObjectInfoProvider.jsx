@@ -1,15 +1,20 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ObjectInfoContext from './ObjectInfoContext';
 import useComfyApi from '../hooks/useComfyApi';
+import WsContext from './WsContext';
 
 const ObjectInfoProvider = ({ children = null }) => {
+  const { comfyUrl } = useContext(WsContext);
+
   const {
     executeFetch: objectInfoExecuteFetch,
     loading: objectInfoLoading,
     error: objectInfoError,
     data: objectInfo,
   } = useComfyApi({
-    fetchUrl: '/object_info',
+    fetchUrl: `${comfyUrl}/object_info`,
+    enabled: Boolean(comfyUrl),
   });
 
   return (
