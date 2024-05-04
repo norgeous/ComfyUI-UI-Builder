@@ -16,7 +16,7 @@ const AccordionHeader = styled.button`
 `;
 
 const Chevron = styled(FaChevronUp)`
-  transform: ${({ isOpen }) => (isOpen ? 'none' : 'rotate(180deg)')};
+  transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
   transition: transform 350ms;
 `;
 
@@ -30,7 +30,7 @@ const Wrapper2 = styled.div`
 
 const Collapse = styled.div`
   overflow: hidden;
-  max-height: ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  max-height: ${({ $isOpen }) => ($isOpen ? '100%' : '0')};
   transition: max-height 350ms;
 `;
 
@@ -41,11 +41,11 @@ const AccordionGroup = ({ title = '', children = null }) => {
     <>
       <AccordionHeader onClick={toggle}>
         {title}
-        <Chevron isOpen={isOpen} />
+        <Chevron $isOpen={isOpen} />
       </AccordionHeader>
       <Wrapper>
         <Wrapper2>
-          <Collapse isOpen={isOpen}>{children}</Collapse>
+          <Collapse $isOpen={isOpen}>{children}</Collapse>
         </Wrapper2>
       </Wrapper>
     </>
