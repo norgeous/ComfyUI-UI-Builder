@@ -33,7 +33,7 @@ const Img = styled.img`
 
 const Carousel = () => {
   const [open, setOpen] = useState(false);
-  const { output } = useContext(WsContext);
+  const { comfyUrl, output } = useContext(WsContext);
   const images = output?.images || [];
 
   if (!images.length) return null;
@@ -44,7 +44,7 @@ const Carousel = () => {
         <Div key={filename}>
           <Img
             alt=""
-            src={`/view?type=output&filename=${filename}`}
+            src={`${comfyUrl}/view?type=output&filename=${filename}`}
             onClick={() => setOpen(o => !o)}
           />
         </Div>
