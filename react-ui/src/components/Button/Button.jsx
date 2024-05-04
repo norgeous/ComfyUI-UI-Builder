@@ -9,6 +9,7 @@ const Btn = styled.button.attrs({ type: 'button' })`
   width: 100%;
   border-radius: var(--radius);
   padding: 8px 4px;
+  cursor: pointer;
 `;
 
 const Button = ({ isLoading = false, children = null, ...props }) => (
