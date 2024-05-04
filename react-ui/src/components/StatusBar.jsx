@@ -29,7 +29,8 @@ const Buggers = styled.div`
 `;
 
 const StatusBar = () => {
-  const { lastWsMessage, isGenerating, progress } = useContext(WsContext);
+  const { comfyPort, lastWsMessage, isGenerating, progress } =
+    useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -41,7 +42,7 @@ const StatusBar = () => {
   return (
     <Bar>
       <div>
-        <StatusLight /> {lastWsMessage}{' '}
+        <StatusLight /> {comfyPort} {lastWsMessage}{' '}
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Buggers>

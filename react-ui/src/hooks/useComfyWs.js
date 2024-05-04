@@ -1,15 +1,19 @@
+import getWebSocket from '@/utils/websocket';
 import { useState, useEffect } from 'react';
 
-const protocolConvert = { 'http:': 'ws:', 'https:': 'wss:' };
-
-const wsBase = [
-  protocolConvert[window.location.protocol],
-  '//',
-  window.location.host, // includes port
-].join('');
+const ports = [window.location.port, '8188'];
+const getWsUrl = port =>
+  [
+    { 'http:': 'ws:', 'https:': 'wss:' }[window.location.protocol],
+    '//',
+    window.location.hostname,
+    ':',
+    port,
+  ].join('');
 
 const useComfyWs = clientId => {
   const [wsStatus, setWsStatus] = useState('DEFAULT');
+  const [comfyPort, setComfyPort] = useState(ports[0]);
   const [lastWsMessage, setLastWsMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0); // fraction, between 0 and 1
@@ -48,18 +52,28 @@ const useComfyWs = clientId => {
       },
     };
 
-    setWsStatus('CONNECTING');
-    const socket = new WebSocket(`${wsBase}/ws?clientId=${clientId}`);
-    socket.addEventListener('open', () => setWsStatus('CONNECTED'));
-    socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
-    socket.addEventListener('message', event => {
-      const data = JSON.parse(event.data);
-      socketMessageActions[data.type]?.(data);
-    });
+    (async () => {
+      setWsStatus('CONNECTING');
+      const urls = ports.map(
+        port => `${getWsUrl(port)}/ws?clientId=${clientId}`,
+      );
+      const socket = await getWebSocket({
+        urls,
+        onOpen: () => setWsStatus('CONNECTED'),
+      });
+      setComfyPort(new URL(socket.url).port);
+      socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
+      socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console
+      socket.addEventListener('message', event => {
+        const data = JSON.parse(event.data);
+        socketMessageActions[data.type]?.(data);
+      });
+    })();
   }, [clientId]);
 
   return {
     wsStatus,
+    comfyPort,
     lastWsMessage,
     isGenerating,
     progress,
