@@ -7,15 +7,6 @@
   "formConfig": [
     {
       "group": "Generation params",
-      "id": "image",
-      "label": "Image",
-      "info": "EXPERIMENTAL: Images are saved to the ComfyUI/input directory",
-      "type": "fileupload",
-      "defaultValue": "",
-      "colSpan": 2
-    },
-    {
-      "group": "Generation params",
       "id": "ckpt",
       "label": "Checkpoint",
       "info": "Choose a SDXL checkpoint",
