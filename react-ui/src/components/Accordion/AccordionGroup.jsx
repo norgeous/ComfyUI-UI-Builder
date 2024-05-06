@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { FaChevronUp } from 'react-icons/fa6';
 
 const AccordionHeader = styled.button`
@@ -34,26 +33,29 @@ const Collapse = styled.div`
   transition: max-height 350ms;
 `;
 
-const AccordionGroup = ({ title = '', children = null }) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const toggle = () => setIsOpen(!isOpen);
-  return (
-    <>
-      <AccordionHeader onClick={toggle}>
-        {title}
-        <Chevron $isOpen={isOpen} />
-      </AccordionHeader>
-      <Wrapper>
-        <Wrapper2>
-          <Collapse $isOpen={isOpen}>{children}</Collapse>
-        </Wrapper2>
-      </Wrapper>
-    </>
-  );
-};
+const AccordionGroup = ({
+  title = '',
+  isOpen = false,
+  onClick = () => {},
+  children = null,
+}) => (
+  <>
+    <AccordionHeader onClick={onClick}>
+      {title}
+      <Chevron $isOpen={isOpen} />
+    </AccordionHeader>
+    <Wrapper>
+      <Wrapper2>
+        <Collapse $isOpen={isOpen}>{children}</Collapse>
+      </Wrapper2>
+    </Wrapper>
+  </>
+);
 
 AccordionGroup.propTypes = {
   title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };
 

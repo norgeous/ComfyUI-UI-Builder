@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AccordionGroup from './AccordionGroup';
@@ -16,6 +17,8 @@ const Grid = styled.div`
 `;
 
 const Accordion = ({ items = [] }) => {
+  const [isOpenIndex, setIsOpenIndex] = useState(0);
+
   const sections = items.reduce((acc, { group, component }) => {
     const previousChildrenInGroup =
       acc.find(({ title }) => title === group)?.children || [];
@@ -31,8 +34,13 @@ const Accordion = ({ items = [] }) => {
 
   return (
     <AccordionContainer>
-      {sections?.map(({ title, children }) => (
-        <AccordionGroup key={title} title={title}>
+      {sections?.map(({ title, children }, i) => (
+        <AccordionGroup
+          key={title}
+          title={title}
+          isOpen={isOpenIndex === i}
+          onClick={() => setIsOpenIndex(i)}
+        >
           <Grid>{children}</Grid>
         </AccordionGroup>
       ))}
