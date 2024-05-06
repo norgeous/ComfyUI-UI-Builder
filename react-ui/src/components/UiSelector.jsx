@@ -19,7 +19,7 @@ const UiSelector = () => {
 
   const options = configs.map(({ configData: { emoji, name, version } }) => ({
     label: `${emoji} ${name} ${version}`,
-    ui: name,
+    value: name,
   }));
 
   const value = config.configData.name;
