@@ -130,7 +130,7 @@
       "type": "checkbox",
       "defaultValueIndex": 0,
       "options": [
-        { "label": "Fixed", "value": false },
+        { "label": "Random", "value": false },
         { "label": "Random", "value": true }
       ]
     }
