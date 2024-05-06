@@ -1,5 +1,6 @@
+import { useState, useEffect, useContext } from 'react';
 import getWebSocket from '@/utils/websocket';
-import { useState, useEffect } from 'react';
+import ConfigsContext from '@/contexts/ConfigsContext';
 
 const ports = [window.location.port, '8188'];
 const getWsUrl = port =>
@@ -12,6 +13,11 @@ const getWsUrl = port =>
   ].join('');
 
 const useComfyWs = clientId => {
+  const {
+    config,
+    config: { baseWorkflow },
+  } = useContext(ConfigsContext);
+
   const [wsStatus, setWsStatus] = useState('DEFAULT');
   const [comfyUrl, setComfyUrl] = useState();
   const [lastWsMessage, setLastWsMessage] = useState('');
@@ -20,6 +26,7 @@ const useComfyWs = clientId => {
   const [output, setOutput] = useState();
 
   useEffect(() => {
+    if (!baseWorkflow) return;
     const socketMessageActions = {
       execution_cached: () => {
         setLastWsMessage('EXECUTION_CACHED');
@@ -29,7 +36,10 @@ const useComfyWs = clientId => {
       },
       executing: data => {
         if (data.data.node) {
-          setLastWsMessage(`EXECUTING node ${data.data.node}`);
+          const nodeType = config.baseWorkflow.nodes.find(
+            ({ id }) => id === Number(data.data.node),
+          ).type;
+          setLastWsMessage(`EXECUTING ${nodeType}`);
         }
       },
       executed: data => {
@@ -51,7 +61,6 @@ const useComfyWs = clientId => {
         setIsGenerating(data.data.status.exec_info.queue_remaining > 0);
       },
     };
-
     (async () => {
       setWsStatus('CONNECTING');
       const urls = ports.map(
@@ -80,7 +89,7 @@ const useComfyWs = clientId => {
         socketMessageActions[data.type]?.(data);
       });
     })();
-  }, [clientId]);
+  }, [clientId, config]);
 
   return {
     wsStatus,
