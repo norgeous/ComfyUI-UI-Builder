@@ -29,7 +29,6 @@ const FormControls = () => {
     <div>
       {promptError}
       <Button
-        // fullWidth
         onClick={handleClick}
         // loading={promptLoading || isGenerating}
       >
@@ -40,7 +39,6 @@ const FormControls = () => {
       </Button>
       {isGenerating && (
         <Button
-          // variant="outline"
           onClick={executeInterrupt}
           // loading={interruptLoading}
         >
