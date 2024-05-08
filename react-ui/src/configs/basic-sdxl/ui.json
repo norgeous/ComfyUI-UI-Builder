@@ -95,7 +95,7 @@
           "label": "none",
           "value": {
             "baseSteps": 20,
-            "stepMultiplier": 30,
+            "stepMultiplier": 60,
             "cfg": 6.5,
             "lora": "",
             "samplerName": "dpmpp_2m",
@@ -105,19 +105,19 @@
         {
           "label": "LCM",
           "value": {
-            "baseSteps": 6,
-            "stepMultiplier": 4,
+            "baseSteps": 4,
+            "stepMultiplier": 8,
             "cfg": 2.5,
             "lora": "lcm-lora-sdxl.safetensors",
             "samplerName": "lcm",
-            "scheduler": "normal"
+            "scheduler": "simple"
           }
         },
         {
           "label": "TCD",
           "value": {
-            "baseSteps": 6,
-            "stepMultiplier": 4,
+            "baseSteps": 4,
+            "stepMultiplier": 8,
             "cfg": 2.5,
             "lora": "TCD-SDXL-LoRA.safetensors",
             "samplerName": "tcd",
@@ -127,8 +127,8 @@
         {
           "label": "Lightning (2 steps)",
           "value": {
-            "baseSteps": 6,
-            "stepMultiplier": 4,
+            "baseSteps": 1,
+            "stepMultiplier": 2,
             "cfg": 1,
             "lora": "sdxl_lightning_2step_lora.safetensors",
             "samplerName": "euler",
@@ -138,7 +138,7 @@
         {
           "label": "Lightning (4 steps)",
           "value": {
-            "baseSteps": 6,
+            "baseSteps": 2,
             "stepMultiplier": 4,
             "cfg": 1,
             "lora": "sdxl_lightning_4step_lora.safetensors",
@@ -149,8 +149,8 @@
         {
           "label": "Lightning (8 steps)",
           "value": {
-            "baseSteps": 6,
-            "stepMultiplier": 4,
+            "baseSteps": 4,
+            "stepMultiplier": 8,
             "cfg": 1,
             "lora": "sdxl_lightning_8step_lora.safetensors",
             "samplerName": "euler",
@@ -164,15 +164,15 @@
             "stepMultiplier": 0,
             "cfg": 1,
             "lora": "Hyper-SDXL-1step-lora.safetensors",
-            "samplerName": "ddim",
-            "scheduler": "ddim_uniform"
+            "samplerName": "tcd",
+            "scheduler": "simple"
           }
         },
         {
           "label": "Hyper (2 steps)",
           "value": {
-            "baseSteps": 2,
-            "stepMultiplier": 0,
+            "baseSteps": 1,
+            "stepMultiplier": 2,
             "cfg": 1,
             "lora": "Hyper-SDXL-2steps-lora.safetensors",
             "samplerName": "ddim",
@@ -182,8 +182,8 @@
         {
           "label": "Hyper (4 steps)",
           "value": {
-            "baseSteps": 4,
-            "stepMultiplier": 0,
+            "baseSteps": 2,
+            "stepMultiplier": 4,
             "cfg": 1,
             "lora": "Hyper-SDXL-4steps-lora.safetensors",
             "samplerName": "ddim",
@@ -193,8 +193,8 @@
         {
           "label": "Hyper (8 steps)",
           "value": {
-            "baseSteps": 6,
-            "stepMultiplier": 4,
+            "baseSteps": 4,
+            "stepMultiplier": 8,
             "cfg": 1,
             "lora": "Hyper-SDXL-8steps-lora.safetensors",
             "samplerName": "ddim",
@@ -204,9 +204,9 @@
         {
           "label": "Hyper (8 steps) + CFG",
           "value": {
-            "baseSteps": 8,
-            "stepMultiplier": 0,
-            "cfg": 2.5,
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 5,
             "lora": "Hyper-SDXL-8steps-CFG-lora.safetensors",
             "samplerName": "ddim",
             "scheduler": "ddim_uniform"
@@ -303,11 +303,11 @@
     },
     {
       "destination": "LoraLoader > mode",
-      "actions": ["num:4", ["if:isLcm", "num:0"]]
+      "actions": ["num:4", ["if:lora", "num:0"]]
     },
     {
       "destination": "LoraLoader > lora_name",
-      "actions": ["raw:lcm-lora-sdxl", "findInLoraNames"]
+      "actions": ["get:lora", "findInLoraNames"]
     },
     {
       "destination": "ModelSamplingDiscrete > mode",
