@@ -35,9 +35,10 @@
       "id": "quality",
       "label": "Quality",
       "type": "range",
-      "defaultValueIndex": 3,
+      "defaultValueIndex": 2,
       "options": [
-        { "label": "Speed", "value": 0.25 },
+        { "label": "Speed", "value": 0 },
+        { "value": 0.25 },
         { "value": 0.5 },
         { "value": 0.75 },
         { "label": "Accuracy", "value": 1 }
@@ -84,30 +85,129 @@
     },
     {
       "group": "Generation params",
-      "id": "lcm",
-      "label": "LCM",
-      "info": "Faster generation with less steps, but sacrifices quality",
-      "type": "checkbox",
-      "defaultValueIndex": 1,
+      "id": "accelerator",
+      "label": "Acceleration LoRA",
+      "info": "Faster generation with less steps, but can sacrifice quality",
+      "type": "select",
+      "defaultValueIndex": 0,
       "options": [
         {
-          "label": "off",
+          "label": "none",
           "value": {
-            "isLcm": false,
-            "baseSteps": 14,
-            "stepMultiplier": 14,
+            "baseSteps": 20,
+            "stepMultiplier": 30,
             "cfg": 6.5,
+            "lora": "",
             "samplerName": "dpmpp_2m",
             "scheduler": "exponential"
           }
         },
         {
-          "label": "on",
+          "label": "LCM",
           "value": {
-            "isLcm": true,
             "baseSteps": 6,
             "stepMultiplier": 4,
             "cfg": 2.5,
+            "lora": "lcm-lora-sdxl.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "TCD",
+          "value": {
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "lora": "TCD-SDXL-LoRA.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "tcd"
+          }
+        },
+        {
+          "label": "Lightning (2 steps)",
+          "value": {
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "lora": "sdxl_lightning_2step_lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Lightning (4 steps)",
+          "value": {
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "lora": "sdxl_lightning_4step_lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Lightning (8 steps)",
+          "value": {
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "lora": "sdxl_lightning_8step_lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Hyper (1 step)",
+          "value": {
+            "baseSteps": 1,
+            "stepMultiplier": 0,
+            "cfg": 2.5,
+            "lora": "Hyper-SDXL-1step-lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Hyper (2 steps)",
+          "value": {
+            "baseSteps": 2,
+            "stepMultiplier": 0,
+            "cfg": 2.5,
+            "lora": "Hyper-SDXL-2steps-lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Hyper (4 steps)",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 0,
+            "cfg": 2.5,
+            "lora": "Hyper-SDXL-4steps-lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Hyper (8 steps)",
+          "value": {
+            "baseSteps": 6,
+            "stepMultiplier": 4,
+            "cfg": 2.5,
+            "lora": "Hyper-SDXL-8steps-lora.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "normal"
+          }
+        },
+        {
+          "label": "Hyper (8 steps) + CFG",
+          "value": {
+            "baseSteps": 8,
+            "stepMultiplier": 0,
+            "cfg": 2.5,
+            "lora": "Hyper-SDXL-8steps-CFG-lora.safetensors",
             "samplerName": "lcm",
             "scheduler": "normal"
           }
