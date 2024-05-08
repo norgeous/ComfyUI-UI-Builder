@@ -120,8 +120,8 @@
             "stepMultiplier": 4,
             "cfg": 2.5,
             "lora": "TCD-SDXL-LoRA.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "tcd"
+            "samplerName": "tcd",
+            "scheduler": "simple"
           }
         },
         {
@@ -129,10 +129,10 @@
           "value": {
             "baseSteps": 6,
             "stepMultiplier": 4,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "sdxl_lightning_2step_lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
           }
         },
         {
@@ -140,10 +140,10 @@
           "value": {
             "baseSteps": 6,
             "stepMultiplier": 4,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "sdxl_lightning_4step_lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
           }
         },
         {
@@ -151,10 +151,10 @@
           "value": {
             "baseSteps": 6,
             "stepMultiplier": 4,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "sdxl_lightning_8step_lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
           }
         },
         {
@@ -162,10 +162,10 @@
           "value": {
             "baseSteps": 1,
             "stepMultiplier": 0,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "Hyper-SDXL-1step-lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
           }
         },
         {
@@ -173,10 +173,10 @@
           "value": {
             "baseSteps": 2,
             "stepMultiplier": 0,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "Hyper-SDXL-2steps-lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
           }
         },
         {
@@ -184,10 +184,10 @@
           "value": {
             "baseSteps": 4,
             "stepMultiplier": 0,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "Hyper-SDXL-4steps-lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
           }
         },
         {
@@ -195,10 +195,10 @@
           "value": {
             "baseSteps": 6,
             "stepMultiplier": 4,
-            "cfg": 2.5,
+            "cfg": 1,
             "lora": "Hyper-SDXL-8steps-lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
           }
         },
         {
@@ -208,8 +208,8 @@
             "stepMultiplier": 0,
             "cfg": 2.5,
             "lora": "Hyper-SDXL-8steps-CFG-lora.safetensors",
-            "samplerName": "lcm",
-            "scheduler": "normal"
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
           }
         }
       ]
