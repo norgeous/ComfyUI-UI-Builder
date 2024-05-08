@@ -46,47 +46,8 @@
     },
     {
       "group": "Generation params",
-      "id": "batchSize",
-      "label": "Results per generation",
-      "type": "range",
-      "defaultValueIndex": 0,
-      "options": [
-        { "label": "1", "value": 1 },
-        { "label": "2", "value": 2 },
-        { "label": "3", "value": 3 },
-        { "label": "4", "value": 4 },
-        { "label": "5", "value": 5 },
-        { "label": "6", "value": 6 },
-        { "label": "7", "value": 7 },
-        { "label": "8", "value": 8 },
-        { "label": "9", "value": 9 }
-      ]
-    },
-    {
-      "group": "Generation params",
-      "id": "size",
-      "label": "Size",
-      "type": "select",
-      "defaultValueIndex": 0,
-      "options": [
-        {
-          "label": "1:1 Square",
-          "value": { "width": 1024, "height": 1024 }
-        },
-        {
-          "label": "16:9 Landscape",
-          "value": { "width": 1344, "height": 768 }
-        },
-        {
-          "label": "16:9 Portrait",
-          "value": { "width": 768, "height": 1344 }
-        }
-      ]
-    },
-    {
-      "group": "Generation params",
       "id": "accelerator",
-      "label": "Acceleration LoRA",
+      "label": "Acceleration",
       "info": "Faster generation with less steps, but can sacrifice quality",
       "type": "select",
       "defaultValueIndex": 0,
@@ -211,6 +172,45 @@
             "samplerName": "ddim",
             "scheduler": "ddim_uniform"
           }
+        }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "id": "batchSize",
+      "label": "Results per generation",
+      "type": "range",
+      "defaultValueIndex": 0,
+      "options": [
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 },
+        { "label": "3", "value": 3 },
+        { "label": "4", "value": 4 },
+        { "label": "5", "value": 5 },
+        { "label": "6", "value": 6 },
+        { "label": "7", "value": 7 },
+        { "label": "8", "value": 8 },
+        { "label": "9", "value": 9 }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "id": "size",
+      "label": "Size",
+      "type": "select",
+      "defaultValueIndex": 0,
+      "options": [
+        {
+          "label": "1:1 Square",
+          "value": { "width": 1024, "height": 1024 }
+        },
+        {
+          "label": "16:9 Landscape",
+          "value": { "width": 1344, "height": 768 }
+        },
+        {
+          "label": "16:9 Portrait",
+          "value": { "width": 768, "height": 1344 }
         }
       ]
     },
