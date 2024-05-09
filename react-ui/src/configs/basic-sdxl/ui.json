@@ -15,7 +15,7 @@
       "colSpan": 2
     },
     {
-      "group": "Generation params",
+      "group": "Prompt",
       "id": "positivePrompt",
       "label": "Positive Prompt",
       "type": "textarea",
@@ -23,7 +23,7 @@
       "colSpan": 2
     },
     {
-      "group": "Generation params",
+      "group": "Prompt",
       "id": "negativePrompt",
       "label": "Negative Prompt",
       "type": "textarea",
@@ -42,7 +42,8 @@
         { "value": 0.5 },
         { "value": 0.75 },
         { "label": "Accuracy", "value": 1 }
-      ]
+      ],
+      "colSpan": 2
     },
     {
       "group": "Generation params",
@@ -173,6 +174,17 @@
             "scheduler": "ddim_uniform"
           }
         }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "id": "enableRescaleCfg",
+      "label": "Rescale CFG",
+      "type": "checkbox",
+      "defaultValueIndex": 0,
+      "options": [
+        { "label": "On", "value": false },
+        { "label": "On", "value": true }
       ]
     },
     {

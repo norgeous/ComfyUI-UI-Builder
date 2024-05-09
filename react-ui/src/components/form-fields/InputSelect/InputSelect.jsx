@@ -13,7 +13,6 @@ const Select = styled.select`
   color: var(--input-fg);
   border-radius: var(--radius);
   padding: 8px 4px;
-  margin-bottom: 6px;
   &:focus {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;

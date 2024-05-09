@@ -17,8 +17,6 @@ const Sublabels = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  margin-top: 4px;
-  margin-bottom: 6px;
   opacity: 0.5;
 `;
 
