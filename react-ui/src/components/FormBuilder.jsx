@@ -42,12 +42,13 @@ const FormBuilder = () => {
       defaultValue,
       defaultValueIndex,
       colSpan,
+      onChange,
       ...props
     }) => {
       const Component = components[type] || Missing;
       const value = formState[id];
       const handleChange = data => {
-        const newState = { [id]: data };
+        const newState = { [id]: data, ...onChange };
         updateFormState(newState);
       };
 
