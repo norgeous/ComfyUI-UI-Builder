@@ -87,9 +87,9 @@ const ImageGrid = ({ images = [] }) => {
         open={open}
         onClick={() => setOpen(false)}
       >
-        {images.map((image, i) => (
+        {images.map(image => (
           <Img
-            key={i}
+            key={image}
             alt=""
             src={image}
             onClick={() => setOpen(o => !o)}
