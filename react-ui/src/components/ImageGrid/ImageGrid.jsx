@@ -64,6 +64,7 @@ const ImageGrid = ({ images = [] }) => {
     }));
   };
 
+  // setInterval replacement:
   useEffect(() => {
     const { offsetWidth, offsetHeight } = ref.current;
     console.log(imgDim, { offsetWidth, offsetHeight });
