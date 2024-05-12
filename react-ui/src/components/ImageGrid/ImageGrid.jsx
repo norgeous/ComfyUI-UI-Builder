@@ -80,6 +80,11 @@ const ImageGrid = ({ images = [] }) => {
     // given container width and height
     // and aspect of each image
     // calculate the number of columns needed
+
+    // to do that, we can emulate the grid layout calc
+    // - for each row / column add 10 gap
+    // - with increasing column count, layout items like grid would
+    // - that is until grid height becomes less than outer height
   }, [ref, imgDim]);
 
   if (!images.length) return null;
