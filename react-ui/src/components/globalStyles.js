@@ -31,5 +31,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
     background: var(--page-bg);
     color: var(--page-fg);
+    height: 100svh;
+    color-scheme: dark;
+  }
+
+  #storybook-root{
+    height: 100%;
   }
 `;
