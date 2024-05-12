@@ -78,7 +78,7 @@ const ImageGrid = ({ images = [] }) => {
     console.log(imgDim, { offsetWidth, offsetHeight });
 
     // wait until all images have loaded
-    // then given container width and height and aspect of each image
+    // then given container width and height and aspect of each image (from w/h)
     // calculate the number of columns needed
 
     // to do that, we can emulate the grid layout calc
