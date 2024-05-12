@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const Outer = styled.div`
@@ -25,14 +26,14 @@ const Container = styled.div`
   place-items: center;
 `;
 
-const Div = styled.div`
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: center;
-  display: grid;
-  place-items: center;
-  /* padding: 20px; */
-`;
+// const Div = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   scroll-snap-align: center;
+//   display: grid;
+//   place-items: center;
+//   /* padding: 20px; */
+// `;
 
 const Img = styled.img`
   display: block;
@@ -41,7 +42,8 @@ const Img = styled.img`
   cursor: pointer;
 `;
 
-const ImageGrid = ({ images }) => {
+const ImageGrid = ({ images = [] }) => {
+  const [imgDim, setImgDim] = useState({});
   const [open, setOpen] = useState(false);
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
@@ -53,7 +55,7 @@ const ImageGrid = ({ images }) => {
       else clearInterval(t);
     }, 10);
     return () => clearInterval(t);
-  }, [ref, columnCount]);
+  }, [ref, columnCount, imgDim]);
 
   useEffect(() => {
     const handleResize = () => setColumnCount(1);
@@ -63,7 +65,17 @@ const ImageGrid = ({ images }) => {
     };
   }, []);
 
+  const onLoad = event => {
+    const { src, offsetHeight, offsetWidth } = event.target;
+    setImgDim(old => ({
+      ...old,
+      [src]: [offsetHeight, offsetWidth],
+    }));
+  };
+
   if (!images.length) return null;
+
+  // console.log(imgDim);
 
   return (
     <Outer ref={ref}>
@@ -72,20 +84,25 @@ const ImageGrid = ({ images }) => {
         open={open}
         onClick={() => setOpen(false)}
       >
-        {images.map(image => (
+        {images.map((image, i) => (
           // <Div key={image}>
           <Img
-            key={image}
+            key={i}
             alt=""
             src={image}
             onClick={() => setOpen(o => !o)}
             maxHeight={`${ref.current?.clientHeight}px` || '100%'}
+            onLoad={onLoad}
           />
           // </Div>
         ))}
       </Container>
     </Outer>
   );
+};
+
+ImageGrid.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default ImageGrid;
