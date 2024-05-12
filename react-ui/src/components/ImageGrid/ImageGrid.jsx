@@ -26,15 +26,6 @@ const Container = styled.div`
   place-items: center;
 `;
 
-// const Div = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   scroll-snap-align: center;
-//   display: grid;
-//   place-items: center;
-//   /* padding: 20px; */
-// `;
-
 const Img = styled.img`
   display: block;
   max-width: 100%;
@@ -97,7 +88,6 @@ const ImageGrid = ({ images = [] }) => {
         onClick={() => setOpen(false)}
       >
         {images.map((image, i) => (
-          // <Div key={image}>
           <Img
             key={i}
             alt=""
@@ -106,7 +96,6 @@ const ImageGrid = ({ images = [] }) => {
             maxHeight={`${ref.current?.clientHeight}px` || '100%'}
             onLoad={onLoad}
           />
-          // </Div>
         ))}
       </Container>
     </Outer>
