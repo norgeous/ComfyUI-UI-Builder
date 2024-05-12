@@ -66,16 +66,23 @@ const ImageGrid = ({ images = [] }) => {
   }, []);
 
   const onLoad = event => {
-    const { src, offsetHeight, offsetWidth } = event.target;
+    const { src, naturalWidth, naturalHeight } = event.target;
     setImgDim(old => ({
       ...old,
-      [src]: [offsetHeight, offsetWidth],
+      [src]: [naturalWidth, naturalHeight],
     }));
   };
 
-  if (!images.length) return null;
+  useEffect(() => {
+    const { offsetWidth, offsetHeight } = ref.current;
+    console.log(imgDim, { offsetWidth, offsetHeight });
 
-  // console.log(imgDim);
+    // given container width and height
+    // and aspect of each image
+    // calculate the number of columns needed
+  }, [ref, imgDim]);
+
+  if (!images.length) return null;
 
   return (
     <Outer ref={ref}>
