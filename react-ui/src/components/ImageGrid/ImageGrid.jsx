@@ -39,45 +39,69 @@ const ImageGrid = ({ images = [] }) => {
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
 
-  useEffect(() => {
-    const t = setInterval(() => {
-      const isOverflowing = ref.current.scrollHeight > ref.current.clientHeight;
-      if (isOverflowing) setColumnCount(cc => cc + 1);
-      else clearInterval(t);
-    }, 10);
-    return () => clearInterval(t);
-  }, [ref, columnCount, imgDim]);
-
-  useEffect(() => {
-    const handleResize = () => setColumnCount(1);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const t = setInterval(() => {
+  //     const isOverflowing = ref.current.scrollHeight > ref.current.clientHeight;
+  //     if (isOverflowing) setColumnCount(cc => cc + 1);
+  //     else clearInterval(t);
+  //   }, 1000);
+  //   return () => clearInterval(t);
+  // }, [ref, columnCount, imgDim]);
 
   const onLoad = event => {
     const { src, naturalWidth, naturalHeight } = event.target;
     setImgDim(old => ({
       ...old,
-      [src]: [naturalWidth, naturalHeight],
+      [src]: naturalHeight / naturalWidth,
     }));
   };
 
-  // setInterval replacement:
-  useEffect(() => {
-    const { offsetWidth, offsetHeight } = ref.current;
-    console.log(imgDim, { offsetWidth, offsetHeight });
-
+  const calculateColumnCount = () => {
     // wait until all images have loaded
+    if (images.length !== Object.keys(imgDim).length) return;
+
+    if (!ref.current) return;
+
+    const { width, height } = ref.current.getBoundingClientRect();
+
     // then given container width and height and aspect of each image (from w/h)
     // calculate the number of columns needed
-
     // to do that, we can emulate the grid layout calc
     // - for each row / column add 10 gap
     // - with increasing column count, layout items like grid would
     // - that is until grid height becomes less than outer height
-  }, [ref, imgDim]);
+
+    const imgDims = Object.values(imgDim);
+    const columnCount2 = imgDims.reduce((cc, a) => {
+      const rowCount = Math.ceil(imgDims.length / cc);
+      const hGapCount = cc - 1;
+      const vGapCount = rowCount - 1;
+      const cellWidth = Number(((width - 10 * hGapCount) / cc).toFixed(4));
+      const rowHeight = cellWidth * a;
+      const gridHeight = rowHeight * rowCount + vGapCount * 10;
+
+      // console.log({ cc, height, gridHeight, rowHeight });
+
+      // add one to column count or not
+      if (gridHeight < height) return cc;
+      return cc + 1;
+    }, 1);
+
+    console.log({ columnCount2 });
+
+    setColumnCount(columnCount2);
+  };
+
+  // setInterval replacement:
+  useEffect(calculateColumnCount, [ref, imgDim, images]);
+
+  useEffect(() => {
+    const handleResize = calculateColumnCount;
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [ref, imgDim, images]);
 
   if (!images.length) return null;
 
