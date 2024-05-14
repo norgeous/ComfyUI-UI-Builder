@@ -35,5 +35,7 @@ export const Controls = styled.aside`
 
 export const Content = styled.div`
   flex: 1;
-  max-height: calc(100% - 7px - 34px);
+  /* max-height: calc(100% - 7px - 34px); */
+  padding: 10px;
+  overflow: hidden;
 `;

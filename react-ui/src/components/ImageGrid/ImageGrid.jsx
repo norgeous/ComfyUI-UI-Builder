@@ -8,7 +8,6 @@ const Outer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
 `;
 
 const Container = styled.div`
