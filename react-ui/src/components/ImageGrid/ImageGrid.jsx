@@ -31,8 +31,9 @@ const Img = styled.img`
   cursor: pointer;
   display: block;
   max-width: 100%;
-  max-height: ${({ maxHeight }) => maxHeight};
+  /* max-height: ${({ maxHeight }) => maxHeight}; */
   max-height: 100%;
+  min-height: 0;
 `;
 
 const ImageGrid = ({ images = [] }) => {
@@ -111,7 +112,7 @@ const ImageGrid = ({ images = [] }) => {
             alt=""
             src={image}
             onClick={() => setOpen(o => !o)}
-            maxHeight={`${ref.current?.clientHeight}px` || '100%'}
+            // maxHeight={`${ref.current?.clientHeight}px` || '100%'}
             onLoad={onLoad}
           />
         ))}
