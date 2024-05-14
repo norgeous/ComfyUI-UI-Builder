@@ -5,7 +5,24 @@ export default {
   component: ImageGrid,
 };
 
-export const Square = {
+export const Square10 = {
+  args: {
+    images: [
+      'https://placehold.co/1024x1024?text=01',
+      'https://placehold.co/1024x1024?text=02',
+      'https://placehold.co/1024x1024?text=03',
+      'https://placehold.co/1024x1024?text=04',
+      'https://placehold.co/1024x1024?text=05',
+      'https://placehold.co/1024x1024?text=06',
+      'https://placehold.co/1024x1024?text=07',
+      'https://placehold.co/1024x1024?text=08',
+      'https://placehold.co/1024x1024?text=09',
+      'https://placehold.co/1024x1024?text=10',
+    ],
+  },
+};
+
+export const Square50 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -62,7 +79,7 @@ export const Square = {
   },
 };
 
-export const Landscape = {
+export const Landscape50 = {
   args: {
     images: [
       'https://placehold.co/1344x768?text=01',
@@ -119,7 +136,7 @@ export const Landscape = {
   },
 };
 
-export const Portrait = {
+export const Portrait50 = {
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',
@@ -176,8 +193,7 @@ export const Portrait = {
   },
 };
 
-export const Mixed = {
-  // PLLSP
+export const Mixed50 = {
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',
