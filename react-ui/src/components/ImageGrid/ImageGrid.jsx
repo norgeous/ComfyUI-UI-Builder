@@ -11,7 +11,6 @@ const Outer = styled.div`
 `;
 
 const Container = styled.div`
-  /* height: 100%; */
   scroll-snap-type: both mandatory;
   ${({ open }) =>
     open &&
@@ -24,6 +23,7 @@ const Container = styled.div`
   grid-template-columns: repeat(${({ columnCount }) => columnCount}, auto);
   gap: 10px;
   place-items: center;
+  justify-content: center;
 `;
 
 const Img = styled.img`
@@ -38,15 +38,6 @@ const ImageGrid = ({ images = [] }) => {
   const [open, setOpen] = useState(false);
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
-
-  // useEffect(() => {
-  //   const t = setInterval(() => {
-  //     const isOverflowing = ref.current.scrollHeight > ref.current.clientHeight;
-  //     if (isOverflowing) setColumnCount(cc => cc + 1);
-  //     else clearInterval(t);
-  //   }, 1000);
-  //   return () => clearInterval(t);
-  // }, [ref, columnCount, imgDim]);
 
   const onLoad = event => {
     const { src, naturalWidth, naturalHeight } = event.target;
@@ -73,6 +64,7 @@ const ImageGrid = ({ images = [] }) => {
 
     const imgDims = Object.values(imgDim);
     const columnCount2 = imgDims.reduce((cc, a) => {
+      if (imgDims.length === 1) return 1;
       const rowCount = Math.ceil(imgDims.length / cc);
       const hGapCount = cc - 1;
       const vGapCount = rowCount - 1;
@@ -80,14 +72,23 @@ const ImageGrid = ({ images = [] }) => {
       const rowHeight = cellWidth * a;
       const gridHeight = rowHeight * rowCount + vGapCount * 10;
 
-      // console.log({ cc, height, gridHeight, rowHeight });
+      // console.log({
+      //   cc,
+      //   width,
+      //   height,
+      //   gridHeight,
+      //   rowHeight,
+      //   vGapCount,
+      //   cellWidth,
+      //   a,
+      // });
 
       // add one to column count or not
-      if (gridHeight < height) return cc;
+      if (gridHeight <= height) return cc;
       return cc + 1;
     }, 1);
 
-    console.log({ columnCount2 });
+    // console.log({ columnCount2 });
 
     setColumnCount(columnCount2);
   };
