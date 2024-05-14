@@ -19,7 +19,6 @@ const Bar = styled.div`
   padding: 5px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow-x: scroll;
 `;
 
 const Buggers = styled.div`
