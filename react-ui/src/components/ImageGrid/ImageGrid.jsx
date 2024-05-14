@@ -24,6 +24,7 @@ const Container = styled.div`
   gap: 10px;
   place-items: center;
   justify-content: center;
+  max-height: 100%;
 `;
 
 const Img = styled.img`
