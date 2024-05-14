@@ -20,6 +20,17 @@ export const Square2 = {
   },
 };
 
+export const Square4 = {
+  args: {
+    images: [
+      'https://placehold.co/1024x1024?text=01',
+      'https://placehold.co/1024x1024?text=02',
+      'https://placehold.co/1024x1024?text=03',
+      'https://placehold.co/1024x1024?text=04',
+    ],
+  },
+};
+
 export const Square10 = {
   args: {
     images: [
