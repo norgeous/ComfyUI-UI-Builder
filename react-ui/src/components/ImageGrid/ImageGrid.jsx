@@ -8,6 +8,7 @@ const Outer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 10px;
 `;
 
 const Container = styled.div`
@@ -27,10 +28,11 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
+  cursor: pointer;
   display: block;
   max-width: 100%;
   max-height: ${({ maxHeight }) => maxHeight};
-  cursor: pointer;
+  max-height: 100%;
 `;
 
 const ImageGrid = ({ images = [] }) => {
@@ -63,7 +65,8 @@ const ImageGrid = ({ images = [] }) => {
     // - that is until grid height becomes less than outer height
 
     const imgDims = Object.values(imgDim);
-    const columnCount2 = imgDims.reduce((cc, a) => {
+
+    const newColumnCount = imgDims.reduce((cc, a) => {
       if (imgDims.length === 1) return 1;
       const rowCount = Math.ceil(imgDims.length / cc);
       const hGapCount = cc - 1;
@@ -72,25 +75,12 @@ const ImageGrid = ({ images = [] }) => {
       const rowHeight = cellWidth * a;
       const gridHeight = rowHeight * rowCount + vGapCount * 10;
 
-      // console.log({
-      //   cc,
-      //   width,
-      //   height,
-      //   gridHeight,
-      //   rowHeight,
-      //   vGapCount,
-      //   cellWidth,
-      //   a,
-      // });
-
       // add one to column count or not
       if (gridHeight <= height) return cc;
       return cc + 1;
     }, 1);
 
-    // console.log({ columnCount2 });
-
-    setColumnCount(columnCount2);
+    setColumnCount(newColumnCount);
   };
 
   // setInterval replacement:
@@ -103,6 +93,8 @@ const ImageGrid = ({ images = [] }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [ref, imgDim, images]);
+
+  useEffect(() => setImgDim({}), [images]);
 
   if (!images.length) return null;
 
@@ -124,6 +116,7 @@ const ImageGrid = ({ images = [] }) => {
           />
         ))}
       </Container>
+      {/* {open ? 'T' : 'F'} */}
     </Outer>
   );
 };
