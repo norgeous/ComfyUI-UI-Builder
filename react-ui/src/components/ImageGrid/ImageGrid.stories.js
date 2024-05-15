@@ -5,6 +5,17 @@ export default {
   component: ImageGrid,
 };
 
+export const SmallSquare4 = {
+  args: {
+    images: [
+      'https://placehold.co/512x512?text=01',
+      'https://placehold.co/512x512?text=02',
+      'https://placehold.co/512x512?text=03',
+      'https://placehold.co/512x512?text=04',
+    ],
+  },
+};
+
 export const Square1 = {
   args: {
     images: ['https://placehold.co/1024x1024?text=01'],
@@ -16,6 +27,16 @@ export const Square2 = {
     images: [
       'https://placehold.co/1024x1024?text=01',
       'https://placehold.co/1024x1024?text=02',
+    ],
+  },
+};
+
+export const Square3 = {
+  args: {
+    images: [
+      'https://placehold.co/1024x1024?text=01',
+      'https://placehold.co/1024x1024?text=02',
+      'https://placehold.co/1024x1024?text=03',
     ],
   },
 };
