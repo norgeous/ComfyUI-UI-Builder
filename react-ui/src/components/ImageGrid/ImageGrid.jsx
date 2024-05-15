@@ -11,29 +11,54 @@ const Outer = styled.div`
 `;
 
 const Container = styled.div`
-  scroll-snap-type: both mandatory;
-  ${({ open }) =>
-    open &&
-    css`
-      position: fixed;
-      inset: 0;
-      background: #000e;
-    `}
   display: grid;
-  grid-template-columns: repeat(${({ columnCount }) => columnCount}, auto);
   gap: 10px;
   place-items: center;
   justify-content: center;
-  max-height: 100%;
+  ${({ open, columnCount }) =>
+    open
+      ? css`
+          scroll-snap-type: both mandatory;
+          position: fixed;
+          z-index: 1;
+          inset: 0;
+          background: #000e;
+          height: 100%;
+          overflow-y: auto;
+        `
+      : css`
+          grid-template-columns: repeat(${columnCount}, auto);
+          max-height: 100%;
+        `}
 `;
 
 const Img = styled.img`
   cursor: pointer;
   display: block;
   max-width: 100%;
-  max-height: 100%;
-  min-height: 0;
+  ${({ $open }) =>
+    $open
+      ? css`
+          scroll-snap-stop: normal;
+          scroll-snap-align: center;
+          max-height: 100svh;
+          height: 100svh;
+          object-fit: scale-down;
+        `
+      : css`
+          max-height: 100%;
+          min-height: 0;
+        `}
 `;
+
+const Item = ({ onClick, ...props }) => {
+  const ref = useRef();
+  const handleClick = () => {
+    setTimeout(() => ref.current.scrollIntoView(), 0);
+    onClick();
+  };
+  return <Img ref={ref} {...props} onClick={handleClick} />;
+};
 
 const ImageGrid = ({ images = [] }) => {
   const [imgDim, setImgDim] = useState({});
@@ -110,19 +135,19 @@ const ImageGrid = ({ images = [] }) => {
       <Container
         columnCount={columnCount}
         open={open}
-        onClick={() => setOpen(false)}
+        // onClick={() => setOpen(false)}
       >
         {images.map(image => (
-          <Img
+          <Item
             key={image}
             alt=""
             src={image}
             onClick={() => setOpen(o => !o)}
             onLoad={onLoad}
+            $open={open}
           />
         ))}
       </Container>
-      {/* {open ? 'T' : 'F'} */}
     </Outer>
   );
 };
