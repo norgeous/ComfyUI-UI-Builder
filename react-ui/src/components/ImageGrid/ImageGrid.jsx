@@ -91,7 +91,6 @@ const ImageGrid = ({ images = [] }) => {
     setColumnCount(newColumnCount);
   };
 
-  // setInterval replacement:
   useEffect(calculateColumnCount, [ref, imgDim, images]);
 
   useEffect(() => {
