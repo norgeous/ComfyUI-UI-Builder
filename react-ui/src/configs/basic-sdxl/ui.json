@@ -60,7 +60,10 @@
         { "label": "6", "value": 6 },
         { "label": "7", "value": 7 },
         { "label": "8", "value": 8 },
-        { "label": "9", "value": 9 }
+        { "label": "9", "value": 9 },
+        { "label": "10", "value": 10 },
+        { "label": "12", "value": 12 },
+        { "label": "20", "value": 20 }
       ]
     },
     {
