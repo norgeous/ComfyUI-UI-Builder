@@ -31,7 +31,6 @@ const Img = styled.img`
   cursor: pointer;
   display: block;
   max-width: 100%;
-  /* max-height: ${({ maxHeight }) => maxHeight}; */
   max-height: 100%;
   min-height: 0;
 `;
@@ -46,7 +45,11 @@ const ImageGrid = ({ images = [] }) => {
     const { src, naturalWidth, naturalHeight } = event.target;
     setImgDim(old => ({
       ...old,
-      [src]: naturalHeight / naturalWidth,
+      [src]: {
+        w: naturalWidth,
+        h: naturalHeight,
+        a: naturalHeight / naturalWidth,
+      },
     }));
   };
 
@@ -58,28 +61,32 @@ const ImageGrid = ({ images = [] }) => {
 
     const { width, height } = ref.current.getBoundingClientRect();
 
-    // then given container width and height and aspect of each image (from w/h)
-    // calculate the number of columns needed
-    // to do that, we can emulate the grid layout calc
-    // - for each row / column add 10 gap
-    // - with increasing column count, layout items like grid would
-    // - that is until grid height becomes less than outer height
-
     const imgDims = Object.values(imgDim);
 
-    const newColumnCount = imgDims.reduce((cc, a) => {
-      if (imgDims.length === 1) return 1;
-      const rowCount = Math.ceil(imgDims.length / cc);
-      const hGapCount = cc - 1;
-      const vGapCount = rowCount - 1;
-      const cellWidth = Number(((width - 10 * hGapCount) / cc).toFixed(4));
-      const rowHeight = cellWidth * a;
-      const gridHeight = rowHeight * rowCount + vGapCount * 10;
+    const newColumnCount =
+      imgDims
+        .map(({ w, h, a }, i) => {
+          const gapSizePx = 10;
 
-      // add one to column count or not
-      if (gridHeight <= height) return cc;
-      return cc + 1;
-    }, 1);
+          const cc = i + 1;
+          const rowCount = Math.ceil(imgDims.length / cc);
+
+          const hGaps = gapSizePx * (cc - 1);
+          const vGaps = gapSizePx * (rowCount - 1);
+
+          // the maximal size of each cell in the grid, given the current layout
+          const cellWidthMax = (width - hGaps) / cc;
+          const cellHeightMax = (height - vGaps) / rowCount;
+
+          const aspect2 = 1 / a; // inverse aspect
+
+          const imgWidth = Math.min(w, cellWidthMax, cellHeightMax / a);
+          const imgHeight = Math.min(h, cellHeightMax, cellWidthMax / aspect2);
+          const imgArea = imgWidth * imgHeight;
+
+          return imgArea;
+        })
+        .reduce((iMax, x, i, arr) => (x > arr[iMax] ? i : iMax), 0) + 1; // find index of largest area and add 1
 
     setColumnCount(newColumnCount);
   };
@@ -112,7 +119,6 @@ const ImageGrid = ({ images = [] }) => {
             alt=""
             src={image}
             onClick={() => setOpen(o => !o)}
-            // maxHeight={`${ref.current?.clientHeight}px` || '100%'}
             onLoad={onLoad}
           />
         ))}
