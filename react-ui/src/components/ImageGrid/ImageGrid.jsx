@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
+const gapSizePx = 10;
+
 const Outer = styled.div`
   height: 100%;
   overflow-y: hidden;
@@ -12,7 +14,7 @@ const Outer = styled.div`
 
 const Container = styled.div`
   display: grid;
-  gap: 10px;
+  gap: ${gapSizePx}px;
   place-items: center;
   justify-content: center;
   ${({ open, columnCount }) =>
@@ -91,8 +93,6 @@ const ImageGrid = ({ images = [] }) => {
     const newColumnCount =
       imgDims
         .map(({ w, h, a }, i) => {
-          const gapSizePx = 10;
-
           const cc = i + 1;
           const rowCount = Math.ceil(imgDims.length / cc);
 
