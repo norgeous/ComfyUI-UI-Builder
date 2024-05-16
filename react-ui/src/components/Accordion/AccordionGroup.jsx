@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FaChevronUp } from 'react-icons/fa6';
@@ -15,47 +16,44 @@ const AccordionHeader = styled.button`
 `;
 
 const Chevron = styled(FaChevronUp)`
-  transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
   transition: transform 350ms;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-`;
-
-const Wrapper2 = styled.div`
-  width: 100%;
+  transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
 `;
 
 const Collapse = styled.div`
+  display: grid;
+  transition: grid-template-rows 350ms;
+  grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
+`;
+
+const Inner = styled.div`
   overflow: hidden;
-  max-height: ${({ $isOpen }) => ($isOpen ? '100%' : '0')};
-  transition: max-height 350ms;
 `;
 
 const AccordionGroup = ({
   title = '',
-  isOpen = false,
-  onClick = () => {},
+  defaultIsOpen = false,
   children = null,
-}) => (
-  <>
-    <AccordionHeader onClick={onClick}>
-      {title}
-      <Chevron $isOpen={isOpen} />
-    </AccordionHeader>
-    <Wrapper>
-      <Wrapper2>
-        <Collapse $isOpen={isOpen}>{children}</Collapse>
-      </Wrapper2>
-    </Wrapper>
-  </>
-);
+}) => {
+  const [isOpen, setIsOpen] = useState(defaultIsOpen);
+  const onClick = () => setIsOpen(!isOpen);
+
+  return (
+    <>
+      <AccordionHeader onClick={onClick}>
+        {title}
+        <Chevron $isOpen={isOpen} />
+      </AccordionHeader>
+      <Collapse $isOpen={isOpen}>
+        <Inner>{children}</Inner>
+      </Collapse>
+    </>
+  );
+};
 
 AccordionGroup.propTypes = {
   title: PropTypes.string,
-  isOpen: PropTypes.bool,
-  onClick: PropTypes.func,
+  defaultIsOpen: PropTypes.bool,
   children: PropTypes.node,
 };
 
