@@ -18,7 +18,7 @@ const Container = styled.div`
   place-items: center;
   justify-content: center;
   ${({ open, columnCount }) =>
-    open
+    open !== undefined
       ? css`
           scroll-snap-type: both mandatory;
           position: fixed;
@@ -39,7 +39,7 @@ const Img = styled.img`
   display: block;
   max-width: 100%;
   ${({ $open }) =>
-    $open
+    $open !== undefined
       ? css`
           scroll-snap-stop: normal;
           scroll-snap-align: center;
@@ -53,10 +53,15 @@ const Img = styled.img`
         `}
 `;
 
-const Item = ({ onClick, ...props }) => {
+const Item = ({ scrollTo = false, onClick, ...props }) => {
   const ref = useRef();
-  const handleClick = () => {
-    setTimeout(() => ref.current.scrollIntoView(), 0);
+
+  useEffect(() => {
+    if (scrollTo) ref.current.scrollIntoView();
+  }, [scrollTo]);
+
+  const handleClick = event => {
+    event.stopPropagation();
     onClick();
   };
   return <Img ref={ref} {...props} onClick={handleClick} />;
@@ -64,7 +69,7 @@ const Item = ({ onClick, ...props }) => {
 
 const ImageGrid = ({ images = [] }) => {
   const [imgDim, setImgDim] = useState({});
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
 
@@ -128,6 +133,15 @@ const ImageGrid = ({ images = [] }) => {
 
   useEffect(() => setImgDim({}), [images]);
 
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  useEffect(() => {
+    if (open !== undefined) {
+      ref.current.requestFullscreen?.().then(() => {
+        setTimeout(() => setIsFullscreen(true), 100); // this is to give some time for fullscreen to settle
+      });
+    } else window.document.exitFullscreen().then(() => setIsFullscreen(false));
+  }, [open]);
+
   if (!images.length) return null;
 
   return (
@@ -135,16 +149,17 @@ const ImageGrid = ({ images = [] }) => {
       <Container
         columnCount={columnCount}
         open={open}
-        // onClick={() => setOpen(false)}
+        onClick={() => setOpen(undefined)}
       >
-        {images.map(image => (
+        {images.map((image, i) => (
           <Item
             key={image}
             alt=""
             src={image}
-            onClick={() => setOpen(o => !o)}
+            onClick={() => setOpen(open !== undefined ? undefined : i)}
             onLoad={onLoad}
             $open={open}
+            scrollTo={isFullscreen && open === i}
           />
         ))}
       </Container>
