@@ -1,7 +1,7 @@
 import ImageGrid from './ImageGrid';
 
 export default {
-  title: 'ImageGrid',
+  title: 'Layout/ImageGrid',
   component: ImageGrid,
 };
 
