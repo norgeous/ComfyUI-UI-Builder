@@ -32,7 +32,7 @@ const Inner = styled.div`
 
 const AccordionGroup = ({
   title = '',
-  defaultIsOpen = false,
+  defaultIsOpen = true,
   children = null,
 }) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);

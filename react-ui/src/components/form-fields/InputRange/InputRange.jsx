@@ -69,34 +69,38 @@ const InputRange = ({
         showReset={showReset}
         handleReset={handleReset}
       />
-      <Input
-        {...props} // eslint-disable-line react/jsx-props-no-spreading
-        min="0"
-        step="1"
-        max={options.length - 1}
-        value={index}
-        onChange={event => onChange(options[event.target.value].value)}
-      />
-      <Sublabels $isPips={isPips}>
-        {!isPips && minLabel && (
-          <Sublabel onClick={() => onChange(options[0].value)}>
-            <FaArrowLeft />
-            {minLabel}
-          </Sublabel>
-        )}
-        {isPips &&
-          options?.map(({ label: pipLabel, value: pipValue }) => (
-            <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
-              {pipLabel}
-            </Pip>
-          ))}
-        {!isPips && maxLabel && (
-          <Sublabel onClick={() => onChange(options[options.length - 1].value)}>
-            {maxLabel}
-            <FaArrowRight />
-          </Sublabel>
-        )}
-      </Sublabels>
+      <div>
+        <Input
+          {...props} // eslint-disable-line react/jsx-props-no-spreading
+          min="0"
+          step="1"
+          max={options.length - 1}
+          value={index}
+          onChange={event => onChange(options[event.target.value].value)}
+        />
+        <Sublabels $isPips={isPips}>
+          {!isPips && minLabel && (
+            <Sublabel onClick={() => onChange(options[0].value)}>
+              <FaArrowLeft />
+              {minLabel}
+            </Sublabel>
+          )}
+          {isPips &&
+            options?.map(({ label: pipLabel, value: pipValue }) => (
+              <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
+                {pipLabel}
+              </Pip>
+            ))}
+          {!isPips && maxLabel && (
+            <Sublabel
+              onClick={() => onChange(options[options.length - 1].value)}
+            >
+              {maxLabel}
+              <FaArrowRight />
+            </Sublabel>
+          )}
+        </Sublabels>
+      </div>
       {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
