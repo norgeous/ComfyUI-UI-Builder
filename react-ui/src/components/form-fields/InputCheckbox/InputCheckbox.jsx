@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../../InputHeader';
-import ErrorText from '../../ErrorText';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader';
+import ErrorText from '../ErrorText';
 import deepEqual from '../../../utils/deepEqual';
 
 const Label = styled.label`
@@ -43,7 +44,7 @@ const Checkbox = ({
   const showReset = index !== defaultValueIndex;
 
   return (
-    <>
+    <InputWrapper>
       <InputHeader
         label={label}
         info={info}
@@ -62,7 +63,7 @@ const Checkbox = ({
         {checkboxLabel}
       </Label>
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 

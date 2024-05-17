@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   gap: 4px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
 `;
 
 const WrapperLeft = styled.div`

@@ -8,12 +8,6 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
 
   const ckptOptions =
     objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0];
-  // .map(
-  //   ckptName => ({
-  //     label: ckptName,
-  //     value: ckptName,
-  //   }),
-  // );
 
   return (
     <InputText

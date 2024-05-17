@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../../InputHeader';
-import ErrorText from '../../ErrorText';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader';
+import ErrorText from '../ErrorText';
 import deepEqual from '../../../utils/deepEqual';
 
 const Select = styled.select`
@@ -43,7 +44,7 @@ const InputSelect = ({
   const showReset = index !== defaultValueIndex;
 
   return (
-    <>
+    <InputWrapper>
       <InputHeader
         id={id}
         label={label}
@@ -65,7 +66,7 @@ const InputSelect = ({
         ))}
       </Select>
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 

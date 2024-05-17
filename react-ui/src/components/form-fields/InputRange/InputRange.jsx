@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
-import InputHeader from '../../InputHeader';
-import ErrorText from '../../ErrorText';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader';
+import ErrorText from '../ErrorText';
 import deepEqual from '../../../utils/deepEqual';
 
 const Input = styled.input.attrs({ type: 'range' })`
@@ -59,7 +60,7 @@ const InputRange = ({
   const showReset = index !== defaultValueIndex;
 
   return (
-    <>
+    <InputWrapper>
       <InputHeader
         id={id}
         label={label}
@@ -97,7 +98,7 @@ const InputRange = ({
         )}
       </Sublabels>
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 

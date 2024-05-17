@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputWrapper from '../InputWrapper';
 import Select from '../InputSelect/InputSelect';
-import ErrorText from '../../ErrorText';
+import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'file' })`
   display: none;
@@ -11,7 +12,7 @@ const Input = styled.input.attrs({ type: 'file' })`
 const Img = styled.img`
   width: 200px;
   max-width: 100%;
-  margin: 0 auto 6px;
+  margin: 0 auto;
   display: block;
 `;
 
@@ -60,7 +61,7 @@ const InputFile = ({
   };
 
   return (
-    <>
+    <InputWrapper>
       <Select
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
@@ -79,7 +80,7 @@ const InputFile = ({
         onChange={handleFileChange}
       />
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 

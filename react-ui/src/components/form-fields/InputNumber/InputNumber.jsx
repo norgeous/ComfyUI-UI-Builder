@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../../InputHeader';
-import ErrorText from '../../ErrorText';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader';
+import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'number' })`
   display: block;
@@ -40,7 +41,7 @@ const InputNumber = ({
   const showReset = value !== defaultValue;
 
   return (
-    <>
+    <InputWrapper>
       <InputHeader
         id={id}
         label={label}
@@ -57,7 +58,7 @@ const InputNumber = ({
         onChange={event => onChange(Number(event.target.value))}
       />
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 

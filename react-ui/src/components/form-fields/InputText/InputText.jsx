@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputHeader from '../../InputHeader';
-import ErrorText from '../../ErrorText';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader';
+import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'text' })`
   display: block;
@@ -39,7 +40,7 @@ const InputText = ({
   const showReset = value !== defaultValue;
 
   return (
-    <>
+    <InputWrapper>
       <InputHeader
         id={id}
         label={label}
@@ -62,7 +63,7 @@ const InputText = ({
         </datalist>
       )}
       {error && <ErrorText>{error}</ErrorText>}
-    </>
+    </InputWrapper>
   );
 };
 
