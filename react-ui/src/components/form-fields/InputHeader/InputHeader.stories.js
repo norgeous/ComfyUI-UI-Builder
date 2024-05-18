@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import InputHeader from './InputHeader';
 
 export default {
@@ -6,5 +7,7 @@ export default {
 };
 
 export const Header = {
-  args: {},
+  args: {
+    handleReset: action('reset'),
+  },
 };
