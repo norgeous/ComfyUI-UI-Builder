@@ -9,6 +9,7 @@ const spin = keyframes`
 const SpinnerIcon = styled(FaSpinner)`
   display: block;
   animation: ${spin} 800ms infinite linear;
+  flex-shrink: 0;
 `;
 
 const Spinner = () => <SpinnerIcon size={14} />;

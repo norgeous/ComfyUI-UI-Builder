@@ -11,8 +11,8 @@ const AccordionContainer = styled.section`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px;
+  gap: 8px;
+  padding: 8px;
 `;
 
 const Accordion = ({ items = [] }) => {
