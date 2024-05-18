@@ -1,5 +1,5 @@
+import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
 import InputNumber from './InputNumber';
-import SimpleStateDecorator from '../../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/Number',

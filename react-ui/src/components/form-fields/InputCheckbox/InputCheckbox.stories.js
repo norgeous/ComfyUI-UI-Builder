@@ -1,5 +1,5 @@
+import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
 import InputCheckbox from './InputCheckbox';
-import SimpleStateDecorator from '../../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/Checkbox',

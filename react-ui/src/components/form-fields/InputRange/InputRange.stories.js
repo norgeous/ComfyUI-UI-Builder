@@ -1,5 +1,5 @@
+import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
 import InputRange from './InputRange';
-import SimpleStateDecorator from '../../../../.storybook/SimpleStateDecorator';
 
 export default {
   title: 'Input/Range',
