@@ -31,6 +31,11 @@ const Button = styled.button`
   background: transparent;
   opacity: 0.5;
   font-size: 0.75rem; // 12px
+  padding: 0;
+`;
+
+const QuestionMark = styled(FaCircleQuestion)`
+  display: block;
 `;
 
 const InputHeader = ({
@@ -43,13 +48,16 @@ const InputHeader = ({
 }) => (
   <Wrap>
     <Left>
-      <Label>Label Label Label Label Label Label Label Label Label Label</Label>
-      <Button>
-        <FaCircleQuestion size={14} />
-      </Button>
+      {label && <Label htmlFor={id}>{label}</Label>}
+      {info && (
+        // eslint-disable-next-line no-alert
+        <Button title={info} onClick={() => alert(info)}>
+          <QuestionMark size={14} />
+        </Button>
+      )}
       {isLoading && <Spinner />}
     </Left>
-    <Button onClick={handleReset}>Reset</Button>
+    {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrap>
 );
 

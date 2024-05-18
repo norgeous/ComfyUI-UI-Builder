@@ -13,9 +13,13 @@ const Loading = styled.div`
   align-items: center;
 `;
 
+const SpinnerIcon = styled(FaSpinner)`
+  display: block;
+`;
+
 const Spinner = () => (
   <Loading>
-    <FaSpinner size={14} />
+    <SpinnerIcon size={14} />
   </Loading>
 );
 
