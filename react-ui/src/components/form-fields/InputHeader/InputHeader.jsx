@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Spinner from '@/components/Spinner';
 
 const Wrap = styled.div`
   display: flex;
@@ -18,15 +19,16 @@ const Label = styled.label`
   overflow: hidden;
 `;
 
-const Right = styled.button``;
+const Button = styled.button``;
 
 const InputHeader = () => (
   <Wrap>
     <Left>
       <Label>Label Label Label Label Label Label Label Label Label Label</Label>
-      ?
+      <Button>?</Button>
+      <Spinner />
     </Left>
-    <Right>Reset</Right>
+    <Button>Reset</Button>
   </Wrap>
 );
 
