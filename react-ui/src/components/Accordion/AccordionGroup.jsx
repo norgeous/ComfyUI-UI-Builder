@@ -10,7 +10,7 @@ const AccordionHeader = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  padding: 12px;
   cursor: pointer;
   border: none;
 `;
