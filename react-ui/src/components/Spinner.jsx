@@ -6,21 +6,14 @@ const spin = keyframes`
   to {transform:rotate(360deg);}
 `;
 
-const Loading = styled.div`
+const SpinnerIcon = styled(FaSpinner)`
+  display: block;
   animation: ${spin} 800ms infinite linear;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const SpinnerIcon = styled(FaSpinner)`
-  display: block;
-`;
-
-const Spinner = () => (
-  <Loading>
-    <SpinnerIcon size={14} />
-  </Loading>
-);
+const Spinner = () => <SpinnerIcon size={14} />;
 
 export default Spinner;
