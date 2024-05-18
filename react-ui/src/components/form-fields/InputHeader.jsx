@@ -31,6 +31,9 @@ const Button = styled.button`
 
 const Label = styled.label`
   font-size: 0.875rem; // 14px
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const spin = keyframes`
@@ -67,7 +70,6 @@ const InputHeader = ({
           <FaSpinner size={14} />
         </Loading>
       )}
-      {'\u00A0'}
     </WrapperLeft>
     {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrapper>
