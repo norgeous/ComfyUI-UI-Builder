@@ -5,6 +5,7 @@ import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
 
 import Button from './Button/Button';
+import ErrorText from './form-fields/ErrorText';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
@@ -27,15 +28,12 @@ const FormControls = () => {
 
   return (
     <div>
-      {promptError}
+      {promptError && <ErrorText>{promptError}</ErrorText>}
       <Button
         onClick={handleClick}
         // loading={promptLoading || isGenerating}
       >
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <span uk-icon="icon: bolt" />
-        {}
-        Roll
+        Generate
       </Button>
       {isGenerating && (
         <Button
