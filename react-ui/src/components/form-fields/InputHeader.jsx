@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
-import { FaCircleQuestion, FaSpinner } from 'react-icons/fa6';
+import styled from 'styled-components';
+import { FaCircleQuestion } from 'react-icons/fa6';
+import Spinner from '@/components/Spinner';
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,18 +37,6 @@ const Label = styled.label`
   white-space: nowrap;
 `;
 
-const spin = keyframes`
-  from {transform:rotate(0deg);}
-  to {transform:rotate(360deg);}
-`;
-
-const Loading = styled.div`
-  animation: ${spin} 800ms infinite linear;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const InputHeader = ({
   id = undefined,
   label = undefined,
@@ -65,11 +54,7 @@ const InputHeader = ({
           <FaCircleQuestion size={14} />
         </Button>
       )}
-      {isLoading && (
-        <Loading>
-          <FaSpinner size={14} />
-        </Loading>
-      )}
+      {isLoading && <Spinner />}
     </WrapperLeft>
     {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrapper>

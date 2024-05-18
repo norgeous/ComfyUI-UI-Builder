@@ -5,16 +5,19 @@ const Wrap = styled.div`
   justify-content: space-between;
   gap: 10px;
 `;
+
 const Left = styled.div`
   display: flex;
   gap: 10px;
   overflow: hidden;
 `;
+
 const Label = styled.label`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 `;
+
 const Right = styled.button``;
 
 const InputHeader = () => (
