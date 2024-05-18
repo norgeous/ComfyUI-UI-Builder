@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AccordionGroup from './AccordionGroup';
@@ -32,7 +31,7 @@ const Accordion = ({ items = [] }) => {
 
   return (
     <AccordionContainer>
-      {sections?.map(({ title, children }, i) => (
+      {sections?.map(({ title, children }) => (
         <AccordionGroup key={title} title={title}>
           <Grid>{children}</Grid>
         </AccordionGroup>
