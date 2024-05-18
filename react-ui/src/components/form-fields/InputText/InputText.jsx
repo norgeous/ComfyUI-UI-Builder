@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'text' })`

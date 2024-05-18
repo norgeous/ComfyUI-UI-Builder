@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
 import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
 
 const Select = styled.select`

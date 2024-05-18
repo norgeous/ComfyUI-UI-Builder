@@ -8,6 +8,11 @@ export default {
 
 export const Header = {
   args: {
+    id: 'test',
+    label: 'My InputHeader Label',
+    info: 'my info text',
+    isLoading: true,
+    showReset: true,
     handleReset: action('reset'),
   },
 };
