@@ -17,6 +17,7 @@ const Sublabels = styled.div`
   padding: ${({ $isPips }) => ($isPips ? '0 10px' : 0)};
   display: flex;
   justify-content: space-between;
+  gap: 4px;
   font-size: 12px;
   opacity: 0.5;
 `;
@@ -26,6 +27,23 @@ const Sublabel = styled.div`
   display: inline-flex;
   place-items: center;
   gap: 4px;
+  overflow: hidden;
+`;
+
+const LArrow = styled(FaArrowLeft)`
+  display: block;
+  flex-shrink: 0;
+`;
+
+const RArrow = styled(FaArrowRight)`
+  display: block;
+  flex-shrink: 0;
+`;
+
+const SublabelText = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Pip = styled.div`
@@ -81,8 +99,8 @@ const InputRange = ({
         <Sublabels $isPips={isPips}>
           {!isPips && minLabel && (
             <Sublabel onClick={() => onChange(options[0].value)}>
-              <FaArrowLeft />
-              {minLabel}
+              <LArrow />
+              <SublabelText>{minLabel}</SublabelText>
             </Sublabel>
           )}
           {isPips &&
@@ -95,8 +113,8 @@ const InputRange = ({
             <Sublabel
               onClick={() => onChange(options[options.length - 1].value)}
             >
-              {maxLabel}
-              <FaArrowRight />
+              <SublabelText>{maxLabel}</SublabelText>
+              <RArrow />
             </Sublabel>
           )}
         </Sublabels>
