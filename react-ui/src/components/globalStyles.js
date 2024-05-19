@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     --header-fg: color-mix(in srgb, var(--fg-base) 75%, var(--primary));
 
     --input-outline: var(--primary);
-    --input-border: color-mix(in srgb, var(--fg-base) 10%, var(--primary));
+    --input-border: color-mix(in srgb, var(--bg-base) 50%, var(--primary));
     --input-bg: color-mix(in srgb, var(--bg-base) 75%, var(--primary));
     --input-fg: color-mix(in srgb, var(--fg-base) 50%, var(--primary));
   }
