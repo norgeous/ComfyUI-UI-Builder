@@ -5,8 +5,11 @@ const Progress = styled.progress.attrs({ max: 1 })`
   width: 100%;
   border-radius: 0;
   height: 7px;
-  background-color: #0c3047; // firefox only
+  background-color: var(--primary); // firefox only
   border: 0;
+  &::-webkit-progress-bar {
+    background-color: var(--primary); // webkit only
+  }
 `;
 
 export default Progress;
