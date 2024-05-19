@@ -17,8 +17,6 @@ const Bar = styled.div`
   gap: 5px;
   background: rgb(34, 42, 48);
   padding: 5px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 const Buggers = styled.div`
