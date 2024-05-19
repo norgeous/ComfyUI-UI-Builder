@@ -10,12 +10,20 @@ const AccordionHeader = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 4px;
   padding: 12px;
   cursor: pointer;
   border: none;
 `;
 
+const HeaderText = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 const Chevron = styled(FaChevronUp)`
+  display: block;
   transition: transform 350ms;
   transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
 `;
@@ -41,7 +49,7 @@ const AccordionGroup = ({
   return (
     <>
       <AccordionHeader onClick={onClick}>
-        {title}
+        <HeaderText>{title}</HeaderText>
         <Chevron $isOpen={isOpen} />
       </AccordionHeader>
       <Collapse $isOpen={isOpen}>

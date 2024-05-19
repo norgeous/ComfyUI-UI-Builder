@@ -31,6 +31,7 @@ export const Controls = styled.aside`
   @media (min-width: 920px) {
     height: 100svh;
   }
+  overflow-x: hidden;
 `;
 
 export const Content = styled.div`
