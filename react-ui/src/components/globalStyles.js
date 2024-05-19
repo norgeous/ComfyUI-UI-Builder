@@ -17,7 +17,13 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     --page-bg: color-mix(in srgb, var(--bg-base) 95%, var(--primary));
-    --page-fg: color-mix(in srgb, var(--fg-base) 75%, var(--primary));
+    --page-fg: color-mix(in srgb, var(--fg-base) 95%, var(--primary));
+
+    --surface-bg: color-mix(in srgb, var(--bg-base) 85%, var(--primary));
+    --surface-fg: color-mix(in srgb, var(--fg-base) 85%, var(--primary));
+
+    --header-bg: color-mix(in srgb, var(--bg-base) 75%, var(--primary));
+    --header-fg: color-mix(in srgb, var(--fg-base) 75%, var(--primary));
 
     --input-outline: var(--primary);
     --input-border: color-mix(in srgb, var(--fg-base) 10%, var(--primary));
@@ -32,7 +38,11 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--page-bg);
     color: var(--page-fg);
     height: 100svh;
-    color-scheme: dark;
+
+    color-scheme: light;
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
   }
 
   #storybook-root{

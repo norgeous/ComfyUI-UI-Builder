@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { FaChevronUp } from 'react-icons/fa6';
 
 const AccordionHeader = styled.button`
-  background: black;
-  color: white;
+  background: var(--header-bg);
+  color: var(--header-fg);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -32,6 +32,8 @@ const Collapse = styled.div`
   display: grid;
   transition: grid-template-rows 350ms;
   grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
+  background: var(--surface-bg);
+  color: var(--surface-fg);
 `;
 
 const Inner = styled.div`
