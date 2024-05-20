@@ -34,6 +34,28 @@ const Button = styled.button`
   padding: 0;
 `;
 
+const TooltipText = styled.span`
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+`;
+
+const Tooltip = styled.div`
+  position: relative;
+  display: inline-block;
+  &:hover ${TooltipText} {
+    visibility: visible;
+  }
+`;
+
 const QuestionMark = styled(FaCircleQuestion)`
   display: block;
 `;
@@ -50,10 +72,10 @@ const InputHeader = ({
     <Left>
       {label && <Label htmlFor={id}>{label}</Label>}
       {info && (
-        // eslint-disable-next-line no-alert
-        <Button title={info} onClick={() => alert(info)}>
+        <Tooltip>
           <QuestionMark size={14} />
-        </Button>
+          <TooltipText>{info}</TooltipText>
+        </Tooltip>
       )}
       {isLoading && <Spinner />}
     </Left>
