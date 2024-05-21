@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { FaChevronUp } from 'react-icons/fa6';
 
@@ -37,7 +37,11 @@ const Collapse = styled.div`
 `;
 
 const Inner = styled.div`
-  overflow: hidden;
+  ${({ $isOpen }) =>
+    !$isOpen &&
+    css`
+      overflow: hidden;
+    `}
 `;
 
 const AccordionGroup = ({
@@ -55,7 +59,7 @@ const AccordionGroup = ({
         <Chevron $isOpen={isOpen} />
       </AccordionHeader>
       <Collapse $isOpen={isOpen}>
-        <Inner>{children}</Inner>
+        <Inner $isOpen={isOpen}>{children}</Inner>
       </Collapse>
     </>
   );

@@ -6,7 +6,6 @@ import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
 import FormControls from './components/FormControls';
 import Progress from './components/Progress/Progress';
-// import Carousel from './components/Carousel/Carousel';
 import StatusBar from './components/StatusBar';
 import ImageGrid from './components/ImageGrid/ImageGrid';
 
@@ -24,7 +23,6 @@ const App = () => {
         <Main>
           <Progress value={progress} />
           <Content>
-            {/* <Carousel /> */}
             <ImageGrid images={images} />
           </Content>
           <StatusBar />

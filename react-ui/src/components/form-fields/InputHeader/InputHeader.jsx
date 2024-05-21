@@ -5,14 +5,6 @@ import Spinner from '@/components/Spinner';
 
 const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 4px;
-`;
-
-const Left = styled.div`
-  overflow: hidden;
-  display: flex;
   align-items: center;
   gap: 4px;
 `;
@@ -32,11 +24,12 @@ const Button = styled.button`
   opacity: 0.5;
   font-size: 0.75rem; // 12px
   padding: 0;
+  margin-left: auto;
 `;
 
 const TooltipText = styled.span`
   visibility: hidden;
-  width: 120px;
+  width: 220px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -69,16 +62,14 @@ const InputHeader = ({
   handleReset = () => {},
 }) => (
   <Wrap>
-    <Left>
-      {label && <Label htmlFor={id}>{label}</Label>}
-      {info && (
-        <Tooltip>
-          <QuestionMark size={14} />
-          <TooltipText>{info}</TooltipText>
-        </Tooltip>
-      )}
-      {isLoading && <Spinner />}
-    </Left>
+    {label && <Label htmlFor={id}>{label}</Label>}
+    {info && (
+      <Tooltip>
+        <QuestionMark size={14} />
+        <TooltipText>{info}</TooltipText>
+      </Tooltip>
+    )}
+    {isLoading && <Spinner />}
     {showReset && <Button onClick={handleReset}>reset</Button>}
   </Wrap>
 );

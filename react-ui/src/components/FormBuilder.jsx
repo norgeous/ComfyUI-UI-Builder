@@ -14,7 +14,6 @@ import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './form-fields/InputSelectCkpt/InputSelectCkpt';
 
 const Item = styled.div`
-  overflow: hidden;
   ${({ colSpan }) =>
     colSpan === 2 &&
     css`

@@ -10,8 +10,7 @@ const AccordionContainer = styled.section`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: 50% 50%;
   padding: 8px;
 `;
 
