@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import Select from './form-fields/InputSelect/InputSelect';
 
-const Header = styled.header`
-  padding: 10px;
-`;
+const Header = styled.header``;
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);
@@ -27,6 +25,8 @@ const UiSelector = () => {
   return (
     <Header>
       <Select
+        id="ui"
+        label="UI Builder"
         options={options}
         defaultValueIndex={0}
         value={value}
