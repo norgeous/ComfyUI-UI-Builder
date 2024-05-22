@@ -6,6 +6,12 @@ import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
 
+const RangeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.33333333px;
+`;
+
 const Input = styled.input.attrs({ type: 'range' })`
   accent-color: var(--input-outline);
   margin: 0;
@@ -87,7 +93,7 @@ const InputRange = ({
         showReset={showReset}
         handleReset={handleReset}
       />
-      <div>
+      <RangeWrapper>
         <Input
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           min="0"
@@ -118,7 +124,7 @@ const InputRange = ({
             </Sublabel>
           )}
         </Sublabels>
-      </div>
+      </RangeWrapper>
       {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );

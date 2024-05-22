@@ -29,16 +29,31 @@ const Button = styled.button`
 
 const TooltipText = styled.span`
   visibility: hidden;
-  width: 220px;
+  font-size: 0.75rem; // 12px
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
+  padding: 5px;
+  border: 1px solid grey;
   position: absolute;
   z-index: 1;
+  width: max-content;
+  max-width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-top: 5px;
+  transform: translate(-50%);
+  &::after {
+    content: ' ';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent grey transparent;
+  }
 `;
 
 const Tooltip = styled.div`
