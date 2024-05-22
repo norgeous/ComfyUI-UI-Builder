@@ -39,7 +39,7 @@ const Collapse = styled.div`
 const Inner = styled.div`
   overflow: hidden;
   &:hover {
-    overflow: visible; // for tooltips
+    overflow: auto; // for tooltips
   }
 `;
 
