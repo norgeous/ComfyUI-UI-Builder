@@ -20,7 +20,6 @@ export const Main = styled.main`
   background-size: 32px 32px;
   background-position: center;
   background-image: radial-gradient(circle, #3d454b 1px, #0000 1px);
-  /* position: relative; */
 `;
 
 export const Controls = styled.aside`
@@ -36,7 +35,6 @@ export const Controls = styled.aside`
 
 export const Content = styled.div`
   flex: 1;
-  /* max-height: calc(100% - 7px - 34px); */
   padding: 10px;
   overflow: hidden;
 `;
