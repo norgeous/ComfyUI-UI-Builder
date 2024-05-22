@@ -13,10 +13,12 @@ const RangeWrapper = styled.div`
 `;
 
 const Input = styled.input.attrs({ type: 'range' })`
-  accent-color: var(--input-outline);
-  margin: 0;
   display: block;
   width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  accent-color: var(--input-outline);
+  margin: 0;
 `;
 
 const Sublabels = styled.div`

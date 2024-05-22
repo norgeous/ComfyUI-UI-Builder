@@ -28,7 +28,7 @@ const Button = styled.button`
 `;
 
 const TooltipText = styled.span`
-  visibility: hidden;
+  display: none;
   font-size: 0.75rem; // 12px
   background-color: black;
   color: #fff;
@@ -39,11 +39,12 @@ const TooltipText = styled.span`
   position: absolute;
   z-index: 1;
   width: max-content;
-  max-width: 120px;
+  max-width: 160px;
   top: 100%;
   left: 50%;
   margin-top: 5px;
   transform: translate(-50%);
+  white-space: preserve-breaks;
   &::after {
     content: ' ';
     position: absolute;
@@ -58,9 +59,8 @@ const TooltipText = styled.span`
 
 const Tooltip = styled.div`
   position: relative;
-  display: inline-block;
   &:hover ${TooltipText} {
-    visibility: visible;
+    display: inline-block;
   }
 `;
 

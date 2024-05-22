@@ -37,11 +37,10 @@ const Collapse = styled.div`
 `;
 
 const Inner = styled.div`
-  ${({ $isOpen }) =>
-    !$isOpen &&
-    css`
-      overflow: hidden;
-    `}
+  overflow: hidden;
+  &:hover {
+    overflow: visible; // for tooltips
+  }
 `;
 
 const AccordionGroup = ({

@@ -7,8 +7,9 @@ import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'text' })`
   display: block;
-  box-sizing: border-box;
   width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--input-fg);
