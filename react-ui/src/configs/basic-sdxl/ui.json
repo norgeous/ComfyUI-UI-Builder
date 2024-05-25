@@ -228,8 +228,19 @@
           "value": {
             "baseSteps": 4,
             "stepMultiplier": 8,
-            "cfg": 5,
+            "cfg": 6.5,
             "lora": "Hyper-SDXL-8steps-CFG-lora.safetensors",
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
+          }
+        },
+        {
+          "label": "Hyper (12 steps) + CFG",
+          "value": {
+            "baseSteps": 8,
+            "stepMultiplier": 8,
+            "cfg": 6.5,
+            "lora": "Hyper-SDXL-12steps-CFG-lora.safetensors",
             "samplerName": "ddim",
             "scheduler": "ddim_uniform"
           }
