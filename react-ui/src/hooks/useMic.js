@@ -12,8 +12,6 @@ const useMic = ({ recognizer, loading }) => {
 
   const startRecognitionStream = useCallback(async () => {
     if (recognizer) {
-      setMuted(true);
-
       if (!micStream) {
         let mediaStream = null;
         try {
@@ -30,14 +28,14 @@ const useMic = ({ recognizer, loading }) => {
             bufferSize: 1024,
           });
 
-          micStream.setStream(mediaStream);
+          micStream.setStream(mediaStream); // connect mic and media steam
+
+          setMuted(false);
         } catch (err) {
           console.error(err); // eslint-disable-line no-console
         }
       } else {
-        // muted
-        micStream.unpipe(audioStreamer);
-        micStream.pipe(audioBucket);
+        setMuted(true);
       }
 
       audioStreamer = new AudioStreamer(recognizer, {
