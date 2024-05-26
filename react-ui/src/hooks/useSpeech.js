@@ -11,10 +11,10 @@ const useSpeech = () => {
 
   const simpleUtterances = utterances
     .map(utt => utt.result?.map(({ word }) => word).join(' '))
-    .join('. ');
+    .join(' ');
   const simpleOutput = `${simpleUtterances}. ${partial}`;
 
-  const tail = simpleOutput.split(' ').slice(-10).join(' ');
+  const tail = simpleOutput.split(' ').slice(-30).join(' ');
 
   return { loading, muted, toggleMic, utterances, partial, tail };
 };

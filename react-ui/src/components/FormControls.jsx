@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
@@ -18,7 +18,8 @@ const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
 
   const {
-    formState: { enableSeedRandomisation },
+    // formState,
+    formState: { positivePrompt, enableSeedRandomisation },
     updateFormState,
   } = useContext(FormContext);
 
@@ -26,12 +27,17 @@ const FormControls = () => {
     useContext(AppContext);
 
   const handleClick = () => {
-    executePrompt();
     if (enableSeedRandomisation) {
       const newSeed = Math.floor(Math.random() * 10 ** 10);
       updateFormState({ seed: newSeed });
     }
+    executePrompt();
   };
+
+  // autoprompt hack
+  useEffect(() => {
+    if (positivePrompt && !isGenerating) executePrompt();
+  }, [positivePrompt]);
 
   return (
     <ButtonsArea>
