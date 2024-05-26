@@ -43,14 +43,14 @@ const StatusBar = () => {
       </div>
       <Buggers>
         <Debug label="formState" data={formState} />
-        {/* <Debug label="adapted" data={adapted} />
+        <Debug label="adapted" data={adapted} />
         <Debug label="baseWorkflow" data={baseWorkflow} />
         <Debug
           label="objectInfo"
           data={{ objectInfoLoading, objectInfoError, objectInfo }}
         />
         <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
-        <Debug label="bodyData" data={bodyData} /> */}
+        <Debug label="bodyData" data={bodyData} />
       </Buggers>
     </Bar>
   );

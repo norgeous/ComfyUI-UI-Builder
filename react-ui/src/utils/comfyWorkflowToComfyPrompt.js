@@ -56,7 +56,7 @@ const comfyWorkflowToComfyPrompt = ({ comfyWorkflow, objectInfo }) => {
         type,
         mode,
         inputs,
-        widgets_values, // eslint-disable-line camelcase
+        widgets_values = [], // eslint-disable-line camelcase
       },
     ) => {
       if (mode === 4) return acc; // bypass nodes
