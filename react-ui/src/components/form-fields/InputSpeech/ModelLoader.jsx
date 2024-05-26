@@ -1,14 +1,8 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const StyledButton = styled.button`
-  box-sizing: border-box;
-  margin-left: 0.5rem;
 `;
 
 const models = [
@@ -70,34 +64,30 @@ const models = [
   },
 ];
 
-const ModelLoader = ({ onModelChange, onModelSelect, loading }) => {
-  const [model, setModel] = useState(models[4].path);
+const ModelLoader = ({ value, onChange, loading }) => (
+  // const [model, setModel] = useState(models[4].path);
 
-  return (
-    <Wrapper>
-      <select
-        style={{
-          height: '2rem',
-          margin: 'auto 0',
-          width: '10rem',
-        }}
-        defaultValue={models[4].path}
-        onChange={value => {
-          onModelChange(value);
-          setModel(value);
-        }}
-      >
-        {models.map((model, index) => (
-          <option value={model.path} key={index}>
-            {model.name}
-          </option>
-        ))}
-      </select>
-      <StyledButton onClick={() => onModelSelect(model)}>
-        {loading ? 'Loading...' : 'Load'}
-      </StyledButton>
-    </Wrapper>
-  );
-};
-
+  <Wrapper>
+    <select
+      style={{
+        height: '2rem',
+        margin: 'auto 0',
+        width: '10rem',
+      }}
+      // defaultValue={models[4].path}
+      onChange={newValue => {
+        onChange(newValue);
+        // setModel(value);
+      }}
+      value={value}
+    >
+      {models.map(model => (
+        <option value={model.path} key={model.path}>
+          {model.name}
+        </option>
+      ))}
+    </select>
+    {loading && 'Loading...'}
+  </Wrapper>
+);
 export default ModelLoader;

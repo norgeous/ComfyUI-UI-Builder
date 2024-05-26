@@ -1,21 +1,12 @@
-import { useState } from 'react';
-import { createModel } from 'vosk-browser';
+import { useEffect, useState } from 'react';
 
-const useVosk = () => {
+const useVosk = model => {
+  const [recognizer, setRecognizer] = useState();
   const [utterances, setUtterances] = useState([]);
   const [partial, setPartial] = useState('');
-  const [loadedModel, setLoadedModel] = useState();
-  const [recognizer, setRecognizer] = useState();
-  const [loading, setLoading] = useState(false);
-  const [ready, setReady] = useState(false);
 
-  const loadModel = async path => {
-    setLoading(true);
-    loadedModel?.model.terminate();
-
-    const model = await createModel(`/vosk-models/${path}`);
-
-    setLoadedModel({ model, path });
+  useEffect(() => {
+    if (!model) return;
     const recognizer = new model.KaldiRecognizer(48000);
     recognizer.setWords(true);
     recognizer.on('result', message => {
@@ -27,19 +18,10 @@ const useVosk = () => {
       setPartial(message.result.partial);
     });
 
-    setRecognizer(() => {
-      setLoading(false);
-      setReady(true);
-      return recognizer;
-    });
-  };
+    setRecognizer(recognizer);
+  }, [model]);
 
   return {
-    loadModel,
-    loadedModel,
-    ready,
-    setReady,
-    loading,
     recognizer,
     utterances,
     partial,

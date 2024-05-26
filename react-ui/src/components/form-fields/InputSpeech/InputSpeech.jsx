@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import useVosk from '@/hooks/useVosk';
+import useVoskModel from '@/hooks/useVoskModel';
+import { useState } from 'react';
 import Microphone from './Microphone';
 import ModelLoader from './ModelLoader';
 
@@ -34,30 +36,21 @@ const Word = styled.span`
 `;
 
 const InputSpeech = () => {
-  const {
-    loadModel,
-    loadedModel,
-    ready,
-    setReady,
-    loading,
-    recognizer,
-    utterances,
-    partial,
-  } = useVosk();
+  const [modelName, setModelName] = useState(
+    'vosk-model-small-en-us-0.15.tar.gz',
+  );
+  const { loading, model } = useVoskModel(`/vosk-models/${modelName}`);
+  const { recognizer, utterances, partial } = useVosk(model);
 
   return (
     <Wrapper>
       <ModelLoader
-        onModelChange={path => setReady(loadedModel?.path === path)}
-        onModelSelect={path => {
-          if (loadedModel?.path !== path) {
-            loadModel(path);
-          }
-        }}
         loading={loading}
+        value={modelName}
+        onChange={newValue => setModelName(newValue)}
       />
       <Header>
-        <Microphone recognizer={recognizer} loading={loading} ready={ready} />
+        <Microphone recognizer={recognizer} loading={loading} />
       </Header>
       <ResultContainer>
         {utterances.map((utt, uindex) =>

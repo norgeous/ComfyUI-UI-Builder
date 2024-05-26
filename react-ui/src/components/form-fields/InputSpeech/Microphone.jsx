@@ -7,7 +7,7 @@ import audioBucket from './audioBucket';
 let micStream;
 let audioStreamer;
 
-const Microphone = ({ recognizer, loading, ready }) => {
+const Microphone = ({ recognizer, loading }) => {
   const [muted, setMuted] = useState(true);
 
   const startRecognitionStream = useCallback(async () => {
@@ -69,7 +69,7 @@ const Microphone = ({ recognizer, loading, ready }) => {
   };
 
   return (
-    <button type="button" disabled={!ready || loading} onMouseUp={toggleMic}>
+    <button type="button" disabled={loading} onMouseUp={toggleMic}>
       {muted ? '(muted)' : '(open)'}
       Speak
     </button>
