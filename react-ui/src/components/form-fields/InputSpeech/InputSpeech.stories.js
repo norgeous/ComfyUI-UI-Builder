@@ -1,12 +1,12 @@
 // import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import Recognizer from './Recognizer';
+import InputSpeech from './InputSpeech';
 
 export default {
-  title: 'Input/Voice',
-  component: Recognizer,
+  title: 'Input/Speech',
+  component: InputSpeech,
   // decorators: [SimpleStateDecorator],
 };
 
-export const Voice = {
+export const Speech = {
   args: {},
 };

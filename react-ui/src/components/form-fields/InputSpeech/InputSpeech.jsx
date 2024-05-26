@@ -33,7 +33,7 @@ const Word = styled.span`
   white-space: normal;
 `;
 
-const Recognizer = () => {
+const InputSpeech = () => {
   const {
     loadModel,
     loadedModel,
@@ -79,4 +79,4 @@ const Recognizer = () => {
   );
 };
 
-export default Recognizer;
+export default InputSpeech;
