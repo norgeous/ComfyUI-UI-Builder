@@ -32,10 +32,10 @@ const useMic = ({ recognizer, loading }) => {
 
           micStream.setStream(mediaStream);
         } catch (err) {
-          // eslint-disable-next-line no-console
-          console.error(err);
+          console.error(err); // eslint-disable-line no-console
         }
       } else {
+        // muted
         micStream.unpipe(audioStreamer);
         micStream.pipe(audioBucket);
       }
@@ -48,7 +48,7 @@ const useMic = ({ recognizer, loading }) => {
 
   useEffect(() => {
     startRecognitionStream();
-  }, [recognizer]);
+  }, [recognizer]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setMuted(true);
@@ -56,17 +56,17 @@ const useMic = ({ recognizer, loading }) => {
 
   useEffect(() => {
     if (!muted) {
+      // open
       micStream?.unpipe(audioBucket);
       micStream?.pipe(audioStreamer);
     } else {
+      // muted
       micStream?.unpipe(audioStreamer);
       micStream?.pipe(audioBucket);
     }
   }, [muted]);
 
-  const toggleMic = () => {
-    setMuted(muted => !muted);
-  };
+  const toggleMic = () => setMuted(!muted);
 
   return { muted, toggleMic };
 };
