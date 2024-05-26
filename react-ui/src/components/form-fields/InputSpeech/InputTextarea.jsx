@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
+import useSpeech from '@/hooks/useSpeech';
+import { useEffect } from 'react';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -33,9 +35,12 @@ const InputTextarea = ({
   error = undefined,
   ...props
 }) => {
+  const { loading, tail } = useSpeech();
   const handleReset = () => onChange(defaultValue);
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+
+  useEffect(() => onChange(tail), [tail]);
 
   return (
     <InputWrapper>
@@ -45,6 +50,7 @@ const InputTextarea = ({
         info={info}
         showReset={showReset}
         handleReset={handleReset}
+        isLoading={loading}
       />
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading

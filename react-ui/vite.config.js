@@ -20,7 +20,6 @@ export default defineConfig({
       // 'readable-stream': 'vite-compatible-readable-stream',
     },
   },
-
   server: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',

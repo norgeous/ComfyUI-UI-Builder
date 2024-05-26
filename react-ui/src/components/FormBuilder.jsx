@@ -12,6 +12,7 @@ import InputTextarea from './form-fields/InputTextarea/InputTextarea';
 import InputNumber from './form-fields/InputNumber/InputNumber';
 import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './form-fields/InputSelectCkpt/InputSelectCkpt';
+import InputSpeech from './form-fields/InputSpeech/InputTextarea';
 
 const Item = styled.div`
   ${({ colSpan }) =>
@@ -29,6 +30,7 @@ const components = {
   checkbox: InputCheckbox,
   selectckpt: InputSelectCkpt,
   // fileupload: FileUpload,
+  speech: InputSpeech,
 };
 
 const FormBuilder = () => {

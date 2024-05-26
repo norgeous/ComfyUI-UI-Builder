@@ -18,7 +18,7 @@
       "group": "Prompt",
       "id": "positivePrompt",
       "label": "Positive Prompt",
-      "type": "voice",
+      "type": "speech",
       "defaultValue": "",
       "colSpan": 2
     },
