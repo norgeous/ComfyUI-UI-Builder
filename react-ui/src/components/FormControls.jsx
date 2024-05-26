@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { useContext } from 'react';
 
 import AppContext from '@/contexts/AppContext';
@@ -6,6 +7,12 @@ import WsContext from '@/contexts/WsContext';
 
 import Button from './Button/Button';
 import ErrorText from './form-fields/ErrorText';
+
+const ButtonsArea = styled.div`
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+`;
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
@@ -27,7 +34,7 @@ const FormControls = () => {
   };
 
   return (
-    <div>
+    <ButtonsArea>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Button
         onClick={handleClick}
@@ -43,7 +50,7 @@ const FormControls = () => {
           Interrupt
         </Button>
       )}
-    </div>
+    </ButtonsArea>
   );
 };
 
