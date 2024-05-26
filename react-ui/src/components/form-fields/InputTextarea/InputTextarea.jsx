@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
+import useSpeech from '@/hooks/useSpeech';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -33,6 +34,7 @@ const InputTextarea = ({
   error = undefined,
   ...props
 }) => {
+  // const { tail } = useSpeech();
   const handleReset = () => onChange(defaultValue);
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
@@ -49,6 +51,7 @@ const InputTextarea = ({
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
+        // value={value || tail}
         value={value}
         onChange={event => onChange(event.target.value)}
       />
