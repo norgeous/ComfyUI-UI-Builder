@@ -2,7 +2,7 @@ import MicrophoneStream from 'microphone-stream';
 import { useCallback, useEffect, useState } from 'react';
 
 import AudioStreamer from './AudioStreamer';
-import audioBucket from './audiobucket';
+import audioBucket from './audioBucket';
 
 let micStream;
 let audioStreamer;
@@ -32,6 +32,7 @@ const Microphone = ({ recognizer, loading, ready }) => {
 
           micStream.setStream(mediaStream);
         } catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       } else {
