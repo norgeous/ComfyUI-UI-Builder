@@ -17,12 +17,10 @@ const Textarea = styled.textarea`
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
   }
-  min-width: 100%;
-  max-width: 100%;
-  height: 80px;
   min-height: 80px;
   line-height: 21px;
   padding: 4px 8px;
+  resize: vertical;
 `;
 
 const InputTextarea = ({
