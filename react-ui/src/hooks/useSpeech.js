@@ -2,7 +2,7 @@ import useVosk from '@/hooks/useVosk';
 import useVoskModel from '@/hooks/useVoskModel';
 import useMic from '@/hooks/useMic';
 
-const MODELPATH = '/vosk-models/vosk-model-small-en-us-0.15.tar.gz';
+const MODELPATH = `${window.parent.location.pathname}vosk-models/vosk-model-small-en-us-0.15.tar.gz`;
 
 const useSpeech = () => {
   const { loading, model } = useVoskModel(MODELPATH);
