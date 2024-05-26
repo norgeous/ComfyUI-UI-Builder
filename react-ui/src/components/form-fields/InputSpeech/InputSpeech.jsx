@@ -49,6 +49,7 @@ const InputSpeech = () => {
         {utterances.map((utt, uindex) =>
           utt?.result?.map((word, windex) => (
             <Word
+              // eslint-disable-next-line react/no-array-index-key
               key={`${uindex}-${windex}`}
               confidence={word.conf}
               title={`Confidence: ${(word.conf * 100).toFixed(2)}%`}
