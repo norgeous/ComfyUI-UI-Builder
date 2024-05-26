@@ -72,9 +72,7 @@ const Recognizer = () => {
     setLoadedModel({ model, path });
     const recognizer = new model.KaldiRecognizer(48000);
     recognizer.setWords(true);
-    console.log(recognizer);
     recognizer.on('result', message => {
-      console.log(message);
       const { result } = message;
       setUtterances(utt => [...utt, result]);
     });
