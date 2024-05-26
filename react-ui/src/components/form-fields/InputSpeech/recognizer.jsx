@@ -1,26 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { createModel } from 'vosk-browser';
-// import process from 'process';
 import Microphone from './microphone';
 import ModelLoader from './model-loader';
-
-// window.process = process;
-// window.process.nextTick = (...x) => {
-//   console.log(x);
-//   return x[0](x[1], x[2]);
-// };
-
-// window.process = {
-//   ...window.process,
-//   nextTick: (callback, ...args) =>
-//     new Promise(resolve => {
-//       setTimeout(() => {
-//         callback(...args);
-//         resolve(null);
-//       }, 0);
-//     }),
-// };
 
 const Wrapper = styled.div`
   width: 80%;
@@ -48,10 +30,7 @@ const ResultContainer = styled.div`
 `;
 
 const Word = styled.span`
-  color: ${({ confidence }) => {
-    const color = Math.max(255 * (1 - confidence) - 20, 0);
-    return `rgb(${color},${color},${color})`;
-  }};
+  opacity: ${({ confidence }) => confidence};
   white-space: normal;
 `;
 
@@ -101,7 +80,6 @@ const Recognizer = () => {
       />
       <Header>
         <Microphone recognizer={recognizer} loading={loading} ready={ready} />
-        {/* <FileUpload recognizer={recognizer} loading={loading} ready={ready} /> */}
       </Header>
       <ResultContainer>
         {utterances.map((utt, uindex) =>
@@ -115,6 +93,8 @@ const Recognizer = () => {
             </Word>
           )),
         )}
+        <br />
+        <br />
         <span key="partial">{partial}</span>
       </ResultContainer>
     </Wrapper>
