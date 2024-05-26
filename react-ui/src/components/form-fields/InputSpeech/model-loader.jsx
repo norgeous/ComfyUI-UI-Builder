@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   margin-left: 0.5rem;
 `;
 
-export const models = [
+const models = [
   {
     name: 'Catalan',
     path: 'vosk-model-small-ca-0.4.tar.gz',
