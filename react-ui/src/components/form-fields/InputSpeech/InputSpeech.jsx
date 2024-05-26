@@ -34,10 +34,10 @@ const Word = styled.span`
   white-space: normal;
 `;
 
+const MODELPATH = '/vosk-models/vosk-model-small-en-us-0.15.tar.gz';
+
 const InputSpeech = () => {
-  const { loading, model } = useVoskModel(
-    '/vosk-models/vosk-model-small-en-us-0.15.tar.gz',
-  );
+  const { loading, model } = useVoskModel(MODELPATH);
   const { recognizer, utterances, partial } = useVosk(model);
   const { muted, toggleMic } = useMic({ recognizer, loading });
 
@@ -50,7 +50,6 @@ const InputSpeech = () => {
         {utterances.map((utt, uindex) =>
           utt?.result?.map((word, windex) => (
             <Word
-              // eslint-disable-next-line react/no-array-index-key
               key={`${uindex}-${windex}`}
               confidence={word.conf}
               title={`Confidence: ${(word.conf * 100).toFixed(2)}%`}
