@@ -40,6 +40,9 @@ const InputSpeech = () => {
       <Header>
         <Microphone loading={loading} muted={muted} toggleMic={toggleMic} />
       </Header>
+      <br />
+      {tail}
+      <br />
       <ResultContainer>
         {utterances.map((utt, uindex) =>
           utt?.result?.map((word, windex) => (
@@ -54,9 +57,6 @@ const InputSpeech = () => {
         )}
         <span key="partial">{partial}</span>
       </ResultContainer>
-      <br />
-      <br />
-      {tail}
     </Wrapper>
   );
 };
