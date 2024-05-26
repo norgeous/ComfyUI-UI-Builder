@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import useVosk from '@/hooks/useVosk';
-import Microphone from './microphone';
-import ModelLoader from './model-loader';
+import Microphone from './Microphonex';
+import ModelLoader from './ModelLoader';
 
 const Wrapper = styled.div`
   width: 80%;
