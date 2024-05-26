@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import useVosk from '@/hooks/useVosk';
-import useVoskModel from '@/hooks/useVoskModel';
-import useMic from '@/hooks/useMic';
+import useSpeech from '@/hooks/useSpeech';
 import Microphone from './Microphone';
 
 const Wrapper = styled.div`
@@ -34,12 +32,8 @@ const Word = styled.span`
   white-space: normal;
 `;
 
-const MODELPATH = '/vosk-models/vosk-model-small-en-us-0.15.tar.gz';
-
 const InputSpeech = () => {
-  const { loading, model } = useVoskModel(MODELPATH);
-  const { recognizer, utterances, partial } = useVosk(model);
-  const { muted, toggleMic } = useMic({ recognizer, loading });
+  const { loading, muted, toggleMic, utterances, partial, tail } = useSpeech();
 
   return (
     <Wrapper>
@@ -60,6 +54,9 @@ const InputSpeech = () => {
         )}
         <span key="partial">{partial}</span>
       </ResultContainer>
+      <br />
+      <br />
+      {tail}
     </Wrapper>
   );
 };
