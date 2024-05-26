@@ -64,7 +64,9 @@ const Item = ({ scrollTo = false, onClick, ...props }) => {
     event.stopPropagation();
     onClick();
   };
-  return <Img ref={ref} {...props} onClick={handleClick} />;
+  return (
+    <Img ref={ref} crossorigin="anonymous" {...props} onClick={handleClick} />
+  );
 };
 
 const ImageGrid = ({ images = [] }) => {
