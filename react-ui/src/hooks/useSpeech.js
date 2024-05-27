@@ -7,7 +7,7 @@ const MODELPATH = `${window.parent.location.pathname}vosk-models/vosk-model-smal
 const useSpeech = () => {
   const { loading, model } = useVoskModel(MODELPATH);
   const { recognizer, utterances, partial } = useVosk(model);
-  const { muted, toggleMic } = useMic({ recognizer, loading });
+  const { isMuted, toggleMic } = useMic({ recognizer, loading });
 
   const simpleUtterances = utterances
     .map(utt => utt.result?.map(({ word }) => word).join(' '))
@@ -16,7 +16,7 @@ const useSpeech = () => {
 
   const tail = simpleOutput.split(' ').slice(-25).join(' ');
 
-  return { loading, muted, toggleMic, utterances, partial, tail };
+  return { loading, isMuted, toggleMic, utterances, partial, tail };
 };
 
 export default useSpeech;

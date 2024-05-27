@@ -12,7 +12,7 @@ import InputTextarea from './form-fields/InputTextarea/InputTextarea';
 import InputNumber from './form-fields/InputNumber/InputNumber';
 import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './form-fields/InputSelectCkpt/InputSelectCkpt';
-import InputSpeech from './form-fields/InputSpeech/InputTextarea';
+import InputSpeech from './form-fields/InputSpeech/InputSpeech';
 
 const Item = styled.div`
   ${({ colSpan }) =>

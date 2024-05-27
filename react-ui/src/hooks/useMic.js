@@ -8,7 +8,7 @@ let micStream;
 let audioStreamer;
 
 const useMic = ({ recognizer, loading }) => {
-  const [muted, setMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   const startRecognitionStream = useCallback(async () => {
     if (recognizer) {
@@ -30,12 +30,12 @@ const useMic = ({ recognizer, loading }) => {
 
           micStream.setStream(mediaStream); // connect mic and media steam
 
-          setMuted(false);
+          setIsMuted(false);
         } catch (err) {
           console.error(err); // eslint-disable-line no-console
         }
       } else {
-        setMuted(true);
+        setIsMuted(true);
       }
 
       audioStreamer = new AudioStreamer(recognizer, {
@@ -49,11 +49,11 @@ const useMic = ({ recognizer, loading }) => {
   }, [recognizer]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    setMuted(true);
+    setIsMuted(true);
   }, [loading]);
 
   useEffect(() => {
-    if (!muted) {
+    if (!isMuted) {
       // open
       micStream?.unpipe(audioBucket);
       micStream?.pipe(audioStreamer);
@@ -62,11 +62,11 @@ const useMic = ({ recognizer, loading }) => {
       micStream?.unpipe(audioStreamer);
       micStream?.pipe(audioBucket);
     }
-  }, [muted]);
+  }, [isMuted]);
 
-  const toggleMic = () => setMuted(!muted);
+  const toggleMic = () => setIsMuted(!isMuted);
 
-  return { muted, toggleMic };
+  return { isMuted, toggleMic };
 };
 
 export default useMic;

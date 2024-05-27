@@ -1,5 +1,5 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputSpeech from './InputTextarea';
+import InputSpeech from './InputSpeech';
 
 export default {
   title: 'Input/Speech',

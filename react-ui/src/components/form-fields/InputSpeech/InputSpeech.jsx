@@ -1,64 +1,80 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import deepEqual from '@/utils/deepEqual';
 import useSpeech from '@/hooks/useSpeech';
-import Microphone from './Microphone';
+import { useEffect } from 'react';
+import InputWrapper from '../InputWrapper';
+import InputHeader from '../InputHeader/InputHeader';
+import ErrorText from '../ErrorText';
 
-const Wrapper = styled.div`
-  width: 80%;
-  text-align: left;
-  max-width: 700px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 1rem auto;
-`;
-
-const ResultContainer = styled.div`
+const Textarea = styled.textarea`
+  display: block;
+  box-sizing: border-box;
   width: 100%;
-  margin: 1rem auto;
-  border: 1px solid #aaaaaa;
-  padding: 1rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-fg);
+  border-radius: var(--radius);
+  &:focus {
+    outline: 2px solid var(--input-outline);
+    outline-offset: 2px;
+  }
+  min-height: 80px;
+  line-height: 21px;
+  padding: 4px 8px;
   resize: vertical;
-  overflow: auto;
 `;
 
-const Word = styled.span`
-  opacity: ${({ confidence }) => confidence};
-  white-space: normal;
-`;
+const InputTextarea = ({
+  id = undefined,
+  label = undefined,
+  info = undefined,
+  defaultValue = undefined,
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
+  ...props
+}) => {
+  const { loading, isMuted, toggleMic, tail } = useSpeech();
+  const handleReset = () => onChange(defaultValue);
 
-const InputSpeech = () => {
-  const { loading, muted, toggleMic, utterances, partial, tail } = useSpeech();
+  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+
+  useEffect(() => onChange(tail), [tail]);
 
   return (
-    <Wrapper>
-      <Header>
-        <Microphone loading={loading} muted={muted} toggleMic={toggleMic} />
-      </Header>
-      <br />
-      {tail}
-      <br />
-      <ResultContainer>
-        {utterances.map((utt, uindex) =>
-          utt?.result?.map((word, windex) => (
-            <Word
-              key={`${uindex}-${windex}`}
-              confidence={word.conf}
-              title={`Confidence: ${(word.conf * 100).toFixed(2)}%`}
-            >
-              {word.word}{' '}
-            </Word>
-          )),
-        )}
-        <span key="partial">{partial}</span>
-      </ResultContainer>
-    </Wrapper>
+    <InputWrapper>
+      <InputHeader
+        id={id}
+        label={label}
+        info={info}
+        showReset={showReset}
+        handleReset={handleReset}
+        isLoading={loading}
+        showMic
+        isMuted={isMuted}
+        onClickMic={toggleMic}
+      />
+      <Textarea
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        id={id}
+        value={value}
+        onChange={event => onChange(event.target.value)}
+      />
+      {error && <ErrorText>{error}</ErrorText>}
+    </InputWrapper>
   );
 };
 
-export default InputSpeech;
+InputTextarea.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  info: PropTypes.string,
+  onChange: PropTypes.func,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+};
+
+export default InputTextarea;
