@@ -9,10 +9,20 @@ const useSpeech = () => {
   const { recognizer, utterances, partial } = useVosk(model);
   const { isMuted, toggleMic } = useMic({ recognizer, loading });
 
-  const simpleUtterances = utterances
-    .map(utt => utt.result?.map(({ word }) => word).join(' '))
-    .join(' ');
-  const simpleOutput = `${simpleUtterances} ${partial}`.trim();
+  const simpleUtterances = utterances.reduce(
+    (acc1, { result }) =>
+      result
+        ? [
+            ...acc1,
+            result
+              .reduce((acc2, { word }) => (word ? [...acc2, word] : acc2), [])
+              .join(' '),
+          ]
+        : acc1,
+    [],
+  );
+
+  const simpleOutput = `${simpleUtterances.join(' ')} ${partial}`.trim();
 
   const tail = simpleOutput.split(' ').slice(-25).join(' ');
 
