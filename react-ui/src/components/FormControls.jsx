@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
@@ -7,6 +7,7 @@ import WsContext from '@/contexts/WsContext';
 
 import Button from './Button/Button';
 import ErrorText from './form-fields/ErrorText';
+import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
 
 const ButtonsArea = styled.div`
   padding: 8px;
@@ -16,6 +17,7 @@ const ButtonsArea = styled.div`
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
+  const [auto, setAuto] = useState(false);
 
   const {
     // formState,
@@ -34,10 +36,10 @@ const FormControls = () => {
     executePrompt();
   };
 
-  // autoprompt hack
+  // autoprompting
   useEffect(() => {
-    if (positivePrompt && !isGenerating) executePrompt();
-  }, [positivePrompt]);
+    if (auto && positivePrompt && !isGenerating) executePrompt();
+  }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ButtonsArea>
@@ -56,6 +58,17 @@ const FormControls = () => {
           Interrupt
         </Button>
       )}
+      <InputCheckbox
+        label="Auto Gen"
+        info="Generate after change to positive prompt"
+        options={[
+          { label: 'on', value: false },
+          { label: 'on', value: true },
+        ]}
+        defaultValueIndex={0}
+        value={auto}
+        onChange={setAuto}
+      />
     </ButtonsArea>
   );
 };

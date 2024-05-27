@@ -22,7 +22,7 @@ const Input = styled.input.attrs({ type: 'checkbox' })`
   margin: 0;
 `;
 
-const Checkbox = ({
+const InputCheckbox = ({
   label = undefined,
   info = undefined,
   isLoading = false,
@@ -67,7 +67,7 @@ const Checkbox = ({
   );
 };
 
-Checkbox.propTypes = {
+InputCheckbox.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   options: PropTypes.arrayOf(
@@ -83,4 +83,4 @@ Checkbox.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default Checkbox;
+export default InputCheckbox;
