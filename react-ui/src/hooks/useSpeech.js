@@ -12,7 +12,7 @@ const useSpeech = () => {
   const simpleUtterances = utterances
     .map(utt => utt.result?.map(({ word }) => word).join(' '))
     .join(' ');
-  const simpleOutput = `${simpleUtterances}. ${partial}`;
+  const simpleOutput = `${simpleUtterances} ${partial}`.trim();
 
   const tail = simpleOutput.split(' ').slice(-30).join(' ');
 
