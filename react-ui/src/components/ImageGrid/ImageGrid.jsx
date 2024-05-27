@@ -141,7 +141,11 @@ const ImageGrid = ({ images = [] }) => {
       ref.current.requestFullscreen?.().then(() => {
         setTimeout(() => setIsFullscreen(true), 100); // this is to give some time for fullscreen to settle
       });
-    } else window.document.exitFullscreen().then(() => setIsFullscreen(false));
+    } else
+      window.document
+        .exitFullscreen()
+        .then(() => setIsFullscreen(false))
+        .catch(() => {});
   }, [open]);
 
   if (!images.length) return null;
