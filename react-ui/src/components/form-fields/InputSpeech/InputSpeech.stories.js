@@ -1,12 +1,15 @@
-// import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
+import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
 import InputSpeech from './InputTextarea';
 
 export default {
   title: 'Input/Speech',
   component: InputSpeech,
-  // decorators: [SimpleStateDecorator],
+  decorators: [SimpleStateDecorator],
 };
 
 export const Speech = {
-  args: {},
+  args: {
+    label: 'My InputSpeech Label',
+    defaultValue: '',
+  },
 };
