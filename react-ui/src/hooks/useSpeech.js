@@ -14,7 +14,7 @@ const useSpeech = () => {
     .join(' ');
   const simpleOutput = `${simpleUtterances} ${partial}`.trim();
 
-  const tail = simpleOutput.split(' ').slice(-30).join(' ');
+  const tail = simpleOutput.split(' ').slice(-25).join(' ');
 
   return { loading, muted, toggleMic, utterances, partial, tail };
 };
