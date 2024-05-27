@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaCircleQuestion } from 'react-icons/fa6';
+import {
+  FaCircleQuestion,
+  FaMicrophone,
+  FaMicrophoneSlash,
+} from 'react-icons/fa6';
 import Spinner from '@/components/Spinner';
 
 const Wrap = styled.div`
@@ -24,6 +28,9 @@ const Button = styled.button`
   opacity: 0.5;
   font-size: 0.75rem; // 12px
   padding: 0;
+`;
+
+const Reset = styled(Button)`
   margin-left: auto;
 `;
 
@@ -68,11 +75,24 @@ const QuestionMark = styled(FaCircleQuestion)`
   display: block;
 `;
 
+const MicOpen = styled(FaMicrophone)`
+  display: block;
+  font-size: 14px;
+`;
+
+const MicMuted = styled(FaMicrophoneSlash)`
+  display: block;
+  font-size: 14px;
+`;
+
 const InputHeader = ({
   id = undefined,
   label = undefined,
   info = undefined,
   isLoading = false,
+  showMic = false,
+  isMuted = true,
+  onClickMic = () => {},
   showReset = false,
   handleReset = () => {},
 }) => (
@@ -84,8 +104,13 @@ const InputHeader = ({
         <TooltipText>{info}</TooltipText>
       </Tooltip>
     )}
+    {showMic && (
+      <Button disabled={isLoading} onClick={onClickMic}>
+        {isMuted ? <MicMuted /> : <MicOpen />}
+      </Button>
+    )}
     {isLoading && <Spinner />}
-    {showReset && <Button onClick={handleReset}>reset</Button>}
+    {showReset && <Reset onClick={handleReset}>reset</Reset>}
   </Wrap>
 );
 
@@ -94,6 +119,9 @@ InputHeader.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   isLoading: PropTypes.bool,
+  showMic: PropTypes.bool,
+  isMuted: PropTypes.bool,
+  onClickMic: PropTypes.func,
   showReset: PropTypes.bool,
   handleReset: PropTypes.func,
 };
