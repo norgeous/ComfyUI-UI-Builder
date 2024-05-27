@@ -65,7 +65,12 @@ const Item = ({ scrollTo = false, onClick, ...props }) => {
     onClick();
   };
   return (
-    <Img ref={ref} crossorigin="anonymous" {...props} onClick={handleClick} />
+    <Img
+      ref={ref}
+      crossorigin="anonymous"
+      {...props} // eslint-disable-line react/jsx-props-no-spreading
+      onClick={handleClick}
+    />
   );
 };
 
