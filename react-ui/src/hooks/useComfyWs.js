@@ -89,7 +89,7 @@ const useComfyWs = clientId => {
         socketMessageActions[data.type]?.(data);
       });
     })();
-  }, [clientId, config]);
+  }, [clientId, config]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     wsStatus,
