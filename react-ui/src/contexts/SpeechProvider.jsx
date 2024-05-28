@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import useVosk from '@/hooks/useVosk2';
+import useVosk from '@/hooks/useVosk';
 import SpeechContext from './SpeechContext';
 
 const SpeechProvider = ({ children = null }) => {
