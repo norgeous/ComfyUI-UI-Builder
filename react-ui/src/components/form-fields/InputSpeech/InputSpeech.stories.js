@@ -9,6 +9,7 @@ export default {
 
 export const Speech = {
   args: {
+    id: 'demo',
     label: 'My InputSpeech Label',
     defaultValue: '',
   },

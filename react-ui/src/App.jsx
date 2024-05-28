@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import WsContext from './contexts/WsContext';
-import { GlobalStyle, Theme1Style } from './components/globalStyles';
 import { Page, Main, Controls, Content } from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder';
@@ -16,25 +15,21 @@ const App = () => {
   );
 
   return (
-    <>
-      <GlobalStyle />
-      <Theme1Style />
-      <Page>
-        <Main>
-          <Progress value={progress} />
-          <Content>
-            <ImageGrid images={images} />
-          </Content>
-          <StatusBar />
-        </Main>
+    <Page>
+      <Main>
+        <Progress value={progress} />
+        <Content>
+          <ImageGrid images={images} />
+        </Content>
+        <StatusBar />
+      </Main>
 
-        <Controls>
-          <UiSelector />
-          <FormBuilder />
-          <FormControls />
-        </Controls>
-      </Page>
-    </>
+      <Controls>
+        <UiSelector />
+        <FormBuilder />
+        <FormControls />
+      </Controls>
+    </Page>
   );
 };
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useVosk from '@/hooks/useVosk';
 import useVoskModel from '@/hooks/useVoskModel';
 import useMic from '@/hooks/useMic';
@@ -5,9 +6,23 @@ import useMic from '@/hooks/useMic';
 const MODELPATH = `${window.parent.location.pathname}vosk-models/vosk-model-small-en-us-0.15.tar.gz`;
 
 const useSpeech = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const toggleMic = () => setIsMuted(!isMuted);
+
   const { loading, model } = useVoskModel(MODELPATH);
   const { recognizer, utterances, partial } = useVosk(model);
-  const { isMuted, toggleMic } = useMic({ recognizer, loading });
+  useMic({ recognizer, loading, isMuted, setIsMuted });
+
+  // start by doing nothing
+
+  // if unmuting (in the context)
+  // - load en vosk model
+  // - give model to vosk, get recogniser
+  // - give recogniser to mic stream
+  // we can then get utterances and partial
+
+  // if muting
+  // - swap audio bucket to empty
 
   const simpleUtterances = utterances
     .reduce(

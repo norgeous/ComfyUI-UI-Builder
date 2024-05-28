@@ -13,7 +13,6 @@ const useVosk = model => {
       const { result } = message;
       setUtterances(utt => [...utt, result]);
     });
-
     recognizer.on('partialresult', message => {
       setPartial(message.result.partial);
     });

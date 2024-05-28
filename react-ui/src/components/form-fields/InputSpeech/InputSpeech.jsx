@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
-import useSpeech from '@/hooks/useSpeech';
-import { useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import SpeechContext from '@/contexts/SpeechContext';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -35,7 +35,15 @@ const InputTextarea = ({
   error = undefined,
   ...props
 }) => {
-  const { loading, isMuted, toggleMic, tail } = useSpeech();
+  const [isMuted, setIsMuted] = useState(true);
+  const { loading, vosk, tail, setEnabled } = useContext(SpeechContext);
+  const handleMic = () => {
+    setEnabled(true);
+    const newIsMuted = !isMuted;
+    setIsMuted(newIsMuted);
+    vosk?.setMute(newIsMuted);
+  };
+
   const handleReset = () => onChange(defaultValue);
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
@@ -53,7 +61,7 @@ const InputTextarea = ({
         isLoading={loading}
         showMic
         isMuted={isMuted}
-        onClickMic={toggleMic}
+        onClickMic={handleMic}
       />
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading

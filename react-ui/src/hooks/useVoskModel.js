@@ -14,7 +14,7 @@ const useVoskModel = path => {
       setLoading(false);
     })();
     return () => model?.terminate();
-  }, [path]);
+  }, [path]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     loading,

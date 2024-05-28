@@ -4,11 +4,9 @@ import MicrophoneStream from 'microphone-stream';
 import AudioStreamer from '@/utils/AudioStreamer';
 import audioBucket from '@/utils/audioBucket';
 
-let micStream;
-let audioStreamer;
-
-const useMic = ({ recognizer, loading }) => {
-  const [isMuted, setIsMuted] = useState(true);
+const useMic = ({ isMuted, setIsMuted, recognizer, loading }) => {
+  const [micStream, setMicStream] = useState();
+  const [audioStreamer, setAudioStreamer] = useState();
 
   const startRecognitionStream = useCallback(async () => {
     if (recognizer) {
@@ -23,26 +21,26 @@ const useMic = ({ recognizer, loading }) => {
             },
           });
 
-          micStream = new MicrophoneStream({
+          const newMicStream = new MicrophoneStream({
             objectMode: true,
             bufferSize: 1024,
           });
 
-          micStream.setStream(mediaStream); // connect mic and media steam
+          newMicStream.setStream(mediaStream); // connect mic and media steam
 
+          setMicStream(newMicStream);
           setIsMuted(false);
         } catch (err) {
           console.error(err); // eslint-disable-line no-console
         }
-      } else {
-        setIsMuted(true);
       }
 
-      audioStreamer = new AudioStreamer(recognizer, {
+      const newAudioStreamer = new AudioStreamer(recognizer, {
         objectMode: true,
       });
+      setAudioStreamer(newAudioStreamer);
     }
-  }, [recognizer]);
+  }, [recognizer]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     startRecognitionStream();
@@ -50,7 +48,7 @@ const useMic = ({ recognizer, loading }) => {
 
   useEffect(() => {
     setIsMuted(true);
-  }, [loading]);
+  }, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!isMuted) {
@@ -62,11 +60,9 @@ const useMic = ({ recognizer, loading }) => {
       micStream?.unpipe(audioStreamer);
       micStream?.pipe(audioBucket);
     }
-  }, [isMuted]);
+  }, [isMuted]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const toggleMic = () => setIsMuted(!isMuted);
-
-  return { isMuted, toggleMic };
+  return { isMuted, micStream, audioStreamer };
 };
 
 export default useMic;
