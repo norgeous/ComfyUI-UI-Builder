@@ -53,7 +53,7 @@ const Img = styled.img`
         `}
 `;
 
-const Item = ({ scrollTo = false, onClick, ...props }) => {
+const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -72,6 +72,11 @@ const Item = ({ scrollTo = false, onClick, ...props }) => {
       onClick={handleClick}
     />
   );
+};
+
+Item.propTypes = {
+  scrollTo: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 const ImageGrid = ({ images = [] }) => {
@@ -136,7 +141,7 @@ const ImageGrid = ({ images = [] }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [ref, imgDim, images]);
+  }, [ref, imgDim, images]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => setImgDim({}), [images]);
 
