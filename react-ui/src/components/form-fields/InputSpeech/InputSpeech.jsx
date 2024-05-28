@@ -48,7 +48,7 @@ const InputTextarea = ({
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
-  useEffect(() => onChange(tail), [tail]);
+  useEffect(() => onChange(tail), [tail]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <InputWrapper>
