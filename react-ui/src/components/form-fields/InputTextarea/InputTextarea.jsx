@@ -40,6 +40,13 @@ const InputTextarea = ({
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
+  // handle ctrl+up and ctrl+down to control word weight inside prompt input
+  // work needed for edge cases (TODO):
+  // - when the selection contains trimmable whitespace, adjust the selection (start/end) to exclude timmable whitespace
+  // - when cursor is not a selection but is inside a word, expand the selection start/end to encompass the word
+  // - when cursor is not a selection but is inside a phrase with a previously defined weight, expand the selection (start/end) to previous weight
+  // - when the selection contains a partial word (or phase), expand the selection to encompass the partially selected text
+  // - when the selection contains 2 previously defined weights, replace them both with the new weight and selection range (comfy doesnt handle this case)
   const specialControls = event => {
     if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
       event.preventDefault();
@@ -79,6 +86,8 @@ const InputTextarea = ({
     }
   };
 
+  // prevent ctrl+up moving to start of input
+  // prevent ctrl+down moving to end of input
   const preventer = event => {
     if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
       event.preventDefault();
