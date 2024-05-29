@@ -51,9 +51,10 @@ const InputTextarea = ({
 
   // handling these cases might be a good candidate for unit tests
   const testCases = [
-    // [given, selectionStart, selectionEnd, direction, expected]
-    ['abc def ghi jkl mno', 4, 4, 'up', 'abc (def:1.1) ghi jkl mno'],
-    ['abc (def:1.1) ghi jkl mno', 4, 17, 'up', 'abc (def ghi:1.1) jkl mno'],
+    // [given, direction, expected]
+    ['abc | def ghi jkl mno', 'up', 'abc | def ghi jkl mno'],
+    ['abc |def ghi jkl mno', 'up', 'abc |(def:1.1)| ghi jkl mno'],
+    ['|abc (def:1.1) ghi |jkl mno', 'up', '|(abc def ghi:1.2)| jkl mno'],
   ];
 
   const specialControls = event => {
