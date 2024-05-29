@@ -42,12 +42,12 @@ const InputTextarea = ({
 
   // handle ctrl+up and ctrl+down to control word weight inside prompt input
   // work needed for edge cases (TODO):
-  // - when the cursor is only near whitespace characters and a selection cant be inferred, do nothing
-  // - when cursor is not a selection but is inside a word, expand the selection start/end to encompass the word
-  // - when cursor is not a selection but is inside a phrase with a previously defined weight, expand the selection (start/end) to previous weight
-  // - when the selection contains trimmable whitespace (left or right), adjust the selection (start/end) to exclude timmable whitespace (comfy only moves trailing whitespace)
-  // - when the selection contains a partial word (or phase), expand the selection to encompass the partially selected text
-  // - when the selection contains 2 previously defined weights, replace them both with the new weight and selection range (comfy doesnt handle this case)
+  // - when the cursor (or selection) is only near (or only contains) whitespace characters and a selection cant be inferred, then do nothing
+  // - when cursor is not a selection but is inside a word, then expand the selection start/end to encompass the word (comfy doesnt do this, but would be good imo)
+  // - when cursor is not a selection but is inside a phrase with a previously defined weight, then expand the selection (start/end) to previous weight
+  // - when the selection contains trimmable whitespace (left or right), then adjust the selection (start/end) to exclude timmable whitespace (comfy only moves trailing whitespace)
+  // - when the selection contains a partial word (or phase), then expand the selection to encompass the partially selected text
+  // - when the selection contains 2 previously defined weights, then replace them both with the new weight and selection range (comfy doesnt handle this case)
   const specialControls = event => {
     if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
       event.preventDefault();
