@@ -53,12 +53,12 @@ const InputNumber = ({
         showReset={showReset}
         handleReset={handleReset}
         children={[
+          <FaRandom style={{ opacity: 0.5, fontSize: 12 }} />,
           Math.random() > 0.5 ? (
             <FaToggleOff style={{ opacity: 0.5, fontSize: 12 }} />
           ) : (
             <FaToggleOn style={{ opacity: 0.5, fontSize: 12 }} />
           ),
-          <FaRandom style={{ opacity: 0.5, fontSize: 12 }} />,
           <FaArrowsRotate style={{ opacity: 0.5, fontSize: 12 }} />,
         ]}
       />
