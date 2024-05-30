@@ -24,6 +24,7 @@ const Label = styled.label`
 
 const Button = styled.button`
   cursor: pointer;
+  display: block;
   border: none;
   color: inherit;
   background: transparent;
