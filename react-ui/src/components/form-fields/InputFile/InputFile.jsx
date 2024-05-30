@@ -61,7 +61,7 @@ const InputFile = ({
   };
 
   return (
-    <InputWrapper>
+    <>
       <Select
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
@@ -70,17 +70,19 @@ const InputFile = ({
         value={value}
         onChange={handleSelectChange}
       />
-      <Button onClick={() => fileInputRef.current.click()}>
-        Choose a new file to upload...
-      </Button>
-      {value && <Img alt="" src={value} />}
-      <Input
-        ref={fileInputRef}
-        accept={allowedFileTypes.join(',')}
-        onChange={handleFileChange}
-      />
-      {error && <ErrorText>{error}</ErrorText>}
-    </InputWrapper>
+      <InputWrapper>
+        <Button onClick={() => fileInputRef.current.click()}>
+          Choose a new file to upload...
+        </Button>
+        {value && <Img alt="" src={value} />}
+        <Input
+          ref={fileInputRef}
+          accept={allowedFileTypes.join(',')}
+          onChange={handleFileChange}
+        />
+        {error && <ErrorText>{error}</ErrorText>}
+      </InputWrapper>
+    </>
   );
 };
 
