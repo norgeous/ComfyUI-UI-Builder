@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
+  FaArrowRotateLeft,
   FaCircleQuestion,
   FaMicrophone,
   FaMicrophoneSlash,
 } from 'react-icons/fa6';
 import Spinner from '@/components/Spinner';
+import Tooltip from '@/components/Tooltip';
 
 const Wrap = styled.div`
   display: flex;
@@ -30,47 +32,6 @@ const Button = styled.button`
   padding: 0;
 `;
 
-const Reset = styled(Button)`
-  margin-left: auto;
-`;
-
-const TooltipText = styled.span`
-  display: none;
-  font-size: 0.75rem; // 12px
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  border: 1px solid grey;
-  position: absolute;
-  z-index: 1;
-  width: max-content;
-  max-width: 160px;
-  top: 100%;
-  left: 50%;
-  margin-top: 5px;
-  transform: translate(-50%);
-  white-space: preserve-breaks;
-  &::after {
-    content: ' ';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent grey transparent;
-  }
-`;
-
-const Tooltip = styled.div`
-  position: relative;
-  &:hover ${TooltipText} {
-    display: inline-block;
-  }
-`;
-
 const QuestionMark = styled(FaCircleQuestion)`
   display: block;
 `;
@@ -83,6 +44,10 @@ const MicOpen = styled(FaMicrophone)`
 const MicMuted = styled(FaMicrophoneSlash)`
   display: block;
   font-size: 14px;
+`;
+
+const Reset = styled(Button)`
+  margin-left: auto;
 `;
 
 const InputHeader = ({
@@ -100,9 +65,8 @@ const InputHeader = ({
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
     {info && (
-      <Tooltip>
+      <Tooltip text={info}>
         <QuestionMark size={14} />
-        <TooltipText>{info}</TooltipText>
       </Tooltip>
     )}
     {showMic && (
@@ -112,7 +76,11 @@ const InputHeader = ({
     )}
     {isLoading && <Spinner />}
     {children}
-    {showReset && <Reset onClick={handleReset}>reset</Reset>}
+    {showReset && (
+      <Reset onClick={handleReset}>
+        <FaArrowRotateLeft />
+      </Reset>
+    )}
   </Wrap>
 );
 

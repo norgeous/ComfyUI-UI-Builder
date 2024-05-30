@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FaArrowsRotate, FaToggleOff, FaToggleOn } from 'react-icons/fa6';
+import { FaRandom } from 'react-icons/fa';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -50,6 +52,15 @@ const InputNumber = ({
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
+        children={[
+          Math.random() > 0.5 ? (
+            <FaToggleOff style={{ opacity: 0.5 }} />
+          ) : (
+            <FaToggleOn style={{ opacity: 0.5 }} />
+          ),
+          <FaRandom style={{ opacity: 0.5 }} />,
+          <FaArrowsRotate style={{ opacity: 0.5 }} />,
+        ]}
       />
       <Input
         {...props} // eslint-disable-line react/jsx-props-no-spreading
