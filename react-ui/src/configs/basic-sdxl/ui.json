@@ -62,12 +62,13 @@
         { "label": "10", "value": 10 },
         { "label": "12", "value": 12 },
         { "label": "20", "value": 20 }
-      ]
+      ],
+      "colSpan": 2
     },
     {
       "group": "Generation params",
       "id": "size",
-      "label": "Size",
+      "label": "Image Size",
       "type": "select",
       "defaultValueIndex": 0,
       "options": [
@@ -93,17 +94,6 @@
       "defaultValue": 1337,
       "min": 0,
       "onChange": { "enableSeedRandomisation": false }
-    },
-    {
-      "group": "Generation params",
-      "id": "enableSeedRandomisation",
-      "label": "Seed Control",
-      "type": "checkbox",
-      "defaultValueIndex": 0,
-      "options": [
-        { "label": "Random", "value": false },
-        { "label": "Random", "value": true }
-      ]
     },
     {
       "group": "Advanced",
