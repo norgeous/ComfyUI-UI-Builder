@@ -136,10 +136,9 @@ const ImageGrid = ({ images = [] }) => {
   useEffect(calculateColumnCount, [ref, imgDim, images]);
 
   useEffect(() => {
-    const handleResize = calculateColumnCount;
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', calculateColumnCount);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', calculateColumnCount);
     };
   }, [ref, imgDim, images]); // eslint-disable-line react-hooks/exhaustive-deps
 
