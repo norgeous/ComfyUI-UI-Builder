@@ -35,6 +35,8 @@ const Button = styled.button`
 
 const QuestionMark = styled(FaCircleQuestion)`
   display: block;
+  font-size: 14px;
+  opacity: 0.5;
 `;
 
 const MicOpen = styled(FaMicrophone)`
