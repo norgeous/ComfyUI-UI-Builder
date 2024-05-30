@@ -6,6 +6,9 @@ const AccordionContainer = styled.section`
   overflow-y: auto;
   flex-grow: 1;
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 const Grid = styled.div`

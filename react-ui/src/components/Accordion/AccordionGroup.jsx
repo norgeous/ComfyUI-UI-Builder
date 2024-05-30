@@ -52,7 +52,7 @@ const AccordionGroup = ({
   const onClick = () => setIsOpen(!isOpen);
 
   return (
-    <>
+    <div>
       <AccordionHeader onClick={onClick}>
         <HeaderText>{title}</HeaderText>
         <Chevron $isOpen={isOpen} />
@@ -60,7 +60,7 @@ const AccordionGroup = ({
       <Collapse $isOpen={isOpen}>
         <Inner $isOpen={isOpen}>{children}</Inner>
       </Collapse>
-    </>
+    </div>
   );
 };
 
