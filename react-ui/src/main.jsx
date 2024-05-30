@@ -4,8 +4,6 @@ import { GlobalStyle, Theme1Style } from './components/globalStyles';
 import Providers from './Providers';
 import App from './App';
 
-import './index.css';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle />
