@@ -38,12 +38,13 @@ const Collapse = styled.div`
 
 const Inner = styled.div`
   overflow: hidden;
-  &:hover {
-    overflow: auto; // for tooltips
-  }
 `;
 
-const AccordionGroup = ({
+const Padding = styled.div`
+  padding: 8px;
+`;
+
+const AccordionSingle = ({
   title = '',
   defaultIsOpen = true,
   children = null,
@@ -58,16 +59,18 @@ const AccordionGroup = ({
         <Chevron $isOpen={isOpen} />
       </AccordionHeader>
       <Collapse $isOpen={isOpen}>
-        <Inner $isOpen={isOpen}>{children}</Inner>
+        <Inner $isOpen={isOpen}>
+          <Padding>{children}</Padding>
+        </Inner>
       </Collapse>
     </div>
   );
 };
 
-AccordionGroup.propTypes = {
+AccordionSingle.propTypes = {
   title: PropTypes.string,
   defaultIsOpen: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export default AccordionGroup;
+export default AccordionSingle;

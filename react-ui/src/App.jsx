@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import WsContext from './contexts/WsContext';
 import { Page, Main, Controls, Content } from './components/Layout';
 import UiSelector from './components/UiSelector';
-import FormBuilder from './components/FormBuilder';
+import FormBuilder from './components/FormBuilder/FormBuilder';
 import FormControls from './components/FormControls';
 import Progress from './components/Progress/Progress';
 import StatusBar from './components/StatusBar';

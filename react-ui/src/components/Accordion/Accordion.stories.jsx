@@ -5,19 +5,11 @@ export default {
   component,
 };
 
-export const Accordion = {
+export const Multi = {
   args: {
-    items: [
-      { group: 'group1', component: <p>component1</p> },
-      { group: 'group1', component: <p>component2</p> },
-      { group: 'group1', component: <p>component3</p> },
-      { group: 'group1', component: <p>component4</p> },
-      { group: 'group1', component: <p>component5</p> },
-      { group: 'group2', component: <p>component1</p> },
-      { group: 'group2', component: <p>component2</p> },
-      { group: 'group2', component: <p>component3</p> },
-      { group: 'group2', component: <p>component4</p> },
-      { group: 'group2', component: <p>component5</p> },
+    sections: [
+      { title: 'Accordion Multi Title 1', children: 'Accordion Contents 1' },
+      { title: 'Accordion Multi Title 2', children: 'Accordion Contents 2' },
     ],
   },
 };
