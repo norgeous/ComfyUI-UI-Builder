@@ -71,6 +71,8 @@ const useComfyWs = clientId => {
         onOpen: () => setWsStatus('CONNECTED'),
       });
 
+      if (!socket) return;
+
       // set the running comfy instance url
       setComfyUrl(
         [
