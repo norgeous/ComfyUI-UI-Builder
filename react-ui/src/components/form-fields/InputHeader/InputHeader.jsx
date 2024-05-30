@@ -46,7 +46,7 @@ const MicMuted = styled(FaMicrophoneSlash)`
   font-size: 14px;
 `;
 
-const Reset = styled(Button)`
+const Reset = styled(Tooltip)`
   margin-left: auto;
 `;
 
@@ -77,8 +77,10 @@ const InputHeader = ({
     {isLoading && <Spinner />}
     {children}
     {showReset && (
-      <Reset onClick={handleReset}>
-        <FaArrowRotateLeft />
+      <Reset text="reset">
+        <Button onClick={handleReset}>
+          <FaArrowRotateLeft />
+        </Button>
       </Reset>
     )}
   </Wrap>

@@ -38,14 +38,15 @@ const TooltipWrapper = styled.div`
   }
 `;
 
-const Tooltip = ({ text = undefined, children = null }) => (
-  <TooltipWrapper>
+const Tooltip = ({ className = '', text = undefined, children = null }) => (
+  <TooltipWrapper className={className}>
     {children}
     <TooltipText>{text}</TooltipText>
   </TooltipWrapper>
 );
 
 Tooltip.propTypes = {
+  className: PropTypes.string,
   text: PropTypes.string,
   children: PropTypes.node,
 };
