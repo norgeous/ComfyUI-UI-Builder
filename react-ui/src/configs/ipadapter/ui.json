@@ -1,5 +1,5 @@
 {
-  "name": "IPAdapter SDXL",
+  "name": "IPAdapter SDXL [WIP]",
   "version": "v0.0.0",
   "emoji": "🩻",
   "description": "Basic SDXL with width / height controls",
@@ -12,6 +12,14 @@
       "info": "Choose a SDXL checkpoint",
       "type": "selectckpt",
       "defaultValue": "xl",
+      "colSpan": 2
+    },
+    {
+      "group": "Prompt",
+      "id": "imagePrompt",
+      "label": "File test",
+      "type": "fileupload",
+      "defaultValue": "",
       "colSpan": 2
     },
     {
