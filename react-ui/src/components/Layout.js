@@ -33,6 +33,12 @@ export const Controls = styled.aside`
   overflow-x: hidden;
 `;
 
+export const Scrollable = styled.div`
+  padding: 8px;
+  overflow-y: auto;
+  flex-grow: 1;
+`;
+
 export const Content = styled.div`
   flex: 1;
   padding: 10px;

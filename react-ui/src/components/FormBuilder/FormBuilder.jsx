@@ -14,12 +14,6 @@ import InputCheckbox from '../form-fields/InputCheckbox/InputCheckbox';
 import InputSelectCkpt from '../form-fields/InputSelectCkpt/InputSelectCkpt';
 import InputSpeech from '../form-fields/InputSpeech/InputSpeech';
 
-const Padding = styled.div`
-  padding: 8px;
-  overflow-y: auto;
-  flex-grow: 1;
-`;
-
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
@@ -92,11 +86,7 @@ const FormBuilder = () => {
     return { title: accordionGroup, children: <Grid>{children}</Grid> };
   });
 
-  return (
-    <Padding>
-      <Accordion sections={sections} />
-    </Padding>
-  );
+  return <Accordion sections={sections} />;
 };
 
 export default FormBuilder;
