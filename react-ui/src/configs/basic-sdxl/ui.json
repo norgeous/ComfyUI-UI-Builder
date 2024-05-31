@@ -49,6 +49,7 @@
       "group": "Generation params",
       "id": "batchSize",
       "label": "Results per generation",
+      "info": "Amount of results to generate in parallel",
       "type": "range",
       "defaultValueIndex": 0,
       "options": [
