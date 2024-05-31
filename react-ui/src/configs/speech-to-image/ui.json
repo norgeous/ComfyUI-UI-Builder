@@ -24,17 +24,6 @@
     },
     {
       "group": "Generation params",
-      "id": "enableSeedRandomisation",
-      "label": "Seed Control",
-      "type": "checkbox",
-      "defaultValueIndex": 0,
-      "options": [
-        { "label": "Random", "value": false },
-        { "label": "Random", "value": true }
-      ]
-    },
-    {
-      "group": "Generation params",
       "id": "size",
       "label": "Size",
       "type": "select",
@@ -52,6 +41,17 @@
           "label": "16:9 Portrait",
           "value": { "width": 512, "height": 768 }
         }
+      ]
+    },
+    {
+      "group": "Generation params",
+      "id": "enableSeedRandomisation",
+      "label": "Seed Control",
+      "type": "checkbox",
+      "defaultValueIndex": 0,
+      "options": [
+        { "label": "Random", "value": false },
+        { "label": "Random", "value": true }
       ]
     }
   ],
