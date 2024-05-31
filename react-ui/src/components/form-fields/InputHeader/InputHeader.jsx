@@ -28,9 +28,9 @@ export const Button = styled.button`
   border: none;
   color: inherit;
   background: transparent;
-  opacity: 0.5;
   font-size: 0.75rem; // 12px
   padding: 0;
+  opacity: 0.5; // TODO: dont use opacity it affects the outline opacity also
   &:focus {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
