@@ -20,6 +20,7 @@ export const Main = styled.main`
   background-size: 32px 32px;
   background-position: center;
   background-image: radial-gradient(circle, #3d454b 1px, #0000 1px);
+  position: relative;
 `;
 
 export const Controls = styled.aside`

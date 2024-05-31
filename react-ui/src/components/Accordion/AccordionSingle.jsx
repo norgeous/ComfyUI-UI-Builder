@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FaChevronUp } from 'react-icons/fa6';
 
+const AccordionContainer = styled.div`
+  border-radius: var(--radius);
+  overflow: hidden;
+`;
+
 const AccordionHeader = styled.button`
   background: var(--header-bg);
   color: var(--header-fg);
@@ -53,7 +58,7 @@ const AccordionSingle = ({
   const onClick = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <AccordionContainer>
       <AccordionHeader onClick={onClick}>
         <HeaderText>{title}</HeaderText>
         <Chevron $isOpen={isOpen} />
@@ -63,7 +68,7 @@ const AccordionSingle = ({
           <Padding>{children}</Padding>
         </Inner>
       </Collapse>
-    </div>
+    </AccordionContainer>
   );
 };
 
