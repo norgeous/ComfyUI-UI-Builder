@@ -91,7 +91,7 @@ const InputHeader = ({
     {children}
 
     {showReset && (
-      <ResetTooltip text="reset">
+      <ResetTooltip text="Reset">
         <Button onClick={handleReset}>
           <ResetIcon />
         </Button>
