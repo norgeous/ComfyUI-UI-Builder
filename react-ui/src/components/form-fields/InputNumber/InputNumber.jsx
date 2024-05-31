@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaArrowsRotate, FaToggleOff, FaToggleOn } from 'react-icons/fa6';
-import { FaRandom } from 'react-icons/fa';
+import { FaArrowsRotate } from 'react-icons/fa6';
+import Tooltip from '@/components/Tooltip';
 import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
+import InputHeader, { Button } from '../InputHeader/InputHeader';
+import { Checkbox } from '../InputCheckbox/InputCheckbox';
 import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'number' })`
@@ -53,13 +54,14 @@ const InputNumber = ({
         showReset={showReset}
         handleReset={handleReset}
         children={[
-          <FaRandom style={{ opacity: 0.5, fontSize: 12 }} />,
-          Math.random() > 0.5 ? (
-            <FaToggleOff style={{ opacity: 0.5, fontSize: 12 }} />
-          ) : (
-            <FaToggleOn style={{ opacity: 0.5, fontSize: 12 }} />
-          ),
-          <FaArrowsRotate style={{ opacity: 0.5, fontSize: 12 }} />,
+          <Tooltip text="Randomise before generation">
+            <Checkbox />
+          </Tooltip>,
+          <Tooltip text="Randomise the seed now">
+            <Button>
+              <FaArrowsRotate style={{ display: 'block', fontSize: 14 }} />
+            </Button>
+          </Tooltip>,
         ]}
       />
       <Input

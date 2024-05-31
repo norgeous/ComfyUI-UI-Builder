@@ -17,7 +17,7 @@ const Label = styled.label`
   font-size: 0.875rem;
 `;
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
+export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   accent-color: var(--input-outline);
   margin: 0;
 `;
@@ -53,7 +53,7 @@ const InputCheckbox = ({
         handleReset={handleReset}
       />
       <Label>
-        <Input
+        <Checkbox
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           checked={Boolean(index)}
           onChange={event =>

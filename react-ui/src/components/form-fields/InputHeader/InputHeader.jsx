@@ -22,7 +22,7 @@ const Label = styled.label`
   font-size: 0.875rem; // 14px
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   cursor: pointer;
   display: block;
   border: none;
@@ -49,7 +49,12 @@ const MicMuted = styled(FaMicrophoneSlash)`
   font-size: 14px;
 `;
 
-const Reset = styled(Tooltip)`
+const ResetIcon = styled(FaArrowRotateLeft)`
+  display: block;
+  font-size: 14px;
+`;
+
+const ResetTooltip = styled(Tooltip)`
   margin-left: auto;
 `;
 
@@ -69,7 +74,7 @@ const InputHeader = ({
     {label && <Label htmlFor={id}>{label}</Label>}
     {info && (
       <Tooltip text={info}>
-        <QuestionMark size={14} />
+        <QuestionMark />
       </Tooltip>
     )}
     {showMic && (
@@ -79,12 +84,13 @@ const InputHeader = ({
     )}
     {isLoading && <Spinner />}
     {children}
+
     {showReset && (
-      <Reset text="reset">
+      <ResetTooltip text="reset">
         <Button onClick={handleReset}>
-          <FaArrowRotateLeft />
+          <ResetIcon />
         </Button>
-      </Reset>
+      </ResetTooltip>
     )}
   </Wrap>
 );
