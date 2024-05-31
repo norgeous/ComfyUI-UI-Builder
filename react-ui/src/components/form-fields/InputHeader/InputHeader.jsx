@@ -31,6 +31,11 @@ export const Button = styled.button`
   opacity: 0.5;
   font-size: 0.75rem; // 12px
   padding: 0;
+  &:focus {
+    outline: 2px solid var(--input-outline);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
 `;
 
 const QuestionMark = styled(FaCircleQuestion)`

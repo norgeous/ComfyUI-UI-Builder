@@ -62,8 +62,8 @@ const FormControls = () => {
         label="Auto Gen"
         info="Generate after change to positive prompt"
         options={[
-          { label: 'on', value: false },
-          { label: 'on', value: true },
+          { label: 'On', value: false },
+          { label: 'On', value: true },
         ]}
         defaultValueIndex={0}
         value={auto}
