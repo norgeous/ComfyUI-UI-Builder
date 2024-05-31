@@ -5,17 +5,25 @@ import { Checkbox } from '../InputCheckbox/InputCheckbox';
 import InputNumber from '../InputNumber/InputNumber';
 
 const InputSeed = ({ ...props }) => {
-  const headerChildren = [
-    <Tooltip text="Randomise">
-      <Checkbox />
-    </Tooltip>,
-    <Tooltip text="Randomise NOW!">
-      <Button>
-        <FaArrowsRotate style={{ display: 'block', fontSize: 12 }} />
-      </Button>
-    </Tooltip>,
-  ];
-  return <InputNumber {...props} headerChildren={headerChildren} />;
+  const headerChildren = (
+    <>
+      <Tooltip text="Randomise">
+        <Checkbox />
+      </Tooltip>
+      <Tooltip text="Randomise NOW!">
+        <Button>
+          <FaArrowsRotate style={{ display: 'block', fontSize: 12 }} />
+        </Button>
+      </Tooltip>
+    </>
+  );
+
+  return (
+    <InputNumber
+      {...props} // eslint-disable-line react/jsx-props-no-spreading
+      headerChildren={headerChildren}
+    />
+  );
 };
 
 export default InputSeed;
