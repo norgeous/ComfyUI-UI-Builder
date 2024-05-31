@@ -13,19 +13,21 @@ import {
 const TooltipText = styled.span`
   position: absolute;
   font-size: 0.75rem; // 12px
-  background-color: black;
-  color: #fff;
+  background: var(--page-bg);
+  color: var(--page-fg);
   text-align: center;
   border-radius: 6px;
-  padding: 5px;
+  padding: 8px;
   z-index: 1;
-  width: max-content;
-  max-width: 160px;
   top: 100%;
   left: 50%;
   margin-top: 5px;
   transform: translate(-50%);
   white-space: preserve-breaks;
+`;
+
+const Arrow = styled(FloatingArrow)`
+  fill: var(--page-bg);
 `;
 
 const Tooltip = ({ className = '', text = undefined, children = null }) => {
@@ -34,9 +36,9 @@ const Tooltip = ({ className = '', text = undefined, children = null }) => {
   const { refs, floatingStyles, context } = useFloating({
     placement: 'top',
     middleware: [
-      offset(15),
+      offset(14),
       flip(),
-      shift({ padding: 5 }),
+      shift({ padding: 14 }),
       arrow({ element: arrowRef }),
     ],
     open: isOpen,
@@ -55,7 +57,7 @@ const Tooltip = ({ className = '', text = undefined, children = null }) => {
       </div>
       {isOpen && (
         <TooltipText ref={refs.setFloating} style={floatingStyles}>
-          <FloatingArrow ref={arrowRef} context={context} />
+          <Arrow ref={arrowRef} context={context} />
           {text}
         </TooltipText>
       )}
