@@ -14,6 +14,7 @@ import InputCheckbox from '../form-fields/InputCheckbox/InputCheckbox';
 import InputSelectCkpt from '../form-fields/InputSelectCkpt/InputSelectCkpt';
 import InputFile from '../form-fields/InputFile/InputFile';
 import InputSpeech from '../form-fields/InputSpeech/InputSpeech';
+import InputSeed from '../form-fields/InputSeed/InputSeed';
 
 const Grid = styled.div`
   display: grid;
@@ -37,6 +38,7 @@ const components = {
   selectckpt: InputSelectCkpt,
   fileupload: InputFile,
   speech: InputSpeech,
+  seed: InputSeed,
 };
 
 const FormBuilder = () => {

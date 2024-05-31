@@ -91,7 +91,7 @@
       "group": "Generation params",
       "id": "seed",
       "label": "Seed",
-      "type": "number",
+      "type": "seed",
       "defaultValue": 1337,
       "min": 0,
       "onChange": { "enableSeedRandomisation": false }

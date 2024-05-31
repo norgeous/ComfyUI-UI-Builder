@@ -1,11 +1,8 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaArrowsRotate } from 'react-icons/fa6';
-import Tooltip from '@/components/Tooltip';
 import InputWrapper from '../InputWrapper';
-import InputHeader, { Button } from '../InputHeader/InputHeader';
-import { Checkbox } from '../InputCheckbox/InputCheckbox';
+import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
 
 const Input = styled.input.attrs({ type: 'number' })`
@@ -33,6 +30,7 @@ const InputNumber = ({
   onChange = () => {},
   error = undefined,
   isLoading = false,
+  headerChildren = null,
   ...props
 }) => {
   const ref = useRef();
@@ -53,17 +51,9 @@ const InputNumber = ({
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
-        children={[
-          <Tooltip text="Randomise">
-            <Checkbox />
-          </Tooltip>,
-          <Tooltip text="Randomise NOW!">
-            <Button>
-              <FaArrowsRotate style={{ display: 'block', fontSize: 12 }} />
-            </Button>
-          </Tooltip>,
-        ]}
-      />
+      >
+        {headerChildren}
+      </InputHeader>
       <Input
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
@@ -85,5 +75,6 @@ InputNumber.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func,
   isLoading: PropTypes.bool,
+  headerChildren: PropTypes.node,
 };
 export default InputNumber;

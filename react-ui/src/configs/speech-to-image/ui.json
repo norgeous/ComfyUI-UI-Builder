@@ -15,15 +15,6 @@
     },
     {
       "group": "Generation params",
-      "id": "seed",
-      "label": "Seed",
-      "type": "number",
-      "defaultValue": 1337,
-      "min": 0,
-      "onChange": { "enableSeedRandomisation": false }
-    },
-    {
-      "group": "Generation params",
       "id": "size",
       "label": "Size",
       "type": "select",
@@ -42,6 +33,15 @@
           "value": { "width": 512, "height": 768 }
         }
       ]
+    },
+    {
+      "group": "Generation params",
+      "id": "seed",
+      "label": "Seed",
+      "type": "number",
+      "defaultValue": 1337,
+      "min": 0,
+      "onChange": { "enableSeedRandomisation": false }
     },
     {
       "group": "Generation params",
