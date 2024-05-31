@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -112,6 +113,7 @@ const InputTextarea = ({
         info={info}
         showReset={showReset}
         handleReset={handleReset}
+        children={[<FaArrowUp size={12} />, <FaArrowDown size={12} />]}
       />
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading

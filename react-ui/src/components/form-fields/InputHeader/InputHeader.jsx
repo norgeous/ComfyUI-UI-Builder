@@ -19,7 +19,7 @@ const Label = styled.label`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 0.875rem; // 14px
+  font-size: 0.875rem; // 12px
 `;
 
 export const Button = styled.button`
@@ -40,23 +40,23 @@ export const Button = styled.button`
 
 const QuestionMark = styled(FaCircleQuestion)`
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.5;
 `;
 
 const MicOpen = styled(FaMicrophone)`
   display: block;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const MicMuted = styled(FaMicrophoneSlash)`
   display: block;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const ResetIcon = styled(FaArrowRotateLeft)`
   display: block;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const ResetTooltip = styled(Tooltip)`

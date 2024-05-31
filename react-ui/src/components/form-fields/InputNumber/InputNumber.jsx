@@ -54,12 +54,12 @@ const InputNumber = ({
         showReset={showReset}
         handleReset={handleReset}
         children={[
-          <Tooltip text="Randomise before generation">
+          <Tooltip text="Randomise">
             <Checkbox />
           </Tooltip>,
-          <Tooltip text="Randomise the seed now">
+          <Tooltip text="Randomise NOW!">
             <Button>
-              <FaArrowsRotate style={{ display: 'block', fontSize: 14 }} />
+              <FaArrowsRotate style={{ display: 'block', fontSize: 12 }} />
             </Button>
           </Tooltip>,
         ]}
