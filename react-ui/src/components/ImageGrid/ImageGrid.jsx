@@ -17,8 +17,8 @@ const Container = styled.div`
   gap: ${gapSizePx}px;
   place-items: center;
   justify-content: center;
-  ${({ open, columnCount }) =>
-    open !== undefined
+  ${({ $open, $columnCount }) =>
+    $open !== undefined
       ? css`
           scroll-snap-type: both mandatory;
           position: fixed;
@@ -29,7 +29,7 @@ const Container = styled.div`
           overflow-y: auto;
         `
       : css`
-          grid-template-columns: repeat(${columnCount}, auto);
+          grid-template-columns: repeat(${$columnCount}, auto);
           max-height: 100%;
         `}
 `;
@@ -67,7 +67,7 @@ const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
   return (
     <Img
       ref={ref}
-      crossorigin="anonymous"
+      crossOrigin="anonymous"
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       onClick={handleClick}
     />
@@ -162,8 +162,8 @@ const ImageGrid = ({ images = [] }) => {
   return (
     <Outer ref={ref}>
       <Container
-        columnCount={columnCount}
-        open={open}
+        $columnCount={columnCount}
+        $open={open}
         onClick={() => setOpen(undefined)}
       >
         {images.map((image, i) => (
