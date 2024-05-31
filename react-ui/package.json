@@ -11,6 +11,7 @@
     "sb:build": "storybook build"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.16",
     "microphone-stream": "^6.0.1",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",

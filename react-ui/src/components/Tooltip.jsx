@@ -1,16 +1,23 @@
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  arrow,
+  FloatingArrow,
+} from '@floating-ui/react';
 
 const TooltipText = styled.span`
-  display: none;
+  position: absolute;
   font-size: 0.75rem; // 12px
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
-  border: 1px solid grey;
-  position: absolute;
   z-index: 1;
   width: max-content;
   max-width: 160px;
@@ -19,31 +26,42 @@ const TooltipText = styled.span`
   margin-top: 5px;
   transform: translate(-50%);
   white-space: preserve-breaks;
-  &::after {
-    content: ' ';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent grey transparent;
-  }
 `;
 
-const TooltipWrapper = styled.div`
-  position: relative;
-  &:hover ${TooltipText} {
-    display: inline-block;
-  }
-`;
+const Tooltip = ({ className = '', text = undefined, children = null }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
+  const { refs, floatingStyles, context } = useFloating({
+    placement: 'top',
+    middleware: [
+      offset(15),
+      flip(),
+      shift({ padding: 5 }),
+      arrow({ element: arrowRef }),
+    ],
+    open: isOpen,
+    onOpenChange: setIsOpen,
+  });
 
-const Tooltip = ({ className = '', text = undefined, children = null }) => (
-  <TooltipWrapper className={className}>
-    {children}
-    <TooltipText>{text}</TooltipText>
-  </TooltipWrapper>
-);
+  return (
+    <>
+      <div
+        className={className}
+        ref={refs.setReference}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        {children}
+      </div>
+      {isOpen && (
+        <TooltipText ref={refs.setFloating} style={floatingStyles}>
+          <FloatingArrow ref={arrowRef} context={context} />
+          {text}
+        </TooltipText>
+      )}
+    </>
+  );
+};
 
 Tooltip.propTypes = {
   className: PropTypes.string,
