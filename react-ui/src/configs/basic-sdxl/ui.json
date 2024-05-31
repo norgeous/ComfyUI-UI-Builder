@@ -92,9 +92,7 @@
       "id": "seed",
       "label": "Seed",
       "type": "seed",
-      "defaultValue": 1337,
-      "min": 0,
-      "onChange": { "enableSeedRandomisation": false }
+      "defaultValue": 1337
     },
     {
       "group": "Advanced",
