@@ -15,7 +15,7 @@ const Textarea = styled.textarea`
   background: var(--input-bg);
   color: var(--input-fg);
   border-radius: var(--radius);
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
   }

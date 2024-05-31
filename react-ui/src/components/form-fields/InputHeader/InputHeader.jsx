@@ -31,7 +31,7 @@ export const Button = styled.button`
   font-size: 0.75rem; // 12px
   padding: 0;
   opacity: 0.5; // TODO: dont use opacity it affects the outline opacity also
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
     border-radius: var(--radius);

@@ -18,7 +18,7 @@ const Input = styled.input.attrs({ type: 'number' })`
   background: var(--input-bg);
   color: var(--input-fg);
   padding: 8px 4px;
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--input-outline);
     outline-offset: 2px;
   }
