@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputWrapper from '../InputWrapper';
@@ -21,22 +21,26 @@ const Input = styled.input.attrs({ type: 'number' })`
   }
 `;
 
-const InputNumber = ({
-  id = undefined,
-  defaultValue = undefined,
-  label = undefined,
-  info = undefined,
-  value = undefined,
-  onChange = () => {},
-  error = undefined,
-  isLoading = false,
-  headerChildren = null,
-  ...props
-}) => {
+const InputNumber = (
+  {
+    id = undefined,
+    defaultValue = undefined,
+    label = undefined,
+    info = undefined,
+    value = undefined,
+    onChange = () => {},
+    error = undefined,
+    isLoading = false,
+    headerChildren = null,
+    ...props
+  },
+  // ref,
+) => {
   const ref = useRef();
+  // const { current } = ref;
 
   const handleReset = () => {
-    ref.current.focus();
+    ref.current?.focus();
     onChange(defaultValue);
   };
 
@@ -77,4 +81,9 @@ InputNumber.propTypes = {
   isLoading: PropTypes.bool,
   headerChildren: PropTypes.node,
 };
+
+const X = forwardRef(InputNumber);
+
+X.displayName = 'InputNumber';
+
 export default InputNumber;

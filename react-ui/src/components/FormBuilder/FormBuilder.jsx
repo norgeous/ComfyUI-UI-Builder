@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import FormContext from '@/contexts/FormContext';
@@ -55,12 +55,13 @@ const subC = {
       />
     </Tooltip>
   ),
-  shuffle: ({ label, targetId, updateFormState, onChange }) => (
+  shuffle: ({ inputRef, label, targetId, updateFormState, onChange }) => (
     <Tooltip text={label}>
       <Button
         onClick={() => {
           const newSeed = Math.floor(Math.random() * 10 ** 10);
           updateFormState({ [targetId]: newSeed, ...onChange });
+          inputRef.current.focus();
         }}
       >
         <FaShuffle style={{ display: 'block', fontSize: 12 }} />
@@ -69,6 +70,61 @@ const subC = {
   ),
 };
 
+const Mapper = ({
+  formState,
+  updateFormState,
+
+  group,
+  type,
+  id,
+  defaultValue,
+  defaultValueIndex,
+  colSpan,
+  subComponents = [],
+  onChange,
+  ...props
+}) => {
+  const ref = useRef();
+  const Component = components[type] || Missing;
+  const value = formState[id];
+
+  const handleChange = data => {
+    const newState = { [id]: data, ...onChange };
+    updateFormState(newState);
+  };
+
+  const headerChildren = subComponents.map(({ id, type, label, ...props }) => {
+    const SubComponent = subC[type];
+    const subValue = formState[id];
+    return (
+      <SubComponent
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        inputRef={ref}
+        key={id}
+        id={id}
+        label={label}
+        value={subValue}
+        updateFormState={updateFormState}
+      />
+    );
+  });
+
+  return (
+    <Item key={id} colSpan={colSpan}>
+      <Component
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        ref={ref}
+        type={type}
+        id={id}
+        defaultValue={defaultValue}
+        defaultValueIndex={defaultValueIndex}
+        value={value}
+        onChange={handleChange}
+        headerChildren={headerChildren}
+      />
+    </Item>
+  );
+};
 const FormBuilder = () => {
   const { formConfig, formState, updateFormState } = useContext(FormContext);
 
@@ -79,65 +135,14 @@ const FormBuilder = () => {
       ({ group }) => group === accordionGroup,
     );
 
-    const children = itemsInGroup.map(
-      ({
-        group,
-        type,
-        id,
-        defaultValue,
-        defaultValueIndex,
-        colSpan,
-        subComponents = [],
-        onChange,
-        ...props
-      }) => {
-        const Component = components[type] || Missing;
-        const value = formState[id];
-
-        const handleChange = data => {
-          const newState = { [id]: data, ...onChange };
-          updateFormState(newState);
-        };
-
-        const headerChildren = subComponents.map(
-          ({ id, type, label, ...props }) => {
-            const SubComponent = subC[type];
-            const subValue = formState[id];
-            // const handleChange = data => {
-            //   const newState = { [id]: data, ...onChange };
-            //   updateFormState(newState);
-            // };
-
-            return (
-              <SubComponent
-                {...props} // eslint-disable-line react/jsx-props-no-spreading
-                key={id}
-                id={id}
-                label={label}
-                value={subValue}
-                // onChange={handleChange}
-                updateFormState={updateFormState}
-              />
-            );
-          },
-        );
-
-        return (
-          <Item key={id} colSpan={colSpan}>
-            <Component
-              {...props} // eslint-disable-line react/jsx-props-no-spreading
-              type={type}
-              id={id}
-              defaultValue={defaultValue}
-              defaultValueIndex={defaultValueIndex}
-              value={value}
-              onChange={handleChange}
-              headerChildren={headerChildren}
-            />
-          </Item>
-        );
-      },
-    );
+    const children = itemsInGroup.map(props => (
+      <Mapper
+        {...props}
+        key={props.id}
+        formState={formState}
+        updateFormState={updateFormState}
+      />
+    ));
 
     return { title: accordionGroup, children: <Grid>{children}</Grid> };
   });
