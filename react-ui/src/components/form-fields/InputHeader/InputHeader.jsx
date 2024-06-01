@@ -87,8 +87,8 @@ const InputHeader = ({
         {isMuted ? <MicMuted /> : <MicOpen />}
       </Button>
     )}
-    {isLoading && <Spinner />}
     {children}
+    {isLoading && <Spinner />}
 
     {showReset && (
       <ResetTooltip text="Reset">
