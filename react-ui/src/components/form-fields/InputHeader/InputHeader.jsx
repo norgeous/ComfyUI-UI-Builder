@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaArrowRotateLeft } from 'react-icons/fa6';
+
 import Spinner from '@/components/Spinner';
-import Tooltip from '@/components/Tooltip';
+
 import Microphone from './header-components/Microphone';
-import InputHeaderButton from '../InputHeaderButton/InputHeaderButton';
 import Info from './header-components/Info';
+import Reset from './header-components/Reset';
 
 const Wrap = styled.div`
   display: flex;
@@ -18,15 +18,6 @@ const Label = styled.label`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.875rem; // 12px
-`;
-
-const ResetIcon = styled(FaArrowRotateLeft)`
-  display: block;
-  font-size: 12px;
-`;
-
-const ResetTooltip = styled(Tooltip)`
-  margin-left: auto;
 `;
 
 const InputHeader = ({
@@ -53,13 +44,7 @@ const InputHeader = ({
     )}
     {children}
     {isLoading && <Spinner />}
-    {showReset && (
-      <ResetTooltip text="Reset">
-        <InputHeaderButton onClick={handleReset}>
-          <ResetIcon />
-        </InputHeaderButton>
-      </ResetTooltip>
-    )}
+    {showReset && <Reset onClick={handleReset} />}
   </Wrap>
 );
 
