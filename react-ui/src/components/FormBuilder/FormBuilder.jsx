@@ -27,8 +27,8 @@ const FormBuilder = () => {
       ({ group }) => group === accordionGroup,
     );
 
-    const children = itemsInGroup.map(({ colSpan, ...props }) => (
-      <GridItem key={props.id} colSpan={colSpan}>
+    const children = itemsInGroup.map(({ id, colSpan, ...props }) => (
+      <GridItem key={id} id={id} colSpan={colSpan}>
         <FormItem
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           formState={formState}
