@@ -51,12 +51,12 @@ const InputTextarea = ({
   // - when the selection contains 1 or more previously defined weights, then replace them both with the new weight and selection range (comfy doesnt handle this case) - also should expand selection to whole words
 
   // handling these cases might be a good candidate for unit tests
-  const testCases = [
-    // [given, direction, expected]
-    ['abc | def ghi jkl mno', 'up', 'abc | def ghi jkl mno'],
-    ['abc |def ghi jkl mno', 'up', 'abc |(def:1.1)| ghi jkl mno'],
-    ['|abc (def:1.1) ghi |jkl mno', 'up', '|(abc def ghi:1.2)| jkl mno'],
-  ];
+  // const testCases = [
+  //   // [given, direction, expected]
+  //   ['abc | def ghi jkl mno', 'up', 'abc | def ghi jkl mno'],
+  //   ['abc |def ghi jkl mno', 'up', 'abc |(def:1.1)| ghi jkl mno'],
+  //   ['|abc (def:1.1) ghi |jkl mno', 'up', '|(abc def ghi:1.2)| jkl mno'],
+  // ];
 
   const specialControls = event => {
     if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
