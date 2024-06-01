@@ -33,7 +33,6 @@ const FormItem = ({
   id = '',
   defaultValue,
   defaultValueIndex,
-  colSpan,
   subComponents = [],
   onChange,
   ...props
@@ -74,7 +73,6 @@ FormItem.propTypes = {
   id: PropTypes.string,
   defaultValue: PropTypes.any,
   defaultValueIndex: PropTypes.number,
-  colSpan: PropTypes.number,
   subComponents: PropTypes.array,
   onChange: PropTypes.string,
 };
