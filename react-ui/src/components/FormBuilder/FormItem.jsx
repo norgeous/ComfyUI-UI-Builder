@@ -1,4 +1,5 @@
 import { useContext, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import FormContext from '@/contexts/FormContext';
 
@@ -28,9 +29,8 @@ const components = {
 };
 
 const FormItem = ({
-  group,
-  type,
-  id,
+  type = '',
+  id = '',
   defaultValue,
   defaultValueIndex,
   colSpan,
@@ -67,6 +67,16 @@ const FormItem = ({
       headerChildren={headerChildren}
     />
   );
+};
+
+FormItem.propTypes = {
+  type: PropTypes.string,
+  id: PropTypes.string,
+  defaultValue: PropTypes.any,
+  defaultValueIndex: PropTypes.number,
+  colSpan: PropTypes.number,
+  subComponents: PropTypes.array,
+  onChange: PropTypes.string,
 };
 
 export default FormItem;
