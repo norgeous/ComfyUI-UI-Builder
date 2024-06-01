@@ -34,7 +34,7 @@ const FormItem = ({
   defaultValue,
   defaultValueIndex,
   subComponents = [],
-  onChange,
+  onChange = {},
   ...props
 }) => {
   const { formState, updateFormState } = useContext(FormContext);
