@@ -32,7 +32,7 @@ const FormItem = ({
   type = '',
   id = '',
   defaultValue,
-  defaultValueIndex,
+  defaultValueIndex = 0,
   subComponents = [],
   onChange = {},
   ...props
