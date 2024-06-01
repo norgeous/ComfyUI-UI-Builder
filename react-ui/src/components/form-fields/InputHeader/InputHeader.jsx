@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Spinner from '@/components/Spinner';
-
 import Microphone from './header-components/Microphone';
 import Info from './header-components/Info';
 import Reset from './header-components/Reset';
@@ -35,6 +34,8 @@ const InputHeader = ({
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
+    {children}
+
     {info && <Info text={info} />}
     {showMic && (
       <Microphone
@@ -44,7 +45,6 @@ const InputHeader = ({
       />
     )}
     {isLoading && <Spinner />}
-    {children}
     {showReset && <Reset onClick={handleReset} />}
   </Wrap>
 );
