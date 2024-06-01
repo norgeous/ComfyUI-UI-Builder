@@ -43,8 +43,8 @@ const InputHeader = ({
         onClick={onClickMic}
       />
     )}
-    {children}
     {isLoading && <Spinner />}
+    {children}
     {showReset && <Reset onClick={handleReset} />}
   </Wrap>
 );
