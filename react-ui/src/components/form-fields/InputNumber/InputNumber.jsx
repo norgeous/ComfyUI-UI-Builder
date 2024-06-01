@@ -86,4 +86,4 @@ const X = forwardRef(InputNumber);
 
 X.displayName = 'InputNumber';
 
-export default InputNumber;
+export default X;
