@@ -53,7 +53,6 @@ const InputHeader = ({
     )}
     {children}
     {isLoading && <Spinner />}
-
     {showReset && (
       <ResetTooltip text="Reset">
         <InputHeaderButton onClick={handleReset}>
