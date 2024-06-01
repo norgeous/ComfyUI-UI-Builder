@@ -57,7 +57,7 @@ const FormItem = ({
   return (
     <Component
       {...props} // eslint-disable-line react/jsx-props-no-spreading
-      ref={ref}
+      // ref={ref}
       type={type}
       defaultValue={defaultValue}
       defaultValueIndex={defaultValueIndex}
@@ -74,7 +74,7 @@ FormItem.propTypes = {
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   defaultValueIndex: PropTypes.number,
   subComponents: PropTypes.arrayOf(PropTypes.shape({})),
-  onChange: PropTypes.string,
+  onChange: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 export default FormItem;

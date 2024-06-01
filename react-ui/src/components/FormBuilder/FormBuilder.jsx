@@ -18,7 +18,7 @@ const GridItem = styled.div`
 `;
 
 const FormBuilder = () => {
-  const { formConfig, formState, updateFormState } = useContext(FormContext);
+  const { formConfig } = useContext(FormContext);
 
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
@@ -28,11 +28,10 @@ const FormBuilder = () => {
     );
 
     const children = itemsInGroup.map(({ id, colSpan, ...props }) => (
-      <GridItem key={id} id={id} colSpan={colSpan}>
+      <GridItem key={id} colSpan={colSpan}>
         <FormItem
           {...props} // eslint-disable-line react/jsx-props-no-spreading
-          formState={formState}
-          updateFormState={updateFormState}
+          id={id}
         />
       </GridItem>
     ));

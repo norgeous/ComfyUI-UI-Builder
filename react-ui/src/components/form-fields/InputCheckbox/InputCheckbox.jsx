@@ -27,7 +27,7 @@ const InputCheckbox = ({
   label = undefined,
   info = undefined,
   isLoading = false,
-  defaultValueIndex = undefined,
+  defaultValueIndex = 0,
   value = undefined,
   onChange = () => {},
   options = [],

@@ -113,7 +113,12 @@ const InputTextarea = ({
         info={info}
         showReset={showReset}
         handleReset={handleReset}
-        children={[<FaArrowUp size={12} />, <FaArrowDown size={12} />]}
+        children={
+          <>
+            <FaArrowUp size={12} />
+            <FaArrowDown size={12} />
+          </>
+        }
       />
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
