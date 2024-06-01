@@ -92,7 +92,22 @@
       "id": "seed",
       "label": "Seed",
       "type": "seed",
-      "defaultValue": 1337
+      "defaultValue": 1337,
+      "subComponents": [
+        {
+          "id": "enableSeedRandomisation",
+          "label": "Randomise",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "label": "Shuffle",
+          "type": "shuffle",
+          "targetId": "seed",
+          "onChange": { "enableSeedRandomisation": false }
+        }
+      ],
+      "onChange": { "enableSeedRandomisation": false }
     },
     {
       "group": "Advanced",
