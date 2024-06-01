@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import Tooltip from '@/components/Tooltip';
 import { FaShuffle } from 'react-icons/fa6';
-import { Button } from '../InputHeader';
+import Tooltip from '@/components/Tooltip';
+import InputHeaderButton from '../../InputHeaderButton/InputHeaderButton';
 
 const Shuffle = ({
   inputRef = undefined,
@@ -11,7 +11,7 @@ const Shuffle = ({
   onChange = {},
 }) => (
   <Tooltip text={label}>
-    <Button
+    <InputHeaderButton
       onClick={() => {
         const newSeed = Math.floor(Math.random() * 10 ** 10);
         updateFormState({ [targetId]: newSeed, ...onChange });
@@ -19,7 +19,7 @@ const Shuffle = ({
       }}
     >
       <FaShuffle style={{ display: 'block', fontSize: 12 }} />
-    </Button>
+    </InputHeaderButton>
   </Tooltip>
 );
 
