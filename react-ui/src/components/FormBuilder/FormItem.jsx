@@ -29,9 +29,9 @@ const components = {
 };
 
 const FormItem = ({
-  type = '',
-  id = '',
-  defaultValue,
+  type = undefined,
+  id = undefined,
+  defaultValue = undefined,
   defaultValueIndex = 0,
   subComponents = [],
   onChange = {},
