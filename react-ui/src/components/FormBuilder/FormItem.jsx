@@ -71,9 +71,9 @@ const FormItem = ({
 FormItem.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
-  defaultValue: PropTypes.any,
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   defaultValueIndex: PropTypes.number,
-  subComponents: PropTypes.array,
+  subComponents: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.string,
 };
 
