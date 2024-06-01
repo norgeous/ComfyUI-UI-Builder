@@ -58,6 +58,7 @@ const FormItem = ({
     <Component
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       // ref={ref}
+      id={id}
       type={type}
       defaultValue={defaultValue}
       defaultValueIndex={defaultValueIndex}
