@@ -23,6 +23,8 @@ const Label = styled.label`
 const InputHeader = ({
   id = undefined,
   label = undefined,
+  children = null,
+
   info = undefined,
   isLoading = false,
   showMic = false,
@@ -30,7 +32,6 @@ const InputHeader = ({
   onClickMic = () => {},
   showReset = false,
   handleReset = () => {},
-  children = null,
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
@@ -51,6 +52,8 @@ const InputHeader = ({
 InputHeader.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
+  children: PropTypes.node,
+
   info: PropTypes.string,
   isLoading: PropTypes.bool,
   showMic: PropTypes.bool,
@@ -58,7 +61,6 @@ InputHeader.propTypes = {
   onClickMic: PropTypes.func,
   showReset: PropTypes.bool,
   handleReset: PropTypes.func,
-  children: PropTypes.node,
 };
 
 export default InputHeader;
