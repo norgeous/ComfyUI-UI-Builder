@@ -37,14 +37,17 @@ const FormBuilder = () => {
         return (
           <AccordionSingle key={accordionGroup} title={accordionGroup}>
             <Grid>
-              {itemsInGroup.map(({ id, colSpan, ...props }) => (
-                <GridItem key={id} colSpan={colSpan}>
-                  <Input
-                    {...props} // eslint-disable-line react/jsx-props-no-spreading
-                    id={id}
-                  />
-                </GridItem>
-              ))}
+              {itemsInGroup.map(({ id, colSpan, ...props }) => {
+                console.log();
+                return (
+                  <GridItem key={id} colSpan={colSpan}>
+                    <Input
+                      {...props} // eslint-disable-line react/jsx-props-no-spreading
+                      id={id}
+                    />
+                  </GridItem>
+                );
+              })}
             </Grid>
           </AccordionSingle>
         );
