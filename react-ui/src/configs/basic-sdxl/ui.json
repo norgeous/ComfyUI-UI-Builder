@@ -101,6 +101,7 @@
           "defaultValue": false
         },
         {
+          "id": "shuffle",
           "label": "Shuffle",
           "type": "shuffle",
           "targetId": "seed",
