@@ -1,8 +1,14 @@
 import { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
-import Accordion from '../Accordion/Accordion';
 import Input from '../form-fields/Input';
+import AccordionSingle from '../Accordion/AccordionSingle';
+
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -22,24 +28,30 @@ const FormBuilder = () => {
 
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
-  const sections = accordionGroups.map(accordionGroup => {
-    const itemsInGroup = formConfig.filter(
-      ({ group }) => group === accordionGroup,
-    );
+  return (
+    <Container>
+      {accordionGroups.map(accordionGroup => {
+        const itemsInGroup = formConfig.filter(
+          ({ group }) => group === accordionGroup,
+        );
 
-    const children = itemsInGroup.map(({ id, colSpan, ...props }) => (
-      <GridItem key={id} colSpan={colSpan}>
-        <Input
-          {...props} // eslint-disable-line react/jsx-props-no-spreading
-          id={id}
-        />
-      </GridItem>
-    ));
-
-    return { title: accordionGroup, children: <Grid>{children}</Grid> };
-  });
-
-  return <Accordion sections={sections} />; // tODO: wrong! map accordionGroups into accordion singles
+        return (
+          <AccordionSingle key={accordionGroup} title={accordionGroup}>
+            <Grid>
+              {itemsInGroup.map(({ id, colSpan, ...props }) => (
+                <GridItem key={id} colSpan={colSpan}>
+                  <Input
+                    {...props} // eslint-disable-line react/jsx-props-no-spreading
+                    id={id}
+                  />
+                </GridItem>
+              ))}
+            </Grid>
+          </AccordionSingle>
+        );
+      })}
+    </Container>
+  );
 };
 
 export default FormBuilder;
