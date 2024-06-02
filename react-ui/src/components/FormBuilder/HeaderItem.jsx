@@ -12,9 +12,9 @@ const components = {
 
 const HeaderItem = ({
   inputRef = undefined,
-  id = '',
+  id = undefined,
   type,
-  label = '',
+  label = undefined,
   ...props
 }) => {
   const { formState, updateFormState } = useContext(FormContext);
