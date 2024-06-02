@@ -12,6 +12,7 @@ import Input from './form-fields/Input';
 const ButtonsArea = styled.div`
   padding: 8px;
   display: flex;
+  flex-direction: column;
   gap: 8px;
 `;
 
