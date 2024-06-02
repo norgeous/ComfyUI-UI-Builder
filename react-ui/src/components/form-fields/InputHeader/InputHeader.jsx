@@ -29,8 +29,8 @@ const InputHeader = ({
   showMic = false,
   isMuted = true,
   onClickMic = () => {},
-  showReset = false,
-  handleReset = () => {},
+  // showReset = false,
+  // handleReset = () => {},
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
@@ -50,7 +50,7 @@ const InputHeader = ({
       />
     )}
     {isLoading && <Spinner />}
-    {showReset && <Reset onClick={handleReset} />}
+    {/* {showReset && <Reset onClick={handleReset} />} */}
   </Wrap>
 );
 
@@ -64,8 +64,8 @@ InputHeader.propTypes = {
   showMic: PropTypes.bool,
   isMuted: PropTypes.bool,
   onClickMic: PropTypes.func,
-  showReset: PropTypes.bool,
-  handleReset: PropTypes.func,
+  // showReset: PropTypes.bool,
+  // handleReset: PropTypes.func,
 };
 
 export default InputHeader;

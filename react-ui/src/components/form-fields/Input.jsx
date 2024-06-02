@@ -43,6 +43,16 @@ const FormItem = ({
     updateFormState(newState);
   };
 
+  const handleReset = () => {
+    // handleChange(options[defaultValueIndex].value);
+    // console.log({ props });
+    handleChange(props.defaultValue);
+    ref.current.focus();
+  };
+
+  // const showReset = index !== defaultValueIndex;
+  const showReset = value !== props.defaultValue;
+
   return (
     <Component
       {...props} // eslint-disable-line react/jsx-props-no-spreading
@@ -54,6 +64,7 @@ const FormItem = ({
       subComponents={[
         ...(info ? [{ type: 'info', label: info }] : []),
         ...subComponents,
+        ...(showReset ? [{ type: 'reset', onClick: handleReset }] : []),
       ]}
     />
   );
@@ -63,6 +74,7 @@ FormItem.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   info: PropTypes.string,
+  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   subComponents: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
