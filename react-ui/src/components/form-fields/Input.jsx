@@ -59,9 +59,11 @@ const FormItem = ({
         value={value}
         onChange={handleChange}
         subComponents={[
-          ...(info ? [{ type: 'info', label: info }] : []),
+          ...(info ? [{ id: 'info', type: 'info', label: info }] : []),
           ...subComponents, // from json
-          ...(showReset ? [{ type: 'reset', onClick: handleReset }] : []),
+          ...(showReset
+            ? [{ id: 'reset', type: 'reset', onClick: handleReset }]
+            : []),
         ]}
       />
     </InputRefContext.Provider>
