@@ -30,7 +30,11 @@ const Arrow = styled(FloatingArrow)`
   fill: var(--page-bg);
 `;
 
-const Tooltip = ({ className = '', text = undefined, children = null }) => {
+const Tooltip = ({
+  className = undefined,
+  text = undefined,
+  children = null,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef(null);
   const { refs, floatingStyles, context } = useFloating({
