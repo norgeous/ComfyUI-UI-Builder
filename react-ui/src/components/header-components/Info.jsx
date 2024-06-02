@@ -9,14 +9,14 @@ const QuestionMark = styled(FaCircleQuestion)`
   color: grey;
 `;
 
-const Info = ({ value = undefined }) => (
-  <Tooltip text={value}>
+const Info = ({ label = undefined }) => (
+  <Tooltip text={label}>
     <QuestionMark />
   </Tooltip>
 );
 
 Info.propTypes = {
-  value: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default Info;

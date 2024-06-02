@@ -19,7 +19,7 @@ const components = {
 const HeaderItem = ({
   inputRef = undefined,
   id = undefined,
-  type,
+  type = undefined,
   label = undefined,
   ...props
 }) => {
@@ -45,7 +45,7 @@ HeaderItem.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
   id: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   label: PropTypes.string,
 };
 

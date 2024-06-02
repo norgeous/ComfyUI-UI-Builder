@@ -52,7 +52,7 @@ const FormItem = ({
       value={value}
       onChange={handleChange}
       subComponents={[
-        ...(info ? [{ type: 'info', value: info }] : []),
+        ...(info ? [{ type: 'info', label: info }] : []),
         ...subComponents,
       ]}
     />
