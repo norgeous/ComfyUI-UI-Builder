@@ -21,7 +21,6 @@ const Label = styled.label`
 const InputCheckbox = ({
   label = undefined,
   isLoading = false,
-  defaultValueIndex = 0,
   value = undefined,
   onChange = () => {},
   options = [],
@@ -35,17 +34,11 @@ const InputCheckbox = ({
 
   const { label: checkboxLabel } = options[index];
 
-  const handleReset = () => onChange(options[defaultValueIndex].value);
-
-  const showReset = index !== defaultValueIndex;
-
   return (
     <InputWrapper>
       <InputHeader
         label={label}
         isLoading={isLoading}
-        showReset={showReset}
-        handleReset={handleReset}
         subComponents={subComponents}
       />
       <Label>
@@ -71,7 +64,6 @@ InputCheckbox.propTypes = {
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
   error: PropTypes.string,

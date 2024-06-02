@@ -7,7 +7,7 @@ import WsContext from '@/contexts/WsContext';
 
 import Button from './Button/Button';
 import ErrorText from './form-fields/ErrorText';
-import InputCheckbox from './form-fields/InputCheckbox/InputCheckbox';
+import Input from './form-fields/Input';
 
 const ButtonsArea = styled.div`
   padding: 8px;
@@ -58,14 +58,15 @@ const FormControls = () => {
           Interrupt
         </Button>
       )}
-      <InputCheckbox
+      <Input
+        id="autogen"
+        type="checkbox"
         label="Auto Gen"
         info="Generate after change to positive prompt"
         options={[
-          { label: 'On', value: false },
-          { label: 'On', value: true },
+          { label: 'Automatic', value: false },
+          { label: 'Automatic', value: true },
         ]}
-        defaultValueIndex={0}
         value={auto}
         onChange={setAuto}
       />

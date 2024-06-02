@@ -100,7 +100,7 @@
       "type": "number",
       "defaultValue": 1337,
       "min": 0,
-      "onChange": { "enableSeedRandomisation": false }
+      "onChangeData": { "enableSeedRandomisation": false }
     },
     {
       "group": "Generation params",

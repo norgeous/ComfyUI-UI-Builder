@@ -29,18 +29,21 @@ const FormItem = ({
   id = undefined,
   info = undefined,
   defaultValue = undefined,
-  onChange = {},
+  value = undefined,
+  onChange = () => {},
+  onChangeData = {},
   subComponents = [],
   ...props
 }) => {
   const ref = useRef();
   const { formState, updateFormState } = useContext(FormContext);
   const Component = components[type] || Missing;
-  const value = formState[id];
+  const stateValue = value ?? formState[id];
 
   const handleChange = data => {
-    const newState = { [id]: data, ...onChange };
+    const newState = { [id]: data, ...onChangeData };
     updateFormState(newState);
+    onChange(data);
   };
 
   const handleReset = () => {
@@ -48,7 +51,7 @@ const FormItem = ({
     ref.current?.focus();
   };
 
-  const showReset = value !== defaultValue;
+  const showReset = stateValue !== defaultValue;
 
   return (
     <InputRefContext.Provider value={ref}>
@@ -56,7 +59,7 @@ const FormItem = ({
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         type={type}
-        value={value}
+        value={stateValue}
         onChange={handleChange}
         subComponents={[
           ...(info ? [{ id: 'info', type: 'info', label: info }] : []),
@@ -75,8 +78,10 @@ FormItem.propTypes = {
   id: PropTypes.string,
   info: PropTypes.string,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   subComponents: PropTypes.arrayOf(PropTypes.shape({})),
-  onChange: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  onChange: PropTypes.func,
+  onChangeData: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 export default FormItem;

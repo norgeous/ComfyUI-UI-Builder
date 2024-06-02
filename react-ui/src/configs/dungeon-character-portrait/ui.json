@@ -749,7 +749,7 @@
       "type": "number",
       "label": "Seed",
       "defaultValue": 9482966021,
-      "onChange": { "enableSeedRandomisation": false }
+      "onChangeData": { "enableSeedRandomisation": false }
     },
     {
       "group": "Generation params",
