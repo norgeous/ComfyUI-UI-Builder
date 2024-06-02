@@ -30,6 +30,7 @@ const InputText = ({
   value = undefined,
   onChange = () => {},
   error = undefined,
+  subComponents = [],
 }) => {
   const ref = useRef();
 
@@ -48,6 +49,7 @@ const InputText = ({
         info={info}
         showReset={showReset}
         handleReset={handleReset}
+        subComponents={subComponents}
       />
       <Input
         ref={ref}
@@ -78,6 +80,7 @@ InputText.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func,
+  subComponents: PropTypes.array,
 };
 
 export default InputText;
