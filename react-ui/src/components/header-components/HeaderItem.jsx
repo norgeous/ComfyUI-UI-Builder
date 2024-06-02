@@ -4,7 +4,7 @@ import FormContext from '@/contexts/FormContext';
 
 import Missing from './Missing';
 
-// import HeaderCheckbox from './Checkbox';
+import HeaderCheckbox from './Checkbox';
 import Shuffle from './Shuffle';
 import Info from './Info';
 import Microphone from './Microphone';
@@ -12,7 +12,7 @@ import Reset from './Reset';
 
 const components = {
   info: Info,
-  // checkbox: HeaderCheckbox,
+  checkbox: HeaderCheckbox,
   shuffle: Shuffle,
   microphone: Microphone,
   reset: Reset,
@@ -29,7 +29,6 @@ const HeaderItem = ({
   const SubComponent = components[type] || Missing;
   const value = formState[id];
 
-  console.log('HeaderItem', { id, inputRef });
   return (
     <SubComponent
       value={value}

@@ -15,7 +15,6 @@ const Shuffle = ({
       onClick={() => {
         const newSeed = Math.floor(Math.random() * 10 ** 10);
         updateFormState({ [targetId]: newSeed, ...onChange });
-        console.log('SHUFFLE', { inputRef });
         inputRef?.current?.focus();
       }}
     >

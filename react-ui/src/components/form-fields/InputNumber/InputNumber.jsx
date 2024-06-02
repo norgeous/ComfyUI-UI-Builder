@@ -1,6 +1,7 @@
-import { forwardRef } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -21,42 +22,38 @@ const Input = styled.input.attrs({ type: 'number' })`
   }
 `;
 
-const InputNumber = forwardRef(
-  (
-    {
-      id = undefined,
-      label = undefined,
-      value = undefined,
-      onChange = () => {},
-      error = undefined,
-      isLoading = false,
-      subComponents = [],
-      ...props
-    },
-    ref,
-  ) => {
-    console.log('num', { ref });
-    return (
-      <InputWrapper>
-        <InputHeader
-          inputRef={ref}
-          id={id}
-          label={label}
-          isLoading={isLoading}
-          subComponents={subComponents}
-        />
-        <Input
-          {...props} // eslint-disable-line react/jsx-props-no-spreading
-          ref={ref}
-          id={id}
-          value={value}
-          onChange={event => onChange(Number(event.target.value))}
-        />
-        {error && <ErrorText>{error}</ErrorText>}
-      </InputWrapper>
-    );
-  },
-);
+const InputNumber = ({
+  id = undefined,
+  label = undefined,
+  value = undefined,
+  onChange = () => {},
+  error = undefined,
+  isLoading = false,
+  subComponents = [],
+  ...props
+}) => {
+  const ref = useContext(InputRefContext);
+
+  return (
+    <InputWrapper>
+      <InputHeader
+        inputRef={ref}
+        id={id}
+        label={label}
+        isLoading={isLoading}
+        subComponents={subComponents}
+      />
+      <Input
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        ref={ref}
+        id={id}
+        value={value}
+        onChange={event => onChange(Number(event.target.value))}
+      />
+      {error && <ErrorText>{error}</ErrorText>}
+    </InputWrapper>
+  );
+};
 
 InputNumber.propTypes = {
   id: PropTypes.string,
@@ -68,16 +65,16 @@ InputNumber.propTypes = {
   subComponents: PropTypes.array,
 };
 
-InputNumber.defaultProps = {
-  id: undefined,
-  label: undefined,
-  value: undefined,
-  error: undefined,
-  onChange: () => {},
-  isLoading: false,
-  subComponents: [],
-};
+// InputNumber.defaultProps = {
+//   id: undefined,
+//   label: undefined,
+//   value: undefined,
+//   error: undefined,
+//   onChange: () => {},
+//   isLoading: false,
+//   subComponents: [],
+// };
 
-InputNumber.displayName = 'InputNumber';
+// InputNumber.displayName = 'InputNumber';
 
 export default InputNumber;
