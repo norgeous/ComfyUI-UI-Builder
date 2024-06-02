@@ -19,7 +19,6 @@ const components = {
 };
 
 const HeaderItem = ({
-  inputRef = undefined,
   id = undefined,
   type = undefined,
   label = undefined,
@@ -33,7 +32,6 @@ const HeaderItem = ({
     <SubComponent
       value={value}
       {...props} // eslint-disable-line react/jsx-props-no-spreading
-      inputRef={inputRef}
       id={id}
       type={type}
       label={label}
@@ -43,10 +41,6 @@ const HeaderItem = ({
 };
 
 HeaderItem.propTypes = {
-  inputRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
   id: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,

@@ -19,12 +19,10 @@ const Label = styled.label`
 `;
 
 const InputHeader = ({
-  inputRef = undefined,
   id = undefined,
   label = undefined,
   subComponents = [],
 
-  children = null,
   isLoading = false,
   showMic = false,
   isMuted = true,
@@ -36,10 +34,8 @@ const InputHeader = ({
       <HeaderItem
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         key={props.id}
-        inputRef={inputRef}
       />
     ))}
-    {children}
 
     {showMic && (
       <Microphone
@@ -54,10 +50,8 @@ const InputHeader = ({
 
 InputHeader.propTypes = {
   id: PropTypes.string,
-  inputRef: PropTypes.object,
   label: PropTypes.string,
   subComponents: PropTypes.array,
-  children: PropTypes.node,
 
   isLoading: PropTypes.bool,
   showMic: PropTypes.bool,

@@ -37,7 +37,6 @@ const InputNumber = ({
   return (
     <InputWrapper>
       <InputHeader
-        inputRef={ref}
         id={id}
         label={label}
         isLoading={isLoading}
@@ -64,17 +63,5 @@ InputNumber.propTypes = {
   isLoading: PropTypes.bool,
   subComponents: PropTypes.array,
 };
-
-// InputNumber.defaultProps = {
-//   id: undefined,
-//   label: undefined,
-//   value: undefined,
-//   error: undefined,
-//   onChange: () => {},
-//   isLoading: false,
-//   subComponents: [],
-// };
-
-// InputNumber.displayName = 'InputNumber';
 
 export default InputNumber;

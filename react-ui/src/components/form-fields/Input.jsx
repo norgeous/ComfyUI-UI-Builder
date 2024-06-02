@@ -35,8 +35,8 @@ const FormItem = ({
   onChange = {},
   ...props
 }) => {
-  const { formState, updateFormState } = useContext(FormContext);
   const ref = useRef();
+  const { formState, updateFormState } = useContext(FormContext);
   const Component = components[type] || Missing;
   const value = formState[id];
 
