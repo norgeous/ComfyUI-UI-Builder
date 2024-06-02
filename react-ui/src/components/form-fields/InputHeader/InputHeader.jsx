@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Spinner from '@/components/Spinner';
-import HeaderItem from '@/components/header-components/HeaderItem';
+import HeaderItem from '../../header-components/HeaderItem';
 import Microphone from '../../header-components/Microphone';
-import Reset from '../../header-components/Reset';
 
 const Wrap = styled.div`
   display: flex;
@@ -20,17 +19,16 @@ const Label = styled.label`
 `;
 
 const InputHeader = ({
+  inputRef = undefined,
   id = undefined,
   label = undefined,
   subComponents = [],
-  children = null,
 
+  children = null,
   isLoading = false,
   showMic = false,
   isMuted = true,
   onClickMic = () => {},
-  // showReset = false,
-  // handleReset = () => {},
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
@@ -38,6 +36,7 @@ const InputHeader = ({
       <HeaderItem
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         key={props.id}
+        inputRef={inputRef}
       />
     ))}
     {children}
@@ -50,12 +49,12 @@ const InputHeader = ({
       />
     )}
     {isLoading && <Spinner />}
-    {/* {showReset && <Reset onClick={handleReset} />} */}
   </Wrap>
 );
 
 InputHeader.propTypes = {
   id: PropTypes.string,
+  inputRef: PropTypes.object,
   label: PropTypes.string,
   subComponents: PropTypes.array,
   children: PropTypes.node,
@@ -64,8 +63,6 @@ InputHeader.propTypes = {
   showMic: PropTypes.bool,
   isMuted: PropTypes.bool,
   onClickMic: PropTypes.func,
-  // showReset: PropTypes.bool,
-  // handleReset: PropTypes.func,
 };
 
 export default InputHeader;

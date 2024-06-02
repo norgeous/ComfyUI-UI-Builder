@@ -14,14 +14,14 @@ import InputSpeech from './InputSpeech/InputSpeech';
 import InputSeed from './InputSeed/InputSeed';
 
 const components = {
-  select: InputSelect,
-  range: InputRange,
-  textarea: InputTextarea,
-  number: InputNumber,
-  checkbox: InputCheckbox,
-  selectckpt: InputSelectCkpt,
-  fileupload: InputFile,
-  speech: InputSpeech,
+  // select: InputSelect,
+  // range: InputRange,
+  // textarea: InputTextarea,
+  // number: InputNumber,
+  // checkbox: InputCheckbox,
+  // selectckpt: InputSelectCkpt,
+  // fileupload: InputFile,
+  // speech: InputSpeech,
   seed: InputSeed,
 };
 
@@ -29,6 +29,7 @@ const FormItem = ({
   type = undefined,
   id = undefined,
   info = undefined,
+  defaultValue = undefined,
   subComponents = [],
   onChange = {},
   ...props
@@ -44,29 +45,31 @@ const FormItem = ({
   };
 
   const handleReset = () => {
-    // handleChange(options[defaultValueIndex].value);
-    // console.log({ props });
-    handleChange(props.defaultValue);
+    handleChange(defaultValue);
     ref.current?.focus();
   };
 
-  // const showReset = index !== defaultValueIndex;
-  const showReset = value !== props.defaultValue;
+  const showReset = value !== defaultValue;
+
+  console.log('input', id, type, ref);
 
   return (
-    <Component
-      {...props} // eslint-disable-line react/jsx-props-no-spreading
-      ref={ref}
-      id={id}
-      type={type}
-      value={value}
-      onChange={handleChange}
-      subComponents={[
-        ...(info ? [{ type: 'info', label: info }] : []),
-        ...subComponents,
-        ...(showReset ? [{ type: 'reset', onClick: handleReset }] : []),
-      ]}
-    />
+    <>
+      <Component
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        // ref={ref}
+        id={id}
+        type={type}
+        value={value}
+        onChange={handleChange}
+        subComponents={[
+          ...(info ? [{ type: 'info', label: info }] : []),
+          ...subComponents,
+          ...(showReset ? [{ type: 'reset', onClick: handleReset }] : []),
+        ]}
+      />
+      <input ref={ref} />
+    </>
   );
 };
 

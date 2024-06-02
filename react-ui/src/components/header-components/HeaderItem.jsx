@@ -2,7 +2,9 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FormContext from '@/contexts/FormContext';
 
-import HeaderCheckbox from './Checkbox';
+import Missing from './Missing';
+
+// import HeaderCheckbox from './Checkbox';
 import Shuffle from './Shuffle';
 import Info from './Info';
 import Microphone from './Microphone';
@@ -10,7 +12,7 @@ import Reset from './Reset';
 
 const components = {
   info: Info,
-  checkbox: HeaderCheckbox,
+  // checkbox: HeaderCheckbox,
   shuffle: Shuffle,
   microphone: Microphone,
   reset: Reset,
@@ -24,15 +26,17 @@ const HeaderItem = ({
   ...props
 }) => {
   const { formState, updateFormState } = useContext(FormContext);
-  const SubComponent = components[type];
+  const SubComponent = components[type] || Missing;
   const value = formState[id];
 
+  console.log('HeaderItem', { id, inputRef });
   return (
     <SubComponent
       value={value}
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       inputRef={inputRef}
       id={id}
+      type={type}
       label={label}
       updateFormState={updateFormState}
     />
