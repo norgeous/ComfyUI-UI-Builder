@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
 import Accordion from '../Accordion/Accordion';
-import FormItem from './FormItem';
+import Input from '../form-fields/Input';
 
 const Grid = styled.div`
   display: grid;
@@ -29,7 +29,7 @@ const FormBuilder = () => {
 
     const children = itemsInGroup.map(({ id, colSpan, ...props }) => (
       <GridItem key={id} colSpan={colSpan}>
-        <FormItem
+        <Input
           {...props} // eslint-disable-line react/jsx-props-no-spreading
           id={id}
         />
@@ -39,7 +39,7 @@ const FormBuilder = () => {
     return { title: accordionGroup, children: <Grid>{children}</Grid> };
   });
 
-  return <Accordion sections={sections} />;
+  return <Accordion sections={sections} />; // tODO: wrong! map accordionGroups into accordion singles
 };
 
 export default FormBuilder;

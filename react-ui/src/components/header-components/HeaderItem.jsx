@@ -2,12 +2,18 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FormContext from '@/contexts/FormContext';
 
-import HeaderCheckbox from '../header-components/Checkbox';
-import Shuffle from '../header-components/Shuffle';
+import HeaderCheckbox from './Checkbox';
+import Shuffle from './Shuffle';
+import Info from './Info';
+import Microphone from './Microphone';
+import Reset from './Reset';
 
 const components = {
+  info: Info,
   checkbox: HeaderCheckbox,
   shuffle: Shuffle,
+  microphone: Microphone,
+  reset: Reset,
 };
 
 const HeaderItem = ({

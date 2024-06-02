@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Spinner from '@/components/Spinner';
+import HeaderItem from '@/components/header-components/HeaderItem';
 import Microphone from '../../header-components/Microphone';
 import Info from '../../header-components/Info';
 import Reset from '../../header-components/Reset';
@@ -22,6 +23,7 @@ const Label = styled.label`
 const InputHeader = ({
   id = undefined,
   label = undefined,
+  subComponents = [],
   children = null,
 
   info = undefined,
@@ -34,6 +36,12 @@ const InputHeader = ({
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
+    {subComponents.map(props => (
+      <HeaderItem
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
+        key={props.id}
+      />
+    ))}
     {children}
 
     {info && <Info text={info} />}
@@ -52,6 +60,7 @@ const InputHeader = ({
 InputHeader.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
+  subComponents: PropTypes.array,
   children: PropTypes.node,
 
   info: PropTypes.string,

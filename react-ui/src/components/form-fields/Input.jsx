@@ -1,20 +1,17 @@
 import { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import FormContext from '@/contexts/FormContext';
 
-import HeaderItem from './HeaderItem';
-
-import Missing from '../form-fields/Missing';
-import InputSelect from '../form-fields/InputSelect/InputSelect';
-import InputRange from '../form-fields/InputRange/InputRange';
-import InputTextarea from '../form-fields/InputTextarea/InputTextarea';
-import InputNumber from '../form-fields/InputNumber/InputNumber';
-import InputCheckbox from '../form-fields/InputCheckbox/InputCheckbox';
-import InputSelectCkpt from '../form-fields/InputSelectCkpt/InputSelectCkpt';
-import InputFile from '../form-fields/InputFile/InputFile';
-import InputSpeech from '../form-fields/InputSpeech/InputSpeech';
-import InputSeed from '../form-fields/InputSeed/InputSeed';
+import Missing from './Missing';
+import InputSelect from './InputSelect/InputSelect';
+import InputRange from './InputRange/InputRange';
+import InputTextarea from './InputTextarea/InputTextarea';
+import InputNumber from './InputNumber/InputNumber';
+import InputCheckbox from './InputCheckbox/InputCheckbox';
+import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
+import InputFile from './InputFile/InputFile';
+import InputSpeech from './InputSpeech/InputSpeech';
+import InputSeed from './InputSeed/InputSeed';
 
 const components = {
   select: InputSelect,
@@ -31,8 +28,6 @@ const components = {
 const FormItem = ({
   type = undefined,
   id = undefined,
-  defaultValue = undefined,
-  defaultValueIndex = 0,
   subComponents = [],
   onChange = {},
   ...props
@@ -47,24 +42,15 @@ const FormItem = ({
     updateFormState(newState);
   };
 
-  const headerChildren = subComponents.map(subProps => (
-    <HeaderItem
-      {...subProps} // eslint-disable-line react/jsx-props-no-spreading
-      key={subProps.id}
-    />
-  ));
-
   return (
     <Component
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       ref={ref}
       id={id}
       type={type}
-      defaultValue={defaultValue}
-      defaultValueIndex={defaultValueIndex}
       value={value}
       onChange={handleChange}
-      headerChildren={headerChildren}
+      subComponents={subComponents}
     />
   );
 };

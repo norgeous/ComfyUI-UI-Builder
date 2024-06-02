@@ -31,13 +31,12 @@ const InputNumber = (
     onChange = () => {},
     error = undefined,
     isLoading = false,
-    headerChildren = null,
+    subComponents = [],
     ...props
   },
   // ref,
 ) => {
   const ref = useRef();
-  // const { current } = ref;
 
   const handleReset = () => {
     ref.current?.focus();
@@ -55,9 +54,8 @@ const InputNumber = (
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
-      >
-        {headerChildren}
-      </InputHeader>
+        subComponents={subComponents}
+      />
       <Input
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
@@ -79,7 +77,7 @@ InputNumber.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func,
   isLoading: PropTypes.bool,
-  headerChildren: PropTypes.node,
+  subComponents: PropTypes.array,
 };
 
 const X = forwardRef(InputNumber);
