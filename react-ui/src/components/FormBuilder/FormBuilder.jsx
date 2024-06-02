@@ -37,17 +37,27 @@ const FormBuilder = () => {
         return (
           <AccordionSingle key={accordionGroup} title={accordionGroup}>
             <Grid>
-              {itemsInGroup.map(({ id, colSpan, ...props }) => {
-                console.log();
-                return (
+              {itemsInGroup.map(
+                ({
+                  id,
+                  colSpan,
+                  defaultValue,
+                  defaultValueIndex,
+                  options,
+                  ...props
+                }) => (
                   <GridItem key={id} colSpan={colSpan}>
                     <Input
                       {...props} // eslint-disable-line react/jsx-props-no-spreading
                       id={id}
+                      defaultValue={
+                        defaultValue ?? options[defaultValueIndex].value
+                      }
+                      options={options}
                     />
                   </GridItem>
-                );
-              })}
+                ),
+              )}
             </Grid>
           </AccordionSingle>
         );
