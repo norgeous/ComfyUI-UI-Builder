@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Tooltip from '@/components/Tooltip';
-import { Checkbox } from '../form-fields/InputCheckbox/InputCheckbox';
+import Checkbox from '@/components/Checkbox';
 
 const HeaderCheckbox = ({
   id = undefined,

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
+import Checkbox from '@/components/Checkbox';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -15,12 +16,6 @@ const Label = styled.label`
   padding: 9px 0;
   cursor: pointer;
   font-size: 0.875rem;
-`;
-
-export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
-  display: block;
-  accent-color: var(--input-outline);
-  margin: 0;
 `;
 
 const InputCheckbox = ({

@@ -4,15 +4,15 @@ import FormContext from '@/contexts/FormContext';
 
 import Missing from './Missing';
 
-import HeaderCheckbox from './Checkbox';
-import Shuffle from './Shuffle';
 import Info from './Info';
+import Checkbox from './Checkbox';
+import Shuffle from './Shuffle';
 import Microphone from './Microphone';
 import Reset from './Reset';
 
 const components = {
   info: Info,
-  checkbox: HeaderCheckbox,
+  checkbox: Checkbox,
   shuffle: Shuffle,
   microphone: Microphone,
   reset: Reset,
