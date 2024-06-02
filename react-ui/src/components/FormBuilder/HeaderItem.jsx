@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FormContext from '@/contexts/FormContext';
 
-import HeaderCheckbox from '../form-fields/InputHeader/header-components/Checkbox';
-import Shuffle from '../form-fields/InputHeader/header-components/Shuffle';
+import HeaderCheckbox from '../header-components/Checkbox';
+import Shuffle from '../header-components/Shuffle';
 
 const components = {
   checkbox: HeaderCheckbox,

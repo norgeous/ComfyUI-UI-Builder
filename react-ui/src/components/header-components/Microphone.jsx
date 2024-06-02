@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa6';
 import Tooltip from '@/components/Tooltip';
-import InputHeaderButton from '../../InputHeaderButton/InputHeaderButton';
+import InputHeaderButton from '../form-fields/InputHeaderButton/InputHeaderButton';
 
 const MicOpen = styled(FaMicrophone)`
   display: block;

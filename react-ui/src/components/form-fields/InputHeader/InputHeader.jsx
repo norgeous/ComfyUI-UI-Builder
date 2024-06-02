@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Spinner from '@/components/Spinner';
-import Microphone from './header-components/Microphone';
-import Info from './header-components/Info';
-import Reset from './header-components/Reset';
+import Microphone from '../../header-components/Microphone';
+import Info from '../../header-components/Info';
+import Reset from '../../header-components/Reset';
 
 const Wrap = styled.div`
   display: flex;
