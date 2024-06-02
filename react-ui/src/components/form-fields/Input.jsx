@@ -47,7 +47,7 @@ const FormItem = ({
     // handleChange(options[defaultValueIndex].value);
     // console.log({ props });
     handleChange(props.defaultValue);
-    ref.current.focus();
+    ref.current?.focus();
   };
 
   // const showReset = index !== defaultValueIndex;
