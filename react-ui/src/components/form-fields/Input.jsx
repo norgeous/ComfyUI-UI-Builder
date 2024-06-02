@@ -12,7 +12,6 @@ import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
-import InputSeed from './InputSeed/InputSeed';
 
 const components = {
   select: InputSelect,
@@ -23,7 +22,6 @@ const components = {
   selectckpt: InputSelectCkpt,
   fileupload: InputFile,
   speech: InputSpeech,
-  seed: InputSeed,
 };
 
 const FormItem = ({
@@ -31,8 +29,8 @@ const FormItem = ({
   id = undefined,
   info = undefined,
   defaultValue = undefined,
-  subComponents = [],
   onChange = {},
+  subComponents = [],
   ...props
 }) => {
   const ref = useRef();
@@ -62,7 +60,7 @@ const FormItem = ({
         onChange={handleChange}
         subComponents={[
           ...(info ? [{ type: 'info', label: info }] : []),
-          ...subComponents,
+          ...subComponents, // from json
           ...(showReset ? [{ type: 'reset', onClick: handleReset }] : []),
         ]}
       />

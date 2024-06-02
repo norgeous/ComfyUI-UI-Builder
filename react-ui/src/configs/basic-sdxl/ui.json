@@ -91,7 +91,7 @@
       "group": "Generation params",
       "id": "seed",
       "label": "Seed",
-      "type": "seed",
+      "type": "number",
       "defaultValue": 1337,
       "subComponents": [
         {
