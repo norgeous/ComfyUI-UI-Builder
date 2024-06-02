@@ -619,7 +619,16 @@
       "defaultValue": ""
     },
     {
-      "group": "Generation params",
+      "group": "Generation Params",
+      "id": "ckptOverride",
+      "type": "selectckpt",
+      "label": "Checkpoint override",
+      "info": "Override the model from \"Preset\" (experimental)",
+      "colSpan": 2,
+      "defaultValue": ""
+    },
+    {
+      "group": "Generation Params",
       "id": "quality",
       "type": "range",
       "label": "Quality",
@@ -632,7 +641,7 @@
       ]
     },
     {
-      "group": "Generation params",
+      "group": "Generation Params",
       "id": "batchSize",
       "label": "Results per generation",
       "type": "range",
@@ -650,11 +659,10 @@
       ]
     },
     {
-      "group": "Generation params",
+      "group": "Generation Params",
       "id": "preset",
       "type": "select",
       "label": "Preset",
-      "colSpan": 2,
       "defaultValueIndex": 1,
       "options": [
         {
@@ -735,31 +743,28 @@
       ]
     },
     {
-      "group": "Generation params",
-      "id": "ckptOverride",
-      "type": "selectckpt",
-      "label": "Checkpoint override",
-      "info": "Override the model from \"Preset\" (experimental)",
-      "colSpan": 2,
-      "defaultValue": ""
-    },
-    {
-      "group": "Generation params",
+      "group": "Generation Params",
       "id": "seed",
-      "type": "number",
       "label": "Seed",
+      "type": "number",
       "defaultValue": 9482966021,
+      "min": 0,
+      "subComponents": [
+        {
+          "id": "enableSeedRandomisation",
+          "label": "Randomise",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "id": "shuffle",
+          "label": "Shuffle",
+          "type": "shuffle",
+          "targetId": "seed",
+          "onChangeData": { "enableSeedRandomisation": false }
+        }
+      ],
       "onChangeData": { "enableSeedRandomisation": false }
-    },
-    {
-      "group": "Generation params",
-      "id": "enableSeedRandomisation",
-      "type": "checkbox",
-      "defaultValueIndex": 0,
-      "options": [
-        { "label": "Random", "value": false },
-        { "label": "Random", "value": true }
-      ]
     }
   ],
   "adapterConfig": [

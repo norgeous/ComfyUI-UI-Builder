@@ -14,7 +14,7 @@
       "colSpan": 2
     },
     {
-      "group": "Generation params",
+      "group": "Generation Params",
       "id": "size",
       "label": "Size",
       "type": "select",
@@ -35,24 +35,28 @@
       ]
     },
     {
-      "group": "Generation params",
+      "group": "Generation Params",
       "id": "seed",
       "label": "Seed",
       "type": "number",
-      "defaultValue": 1337,
+      "defaultValue": 0,
       "min": 0,
+      "subComponents": [
+        {
+          "id": "enableSeedRandomisation",
+          "label": "Randomise",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "id": "shuffle",
+          "label": "Shuffle",
+          "type": "shuffle",
+          "targetId": "seed",
+          "onChangeData": { "enableSeedRandomisation": false }
+        }
+      ],
       "onChangeData": { "enableSeedRandomisation": false }
-    },
-    {
-      "group": "Generation params",
-      "id": "enableSeedRandomisation",
-      "label": "Seed Control",
-      "type": "checkbox",
-      "defaultValueIndex": 0,
-      "options": [
-        { "label": "Random", "value": false },
-        { "label": "Random", "value": true }
-      ]
     }
   ],
   "adapterConfig": [
