@@ -25,13 +25,13 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 
 const InputCheckbox = ({
   label = undefined,
-  info = undefined,
   isLoading = false,
   defaultValueIndex = 0,
   value = undefined,
   onChange = () => {},
   options = [],
   error = undefined,
+  subComponents = [],
   ...props
 }) => {
   const index = options.findIndex(
@@ -48,10 +48,10 @@ const InputCheckbox = ({
     <InputWrapper>
       <InputHeader
         label={label}
-        info={info}
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
+        subComponents={subComponents}
       />
       <Label>
         <Checkbox
@@ -70,7 +70,6 @@ const InputCheckbox = ({
 
 InputCheckbox.propTypes = {
   label: PropTypes.string,
-  info: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -82,6 +81,7 @@ InputCheckbox.propTypes = {
   onChange: PropTypes.func,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
+  subComponents: PropTypes.array,
 };
 
 export default InputCheckbox;

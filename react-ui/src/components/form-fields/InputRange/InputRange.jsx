@@ -72,6 +72,7 @@ const InputRange = ({
   onChange = () => {},
   isLoading = false,
   error = undefined,
+  subComponents = [],
   ...props
 }) => {
   const index = options.findIndex(
@@ -94,6 +95,7 @@ const InputRange = ({
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
+        subComponents={subComponents}
       />
       <RangeWrapper>
         <Input
@@ -147,6 +149,7 @@ InputRange.propTypes = {
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
   isLoading: PropTypes.bool,
+  subComponents: PropTypes.array,
 };
 
 export default InputRange;

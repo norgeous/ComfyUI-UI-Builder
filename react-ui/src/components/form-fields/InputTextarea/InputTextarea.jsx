@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
+// import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -33,6 +33,7 @@ const InputTextarea = ({
   value = undefined,
   onChange = () => {},
   error = undefined,
+  subComponents = [],
   ...props
 }) => {
   const ref = useRef();
@@ -113,12 +114,13 @@ const InputTextarea = ({
         info={info}
         showReset={showReset}
         handleReset={handleReset}
-        children={
-          <>
-            <FaArrowUp size={12} />
-            <FaArrowDown size={12} />
-          </>
-        }
+        subComponents={subComponents}
+        // children={
+        //   <>
+        //     <FaArrowUp size={12} />
+        //     <FaArrowDown size={12} />
+        //   </>
+        // }
       />
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
@@ -143,6 +145,7 @@ InputTextarea.propTypes = {
   error: PropTypes.string,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  subComponents: PropTypes.array,
 };
 
 export default InputTextarea;

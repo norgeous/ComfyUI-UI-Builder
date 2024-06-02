@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Spinner from '@/components/Spinner';
 import HeaderItem from '@/components/header-components/HeaderItem';
 import Microphone from '../../header-components/Microphone';
-import Info from '../../header-components/Info';
 import Reset from '../../header-components/Reset';
 
 const Wrap = styled.div`
@@ -26,7 +25,6 @@ const InputHeader = ({
   subComponents = [],
   children = null,
 
-  info = undefined,
   isLoading = false,
   showMic = false,
   isMuted = true,
@@ -44,7 +42,6 @@ const InputHeader = ({
     ))}
     {children}
 
-    {info && <Info text={info} />}
     {showMic && (
       <Microphone
         isLoading={isLoading}
@@ -63,7 +60,6 @@ InputHeader.propTypes = {
   subComponents: PropTypes.array,
   children: PropTypes.node,
 
-  info: PropTypes.string,
   isLoading: PropTypes.bool,
   showMic: PropTypes.bool,
   isMuted: PropTypes.bool,

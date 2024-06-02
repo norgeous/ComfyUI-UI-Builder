@@ -28,6 +28,7 @@ const components = {
 const FormItem = ({
   type = undefined,
   id = undefined,
+  info = undefined,
   subComponents = [],
   onChange = {},
   ...props
@@ -50,7 +51,10 @@ const FormItem = ({
       type={type}
       value={value}
       onChange={handleChange}
-      subComponents={subComponents}
+      subComponents={[
+        ...(info ? [{ type: 'info', value: info }] : []),
+        ...subComponents,
+      ]}
     />
   );
 };
@@ -58,8 +62,7 @@ const FormItem = ({
 FormItem.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  defaultValueIndex: PropTypes.number,
+  info: PropTypes.string,
   subComponents: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };

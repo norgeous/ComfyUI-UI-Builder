@@ -31,6 +31,7 @@ const InputSelect = ({
   defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
+  subComponents = [],
   error = undefined,
 }) => {
   const ref = useRef();
@@ -54,6 +55,7 @@ const InputSelect = ({
         isLoading={isLoading}
         showReset={showReset}
         handleReset={handleReset}
+        subComponents={subComponents}
       />
       <Select
         id={id}
@@ -87,6 +89,7 @@ InputSelect.propTypes = {
   defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
+  subComponents: PropTypes.array,
 };
 
 export default InputSelect;

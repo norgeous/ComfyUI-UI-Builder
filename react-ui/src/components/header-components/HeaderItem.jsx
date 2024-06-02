@@ -29,11 +29,11 @@ const HeaderItem = ({
 
   return (
     <SubComponent
+      value={value}
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       inputRef={inputRef}
       id={id}
       label={label}
-      value={value}
       updateFormState={updateFormState}
     />
   );
