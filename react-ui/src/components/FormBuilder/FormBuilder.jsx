@@ -25,7 +25,6 @@ const GridItem = styled.div`
 
 const FormBuilder = () => {
   const { formConfig } = useContext(FormContext);
-
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
   return (
