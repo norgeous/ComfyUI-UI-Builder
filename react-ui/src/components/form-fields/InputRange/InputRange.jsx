@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import deepEqual from '@/utils/deepEqual';
 import InputWrapper from '../InputWrapper';
@@ -9,16 +9,62 @@ import ErrorText from '../ErrorText';
 const RangeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3.33333333px;
+  gap: 3.33333333px; /* to make it the same height as a text input */
+`;
+
+const track = css`
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: var(--input-bg);
+  border: 1px solid var(--input-outline);
+  border-radius: 100px;
+`;
+
+const thumb = css`
+  border: none;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: var(--input-outline);
+  cursor: pointer;
+`;
+
+const progress = css`
+  background: var(--input-outline);
+  height: 8px;
 `;
 
 const Input = styled.input.attrs({ type: 'range' })`
   display: block;
   width: 100%;
+  height: 20px;
   min-width: 100%;
   box-sizing: border-box;
   accent-color: var(--input-outline);
   margin: 0;
+  background: transparent;
+  &::-moz-range-track {
+    ${track}
+  }
+  &::-moz-range-progress {
+    ${progress}
+  }
+  &::-moz-range-thumb {
+    ${thumb}
+  }
+
+  -webkit-appearance: none;
+  &::-webkit-slider-runnable-track {
+    ${track}
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -6px;
+    ${thumb}
+  }
 `;
 
 const Sublabels = styled.div`
