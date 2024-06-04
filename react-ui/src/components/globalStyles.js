@@ -5,12 +5,9 @@ export const Theme1Style = createGlobalStyle`
     /* --primary: #088; */
     /* --lightness1: 100%;
     --chroma1: 50%; */
-    --hue1: 2000;
+    --hue1: 180;
     --saturation1: 100%;
-    
-    --hue2: calc(var(--hue1) + 90);
-    --saturation2: 100%;
-    
+        
     --radius: 4px;
   }
 `;

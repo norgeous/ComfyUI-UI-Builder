@@ -10,6 +10,7 @@ const HeaderCheckbox = ({
 }) => (
   <Tooltip text={label}>
     <Checkbox
+      aria-label={label}
       checked={value}
       onChange={event => updateFormState({ [id]: event.target.checked })}
     />

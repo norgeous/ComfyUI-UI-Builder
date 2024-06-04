@@ -16,6 +16,7 @@ const Shuffle = ({
   return (
     <Tooltip text={label}>
       <InputHeaderButton
+        aria-label={label}
         onClick={() => {
           const newSeed = Math.floor(Math.random() * 10 ** 10);
           updateFormState({ [targetId]: newSeed, ...onChange });

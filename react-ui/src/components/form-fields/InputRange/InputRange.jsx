@@ -58,10 +58,7 @@ const Pip = styled.div`
   justify-content: center;
   text-align: center;
   cursor: pointer;
-`;
-
-const PipInner = styled.div`
-  position: absolute;
+  width: 0;
 `;
 
 const InputRange = ({
@@ -119,7 +116,7 @@ const InputRange = ({
           {isPips &&
             options?.map(({ label: pipLabel, value: pipValue }) => (
               <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
-                <PipInner>{pipLabel}</PipInner>
+                <span>{pipLabel}</span>
               </Pip>
             ))}
           {!isPips && maxLabel && (
