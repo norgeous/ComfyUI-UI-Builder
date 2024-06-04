@@ -25,9 +25,8 @@ const Sublabels = styled.div`
   padding: ${({ $isPips }) => ($isPips ? '0 10px' : 0)};
   display: flex;
   justify-content: space-between;
-  gap: 4px;
   font-size: 12px;
-  opacity: 0.5;
+  opacity: 0.6;
 `;
 
 const Sublabel = styled.div`
@@ -55,11 +54,14 @@ const SublabelText = styled.div`
 `;
 
 const Pip = styled.div`
-  width: 0;
   display: flex;
   justify-content: center;
   text-align: center;
   cursor: pointer;
+`;
+
+const PipInner = styled.div`
+  position: absolute;
 `;
 
 const InputRange = ({
@@ -100,6 +102,7 @@ const InputRange = ({
       <RangeWrapper>
         <Input
           {...props} // eslint-disable-line react/jsx-props-no-spreading
+          id={id}
           min="0"
           step="1"
           max={options.length - 1}
@@ -116,7 +119,7 @@ const InputRange = ({
           {isPips &&
             options?.map(({ label: pipLabel, value: pipValue }) => (
               <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
-                {pipLabel}
+                <PipInner>{pipLabel}</PipInner>
               </Pip>
             ))}
           {!isPips && maxLabel && (
