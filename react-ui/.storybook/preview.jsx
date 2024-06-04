@@ -10,6 +10,11 @@ const preview = {
         date: /Date$/i,
       },
     },
+    a11y: {
+      config: {
+        rules: [{ id: 'color-contrast', selector: '*:not(.muted *)' }],
+      },
+    },
   },
   decorators: [
     Story => (

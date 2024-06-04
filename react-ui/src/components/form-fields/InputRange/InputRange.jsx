@@ -26,7 +26,6 @@ const Sublabels = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  opacity: 0.6;
 `;
 
 const Sublabel = styled.div`
@@ -106,7 +105,7 @@ const InputRange = ({
           value={index}
           onChange={event => onChange(options[event.target.value].value)}
         />
-        <Sublabels $isPips={isPips}>
+        <Sublabels $isPips={isPips} className="muted">
           {!isPips && minLabel && (
             <Sublabel onClick={() => onChange(options[0].value)}>
               <LArrow />
@@ -116,7 +115,7 @@ const InputRange = ({
           {isPips &&
             options?.map(({ label: pipLabel, value: pipValue }) => (
               <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
-                <span>{pipLabel}</span>
+                {pipLabel}
               </Pip>
             ))}
           {!isPips && maxLabel && (

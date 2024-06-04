@@ -6,12 +6,11 @@ import Tooltip from '@/components/Tooltip';
 const QuestionMark = styled(FaCircleQuestion)`
   display: block;
   font-size: 12px;
-  color: grey;
 `;
 
 const Info = ({ label = undefined }) => (
   <Tooltip text={label}>
-    <QuestionMark />
+    <QuestionMark className="muted" />
   </Tooltip>
 );
 

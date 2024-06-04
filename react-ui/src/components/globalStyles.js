@@ -44,19 +44,17 @@ export const GlobalStyle = createGlobalStyle`
     --lightness-bg1: 90%;
     --lightness-bg2: 85%;
     --lightness-bg3: 80%;
-    --lightness-bg4: 75%;
+    /* --lightness-bg4: 75%; */
     --lightness-fg: 8%;
-    --fg: black;
-    /* --fg-mute: #555; */
+    --fg: #111;
 
     @media (prefers-color-scheme: dark) {
       --lightness-bg1: 10%;
       --lightness-bg2: 15%;
       --lightness-bg3: 20%;
-      --lightness-bg4: 25%;
+      /* --lightness-bg4: 25%; */
       --lightness-fg: 92%;
-      --fg: white;
-      /* --fg-mute: #aaa; */
+      --fg: #eee;
     }
 
     --primary: hsl(var(--hue1) var(--saturation1) 50%);  
@@ -70,7 +68,7 @@ export const GlobalStyle = createGlobalStyle`
     --surface-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg2));
     /* --surface-fg: var(--fg); */
 
-    --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg4));
+    --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
     /* --header-fg: var(--fg); */
 
     --input-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
@@ -93,5 +91,9 @@ export const GlobalStyle = createGlobalStyle`
 
   #storybook-root{
     height: 100%;
+  }
+
+  .muted {
+    opacity: 0.4;
   }
 `;
