@@ -15,7 +15,7 @@ const ResetIcon = styled(FaArrowRotateLeft)`
 
 const Reset = ({ onClick = () => {} }) => (
   <ResetTooltip text="Reset">
-    <InputHeaderButton onClick={onClick}>
+    <InputHeaderButton aria-label="Reset" onClick={onClick}>
       <ResetIcon />
     </InputHeaderButton>
   </ResetTooltip>
