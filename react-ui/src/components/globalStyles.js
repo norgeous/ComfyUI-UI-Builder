@@ -2,12 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    /* --primary: #088; */
-    /* --lightness1: 100%;
-    --chroma1: 50%; */
-    --hue1: 180;
-    --saturation1: 100%;
-        
+    --hue1: 270;
+    --saturation1: 50%;
     --radius: 4px;
   }
 `;
@@ -44,7 +40,6 @@ export const GlobalStyle = createGlobalStyle`
     --lightness-bg1: 90%;
     --lightness-bg2: 85%;
     --lightness-bg3: 80%;
-    /* --lightness-bg4: 75%; */
     --lightness-fg: 8%;
     --fg: #111;
 
@@ -52,27 +47,19 @@ export const GlobalStyle = createGlobalStyle`
       --lightness-bg1: 10%;
       --lightness-bg2: 15%;
       --lightness-bg3: 20%;
-      /* --lightness-bg4: 25%; */
       --lightness-fg: 92%;
       --fg: #eee;
     }
 
     --primary: hsl(var(--hue1) var(--saturation1) 50%);  
-
-    /* --fg: hsl(var(--hue2) var(--saturation2) var(--lightness-fg)); */
-    /* --fg-mute: hsl(var(--hue2) 10% 75%); */
+    --input-outline: var(--primary);
+    --input-border: var(--primary);
 
     --page-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg1));
-
-    
     --surface-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg2));
-    /* --surface-fg: var(--fg); */
-
     --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
-    /* --header-fg: var(--fg); */
-
     --input-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
-    /* --input-fg: var(--fg); */
+    
   }
 
   body {

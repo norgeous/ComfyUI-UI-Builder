@@ -13,8 +13,10 @@ const InputHeaderButton = styled.button`
     outline-offset: 2px;
     border-radius: var(--radius);
   }
-  opacity: 0.5; // TODO: dont use opacity it affects the outline opacity also
-  &:hover {
+  > * {
+    opacity: 0.5;
+  }
+  &:hover > * {
     opacity: 1;
   }
 `;
