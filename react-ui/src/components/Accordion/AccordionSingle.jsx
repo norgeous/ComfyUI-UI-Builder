@@ -19,6 +19,10 @@ const AccordionHeader = styled.button`
   padding: 12px;
   cursor: pointer;
   border: none;
+  &:focus-visible {
+    outline: 2px solid var(--input-outline);
+    outline-offset: -2px;
+  }
 `;
 
 const HeaderText = styled.div`
