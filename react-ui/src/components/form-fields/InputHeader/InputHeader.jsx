@@ -1,3 +1,4 @@
+import Info from '@/components/header-components/Info';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -22,7 +23,7 @@ const InputHeader = ({
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
-    {info}
+    {info && <Info text={info} />}
     {children}
   </Wrap>
 );
@@ -30,6 +31,7 @@ const InputHeader = ({
 InputHeader.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
+  info: PropTypes.string,
   children: PropTypes.node,
 };
 
