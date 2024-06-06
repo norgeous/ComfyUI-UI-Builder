@@ -17,10 +17,12 @@ const Label = styled.label`
 const InputHeader = ({
   id = undefined,
   label = undefined,
+  info = undefined,
   children = null,
 }) => (
   <Wrap>
     {label && <Label htmlFor={id}>{label}</Label>}
+    {info}
     {children}
   </Wrap>
 );

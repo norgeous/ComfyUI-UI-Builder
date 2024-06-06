@@ -4,7 +4,6 @@ import deepEqual from '@/utils/deepEqual';
 import Checkbox from '@/components/Checkbox/Checkbox';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
-import ErrorText from '../ErrorText';
 
 const Label = styled.label`
   display: block;
@@ -19,14 +18,13 @@ const Label = styled.label`
 `;
 
 const InputCheckbox = ({
+  id = undefined,
   label = undefined,
-  isLoading = false,
+  info = undefined,
   value = undefined,
   onChange = () => {},
   options = [],
-  error = undefined,
-  subComponents = [],
-  ...props
+  children = null,
 }) => {
   const index = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
@@ -36,14 +34,11 @@ const InputCheckbox = ({
 
   return (
     <InputWrapper>
-      <InputHeader
-        label={label}
-        isLoading={isLoading}
-        subComponents={subComponents}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {children} hello {info}
+      </InputHeader>
       <Label>
         <Checkbox
-          {...props} // eslint-disable-line react/jsx-props-no-spreading
           checked={Boolean(index)}
           onChange={event =>
             onChange(options[Number(event.currentTarget.checked)].value)
@@ -51,13 +46,14 @@ const InputCheckbox = ({
         />{' '}
         {checkboxLabel}
       </Label>
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };
 
 InputCheckbox.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
+  info: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -66,9 +62,7 @@ InputCheckbox.propTypes = {
   ),
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
-  error: PropTypes.string,
-  isLoading: PropTypes.bool,
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputCheckbox;

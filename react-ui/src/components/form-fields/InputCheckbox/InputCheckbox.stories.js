@@ -37,7 +37,5 @@ export const Checkbox = {
         },
       },
     ],
-    error: 'ERR!',
-    isLoading: false,
   },
 };

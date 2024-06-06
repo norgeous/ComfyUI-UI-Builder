@@ -12,6 +12,7 @@ export const File = {
   args: {
     id: 'demo',
     label: 'My InputFile Label',
+    info: 'help text',
     defaultValue: 'https://placehold.co/600x400',
     options: [
       { label: 'Option 1', value: 'https://placehold.co/600x400' },
@@ -20,8 +21,5 @@ export const File = {
       { label: 'Option X', value: `/view?type=input&filename=filename.jpg` },
     ],
     onFileUpload: fn(),
-    isLoading: false,
-    error: 'ERR!',
-    info: 'help text',
   },
 };
