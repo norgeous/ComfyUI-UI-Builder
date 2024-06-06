@@ -22,6 +22,7 @@ const useVosk = ({
   modelBaseUrl = `${window.parent.location.pathname}vosk-models/`,
   language = 'English',
 } = {}) => {
+  const [targetId, setTargetId] = useState(undefined);
   const [unmutedId, setUnmutedId] = useState(undefined);
 
   const [loading, setLoading] = useState(false);
@@ -75,8 +76,12 @@ const useVosk = ({
   const tail = simpleOutput.split(' ').slice(-25).join(' ');
 
   return {
+    targetId,
     unmutedId,
-    setUnmutedId,
+    setUnmutedId: id => {
+      setTargetId(id);
+      setUnmutedId(id);
+    },
     loading,
     error,
     vosk,
