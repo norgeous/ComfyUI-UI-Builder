@@ -1,12 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import deepEqual from '@/utils/deepEqual';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
-import Reset from '@/components/header-components/Reset';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
-import ErrorText from '../ErrorText';
 
 const Textarea = styled.textarea`
   display: block;
@@ -38,16 +35,12 @@ const InputTextarea = ({
   id = undefined,
   label = undefined,
   info = undefined,
-  defaultValue = undefined,
   value = undefined,
   onChange = () => {},
-  error = undefined,
   children = null,
   ...props
 }) => {
   const ref = useRef();
-
-  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
   // handle ctrl+up and ctrl+down to control word or phrase weight inside prompt input
   // work needed for edge cases (TODO):
@@ -111,7 +104,6 @@ const InputTextarea = ({
         <FaArrowUp size={12} />
         <FaArrowDown size={12} />
         {children}
-        {showReset && <Reset onClick={() => onChange(defaultValue)} />}
       </InputHeader>
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
@@ -122,7 +114,6 @@ const InputTextarea = ({
         onKeyDown={preventer}
         onKeyUp={specialControls}
       />
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };
@@ -132,9 +123,6 @@ InputTextarea.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   onChange: PropTypes.func,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string,
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   children: PropTypes.node,
 };

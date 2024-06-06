@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { useRef, useState } from 'react';
 import InputRefContext from '@/contexts/InputRefContext';
 import Reset from '@/components/header-components/Reset';
@@ -12,9 +13,7 @@ const SimpleStateDecorator = (Story, { args }) => {
   const [value, setValue] = useState(initialValue);
 
   const onChange = newValue => {
-    console.log(
-      `SimpleStateDecorator: ${id} > onChange: ${JSON.stringify(newValue)}`,
-    );
+    action('onChange')(newValue);
     setValue(newValue);
   };
 
