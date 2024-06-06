@@ -32,7 +32,7 @@ const useVosk = ({
   const [partial, setPartial] = useState('');
 
   // do nothing on mounting, waiting until unmutedId becomes set
-  // one unmutedId is set, load vosk
+  // once unmutedId is set, load vosk
   useEffect(() => {
     if (unmutedId && !vosk) {
       setError('');
