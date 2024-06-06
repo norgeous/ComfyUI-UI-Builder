@@ -1,8 +1,6 @@
 import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import InputRefContext from '@/contexts/InputRefContext';
-import deepEqual from '@/utils/deepEqual';
 import SpeechContext from '@/contexts/SpeechContext';
 import Spinner from '@/components/Spinner';
 import Microphone from '@/components/header-components/Microphone';
@@ -52,14 +50,14 @@ const InputTextarea = ({
             onClick={() => setUnmutedId(id)}
           />
         )}
-        {vosk && isMuted && (
+        {loading && <Spinner />}
+        {vosk && (
           <Microphone
             label={isMuted ? 'Mute' : 'Unmute'}
             isMuted={isMuted}
             onClick={() => setUnmutedId(isMuted ? id : undefined)}
           />
         )}
-        {loading && <Spinner />}
         {children}
       </InputHeader>
       {error && <ErrorText>{error}</ErrorText>}
