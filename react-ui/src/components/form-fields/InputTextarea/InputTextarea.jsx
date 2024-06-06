@@ -38,7 +38,6 @@ const InputTextarea = ({
   value = undefined,
   onChange = () => {},
   children = null,
-  ...props
 }) => {
   const ref = useRef();
 
@@ -106,7 +105,6 @@ const InputTextarea = ({
         {children}
       </InputHeader>
       <Textarea
-        {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
         id={id}
         value={value}
