@@ -3,9 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  padding: 0;
 `;
 
 const Pre = styled.pre`
