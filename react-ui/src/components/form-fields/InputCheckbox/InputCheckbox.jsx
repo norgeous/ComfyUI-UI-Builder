@@ -35,7 +35,7 @@ const InputCheckbox = ({
   return (
     <InputWrapper>
       <InputHeader id={id} label={label} info={info}>
-        {children} hello {info}
+        {children}
       </InputHeader>
       <Label>
         <Checkbox
