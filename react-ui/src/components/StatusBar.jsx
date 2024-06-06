@@ -14,15 +14,15 @@ const Bar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 5px;
+  gap: 4px;
   background: rgb(34, 42, 48);
-  padding: 5px;
+  padding: 4px;
 `;
 
 const Buggers = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 4px;
 `;
 
 const StatusBar = () => {
