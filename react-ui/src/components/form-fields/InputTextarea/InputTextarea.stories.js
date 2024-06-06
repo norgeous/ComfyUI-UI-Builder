@@ -13,6 +13,5 @@ export const Textarea = {
     label: 'My InputTextarea Label',
     info: 'info text',
     defaultValue: '',
-    error: 'ERR!',
   },
 };

@@ -1,6 +1,6 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Reset from '@/components/header-components/Reset';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -30,29 +30,17 @@ const InputText = ({
   value = undefined,
   onChange = () => {},
   error = undefined,
-  subComponents = [],
+  children = null,
 }) => {
-  const ref = useRef();
-
-  const handleReset = () => {
-    ref.current.focus();
-    onChange(defaultValue);
-  };
-
   const showReset = value !== defaultValue;
 
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        info={info}
-        showReset={showReset}
-        handleReset={handleReset}
-        subComponents={subComponents}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {children}
+        {showReset && <Reset onClick={() => onChange(defaultValue)} />}
+      </InputHeader>
       <Input
-        ref={ref}
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
@@ -80,7 +68,7 @@ InputText.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func,
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputText;

@@ -35,6 +35,7 @@ const InputTextarea = ({
   defaultValue = undefined,
   value = undefined,
   onChange = () => {},
+  children = null,
   ...props
 }) => {
   const { unmutedId, setUnmutedId, loading, error, vosk, tail } =
@@ -66,6 +67,7 @@ const InputTextarea = ({
         )}
         {loading && <Spinner />}
         {showReset && <Reset onClick={() => onChange(defaultValue)} />}
+        {children}
       </InputHeader>
       {error && <ErrorText>{error}</ErrorText>}
       <Textarea
@@ -86,6 +88,7 @@ InputTextarea.propTypes = {
   isLoading: PropTypes.bool,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  children: PropTypes.node,
 };
 
 export default InputTextarea;

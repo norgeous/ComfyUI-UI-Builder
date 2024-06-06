@@ -13,8 +13,6 @@ export const Number = {
     label: 'My InputNumber Label',
     info: 'info text',
     defaultValue: 69,
-    isLoading: false,
-    error: 'ERR!',
     min: 42,
     max: 420,
   },

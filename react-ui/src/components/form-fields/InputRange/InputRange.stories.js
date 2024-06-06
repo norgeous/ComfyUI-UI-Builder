@@ -11,6 +11,7 @@ export const Pips = {
   args: {
     id: 'demo',
     label: 'My InputRange Label',
+    info: 'help text',
     defaultValueIndex: 5,
     options: [
       { label: '1', value: 1 },
@@ -22,9 +23,6 @@ export const Pips = {
       { label: 'Y', value: { testname: 'bazquux' } },
       { label: 'Z', value: { testname: 'foobar', second: 'bazquux' } },
     ],
-    isLoading: false,
-    error: 'ERR!',
-    info: 'help text',
   },
 };
 
@@ -32,6 +30,7 @@ export const Dual = {
   args: {
     id: 'demo',
     label: 'My InputRange Label',
+    info: 'help text',
     defaultValueIndex: 2,
     options: [
       { label: 'Smallest Value', value: 1 },
@@ -39,8 +38,5 @@ export const Dual = {
       { value: { testname: 'foobar' } },
       { label: 'Largest Value', value: { second: 'bazquux' } },
     ],
-    isLoading: false,
-    error: 'ERR!',
-    info: 'help text',
   },
 };

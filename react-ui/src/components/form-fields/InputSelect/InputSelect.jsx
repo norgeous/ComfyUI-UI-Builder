@@ -1,10 +1,10 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
+import { useContext } from 'react';
+import InputRefContext from '@/contexts/InputRefContext';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
-import ErrorText from '../ErrorText';
 
 const Select = styled.select`
   display: block;
@@ -26,40 +26,25 @@ const InputSelect = ({
   id = undefined,
   label = undefined,
   info = undefined,
-  isLoading = false,
   options = [],
-  defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
-  subComponents = [],
-  error = undefined,
+  children = null,
 }) => {
-  const ref = useRef();
+  const ref = useContext(InputRefContext);
+
   const index = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
   );
 
-  const handleReset = () => {
-    ref.current.focus();
-    onChange(options[defaultValueIndex].value);
-  };
-
-  const showReset = index !== defaultValueIndex;
-
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        info={info}
-        isLoading={isLoading}
-        showReset={showReset}
-        handleReset={handleReset}
-        subComponents={subComponents}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {children}
+      </InputHeader>
       <Select
-        id={id}
         ref={ref}
+        id={id}
         value={index}
         onChange={event => onChange(options[event.target.value].value)}
       >
@@ -69,7 +54,6 @@ const InputSelect = ({
           </option>
         ))}
       </Select>
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };
@@ -78,18 +62,15 @@ InputSelect.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputSelect;

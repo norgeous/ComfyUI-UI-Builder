@@ -14,6 +14,14 @@
       "colSpan": 2
     },
     {
+      "group": "Prompt",
+      "id": "negativePrompt",
+      "label": "Negative Prompt",
+      "type": "speech",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
       "group": "Generation Params",
       "id": "size",
       "label": "Size",
@@ -40,23 +48,7 @@
       "label": "Seed",
       "type": "number",
       "defaultValue": 0,
-      "min": 0,
-      "subComponents": [
-        {
-          "id": "enableSeedRandomisation",
-          "label": "Randomise",
-          "type": "checkbox",
-          "defaultValue": false
-        },
-        {
-          "id": "shuffle",
-          "label": "Shuffle",
-          "type": "shuffle",
-          "targetId": "seed",
-          "onChangeData": { "enableSeedRandomisation": false }
-        }
-      ],
-      "onChangeData": { "enableSeedRandomisation": false }
+      "min": 0
     }
   ],
   "adapterConfig": [

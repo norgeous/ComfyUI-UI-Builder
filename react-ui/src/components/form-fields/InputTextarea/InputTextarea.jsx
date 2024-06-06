@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
-// import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
+import Reset from '@/components/header-components/Reset';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -25,6 +26,14 @@ const Textarea = styled.textarea`
   resize: vertical;
 `;
 
+// prevent ctrl+up moving to start of input
+// prevent ctrl+down moving to end of input
+const preventer = event => {
+  if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
+    event.preventDefault();
+  }
+};
+
 const InputTextarea = ({
   id = undefined,
   label = undefined,
@@ -33,12 +42,10 @@ const InputTextarea = ({
   value = undefined,
   onChange = () => {},
   error = undefined,
-  subComponents = [],
+  children = null,
   ...props
 }) => {
   const ref = useRef();
-
-  const handleReset = () => onChange(defaultValue);
 
   const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
@@ -98,30 +105,14 @@ const InputTextarea = ({
     }
   };
 
-  // prevent ctrl+up moving to start of input
-  // prevent ctrl+down moving to end of input
-  const preventer = event => {
-    if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
-      event.preventDefault();
-    }
-  };
-
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        info={info}
-        showReset={showReset}
-        handleReset={handleReset}
-        subComponents={subComponents}
-        // children={
-        //   <>
-        //     <FaArrowUp size={12} />
-        //     <FaArrowDown size={12} />
-        //   </>
-        // }
-      />
+      <InputHeader id={id} label={label} info={info}>
+        <FaArrowUp size={12} />
+        <FaArrowDown size={12} />
+        {children}
+        {showReset && <Reset onClick={() => onChange(defaultValue)} />}
+      </InputHeader>
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
@@ -145,7 +136,7 @@ InputTextarea.propTypes = {
   error: PropTypes.string,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputTextarea;

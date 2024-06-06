@@ -12,6 +12,7 @@ import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
+import Reset from '../header-components/Reset';
 
 const components = {
   select: InputSelect,
@@ -27,12 +28,12 @@ const components = {
 const FormItem = ({
   type = undefined,
   id = undefined,
+  label = undefined,
   info = undefined,
   defaultValue = undefined,
   value = undefined,
   onChange = () => {},
   onChangeData = {},
-  subComponents = [],
   ...props
 }) => {
   const ref = useRef();
@@ -59,16 +60,13 @@ const FormItem = ({
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         type={type}
+        label={label}
+        info={info}
         value={stateValue}
         onChange={handleChange}
-        subComponents={[
-          ...(info ? [{ id: 'info', type: 'info', label: info }] : []),
-          ...subComponents, // from json
-          ...(showReset
-            ? [{ id: 'reset', type: 'reset', onClick: handleReset }]
-            : []),
-        ]}
-      />
+      >
+        {showReset && <Reset onClick={handleReset} />}
+      </Component>
     </InputRefContext.Provider>
   );
 };
@@ -76,10 +74,10 @@ const FormItem = ({
 FormItem.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
+  label: PropTypes.string,
   info: PropTypes.string,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  subComponents: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.func,
   onChangeData: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };

@@ -21,6 +21,5 @@ export const Text = {
       'Option 6',
     ],
     defaultValue: '',
-    error: 'ERR!',
   },
 };
