@@ -34,9 +34,10 @@ const InputTextarea = ({
   onChange = () => {},
   children = null,
 }) => {
-  const { unmutedId, setUnmutedId, loading, error, vosk, tail } =
+  const { targetId, unmutedId, setUnmutedId, loading, error, vosk, tail } =
     useContext(SpeechContext);
 
+  const isTarget = targetId === id;
   const isMuted = unmutedId !== id;
 
   useEffect(() => onChange(tail), [tail]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -50,7 +51,10 @@ const InputTextarea = ({
             onClick={() => setUnmutedId(id)}
           />
         )}
-        {!vosk && loading && <Spinner />}
+        {!vosk && loading && isTarget && <Spinner />}
+        {!vosk && loading && !isTarget && (
+          <Microphone label="loading elsewhere" />
+        )}
         {vosk && (
           <Microphone
             label={isMuted ? 'Mute' : 'Unmute'}
@@ -60,7 +64,7 @@ const InputTextarea = ({
         )}
         {children}
       </InputHeader>
-      {error && <ErrorText>{error}</ErrorText>}
+      {error && isTarget && <ErrorText>{error}</ErrorText>}
       <Textarea
         id={id}
         value={value}
