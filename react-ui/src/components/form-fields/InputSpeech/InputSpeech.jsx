@@ -56,9 +56,7 @@ const InputTextarea = ({
           <Microphone
             label={isMuted ? 'Mute' : 'Unmute'}
             isMuted={isMuted}
-            onClick={
-              isMuted ? () => setUnmutedId(id) : () => setUnmutedId(undefined)
-            }
+            onClick={() => setUnmutedId(isMuted ? id : undefined)}
           />
         )}
         {loading && <Spinner />}
