@@ -36,6 +36,7 @@ const useVosk = ({
   useEffect(() => {
     if (unmutedId && !vosk) {
       setError('');
+      setTargetId(unmutedId); // save it for later, so we can tell where to put the error message when multiple on same page
       setLoading(true);
       const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
       initVosk({ modelUrl })
@@ -49,6 +50,7 @@ const useVosk = ({
           setVosk(newVosk);
         })
         .catch(e => {
+          console.error(e);
           setError(e.message);
           setUnmutedId(undefined);
         })
@@ -78,10 +80,7 @@ const useVosk = ({
   return {
     targetId,
     unmutedId,
-    setUnmutedId: id => {
-      setTargetId(id);
-      setUnmutedId(id);
-    },
+    setUnmutedId,
     loading,
     error,
     vosk,
