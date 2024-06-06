@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { Children, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
@@ -25,31 +25,24 @@ const Input = styled.input.attrs({ type: 'number' })`
 const InputNumber = ({
   id = undefined,
   label = undefined,
+  info = undefined,
   value = undefined,
   onChange = () => {},
-  error = undefined,
-  isLoading = false,
-  subComponents = [],
-  ...props
+  children = null,
 }) => {
   const ref = useContext(InputRefContext);
 
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        isLoading={isLoading}
-        subComponents={subComponents}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {children}
+      </InputHeader>
       <Input
-        {...props} // eslint-disable-line react/jsx-props-no-spreading
         ref={ref}
         id={id}
         value={value}
         onChange={event => onChange(Number(event.target.value))}
       />
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };
@@ -57,11 +50,10 @@ const InputNumber = ({
 InputNumber.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  error: PropTypes.string,
+  info: PropTypes.string,
   value: PropTypes.number,
   onChange: PropTypes.func,
-  isLoading: PropTypes.bool,
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputNumber;
