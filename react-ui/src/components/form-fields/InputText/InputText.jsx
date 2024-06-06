@@ -56,9 +56,9 @@ const InputText = ({
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
-        list={`${id}-list`}
+        list={options.length ? `${id}-list` : undefined}
       />
-      {options && (
+      {options.length && (
         <datalist id={`${id}-list`}>
           {options.map(option => (
             <option key={option} aria-label={option} value={option} />
