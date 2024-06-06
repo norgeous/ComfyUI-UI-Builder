@@ -1,9 +1,9 @@
+import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
-import { useContext, useEffect } from 'react';
 import SpeechContext from '@/contexts/SpeechContext';
-import Reset from '@/components/header-components/Reset';
 import Spinner from '@/components/Spinner';
 import Microphone from '@/components/header-components/Microphone';
 import InputWrapper from '../InputWrapper';
@@ -32,11 +32,9 @@ const InputTextarea = ({
   id = undefined,
   label = undefined,
   info = undefined,
-  defaultValue = undefined,
   value = undefined,
   onChange = () => {},
   children = null,
-  ...props
 }) => {
   const { unmutedId, setUnmutedId, loading, error, vosk, tail } =
     useContext(SpeechContext);
@@ -44,8 +42,6 @@ const InputTextarea = ({
   const isMuted = unmutedId !== id;
 
   useEffect(() => onChange(tail), [tail]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
 
   return (
     <InputWrapper>
@@ -66,12 +62,10 @@ const InputTextarea = ({
           />
         )}
         {loading && <Spinner />}
-        {showReset && <Reset onClick={() => onChange(defaultValue)} />}
         {children}
       </InputHeader>
       {error && <ErrorText>{error}</ErrorText>}
       <Textarea
-        {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
@@ -85,8 +79,6 @@ InputTextarea.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   onChange: PropTypes.func,
-  isLoading: PropTypes.bool,
-  defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   children: PropTypes.node,
 };
