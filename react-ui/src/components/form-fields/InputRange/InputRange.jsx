@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
+import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
-import ErrorText from '../ErrorText';
 
 const RangeWrapper = styled.div`
   display: flex;
@@ -111,14 +112,12 @@ const InputRange = ({
   label = undefined,
   info = undefined,
   options = [],
-  defaultValueIndex = undefined,
   value = undefined,
   onChange = () => {},
-  isLoading = false,
-  error = undefined,
-  subComponents = [],
-  ...props
+  children = null,
 }) => {
+  const ref = useContext(InputRefContext);
+
   const index = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
   );
@@ -126,24 +125,19 @@ const InputRange = ({
   const minLabel = options[0].label;
   const maxLabel = options[options.length - 1].label;
 
-  const handleReset = () => onChange(options[defaultValueIndex].value);
-
-  const showReset = index !== defaultValueIndex;
+  const handleChange = newValue => {
+    ref.current.focus();
+    onChange(newValue);
+  };
 
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        info={info}
-        isLoading={isLoading}
-        showReset={showReset}
-        handleReset={handleReset}
-        subComponents={subComponents}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {children}
+      </InputHeader>
       <RangeWrapper>
         <Input
-          {...props} // eslint-disable-line react/jsx-props-no-spreading
+          ref={ref}
           id={id}
           min="0"
           step="1"
@@ -153,20 +147,20 @@ const InputRange = ({
         />
         <Sublabels $isPips={isPips} className="muted">
           {!isPips && minLabel && (
-            <Sublabel onClick={() => onChange(options[0].value)}>
+            <Sublabel onClick={() => handleChange(options[0].value)}>
               <LArrow />
               <SublabelText>{minLabel}</SublabelText>
             </Sublabel>
           )}
           {isPips &&
             options?.map(({ label: pipLabel, value: pipValue }) => (
-              <Pip key={pipLabel} onClick={() => onChange(pipValue)}>
+              <Pip key={pipLabel} onClick={() => handleChange(pipValue)}>
                 {pipLabel}
               </Pip>
             ))}
           {!isPips && maxLabel && (
             <Sublabel
-              onClick={() => onChange(options[options.length - 1].value)}
+              onClick={() => handleChange(options[options.length - 1].value)}
             >
               <SublabelText>{maxLabel}</SublabelText>
               <RArrow />
@@ -174,7 +168,6 @@ const InputRange = ({
           )}
         </Sublabels>
       </RangeWrapper>
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };
@@ -183,18 +176,15 @@ InputRange.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  error: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     }),
   ),
-  defaultValueIndex: PropTypes.number,
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
-  isLoading: PropTypes.bool,
-  subComponents: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default InputRange;

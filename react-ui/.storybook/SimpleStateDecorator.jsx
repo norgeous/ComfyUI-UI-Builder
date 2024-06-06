@@ -2,10 +2,11 @@ import { useRef, useState } from 'react';
 import InputRefContext from '@/contexts/InputRefContext';
 import Reset from '@/components/header-components/Reset';
 
-const SimpleStateDecorator = (Story, context) => {
+const SimpleStateDecorator = (Story, { args }) => {
   const ref = useRef();
 
-  const { id, defaultValue, defaultValueIndex, options } = context.args;
+  const { id, defaultValue, defaultValueIndex, options } = args;
+
   const initialValue = defaultValue ?? options[defaultValueIndex].value;
 
   const [value, setValue] = useState(initialValue);
@@ -13,7 +14,6 @@ const SimpleStateDecorator = (Story, context) => {
   const onChange = newValue => {
     console.log(
       `SimpleStateDecorator: ${id} > onChange: ${JSON.stringify(newValue)}`,
-      ref,
     );
     setValue(newValue);
   };
@@ -29,7 +29,14 @@ const SimpleStateDecorator = (Story, context) => {
 
   return (
     <InputRefContext.Provider value={ref}>
-      <Story args={{ ...context.args, value, onChange, children }} />
+      <Story
+        args={{
+          ...args,
+          value,
+          onChange,
+          children,
+        }}
+      />
     </InputRefContext.Provider>
   );
 };

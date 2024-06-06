@@ -9,7 +9,7 @@ export default {
 
 export const Pips = {
   args: {
-    id: 'demo',
+    id: 'demo-range-pips',
     label: 'My InputRange Label',
     info: 'help text',
     defaultValueIndex: 5,
@@ -28,7 +28,7 @@ export const Pips = {
 
 export const Dual = {
   args: {
-    id: 'demo',
+    id: 'demo-range-dual',
     label: 'My InputRange Label',
     info: 'help text',
     defaultValueIndex: 2,
