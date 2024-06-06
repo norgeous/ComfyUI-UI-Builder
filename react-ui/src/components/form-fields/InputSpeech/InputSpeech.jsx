@@ -32,11 +32,10 @@ const InputTextarea = ({
   defaultValue = undefined,
   value = undefined,
   onChange = () => {},
-  error = undefined,
   ...props
 }) => {
   const [isMuted, setIsMuted] = useState(true);
-  const { loading, vosk, tail, setEnabled } = useContext(SpeechContext);
+  const { loading, error, vosk, tail, setEnabled } = useContext(SpeechContext);
   const handleMic = () => {
     setEnabled(true);
     const newIsMuted = !isMuted;
@@ -80,7 +79,6 @@ InputTextarea.propTypes = {
   info: PropTypes.string,
   onChange: PropTypes.func,
   isLoading: PropTypes.bool,
-  error: PropTypes.string,
   defaultValue: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
 };

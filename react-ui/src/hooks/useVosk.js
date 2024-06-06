@@ -20,10 +20,12 @@ const modelFileName = {
 
 const useVosk = ({
   enabled = false,
+  setEnabled = () => {},
   modelBaseUrl = `${window.parent.location.pathname}vosk-models/`,
   language = 'English',
 }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [vosk, setVosk] = useState(undefined);
   const [utterances, setUtterances] = useState([]);
   const [partial, setPartial] = useState('');
@@ -31,16 +33,22 @@ const useVosk = ({
   useEffect(() => {
     if (enabled) {
       (async () => {
+        setError('');
         setLoading(true);
         const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
-        const newVosk = await initVosk({ modelUrl });
-        newVosk.recognizer.on('result', ({ result }) => {
-          setUtterances(utt => [...utt, result]);
-        });
-        newVosk.recognizer.on('partialresult', ({ result }) => {
-          setPartial(result.partial);
-        });
-        setVosk(newVosk);
+        try {
+          const newVosk = await initVosk({ modelUrl });
+          newVosk.recognizer.on('result', ({ result }) => {
+            setUtterances(utt => [...utt, result]);
+          });
+          newVosk.recognizer.on('partialresult', ({ result }) => {
+            setPartial(result.partial);
+          });
+          setVosk(newVosk);
+        } catch (e) {
+          setError(e.message);
+          setEnabled(false);
+        }
         setLoading(false);
       })();
     }
@@ -69,6 +77,7 @@ const useVosk = ({
 
   return {
     loading,
+    error,
     vosk,
     // utterances,
     // partial,
