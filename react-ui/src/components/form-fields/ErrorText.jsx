@@ -8,12 +8,13 @@ const Box = styled.div`
   display: flex;
   gap: 4px;
   align-items: center;
-  padding: 8px;
+  padding: 6px 8px;
   border-radius: 4px;
 `;
 
 const WarningIcon = styled(FaTriangleExclamation)`
   display: block;
+  flex-shrink: 0;
 `;
 
 const ErrorText = ({ children }) => (
