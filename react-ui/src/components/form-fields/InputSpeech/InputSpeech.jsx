@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import SpeechContext from '@/contexts/SpeechContext';
+import Reset from '@/components/header-components/Reset';
+import Spinner from '@/components/Spinner';
+import Microphone from '@/components/header-components/Microphone';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
@@ -34,41 +37,43 @@ const InputTextarea = ({
   onChange = () => {},
   ...props
 }) => {
-  const [isMuted, setIsMuted] = useState(true);
-  const { loading, error, vosk, tail, setEnabled } = useContext(SpeechContext);
-  const handleMic = () => {
-    setEnabled(true);
-    const newIsMuted = !isMuted;
-    setIsMuted(newIsMuted);
-    vosk?.setMute(newIsMuted);
-  };
+  const { unmutedId, setUnmutedId, loading, error, vosk, tail } =
+    useContext(SpeechContext);
 
-  const handleReset = () => onChange(defaultValue);
-
-  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+  const isMuted = unmutedId !== id;
 
   useEffect(() => onChange(tail), [tail]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const showReset = value !== defaultValue && !deepEqual(value, defaultValue);
+
   return (
     <InputWrapper>
-      <InputHeader
-        id={id}
-        label={label}
-        info={info}
-        showReset={showReset}
-        handleReset={handleReset}
-        isLoading={loading}
-        showMic
-        isMuted={isMuted}
-        onClickMic={handleMic}
-      />
+      <InputHeader id={id} label={label} info={info}>
+        {!vosk && !loading && (
+          <Microphone
+            label="Enable Speech Capture"
+            onClick={() => setUnmutedId(id)}
+          />
+        )}
+        {vosk && isMuted && (
+          <Microphone
+            label={isMuted ? 'Mute' : 'Unmute'}
+            isMuted={isMuted}
+            onClick={
+              isMuted ? () => setUnmutedId(id) : () => setUnmutedId(undefined)
+            }
+          />
+        )}
+        {loading && <Spinner />}
+        {showReset && <Reset onClick={() => onChange(defaultValue)} />}
+      </InputHeader>
+      {error && <ErrorText>{error}</ErrorText>}
       <Textarea
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
       />
-      {error && <ErrorText>{error}</ErrorText>}
     </InputWrapper>
   );
 };

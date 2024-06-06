@@ -16,10 +16,11 @@ const MicMuted = styled(FaMicrophoneSlash)`
 
 const Microphone = ({
   isLoading = false,
-  isMuted = true,
+  isMuted = false,
+  label = '',
   onClick = () => {},
 }) => (
-  <Tooltip text="Capture speech">
+  <Tooltip text={label}>
     <InputHeaderButton disabled={isLoading} onClick={onClick}>
       {isMuted ? <MicMuted /> : <MicOpen />}
     </InputHeaderButton>
@@ -28,6 +29,7 @@ const Microphone = ({
 
 Microphone.propTypes = {
   isLoading: PropTypes.bool,
+  label: PropTypes.string,
   isMuted: PropTypes.bool,
   onClick: PropTypes.func,
 };

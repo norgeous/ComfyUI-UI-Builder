@@ -19,25 +19,26 @@ const modelFileName = {
 };
 
 const useVosk = ({
-  enabled = false,
-  setEnabled = () => {},
   modelBaseUrl = `${window.parent.location.pathname}vosk-models/`,
   language = 'English',
-}) => {
+} = {}) => {
+  const [unmutedId, setUnmutedId] = useState(undefined);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [vosk, setVosk] = useState(undefined);
   const [utterances, setUtterances] = useState([]);
   const [partial, setPartial] = useState('');
 
+  // do nothing on mounting, waiting until unmutedId becomes set
+  // one unmutedId is set, load vosk
   useEffect(() => {
-    if (enabled) {
-      (async () => {
-        setError('');
-        setLoading(true);
-        const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
-        try {
-          const newVosk = await initVosk({ modelUrl });
+    if (unmutedId && !vosk) {
+      setError('');
+      setLoading(true);
+      const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
+      initVosk({ modelUrl })
+        .then(newVosk => {
           newVosk.recognizer.on('result', ({ result }) => {
             setUtterances(utt => [...utt, result]);
           });
@@ -45,16 +46,14 @@ const useVosk = ({
             setPartial(result.partial);
           });
           setVosk(newVosk);
-        } catch (e) {
+        })
+        .catch(e => {
           setError(e.message);
-          setEnabled(false);
-        }
-        setLoading(false);
-      })();
+          setUnmutedId(undefined);
+        })
+        .finally(() => setLoading(false));
     }
-
-    return () => vosk?.destroy();
-  }, [enabled]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [unmutedId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const simpleUtterances = utterances
     .reduce(
@@ -76,6 +75,8 @@ const useVosk = ({
   const tail = simpleOutput.split(' ').slice(-25).join(' ');
 
   return {
+    unmutedId,
+    setUnmutedId,
     loading,
     error,
     vosk,
