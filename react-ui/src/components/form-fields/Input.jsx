@@ -12,6 +12,7 @@ import InputCheckbox from './InputCheckbox/InputCheckbox';
 import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
+import InputSeed from './InputSeed/InputSeed';
 import Reset from '../header-components/Reset';
 
 const components = {
@@ -23,6 +24,7 @@ const components = {
   selectckpt: InputSelectCkpt,
   fileupload: InputFile,
   speech: InputSpeech,
+  seed: InputSeed,
 };
 
 const FormItem = ({
