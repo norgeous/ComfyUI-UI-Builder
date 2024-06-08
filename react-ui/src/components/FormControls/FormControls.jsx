@@ -60,7 +60,7 @@ const FormControls = () => {
 
   return (
     <Container>
-      {isGenerating && !auto && (
+      {isGenerating && (
         <Button
           onClick={executeInterrupt}
           // loading={interruptLoading}
