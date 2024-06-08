@@ -1,5 +1,8 @@
 import { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { FaArrowRotateLeft } from 'react-icons/fa6';
+
 import FormContext from '@/contexts/FormContext';
 import InputRefContext from '@/contexts/InputRefContext';
 
@@ -13,7 +16,16 @@ import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
 import InputSeed from './InputSeed/InputSeed';
-import Reset from '../header-components/Reset';
+import HeaderButton from '../header-components/Button';
+
+const ResetButton = styled(HeaderButton)`
+  margin-left: auto;
+`;
+
+const ResetIcon = styled(FaArrowRotateLeft)`
+  display: block;
+  font-size: 12px;
+`;
 
 const components = {
   select: InputSelect,
@@ -67,7 +79,11 @@ const FormItem = ({
         value={stateValue}
         onChange={handleChange}
       >
-        {showReset && <Reset onClick={handleReset} />}
+        {showReset && (
+          <ResetButton label="Reset" onClick={handleReset}>
+            <ResetIcon />
+          </ResetButton>
+        )}
       </Component>
     </InputRefContext.Provider>
   );
