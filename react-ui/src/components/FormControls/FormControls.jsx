@@ -77,6 +77,7 @@ const FormControls = () => {
     <Container>
       {isGenerating && (
         <ButtonsArea>
+          <Spinner />
           <QueueTitle>Job 1 (running...)</QueueTitle>
           <Tooltip text="Interrupt Job 1">
             <Button onClick={executeInterrupt}>
