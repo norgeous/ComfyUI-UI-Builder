@@ -66,6 +66,10 @@
     {
       "destination": "EmptyLatentImage > height",
       "actions": "get:height"
+    },
+    {
+      "destination": "SamplerCustom > noise_seed",
+      "actions": "get:seed"
     }
   ]
 }
