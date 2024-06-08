@@ -15,14 +15,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
-      - name: Install and Build 🔧
+      - name: Install 🧰
         run: |
-          node -v
-          npm -v
           npm ci
           npm i @rollup/rollup-linux-x64-gnu
+      - name: Build 🔧
+        run: |
           npm run sb:build
       - name: Deploy 🚀
         uses: actions/deploy-pages@v4
         with:
-          foler: storybook-static
+          folder: storybook-static
