@@ -5,7 +5,6 @@ const Btn = styled.button.attrs({ type: 'button' })`
   background: var(--input-outline);
   margin: 0;
   border: none;
-  display: block;
   ${({ $wide }) =>
     $wide &&
     css`
