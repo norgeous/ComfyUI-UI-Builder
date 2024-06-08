@@ -327,7 +327,7 @@
     },
     {
       "destination": "RescaleCFG > mode",
-      "actions": ["num:4", ["if:isLcm", "num:0"]]
+      "actions": ["num:4", ["if:enableRescaleCfg", "num:0"]]
     }
   ]
 }
