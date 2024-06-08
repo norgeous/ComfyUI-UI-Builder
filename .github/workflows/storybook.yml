@@ -22,7 +22,13 @@ jobs:
       - name: Build 🔧
         run: |
           npm run sb:build
-      - name: Deploy 🚀
-        uses: actions/deploy-pages@v4
+          ls -l storybook-static
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
-          folder: storybook-static
+          name: 'github-pages'
+          path: 'storybook-static'
+      # - name: Deploy 🚀
+      #   uses: actions/deploy-pages@v4
+      #   with:
+      #     folder: storybook-static
