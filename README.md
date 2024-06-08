@@ -1,8 +1,10 @@
 # UI Builder
 
+Alternative configurable UI overlay for Comfy UI
+
 ## Implements
 
-- Comfy Dungeon
+- [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - Basic SDXL
 - a few more [WIP]
 
