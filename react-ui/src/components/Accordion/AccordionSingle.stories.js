@@ -1,11 +1,11 @@
 import component from './AccordionSingle';
 
 export default {
-  title: 'Layout/Accordion/Single',
+  title: 'Accordion',
   component,
 };
 
-export const Single = {
+export const Accordion = {
   args: {
     title: 'Accordion Single Title',
     children: 'Accordion Contents',

@@ -1,7 +1,7 @@
 import component from './FormControls';
 
 export default {
-  title: 'Form/FormControls',
+  title: 'FormControls',
   component,
 };
 

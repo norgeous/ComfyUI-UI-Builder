@@ -15,5 +15,8 @@ const config = {
     autodocs: 'tag',
   },
   staticDirs: ['../public'],
+  core: {
+    disableTelemetry: true, // 👈 Disables telemetry
+  },
 };
 export default config;
