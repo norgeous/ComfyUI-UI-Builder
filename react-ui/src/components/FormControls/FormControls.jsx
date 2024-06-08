@@ -37,12 +37,11 @@ const FormControls = () => {
   const [auto, setAuto] = useState(false);
 
   const {
-    // formState,
     formState: { positivePrompt, enableSeedRandomisation },
     updateFormState,
   } = useContext(FormContext);
 
-  const { promptError, executePrompt, executeInterrupt } =
+  const { executePrompt, promptLoading, promptError, executeInterrupt } =
     useContext(AppContext);
 
   const handleClick = () => {
@@ -60,23 +59,23 @@ const FormControls = () => {
 
   return (
     <Container>
+      {isGenerating && !auto && (
+        <Button
+          onClick={executeInterrupt}
+          // loading={interruptLoading}
+        >
+          Interrupt Job 1
+        </Button>
+      )}
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <ButtonsArea>
         {!auto && (
           <Button
             wide
             onClick={handleClick}
-            // loading={promptLoading || isGenerating}
+            loading={promptLoading || isGenerating}
           >
             Generate
-          </Button>
-        )}
-        {isGenerating && !auto && (
-          <Button
-            onClick={executeInterrupt}
-            // loading={interruptLoading}
-          >
-            Interrupt
           </Button>
         )}
         <Tooltip text="Automatic Generation" wide={auto}>
