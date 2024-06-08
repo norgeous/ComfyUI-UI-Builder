@@ -73,7 +73,6 @@ const InputTextarea = ({
         {vosk && (
           <HeaderButton
             label={isMuted ? 'Mute' : 'Unmute'}
-            isMuted={isMuted}
             onClick={() => setUnmutedId(isMuted ? id : undefined)}
           >
             {isMuted ? <MicMuted /> : <MicOpen />}
