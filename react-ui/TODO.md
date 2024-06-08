@@ -12,6 +12,7 @@
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
 - up and down arrows for prompt weights are shown, but do nothing
+- pressing escape when in fullscreen does not unfullscreen the html element
 
 ## Next
 
