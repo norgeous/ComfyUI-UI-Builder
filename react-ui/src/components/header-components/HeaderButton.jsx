@@ -7,9 +7,14 @@ const HeaderButton = ({
   label = undefined,
   onClick = () => {},
   children = null,
+  ...props
 }) => (
   <Tooltip className={className} text={label}>
-    <InputHeaderButton aria-label={label} onClick={onClick}>
+    <InputHeaderButton
+      aria-label={label}
+      onClick={onClick}
+      {...props} // eslint-disable-line react/jsx-props-no-spreading
+    >
       {children}
     </InputHeaderButton>
   </Tooltip>

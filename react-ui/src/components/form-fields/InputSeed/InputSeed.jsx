@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaShuffle } from 'react-icons/fa6';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderCheckbox from '@/components/header-components/Checkbox';
-import HeaderButton from '@/components/header-components/Button';
+import HeaderCheckbox from '@/components/header-components/HeaderCheckbox';
+import HeaderButton from '@/components/header-components/HeaderButton';
 import InputNumber from '../InputNumber/InputNumber';
 
 const ShuffleIcon = styled(FaShuffle)`

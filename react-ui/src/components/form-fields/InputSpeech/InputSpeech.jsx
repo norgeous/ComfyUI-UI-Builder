@@ -1,12 +1,23 @@
 import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa6';
 import SpeechContext from '@/contexts/SpeechContext';
 import Spinner from '@/components/Spinner';
-import Microphone from '@/components/header-components/Microphone';
+import HeaderButton from '@/components/header-components/HeaderButton';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 import ErrorText from '../ErrorText';
+
+const MicOpen = styled(FaMicrophone)`
+  display: block;
+  font-size: 12px;
+`;
+
+const MicMuted = styled(FaMicrophoneSlash)`
+  display: block;
+  font-size: 12px;
+`;
 
 const Textarea = styled.textarea`
   display: block;
@@ -46,21 +57,27 @@ const InputTextarea = ({
     <InputWrapper>
       <InputHeader id={id} label={label} info={info}>
         {!vosk && !loading && (
-          <Microphone
+          <HeaderButton
             label="Enable Speech Capture"
             onClick={() => setUnmutedId(id)}
-          />
+          >
+            <MicOpen />
+          </HeaderButton>
         )}
         {!vosk && loading && isTarget && <Spinner />}
         {!vosk && loading && !isTarget && (
-          <Microphone label="loading elsewhere" />
+          <HeaderButton label="loading elsewhere">
+            <MicOpen />
+          </HeaderButton>
         )}
         {vosk && (
-          <Microphone
+          <HeaderButton
             label={isMuted ? 'Mute' : 'Unmute'}
             isMuted={isMuted}
             onClick={() => setUnmutedId(isMuted ? id : undefined)}
-          />
+          >
+            {isMuted ? <MicMuted /> : <MicOpen />}
+          </HeaderButton>
         )}
         {children}
       </InputHeader>

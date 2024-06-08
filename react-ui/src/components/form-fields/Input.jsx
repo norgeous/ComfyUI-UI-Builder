@@ -16,7 +16,7 @@ import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
 import InputSeed from './InputSeed/InputSeed';
-import HeaderButton from '../header-components/Button';
+import HeaderButton from '../header-components/HeaderButton';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;
