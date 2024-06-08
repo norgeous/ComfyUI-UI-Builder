@@ -31,15 +31,13 @@ const initVosk = async ({ modelUrl }) => {
   // define setMute function
   const setMute = isMuted => {
     if (isMuted) {
-      micStream?.unpipe(audioStreamer);
-      micStream?.pipe(audioBucket);
+      micStream.unpipe(audioStreamer);
+      micStream.pipe(audioBucket);
     } else {
-      micStream?.unpipe(audioBucket);
-      micStream?.pipe(audioStreamer);
+      micStream.unpipe(audioBucket);
+      micStream.pipe(audioStreamer);
     }
   };
-  // unmute the mic
-  setMute(false);
 
   // define destroy function
   const destroy = () => {
@@ -49,7 +47,7 @@ const initVosk = async ({ modelUrl }) => {
     model.terminate();
   };
 
-  // return "vosk"
+  // returns "vosk"
   return {
     recognizer,
     setMute,

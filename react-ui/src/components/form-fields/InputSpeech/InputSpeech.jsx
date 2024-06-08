@@ -49,9 +49,11 @@ const InputTextarea = ({
     useContext(SpeechContext);
 
   const isTarget = targetId === id;
-  const isMuted = unmutedId !== id;
+  const isUnmuted = unmutedId === id;
 
-  useEffect(() => onChange(tail), [tail]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (isTarget) onChange(tail);
+  }, [tail]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <InputWrapper>
@@ -72,12 +74,13 @@ const InputTextarea = ({
         )}
         {vosk && (
           <HeaderButton
-            label={isMuted ? 'Mute' : 'Unmute'}
-            onClick={() => setUnmutedId(isMuted ? id : undefined)}
+            label={isUnmuted ? 'Unmuted' : 'Muted'}
+            onClick={() => setUnmutedId(isUnmuted ? undefined : id)}
           >
-            {isMuted ? <MicMuted /> : <MicOpen />}
+            {isUnmuted ? <MicOpen /> : <MicMuted />}
           </HeaderButton>
         )}
+        {isTarget && 'X'}
         {children}
       </InputHeader>
       {error && isTarget && <ErrorText>{error}</ErrorText>}

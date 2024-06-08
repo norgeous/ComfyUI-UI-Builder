@@ -58,6 +58,13 @@ const useVosk = ({
     }
   }, [unmutedId]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  useEffect(() => {
+    if (vosk) {
+      vosk.setMute(!unmutedId);
+    }
+  }, [vosk, unmutedId]);
+  // eslint-disable-line react-hooks/exhaustive-deps
+
   const simpleUtterances = utterances
     .reduce(
       (acc1, { result }) =>
