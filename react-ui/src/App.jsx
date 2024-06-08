@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import WsContext from './contexts/WsContext';
 import { Page, Main, Controls, Content, Scrollable } from './components/Layout';
-import UiSelector from './components/UiSelector';
+import FormHeader from './components/FormHeader/FormHeader';
 import FormBuilder from './components/FormBuilder/FormBuilder';
 import FormControls from './components/FormControls/FormControls';
 import Progress from './components/Progress/Progress';
@@ -28,7 +28,7 @@ const App = () => {
         </Main>
 
         <Controls>
-          <UiSelector />
+          <FormHeader />
           <Scrollable>
             <FormBuilder />
           </Scrollable>
