@@ -23,12 +23,12 @@ jobs:
         run: |
           npm run sb:build
           ls -l storybook-static
-      - name: Upload artifact
+      - name: Upload artifact 🆙
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          name: 'github-pages'
+          name: 'storybook-static-artifact'
           path: 'storybook-static'
-      # - name: Deploy 🚀
-      #   uses: actions/deploy-pages@v4
-      #   with:
-      #     folder: storybook-static
+      - name: Deploy 🚀
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: storybook-static-artifact
