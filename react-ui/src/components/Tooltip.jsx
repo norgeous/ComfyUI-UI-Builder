@@ -11,8 +11,8 @@ import {
 } from '@floating-ui/react';
 
 const TooltipWrap = styled.span`
-  ${({ wide }) =>
-    wide &&
+  ${({ $wide }) =>
+    $wide &&
     css`
       width: 100%;
     `}
@@ -62,7 +62,7 @@ const Tooltip = ({
     <>
       <TooltipWrap
         className={className}
-        wide={wide}
+        $wide={wide}
         ref={refs.setReference}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}

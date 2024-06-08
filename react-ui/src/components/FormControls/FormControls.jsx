@@ -89,12 +89,12 @@ const FormControls = () => {
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <ButtonsArea>
         {!auto && (
-          <Button wide onClick={handleClick}>
+          <Button $wide onClick={handleClick}>
             {promptLoading ? <Spinner /> : 'Generate'}
           </Button>
         )}
-        <Tooltip text="Automatic Generation" wide={auto}>
-          <Button onClick={() => setAuto(!auto)} wide={auto}>
+        <Tooltip text="Automatic Generation" $wide={auto}>
+          <Button onClick={() => setAuto(!auto)} $wide={auto}>
             {auto ? <PauseIcon /> : <PlayIcon />}
           </Button>
         </Tooltip>

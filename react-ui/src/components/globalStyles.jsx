@@ -13,7 +13,6 @@ export const Theme1Style = createGlobalStyle`
 export const Theme = () => {
   const { config } = useContext(ConfigsContext);
 
-  console.log(config.configData.theme);
   return <Theme1Style hue={config.configData.theme?.hue} />;
 };
 

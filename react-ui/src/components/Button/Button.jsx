@@ -6,8 +6,8 @@ const Btn = styled.button.attrs({ type: 'button' })`
   margin: 0;
   border: none;
   display: block;
-  ${({ wide }) =>
-    wide &&
+  ${({ $wide }) =>
+    $wide &&
     css`
       width: 100%;
     `}
