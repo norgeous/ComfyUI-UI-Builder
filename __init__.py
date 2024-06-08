@@ -1,10 +1,11 @@
-from .dungeon import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
-
 import os
 import server
 from aiohttp import web
 
-WEBROOT = os.path.join(os.path.dirname(os.path.realpath(__file__)), "react-ui/dist")
+
+NODE_CLASS_MAPPINGS = {}
+NODE_DISPLAY_NAME_MAPPINGS = {}
+WEBROOT = os.path.join(os.path.dirname(os.path.realpath(__file__)), "dist")
 
 @server.PromptServer.instance.routes.get("/ui/")
 def dungeon_entrance(request):

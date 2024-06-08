@@ -1,15 +1,15 @@
 # UI Builder
 
-Alternative configurable UI overlay for Comfy UI
+Alternative configurable React UI overlay for Comfy UI
 
 ## What is this?
 
-its not quite ready for you to look yet
+its not quite ready for you to look at yet
 
-got a few things [todo](./react-ui/TODO.md)
+got a few things [todo](./TODO.md)
 
 ## Implements
 
 - [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - Basic SDXL
-- a few more [WIP]
+- [a few more](./src/config/) [WIP]
