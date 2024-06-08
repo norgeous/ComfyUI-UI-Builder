@@ -6,5 +6,7 @@ export default {
 };
 
 export const Progress = {
-  args: { value: 0.5 },
+  args: {
+    value: 0.5,
+  },
 };
