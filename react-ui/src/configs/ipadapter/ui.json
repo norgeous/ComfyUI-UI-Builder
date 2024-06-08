@@ -96,8 +96,8 @@
       "group": "Generation Params",
       "id": "seed",
       "label": "Seed",
-      "type": "number",
-      "defaultValue": 0,
+      "type": "seed",
+      "defaultValue": { "seed": 0, "random": false },
       "min": 0
     },
     {

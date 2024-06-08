@@ -746,8 +746,8 @@
       "group": "Generation Params",
       "id": "seed",
       "label": "Seed",
-      "type": "number",
-      "defaultValue": 9482966021,
+      "type": "seed",
+      "defaultValue": { "seed": 9482966021, "random": false },
       "min": 0
     }
   ],
