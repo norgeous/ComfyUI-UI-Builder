@@ -20,7 +20,9 @@
   - build storybook to github pages
   - build vite dist to main (default) branch, move code to develop branch
 - combine InputTextarea, InputSpeech and InputText into a single type of input
-- README redo, how to make UIB workflows
+- README redo
+  - how to make UIB workflows and example links
+  - screenshots of UIB
 - image input (for ipa)
   - example UI
 - interrupt and queue features
@@ -28,7 +30,7 @@
 - ws reconnect / error message overlay or toaster
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
-- adjust weight with CTRL+UP or CTRL+DOWN
+- more work on adjust weight with CTRL+UP or CTRL+DOWN
 
 ## Future
 
