@@ -1,8 +1,8 @@
 {
-  "name": "SDXL Hyper 1 step",
+  "name": "SDXL Hyper 1 Step UNET",
   "version": "v0.0.0",
   "emoji": "🏃",
-  "description": "Fast SDXL image generation using Hyper 1 step unet",
+  "description": "Fast SDXL image generation using Hyper 1 Step UNET",
   "theme": {
     "hue": 60
   },

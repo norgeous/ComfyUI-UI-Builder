@@ -7,7 +7,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 
-import Debug from './Debug';
+import Debug from '../Debug';
 import StatusLight from './StatusLight';
 
 const Bar = styled.div`

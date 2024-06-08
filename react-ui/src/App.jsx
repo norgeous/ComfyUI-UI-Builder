@@ -5,7 +5,7 @@ import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder/FormBuilder';
 import FormControls from './components/FormControls/FormControls';
 import Progress from './components/Progress/Progress';
-import StatusBar from './components/StatusBar';
+import StatusBar from './components/StatusBar/StatusBar';
 import ImageGrid from './components/ImageGrid/ImageGrid';
 import { Theme } from './components/globalStyles';
 
@@ -17,7 +17,6 @@ const App = () => {
 
   return (
     <>
-      {/* <Theme1Style hue={100} /> */}
       <Theme />
       <Page>
         <Main>
