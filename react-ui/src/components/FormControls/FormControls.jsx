@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { FaPause, FaPlay, FaSkull } from 'react-icons/fa6';
 
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
-
-import { FaPause, FaPlay, FaSkull } from 'react-icons/fa6';
+import Spinner from '@/components/Spinner/Spinner';
 import Button from '../Button/Button';
 import ErrorText from '../form-fields/ErrorText';
 import Tooltip from '../Tooltip';
-import Spinner from '../Spinner';
 
 const Container = styled.div`
   padding: 8px;

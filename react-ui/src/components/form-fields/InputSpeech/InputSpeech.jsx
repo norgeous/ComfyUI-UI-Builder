@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa6';
 import SpeechContext from '@/contexts/SpeechContext';
-import Spinner from '@/components/Spinner';
+import Spinner from '@/components/Spinner/Spinner';
 import HeaderButton from '@/components/header-components/HeaderButton';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
