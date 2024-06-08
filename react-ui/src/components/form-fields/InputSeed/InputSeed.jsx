@@ -1,7 +1,16 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { FaShuffle } from 'react-icons/fa6';
+import InputRefContext from '@/contexts/InputRefContext';
 import HeaderCheckbox from '@/components/header-components/Checkbox';
-import Shuffle from '@/components/header-components/Shuffle';
+import HeaderButton from '@/components/header-components/Button';
 import InputNumber from '../InputNumber/InputNumber';
+
+const ShuffleIcon = styled(FaShuffle)`
+  display: block;
+  font-size: 12px;
+`;
 
 const InputSeed = ({
   value = undefined,
@@ -9,6 +18,7 @@ const InputSeed = ({
   children = null,
   ...props
 }) => {
+  const ref = useContext(InputRefContext);
   const { seed, random } = value;
 
   const handleChangeSeed = newValue => {
@@ -19,8 +29,10 @@ const InputSeed = ({
     onChange({ seed, random: newValue });
   };
 
-  const handleShuffle = newValue => {
-    onChange({ seed: newValue, random: false });
+  const handleShuffle = () => {
+    const newSeed = Math.floor(Math.random() * 10 ** 10);
+    onChange({ seed: newSeed, random: false });
+    ref.current?.focus();
   };
 
   return (
@@ -34,7 +46,9 @@ const InputSeed = ({
         value={random}
         onChange={handleChangeRandom}
       />
-      <Shuffle label="Shuffle" value={random} onClick={handleShuffle} />
+      <HeaderButton label="Shuffle" onClick={handleShuffle}>
+        <ShuffleIcon />
+      </HeaderButton>
       {children}
     </InputNumber>
   );
