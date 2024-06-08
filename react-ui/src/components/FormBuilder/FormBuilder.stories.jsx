@@ -1,7 +1,7 @@
 import component from './FormBuilder';
 
 export default {
-  title: 'Layout/FormBuilder',
+  title: 'Form/FormBuilder',
   component,
 };
 
