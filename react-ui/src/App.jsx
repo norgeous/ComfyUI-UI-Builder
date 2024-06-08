@@ -3,7 +3,7 @@ import WsContext from './contexts/WsContext';
 import { Page, Main, Controls, Content, Scrollable } from './components/Layout';
 import UiSelector from './components/UiSelector';
 import FormBuilder from './components/FormBuilder/FormBuilder';
-import FormControls from './components/FormControls';
+import FormControls from './components/FormControls/FormControls';
 import Progress from './components/Progress/Progress';
 import StatusBar from './components/StatusBar';
 import ImageGrid from './components/ImageGrid/ImageGrid';

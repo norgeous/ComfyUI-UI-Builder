@@ -5,9 +5,9 @@ import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
 
-import Button from './Button/Button';
-import ErrorText from './form-fields/ErrorText';
-import Input from './form-fields/Input';
+import Button from '../Button/Button';
+import ErrorText from '../form-fields/ErrorText';
+import Input from '../form-fields/Input';
 
 const ButtonsArea = styled.div`
   padding: 8px;
