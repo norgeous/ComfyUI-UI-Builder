@@ -9,7 +9,7 @@
       "group": "Prompt",
       "id": "positivePrompt",
       "label": "Positive Prompt",
-      "type": "textarea",
+      "type": "speech",
       "defaultValue": "",
       "colSpan": 2
     },
@@ -240,7 +240,7 @@
       "id": "enableRescaleCfg",
       "label": "Rescale CFG",
       "type": "checkbox",
-      "defaultValueIndex": 0,
+      "defaultValueIndex": 1,
       "options": [
         { "label": "On", "value": false },
         { "label": "On", "value": true }
