@@ -12,4 +12,4 @@ got a few things [todo](./TODO.md)
 
 - [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - Basic SDXL
-- [a few more](./src/config/) [WIP]
+- [a few more](./src/configs/) [WIP]
