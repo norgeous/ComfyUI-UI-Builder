@@ -115,6 +115,7 @@
         {
           "label": "LCM",
           "value": {
+            "isLcm": true,
             "baseSteps": 4,
             "stepMultiplier": 8,
             "cfg": 2.5,

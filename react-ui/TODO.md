@@ -15,6 +15,7 @@
 - up and down arrows for prompt weights are shown, but do nothing
 - pressing escape when in fullscreen does not unfullscreen the html element
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 
 ## Next
 
