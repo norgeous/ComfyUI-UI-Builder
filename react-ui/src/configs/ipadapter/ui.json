@@ -1,0 +1,332 @@
+{
+  "name": "IPAdapter SDXL [WIP]",
+  "version": "v0.0.0",
+  "emoji": "🩻",
+  "description": "[WIP] SDXL + IPAdapter",
+  "theme": {
+    "hue": 0
+  },
+  "tags": ["SDXL", "T2I"],
+  "formConfig": [
+    {
+      "group": "Prompt",
+      "id": "imagePrompt",
+      "label": "File test",
+      "type": "fileupload",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
+      "group": "Prompt",
+      "id": "positivePrompt",
+      "label": "Positive Prompt",
+      "type": "textarea",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
+      "group": "Prompt",
+      "id": "negativePrompt",
+      "label": "Negative Prompt",
+      "type": "textarea",
+      "defaultValue": "watermark, text",
+      "colSpan": 2
+    },
+    {
+      "group": "Generation Params",
+      "id": "ckpt",
+      "label": "Checkpoint",
+      "info": "Choose a SDXL checkpoint",
+      "type": "selectckpt",
+      "defaultValue": "xl",
+      "colSpan": 2
+    },
+    {
+      "group": "Generation Params",
+      "id": "quality",
+      "label": "Quality",
+      "type": "range",
+      "defaultValueIndex": 2,
+      "options": [
+        { "label": "Speed", "value": 0 },
+        { "value": 0.25 },
+        { "value": 0.5 },
+        { "value": 0.75 },
+        { "label": "Accuracy", "value": 1 }
+      ]
+    },
+    {
+      "group": "Generation Params",
+      "id": "batchSize",
+      "label": "Results per generation",
+      "type": "range",
+      "defaultValueIndex": 0,
+      "options": [
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 },
+        { "label": "3", "value": 3 },
+        { "label": "4", "value": 4 },
+        { "label": "6", "value": 6 },
+        { "label": "8", "value": 8 },
+        { "label": "9", "value": 9 },
+        { "label": "10", "value": 10 },
+        { "label": "12", "value": 12 },
+        { "label": "20", "value": 20 }
+      ]
+    },
+    {
+      "group": "Generation Params",
+      "id": "size",
+      "label": "Size",
+      "type": "select",
+      "defaultValueIndex": 0,
+      "options": [
+        {
+          "label": "1:1 Square",
+          "value": { "width": 1024, "height": 1024 }
+        },
+        {
+          "label": "16:9 Landscape",
+          "value": { "width": 1344, "height": 768 }
+        },
+        {
+          "label": "16:9 Portrait",
+          "value": { "width": 768, "height": 1344 }
+        }
+      ]
+    },
+    {
+      "group": "Generation Params",
+      "id": "seed",
+      "label": "Seed",
+      "type": "seed",
+      "defaultValue": { "seed": 1, "random": false },
+      "min": 0
+    },
+    {
+      "group": "Advanced",
+      "id": "accelerator",
+      "label": "Acceleration",
+      "info": "Faster generation with less steps, but can sacrifice quality",
+      "type": "select",
+      "defaultValueIndex": 0,
+      "options": [
+        {
+          "label": "none",
+          "value": {
+            "baseSteps": 20,
+            "stepMultiplier": 60,
+            "cfg": 6.5,
+            "lora": "",
+            "samplerName": "dpmpp_2m",
+            "scheduler": "exponential"
+          }
+        },
+        {
+          "label": "LCM",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 2.5,
+            "lora": "lcm-lora-sdxl.safetensors",
+            "samplerName": "lcm",
+            "scheduler": "simple"
+          }
+        },
+        {
+          "label": "TCD",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 2.5,
+            "lora": "TCD-SDXL-LoRA.safetensors",
+            "samplerName": "tcd",
+            "scheduler": "simple"
+          }
+        },
+        {
+          "label": "Lightning (2 steps)",
+          "value": {
+            "baseSteps": 1,
+            "stepMultiplier": 2,
+            "cfg": 1,
+            "lora": "sdxl_lightning_2step_lora.safetensors",
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
+          }
+        },
+        {
+          "label": "Lightning (4 steps)",
+          "value": {
+            "baseSteps": 2,
+            "stepMultiplier": 4,
+            "cfg": 1,
+            "lora": "sdxl_lightning_4step_lora.safetensors",
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
+          }
+        },
+        {
+          "label": "Lightning (8 steps)",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 1,
+            "lora": "sdxl_lightning_8step_lora.safetensors",
+            "samplerName": "euler",
+            "scheduler": "sgm_uniform"
+          }
+        },
+        {
+          "label": "Hyper (1 step)",
+          "value": {
+            "baseSteps": 1,
+            "stepMultiplier": 0,
+            "cfg": 1,
+            "lora": "Hyper-SDXL-1step-lora.safetensors",
+            "samplerName": "tcd",
+            "scheduler": "simple"
+          }
+        },
+        {
+          "label": "Hyper (2 steps)",
+          "value": {
+            "baseSteps": 1,
+            "stepMultiplier": 2,
+            "cfg": 1,
+            "lora": "Hyper-SDXL-2steps-lora.safetensors",
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
+          }
+        },
+        {
+          "label": "Hyper (4 steps)",
+          "value": {
+            "baseSteps": 2,
+            "stepMultiplier": 4,
+            "cfg": 1,
+            "lora": "Hyper-SDXL-4steps-lora.safetensors",
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
+          }
+        },
+        {
+          "label": "Hyper (8 steps)",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 1,
+            "lora": "Hyper-SDXL-8steps-lora.safetensors",
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
+          }
+        },
+        {
+          "label": "Hyper (8 steps) + CFG",
+          "value": {
+            "baseSteps": 4,
+            "stepMultiplier": 8,
+            "cfg": 5,
+            "lora": "Hyper-SDXL-8steps-CFG-lora.safetensors",
+            "samplerName": "ddim",
+            "scheduler": "ddim_uniform"
+          }
+        }
+      ]
+    },
+    {
+      "group": "Advanced",
+      "id": "enableRescaleCfg",
+      "label": "Rescale CFG",
+      "type": "checkbox",
+      "defaultValueIndex": 0,
+      "options": [
+        { "label": "On", "value": false },
+        { "label": "On", "value": true }
+      ]
+    }
+  ],
+  "adapterConfig": [
+    {
+      "destination": "CheckpointLoaderSimple > ckpt_name",
+      "actions": "get:ckpt"
+    },
+    {
+      "destination": "Positive Prompt > text",
+      "actions": "get:positivePrompt"
+    },
+    {
+      "destination": "Positive Prompt > width",
+      "actions": "get:width"
+    },
+    {
+      "destination": "Positive Prompt > height",
+      "actions": "get:height"
+    },
+    {
+      "destination": "Negative Prompt > text",
+      "actions": "get:negativePrompt"
+    },
+    {
+      "destination": "Negative Prompt > width",
+      "actions": "get:width"
+    },
+    {
+      "destination": "Negative Prompt > height",
+      "actions": "get:height"
+    },
+    {
+      "destination": "EmptyLatentImage > batch_size",
+      "actions": "get:batchSize"
+    },
+    {
+      "destination": "EmptyLatentImage > width",
+      "actions": "get:width"
+    },
+    {
+      "destination": "EmptyLatentImage > height",
+      "actions": "get:height"
+    },
+    {
+      "destination": "KSampler > seed",
+      "actions": "get:seed"
+    },
+    {
+      "destination": "KSampler > steps",
+      "actions": [
+        "get:quality",
+        "multiply:stepMultiplier",
+        "round",
+        "add:baseSteps"
+      ]
+    },
+    {
+      "destination": "KSampler > cfg",
+      "actions": "get:cfg"
+    },
+    {
+      "destination": "KSampler > sampler_name",
+      "actions": "get:samplerName"
+    },
+    {
+      "destination": "KSampler > scheduler",
+      "actions": "get:scheduler"
+    },
+    {
+      "destination": "LoraLoader > mode",
+      "actions": ["num:4", ["if:lora", "num:0"]]
+    },
+    {
+      "destination": "LoraLoader > lora_name",
+      "actions": ["get:lora", "findInLoraNames"]
+    },
+    {
+      "destination": "ModelSamplingDiscrete > mode",
+      "actions": ["num:4", ["if:isLcm", "num:0"]]
+    },
+    {
+      "destination": "RescaleCFG > mode",
+      "actions": ["num:4", ["if:isLcm", "num:0"]]
+    }
+  ]
+}

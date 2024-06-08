@@ -1,0 +1,75 @@
+{
+  "name": "SDXL Hyper 1 Step UNET",
+  "version": "v0.0.0",
+  "emoji": "🏃",
+  "description": "Fast SDXL image generation using Hyper 1 Step UNET",
+  "theme": {
+    "hue": 60
+  },
+  "tags": ["SDXL", "S2I"],
+  "formConfig": [
+    {
+      "group": "Prompt",
+      "id": "positivePrompt",
+      "label": "Positive Prompt",
+      "type": "speech",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
+      "group": "Prompt",
+      "id": "negativePrompt",
+      "label": "Negative Prompt",
+      "type": "speech",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
+      "group": "Generation Params",
+      "id": "size",
+      "label": "Size",
+      "type": "select",
+      "defaultValueIndex": 0,
+      "options": [
+        {
+          "label": "1:1 Square",
+          "value": { "width": 1024, "height": 1024 }
+        },
+        {
+          "label": "16:9 Landscape",
+          "value": { "width": 1344, "height": 768 }
+        },
+        {
+          "label": "16:9 Portrait",
+          "value": { "width": 768, "height": 1344 }
+        }
+      ]
+    },
+    {
+      "group": "Generation Params",
+      "id": "seed",
+      "label": "Seed",
+      "type": "seed",
+      "defaultValue": { "seed": 1, "random": false },
+      "min": 0
+    }
+  ],
+  "adapterConfig": [
+    {
+      "destination": "Positive Prompt > text",
+      "actions": "get:positivePrompt"
+    },
+    {
+      "destination": "EmptyLatentImage > width",
+      "actions": "get:width"
+    },
+    {
+      "destination": "EmptyLatentImage > height",
+      "actions": "get:height"
+    },
+    {
+      "destination": "SamplerCustom > noise_seed",
+      "actions": "get:seed"
+    }
+  ]
+}
