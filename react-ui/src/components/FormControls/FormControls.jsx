@@ -15,6 +15,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background: var(--surface-bg);
 `;
 
 const ButtonsArea = styled.div`

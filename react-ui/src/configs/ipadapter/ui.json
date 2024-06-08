@@ -2,7 +2,7 @@
   "name": "IPAdapter SDXL [WIP]",
   "version": "v0.0.0",
   "emoji": "🩻",
-  "description": "Basic SDXL with width / height controls",
+  "description": "[WIP] SDXL + IPAdapter",
   "tags": ["SDXL", "T2I"],
   "formConfig": [
     {
@@ -97,7 +97,7 @@
       "id": "seed",
       "label": "Seed",
       "type": "seed",
-      "defaultValue": { "seed": 0, "random": false },
+      "defaultValue": { "seed": 1, "random": false },
       "min": 0
     },
     {

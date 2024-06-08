@@ -3,7 +3,14 @@ import styled from 'styled-components';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import Select from './form-fields/InputSelect/InputSelect';
 
-const Header = styled.header``;
+const Header = styled.header`
+  background: var(--surface-bg);
+`;
+
+const Description = styled.header`
+  padding: 0 8px 8px;
+  font-size: 12px;
+`;
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);
@@ -32,6 +39,9 @@ const UiSelector = () => {
         value={value}
         onChange={handleChange}
       />
+      <Description className="muted">
+        {config.configData.description}
+      </Description>
     </Header>
   );
 };

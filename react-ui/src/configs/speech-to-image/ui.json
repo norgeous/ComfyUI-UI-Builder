@@ -2,7 +2,7 @@
   "name": "Speech to image [WIP]",
   "version": "v0.0.0",
   "emoji": "🎤",
-  "description": "voice input demo",
+  "description": "[WIP] Input prompt with voice, eventually this will be a part of InputTextarea / all prompts by default",
   "tags": ["SDXL", "S2I"],
   "formConfig": [
     {
@@ -47,7 +47,7 @@
       "id": "seed",
       "label": "Seed",
       "type": "seed",
-      "defaultValue": { "seed": 0, "random": false },
+      "defaultValue": { "seed": 1, "random": false },
       "min": 0
     }
   ],
