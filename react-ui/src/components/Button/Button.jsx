@@ -12,7 +12,7 @@ const Btn = styled.button.attrs({ type: 'button' })`
       width: 100%;
     `}
   border-radius: var(--radius);
-  padding: 8px 4px;
+  padding: 8px;
   cursor: pointer;
   display: flex;
   justify-content: center;
