@@ -6,7 +6,7 @@
 
 ## known bugs
 
-- seed doesnt randomise when using autogen
+- seed > randomise checkbox doesnt randomise
 - various problems with speech capture
   - fix how words are appended into prompt
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
