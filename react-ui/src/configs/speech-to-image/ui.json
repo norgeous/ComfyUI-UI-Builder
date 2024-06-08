@@ -3,6 +3,9 @@
   "version": "v0.0.0",
   "emoji": "🎤",
   "description": "[WIP] Input prompt with voice, eventually this will be a part of InputTextarea / all prompts by default",
+  "theme": {
+    "hue": 0
+  },
   "tags": ["SDXL", "S2I"],
   "formConfig": [
     {

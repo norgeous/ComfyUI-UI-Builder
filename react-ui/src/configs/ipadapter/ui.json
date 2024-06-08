@@ -3,6 +3,9 @@
   "version": "v0.0.0",
   "emoji": "🩻",
   "description": "[WIP] SDXL + IPAdapter",
+  "theme": {
+    "hue": 0
+  },
   "tags": ["SDXL", "T2I"],
   "formConfig": [
     {

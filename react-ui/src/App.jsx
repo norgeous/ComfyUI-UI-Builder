@@ -7,6 +7,7 @@ import FormControls from './components/FormControls/FormControls';
 import Progress from './components/Progress/Progress';
 import StatusBar from './components/StatusBar';
 import ImageGrid from './components/ImageGrid/ImageGrid';
+import { Theme } from './components/globalStyles';
 
 const App = () => {
   const { comfyUrl, progress, output } = useContext(WsContext);
@@ -15,23 +16,27 @@ const App = () => {
   );
 
   return (
-    <Page>
-      <Main>
-        <Progress value={progress} />
-        <Content>
-          <ImageGrid images={images} />
-        </Content>
-        <StatusBar />
-      </Main>
+    <>
+      {/* <Theme1Style hue={100} /> */}
+      <Theme />
+      <Page>
+        <Main>
+          <Progress value={progress} />
+          <Content>
+            <ImageGrid images={images} />
+          </Content>
+          <StatusBar />
+        </Main>
 
-      <Controls>
-        <UiSelector />
-        <Scrollable>
-          <FormBuilder />
-        </Scrollable>
-        <FormControls />
-      </Controls>
-    </Page>
+        <Controls>
+          <UiSelector />
+          <Scrollable>
+            <FormBuilder />
+          </Scrollable>
+          <FormControls />
+        </Controls>
+      </Page>
+    </>
   );
 };
 

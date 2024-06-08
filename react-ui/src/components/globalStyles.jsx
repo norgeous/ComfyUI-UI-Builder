@@ -1,12 +1,21 @@
+import ConfigsContext from '@/contexts/ConfigsContext';
+import { useContext } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    --hue1: 270;
+    --hue1: ${({ hue }) => hue ?? 270};
     --saturation1: 50%;
     --radius: 4px;
   }
 `;
+
+export const Theme = () => {
+  const { config } = useContext(ConfigsContext);
+
+  console.log(config.configData.theme);
+  return <Theme1Style hue={config.configData.theme?.hue} />;
+};
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -52,5 +61,17 @@ export const GlobalStyle = createGlobalStyle`
 
   .muted {
     opacity: 0.4;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
   }
 `;

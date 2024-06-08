@@ -3,6 +3,9 @@
   "version": "v0.2.1-uib",
   "emoji": "🧌",
   "description": "Build D&D Character Portraits",
+  "theme": {
+    "hue": 20
+  },
   "tags": ["D&D"],
   "formConfig": [
     {
