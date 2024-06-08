@@ -11,24 +11,23 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Checkout ⤵️
+      - name: ⤵️ Checkout
         uses: actions/checkout@v4
         with:
           ref: develop
-      - name: Install 🧰
+      - name: 🧰 NPM Install
         run: |
           npm ci
           npm i @rollup/rollup-linux-x64-gnu
-      - name: Build 🔧
+      - name: 🔨 Storybook Build
         run: |
           npm run sb:build
-          ls -l storybook-static
-      - name: Upload artifact 🆙
+      - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           name: 'storybook-static-artifact'
           path: 'storybook-static'
-      - name: Deploy 🚀
+      - name: 🚀 Deploy to Github oages
         uses: actions/deploy-pages@v4
         with:
           artifact_name: storybook-static-artifact
