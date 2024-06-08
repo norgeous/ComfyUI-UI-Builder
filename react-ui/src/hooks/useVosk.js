@@ -36,7 +36,6 @@ const useVosk = ({
   useEffect(() => {
     if (unmutedId && !vosk) {
       setError('');
-      setTargetId(unmutedId); // save it for later, so we can tell where to put the error message when multiple on same page
       setLoading(true);
       const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
       initVosk({ modelUrl })
@@ -58,12 +57,14 @@ const useVosk = ({
     }
   }, [unmutedId]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // save unmutedId for later, so we can tell where to put data when multiple instances are on same page
   useEffect(() => {
-    if (vosk) {
-      vosk.setMute(!unmutedId);
-    }
+    setTargetId(unmutedId);
+  }, [unmutedId]);
+
+  useEffect(() => {
+    vosk?.setMute(!unmutedId);
   }, [vosk, unmutedId]);
-  // eslint-disable-line react-hooks/exhaustive-deps
 
   const simpleUtterances = utterances
     .reduce(

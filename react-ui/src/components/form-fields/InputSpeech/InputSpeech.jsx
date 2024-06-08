@@ -80,7 +80,6 @@ const InputTextarea = ({
             {isUnmuted ? <MicOpen /> : <MicMuted />}
           </HeaderButton>
         )}
-        {isTarget && 'X'}
         {children}
       </InputHeader>
       {error && isTarget && <ErrorText>{error}</ErrorText>}
