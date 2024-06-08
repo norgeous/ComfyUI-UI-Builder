@@ -17,6 +17,7 @@ jobs:
           node -v
           npm -v
           npm ci
+          npm i @rollup/rollup-linux-x64-gnu
           npm run sb:build
       - name: Deploy 🚀
         uses: actions/deploy-pages@v4
