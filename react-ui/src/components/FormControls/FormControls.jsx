@@ -93,7 +93,7 @@ const FormControls = () => {
             {promptLoading ? <Spinner /> : 'Generate'}
           </Button>
         )}
-        <Tooltip text="Automatic Generation" $wide={auto}>
+        <Tooltip text="Automatic Generation" wide={auto}>
           <Button onClick={() => setAuto(!auto)} $wide={auto}>
             {auto ? <PauseIcon /> : <PlayIcon />}
           </Button>
