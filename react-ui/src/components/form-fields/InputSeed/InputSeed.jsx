@@ -1,27 +1,30 @@
+import HeaderCheckbox from '@/components/header-components/Checkbox';
+import Shuffle from '@/components/header-components/Shuffle';
 import InputNumber from '../InputNumber/InputNumber';
 
-const InputSeed = ({ value, ...props }) => {
-  console.log(props);
+const InputSeed = ({ value, onChange, ...props }) => {
   const { seed, random } = value;
+
+  const handleChangeSeed = newValue => {
+    onChange({ seed: newValue, random: false });
+  };
+
+  const handleChangeRandom = newValue => {
+    onChange({ seed, random: newValue });
+  };
+
+  const handleShuffle = newValue => {
+    onChange({ seed: newValue, random: false });
+  };
+
   return (
-    <InputNumber {...props} value={seed}>
-      i am seed
-      {/* "subComponents": [
-        {
-          "id": "enableSeedRandomisation",
-          "label": "Randomise",
-          "type": "checkbox",
-          "defaultValue": false
-        },
-        {
-          "id": "shuffle",
-          "label": "Shuffle",
-          "type": "shuffle",
-          "targetId": "seed",
-          "onChangeData": { "enableSeedRandomisation": false }
-        }
-      ],
-      "onChangeData": { "enableSeedRandomisation": false } */}
+    <InputNumber {...props} value={seed} onChange={handleChangeSeed}>
+      <HeaderCheckbox
+        label="Randomise"
+        value={random}
+        onChange={handleChangeRandom}
+      />
+      <Shuffle label="Shuffle" value={random} onClick={handleShuffle} />
     </InputNumber>
   );
 };

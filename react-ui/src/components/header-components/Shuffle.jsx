@@ -5,12 +5,7 @@ import InputRefContext from '@/contexts/InputRefContext';
 import Tooltip from '@/components/Tooltip';
 import InputHeaderButton from '../form-fields/InputHeaderButton/InputHeaderButton';
 
-const Shuffle = ({
-  label = undefined,
-  targetId = undefined,
-  updateFormState = () => {},
-  onChange = {},
-}) => {
+const Shuffle = ({ label = undefined, onClick = () => {} }) => {
   const ref = useContext(InputRefContext);
 
   return (
@@ -19,7 +14,7 @@ const Shuffle = ({
         aria-label={label}
         onClick={() => {
           const newSeed = Math.floor(Math.random() * 10 ** 10);
-          updateFormState({ [targetId]: newSeed, ...onChange });
+          onClick(newSeed);
           ref.current?.focus();
         }}
       >
@@ -31,9 +26,7 @@ const Shuffle = ({
 
 Shuffle.propTypes = {
   label: PropTypes.string,
-  targetId: PropTypes.string,
-  updateFormState: PropTypes.func,
-  onChange: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  onClick: PropTypes.func,
 };
 
 export default Shuffle;

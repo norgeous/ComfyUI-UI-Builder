@@ -3,25 +3,23 @@ import Tooltip from '@/components/Tooltip';
 import Checkbox from '@/components/Checkbox/Checkbox';
 
 const HeaderCheckbox = ({
-  id = undefined,
   label = undefined,
   value = undefined,
-  updateFormState = () => {},
+  onChange = () => {},
 }) => (
   <Tooltip text={label}>
     <Checkbox
       aria-label={label}
       checked={value}
-      onChange={event => updateFormState({ [id]: event.target.checked })}
+      onChange={event => onChange(event.target.checked)}
     />
   </Tooltip>
 );
 
 HeaderCheckbox.propTypes = {
-  id: PropTypes.string,
   label: PropTypes.string,
   value: PropTypes.bool,
-  updateFormState: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 export default HeaderCheckbox;
