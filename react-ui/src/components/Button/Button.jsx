@@ -1,15 +1,22 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Btn = styled.button.attrs({ type: 'button' })`
   background: var(--input-outline);
   margin: 0;
   border: none;
   display: block;
-  width: 100%;
+  ${({ wide }) =>
+    wide &&
+    css`
+      width: 100%;
+    `}
   border-radius: var(--radius);
   padding: 8px 4px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 `;
 
 const Button = ({ isLoading = false, children = null, ...props }) => (

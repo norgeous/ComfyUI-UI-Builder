@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   useFloating,
   offset,
@@ -9,6 +9,14 @@ import {
   arrow,
   FloatingArrow,
 } from '@floating-ui/react';
+
+const TooltipWrap = styled.span`
+  ${({ wide }) =>
+    wide &&
+    css`
+      width: 100%;
+    `}
+`;
 
 const TooltipText = styled.span`
   position: absolute;
@@ -33,6 +41,7 @@ const Arrow = styled(FloatingArrow)`
 const Tooltip = ({
   className = undefined,
   text = undefined,
+  wide = false,
   children = null,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,14 +60,15 @@ const Tooltip = ({
 
   return (
     <>
-      <div
+      <TooltipWrap
         className={className}
+        wide={wide}
         ref={refs.setReference}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
         {children}
-      </div>
+      </TooltipWrap>
       {isOpen && (
         <TooltipText ref={refs.setFloating} style={floatingStyles}>
           <Arrow ref={arrowRef} context={context} />
@@ -72,6 +82,7 @@ const Tooltip = ({
 Tooltip.propTypes = {
   className: PropTypes.string,
   text: PropTypes.string,
+  wide: PropTypes.bool,
   children: PropTypes.node,
 };
 
