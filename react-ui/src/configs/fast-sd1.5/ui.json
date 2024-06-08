@@ -1,12 +1,12 @@
 {
-  "name": "Speech to image [WIP]",
+  "name": "Fast SD1.5",
   "version": "v0.0.0",
-  "emoji": "🎤",
-  "description": "[WIP] Input prompt with voice, eventually this will be a part of InputTextarea / all prompts by default",
+  "emoji": "⏩",
+  "description": "Input prompt with voice, eventually this will be a part of InputTextarea / all prompts by default",
   "theme": {
-    "hue": 0
+    "hue": 180
   },
-  "tags": ["SDXL", "S2I"],
+  "tags": ["SD1.5", "S2I"],
   "formConfig": [
     {
       "group": "Prompt",
@@ -21,6 +21,15 @@
       "id": "negativePrompt",
       "label": "Negative Prompt",
       "type": "speech",
+      "defaultValue": "",
+      "colSpan": 2
+    },
+    {
+      "group": "Generation Params",
+      "id": "ckpt",
+      "label": "Checkpoint",
+      "info": "Choose a SDXL checkpoint",
+      "type": "selectckpt",
       "defaultValue": "",
       "colSpan": 2
     },
@@ -55,6 +64,10 @@
     }
   ],
   "adapterConfig": [
+    {
+      "destination": "CheckpointLoaderSimple > ckpt_name",
+      "actions": "get:ckpt"
+    },
     {
       "destination": "Positive Prompt > text",
       "actions": "get:positivePrompt"
