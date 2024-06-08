@@ -2,9 +2,9 @@
   "name": "SDXL Hyper 1 step [WIP]",
   "version": "v0.0.0",
   "emoji": "🏃",
-  "description": "[WIP] Fast image generation",
+  "description": "[WIP] Fast SDXL image generation using Hyper 1 step unet",
   "theme": {
-    "hue": 0
+    "hue": 60
   },
   "tags": ["SDXL", "S2I"],
   "formConfig": [
@@ -33,15 +33,15 @@
       "options": [
         {
           "label": "1:1 Square",
-          "value": { "width": 512, "height": 512 }
+          "value": { "width": 1024, "height": 1024 }
         },
         {
           "label": "16:9 Landscape",
-          "value": { "width": 768, "height": 512 }
+          "value": { "width": 1344, "height": 768 }
         },
         {
           "label": "16:9 Portrait",
-          "value": { "width": 512, "height": 768 }
+          "value": { "width": 768, "height": 1344 }
         }
       ]
     },

@@ -5,7 +5,7 @@ const getLinkLookup = comfyWorkflow => {
       ...outputs?.reduce(
         (acc2, { links, name }, index) => ({
           ...acc2,
-          ...links.reduce(
+          ...(links || []).reduce(
             (acc3, link) => ({
               ...acc3,
               [link]: {
@@ -35,10 +35,25 @@ const getLink = (linkLookup, linkId) => {
 const getKeys = (objectInfo, type) => {
   const keys = Object.keys(objectInfo?.[type]?.input?.required || {});
 
-  // ksampler fix
+  // KSampler fix
   const indexOfSeed = keys.indexOf('seed');
   if (type === 'KSampler' && indexOfSeed !== -1)
     keys.splice(indexOfSeed + 1, 0, 'control_after_generate');
+
+  // SamplerCustom fix
+  if (type === 'SamplerCustom')
+    return [
+      'model',
+      'positive',
+      'negative',
+      'sampler',
+      'sigmas',
+      'latent_image',
+      'add_noise',
+      'noise_seed',
+      'control_after_generate',
+      'cfg',
+    ];
 
   return keys;
 };
