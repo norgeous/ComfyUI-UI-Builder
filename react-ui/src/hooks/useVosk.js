@@ -50,7 +50,7 @@ const useVosk = ({
           setVosk(newVosk);
         })
         .catch(e => {
-          console.error(e);
+          console.error(e); // eslint-disable-line no-console
           setError(e.message);
           setUnmutedId(undefined);
         })
