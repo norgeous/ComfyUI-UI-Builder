@@ -19,17 +19,15 @@ const Btn = styled.button.attrs({ type: 'button' })`
   gap: 4px;
 `;
 
-const Button = ({ isLoading = false, children = null, ...props }) => (
+const Button = ({ children = null, ...props }) => (
   <Btn
     {...props} // eslint-disable-line react/jsx-props-no-spreading
   >
     {children}
-    {isLoading && 'LOADING...'}
   </Btn>
 );
 
 Button.propTypes = {
-  isLoading: PropTypes.bool,
   children: PropTypes.node,
 };
 

@@ -5,10 +5,11 @@ import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
 
-import { FaPause, FaPlay } from 'react-icons/fa6';
+import { FaPause, FaPlay, FaSkull } from 'react-icons/fa6';
 import Button from '../Button/Button';
 import ErrorText from '../form-fields/ErrorText';
 import Tooltip from '../Tooltip';
+import Spinner from '../Spinner';
 
 const Container = styled.div`
   padding: 8px;
@@ -21,6 +22,7 @@ const Container = styled.div`
 const ButtonsArea = styled.div`
   display: flex;
   gap: 8px;
+  align-items: center;
 `;
 
 const PlayIcon = styled(FaPlay)`
@@ -33,6 +35,15 @@ const PauseIcon = styled(FaPause)`
   font-size: 15.3333px;
 `;
 
+const InterruptIcon = styled(FaSkull)`
+  display: block;
+  font-size: 15.3333px;
+`;
+
+const QueueTitle = styled.div`
+  flex-grow: 1;
+`;
+
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
   const [auto, setAuto] = useState(false);
@@ -42,8 +53,13 @@ const FormControls = () => {
     updateFormState,
   } = useContext(FormContext);
 
-  const { executePrompt, promptLoading, promptError, executeInterrupt } =
-    useContext(AppContext);
+  const {
+    executePrompt,
+    promptLoading,
+    promptError,
+    executeInterrupt,
+    interruptLoading,
+  } = useContext(AppContext);
 
   const handleClick = () => {
     if (enableSeedRandomisation) {
@@ -61,22 +77,20 @@ const FormControls = () => {
   return (
     <Container>
       {isGenerating && (
-        <Button
-          onClick={executeInterrupt}
-          // loading={interruptLoading}
-        >
-          Interrupt Job 1
-        </Button>
+        <ButtonsArea>
+          <QueueTitle>Job 1 (running...)</QueueTitle>
+          <Tooltip text="Interrupt Job 1">
+            <Button onClick={executeInterrupt}>
+              {interruptLoading ? <Spinner /> : <InterruptIcon />}
+            </Button>
+          </Tooltip>
+        </ButtonsArea>
       )}
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <ButtonsArea>
         {!auto && (
-          <Button
-            wide
-            onClick={handleClick}
-            loading={promptLoading || isGenerating}
-          >
-            Generate
+          <Button wide onClick={handleClick}>
+            {promptLoading ? <Spinner /> : 'Generate'}
           </Button>
         )}
         <Tooltip text="Automatic Generation" wide={auto}>
