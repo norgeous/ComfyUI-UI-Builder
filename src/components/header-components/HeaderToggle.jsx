@@ -36,9 +36,9 @@ const HeaderToggle = ({
   onChange = () => {},
   children = null,
 }) => (
-  <Tooltip text={label}>
+  <Tooltip text={`${label} (${value ? 'On' : 'Off'})`}>
     <InputHeaderButton
-      aria-label={label}
+      aria-label={`${label} (${value ? 'On' : 'Off'})`}
       onClick={() => onChange(!value)}
       value={value}
     >
