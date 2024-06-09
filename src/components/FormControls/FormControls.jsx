@@ -12,7 +12,7 @@ import {
 } from '@/components/Icons/Icons';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import Button from '@/components/Button/Button';
-import ErrorText from '@/components/form-fields/ErrorText';
+import ErrorText from '@/components/ErrorText/ErrorText';
 
 const Container = styled.div`
   padding: 8px;
