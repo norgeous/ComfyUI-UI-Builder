@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import deepEqual from '@/utils/deepEqual';
 import Checkbox from '@/components/Checkbox/Checkbox';
-import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
+import InputWrapper from '../InputWrapper/InputWrapper';
+import InputHeader from '../../InputHeader/InputHeader';
 
 const Label = styled.label`
   display: block;

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
-import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
+import InputWrapper from '../InputWrapper/InputWrapper';
+import InputHeader from '../../InputHeader/InputHeader';
 
 const Select = styled.select`
   display: block;

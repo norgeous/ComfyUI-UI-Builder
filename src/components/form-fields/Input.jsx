@@ -6,8 +6,8 @@ import FormContext from '@/contexts/FormContext';
 import InputRefContext from '@/contexts/InputRefContext';
 import HeaderButton from '@/components/header-components/HeaderButton';
 import { ResetIcon } from '@/components/Icons/Icons';
-import Missing from './Missing';
 
+import InputMissing from './InputMissing/InputMissing';
 import InputSelect from './InputSelect/InputSelect';
 import InputRange from './InputRange/InputRange';
 import InputTextarea from './InputTextarea/InputTextarea';
@@ -47,7 +47,7 @@ const FormItem = ({
 }) => {
   const ref = useRef();
   const { formState, updateFormState } = useContext(FormContext);
-  const Component = components[type] || Missing;
+  const Component = components[type] || InputMissing;
   const stateValue = value ?? formState[id];
 
   const handleChange = data => {

@@ -8,9 +8,9 @@ import {
   MicMutedIcon,
   MicUnmutedIcon,
 } from '@/components/Icons/Icons';
-import InputWrapper from '@/components/form-fields/InputWrapper';
-import InputHeader from '@/components/form-fields/InputHeader/InputHeader';
+import InputHeader from '@/components/InputHeader/InputHeader';
 import ErrorText from '@/components/ErrorText/ErrorText';
+import InputWrapper from '@/components/form-fields/InputWrapper/InputWrapper';
 
 const Textarea = styled.textarea`
   display: block;
