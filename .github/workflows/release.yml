@@ -57,5 +57,5 @@ jobs:
           git show --summary
       - name: 🫸 Push release branch to origin
         run: |
-          # git push origin release
-          git push
+          git push origin release
+          # git push
