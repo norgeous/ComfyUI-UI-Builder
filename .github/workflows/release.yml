@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
+          token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
       - name: 🧰 NPM Install
         run: |
           npm ci
@@ -38,8 +39,8 @@ jobs:
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           git status
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-          git rm -f .gitignore
-          git rm -rf .
+          # git rm -f .gitignore
+          # git rm -rf .
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           git status
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -52,8 +53,8 @@ jobs:
           git status
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           ls -ha
-          ls -ha dist
           git show --summary
       - name: 🫸 Push release branch to origin
         run: |
-          git push origin release
+          # git push origin release
+          git push
