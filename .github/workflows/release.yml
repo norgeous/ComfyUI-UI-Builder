@@ -23,15 +23,16 @@ jobs:
         run: |
           npm run build
           echo 'RELEASE' > release.txt
-      - name: 🆙 Commit to release branch
+      - name: ✍️ Commit to `release` branch
         run: |
-          git status
           git checkout --orphan release
-          # git rm -rf ./node_modules
-          git commit -am "Vite build"
+          git rm -rf ./src ./public
           git status
-          echo "!"
+          echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          git commit -am "Vite build"
+          echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+          git status
           ls -ha
-      - name: 🫸 Push release branch to origin
+      - name: 🫸 Push `release` branch to origin
         run: |
           git push origin release
