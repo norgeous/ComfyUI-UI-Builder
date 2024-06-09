@@ -15,10 +15,14 @@ export const Content = styled.div`
   flex: 1;
   padding: 10px;
   overflow: hidden;
-  background-color: #181b1d;
+  background: var(--back-bg);
   background-size: 8px 8px;
   background-position: center center;
-  background-image: radial-gradient(circle, #3d454b 1px, #0000 1px);
+  background-image: radial-gradient(
+    circle,
+    var(--surface-bg) 1px,
+    transparent 1px
+  );
 `;
 
 const MainContent = () => {

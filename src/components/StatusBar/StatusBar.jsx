@@ -15,7 +15,7 @@ const Bar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 4px;
-  background: rgb(34, 42, 48);
+  background: var(--page-bg);
   padding: 4px;
 `;
 

@@ -3,7 +3,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
+  display: block;
   padding: 0;
+  background: transparent;
+  border: none;
+  width: 18px;
+  height: 18px;
 `;
 
 const Pre = styled.pre`

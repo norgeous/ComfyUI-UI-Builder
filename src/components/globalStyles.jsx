@@ -19,12 +19,14 @@ export const Theme = () => {
 export const GlobalStyle = createGlobalStyle`
   :root {
     --fg: #111;
+    --lightness-bg0: 95%;
     --lightness-bg1: 90%;
     --lightness-bg2: 85%;
     --lightness-bg3: 80%;
 
     @media (prefers-color-scheme: dark) {
       --fg: #eee;
+      --lightness-bg0: 5%;
       --lightness-bg1: 10%;
       --lightness-bg2: 15%;
       --lightness-bg3: 20%;
@@ -34,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     --input-outline: var(--primary);
     --input-border: var(--primary);
 
+    --back-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg0));
     --page-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg1));
     --surface-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg2));
     --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
