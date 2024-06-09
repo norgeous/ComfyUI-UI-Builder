@@ -27,7 +27,7 @@ jobs:
       - name: 📋 Prepare orphan "release" branch
         run: |
           git checkout --orphan release
-          # git rm -f .gitignore
+          git rm -rf .github .storybook .vscode public src
           git rm -f  .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
           echo 'RELEASE' > README.md
 
