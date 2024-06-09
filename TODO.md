@@ -35,6 +35,9 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - more work on adjust weight with CTRL+UP or CTRL+DOWN
+- style the progress bar correctly
+- styling issue with range input on chrome
+- range input's dual controls should step up / down, not go to max / min
 
 ## Future
 
