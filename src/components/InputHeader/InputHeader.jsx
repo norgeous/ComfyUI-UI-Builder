@@ -1,4 +1,4 @@
-import Info from '@/components/header-components/Info';
+import Info from '@/components/header-components/HeaderInfo';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 

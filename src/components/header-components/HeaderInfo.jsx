@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { InfoIcon } from '../Icons/Icons';
 
-const Info = ({ text = undefined }) => (
+const HeaderInfo = ({ text = undefined }) => (
   <Tooltip text={text}>
     <InfoIcon className="muted" />
   </Tooltip>
 );
 
-Info.propTypes = {
+HeaderInfo.propTypes = {
   text: PropTypes.string,
 };
 
-export default Info;
+export default HeaderInfo;
