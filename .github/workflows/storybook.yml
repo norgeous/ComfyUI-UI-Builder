@@ -1,4 +1,4 @@
-name: 🇸 Storybook build and deploy to Github pages
+name: 📕 Storybook build and deploy to Github pages
 on:
   push:
     branches:
@@ -19,7 +19,7 @@ jobs:
         run: |
           npm ci
           npm i @rollup/rollup-linux-x64-gnu
-      - name: 🔨 Storybook Build
+      - name: 📕 Storybook Build
         run: |
           npm run sb:build
       - name: 🆙 Upload artifact
