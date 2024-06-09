@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Chevron } from '@/components/Icons/Icons';
+import { ChevronIcon } from '@/components/Icons/Icons';
 
 const AccordionContainer = styled.div`
   border-radius: var(--radius);
@@ -59,7 +59,7 @@ const AccordionSingle = ({
     <AccordionContainer>
       <AccordionHeader onClick={onClick}>
         <HeaderText>{title}</HeaderText>
-        <Chevron $isOpen={isOpen} />
+        <ChevronIcon $isOpen={isOpen} />
       </AccordionHeader>
       <Collapse $isOpen={isOpen}>
         <Inner $isOpen={isOpen}>

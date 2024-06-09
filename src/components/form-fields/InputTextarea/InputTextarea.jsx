@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ArrowDown, ArrowUp } from '@/components/Icons/Icons';
+import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons/Icons';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 
@@ -100,8 +100,8 @@ const InputTextarea = ({
   return (
     <InputWrapper>
       <InputHeader id={id} label={label} info={info}>
-        <ArrowUp />
-        <ArrowDown />
+        <ArrowUpIcon />
+        <ArrowDownIcon />
         {children}
       </InputHeader>
       <Textarea

@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SpeechContext from '@/contexts/SpeechContext';
 import HeaderButton from '@/components/header-components/HeaderButton';
-import { SpinnerIcon, MicMuted, MicOpen } from '@/components/Icons/Icons';
+import {
+  SpinnerIcon,
+  MicMutedIcon,
+  MicUnmutedIcon,
+} from '@/components/Icons/Icons';
 import InputWrapper from '@/components/form-fields/InputWrapper';
 import InputHeader from '@/components/form-fields/InputHeader/InputHeader';
 import ErrorText from '@/components/form-fields/ErrorText';
@@ -52,13 +56,13 @@ const InputTextarea = ({
             label="Enable Speech Capture"
             onClick={() => setUnmutedId(id)}
           >
-            <MicOpen />
+            <MicUnmutedIcon />
           </HeaderButton>
         )}
         {!vosk && loading && isTarget && <SpinnerIcon />}
         {!vosk && loading && !isTarget && (
           <HeaderButton label="loading elsewhere">
-            <MicOpen />
+            <MicUnmutedIcon />
           </HeaderButton>
         )}
         {vosk && (
@@ -66,7 +70,7 @@ const InputTextarea = ({
             label={isUnmuted ? 'Unmuted' : 'Muted'}
             onClick={() => setUnmutedId(isUnmuted ? undefined : id)}
           >
-            {isUnmuted ? <MicOpen /> : <MicMuted />}
+            {isUnmuted ? <MicUnmutedIcon /> : <MicMutedIcon />}
           </HeaderButton>
         )}
         {children}

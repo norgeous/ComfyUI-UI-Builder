@@ -28,20 +28,20 @@ const baseIconCss = css`
   flex-shrink: 0;
 `;
 
-export const ArrowDown = styled(FaArrowDown)(baseIconCss);
-export const ArrowLeft = styled(FaArrowLeft)(baseIconCss);
-export const ArrowRight = styled(FaArrowRight)(baseIconCss);
-export const ArrowUp = styled(FaArrowUp)(baseIconCss);
-export const Chevron = styled(styled(FaChevronUp)(baseIconCss))`
+export const ArrowDownIcon = styled(FaArrowDown)(baseIconCss);
+export const ArrowLeftIcon = styled(FaArrowLeft)(baseIconCss);
+export const ArrowRightIcon = styled(FaArrowRight)(baseIconCss);
+export const ArrowUpIcon = styled(FaArrowUp)(baseIconCss);
+export const ChevronIcon = styled(styled(FaChevronUp)(baseIconCss))`
   transition: transform 350ms;
   transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
 `;
 export const InterruptIcon = styled(FaSkull)(baseIconCss);
-export const MicMuted = styled(FaMicrophoneSlash)(baseIconCss);
-export const MicOpen = styled(FaMicrophone)(baseIconCss);
+export const MicMutedIcon = styled(FaMicrophoneSlash)(baseIconCss);
+export const MicUnmutedIcon = styled(FaMicrophone)(baseIconCss);
 export const PauseIcon = styled(FaPause)(baseIconCss);
 export const PlayIcon = styled(FaPlay)(baseIconCss);
-export const QuestionMark = styled(FaCircleQuestion)(baseIconCss);
+export const InfoIcon = styled(FaCircleQuestion)(baseIconCss);
 export const RandomiseIcon = styled(FaDiceSix)(baseIconCss);
 export const ResetIcon = styled(FaArrowRotateLeft)(baseIconCss);
 export const ShuffleIcon = styled(FaShuffle)(baseIconCss);

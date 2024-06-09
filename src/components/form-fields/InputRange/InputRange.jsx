@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
-import { ArrowLeft, ArrowRight } from '@/components/Icons/Icons';
+import { ArrowLeftIcon, ArrowRightIcon } from '@/components/Icons/Icons';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 
@@ -138,7 +138,7 @@ const InputRange = ({
         <Sublabels $isPips={isPips} className="muted">
           {!isPips && minLabel && (
             <Sublabel onClick={() => handleChange(options[0].value)}>
-              <ArrowLeft />
+              <ArrowLeftIcon />
               <SublabelText>{minLabel}</SublabelText>
             </Sublabel>
           )}
@@ -153,7 +153,7 @@ const InputRange = ({
               onClick={() => handleChange(options[options.length - 1].value)}
             >
               <SublabelText>{maxLabel}</SublabelText>
-              <ArrowRight />
+              <ArrowRightIcon />
             </Sublabel>
           )}
         </Sublabels>
