@@ -11,7 +11,7 @@ import {
   FaPlay,
   FaSkull,
   FaSpinner,
-  FaDiceSix,
+  FaDiceFive,
   FaShuffle,
   FaMicrophone,
   FaMicrophoneSlash,
@@ -47,7 +47,7 @@ export const MicUnmutedIcon = styled(FaMicrophone)(baseIconCss);
 export const PauseIcon = styled(FaPause)(baseIconCss);
 export const PlayIcon = styled(FaPlay)(baseIconCss);
 export const InfoIcon = styled(FaCircleQuestion)(baseIconCss);
-export const RandomiseIcon = styled(FaDiceSix)(baseIconCss);
+export const RandomiseIcon = styled(FaDiceFive)(baseIconCss);
 export const ResetIcon = styled(FaArrowRotateLeft)(baseIconCss);
 export const ShuffleIcon = styled(FaShuffle)(baseIconCss);
 export const SpinnerIcon = styled(styled(FaSpinner)(baseIconCss))`
