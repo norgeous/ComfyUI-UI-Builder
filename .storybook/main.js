@@ -16,7 +16,8 @@ const config = {
   },
   staticDirs: ['../public'],
   core: {
-    disableTelemetry: true, // 👈 Disables telemetry
+    disableTelemetry: true,
+    disableWhatsNewNotifications: true,
   },
 };
 export default config;
