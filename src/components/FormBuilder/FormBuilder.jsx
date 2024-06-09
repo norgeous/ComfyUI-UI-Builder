@@ -7,7 +7,7 @@ import AccordionSingle from '../Accordion/AccordionSingle';
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 `;
 
 const Grid = styled.div`
