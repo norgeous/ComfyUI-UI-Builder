@@ -78,7 +78,7 @@ const FormControls = () => {
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <ButtonsArea>
         {!auto && (
-          <Button $wide onClick={handleClick}>
+          <Button wide onClick={handleClick}>
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
           </Button>
         )}
