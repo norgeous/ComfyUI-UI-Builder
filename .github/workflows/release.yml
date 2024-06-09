@@ -26,9 +26,10 @@ jobs:
 
       - name: 📋 Prepare "release" branch
         run: |
-          git rm -f .gitignore
-          echo 'RELEASE' > README.md
           git checkout --orphan release
+          # git rm -f .gitignore
+          git rm -f  .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
+          echo 'RELEASE' > README.md
 
       - name: 👤 Setup git user
         run: |
