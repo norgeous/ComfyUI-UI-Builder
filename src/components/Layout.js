@@ -2,18 +2,19 @@ import styled from 'styled-components';
 
 export const Page = styled.div`
   display: grid;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: minmax(50%, auto) minmax(auto, 400px);
   height: 100svh;
-  @media (min-width: 920px) {
-    grid-template-columns: 460px auto;
+  @media (min-aspect-ratio: 1/1) {
+    grid-template-columns: minmax(auto, 400px) minmax(50%, auto);
+    // swap maincontent to be second item
+    & > :first-child {
+      order: 2; // change the order on desktop, so that controls are first */
+      height: 100svh;
+    }
   }
 `;
 
 export const Main = styled.main`
-  @media (min-width: 920px) {
-    order: 2; // change the order on desktop, so that controls are first
-    height: 100svh;
-  }
   display: flex;
   flex-direction: column;
   position: relative;
@@ -23,10 +24,6 @@ export const Controls = styled.aside`
   display: flex;
   flex-direction: column;
   background-color: var(--page-bg);
-  height: 50svh;
-  @media (min-width: 920px) {
-    height: 100svh;
-  }
   overflow-x: hidden;
 `;
 
@@ -40,7 +37,6 @@ export const Content = styled.div`
   flex: 1;
   padding: 10px;
   overflow: hidden;
-
   background-color: #181b1d;
   background-size: 8px 8px;
   background-position: center center;

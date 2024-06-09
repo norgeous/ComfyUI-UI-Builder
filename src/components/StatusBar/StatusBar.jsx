@@ -23,6 +23,7 @@ const Buggers = styled.div`
   display: flex;
   flex-direction: row;
   gap: 4px;
+  overflow-x: auto;
 `;
 
 const StatusBar = () => {
