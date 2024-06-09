@@ -1,14 +1,13 @@
-name: 🇻 Vite build and commit to "release" branch
+name: 🇻  Vite build and commit to "release" branch
 on:
   push:
     branches:
       - develop
 jobs:
-  build-and-deploy:
+  vite-build-and-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      # id-token: write
     steps:
       - name: ⤵️ Checkout "develop" branch
         uses: actions/checkout@v4
@@ -32,7 +31,6 @@ jobs:
 
       - name: 👤 Setup git user
         run: |
-          # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
           git config user.name github-actions
           git config user.email github-actions@github.com
 

@@ -5,7 +5,7 @@ on:
       - develop
     paths: ['stories/**', 'src/components/**'] # Trigger the action only when files change in the folders defined here
 jobs:
-  build-and-deploy:
+  storybook-build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -15,18 +15,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
+
       - name: 🧰 NPM Install
         run: |
           npm ci
           npm i @rollup/rollup-linux-x64-gnu
+
       - name: 📕 Storybook Build
         run: |
           npm run sb:build
+
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           name: 'storybook-static-artifact'
           path: 'storybook-static'
+
       - name: 🚀 Deploy to Github oages
         uses: actions/deploy-pages@v4
         with:
