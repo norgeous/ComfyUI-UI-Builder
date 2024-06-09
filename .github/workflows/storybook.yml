@@ -1,4 +1,4 @@
-name: Storybook build and deploy to Github pages
+name: 🇸 Storybook build and deploy to Github pages
 on:
   push:
     branches:
