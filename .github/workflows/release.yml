@@ -50,6 +50,7 @@ jobs:
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           ls -ha
           ls -ha dist
+          git show --summary
       - name: 🫸 Push release branch to origin
         run: |
           git push origin release
