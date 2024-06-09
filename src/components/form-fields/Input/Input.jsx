@@ -7,16 +7,16 @@ import InputRefContext from '@/contexts/InputRefContext';
 import HeaderButton from '@/components/header-components/HeaderButton';
 import { ResetIcon } from '@/components/Icons/Icons';
 
-import InputMissing from './InputMissing/InputMissing';
-import InputSelect from './InputSelect/InputSelect';
-import InputRange from './InputRange/InputRange';
-import InputTextarea from './InputTextarea/InputTextarea';
-import InputNumber from './InputNumber/InputNumber';
-import InputCheckbox from './InputCheckbox/InputCheckbox';
-import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
-import InputFile from './InputFile/InputFile';
-import InputSpeech from './InputSpeech/InputSpeech';
-import InputSeed from './InputSeed/InputSeed';
+import InputMissing from '../InputMissing/InputMissing';
+import InputSelect from '../InputSelect/InputSelect';
+import InputRange from '../InputRange/InputRange';
+import InputTextarea from '../InputTextarea/InputTextarea';
+import InputNumber from '../InputNumber/InputNumber';
+import InputCheckbox from '../InputCheckbox/InputCheckbox';
+import InputSelectCkpt from '../InputSelectCkpt/InputSelectCkpt';
+import InputFile from '../InputFile/InputFile';
+import InputSpeech from '../InputSpeech/InputSpeech';
+import InputSeed from '../InputSeed/InputSeed';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;
