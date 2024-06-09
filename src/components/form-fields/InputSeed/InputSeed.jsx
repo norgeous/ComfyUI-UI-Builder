@@ -1,11 +1,16 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaShuffle } from 'react-icons/fa6';
+import { FaDiceSix, FaShuffle } from 'react-icons/fa6';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderCheckbox from '@/components/header-components/HeaderCheckbox';
+import HeaderToggle from '@/components/header-components/HeaderToggle';
 import HeaderButton from '@/components/header-components/HeaderButton';
 import InputNumber from '../InputNumber/InputNumber';
+
+const RandomiseIcon = styled(FaDiceSix)`
+  display: block;
+  font-size: 12px;
+`;
 
 const ShuffleIcon = styled(FaShuffle)`
   display: block;
@@ -41,11 +46,13 @@ const InputSeed = ({
       value={seed}
       onChange={handleChangeSeed}
     >
-      <HeaderCheckbox
+      <HeaderToggle
         label="Randomise"
         value={random}
         onChange={handleChangeRandom}
-      />
+      >
+        <RandomiseIcon />
+      </HeaderToggle>
       <HeaderButton label="Shuffle" onClick={handleShuffle}>
         <ShuffleIcon />
       </HeaderButton>
