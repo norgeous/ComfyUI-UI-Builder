@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Tooltip from '@/components/Tooltip';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import { InfoIcon } from '../Icons/Icons';
 
 const Info = ({ text = undefined }) => (

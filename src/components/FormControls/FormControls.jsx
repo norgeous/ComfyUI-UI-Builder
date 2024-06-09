@@ -10,9 +10,9 @@ import {
   PauseIcon,
   PlayIcon,
 } from '@/components/Icons/Icons';
-import Button from '../Button/Button';
-import ErrorText from '../form-fields/ErrorText';
-import Tooltip from '../Tooltip';
+import Tooltip from '@/components/Tooltip/Tooltip';
+import Button from '@/components/Button/Button';
+import ErrorText from '@/components/form-fields/ErrorText';
 
 const Container = styled.div`
   padding: 8px;

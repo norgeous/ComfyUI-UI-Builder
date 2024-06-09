@@ -8,7 +8,7 @@ import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 
 import { GithubIcon, StorybookIcon } from '@/components/Icons/Icons';
-import Debug from '../Debug';
+import Debug from '@/components/Debug/Debug';
 import StatusLight from './StatusLight';
 
 const Bar = styled.div`

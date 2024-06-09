@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import Tooltip from '@/components/Tooltip';
+import Tooltip from '@/components/Tooltip/Tooltip';
 
 const InputHeaderButton = styled.button`
   cursor: pointer;
