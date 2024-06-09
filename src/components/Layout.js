@@ -2,14 +2,17 @@ import styled from 'styled-components';
 
 export const Page = styled.div`
   display: grid;
-  grid-template-rows: minmax(50%, auto) minmax(auto, 400px);
   height: 100svh;
+
+  // portrait first
+  grid-template-rows: minmax(50%, auto) minmax(auto, 400px);
+
+  // landscape overrides
   @media (min-aspect-ratio: 1/1) {
-    grid-template-columns: minmax(auto, 400px) minmax(50%, auto);
-    // swap maincontent to be second item
+    grid-template-rows: none;
+    grid-template-columns: minmax(auto, 460px) minmax(50%, auto);
     & > :first-child {
-      order: 2; // change the order on desktop, so that controls are first */
-      height: 100svh;
+      order: 2; // change the order on landscape, so that sidebar is first
     }
   }
 `;
