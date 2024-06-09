@@ -23,8 +23,10 @@ jobs:
         run: |
           npm run build
           echo 'RELEASE' > release.txt
-      - name: ✍️ Commit to `release` branch
+      - name: ✍️ Commit to release branch
         run: |
+          git config --global user.name "releasebot"
+          git config --global user.email "release@github.com"
           git checkout --orphan release
           git rm -rf ./src ./public
           git status
@@ -33,6 +35,7 @@ jobs:
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           git status
           ls -ha
-      - name: 🫸 Push `release` branch to origin
+          ls -ha dist
+      - name: 🫸 Push release branch to origin
         run: |
           git push origin release
