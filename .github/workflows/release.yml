@@ -32,7 +32,7 @@ jobs:
           git checkout --orphan release
           git rm -rf ./.github ./.storybook ./.vscode ./public ./src
           git rm -f  .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
-          git rm -rf ./node_modules
+          # git rm -rf ./node_modules
           git status
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           git add .
