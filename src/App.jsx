@@ -1,9 +1,7 @@
 import { useContext } from 'react';
+import Sidebar from '@/components/Sidebar/Sidebar';
 import WsContext from './contexts/WsContext';
-import { Page, Main, Controls, Content, Scrollable } from './components/Layout';
-import FormHeader from './components/FormHeader/FormHeader';
-import FormBuilder from './components/FormBuilder/FormBuilder';
-import FormControls from './components/FormControls/FormControls';
+import { Page, Main, Content } from './components/Layout';
 import Progress from './components/Progress/Progress';
 import StatusBar from './components/StatusBar/StatusBar';
 import ImageGrid from './components/ImageGrid/ImageGrid';
@@ -27,13 +25,7 @@ const App = () => {
           <StatusBar />
         </Main>
 
-        <Controls>
-          <FormHeader />
-          <Scrollable>
-            <FormBuilder />
-          </Scrollable>
-          <FormControls />
-        </Controls>
+        <Sidebar />
       </Page>
     </>
   );
