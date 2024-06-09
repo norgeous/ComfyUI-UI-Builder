@@ -19,7 +19,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
-          token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
+          # token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
+          token: ${{ github.token }}
       - name: 🧰 NPM Install
         run: |
           npm ci
