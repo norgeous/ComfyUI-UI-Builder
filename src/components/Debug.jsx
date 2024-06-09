@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { BugIcon } from '@/components/Icons/Icons';
 
 const Button = styled.button`
   display: block;
@@ -9,6 +10,7 @@ const Button = styled.button`
   border: none;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 `;
 
 const Pre = styled.pre`
@@ -31,7 +33,7 @@ const Debug = ({ label, data = undefined }) => {
   return (
     <>
       <Button onClick={toggle} title={label}>
-        🐞
+        <BugIcon />
       </Button>
       {open && (
         <Pre onClick={toggle}>

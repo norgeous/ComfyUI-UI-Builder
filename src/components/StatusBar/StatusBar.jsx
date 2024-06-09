@@ -7,6 +7,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 
+import { GithubIcon, StorybookIcon } from '@/components/Icons/Icons';
 import Debug from '../Debug';
 import StatusLight from './StatusLight';
 
@@ -19,7 +20,7 @@ const Bar = styled.div`
   padding: 4px;
 `;
 
-const Buggers = styled.div`
+const Tray = styled.div`
   display: flex;
   flex-direction: row;
   gap: 4px;
@@ -42,7 +43,7 @@ const StatusBar = () => {
         <StatusLight /> {lastWsMessage}{' '}
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
-      <Buggers>
+      <Tray>
         <Debug label="formState" data={formState} />
         <Debug label="adapted" data={adapted} />
         <Debug label="baseWorkflow" data={baseWorkflow} />
@@ -52,7 +53,19 @@ const StatusBar = () => {
         />
         <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
         <Debug label="bodyData" data={bodyData} />
-      </Buggers>
+        <a
+          href="https://github.com/norgeous/ComfyUI-UI-Builder/"
+          target="_blank"
+        >
+          <GithubIcon aria-label="Github" />
+        </a>
+        <a
+          href="https://norgeous.github.io/ComfyUI-UI-Builder/"
+          target="_blank"
+        >
+          <StorybookIcon aria-label="Storybook" />
+        </a>
+      </Tray>
     </Bar>
   );
 };
