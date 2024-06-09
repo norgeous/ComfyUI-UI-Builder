@@ -6,5 +6,7 @@ export default {
 };
 
 export const Checkbox = {
-  args: {},
+  args: {
+    checked: true,
+  },
 };
