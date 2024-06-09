@@ -68,6 +68,10 @@ jobs:
       #     git push origin release
       #     # git push
 
+      - name: ✍️ Prepare
+        run: |
+          git rm -f .gitignore
+
       - name: 🫸 Commit changes
         uses: EndBug/add-and-commit@v9
         with:
