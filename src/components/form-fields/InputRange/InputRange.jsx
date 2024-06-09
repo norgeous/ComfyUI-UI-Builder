@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
+import { ArrowLeft, ArrowRight } from '@/components/Icons/Icons';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 
@@ -83,16 +83,6 @@ const Sublabel = styled.div`
   overflow: hidden;
 `;
 
-const LArrow = styled(FaArrowLeft)`
-  display: block;
-  flex-shrink: 0;
-`;
-
-const RArrow = styled(FaArrowRight)`
-  display: block;
-  flex-shrink: 0;
-`;
-
 const SublabelText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
@@ -148,7 +138,7 @@ const InputRange = ({
         <Sublabels $isPips={isPips} className="muted">
           {!isPips && minLabel && (
             <Sublabel onClick={() => handleChange(options[0].value)}>
-              <LArrow />
+              <ArrowLeft />
               <SublabelText>{minLabel}</SublabelText>
             </Sublabel>
           )}
@@ -163,7 +153,7 @@ const InputRange = ({
               onClick={() => handleChange(options[options.length - 1].value)}
             >
               <SublabelText>{maxLabel}</SublabelText>
-              <RArrow />
+              <ArrowRight />
             </Sublabel>
           )}
         </Sublabels>

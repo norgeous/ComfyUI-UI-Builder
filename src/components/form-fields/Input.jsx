@@ -1,12 +1,13 @@
 import { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaArrowRotateLeft } from 'react-icons/fa6';
 
 import FormContext from '@/contexts/FormContext';
 import InputRefContext from '@/contexts/InputRefContext';
-
+import HeaderButton from '@/components/header-components/HeaderButton';
+import { ResetIcon } from '@/components/Icons/Icons';
 import Missing from './Missing';
+
 import InputSelect from './InputSelect/InputSelect';
 import InputRange from './InputRange/InputRange';
 import InputTextarea from './InputTextarea/InputTextarea';
@@ -16,15 +17,9 @@ import InputSelectCkpt from './InputSelectCkpt/InputSelectCkpt';
 import InputFile from './InputFile/InputFile';
 import InputSpeech from './InputSpeech/InputSpeech';
 import InputSeed from './InputSeed/InputSeed';
-import HeaderButton from '../header-components/HeaderButton';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;
-`;
-
-const ResetIcon = styled(FaArrowRotateLeft)`
-  display: block;
-  font-size: 12px;
 `;
 
 const components = {

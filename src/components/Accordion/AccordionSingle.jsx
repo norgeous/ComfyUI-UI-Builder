@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FaChevronUp } from 'react-icons/fa6';
+import { Chevron } from '@/components/Icons/Icons';
 
 const AccordionContainer = styled.div`
   border-radius: var(--radius);
@@ -29,12 +29,6 @@ const HeaderText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`;
-
-const Chevron = styled(FaChevronUp)`
-  display: block;
-  transition: transform 350ms;
-  transform: ${({ $isOpen }) => ($isOpen ? 'none' : 'rotate(180deg)')};
 `;
 
 const Collapse = styled.div`

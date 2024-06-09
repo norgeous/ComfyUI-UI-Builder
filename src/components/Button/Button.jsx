@@ -22,6 +22,7 @@ const Btn = styled.button.attrs({ type: 'button' })`
         background: red;
       `;
   }}
+  font-size: 15.3333px; // for icons???
 `;
 
 const Button = ({ children = null, ...props }) => (

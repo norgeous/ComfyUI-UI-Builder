@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaTriangleExclamation } from 'react-icons/fa6';
+import { WarningIcon } from '@/components/Icons/Icons';
 
 const Box = styled.div`
   background: #ff000077;
@@ -10,11 +10,6 @@ const Box = styled.div`
   align-items: center;
   padding: 6px 8px;
   border-radius: 4px;
-`;
-
-const WarningIcon = styled(FaTriangleExclamation)`
-  display: block;
-  flex-shrink: 0;
 `;
 
 const ErrorText = ({ children }) => (

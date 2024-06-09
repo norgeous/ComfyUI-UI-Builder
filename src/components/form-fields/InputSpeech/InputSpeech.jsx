@@ -1,23 +1,12 @@
 import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa6';
 import SpeechContext from '@/contexts/SpeechContext';
-import Spinner from '@/components/Spinner/Spinner';
 import HeaderButton from '@/components/header-components/HeaderButton';
-import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
-import ErrorText from '../ErrorText';
-
-const MicOpen = styled(FaMicrophone)`
-  display: block;
-  font-size: 12px;
-`;
-
-const MicMuted = styled(FaMicrophoneSlash)`
-  display: block;
-  font-size: 12px;
-`;
+import { SpinnerIcon, MicMuted, MicOpen } from '@/components/Icons/Icons';
+import InputWrapper from '@/components/form-fields/InputWrapper';
+import InputHeader from '@/components/form-fields/InputHeader/InputHeader';
+import ErrorText from '@/components/form-fields/ErrorText';
 
 const Textarea = styled.textarea`
   display: block;
@@ -66,7 +55,7 @@ const InputTextarea = ({
             <MicOpen />
           </HeaderButton>
         )}
-        {!vosk && loading && isTarget && <Spinner />}
+        {!vosk && loading && isTarget && <SpinnerIcon />}
         {!vosk && loading && !isTarget && (
           <HeaderButton label="loading elsewhere">
             <MicOpen />

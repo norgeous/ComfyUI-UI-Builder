@@ -1,21 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { FaDiceSix, FaShuffle } from 'react-icons/fa6';
 import InputRefContext from '@/contexts/InputRefContext';
+import InputNumber from '@/components/form-fields/InputNumber/InputNumber';
 import HeaderToggle from '@/components/header-components/HeaderToggle';
 import HeaderButton from '@/components/header-components/HeaderButton';
-import InputNumber from '../InputNumber/InputNumber';
-
-const RandomiseIcon = styled(FaDiceSix)`
-  display: block;
-  font-size: 12px;
-`;
-
-const ShuffleIcon = styled(FaShuffle)`
-  display: block;
-  font-size: 12px;
-`;
+import { RandomiseIcon, ShuffleIcon } from '@/components/Icons/Icons';
 
 const InputSeed = ({
   value = undefined,

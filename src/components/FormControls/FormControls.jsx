@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FaPause, FaPlay, FaSkull } from 'react-icons/fa6';
 
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
-import Spinner from '@/components/Spinner/Spinner';
+import {
+  SpinnerIcon,
+  InterruptIcon,
+  PauseIcon,
+  PlayIcon,
+} from '@/components/Icons/Icons';
 import Button from '../Button/Button';
 import ErrorText from '../form-fields/ErrorText';
 import Tooltip from '../Tooltip';
@@ -22,21 +26,6 @@ const ButtonsArea = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-`;
-
-const PlayIcon = styled(FaPlay)`
-  display: block;
-  font-size: 15.3333px;
-`;
-
-const PauseIcon = styled(FaPause)`
-  display: block;
-  font-size: 15.3333px;
-`;
-
-const InterruptIcon = styled(FaSkull)`
-  display: block;
-  font-size: 15.3333px;
 `;
 
 const QueueTitle = styled.div`
@@ -77,11 +66,11 @@ const FormControls = () => {
     <Container>
       {isGenerating && (
         <ButtonsArea>
-          <Spinner />
+          <SpinnerIcon />
           <QueueTitle>Job 1 (running...)</QueueTitle>
           <Tooltip text="Interrupt Job 1">
             <Button onClick={executeInterrupt}>
-              {interruptLoading ? <Spinner /> : <InterruptIcon />}
+              {interruptLoading ? <SpinnerIcon /> : <InterruptIcon />}
             </Button>
           </Tooltip>
         </ButtonsArea>
@@ -90,7 +79,7 @@ const FormControls = () => {
       <ButtonsArea>
         {!auto && (
           <Button $wide onClick={handleClick}>
-            {promptLoading ? <Spinner /> : 'Generate'}
+            {promptLoading ? <SpinnerIcon /> : 'Generate'}
           </Button>
         )}
         <Tooltip

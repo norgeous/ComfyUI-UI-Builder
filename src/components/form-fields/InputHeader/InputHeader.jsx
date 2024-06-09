@@ -6,6 +6,7 @@ const Wrap = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  font-size: 12px;
 `;
 
 const Label = styled.label`

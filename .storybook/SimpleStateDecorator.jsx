@@ -1,17 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { FaArrowRotateLeft } from 'react-icons/fa6';
 import InputRefContext from '@/contexts/InputRefContext';
 import HeaderButton from '@/components/header-components/HeaderButton';
+import { ResetIcon } from '@/components/Icons/Icons';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;
-`;
-
-const ResetIcon = styled(FaArrowRotateLeft)`
-  display: block;
-  font-size: 12px;
 `;
 
 const SimpleStateDecorator = (Story, { args }) => {
