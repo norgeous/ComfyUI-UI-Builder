@@ -4,15 +4,14 @@ on:
     branches:
       - develop
     # paths: ['stories/**', 'src/components/**'] # Trigger the action only when files change in the folders defined here
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
+# permissions:
+#   contents: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      pages: write
+      contents: write
+      # pages: write
       id-token: write
     steps:
       - name: ⤵️ Checkout
@@ -30,7 +29,7 @@ jobs:
           npm ci
           npm i @rollup/rollup-linux-x64-gnu
 
-      - name: 🔨 Vite Build
+      - name: 🇻 Vite Build
         run: |
           npm run build
           echo 'RELEASE' > README.md
