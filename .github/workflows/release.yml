@@ -27,7 +27,7 @@ jobs:
         run: |
           git status
           git checkout --orphan release
-          git rm -rf ./node_modules
+          # git rm -rf ./node_modules
           git commit -am "Vite build"
           git status
           echo "!"
