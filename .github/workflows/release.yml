@@ -1,0 +1,36 @@
+name: Vite build and commit to release branch
+on:
+  push:
+    branches:
+      - develop
+    # paths: ['stories/**', 'src/components/**'] # Trigger the action only when files change in the folders defined here
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
+          # npm i @rollup/rollup-linux-x64-gnu
+      - name: 🔨 Vite Build
+        run: |
+          npm run build
+      - name: 🆙 commit to release branch
+        run: |
+          git status
+          echo 'RELEASE' > release.txt
+          git status
+          git checkout --orphan release
+          git status
+          git rm -rf ./node_modules
+          git rm -rf ./node_modules
+          git commit -am "Vite build"
+          git status
+          git push origin release
