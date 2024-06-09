@@ -16,6 +16,7 @@
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - pressing escape when in fullscreen does not unfullscreen the html element
+- the way the ci is setup might make it impossible to cleanly pull "release" (default branch)
 
 ## Next
 
