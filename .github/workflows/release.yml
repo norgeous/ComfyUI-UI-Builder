@@ -28,7 +28,8 @@ jobs:
           git checkout --orphan release
           git rm -rf .github/workflows .storybook .vscode public src
           git rm -f .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
-          mv README.release.md README.md
+          cp README.release.md README.md
+          git rm -f README.release.md
           echo -e 'node_modules\n__pycache__\n' > .gitignore
 
       - name: 👤 Setup git user
