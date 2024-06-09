@@ -9,6 +9,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100%;
 `;
 
 export const Content = styled.div`

@@ -8,6 +8,7 @@ const Controls = styled.aside`
   flex-direction: column;
   background-color: var(--page-bg);
   overflow-x: hidden;
+  height: 100%;
 `;
 
 const Scrollable = styled.div`
