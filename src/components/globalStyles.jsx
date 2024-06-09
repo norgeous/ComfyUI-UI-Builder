@@ -57,7 +57,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  #storybook-root{
+  #storybook-root {
     height: 100%;
   }
 

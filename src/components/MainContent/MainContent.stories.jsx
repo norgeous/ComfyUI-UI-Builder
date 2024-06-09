@@ -6,5 +6,8 @@ export default {
 };
 
 export const MainContent = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   args: {},
 };

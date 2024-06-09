@@ -1,11 +1,11 @@
-import component from './Sidebar';
+import component from './App';
 
 export default {
-  title: 'Sidebar',
+  title: 'App',
   component,
 };
 
-export const Sidebar = {
+export const App = {
   parameters: {
     layout: 'fullscreen',
   },
