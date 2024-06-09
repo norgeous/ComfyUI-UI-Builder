@@ -30,7 +30,9 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout --orphan release
-          git rm -rf ./src ./public
+          git rm -rf ./.github ./.storybook ./.vscode ./public ./src
+          git rm -rf ./node_modules
+          git rm -f  .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
           git status
           echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           git add .
