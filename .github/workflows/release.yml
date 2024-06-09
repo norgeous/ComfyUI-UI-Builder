@@ -18,7 +18,7 @@ jobs:
       - name: 🧰 NPM Install
         run: |
           npm ci
-          # npm i @rollup/rollup-linux-x64-gnu
+          npm i @rollup/rollup-linux-x64-gnu
       - name: 🔨 Vite Build
         run: |
           npm run build
