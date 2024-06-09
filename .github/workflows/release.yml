@@ -27,7 +27,8 @@ jobs:
         run: |
           git checkout --orphan release
           git rm -rf .github/workflows .storybook .vscode public src
-          git rm -f  .eslintrc.cjs .gitattributes .gitignore TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
+          git rm -f .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
+          mv README.release.md README.md
 
       - name: 👤 Setup git user
         run: |
