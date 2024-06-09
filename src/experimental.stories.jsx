@@ -1,5 +1,5 @@
 export default {
-  title: 'Experiments/Checkbox',
+  title: 'Experiments',
 };
 
 export const HSLVsLCH = {
