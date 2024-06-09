@@ -1,6 +1,6 @@
 # UI Builder (develop)
 
-[latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
+👉 [latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
 
 ## Development
 
