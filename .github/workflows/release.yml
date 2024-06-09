@@ -57,5 +57,14 @@ jobs:
           git show --summary
       - name: 🫸 Push release branch to origin
         run: |
+          git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY          
           git push origin release
           # git push
+
+      # - name: 🫸 Commit changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: Your Name
+      #     author_email: mail@example.com
+      #     message: 'Your commit message'
+      #     add: 'report.txt'
