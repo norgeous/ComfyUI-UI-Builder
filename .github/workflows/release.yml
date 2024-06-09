@@ -74,4 +74,5 @@ jobs:
           author_name: github-actions
           author_email: github-actions@github.com
           message: 'Vite build 🔨'
+          remove: .gitignore
           add: 'dist'
