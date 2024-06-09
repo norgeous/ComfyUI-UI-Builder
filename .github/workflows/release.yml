@@ -10,7 +10,7 @@ jobs:
       contents: write
       # id-token: write
     steps:
-      - name: ⤵️ Checkout
+      - name: ⤵️ Checkout "develop" branch
         uses: actions/checkout@v4
         with:
           ref: develop
@@ -24,23 +24,26 @@ jobs:
         run: |
           npm run build
 
-      - name: 📋 Prepare release branch
+      - name: 📋 Prepare "release" branch
         run: |
           git rm -f .gitignore
           echo 'RELEASE' > README.md
           git checkout --orphan release
 
-      - name: ✍️ Commit to release branch
+      - name: 👤 Setup git user
+        run: |
+          # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: ✍️ Commit to "release" branch
         run: |
           git add dist/
           git add README.md
           git commit -m "🇻 Vite Build"
 
-      - name: 🫸 Push release branch to origin
+      - name: 🫸 Push "release" branch to origin
         run: |
-          # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           git push origin release
 
       # - name: ✍️ Commit to release branch
