@@ -13,3 +13,12 @@ export const Primary = {
     $wide: false,
   },
 };
+
+export const Secondary = {
+  args: {
+    children: 'button text',
+    onClick: fn(),
+    $wide: false,
+    $variant: 'secondary',
+  },
+};

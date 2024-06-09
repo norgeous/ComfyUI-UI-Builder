@@ -16,6 +16,12 @@ const Btn = styled.button.attrs({ type: 'button' })`
   display: flex;
   justify-content: center;
   gap: 4px;
+  ${({ $variant }) => {
+    if ($variant === 'secondary')
+      return css`
+        background: red;
+      `;
+  }}
 `;
 
 const Button = ({ children = null, ...props }) => (
