@@ -7,9 +7,9 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 
-import { GithubIcon, StorybookIcon } from '@/components/Icons/Icons';
+import StatusLight from '@/components/StatusLight/StatusLight';
 import Debug from '@/components/Debug/Debug';
-import StatusLight from './StatusLight';
+import { GithubIcon, StorybookIcon } from '@/components/Icons/Icons';
 
 const Bar = styled.div`
   display: flex;
