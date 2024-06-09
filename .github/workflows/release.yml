@@ -22,15 +22,16 @@ jobs:
       - name: 🔨 Vite Build
         run: |
           npm run build
-      - name: 🆙 commit to release branch
+          echo 'RELEASE' > release.txt
+      - name: 🆙 Commit to release branch
         run: |
           git status
-          echo 'RELEASE' > release.txt
-          git status
           git checkout --orphan release
-          git status
-          git rm -rf ./node_modules
           git rm -rf ./node_modules
           git commit -am "Vite build"
           git status
+          echo "!"
+          ls -ha
+      - name: 🫸 Push release branch to origin
+        run: |
           git push origin release
