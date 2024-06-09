@@ -12,7 +12,8 @@ More info coming soon
 
 ## How to use
 
-- Clone this repo into the `ComfyUI/custom_nodes` directory. The default branch (`release`) has the transpiled js code for convenience
+- Clone this repo into the `ComfyUI/custom_nodes` directory.
+  - The default branch (`release`) has the transpiled js code for convenience
 - Run ComfyUI
 - Visit http://127.0.0.1:8188/ui/
 
