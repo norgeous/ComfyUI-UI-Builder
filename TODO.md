@@ -13,9 +13,9 @@
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
 - up and down arrows for prompt weights are shown, but do nothing
-- pressing escape when in fullscreen does not unfullscreen the html element
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
+- pressing escape when in fullscreen does not unfullscreen the html element
 
 ## Next
 
@@ -40,8 +40,12 @@
 - pwa?
 - video input (for animatediff)
 - video output
-- fix linting
+- fix linting problems on develop
 - add lint staged + husky
+- storybook mocks
+  - mock for comfyui websocket
+- run SB a11y tests in pipeline
+- base theme on oklch type colours
 
 ## Ideas
 
