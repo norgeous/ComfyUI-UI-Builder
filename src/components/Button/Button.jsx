@@ -26,15 +26,17 @@ const Btn = styled.button.attrs({ type: 'button' })`
   line-height: 14px;
 `;
 
-const Button = ({ children = null, ...props }) => (
+const Button = ({ wide = false, children = null, ...props }) => (
   <Btn
     {...props} // eslint-disable-line react/jsx-props-no-spreading
+    $wide={wide}
   >
     {children}
   </Btn>
 );
 
 Button.propTypes = {
+  wide: PropTypes.bool,
   children: PropTypes.node,
 };
 

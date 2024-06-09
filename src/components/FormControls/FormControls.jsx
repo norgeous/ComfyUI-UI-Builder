@@ -86,7 +86,7 @@ const FormControls = () => {
           text="Automatic Generation (on change to Positive Prompt when the queue is empty)"
           wide={auto}
         >
-          <Button onClick={() => setAuto(!auto)} $wide={auto}>
+          <Button onClick={() => setAuto(!auto)} wide={auto}>
             {auto ? <PauseIcon /> : <PlayIcon />}
           </Button>
         </Tooltip>
