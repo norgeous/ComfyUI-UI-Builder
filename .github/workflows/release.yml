@@ -22,16 +22,19 @@ jobs:
           # token: ${{ secrets.WORKFLOW_GIT_ACCESS_TOKEN }}
           # token: ${{ github.token }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+
       - name: 🧰 NPM Install
         run: |
           npm ci
-          # npm i @rollup/rollup-linux-x64-gnu
+          npm i @rollup/rollup-linux-x64-gnu
+
       - name: 🔨 Vite Build
         run: |
           npm run build
           echo 'RELEASE' > README.md
+
       # - name: ✍️ Commit to release branch
       #   run: |
       #     git config user.name github-actions
@@ -58,6 +61,7 @@ jobs:
       #     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       #     ls -ha
       #     git show --summary
+
       # - name: 🫸 Push release branch to origin
       #   run: |
       #     git remote set-url origin https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY
