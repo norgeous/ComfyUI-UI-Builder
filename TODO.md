@@ -20,9 +20,6 @@
 ## Next
 
 - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
-- github CI build process
-  - build storybook to github pages
-  - build vite dist to main (default) branch, move code to develop branch
 - combine InputTextarea, InputSpeech and InputText into a single type of input
 - README redo
   - how to make UIB workflows and example links
