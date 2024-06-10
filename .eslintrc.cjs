@@ -40,15 +40,7 @@ module.exports = {
       'error',
       {
         // only these files are allowed to import from devDeps
-        devDependencies: [
-          'vite.config.js',
-          '**/**.stories.js',
-          '**/*.stories.*',
-          '**/*.test.*',
-          '**/mocks/*.*',
-          '**/.storybook/**/*.*',
-        ],
-        peerDependencies: true,
+        devDependencies: ['vite.config.js'],
       },
     ],
     // Support for defaultProps will be removed from function components

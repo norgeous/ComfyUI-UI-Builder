@@ -1,4 +1,4 @@
-import SimpleStateDecorator from '@ui-builder/storybook/.storybook/SimpleStateDecorator';
+import SimpleStateDecorator from '@/mocks/SimpleStateDecorator';
 import component from './InputTextarea';
 
 export default {

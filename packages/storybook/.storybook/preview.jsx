@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Providers from '@/Providers';
 import { GlobalStyle, Theme1Style } from '@/components/globalStyles';
 
