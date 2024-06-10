@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputText from './InputText';
+import component from './InputText';
 
 export default {
-  title: 'Input/Text',
-  component: InputText,
+  title: 'InputText',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Text = {
+export const InputText = {
   args: {
     id: 'demo',
     label: 'My InputText Label',

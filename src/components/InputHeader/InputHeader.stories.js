@@ -1,18 +1,15 @@
-import { action } from '@storybook/addon-actions';
-import InputHeader from './InputHeader';
+import component from './InputHeader';
 
 export default {
-  title: 'Input/Header',
-  component: InputHeader,
+  title: 'InputHeader',
+  component,
 };
 
-export const Header = {
+export const InputHeader = {
   args: {
     id: 'test',
     label: 'My InputHeader Label',
     info: 'my info text',
-    isLoading: true,
-    showReset: true,
-    handleReset: action('reset'),
+    children: 'extra children',
   },
 };

@@ -2,7 +2,7 @@ import { fn } from '@storybook/test';
 import Button from './Button';
 
 export default {
-  title: 'Input/Button',
+  title: 'Button',
   component: Button,
 };
 

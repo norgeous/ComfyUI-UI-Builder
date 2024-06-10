@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputSelect from './InputSelect';
+import component from './InputSelect';
 
 export default {
-  title: 'Input/Select',
-  component: InputSelect,
+  title: 'InputSelect',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Select = {
+export const InputSelect = {
   args: {
     id: 'demo',
     label: 'My InputSelect Label',

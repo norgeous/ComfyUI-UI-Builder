@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputSpeech from './InputSpeech';
+import component from './InputSpeech';
 
 export default {
-  title: 'Input/Speech',
-  component: InputSpeech,
+  title: 'InputSpeech',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Speech = {
+export const InputSpeech = {
   args: {
     id: 'demo',
     label: 'My InputSpeech Label',

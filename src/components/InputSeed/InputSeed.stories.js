@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputSeed from './InputSeed';
+import component from './InputSeed';
 
 export default {
-  title: 'Input/Seed',
-  component: InputSeed,
+  title: 'InputSeed',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Seed = {
+export const InputSeed = {
   args: {
     id: 'demo-seed',
     label: 'My InputSeed Label',

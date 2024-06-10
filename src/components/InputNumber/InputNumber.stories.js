@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputNumber from './InputNumber';
+import component from './InputNumber';
 
 export default {
-  title: 'Input/Number',
-  component: InputNumber,
+  title: 'InputNumber',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Number = {
+export const InputNumber = {
   args: {
     id: 'demo',
     label: 'My InputNumber Label',

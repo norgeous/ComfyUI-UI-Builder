@@ -1,14 +1,14 @@
 import { fn } from '@storybook/test';
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputFile from './InputFile';
+import component from './InputFile';
 
 export default {
-  title: 'Input/File',
-  component: InputFile,
+  title: 'InputFile',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const File = {
+export const InputFile = {
   args: {
     id: 'demo',
     label: 'My InputFile Label',

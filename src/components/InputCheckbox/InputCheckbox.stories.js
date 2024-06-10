@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputCheckbox from './InputCheckbox';
+import component from './InputCheckbox';
 
 export default {
-  title: 'Input/Checkbox',
-  component: InputCheckbox,
+  title: 'InputCheckbox',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Checkbox = {
+export const InputCheckbox = {
   args: {
     id: 'demo',
     info: 'helpful text...',

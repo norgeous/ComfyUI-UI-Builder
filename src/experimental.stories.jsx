@@ -1,5 +1,5 @@
 export default {
-  title: 'Z/Experiments',
+  title: '_Experiments/OKLCH',
 };
 
 export const HSLVsLCH = {

@@ -1,9 +1,9 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputRange from './InputRange';
+import component from './InputRange';
 
 export default {
-  title: 'Input/Range',
-  component: InputRange,
+  title: 'InputRange',
+  component,
   decorators: [SimpleStateDecorator],
 };
 

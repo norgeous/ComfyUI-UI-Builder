@@ -1,13 +1,13 @@
 import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
-import InputTextarea from './InputTextarea';
+import component from './InputTextarea';
 
 export default {
-  title: 'Input/Textarea',
-  component: InputTextarea,
+  title: 'InputTextarea',
+  component,
   decorators: [SimpleStateDecorator],
 };
 
-export const Textarea = {
+export const InputTextarea = {
   args: {
     id: 'demo',
     label: 'My InputTextarea Label',
