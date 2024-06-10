@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import ErrorText from '@/components/ErrorText/ErrorText';
-import InputWrapper from '../InputWrapper/InputWrapper';
-import Select from '../InputSelect/InputSelect';
+import InputWrapper from '@/components/InputWrapper/InputWrapper';
+import Select from '@/components/InputSelect/InputSelect';
 
 const Input = styled.input.attrs({ type: 'file' })`
   display: none;
@@ -46,7 +47,7 @@ const InputFile = ({
   error = undefined,
   ...props
 }) => {
-  const fileInputRef = useRef();
+  const ref = useContext(InputRefContext);
 
   const handleSelectChange = newValue => onChange(newValue);
 
@@ -71,12 +72,12 @@ const InputFile = ({
         onChange={handleSelectChange}
       />
       <InputWrapper>
-        <Button onClick={() => fileInputRef.current.click()}>
+        <Button onClick={() => ref.current.click()}>
           Choose a new file to upload...
         </Button>
         {value && <Img alt="" src={value} />}
         <Input
-          ref={fileInputRef}
+          ref={ref}
           accept={allowedFileTypes.join(',')}
           onChange={handleFileChange}
         />
