@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ChevronIcon } from '@/components/Icons/Icons';
 
-const AccordionContainer = styled.div`
+const CollapsableContainer = styled.div`
   border-radius: var(--radius);
   overflow: hidden;
 `;
 
-const AccordionHeader = styled.button`
+const CollapsableHeader = styled.button`
   background: var(--header-bg);
   color: var(--header-fg);
   width: 100%;
@@ -47,33 +47,29 @@ const Padding = styled.div`
   padding: 8px;
 `;
 
-const AccordionSingle = ({
-  title = '',
-  defaultIsOpen = true,
-  children = null,
-}) => {
+const Collapsable = ({ title = '', defaultIsOpen = true, children = null }) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);
   const onClick = () => setIsOpen(!isOpen);
 
   return (
-    <AccordionContainer>
-      <AccordionHeader onClick={onClick}>
+    <CollapsableContainer>
+      <CollapsableHeader onClick={onClick}>
         <HeaderText>{title}</HeaderText>
         <ChevronIcon $isOpen={isOpen} />
-      </AccordionHeader>
+      </CollapsableHeader>
       <Collapse $isOpen={isOpen}>
         <Inner $isOpen={isOpen}>
           <Padding>{children}</Padding>
         </Inner>
       </Collapse>
-    </AccordionContainer>
+    </CollapsableContainer>
   );
 };
 
-AccordionSingle.propTypes = {
+Collapsable.propTypes = {
   title: PropTypes.string,
   defaultIsOpen: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export default AccordionSingle;
+export default Collapsable;

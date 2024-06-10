@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
 import Input from '../Input/Input';
-import AccordionSingle from '../Accordion/AccordionSingle';
+import Collapsable from '../Collapsable/Collapsable';
 
 const Container = styled.section`
   display: flex;
@@ -35,7 +35,7 @@ const FormBuilder = () => {
         );
 
         return (
-          <AccordionSingle key={accordionGroup} title={accordionGroup}>
+          <Collapsable key={accordionGroup} title={accordionGroup}>
             <Grid>
               {itemsInGroup.map(
                 ({
@@ -59,7 +59,7 @@ const FormBuilder = () => {
                 ),
               )}
             </Grid>
-          </AccordionSingle>
+          </Collapsable>
         );
       })}
     </Container>
