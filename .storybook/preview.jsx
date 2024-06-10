@@ -12,7 +12,9 @@ const preview = {
     },
     a11y: {
       config: {
-        rules: [{ id: 'color-contrast', selector: '*:not(.muted *)' }],
+        rules: [
+          { id: 'color-contrast', selector: '*:not(.muted):not(.muted *)' },
+        ],
       },
     },
   },
