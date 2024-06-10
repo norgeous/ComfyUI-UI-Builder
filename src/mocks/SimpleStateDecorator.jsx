@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderButton from '@/components/HeaderButton/HeaderButton';
-import { ResetIcon } from '@/components/Icons/Icons';
+import HeaderButton from '@/components/HeaderButton';
+import { ResetIcon } from '@/components/Icons';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;

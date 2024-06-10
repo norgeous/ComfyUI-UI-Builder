@@ -4,28 +4,31 @@ import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import InputHeader from '@/components/InputHeader';
-import Checkbox from '@/components/Checkbox';
 import InputWrapper from '@/components/InputWrapper';
 
-const Label = styled.label`
+const Select = styled.select`
   display: block;
   width: 100%;
-  margin: 0;
-  display: inline-flex;
-  place-items: center;
-  gap: 4px;
-  padding: 9px 0;
-  cursor: pointer;
-  font-size: 0.875rem;
+  min-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  color: var(--input-fg);
+  padding: 8px 4px;
+  &:focus-visible {
+    outline: 2px solid var(--input-outline);
+    outline-offset: 2px;
+  }
 `;
 
-const InputCheckbox = ({
+const InputSelect = ({
   id = undefined,
   label = undefined,
   info = undefined,
+  options = [],
   value = undefined,
   onChange = () => {},
-  options = [],
   children = null,
 }) => {
   const ref = useContext(InputRefContext);
@@ -34,28 +37,28 @@ const InputCheckbox = ({
     option => option.value === value || deepEqual(option.value, value),
   );
 
-  const { label: checkboxLabel } = options[index];
-
   return (
     <InputWrapper>
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
-      <Label>
-        <Checkbox
-          ref={ref}
-          checked={Boolean(index)}
-          onChange={event =>
-            onChange(options[Number(event.currentTarget.checked)].value)
-          }
-        />{' '}
-        {checkboxLabel}
-      </Label>
+      <Select
+        ref={ref}
+        id={id}
+        value={index}
+        onChange={event => onChange(options[event.target.value].value)}
+      >
+        {options.map(({ label: optionLabel }, i) => (
+          <option key={optionLabel} value={String(i)}>
+            {optionLabel}
+          </option>
+        ))}
+      </Select>
     </InputWrapper>
   );
 };
 
-InputCheckbox.propTypes = {
+InputSelect.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
@@ -70,4 +73,4 @@ InputCheckbox.propTypes = {
   children: PropTypes.node,
 };
 
-export default InputCheckbox;
+export default InputSelect;

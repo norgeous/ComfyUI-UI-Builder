@@ -5,15 +5,15 @@ import InputRefContext from '@/contexts/InputRefContext';
 import InputWrapper from '../InputWrapper';
 import InputHeader from '../InputHeader';
 
-const Input = styled.input.attrs({ type: 'text' })`
+const Input = styled.input.attrs({ type: 'number' })`
   display: block;
   width: 100%;
   min-width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--input-border);
+  border-radius: var(--radius);
   background: var(--input-bg);
   color: var(--input-fg);
-  border-radius: var(--radius);
   padding: 8px 4px;
   &:focus-visible {
     outline: 2px solid var(--input-outline);
@@ -21,11 +21,10 @@ const Input = styled.input.attrs({ type: 'text' })`
   }
 `;
 
-const InputText = ({
+const InputNumber = ({
   id = undefined,
   label = undefined,
   info = undefined,
-  options = [],
   value = undefined,
   onChange = () => {},
   children = null,
@@ -41,29 +40,19 @@ const InputText = ({
         ref={ref}
         id={id}
         value={value}
-        onChange={event => onChange(event.target.value)}
-        list={options.length ? `${id}-list` : undefined}
+        onChange={event => onChange(Number(event.target.value))}
       />
-      {!!options.length && (
-        <datalist id={`${id}-list`}>
-          {options.map(option => (
-            <option key={option} aria-label={option} value={option} />
-          ))}
-        </datalist>
-      )}
     </InputWrapper>
   );
 };
 
-InputText.propTypes = {
+InputNumber.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  /** auto completions array of strings */
-  options: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.number,
   onChange: PropTypes.func,
   children: PropTypes.node,
 };
 
-export default InputText;
+export default InputNumber;

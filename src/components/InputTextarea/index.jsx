@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
-import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons/Icons';
-import InputWrapper from '@/components/InputWrapper/InputWrapper';
-import InputHeader from '@/components/InputHeader/InputHeader';
+import InputHeader from '@/components/InputHeader';
+import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons';
+import InputWrapper from '@/components/InputWrapper';
 
 const Textarea = styled.textarea`
   display: block;
