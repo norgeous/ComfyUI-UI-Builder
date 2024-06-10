@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import SpeechContext from '@/contexts/SpeechContext';
 import HeaderButton from '@/components/HeaderButton/HeaderButton';
 import {
@@ -38,6 +39,8 @@ const InputTextarea = ({
   onChange = () => {},
   children = null,
 }) => {
+  const ref = useContext(InputRefContext);
+
   const { targetId, unmutedId, setUnmutedId, loading, error, vosk, tail } =
     useContext(SpeechContext);
 
@@ -77,6 +80,7 @@ const InputTextarea = ({
       </InputHeader>
       {error && isTarget && <ErrorText>{error}</ErrorText>}
       <Textarea
+        ref={ref}
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
