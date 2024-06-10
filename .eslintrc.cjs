@@ -11,7 +11,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['dist', 'storybook-static'],
+  ignorePatterns: ['dist', 'storybook-static', '!.storybook'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: {
     react: { version: '18.2' },
@@ -45,6 +45,8 @@ module.exports = {
           '**/**.stories.js',
           '**/*.stories.*',
           '**/*.test.*',
+          '**/mocks/*.*',
+          '**/.storybook/**/*.*',
         ],
         peerDependencies: true,
       },

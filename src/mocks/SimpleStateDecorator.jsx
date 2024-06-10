@@ -30,14 +30,10 @@ const SimpleStateDecorator = (Story, { args }) => {
 
   const showReset = value !== initialValue;
 
-  const children = (
-    <>
-      {showReset && (
-        <ResetButton label="Reset" onClick={handleReset}>
-          <ResetIcon />
-        </ResetButton>
-      )}
-    </>
+  const children = showReset && (
+    <ResetButton label="Reset" onClick={handleReset}>
+      <ResetIcon />
+    </ResetButton>
   );
 
   return (
