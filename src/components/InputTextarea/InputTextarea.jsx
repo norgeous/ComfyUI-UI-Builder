@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons/Icons';
-import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
+import InputWrapper from '@/components/InputWrapper/InputWrapper';
+import InputHeader from '@/components/InputHeader/InputHeader';
 
 const Textarea = styled.textarea`
   display: block;
@@ -39,7 +40,7 @@ const InputTextarea = ({
   onChange = () => {},
   children = null,
 }) => {
-  const ref = useRef();
+  const ref = useContext(InputRefContext);
 
   // handle ctrl+up and ctrl+down to control word or phrase weight inside prompt input
   // work needed for edge cases (TODO):
