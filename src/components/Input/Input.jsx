@@ -7,16 +7,17 @@ import InputRefContext from '@/contexts/InputRefContext';
 import HeaderButton from '@/components/HeaderButton/HeaderButton';
 import { ResetIcon } from '@/components/Icons/Icons';
 
-import InputMissing from '../InputMissing/InputMissing';
-import InputSelect from '../InputSelect/InputSelect';
-import InputRange from '../InputRange/InputRange';
-import InputTextarea from '../InputTextarea/InputTextarea';
-import InputNumber from '../InputNumber/InputNumber';
-import InputCheckbox from '../InputCheckbox/InputCheckbox';
-import InputSelectCkpt from '../InputSelectCkpt/InputSelectCkpt';
-import InputFile from '../InputFile/InputFile';
-import InputSpeech from '../InputSpeech/InputSpeech';
-import InputSeed from '../InputSeed/InputSeed';
+import InputMissing from '@/components/InputMissing/InputMissing';
+import InputSelect from '@/components/InputSelect/InputSelect';
+import InputRange from '@/components/InputRange/InputRange';
+import InputTextarea from '@/components/InputTextarea';
+import InputText from '@/components/InputText';
+import InputNumber from '@/components/InputNumber/InputNumber';
+import InputSelectCkpt from '@/components/InputSelectCkpt/InputSelectCkpt';
+import InputFile from '@/components/InputFile/InputFile';
+import InputSpeech from '@/components/InputSpeech/InputSpeech';
+import InputSeed from '@/components/InputSeed/InputSeed';
+import InputCheckbox from '@/components/InputCheckbox';
 
 const ResetButton = styled(HeaderButton)`
   margin-left: auto;
@@ -26,6 +27,7 @@ const components = {
   select: InputSelect,
   range: InputRange,
   textarea: InputTextarea,
+  text: InputText,
   number: InputNumber,
   checkbox: InputCheckbox,
   selectckpt: InputSelectCkpt,

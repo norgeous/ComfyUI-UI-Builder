@@ -1,5 +1,5 @@
 import SimpleStateDecorator from '@/mocks/SimpleStateDecorator';
-import component from './InputTextarea';
+import component from '.';
 
 export default {
   title: 'InputTextarea',
