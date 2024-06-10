@@ -10,7 +10,7 @@ import {
 } from '@/components/Icons/Icons';
 import InputHeader from '@/components/InputHeader/InputHeader';
 import ErrorText from '@/components/ErrorText/ErrorText';
-import InputWrapper from '@/components/form-fields/InputWrapper/InputWrapper';
+import InputWrapper from '@/components/InputWrapper/InputWrapper';
 
 const Textarea = styled.textarea`
   display: block;

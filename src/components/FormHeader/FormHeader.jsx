@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import Select from '../form-fields/InputSelect/InputSelect';
+import Select from '@/components/InputSelect/InputSelect';
 
 const Header = styled.header`
   background: var(--surface-bg);

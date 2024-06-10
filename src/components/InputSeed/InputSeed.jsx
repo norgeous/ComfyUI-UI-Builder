@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import { RandomiseIcon, ShuffleIcon } from '@/components/Icons/Icons';
-import InputNumber from '@/components/form-fields/InputNumber/InputNumber';
+import InputNumber from '@/components/InputNumber/InputNumber';
 import HeaderButton from '@/components/HeaderButton/HeaderButton';
 import HeaderToggle from '@/components/HeaderToggle/HeaderToggle';
 

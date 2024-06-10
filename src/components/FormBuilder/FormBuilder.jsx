@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
-import Input from '../form-fields/Input/Input';
+import Input from '../Input/Input';
 import AccordionSingle from '../Accordion/AccordionSingle';
 
 const Container = styled.section`

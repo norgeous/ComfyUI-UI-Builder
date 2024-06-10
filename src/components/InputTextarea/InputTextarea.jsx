@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons/Icons';
 import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../../InputHeader/InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 
 const Textarea = styled.textarea`
   display: block;

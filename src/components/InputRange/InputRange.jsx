@@ -5,7 +5,7 @@ import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import { ArrowLeftIcon, ArrowRightIcon } from '@/components/Icons/Icons';
 import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../../InputHeader/InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 
 const RangeWrapper = styled.div`
   display: flex;

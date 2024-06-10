@@ -2,10 +2,11 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
+import deepEqual from '@/utils/deepEqual';
 import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../../InputHeader/InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 
-const Input = styled.input.attrs({ type: 'number' })`
+const Select = styled.select`
   display: block;
   width: 100%;
   min-width: 100%;
@@ -21,38 +22,55 @@ const Input = styled.input.attrs({ type: 'number' })`
   }
 `;
 
-const InputNumber = ({
+const InputSelect = ({
   id = undefined,
   label = undefined,
   info = undefined,
+  options = [],
   value = undefined,
   onChange = () => {},
   children = null,
 }) => {
   const ref = useContext(InputRefContext);
 
+  const index = options.findIndex(
+    option => option.value === value || deepEqual(option.value, value),
+  );
+
   return (
     <InputWrapper>
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
-      <Input
+      <Select
         ref={ref}
         id={id}
-        value={value}
-        onChange={event => onChange(Number(event.target.value))}
-      />
+        value={index}
+        onChange={event => onChange(options[event.target.value].value)}
+      >
+        {options.map(({ label: optionLabel }, i) => (
+          <option key={optionLabel} value={String(i)}>
+            {optionLabel}
+          </option>
+        ))}
+      </Select>
     </InputWrapper>
   );
 };
 
-InputNumber.propTypes = {
+InputSelect.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,
-  value: PropTypes.number,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+    }),
+  ),
+  value: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func,
   children: PropTypes.node,
 };
 
-export default InputNumber;
+export default InputSelect;

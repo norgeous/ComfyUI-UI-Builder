@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../../InputHeader/InputHeader';
+import InputHeader from '../InputHeader/InputHeader';
 
 const Input = styled.input.attrs({ type: 'text' })`
   display: block;
