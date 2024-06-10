@@ -8,5 +8,6 @@ export default {
 export const Checkbox = {
   args: {
     checked: true,
+    'aria-label': 'my checkbox',
   },
 };
