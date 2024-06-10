@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Tooltip from '@/components/Tooltip/Tooltip';
-import { InfoIcon } from '../Icons/Icons';
+import { InfoIcon } from '@/components/Icons/Icons';
 
 const HeaderInfo = ({ text = undefined }) => (
   <Tooltip text={text}>

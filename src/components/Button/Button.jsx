@@ -21,6 +21,7 @@ const Btn = styled.button.attrs({ type: 'button' })`
       return css`
         background: red;
       `;
+    return undefined;
   }}
   font-size: 14px;
   line-height: 14px;

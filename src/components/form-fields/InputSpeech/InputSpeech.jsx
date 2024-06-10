@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SpeechContext from '@/contexts/SpeechContext';
-import HeaderButton from '@/components/header-components/HeaderButton';
+import HeaderButton from '@/components/header-components/HeaderButton/HeaderButton';
 import {
   SpinnerIcon,
   MicMutedIcon,

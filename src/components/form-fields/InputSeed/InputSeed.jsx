@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
-import InputNumber from '@/components/form-fields/InputNumber/InputNumber';
-import HeaderToggle from '@/components/header-components/HeaderToggle';
-import HeaderButton from '@/components/header-components/HeaderButton';
 import { RandomiseIcon, ShuffleIcon } from '@/components/Icons/Icons';
+import InputNumber from '@/components/form-fields/InputNumber/InputNumber';
+import HeaderButton from '@/components/header-components/HeaderButton/HeaderButton';
+import HeaderToggle from '@/components/header-components/HeaderToggle/HeaderToggle';
 
 const InputSeed = ({
   value = undefined,
