@@ -1,16 +1,16 @@
 import { fn } from '@storybook/test';
-import Button from './Button';
+import component from './Button';
 
 export default {
   title: 'Button',
-  component: Button,
+  component,
 };
 
 export const Primary = {
   args: {
     children: 'button text',
     onClick: fn(),
-    $wide: false,
+    wide: false,
   },
 };
 
@@ -18,7 +18,7 @@ export const Secondary = {
   args: {
     children: 'button text',
     onClick: fn(),
-    $wide: false,
-    $variant: 'secondary',
+    wide: false,
+    variant: 'secondary',
   },
 };
