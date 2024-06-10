@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import FormContext from '@/contexts/FormContext';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderButton from '@/components/header-components/HeaderButton/HeaderButton';
+import HeaderButton from '@/components/HeaderButton/HeaderButton';
 import { ResetIcon } from '@/components/Icons/Icons';
 
 import InputMissing from '../InputMissing/InputMissing';

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Info from '@/components/header-components/HeaderInfo/HeaderInfo';
+import Info from '@/components/HeaderInfo/HeaderInfo';
 
 const Wrap = styled.div`
   display: flex;

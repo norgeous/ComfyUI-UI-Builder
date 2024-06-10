@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderButton from '@/components/header-components/HeaderButton/HeaderButton';
+import HeaderButton from '@/components/HeaderButton/HeaderButton';
 import { ResetIcon } from '@/components/Icons/Icons';
 
 const ResetButton = styled(HeaderButton)`
