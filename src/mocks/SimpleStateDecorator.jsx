@@ -1,13 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { useRef, useState } from 'react';
-import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
-import HeaderButton from '@/components/HeaderButton';
-import { ResetIcon } from '@/components/Icons';
-
-const ResetButton = styled(HeaderButton)`
-  margin-left: auto;
-`;
+import ResetButton from '@/components/ResetButton';
 
 const SimpleStateDecorator = (Story, { args }) => {
   const ref = useRef();
@@ -30,12 +24,6 @@ const SimpleStateDecorator = (Story, { args }) => {
 
   const showReset = value !== initialValue;
 
-  const children = showReset && (
-    <ResetButton label="Reset" onClick={handleReset}>
-      <ResetIcon />
-    </ResetButton>
-  );
-
   return (
     <InputRefContext.Provider value={ref}>
       <Story
@@ -43,7 +31,7 @@ const SimpleStateDecorator = (Story, { args }) => {
           ...args,
           value,
           onChange,
-          children,
+          children: showReset && <ResetButton onClick={handleReset} />,
         }}
       />
     </InputRefContext.Provider>

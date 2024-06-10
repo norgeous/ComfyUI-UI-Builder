@@ -1,12 +1,10 @@
 import { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import FormContext from '@/contexts/FormContext';
 import InputRefContext from '@/contexts/InputRefContext';
+import ResetButton from '@/components/ResetButton';
 
-import HeaderButton from '@/components/HeaderButton';
-import { ResetIcon } from '@/components/Icons';
 import InputMissing from '@/components/InputMissing';
 
 import InputSelect from '@/components/InputSelect';
@@ -19,10 +17,6 @@ import InputFile from '@/components/InputFile';
 import InputSpeech from '@/components/InputSpeech';
 import InputSeed from '@/components/InputSeed';
 import InputCheckbox from '@/components/InputCheckbox';
-
-const ResetButton = styled(HeaderButton)`
-  margin-left: auto;
-`;
 
 const components = {
   select: InputSelect,
@@ -77,11 +71,7 @@ const FormItem = ({
         value={stateValue}
         onChange={handleChange}
       >
-        {showReset && (
-          <ResetButton label="Reset" onClick={handleReset}>
-            <ResetIcon />
-          </ResetButton>
-        )}
+        {showReset && <ResetButton onClick={handleReset} />}
       </Component>
     </InputRefContext.Provider>
   );
