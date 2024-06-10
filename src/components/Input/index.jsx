@@ -42,9 +42,10 @@ const FormItem = ({
   onChangeData = {},
   ...props
 }) => {
+  const Component = components[type] || InputMissing;
+
   const ref = useRef();
   const { formState, updateFormState } = useContext(FormContext);
-  const Component = components[type] || InputMissing;
   const stateValue = value ?? formState[id];
 
   const handleChange = data => {

@@ -4,11 +4,11 @@ import InputRefContext from '@/contexts/InputRefContext';
 import ResetButton from '@/components/ResetButton';
 
 const SimpleStateDecorator = (Story, { args }) => {
-  const ref = useRef();
-
   const { defaultValue, defaultValueIndex, options } = args;
 
   const initialValue = defaultValue ?? options[defaultValueIndex].value;
+
+  const ref = useRef();
 
   const [value, setValue] = useState(initialValue);
 
