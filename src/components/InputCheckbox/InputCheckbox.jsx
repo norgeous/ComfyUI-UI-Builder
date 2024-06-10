@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import Checkbox from '@/components/Checkbox/Checkbox';
-import InputWrapper from '../InputWrapper/InputWrapper';
-import InputHeader from '../InputHeader/InputHeader';
+import InputWrapper from '@/components/InputWrapper/InputWrapper';
+import InputHeader from '@/components/InputHeader/InputHeader';
 
 const Label = styled.label`
   display: block;
@@ -26,6 +28,8 @@ const InputCheckbox = ({
   options = [],
   children = null,
 }) => {
+  const ref = useContext(InputRefContext);
+
   const index = options.findIndex(
     option => option.value === value || deepEqual(option.value, value),
   );
@@ -39,6 +43,7 @@ const InputCheckbox = ({
       </InputHeader>
       <Label>
         <Checkbox
+          ref={ref}
           checked={Boolean(index)}
           onChange={event =>
             onChange(options[Number(event.currentTarget.checked)].value)
