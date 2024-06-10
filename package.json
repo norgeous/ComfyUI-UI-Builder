@@ -10,8 +10,8 @@
     "build": "vite build",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
     "lint": "eslint . --ext .js,.jsx,.cjs --fix",
-    "sb": "storybook dev -p 6006",
-    "sb:build": "storybook build",
+    "sb": "npm run sb -w packages/storybook",
+    "sb:build": "npm run build -w packages/storybook",
     "sb:unittest": "npm run unittest -w packages/storybook",
     "outdated": "npm outdated"
   },
@@ -32,6 +32,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "@ui-builder/storybook": "*",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",

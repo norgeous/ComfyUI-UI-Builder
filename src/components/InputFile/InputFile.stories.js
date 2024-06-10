@@ -1,5 +1,5 @@
 import { fn } from '@storybook/test';
-import SimpleStateDecorator from '@/../.storybook/SimpleStateDecorator';
+import SimpleStateDecorator from '@ui-builder/storybook/.storybook/SimpleStateDecorator';
 import component from './InputFile';
 
 export default {

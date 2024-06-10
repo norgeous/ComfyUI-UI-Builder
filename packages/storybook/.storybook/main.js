@@ -1,6 +1,9 @@
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../../../src/**/*.mdx',
+    '../../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
 
   addons: [
     '@storybook/addon-links',
@@ -16,15 +19,21 @@ const config = {
 
   docs: {},
 
-  staticDirs: ['../public'],
+  staticDirs: ['../../../public'],
 
   core: {
     disableTelemetry: true,
     disableWhatsNewNotifications: true,
+    builder: {
+      name: '@storybook/builder-vite',
+      options: {
+        viteConfigPath: '../../vite.config.js',
+      },
+    },
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
 };
 export default config;
