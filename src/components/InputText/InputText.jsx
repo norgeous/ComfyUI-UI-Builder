@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import InputRefContext from '@/contexts/InputRefContext';
 import InputWrapper from '../InputWrapper/InputWrapper';
 import InputHeader from '../InputHeader/InputHeader';
 
@@ -27,26 +29,31 @@ const InputText = ({
   value = undefined,
   onChange = () => {},
   children = null,
-}) => (
-  <InputWrapper>
-    <InputHeader id={id} label={label} info={info}>
-      {children}
-    </InputHeader>
-    <Input
-      id={id}
-      value={value}
-      onChange={event => onChange(event.target.value)}
-      list={options.length ? `${id}-list` : undefined}
-    />
-    {!!options.length && (
-      <datalist id={`${id}-list`}>
-        {options.map(option => (
-          <option key={option} aria-label={option} value={option} />
-        ))}
-      </datalist>
-    )}
-  </InputWrapper>
-);
+}) => {
+  const ref = useContext(InputRefContext);
+
+  return (
+    <InputWrapper>
+      <InputHeader id={id} label={label} info={info}>
+        {children}
+      </InputHeader>
+      <Input
+        ref={ref}
+        id={id}
+        value={value}
+        onChange={event => onChange(event.target.value)}
+        list={options.length ? `${id}-list` : undefined}
+      />
+      {!!options.length && (
+        <datalist id={`${id}-list`}>
+          {options.map(option => (
+            <option key={option} aria-label={option} value={option} />
+          ))}
+        </datalist>
+      )}
+    </InputWrapper>
+  );
+};
 
 InputText.propTypes = {
   id: PropTypes.string,
