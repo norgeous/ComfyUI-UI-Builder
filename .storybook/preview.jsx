@@ -18,6 +18,7 @@ const preview = {
       },
     },
   },
+
   decorators: [
     Story => (
       <>
@@ -29,6 +30,8 @@ const preview = {
       </>
     ),
   ],
+
+  tags: ['autodocs']
 };
 
 export default preview;
