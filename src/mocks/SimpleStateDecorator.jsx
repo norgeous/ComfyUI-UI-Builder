@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { fn } from '@storybook/test';
 import { useRef, useState } from 'react';
 import InputRefContext from '@/contexts/InputRefContext';
 import ResetButton from '@/components/ResetButton';
@@ -13,7 +13,7 @@ const SimpleStateDecorator = (Story, { args }) => {
   const [value, setValue] = useState(initialValue);
 
   const onChange = newValue => {
-    action('onChange')(newValue);
+    fn()(newValue);
     setValue(newValue);
   };
 

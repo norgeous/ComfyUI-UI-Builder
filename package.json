@@ -45,7 +45,6 @@
     "vite": "^5.2.13"
   },
   "peerDependencies": {
-    "@storybook/addon-actions": "^8.1.6",
     "@storybook/test": "^8.1.6"
   }
 }
