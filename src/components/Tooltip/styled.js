@@ -2,6 +2,11 @@ import styled, { css } from 'styled-components';
 import { FloatingArrow } from '@floating-ui/react';
 
 export const TooltipWrap = styled.span`
+  ${({ $lm }) =>
+    $lm &&
+    css`
+      margin-left: auto;
+    `}
   ${({ $wide }) =>
     $wide &&
     css`

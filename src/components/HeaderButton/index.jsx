@@ -6,10 +6,11 @@ const HeaderButton = ({
   className = undefined,
   label = undefined,
   onClick = () => {},
+  lm = false,
   children = null,
   ...props
 }) => (
-  <Tooltip className={className} text={label}>
+  <Tooltip className={className} text={label} lm={lm}>
     <InputHeaderButton
       aria-label={label}
       onClick={onClick}
@@ -23,6 +24,7 @@ const HeaderButton = ({
 HeaderButton.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
+  lm: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

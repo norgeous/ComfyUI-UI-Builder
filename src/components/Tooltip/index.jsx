@@ -7,6 +7,7 @@ const Tooltip = ({
   className = undefined,
   text = undefined,
   wide = false,
+  lm = false,
   children = null,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ const Tooltip = ({
       <TooltipWrap
         className={className}
         $wide={wide}
+        $lm={lm}
         ref={refs.setReference}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
