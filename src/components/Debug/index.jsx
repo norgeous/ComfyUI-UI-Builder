@@ -11,7 +11,7 @@ const Debug = ({ label, data = undefined }) => {
   return (
     <>
       <Tooltip text={label}>
-        <Button onClick={toggle}>
+        <Button onClick={toggle} aria-label={label}>
           <BugIcon />
         </Button>
       </Tooltip>
