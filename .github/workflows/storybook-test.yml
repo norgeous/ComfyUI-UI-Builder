@@ -1,0 +1,24 @@
+name: 📕 Storybook smoke, play and a11y tests
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  storybook-build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
+
+      - name: 🧪 Storybook test
+        run: |
+          npm run unittest:ci -w packages/storybook
