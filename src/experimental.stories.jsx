@@ -25,6 +25,7 @@ export const HSLVsLCH = {
                     accentColor: `hsl(${h}, ${saturationOrChroma}%, ${l}%)`,
                   }}
                   title={`L:${l} H:${h}`}
+                  aria-label="checkbox"
                 />
               ),
             )}
@@ -42,6 +43,7 @@ export const HSLVsLCH = {
                   accentColor: `oklch(${l}% ${saturationOrChroma}% ${h})`,
                 }}
                 title={`L:${l} H:${h}`}
+                aria-label="checkbox"
               />
             ))}
           </div>
