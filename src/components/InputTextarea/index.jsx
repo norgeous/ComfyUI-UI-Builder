@@ -1,28 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputHeader from '@/components/InputHeader';
 import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons';
 import InputWrapper from '@/components/InputWrapper';
-
-const Textarea = styled.textarea`
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  border: 1px solid var(--input-border);
-  background: var(--input-bg);
-  color: var(--input-fg);
-  border-radius: var(--radius);
-  &:focus-visible {
-    outline: 2px solid var(--input-outline);
-    outline-offset: 2px;
-  }
-  min-height: 80px;
-  line-height: 21px;
-  padding: 4px 8px;
-  resize: vertical;
-`;
+import { Textarea } from './styled';
 
 // prevent ctrl+up moving to start of input
 // prevent ctrl+down moving to end of input
