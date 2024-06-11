@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - develop
-    paths: ['stories/**', 'src/components/**']
+    # paths: ['stories/**', 'src/components/**']
 jobs:
   storybook-storycap:
     runs-on: ubuntu-latest
