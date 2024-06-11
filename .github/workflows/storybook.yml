@@ -23,6 +23,7 @@ jobs:
       - name: 📕 Storybook Build
         run: |
           npm run sb:build
+          ls -l packages/storybook/storybook-static
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
