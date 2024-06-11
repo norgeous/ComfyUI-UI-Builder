@@ -26,8 +26,8 @@
     "@storybook/blocks": "^8.1.6",
     "@storybook/react": "^8.1.6",
     "@storybook/react-vite": "^8.1.6",
-    "@storybook/test": "^8.1.6",
     "@storybook/react-webpack5": "^8.1.6",
+    "@storybook/test": "^8.1.6",
     "@storybook/test-runner": "^0.18.2",
     "axe-playwright": "^2.0.1",
     "concurrently": "^8.0.1",
@@ -40,5 +40,19 @@
     "storybook-react-i18next": "^3.1.1",
     "storycap": "^5.0.0",
     "wait-on": "^7.0.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.18.0",
+    "@swc/core": "^1.5.28",
+    "@swc/core-darwin-arm64": "^1.5.28",
+    "@swc/core-darwin-x64": "^1.5.28",
+    "@swc/core-linux-arm-gnueabihf": "^1.5.28",
+    "@swc/core-linux-arm64-gnu": "^1.5.28",
+    "@swc/core-linux-arm64-musl": "^1.5.28",
+    "@swc/core-linux-x64-gnu": "^1.5.28",
+    "@swc/core-linux-x64-musl": "^1.5.28",
+    "@swc/core-win32-arm64-msvc": "^1.5.28",
+    "@swc/core-win32-ia32-msvc": "^1.5.28",
+    "@swc/core-win32-x64-msvc": "^1.5.28"
   }
 }
