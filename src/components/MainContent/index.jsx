@@ -1,30 +1,9 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
 import WsContext from '@/contexts/WsContext';
 import Progress from '@/components/Progress';
 import ImageGrid from '@/components/ImageGrid';
 import StatusBar from '@/components/StatusBar';
-
-export const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%;
-`;
-
-export const Content = styled.div`
-  flex: 1;
-  padding: 10px;
-  overflow: hidden;
-  background: var(--back-bg);
-  background-size: 8px 8px;
-  background-position: center center;
-  background-image: radial-gradient(
-    circle,
-    var(--surface-bg) 1px,
-    transparent 1px
-  );
-`;
+import { ContentArea, Main } from './styled';
 
 const MainContent = () => {
   const { comfyUrl, progress, output } = useContext(WsContext);
@@ -35,9 +14,9 @@ const MainContent = () => {
   return (
     <Main>
       <Progress value={progress} />
-      <Content>
+      <ContentArea>
         <ImageGrid images={images} />
-      </Content>
+      </ContentArea>
       <StatusBar />
     </Main>
   );
