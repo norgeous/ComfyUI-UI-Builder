@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Pyramid from '@/components/Pyramid/Pyramid';
+import Pyramid from '@/components/Pyramid';
 import ClientIdProvider from '@/contexts/ClientIdProvider';
 import ConfigsProvider from '@/contexts/ConfigsProvider';
 import FormProvider from '@/contexts/FormProvider';

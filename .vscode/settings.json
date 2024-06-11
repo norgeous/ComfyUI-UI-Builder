@@ -25,5 +25,9 @@
   // When opening a file, `editor.tabSize` and `editor.insertSpaces`
   // will be detected based on the file contents. Set to false to keep
   // the values you've explicitly set, above.
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+
+  // show the parent directory name after filenames in open tabs
+  // this is useful for projects with a lot of index.js files
+  "workbench.editor.labelFormat": "short"
 }

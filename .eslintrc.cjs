@@ -11,7 +11,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['dist', 'storybook-static'],
+  ignorePatterns: ['dist', 'storybook-static', '!.storybook'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: {
     react: { version: '18.2' },
@@ -40,7 +40,7 @@ module.exports = {
       'error',
       {
         // only these files are allowed to import from devDeps
-        devDependencies: ['vite.config.js', '**/*.stories.js'],
+        devDependencies: ['vite.config.js'],
       },
     ],
     // Support for defaultProps will be removed from function components

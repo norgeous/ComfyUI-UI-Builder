@@ -1,0 +1,58 @@
+{
+  "name": "@ui-builder/storybook",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sb": "storybook dev -p 6006",
+    "build": "storybook build --quiet",
+    "serve": "serve -l 6006 storybook-static",
+    "unittest": "wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache",
+    "unittest:ci": "npm run build && concurrently -k -s first -n SERVE,TEST -c magenta,blue npm:serve \"npm:unittest -- --ci\"",
+    "visdiff": "bash ./visdiff.sh",
+    "storycap": "storycap --serverCmd \"npm run build && npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
+    "regression": "reg-suit run",
+    "serve:visdiff": "serve -l 3000 ./visdiff-report/"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "dependencies": {
+    "@storybook/addon-a11y": "^8.1.6",
+    "@storybook/addon-actions": "^8.1.6",
+    "@storybook/addon-essentials": "^8.1.6",
+    "@storybook/addon-interactions": "^8.1.6",
+    "@storybook/addon-links": "^8.1.6",
+    "@storybook/addon-themes": "^8.1.6",
+    "@storybook/blocks": "^8.1.6",
+    "@storybook/react": "^8.1.6",
+    "@storybook/react-vite": "^8.1.6",
+    "@storybook/react-webpack5": "^8.1.6",
+    "@storybook/test": "^8.1.6",
+    "@storybook/test-runner": "^0.18.2",
+    "axe-playwright": "^2.0.1",
+    "concurrently": "^8.0.1",
+    "msw": "^2.3.1",
+    "msw-storybook-addon": "^2.0.2",
+    "puppeteer": "^22.10.1",
+    "reg-suit": "^0.14.4",
+    "serve": "^14.2.0",
+    "storybook": "^8.1.6",
+    "storybook-react-i18next": "^3.1.1",
+    "storycap": "^5.0.0",
+    "wait-on": "^7.0.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.18.0",
+    "@swc/core": "^1.5.28",
+    "@swc/core-darwin-arm64": "^1.5.28",
+    "@swc/core-darwin-x64": "^1.5.28",
+    "@swc/core-linux-arm-gnueabihf": "^1.5.28",
+    "@swc/core-linux-arm64-gnu": "^1.5.28",
+    "@swc/core-linux-arm64-musl": "^1.5.28",
+    "@swc/core-linux-x64-gnu": "^1.5.28",
+    "@swc/core-linux-x64-musl": "^1.5.28",
+    "@swc/core-win32-arm64-msvc": "^1.5.28",
+    "@swc/core-win32-ia32-msvc": "^1.5.28",
+    "@swc/core-win32-x64-msvc": "^1.5.28"
+  }
+}

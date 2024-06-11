@@ -1,14 +1,19 @@
 {
-  "name": "react-ui",
+  "name": "ui-builder",
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
     "lint": "eslint . --ext .js,.jsx,.cjs --fix",
-    "sb": "storybook dev -p 6006",
-    "sb:build": "storybook build"
+    "sb": "npm run sb -w packages/storybook",
+    "sb:build": "npm run build -w packages/storybook",
+    "sb:unittest": "npm run unittest -w packages/storybook",
+    "outdated": "npm outdated"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.16",
@@ -24,16 +29,6 @@
     "vosk-browser": "^0.0.8"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^8.1.6",
-    "@storybook/addon-actions": "^8.1.6",
-    "@storybook/addon-essentials": "^8.1.6",
-    "@storybook/addon-interactions": "^8.1.6",
-    "@storybook/addon-links": "^8.1.6",
-    "@storybook/addon-themes": "^8.1.6",
-    "@storybook/blocks": "^8.1.6",
-    "@storybook/react": "^8.1.6",
-    "@storybook/react-vite": "^8.1.6",
-    "@storybook/test": "^8.1.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
@@ -47,7 +42,9 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
-    "storybook": "^8.1.6",
     "vite": "^5.2.13"
+  },
+  "peerDependencies": {
+    "@storybook/test": "^8.1.6"
   }
 }
