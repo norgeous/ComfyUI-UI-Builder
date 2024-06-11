@@ -23,9 +23,9 @@ const preview = {
       // https://github.com/reg-viz/storycap#api
       delay: 200, // default 0 msec
       variants: {
-        // dark: {
-        //   colorScheme: 'dark',
-        // },
+        dark: {
+          colorScheme: 'dark',
+        },
       },
     },
   },
