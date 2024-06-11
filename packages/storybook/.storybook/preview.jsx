@@ -21,7 +21,7 @@ const preview = {
 
     screenshot: {
       // https://github.com/reg-viz/storycap#api
-      delay: 200, // default 0 msec
+      delay: 2000, // default 0 msec
       variants: {
         dark: true,
       },
