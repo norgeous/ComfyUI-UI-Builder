@@ -1,6 +1,6 @@
 import ConfigsContext from '@/contexts/ConfigsContext';
 import { useContext } from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const Theme1Style = createGlobalStyle`
   :root {
@@ -16,6 +16,14 @@ export const Theme = () => {
   return <Theme1Style hue={config.configData.theme?.hue} />;
 };
 
+const darkOverrides = css`
+  --fg: #eee;
+  --lightness-bg0: 5%;
+  --lightness-bg1: 10%;
+  --lightness-bg2: 15%;
+  --lightness-bg3: 20%;
+`;
+
 export const GlobalStyle = createGlobalStyle`
   :root {
     --fg: #111;
@@ -25,12 +33,10 @@ export const GlobalStyle = createGlobalStyle`
     --lightness-bg3: 80%;
 
     @media (prefers-color-scheme: dark) {
-      --fg: #eee;
-      --lightness-bg0: 5%;
-      --lightness-bg1: 10%;
-      --lightness-bg2: 15%;
-      --lightness-bg3: 20%;
+      ${darkOverrides}
     }
+
+    ${({ forceDark }) => forceDark && darkOverrides}
 
     --primary: hsl(var(--hue1) var(--saturation1) 50%);  
     --input-outline: var(--primary);
