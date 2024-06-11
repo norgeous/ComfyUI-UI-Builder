@@ -1,42 +1,7 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import {
-  useFloating,
-  offset,
-  flip,
-  shift,
-  arrow,
-  FloatingArrow,
-} from '@floating-ui/react';
-
-const TooltipWrap = styled.span`
-  ${({ $wide }) =>
-    $wide &&
-    css`
-      width: 100%;
-    `}
-`;
-
-const TooltipText = styled.span`
-  position: absolute;
-  font-size: 0.75rem; // 12px
-  background: var(--page-bg);
-  color: var(--page-fg);
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  z-index: 1;
-  top: 100%;
-  left: 50%;
-  margin-top: 5px;
-  transform: translate(-50%);
-  white-space: preserve-breaks;
-`;
-
-const Arrow = styled(FloatingArrow)`
-  fill: var(--page-bg);
-`;
+import { useFloating, offset, flip, shift, arrow } from '@floating-ui/react';
+import { Arrow, TooltipText, TooltipWrap } from './styled';
 
 const Tooltip = ({
   className = undefined,

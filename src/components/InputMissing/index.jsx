@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Missing = ({ type = undefined }) => (
   <div>
-    component type <strong>{type}</strong> not found
+    Component type <strong>{type}</strong> not found
   </div>
 );
 
