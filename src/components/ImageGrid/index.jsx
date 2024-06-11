@@ -1,34 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Img, Outer } from './styled';
+import { Container, Outer } from './styled';
+import Item from './Item';
 
-const gapSizePx = 10;
-
-const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
-  const ref = useRef();
-
-  useEffect(() => {
-    if (scrollTo) ref.current.scrollIntoView();
-  }, [scrollTo]);
-
-  const handleClick = event => {
-    event.stopPropagation();
-    onClick();
-  };
-  return (
-    <Img
-      ref={ref}
-      crossOrigin="anonymous"
-      {...props} // eslint-disable-line react/jsx-props-no-spreading
-      onClick={handleClick}
-    />
-  );
-};
-
-Item.propTypes = {
-  scrollTo: PropTypes.bool,
-  onClick: PropTypes.func,
-};
+const gapSizePx = 8;
 
 const ImageGrid = ({ images = [] }) => {
   const [imgDim, setImgDim] = useState({});
