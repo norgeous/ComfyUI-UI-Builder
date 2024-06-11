@@ -37,7 +37,6 @@
     "reg-suit": "^0.14.4",
     "serve": "^14.2.0",
     "storybook": "^8.1.6",
-    "storybook-react-i18next": "^3.1.1",
     "storycap": "^5.0.0",
     "wait-on": "^7.0.1"
   },
