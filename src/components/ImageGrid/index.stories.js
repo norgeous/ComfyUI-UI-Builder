@@ -1,8 +1,8 @@
-import ImageGrid from '.';
+import component from '.';
 
 export default {
   title: 'ImageGrid',
-  component: ImageGrid,
+  component,
 };
 
 export const SmallSquare4 = {

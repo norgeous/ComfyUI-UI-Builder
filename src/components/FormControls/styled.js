@@ -13,7 +13,3 @@ export const ButtonsArea = styled.div`
   gap: 8px;
   align-items: center;
 `;
-
-export const QueueTitle = styled.div`
-  flex-grow: 1;
-`;

@@ -4,14 +4,10 @@ import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
 import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
-import {
-  SpinnerIcon,
-  InterruptIcon,
-  PauseIcon,
-  PlayIcon,
-} from '@/components/Icons';
+import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
-import { ButtonsArea, Container, QueueTitle } from './styled';
+import Queue from '@/components/Queue';
+import { ButtonsArea, Container } from './styled';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
@@ -22,13 +18,7 @@ const FormControls = () => {
     updateFormState,
   } = useContext(FormContext);
 
-  const {
-    executePrompt,
-    promptLoading,
-    promptError,
-    executeInterrupt,
-    interruptLoading,
-  } = useContext(AppContext);
+  const { executePrompt, promptLoading, promptError } = useContext(AppContext);
 
   const handleClick = () => {
     if (enableSeedRandomisation) {
@@ -45,17 +35,7 @@ const FormControls = () => {
 
   return (
     <Container>
-      {isGenerating && (
-        <ButtonsArea>
-          <SpinnerIcon />
-          <QueueTitle>Job 1 (running...)</QueueTitle>
-          <Tooltip text="Interrupt Job 1">
-            <Button onClick={executeInterrupt}>
-              {interruptLoading ? <SpinnerIcon /> : <InterruptIcon />}
-            </Button>
-          </Tooltip>
-        </ButtonsArea>
-      )}
+      <Queue />
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <ButtonsArea>
         {!auto && (
