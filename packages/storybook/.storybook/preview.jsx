@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Providers from '@/Providers';
 import { GlobalStyle, Theme1Style } from '@/components/globalStyles';
+import { withScreenshot } from 'storycap';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -22,7 +23,7 @@ const preview = {
 
     screenshot: {
       // https://github.com/reg-viz/storycap#api
-      delay: 2000, // default 0 msec
+      delay: 2, // default 0 msec
     },
   },
 
@@ -36,6 +37,7 @@ const preview = {
         </Providers>
       </>
     ),
+    withScreenshot,
   ],
 };
 
