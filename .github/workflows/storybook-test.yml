@@ -18,6 +18,7 @@ jobs:
       - name: 🧰 NPM Install
         run: |
           npm ci
+          npx playwright install
 
       - name: 🧪 Storybook test
         run: |
