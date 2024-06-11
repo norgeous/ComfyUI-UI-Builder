@@ -19,7 +19,7 @@ jobs:
         run: |
           npm ci
 
-      - name: ▶ Playwright Install
+      - name: ▶️ Playwright Install
         run: |
           npx playwright install
 
