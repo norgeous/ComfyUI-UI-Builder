@@ -1,27 +1,8 @@
 import { useContext } from 'react';
-import styled, { css } from 'styled-components';
 import FormContext from '@/contexts/FormContext';
-import Input from '../Input';
-import Collapsable from '../Collapsable';
-
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 50% 50%;
-`;
-
-const GridItem = styled.div`
-  ${({ colSpan }) =>
-    colSpan === 2 &&
-    css`
-      grid-column: 1 / span 2;
-    `}
-`;
+import Input from '@/components/Input';
+import Collapsable from '@/components/Collapsable';
+import { Container, Grid, GridItem } from './styled';
 
 const FormBuilder = () => {
   const { formConfig } = useContext(FormContext);

@@ -1,16 +1,7 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import Select from '@/components/InputSelect';
-
-const Header = styled.header`
-  background: var(--surface-bg);
-`;
-
-const Description = styled.header`
-  padding: 0 8px 8px;
-  font-size: 12px;
-`;
+import { Description, Header } from './styled';
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);

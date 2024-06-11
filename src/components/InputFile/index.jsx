@@ -1,31 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import Select from '@/components/InputSelect';
 import ErrorText from '@/components/ErrorText';
 import InputWrapper from '@/components/InputWrapper';
-
-const Input = styled.input.attrs({ type: 'file' })`
-  display: none;
-`;
-
-const Img = styled.img`
-  width: 200px;
-  max-width: 100%;
-  margin: 0 auto;
-  display: block;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--input-bg);
-  color: var(--input-fg);
-  padding: 8px;
-  cursor: pointer;
-`;
+import { Button, Img, Input } from './styled';
 
 const allowedFileTypes = [
   '.jpg',

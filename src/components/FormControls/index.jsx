@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
@@ -13,24 +11,7 @@ import {
   PlayIcon,
 } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
-
-const Container = styled.div`
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: var(--surface-bg);
-`;
-
-const ButtonsArea = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;
-
-const QueueTitle = styled.div`
-  flex-grow: 1;
-`;
+import { ButtonsArea, Container, QueueTitle } from './styled';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
