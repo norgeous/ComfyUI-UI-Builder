@@ -6,5 +6,7 @@ export default {
 };
 
 export const HeaderToggle = {
-  args: {},
+  args: {
+    children: 'hello',
+  },
 };
