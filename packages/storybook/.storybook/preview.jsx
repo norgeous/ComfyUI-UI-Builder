@@ -3,19 +3,19 @@ import Providers from '@/Providers';
 import { GlobalStyle, Theme1Style } from '@/components/globalStyles';
 import { withScreenshot } from 'storycap';
 
-const projectDecorator = (Story, ...other) => {
-  console.log({ Story, other });
-  return (
-    <>
-      <GlobalStyle />
-      <Theme1Style />
-      <Providers>
-        data: <pre>{JSON.stringify(other.parameters)}</pre>
-        <Story />
-      </Providers>
-    </>
-  );
-};
+const projectDecorator = (Story, { parameters }) => (
+  <>
+    <div>
+      data
+      <pre>{JSON.stringify(parameters, null, 2)}</pre>
+    </div>
+    <GlobalStyle />
+    <Theme1Style />
+    <Providers>
+      <Story />
+    </Providers>
+  </>
+);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
