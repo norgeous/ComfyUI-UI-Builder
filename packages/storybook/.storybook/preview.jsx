@@ -11,12 +11,18 @@ const preview = {
         date: /Date$/i,
       },
     },
+
     a11y: {
       config: {
         rules: [
           { id: 'color-contrast', selector: '*:not(.muted):not(.muted *)' },
         ],
       },
+    },
+
+    screenshot: {
+      // https://github.com/reg-viz/storycap#api
+      delay: 2000, // default 0 msec
     },
   },
 
