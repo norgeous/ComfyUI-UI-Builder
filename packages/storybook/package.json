@@ -33,7 +33,7 @@
     "concurrently": "^8.0.1",
     "msw": "^2.3.1",
     "msw-storybook-addon": "^2.0.2",
-    "puppeteer": "^22.10.0",
+    "puppeteer": "^22.10.1",
     "reg-suit": "^0.14.4",
     "serve": "^14.2.0",
     "storybook": "^8.1.6",
