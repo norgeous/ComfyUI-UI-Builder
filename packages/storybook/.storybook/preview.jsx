@@ -3,11 +3,11 @@ import Providers from '@/Providers';
 import { GlobalStyle, Theme1Style } from '@/components/globalStyles';
 import { withScreenshot } from 'storycap';
 
-const projectDecorator = (Story, { parameters }) => (
+const projectDecorator = (Story, { globals }) => (
   <>
     <div>
       data
-      <pre>{JSON.stringify(parameters, null, 2)}</pre>
+      <pre>{JSON.stringify(globals, null, 2)}</pre>
     </div>
     <GlobalStyle />
     <Theme1Style />
