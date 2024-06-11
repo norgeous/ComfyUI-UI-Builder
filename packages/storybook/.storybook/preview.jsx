@@ -10,7 +10,7 @@ const projectDecorator = (Story, ...other) => {
       <GlobalStyle />
       <Theme1Style />
       <Providers>
-        <pre>{JSON.stringify(other.parameters)}</pre>
+        data: <pre>{JSON.stringify(other.parameters)}</pre>
         <Story />
       </Providers>
     </>
@@ -37,7 +37,7 @@ const preview = {
 
     screenshot: {
       // https://github.com/reg-viz/storycap#api
-      delay: 2000, // default 0 msec
+      delay: 200, // default 0 msec
       variants: {
         // dark: {
         //   colorScheme: 'dark',
