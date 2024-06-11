@@ -1,57 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { Container, Img, Outer } from './styled';
 
 const gapSizePx = 10;
-
-const Outer = styled.div`
-  height: 100%;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const Container = styled.div`
-  display: grid;
-  gap: ${gapSizePx}px;
-  place-items: center;
-  justify-content: center;
-  ${({ $open, $columnCount }) =>
-    $open !== undefined
-      ? css`
-          scroll-snap-type: both mandatory;
-          position: fixed;
-          z-index: 1;
-          inset: 0;
-          background: #000e;
-          height: 100%;
-          overflow-y: auto;
-        `
-      : css`
-          grid-template-columns: repeat(${$columnCount}, auto);
-          max-height: 100%;
-        `}
-`;
-
-const Img = styled.img`
-  cursor: pointer;
-  display: block;
-  max-width: 100%;
-  ${({ $open }) =>
-    $open !== undefined
-      ? css`
-          scroll-snap-stop: normal;
-          scroll-snap-align: center;
-          max-height: 100svh;
-          height: 100svh;
-          object-fit: scale-down;
-        `
-      : css`
-          max-height: 100%;
-          min-height: 0;
-        `}
-`;
 
 const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
   const ref = useRef();
@@ -162,6 +113,7 @@ const ImageGrid = ({ images = [] }) => {
   return (
     <Outer ref={ref}>
       <Container
+        $gapSizePx={gapSizePx}
         $columnCount={columnCount}
         $open={open}
         onClick={() => setOpen(undefined)}
