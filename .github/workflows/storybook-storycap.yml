@@ -1,0 +1,29 @@
+name: 🧢 Storybook storycap
+on:
+  push:
+    branches:
+      - develop
+    paths: ['stories/**', 'src/components/**']
+jobs:
+  storybook-storycap:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
+
+      # - name: ▶️ Playwright Install
+      #   run: |
+      #     npx playwright install
+
+      - name: 🧢 Storycap
+        run: |
+          npm run sb:storycap
