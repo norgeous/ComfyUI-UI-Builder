@@ -8,6 +8,10 @@ export const Button = styled.button`
   width: 18px;
   height: 18px;
   cursor: pointer;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export const Pre = styled.pre`
