@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import Tooltip from '@/components/Tooltip';
 import { BugIcon } from '@/components/Icons';
 import { Button, Pre } from './styled';
 
@@ -9,9 +10,11 @@ const Debug = ({ label, data = undefined }) => {
 
   return (
     <>
-      <Button onClick={toggle} title={label}>
-        <BugIcon />
-      </Button>
+      <Tooltip text={label}>
+        <Button onClick={toggle}>
+          <BugIcon />
+        </Button>
+      </Tooltip>
       {open && (
         <Pre onClick={toggle}>
           {label}
