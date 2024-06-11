@@ -49,6 +49,7 @@ const Tooltip = ({
 Tooltip.propTypes = {
   className: PropTypes.string,
   text: PropTypes.string,
+  lm: PropTypes.bool,
   wide: PropTypes.bool,
   children: PropTypes.node,
 };
