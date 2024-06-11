@@ -1,31 +1,13 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
-
 import WsContext from '@/contexts/WsContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
-
 import Debug from '@/components/Debug';
 import { GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
-
-const Bar = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 4px;
-  background: var(--page-bg);
-  padding: 4px;
-`;
-
-const Tray = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  overflow-x: auto;
-`;
+import { Bar, Tray } from './styled';
 
 const StatusBar = () => {
   const { lastWsMessage, isGenerating, progress } = useContext(WsContext);
