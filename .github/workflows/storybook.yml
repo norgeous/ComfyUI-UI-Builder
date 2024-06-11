@@ -19,7 +19,6 @@ jobs:
       - name: 🧰 NPM Install
         run: |
           npm ci
-          npm i @rollup/rollup-linux-x64-gnu
 
       - name: 📕 Storybook Build
         run: |
@@ -29,7 +28,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           name: 'storybook-static-artifact'
-          path: 'storybook-static'
+          path: 'packages/storybook/storybook-static'
 
       - name: 🚀 Deploy to Github oages
         uses: actions/deploy-pages@v4
