@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import { ArrowLeftIcon, ArrowRightIcon } from '@/components/Icons';
-import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader';
+import InputWrapper from '@/components/InputWrapper';
+import InputHeader from '@/components/InputHeader';
 
 const RangeWrapper = styled.div`
   display: flex;

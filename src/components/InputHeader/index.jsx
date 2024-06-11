@@ -1,20 +1,6 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Info from '@/components/HeaderInfo';
-
-const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-`;
-
-const Label = styled.label`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 0.875rem; // 12px
-`;
+import { Wrap, Label } from './styled';
 
 const InputHeader = ({
   id = undefined,

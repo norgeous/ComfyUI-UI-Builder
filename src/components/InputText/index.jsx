@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
-import InputWrapper from '../InputWrapper';
-import InputHeader from '../InputHeader';
+import InputWrapper from '@/components/InputWrapper';
+import InputHeader from '@/components/InputHeader';
 
 const Input = styled.input.attrs({ type: 'text' })`
   display: block;

@@ -1,26 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import InputHeader from '@/components/InputHeader';
 import InputWrapper from '@/components/InputWrapper';
-
-const Select = styled.select`
-  display: block;
-  width: 100%;
-  min-width: 100%;
-  box-sizing: border-box;
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius);
-  background: var(--input-bg);
-  color: var(--input-fg);
-  padding: 8px 4px;
-  &:focus-visible {
-    outline: 2px solid var(--input-outline);
-    outline-offset: 2px;
-  }
-`;
+import { Select } from './styled';
 
 const InputSelect = ({
   id = undefined,
