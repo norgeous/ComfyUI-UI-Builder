@@ -1,23 +1,10 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import InputHeader from '@/components/InputHeader';
-import Checkbox from '@/components/Checkbox';
 import InputWrapper from '@/components/InputWrapper';
-
-const Label = styled.label`
-  display: block;
-  width: 100%;
-  margin: 0;
-  display: inline-flex;
-  place-items: center;
-  gap: 4px;
-  padding: 9px 0;
-  cursor: pointer;
-  font-size: 0.875rem;
-`;
+import { Label, Checkbox } from './styled';
 
 const InputCheckbox = ({
   id = undefined,
