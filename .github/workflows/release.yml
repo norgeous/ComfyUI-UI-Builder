@@ -1,4 +1,4 @@
-name: 🇻  Vite build and commit to "release" branch
+name: 🇻  Vite build and commit to "release"
 on:
   push:
     branches:
