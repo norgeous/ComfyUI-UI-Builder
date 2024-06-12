@@ -39,7 +39,7 @@ const AppProvider = ({ children = null }) => {
   const {
     executeFetch: executeInterrupt,
     loading: interruptLoading,
-    // error: interruptError,
+    error: interruptError,
   } = useComfyInterrupt();
 
   return (
@@ -52,6 +52,7 @@ const AppProvider = ({ children = null }) => {
 
         executeInterrupt,
         interruptLoading,
+        interruptError,
 
         adapted,
         adaptedComfyWorkflow,
