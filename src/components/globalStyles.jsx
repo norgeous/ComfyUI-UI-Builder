@@ -13,30 +13,71 @@ const inventFG = color => {
   return contrastPB > contrastPW ? 'black' : 'white';
 };
 
-const inventBG = color => {
+const setOKLCHLightness = (color, lightness) => {
   const c = new Color(color);
-  const b = new Color('black');
-  const w = new Color('white');
-  const contrastPB = c.contrast(b, 'WCAG21');
-  const contrastPW = c.contrast(w, 'WCAG21');
-
-  return contrastPB > contrastPW ? 'black' : 'white';
+  c.oklch.l = lightness;
+  return c.toString({ format: 'hex' });
 };
-
-// 1. is the secondary (bg) colour dark or light...
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    ${({ radius = '4px', primary = 'pink', secondary = 'purple' }) => css`
-      --radius: ${radius};
-      --primary: ${primary};
-      --primary-fg: ${inventFG(primary)};
-      --fg: ${inventFG(secondary)};
-      --bg0: ${secondary};
-      --bg1: ${inventBG(secondary, 1)};
-      --bg2: ${inventBG(secondary, 2)};
-      --bg3: ${inventBG(secondary, 3)};
-    `};
+    ${({
+      radius = '4px',
+      scheme = 'yellow aquamarine silver gold blue yellow cyan orange tan green springgreen plum white blue red aqua teal thistle',
+    }) => {
+      const parts = scheme.split(' ');
+      const [bg, accent] = [parts[0], parts[1] || parts[0]];
+
+      const bgsLight = [
+        setOKLCHLightness(bg, 0.5),
+        setOKLCHLightness(bg, 0.6),
+        setOKLCHLightness(bg, 0.7),
+        setOKLCHLightness(bg, 0.8),
+      ];
+
+      const bgsDark = [
+        setOKLCHLightness(bg, 0.2),
+        setOKLCHLightness(bg, 0.3),
+        setOKLCHLightness(bg, 0.4),
+        setOKLCHLightness(bg, 0.5),
+      ];
+
+      const light = css`
+        --bg0: ${bgsLight[0]};
+        --bg1: ${bgsLight[1]};
+        --bg2: ${bgsLight[2]};
+        --bg3: ${bgsLight[3]};
+        --fg0: ${inventFG(bgsLight[0])};
+        --fg1: ${inventFG(bgsLight[1])};
+        --fg2: ${inventFG(bgsLight[2])};
+        --fg3: ${inventFG(bgsLight[3])};
+      `;
+
+      const dark = css`
+        --bg0: ${bgsDark[0]};
+        --bg1: ${bgsDark[1]};
+        --bg2: ${bgsDark[2]};
+        --bg3: ${bgsDark[3]};
+        --fg0: ${inventFG(bgsDark[0])};
+        --fg1: ${inventFG(bgsDark[1])};
+        --fg2: ${inventFG(bgsDark[2])};
+        --fg3: ${inventFG(bgsDark[3])};
+      `;
+
+      return css`
+        --radius: ${radius};
+        --accent: ${accent};
+        --accent-fg: ${inventFG(accent)};
+
+        ${light}
+
+        @media (prefers-color-scheme: dark) {
+          ${dark}
+        }
+
+        ${({ forceDark }) => forceDark && dark}
+      `;
+    }};
   }
 `;
 
@@ -52,16 +93,15 @@ export const Theme = () => {
   );
 };
 
-const darkOverrides = css`
-  --fg: #eee;
-  --lightness-bg0: 5%;
-  --lightness-bg1: 10%;
-  --lightness-bg2: 15%;
-  --lightness-bg3: 20%;
-`;
+// const darkOverrides = css`
+//   --fg: #eee;
+//   --lightness-bg0: 5%;
+//   --lightness-bg1: 10%;
+//   --lightness-bg2: 15%;
+//   --lightness-bg3: 20%;
+// `;
 
-export const GlobalStyle = createGlobalStyle`
-  :root {
+/* :root {
     --fg: #111;
     --lightness-bg0: 95%;
     --lightness-bg1: 90%;
@@ -74,7 +114,7 @@ export const GlobalStyle = createGlobalStyle`
 
     ${({ forceDark }) => forceDark && darkOverrides}
 
-    /* --primary: hsl(var(--hue1) var(--saturation1) 50%); */
+    --primary: hsl(var(--hue1) var(--saturation1) 50%);
     --input-outline: var(--primary);
     --input-border: var(--primary);
 
@@ -83,14 +123,15 @@ export const GlobalStyle = createGlobalStyle`
     --surface-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg2));
     --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
     --input-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
-  }
+  } */
 
+export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--page-bg);
-    color: var(--fg);
+    background: var(--bg0);
+    color: var(--fg0);
     height: 100svh;
 
     color-scheme: light;
