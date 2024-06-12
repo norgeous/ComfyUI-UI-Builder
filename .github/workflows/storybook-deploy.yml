@@ -8,7 +8,7 @@ on:
     paths:
       [
         '.github/workflows/storybook-deploy.yml',
-        '**/package.json',
+        'packages/storybook/**',
         'public/**',
         'src/components/**',
       ]
