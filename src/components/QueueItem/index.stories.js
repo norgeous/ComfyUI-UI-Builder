@@ -6,7 +6,7 @@ export default {
   component,
 };
 
-export const QueueItemLoading = {
+export const Loading = {
   args: {
     jobName: 'Job 1',
     isLoading: true,
