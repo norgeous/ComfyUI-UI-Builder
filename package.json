@@ -11,6 +11,7 @@
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css}\"",
     "lint": "eslint . --ext .js,.jsx,.cjs --fix",
     "sb": "npm run sb -w packages/storybook",
+    "sb:build": "npm run build -w packages/storybook",
     "sb:unittest": "npm run unittest -w packages/storybook",
     "sb:storycap": "npm run storycap -w packages/storybook",
     "outdated": "npm outdated"
