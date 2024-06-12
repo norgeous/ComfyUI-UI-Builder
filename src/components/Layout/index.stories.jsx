@@ -12,7 +12,11 @@ export const Layout = {
     children: (
       <>
         <div>item1</div>
-        <div>item2</div>
+        <center>
+          item2
+          <br />
+          2nd line
+        </center>
         <div>item3</div>
       </>
     ),
