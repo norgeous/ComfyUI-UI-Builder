@@ -25,7 +25,11 @@ const QueueItem = ({
       {jobName} ({status})
     </QueueTitle>
     <Tooltip text={interruptError || `Interrupt ${jobName}`}>
-      <Button disabled={interruptLoading} onClick={onInterrupt}>
+      <Button
+        aria-label={interruptError || `Interrupt ${jobName}`}
+        disabled={interruptLoading}
+        onClick={onInterrupt}
+      >
         {getInterruptIcon({ interruptLoading, interruptError })}
       </Button>
     </Tooltip>

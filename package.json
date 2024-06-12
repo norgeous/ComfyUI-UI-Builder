@@ -13,11 +13,13 @@
     "sb": "npm run sb -w packages/storybook",
     "sb:build": "npm run build -w packages/storybook",
     "sb:unittest": "npm run unittest -w packages/storybook",
+    "sb:unittest:ci": "npm run unittest:ci -w packages/storybook",
     "sb:storycap": "npm run storycap -w packages/storybook",
     "outdated": "npm outdated"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.16",
+    "colorjs.io": "^0.5.0",
     "microphone-stream": "^6.0.1",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",

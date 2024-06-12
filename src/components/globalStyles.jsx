@@ -1,19 +1,55 @@
 import ConfigsContext from '@/contexts/ConfigsContext';
 import { useContext } from 'react';
 import { createGlobalStyle, css } from 'styled-components';
+import Color from 'colorjs.io';
+
+const inventFG = color => {
+  const c = new Color(color);
+  const b = new Color('black');
+  const w = new Color('white');
+  const contrastPB = c.contrast(b, 'WCAG21');
+  const contrastPW = c.contrast(w, 'WCAG21');
+
+  return contrastPB > contrastPW ? 'black' : 'white';
+};
+
+const inventBG = color => {
+  const c = new Color(color);
+  const b = new Color('black');
+  const w = new Color('white');
+  const contrastPB = c.contrast(b, 'WCAG21');
+  const contrastPW = c.contrast(w, 'WCAG21');
+
+  return contrastPB > contrastPW ? 'black' : 'white';
+};
+
+// 1. is the secondary (bg) colour dark or light...
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    --hue1: ${({ hue }) => hue ?? 270};
-    --saturation1: 50%;
-    --radius: 4px;
+    ${({ radius = '4px', primary = 'pink', secondary = 'purple' }) => css`
+      --radius: ${radius};
+      --primary: ${primary};
+      --primary-fg: ${inventFG(primary)};
+      --fg: ${inventFG(secondary)};
+      --bg0: ${secondary};
+      --bg1: ${inventBG(secondary, 1)};
+      --bg2: ${inventBG(secondary, 2)};
+      --bg3: ${inventBG(secondary, 3)};
+    `};
   }
 `;
 
 export const Theme = () => {
   const { config } = useContext(ConfigsContext);
 
-  return <Theme1Style hue={config.configData.theme?.hue} />;
+  return (
+    <Theme1Style
+      radius={config.configData.theme?.radius}
+      primary={config.configData.theme?.primary}
+      secondary={config.configData.theme?.secondary}
+    />
+  );
 };
 
 const darkOverrides = css`
@@ -38,7 +74,7 @@ export const GlobalStyle = createGlobalStyle`
 
     ${({ forceDark }) => forceDark && darkOverrides}
 
-    --primary: hsl(var(--hue1) var(--saturation1) 50%);  
+    /* --primary: hsl(var(--hue1) var(--saturation1) 50%); */
     --input-outline: var(--primary);
     --input-border: var(--primary);
 
