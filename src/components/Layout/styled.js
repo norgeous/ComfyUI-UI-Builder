@@ -4,11 +4,15 @@ import styled, { css } from 'styled-components';
 export const Flex = styled.div`
   display: flex;
   gap: 8px;
-  align-items: center;
   ${({ $column }) =>
     $column &&
     css`
       flex-direction: column;
+    `}
+  ${({ $center }) =>
+    $center &&
+    css`
+      align-items: center;
     `}
   ${({ $pad }) =>
     $pad &&

@@ -9,6 +9,7 @@ export const Layout = {
   args: {
     pad: true,
     column: true,
+    center: true,
     children: (
       <>
         <div>item1</div>

@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
 import { Flex } from './styled';
 
-const Layout = ({ pad = true, column = false, children = null }) => (
-  <Flex $pad={pad} $column={column}>
+const Layout = ({
+  pad = false,
+  column = false,
+  center = false,
+  children = null,
+}) => (
+  <Flex $pad={pad} $column={column} $center={center}>
     {children}
   </Flex>
 );
@@ -10,6 +15,7 @@ const Layout = ({ pad = true, column = false, children = null }) => (
 Layout.propTypes = {
   pad: PropTypes.bool,
   column: PropTypes.bool,
+  center: PropTypes.bool,
   children: PropTypes.node,
 };
 
