@@ -1,15 +1,16 @@
 import { useContext } from 'react';
 import FormContext from '@/contexts/FormContext';
+import Layout from '@/components/Layout';
 import Input from '@/components/Input';
 import Collapsable from '@/components/Collapsable';
-import { Container, Grid, GridItem } from './styled';
+import { Grid, GridItem } from './styled';
 
 const FormBuilder = () => {
   const { formConfig } = useContext(FormContext);
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
   return (
-    <Container>
+    <Layout column>
       {accordionGroups.map(accordionGroup => {
         const itemsInGroup = formConfig.filter(
           ({ group }) => group === accordionGroup,
@@ -43,7 +44,7 @@ const FormBuilder = () => {
           </Collapsable>
         );
       })}
-    </Container>
+    </Layout>
   );
 };
 

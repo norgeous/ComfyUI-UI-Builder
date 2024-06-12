@@ -11,12 +11,12 @@ import SpeechProvider from '@/contexts/SpeechProvider';
 const Providers = ({ children = null }) => (
   <Pyramid>
     <ConfigsProvider />
+    <FormProvider />
+    <SpeechProvider />
     <ClientIdProvider />
     <WsProvider />
     <ObjectInfoProvider />
-    <FormProvider />
     <AppProvider />
-    <SpeechProvider />
     {children}
   </Pyramid>
 );

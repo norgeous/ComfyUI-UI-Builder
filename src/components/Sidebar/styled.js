@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Controls = styled.aside`
+export const Side = styled.aside`
   display: flex;
   flex-direction: column;
   background-color: var(--page-bg);
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100%;
 `;
 
