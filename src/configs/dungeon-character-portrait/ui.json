@@ -5,8 +5,7 @@
   "description": "Build D&D Character Portraits",
   "theme": {
     "radius": "20px",
-    "primary": "tan",
-    "secondary": "brown"
+    "scheme": "brown tan"
   },
   "tags": ["D&D"],
   "formConfig": [
