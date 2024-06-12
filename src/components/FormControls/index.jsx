@@ -2,12 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import AppContext from '@/contexts/AppContext';
 import FormContext from '@/contexts/FormContext';
 import WsContext from '@/contexts/WsContext';
+import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
-import Queue from '@/components/Queue';
-import Layout from '@/components/Layout';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
@@ -34,8 +33,7 @@ const FormControls = () => {
   }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Layout pad column>
-      <Queue />
+    <>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout>
         {!auto && (
@@ -56,7 +54,7 @@ const FormControls = () => {
           </Button>
         </Tooltip>
       </Layout>
-    </Layout>
+    </>
   );
 };
 
