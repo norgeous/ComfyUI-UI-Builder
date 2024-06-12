@@ -124,11 +124,12 @@ export const Theme = () => {
 
 export const GlobalStyle = createGlobalStyle`
   body {
+    background: var(--bg0);
+    color: var(--fg0);
+
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg0);
-    color: var(--fg0);
     height: 100svh;
 
     color-scheme: light;
