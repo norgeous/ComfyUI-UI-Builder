@@ -21,24 +21,21 @@ const setOKLCHLightness = (color, lightness) => {
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    ${({
-      radius = '4px',
-      scheme = 'yellow aquamarine silver gold blue yellow cyan orange tan green springgreen plum white blue red aqua teal thistle',
-    }) => {
+    ${({ radius = '4px', scheme = 'darkorchid blueviolet' }) => {
       const parts = scheme.split(' ');
       const [bg, accent] = [parts[0], parts[1] || parts[0]];
 
       const bgsLight = [
-        setOKLCHLightness(bg, 0.5),
-        setOKLCHLightness(bg, 0.6),
-        setOKLCHLightness(bg, 0.7),
+        setOKLCHLightness(bg, 0.9),
         setOKLCHLightness(bg, 0.8),
+        setOKLCHLightness(bg, 0.7),
+        setOKLCHLightness(bg, 0.5),
       ];
 
       const bgsDark = [
+        setOKLCHLightness(bg, 0.1),
         setOKLCHLightness(bg, 0.2),
         setOKLCHLightness(bg, 0.3),
-        setOKLCHLightness(bg, 0.4),
         setOKLCHLightness(bg, 0.5),
       ];
 
