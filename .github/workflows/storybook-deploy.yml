@@ -3,7 +3,16 @@ on:
   push:
     branches:
       - develop
-    paths: ['stories/**', 'src/components/**'] # Trigger the action only when files change in the folders defined here
+
+    # Trigger the action only when files change in the folders defined here
+    paths:
+      [
+        '.github/workflows/storybook-deploy.yml',
+        '**/package.json',
+        'public/**',
+        'src/components/**',
+      ]
+
 jobs:
   storybook-build-and-deploy:
     runs-on: ubuntu-latest
@@ -30,7 +39,7 @@ jobs:
           name: 'storybook-static-artifact'
           path: 'packages/storybook/storybook-static'
 
-      - name: 🚀 Deploy to Github oages
+      - name: 🚀 Deploy artifact to Github oages
         uses: actions/deploy-pages@v4
         with:
           artifact_name: storybook-static-artifact
