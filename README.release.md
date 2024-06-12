@@ -6,6 +6,8 @@ More info coming soon
 
 ![App](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/_storycaps_/App/App_dark.png)
 
+👉 [non-functional preview](https://norgeous.github.io/ComfyUI-UI-Builder/iframe.html?args=&id=app--app) of this project
+
 ## Implements
 
 - [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
