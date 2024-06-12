@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonsArea = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;
-
+// eslint-disable-next-line import/prefer-default-export
 export const QueueTitle = styled.div`
   flex-grow: 1;
 `;

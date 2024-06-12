@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import AppContext from '@/contexts/AppContext';
 import WsContext from '@/contexts/WsContext';
+import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import { SpinnerIcon, InterruptIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
-import { ButtonsArea, QueueTitle } from './styled';
+import { QueueTitle } from './styled';
 
 const Queue = () => {
   const { isGenerating } = useContext(WsContext);
@@ -14,7 +15,7 @@ const Queue = () => {
   if (!isGenerating) return null;
 
   return (
-    <ButtonsArea>
+    <Layout center>
       <SpinnerIcon />
       <QueueTitle>Job 1 (running...)</QueueTitle>
       <Tooltip text="Interrupt Job 1">
@@ -22,7 +23,7 @@ const Queue = () => {
           {interruptLoading ? <SpinnerIcon /> : <InterruptIcon />}
         </Button>
       </Tooltip>
-    </ButtonsArea>
+    </Layout>
   );
 };
 

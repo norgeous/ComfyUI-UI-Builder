@@ -7,7 +7,7 @@ import ErrorText from '@/components/ErrorText';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Queue from '@/components/Queue';
-import { ButtonsArea, Container } from './styled';
+import Layout from '@/components/Layout';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);
@@ -34,10 +34,10 @@ const FormControls = () => {
   }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Container>
+    <Layout pad column>
       <Queue />
       {promptError && <ErrorText>{promptError}</ErrorText>}
-      <ButtonsArea>
+      <Layout>
         {!auto && (
           <Button wide onClick={handleClick}>
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
@@ -55,8 +55,8 @@ const FormControls = () => {
             {auto ? <PauseIcon /> : <PlayIcon />}
           </Button>
         </Tooltip>
-      </ButtonsArea>
-    </Container>
+      </Layout>
+    </Layout>
   );
 };
 
