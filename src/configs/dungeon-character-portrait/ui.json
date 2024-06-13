@@ -4,8 +4,8 @@
   "emoji": "🧌",
   "description": "Build D&D Character Portraits",
   "theme": {
-    "radius": "20px",
-    "scheme": "brown tan"
+    "radius": "10px",
+    "scheme": "orange tan"
   },
   "tags": ["D&D"],
   "formConfig": [

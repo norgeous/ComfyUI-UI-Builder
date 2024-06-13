@@ -4,7 +4,8 @@ import InputRefContext from '@/contexts/InputRefContext';
 import Select from '@/components/InputSelect';
 import ErrorText from '@/components/ErrorText';
 import InputWrapper from '@/components/InputWrapper';
-import { Button, Img, Input } from './styled';
+import Button from '@/components/Button';
+import { Img, Input } from './styled';
 
 const allowedFileTypes = [
   '.jpg',
@@ -51,7 +52,7 @@ const InputFile = ({
         onChange={handleSelectChange}
       />
       <InputWrapper>
-        <Button onClick={() => ref.current.click()}>
+        <Button variant="secondary" onClick={() => ref.current.click()}>
           Choose a new file to upload...
         </Button>
         {value && <Img alt="" src={value} />}

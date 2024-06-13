@@ -2,9 +2,6 @@ import styled, { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Btn = styled.button.attrs({ type: 'button' })`
-  /* background: var(--input-outline); */
-  /* color: var(--fg); */
-
   background: var(--accent);
   color: var(--accent-fg);
 
@@ -24,7 +21,9 @@ export const Btn = styled.button.attrs({ type: 'button' })`
   ${({ $variant }) => {
     if ($variant === 'secondary')
       return css`
-        background: red;
+        background: transparent;
+        border: 1px solid var(--bg4);
+        color: var(--bg4);
       `;
     return undefined;
   }}

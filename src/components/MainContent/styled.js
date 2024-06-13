@@ -14,9 +14,5 @@ export const ContentArea = styled.div`
   background: var(--back-bg);
   background-size: 8px 8px;
   background-position: center center;
-  background-image: radial-gradient(
-    circle,
-    var(--surface-bg) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, var(--bg1) 1px, transparent 1px);
 `;

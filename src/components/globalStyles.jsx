@@ -21,21 +21,23 @@ const setOKLCHLightness = (color, lightness) => {
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    ${({ radius = '4px', scheme = 'darkorchid blueviolet' }) => {
+    ${({ radius = '4px', scheme = 'black gold darkorchid blueviolet' }) => {
       const parts = scheme.split(' ');
       const [bg, accent] = [parts[0], parts[1] || parts[0]];
 
       const bgsLight = [
-        setOKLCHLightness(bg, 0.9),
-        setOKLCHLightness(bg, 0.8),
-        setOKLCHLightness(bg, 0.7),
+        setOKLCHLightness(bg, 0.92),
+        setOKLCHLightness(bg, 0.84),
+        setOKLCHLightness(bg, 0.76),
+        setOKLCHLightness(bg, 0.68),
         setOKLCHLightness(bg, 0.5),
       ];
 
       const bgsDark = [
-        setOKLCHLightness(bg, 0.1),
-        setOKLCHLightness(bg, 0.2),
-        setOKLCHLightness(bg, 0.3),
+        setOKLCHLightness(bg, 0.08),
+        setOKLCHLightness(bg, 0.16),
+        setOKLCHLightness(bg, 0.24),
+        setOKLCHLightness(bg, 0.32),
         setOKLCHLightness(bg, 0.5),
       ];
 
@@ -44,10 +46,12 @@ export const Theme1Style = createGlobalStyle`
         --bg1: ${bgsLight[1]};
         --bg2: ${bgsLight[2]};
         --bg3: ${bgsLight[3]};
+        --bg4: ${bgsLight[4]};
         --fg0: ${inventFG(bgsLight[0])};
         --fg1: ${inventFG(bgsLight[1])};
         --fg2: ${inventFG(bgsLight[2])};
         --fg3: ${inventFG(bgsLight[3])};
+        --fg4: ${inventFG(bgsLight[4])};
       `;
 
       const dark = css`
@@ -55,10 +59,12 @@ export const Theme1Style = createGlobalStyle`
         --bg1: ${bgsDark[1]};
         --bg2: ${bgsDark[2]};
         --bg3: ${bgsDark[3]};
+        --bg4: ${bgsDark[4]};
         --fg0: ${inventFG(bgsDark[0])};
         --fg1: ${inventFG(bgsDark[1])};
         --fg2: ${inventFG(bgsDark[2])};
         --fg3: ${inventFG(bgsDark[3])};
+        --fg4: ${inventFG(bgsDark[4])};
       `;
 
       return css`
@@ -84,43 +90,10 @@ export const Theme = () => {
   return (
     <Theme1Style
       radius={config.configData.theme?.radius}
-      primary={config.configData.theme?.primary}
-      secondary={config.configData.theme?.secondary}
+      scheme={config.configData.theme?.scheme}
     />
   );
 };
-
-// const darkOverrides = css`
-//   --fg: #eee;
-//   --lightness-bg0: 5%;
-//   --lightness-bg1: 10%;
-//   --lightness-bg2: 15%;
-//   --lightness-bg3: 20%;
-// `;
-
-/* :root {
-    --fg: #111;
-    --lightness-bg0: 95%;
-    --lightness-bg1: 90%;
-    --lightness-bg2: 85%;
-    --lightness-bg3: 80%;
-
-    @media (prefers-color-scheme: dark) {
-      ${darkOverrides}
-    }
-
-    ${({ forceDark }) => forceDark && darkOverrides}
-
-    --primary: hsl(var(--hue1) var(--saturation1) 50%);
-    --input-outline: var(--primary);
-    --input-border: var(--primary);
-
-    --back-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg0));
-    --page-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg1));
-    --surface-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg2));
-    --header-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
-    --input-bg: hsl(var(--hue1) var(--saturation1) var(--lightness-bg3));
-  } */
 
 export const GlobalStyle = createGlobalStyle`
   body {

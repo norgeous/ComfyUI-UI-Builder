@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
-  background: var(--surface-bg);
+  background: var(--bg2);
+  color: var(--fg2);
 `;
 
 export const Description = styled.div`

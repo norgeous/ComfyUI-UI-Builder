@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Textarea = styled.textarea`
-  background: var(--bg2);
-  color: var(--fg2);
-  border: 1px solid var(--bg3);
+  background: var(--bg3);
+  color: var(--fg3);
+  border: 1px solid var(--bg4);
 
   display: block;
   box-sizing: border-box;

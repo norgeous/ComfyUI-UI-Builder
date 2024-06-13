@@ -14,6 +14,6 @@ export const Label = styled.label`
 
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   display: block;
-  accent-color: var(--input-outline);
+  accent-color: var(--accent);
   margin: 0;
 `;
