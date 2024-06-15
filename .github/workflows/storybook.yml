@@ -112,6 +112,10 @@ jobs:
             packages/storybook/storybook-static
           key: mycache
 
+      - name: ▶️ Playwright Install
+        run: |
+          npx playwright install chromium
+
       - name: 🧢 Storycap
         run: |
           npm run storycap:ci -w packages/storybook
