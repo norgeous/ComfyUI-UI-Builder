@@ -6,5 +6,8 @@ export default {
 };
 
 export const HeaderButton = {
-  args: {},
+  args: {
+    label: 'test label',
+    children: 'R',
+  },
 };
