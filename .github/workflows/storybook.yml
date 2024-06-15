@@ -38,12 +38,6 @@ jobs:
             packages/storybook/storybook-static
           key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
 
-      - name: 🆙 Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: storybook-static-artifact
-          path: packages/storybook/storybook-static
-
   github-pages-deploy:
     needs: storybook-static
     runs-on: ubuntu-latest
@@ -51,11 +45,12 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: ⬇️ Download artifact
-        uses: actions/download-artifact@v4
+      - name: ♻️ Restore cached storybook-static
+        uses: actions/cache@v4
         with:
-          name: storybook-static-artifact
-          path: packages/storybook/storybook-static
+          path: |
+            packages/storybook/storybook-static
+          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
 
       - name: 🆙 Upload pages artifact
         uses: actions/upload-pages-artifact@v3.0.1
@@ -80,15 +75,13 @@ jobs:
         with:
           ref: develop
 
-      - name: ⬇️ Download artifact
-        uses: actions/download-artifact@v4
+      - name: ♻️ Restore cached node_modules and storybook-static
+        uses: actions/cache@v4
         with:
-          name: storybook-static-artifact
-          path: packages/storybook/storybook-static
-
-      - name: 🧰 NPM Install
-        run: |
-          npm ci
+          path: |
+            node_modules
+            packages/storybook/storybook-static
+          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
 
       - name: ▶️ Playwright Install
         run: |
