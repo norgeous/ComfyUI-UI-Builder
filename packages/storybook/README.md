@@ -9,4 +9,4 @@
 | npm run unittest:ci | Build and serve Storybook, then run smoke, play and a11y tests       |
 | npm run storycap    | Build and serve Storybook, then take screenshots (png) of each story |
 
-`npx playwright install`
+You may need to run `npx playwright install` to get some commands to work
