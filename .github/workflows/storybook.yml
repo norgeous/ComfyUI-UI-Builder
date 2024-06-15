@@ -26,7 +26,7 @@ jobs:
         run: |
           npm ci
 
-      - name: 📕 Storybook Build
+      - name: 🔨 Storybook Build
         run: |
           npm run sb:build
 
@@ -37,6 +37,24 @@ jobs:
           path: packages/storybook/storybook-static
 
   storybook-deploy:
+    needs: storybook-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⬇️ Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-static-artifact
+          path: packages/storybook/storybook-static
+
+      - name: 🚀 Deploy artifact to Github pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: storybook-static-artifact
+
+  storybook-test:
     needs: storybook-build
     runs-on: ubuntu-latest
     permissions:
@@ -58,44 +76,10 @@ jobs:
           name: storybook-static-artifact
           path: packages/storybook/storybook-static
 
-      - name: 🔍 can build be seen?
+      - name: ▶️ Playwright Install
         run: |
-          pwd
-          ls -l
-          ls -l packages/storybook/
-          ls -l packages/storybook/storybook-static
+          npx playwright install
 
-      # - name: 🆙 Upload artifact
-      #   uses: actions/upload-pages-artifact@v3.0.1
-      #   with:
-      #     name: 'storybook-static-artifact'
-      #     path: 'packages/storybook/storybook-static'
-
-      # - name: 🚀 Deploy artifact to Github oages
-      #   uses: actions/deploy-pages@v4
-      #   with:
-      #     artifact_name: storybook-static-artifact
-
-  # storybook-test:
-  #   needs: []
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     pages: write
-  #     id-token: write
-  #   steps:
-  #     - name: ⤵️ Checkout
-  #       uses: actions/checkout@v4
-  #       with:
-  #         ref: develop
-
-  #     - name: 🧰 NPM Install
-  #       run: |
-  #         npm ci
-
-  #     - name: ▶️ Playwright Install
-  #       run: |
-  #         npx playwright install
-
-  #     - name: 🧪 Storybook smoke, play and a11y tests
-  #       run: |
-  #         npm run unittest:ci -w packages/storybook
+      - name: 🧪 Storybook smoke, play and a11y tests
+        run: |
+          npm run unittest:ci -w packages/storybook
