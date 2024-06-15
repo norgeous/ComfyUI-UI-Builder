@@ -4,7 +4,7 @@
   "emoji": "🏃",
   "description": "Fast SDXL image generation using Hyper 1 Step UNET",
   "theme": {
-    "hue": 60
+    "scheme": "gold yellow"
   },
   "tags": ["SDXL", "S2I"],
   "formConfig": [
