@@ -14,7 +14,7 @@ on:
       ]
 
 jobs:
-  storybook-build:
+  storybook-static:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout
@@ -36,8 +36,8 @@ jobs:
           name: storybook-static-artifact
           path: packages/storybook/storybook-static
 
-  storybook-deploy:
-    needs: storybook-build
+  github-pages-deploy:
+    needs: storybook-static
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -49,13 +49,19 @@ jobs:
           name: storybook-static-artifact
           path: packages/storybook/storybook-static
 
+      - name: 🆙 Upload pages artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          name: storybook-static-pages-artifact
+          path: packages/storybook/storybook-static
+
       - name: 🚀 Deploy artifact to Github pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: storybook-static-artifact
+          artifact_name: storybook-static-pages-artifact
 
   storybook-test:
-    needs: storybook-build
+    needs: storybook-static
     runs-on: ubuntu-latest
     permissions:
       pages: write
