@@ -49,6 +49,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            node_modules
             packages/storybook/storybook-static
           key: mycache
 
