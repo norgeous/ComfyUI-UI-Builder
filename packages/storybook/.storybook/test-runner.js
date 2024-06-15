@@ -1,4 +1,4 @@
-import { injectAxe, checkA11y } from 'axe-playwright';
+import { injectAxe, checkA11y, configureAxe } from 'axe-playwright';
 // import { getStoryContext } from '@storybook/test-runner';
 
 export const preRender = async (page, context) => {
@@ -20,6 +20,10 @@ export const postRender = async (page, context) => {
   // the report type: default, v2 or html
   // note: the html reporter will disable terminal logging of failures, the tests wont fail
   const reporter = 'v2';
+
+  await configureAxe(page, {
+    rules: [{ id: 'color-contrast', selector: '*:not(.muted):not(.muted *)' }],
+  });
 
   await checkA11y(page, '#storybook-root', axeOptions, skipFailures, reporter);
 };

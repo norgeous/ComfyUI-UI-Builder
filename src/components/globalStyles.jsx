@@ -21,7 +21,7 @@ const setOKLCHLightness = (color, lightness) => {
 
 export const Theme1Style = createGlobalStyle`
   :root {
-    ${({ radius = '4px', scheme = 'black gold darkorchid blueviolet' }) => {
+    ${({ radius = '4px', scheme = 'darkorchid blueviolet' }) => {
       const parts = scheme.split(' ');
       const [bg, accent] = [parts[0], parts[1] || parts[0]];
 

@@ -5,7 +5,7 @@
   "scripts": {
     "sb": "storybook dev -p 6006",
     "build": "storybook build --quiet",
-    "serve": "serve -l 6006 storybook-static",
+    "serve": "serve -l 6006 -L storybook-static",
     "unittest": "wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache",
     "unittest:ci": "npm run build && concurrently -k -s first -n SERVE,TEST -c magenta,blue npm:serve \"npm:unittest -- --ci\"",
     "visdiff": "bash ./visdiff.sh",
