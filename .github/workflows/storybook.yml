@@ -38,32 +38,6 @@ jobs:
             packages/storybook/storybook-static
           key: mycache
 
-  github-pages-deploy:
-    needs: storybook-static
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: ♻️ Restore cached storybook-static
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            packages/storybook/storybook-static
-          key: mycache
-
-      - name: 🆙 Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1
-        with:
-          name: storybook-static-artifact
-          path: packages/storybook/storybook-static
-
-      - name: 🚀 Deploy artifact to Github pages
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: storybook-static-artifact
-
   storybook-test:
     needs: storybook-static
     runs-on: ubuntu-latest
@@ -129,3 +103,29 @@ jobs:
         with:
           name: storycaps
           path: _storycaps_
+
+  github-pages-deploy:
+    needs: [storybook-static, storybook-test, storycap]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ♻️ Restore cached storybook-static
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/storybook/storybook-static
+          key: mycache
+
+      - name: 🆙 Upload artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          name: storybook-static-artifact
+          path: packages/storybook/storybook-static
+
+      - name: 🚀 Deploy artifact to Github pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: storybook-static-artifact
