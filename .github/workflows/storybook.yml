@@ -84,7 +84,7 @@ jobs:
 
       - name: ▶️ Playwright Install
         run: |
-          npx playwright install
+          npx playwright install chromium
 
       - name: 🧪 Storybook smoke, play and a11y tests
         run: |
