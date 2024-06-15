@@ -1,0 +1,79 @@
+name: 📕 Storybook
+on:
+  push:
+    branches:
+      - develop
+
+    # Trigger the action only when files change in the folders defined here
+    paths:
+      [
+        '.github/workflows/storybook.yml',
+        'packages/storybook/**',
+        'public/**',
+        'src/components/**',
+      ]
+
+jobs:
+  storybook-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
+
+      - name: 📕 Storybook Build
+        run: |
+          npm run sb:build
+
+  storybook-deploy:
+    needs: storybook-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 🔍 can build be seen?
+        run: |
+          pwd
+          ls -l
+          ls -l packages/storybook/
+
+      # - name: 🆙 Upload artifact
+      #   uses: actions/upload-pages-artifact@v3.0.1
+      #   with:
+      #     name: 'storybook-static-artifact'
+      #     path: 'packages/storybook/storybook-static'
+
+      # - name: 🚀 Deploy artifact to Github oages
+      #   uses: actions/deploy-pages@v4
+      #   with:
+      #     artifact_name: storybook-static-artifact
+
+  # storybook-test:
+  #   needs: []
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   steps:
+  #     - name: ⤵️ Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: develop
+
+  #     - name: 🧰 NPM Install
+  #       run: |
+  #         npm ci
+
+  #     - name: ▶️ Playwright Install
+  #       run: |
+  #         npx playwright install
+
+  #     - name: 🧪 Storybook smoke, play and a11y tests
+  #       run: |
+  #         npm run unittest:ci -w packages/storybook
