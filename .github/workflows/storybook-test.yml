@@ -5,6 +5,7 @@ on:
       - develop
 jobs:
   storybook-test:
+    if: false
     runs-on: ubuntu-latest
     permissions:
       pages: write

@@ -6,6 +6,7 @@ on:
     # paths: ['stories/**', 'src/components/**']
 jobs:
   storybook-storycap:
+    if: false
     runs-on: ubuntu-latest
     permissions:
       pages: write
