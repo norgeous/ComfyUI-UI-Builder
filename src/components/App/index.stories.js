@@ -19,6 +19,13 @@ export const App = {
             height: 600,
           },
         },
+        large_dark: {
+          viewport: {
+            width: 800,
+            height: 600,
+          },
+          forceDark: true,
+        },
       },
     },
   },
