@@ -112,9 +112,9 @@ jobs:
             packages/storybook/storybook-static
           key: mycache
 
-      - name: ▶️ Playwright Install
+      - name: 👺 Puppeteer Install
         run: |
-          npx playwright install chromium
+          npx puppeteer browsers install chrome
 
       - name: 🧢 Storycap
         run: |
