@@ -1,11 +1,11 @@
 import { injectAxe, checkA11y, configureAxe } from 'axe-playwright';
 // import { getStoryContext } from '@storybook/test-runner';
 
-export const preRender = async (page, context) => {
+export const preVisit = async (page, context) => {
   await injectAxe(page);
 };
 
-export const postRender = async (page, context) => {
+export const postVisit = async (page, context) => {
   // Get the entire context of a story, including parameters, args, argTypes, etc.
   // const storyContext = await getStoryContext(page, context);
 
