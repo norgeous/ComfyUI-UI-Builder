@@ -15,13 +15,13 @@ export const App = {
         },
         large: {
           viewport: {
-            width: 800,
+            width: 830,
             height: 600,
           },
         },
         large_dark: {
           viewport: {
-            width: 800,
+            width: 830,
             height: 600,
           },
           forceDark: true,
