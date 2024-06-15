@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Side = styled.aside`
   display: flex;
   flex-direction: column;
-  background-color: var(--page-bg);
+
+  background: var(--bg1);
+  color: var(--fg1);
+
   overflow: hidden;
   height: 100%;
 `;

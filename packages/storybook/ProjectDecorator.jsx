@@ -25,12 +25,12 @@ const useStorycapCurrentVariant = () => {
 };
 
 const ProjectDecorator = Story => {
-  const { storycapVariant } = useStorycapCurrentVariant();
+  const { storycapVariantData } = useStorycapCurrentVariant();
 
   return (
     <>
-      <GlobalStyle forceDark={storycapVariant === 'dark'} />
-      <Theme1Style />
+      <GlobalStyle />
+      <Theme1Style forceDark={storycapVariantData?.forceDark} />
       <Providers>
         <Story />
       </Providers>

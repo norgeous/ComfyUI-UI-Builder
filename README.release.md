@@ -4,7 +4,7 @@ Alternative configurable React UI overlay for Comfy UI
 
 More info coming soon
 
-![App](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/_storycaps_/App/App_dark.png)
+[![Preview](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/_storycaps_/App/App_large_dark.png 'Preview')](https://norgeous.github.io/ComfyUI-UI-Builder/iframe.html?args=&id=app--app)
 
 👉 [non-functional preview](https://norgeous.github.io/ComfyUI-UI-Builder/iframe.html?args=&id=app--app) of this project
 

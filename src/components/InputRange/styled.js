@@ -11,7 +11,7 @@ const track = css`
   height: 8px;
   cursor: pointer;
   background: var(--input-bg);
-  border: 1px solid var(--input-outline);
+  border: 1px solid var(--bg4);
   border-radius: 100px;
 `;
 
@@ -22,12 +22,12 @@ const thumb = css`
   height: 20px;
   width: 20px;
   border-radius: 10px;
-  background: var(--input-outline);
+  background: var(--accent);
   cursor: pointer;
 `;
 
 const progress = css`
-  background: var(--input-outline);
+  background: var(--accent);
   height: 8px;
 `;
 
@@ -37,7 +37,7 @@ export const Input = styled.input.attrs({ type: 'range' })`
   height: 20px;
   min-width: 100%;
   box-sizing: border-box;
-  accent-color: var(--input-outline);
+  accent-color: var(--accent);
   margin: 0;
   background: transparent;
   &::-moz-range-track {

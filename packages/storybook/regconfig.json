@@ -1,0 +1,13 @@
+{
+  "core": {
+    "actualDir": "../../_storycaps_",
+    "workingDir": "./visdiff-report",
+    "thresholdRate": 0.05,
+    "thresholdPixel": 0,
+    "enableAntialias": false,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  }
+}
+

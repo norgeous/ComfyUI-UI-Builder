@@ -10,13 +10,3 @@ export const Img = styled.img`
   margin: 0 auto;
   display: block;
 `;
-
-export const Button = styled.button`
-  width: 100%;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--input-bg);
-  color: var(--input-fg);
-  padding: 8px;
-  cursor: pointer;
-`;

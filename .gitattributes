@@ -1,3 +1,4 @@
 * text eol=crlf
+*.sh text eol=lf
 *.gz binary
 *.png binary

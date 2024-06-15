@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Btn = styled.button.attrs({ type: 'button' })`
-  background: var(--input-outline);
+  background: var(--accent);
+  color: var(--accent-fg);
+
   margin: 0;
   border: none;
   ${({ $wide }) =>
@@ -19,13 +21,14 @@ export const Btn = styled.button.attrs({ type: 'button' })`
   ${({ $variant }) => {
     if ($variant === 'secondary')
       return css`
-        background: red;
+        background: transparent;
+        border: 1px solid var(--bg4);
+        color: var(--fg0);
       `;
     return undefined;
   }}
   font-size: 14px;
   line-height: 14px;
-  color: var(--fg);
   &:disabled {
     color: inherit;
   }

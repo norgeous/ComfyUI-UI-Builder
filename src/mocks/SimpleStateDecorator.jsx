@@ -25,16 +25,18 @@ const SimpleStateDecorator = (Story, { args }) => {
   const showReset = value !== initialValue;
 
   return (
-    <InputRefContext.Provider value={ref}>
-      <Story
-        args={{
-          ...args,
-          value,
-          onChange,
-          children: showReset && <ResetButton onClick={handleReset} />,
-        }}
-      />
-    </InputRefContext.Provider>
+    <div style={{ background: 'var(--bg2)' }}>
+      <InputRefContext.Provider value={ref}>
+        <Story
+          args={{
+            ...args,
+            value,
+            onChange,
+            children: showReset && <ResetButton onClick={handleReset} />,
+          }}
+        />
+      </InputRefContext.Provider>
+    </div>
   );
 };
 

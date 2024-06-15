@@ -17,8 +17,8 @@ export const TooltipWrap = styled.span`
 export const TooltipText = styled.span`
   position: absolute;
   font-size: 0.75rem; // 12px
-  background: var(--page-bg);
-  color: var(--page-fg);
+  background: var(--bg0);
+  color: var(--fg0);
   text-align: center;
   border-radius: 6px;
   padding: 8px;
@@ -31,5 +31,5 @@ export const TooltipText = styled.span`
 `;
 
 export const Arrow = styled(FloatingArrow)`
-  fill: var(--page-bg);
+  fill: var(--bg0);
 `;

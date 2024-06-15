@@ -46,6 +46,7 @@ const FormControls = () => {
           wide={auto}
         >
           <Button
+            variant="secondary"
             aria-label="Automatic Generation"
             onClick={() => setAuto(!auto)}
             wide={auto}
