@@ -13,6 +13,12 @@ export const App = {
         small: {
           viewport: 'iPhone 5',
         },
+        large: {
+          viewport: {
+            width: 800,
+            height: 600,
+          },
+        },
       },
     },
   },
