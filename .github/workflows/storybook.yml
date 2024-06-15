@@ -72,15 +72,15 @@ jobs:
         with:
           ref: develop
 
-      - name: 🧰 NPM Install
-        run: |
-          npm ci
-
       - name: ⬇️ Download artifact
         uses: actions/download-artifact@v4
         with:
           name: storybook-static-artifact
           path: packages/storybook/storybook-static
+
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
 
       - name: ▶️ Playwright Install
         run: |
@@ -89,3 +89,33 @@ jobs:
       - name: 🧪 Storybook smoke, play and a11y tests
         run: |
           npm run unittest:ci -w packages/storybook
+
+  storycap:
+    needs: storybook-static
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: ⬇️ Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-static-artifact
+          path: packages/storybook/storybook-static
+
+      - name: 🧰 NPM Install
+        run: |
+          npm ci
+
+      - name: 🧢 Storycap
+        run: |
+          npm run storycap:ci -w packages/storybook
+
+      - name: 🔍 Manually check results
+        run: |
+          git status
