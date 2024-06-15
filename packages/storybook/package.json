@@ -10,6 +10,7 @@
     "unittest:ci": "concurrently -k -s first -n SERVE,TEST -c magenta,blue npm:serve \"npm:unittest -- --ci\"",
     "visdiff": "bash ./visdiff.sh",
     "storycap": "storycap --serverCmd \"npm run build && npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
+    "storycap:ci": "storycap --serverCmd \"npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
     "regression": "reg-suit run",
     "serve:visdiff": "serve -l 3000 ./visdiff-report/"
   },
