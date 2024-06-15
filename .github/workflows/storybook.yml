@@ -30,13 +30,13 @@ jobs:
         run: |
           npm run sb:build
 
-      - name: 🏦 Cache deps and build
+      - name: 🏦 Cache node_modules and storybook-static
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
@@ -110,17 +110,13 @@ jobs:
         with:
           ref: develop
 
-      - name: 🏦 Use cache?
+      - name: ♻️ Restore cached node_modules and storybook-static
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-
-      - name: 🧰 NPM Install
-        run: |
-          npm ci
+          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
 
       - name: 🧢 Storycap
         run: |
