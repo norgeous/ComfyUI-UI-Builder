@@ -53,16 +53,16 @@ jobs:
             packages/storybook/storybook-static
           key: mycache
 
-      - name: 🆙 Upload pages artifact
+      - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          name: storybook-static-pages-artifact
+          name: storybook-static-artifact
           path: packages/storybook/storybook-static
 
       - name: 🚀 Deploy artifact to Github pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: storybook-static-pages-artifact
+          artifact_name: storybook-static-artifact
 
   storybook-test:
     needs: storybook-static
@@ -123,3 +123,9 @@ jobs:
       - name: 🔍 Manually check results
         run: |
           git status
+
+      - name: 🆙 Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: storycaps
+          path: _storycaps_
