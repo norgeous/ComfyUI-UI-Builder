@@ -10,7 +10,7 @@ const inventFG = color => {
   const contrastPB = c.contrast(b, 'WCAG21');
   const contrastPW = c.contrast(w, 'WCAG21');
 
-  return contrastPB > contrastPW ? 'black' : 'white';
+  return contrastPB > contrastPW ? '#000000' : '#FFFFFF';
 };
 
 const setOKLCHLightness = (color, lightness) => {
@@ -52,6 +52,7 @@ export const Theme1Style = createGlobalStyle`
         --fg2: ${inventFG(bgsLight[2])};
         --fg3: ${inventFG(bgsLight[3])};
         --fg4: ${inventFG(bgsLight[4])};
+        --fg-mute: ${inventFG(bgsLight[0])}80; // 50% opacity
       `;
 
       const dark = css`
@@ -65,6 +66,7 @@ export const Theme1Style = createGlobalStyle`
         --fg2: ${inventFG(bgsDark[2])};
         --fg3: ${inventFG(bgsDark[3])};
         --fg4: ${inventFG(bgsDark[4])};
+        --fg-mute: ${inventFG(bgsDark[0])}80; // 50% opacity
       `;
 
       return css`
@@ -116,7 +118,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .muted {
-    opacity: 0.4;
+    /* opacity: 0.4; */
+    color: var(--fg-mute);
   }
 
   ::-webkit-scrollbar {

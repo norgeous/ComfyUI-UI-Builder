@@ -52,24 +52,32 @@ const InputRange = ({
           value={index}
           onChange={event => onChange(options[event.target.value].value)}
         />
-        <Sublabels $isPips={isPips} className="muted">
+        <Sublabels $isPips={isPips}>
           {!isPips && minLabel && (
-            <Sublabel onClick={() => handleChange(options[0].value)}>
+            <Sublabel
+              className="muted"
+              onClick={() => handleChange(options[0].value)}
+            >
               <ArrowLeftIcon />
-              <SublabelText>{minLabel}</SublabelText>
+              <SublabelText className="muted">{minLabel}</SublabelText>
             </Sublabel>
           )}
           {isPips &&
             options?.map(({ label: pipLabel, value: pipValue }) => (
-              <Pip key={pipLabel} onClick={() => handleChange(pipValue)}>
+              <Pip
+                className="muted"
+                key={pipLabel}
+                onClick={() => handleChange(pipValue)}
+              >
                 {pipLabel}
               </Pip>
             ))}
           {!isPips && maxLabel && (
             <Sublabel
+              className="muted"
               onClick={() => handleChange(options[options.length - 1].value)}
             >
-              <SublabelText>{maxLabel}</SublabelText>
+              <SublabelText className="muted">{maxLabel}</SublabelText>
               <ArrowRightIcon />
             </Sublabel>
           )}
