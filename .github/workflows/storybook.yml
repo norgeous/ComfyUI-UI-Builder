@@ -36,7 +36,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
+          key: mycache
 
   github-pages-deploy:
     needs: storybook-static
@@ -50,7 +50,7 @@ jobs:
         with:
           path: |
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
+          key: mycache
 
       - name: 🆙 Upload pages artifact
         uses: actions/upload-pages-artifact@v3.0.1
@@ -81,7 +81,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
+          key: mycache
 
       - name: ▶️ Playwright Install
         run: |
@@ -109,7 +109,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/storybook-static
-          key: ${{ runner.os }}-${{ hashFiles('packages/storybook/storybook-static/**') }}
+          key: mycache
 
       - name: 🧢 Storycap
         run: |
