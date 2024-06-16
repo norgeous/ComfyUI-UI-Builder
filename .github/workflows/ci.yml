@@ -191,6 +191,12 @@ jobs:
         run: |
           npx puppeteer browsers install chrome
 
+      - name: ⚾ move baseline to report directory
+        run: |
+          mkdir packages/storybook/visdiff-report/
+          mv -r _storycaps_ packages/storybook/visdiff-report/expected/
+          mkdir _storycaps_/
+
       - name: 🧢 Storycap
         run: |
           npm run storycap:ci -w packages/storybook
