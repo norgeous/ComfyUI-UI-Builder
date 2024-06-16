@@ -17,13 +17,13 @@ export const App = {
         small: {
           viewport: {
             width: 413, // half the width of github README.md on desktop
-            height: 600,
+            height: 700,
           },
         },
         small_dark: {
           viewport: {
             width: 413, // half the width of github README.md on desktop
-            height: 600,
+            height: 700,
           },
           forceDark: true,
         },
