@@ -242,12 +242,21 @@ jobs:
     needs: [storycap]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore visdiff-report
+        id: visdiff_report_cache
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ hashFiles('src/**','public/**') }}
+
       - name: ⤵️ Checkout "develop" branch
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: develop
 
       - name: ♻️ Restore node_modules
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -256,22 +265,17 @@ jobs:
           key: node_modules-${{ hashFiles('**/package.json', '**/package-lock.json') }}
 
       - name: ⚾ Move baseline into report directory
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         run: |
           mkdir packages/storybook/visdiff-report/
           mv _storycaps_ packages/storybook/visdiff-report/expected/
 
       - name: ♻️ Restore storycaps
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: _storycaps_
           key: storycaps-${{ hashFiles('src/**','public/**') }}
-
-      - name: ♻️ Restore visdiff-report
-        id: visdiff_report_cache
-        uses: actions/cache@v4
-        with:
-          path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ hashFiles('src/**','public/**') }}
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -291,12 +295,6 @@ jobs:
           echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
           exit 0
-
-      # - name: 🆙 Upload artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     path: packages/storybook/visdiff-report
-      #     name: visdiff-report
 
       - name: 👋 Exit code
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
