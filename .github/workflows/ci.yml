@@ -7,7 +7,7 @@ on:
     # Trigger the action only when files change in the folders defined here
     paths:
       [
-        '.github/workflows/storybook.yml',
+        '.github/workflows/ci.yml',
         'packages/storybook/**',
         'public/**',
         'src/components/**',
@@ -63,6 +63,11 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: ⤵️ Checkout "develop" branch
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
       - name: ♻️ Restore dist
         uses: actions/cache@v4
         with:
