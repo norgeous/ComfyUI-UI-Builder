@@ -78,7 +78,7 @@ jobs:
           key: dist
 
   release:
-    needs: [lint, vite-build, storybook-test, storycap]
+    needs: [vite-build, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -263,7 +263,7 @@ jobs:
           name: visdiff-report
 
   github-pages-deploy:
-    needs: [lint, storybook-static, storybook-test, storycap]
+    needs: [storybook-static, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       pages: write
