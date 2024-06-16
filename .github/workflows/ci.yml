@@ -278,13 +278,18 @@ jobs:
           echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
           EXITCODE=$((CHANGED + NEW + DELETED))
           ((EXITCODE > 0)) && echo -e "\n❌ Failed, exit code $EXITCODE" | tee -a $GITHUB_STEP_SUMMARY
-          exit $EXITCODE
+          # exit $EXITCODE
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
         with:
           path: packages/storybook/visdiff-report
           name: visdiff-report
+
+      - name: 👋 Exit code
+        run: |
+          echo "Exit code: $EXITCODE"
+          exit $EXITCODE
 
   github-pages-deploy:
     needs: [lint, storybook-static, storybook-test, visdiff-report]
