@@ -4,5 +4,5 @@ export default {
   // semi: false,
   singleQuote: true,
   arrowParens: 'avoid',
-  endOfLine: 'crlf',
+  endOfLine: 'lf',
 };
