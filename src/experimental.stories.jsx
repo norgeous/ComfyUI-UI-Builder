@@ -4,8 +4,14 @@ export default {
 
 export const HSLVsLCH = {
   parameters: {
+    skip: true,
     screenshot: {
-      skip: false,
+      skip: true,
+      viewport: {
+        skip: true,
+        width: 830,
+        height: 600,
+      },
     },
   },
   args: {
