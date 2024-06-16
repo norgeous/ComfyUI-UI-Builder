@@ -175,7 +175,15 @@ jobs:
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore storybook-test-report
+        id: storybook_test_report_cache
+        uses: actions/cache@v4
+        with:
+          path: storybook-test-report.txt
+          key: storybook-test-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
       - name: ⤵️ Checkout "develop" branch
+        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: develop
@@ -201,9 +209,10 @@ jobs:
       - name: 🧪 Storybook smoke, play and a11y tests
         run: |
           npm run unittest:ci -w packages/storybook | tee -a TESTRESULT.txt
-          ls -l
-          cat TESTRESULT.txt | grep TEST >> $GITHUB_STEP_SUMMARY
-          ls -l
+          EXITCODE=$?
+          cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test-report.txt
+          cat storybook-test-report.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
 
   storycap:
     needs: [cache-keys, storybook-static]
@@ -353,12 +362,19 @@ jobs:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
+      - name: ♻️ Restore storybook-test-report
+        uses: actions/cache@v4
+        with:
+          path: storybook-test-report.txt
+          key: storybook-test-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
       - name: 🎼 Compose artifact
         run: |
           mkdir artifact-directory
           mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
           mv packages/storybook/storybook-static/ artifact-directory/storybook/
-          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1></center>" | tee artifact-directory/index.html
+          mv storybook-test-report.txt artifact-directory/
+          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee artifact-directory/index.html
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
