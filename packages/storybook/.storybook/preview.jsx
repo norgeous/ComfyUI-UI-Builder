@@ -23,7 +23,7 @@ const preview = {
       // https://github.com/reg-viz/storycap#api
       delay: 2000, // default 0 msec
       viewport: {
-        width: 300,
+        width: 413,
         height: 200,
       },
       variants: {
