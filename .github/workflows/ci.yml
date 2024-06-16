@@ -270,6 +270,7 @@ jobs:
           key: storycaps
 
       - name: 🎭 Generate visdiff-report
+        id: generate
         run: |
           SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
           CHANGED=`echo "$SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
@@ -281,8 +282,9 @@ jobs:
           echo "🗑️ Deleted items: $DELETED" | tee -a $GITHUB_STEP_SUMMARY
           echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
           EXITCODE=$((CHANGED + NEW + DELETED))
+          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT
           ((EXITCODE > 0)) && echo -e "\n❌ Failed, exit code $EXITCODE" | tee -a $GITHUB_STEP_SUMMARY
-          # exit $EXITCODE
+          exit 0
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
@@ -292,8 +294,8 @@ jobs:
 
       - name: 👋 Exit code
         run: |
-          echo "Exit code: $EXITCODE"
-          exit $EXITCODE
+          echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
+          exit ${{ steps.generate.outputs.EXITCODE }}
 
   github-pages-deploy:
     needs: [lint, storybook-static, storybook-test, visdiff-report]
