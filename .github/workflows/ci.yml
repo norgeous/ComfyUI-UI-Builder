@@ -20,7 +20,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json','**/package-lock.json') }}
+          key: node_modules-${{ hashFiles('**/package.json','**/package-lock.json') }}
 
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -42,7 +42,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: 🧵 Lint
         run: |
@@ -63,14 +63,14 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: ♻️ Restore dist
         id: dist_cache
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist-${{ runner.os }}-${{ hashFiles('src/**','public/**') }}
+          key: dist-${{ hashFiles('src/**','public/**') }}
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist-${{ runner.os }}-${{ hashFiles('src/**','public/**') }}
+          key: dist-${{ hashFiles('src/**','public/**') }}
 
       - name: 📋 Prepare orphan "release" branch
         run: |
@@ -134,7 +134,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: 📕 Build storybook-static
         run: |
@@ -161,7 +161,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: ♻️ Restore cached storybook-static
         uses: actions/cache@v4
@@ -192,7 +192,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: ♻️ Restore cached storybook-static
         uses: actions/cache@v4
@@ -248,7 +248,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ hashFiles('**/package.json') }}
 
       - name: ⚾ Move baseline into report directory
         run: |
