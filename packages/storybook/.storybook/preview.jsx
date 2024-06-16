@@ -23,7 +23,7 @@ const preview = {
       // https://github.com/reg-viz/storycap#api
       delay: 2000, // default 0 msec
       viewport: {
-        width: 413, // half the width of github README.md on desktop
+        width: 412, // half the width of github README.md on desktop
         height: 100,
       },
       variants: {
