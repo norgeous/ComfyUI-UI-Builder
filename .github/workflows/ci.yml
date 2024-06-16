@@ -34,7 +34,7 @@ jobs:
           key: node_modules
 
   lint:
-    needs: npm-install
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -145,7 +145,7 @@ jobs:
           key: storybook-static
 
   storybook-test:
-    needs: storybook-static
+    needs: [storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -174,7 +174,7 @@ jobs:
           npm run unittest:ci -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
   storycap:
-    needs: [storybook-test]
+    needs: [storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
