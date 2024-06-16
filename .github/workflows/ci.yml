@@ -326,7 +326,7 @@ jobs:
           mkdir artifact-directory
           mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
           mv packages/storybook/storybook-static/ artifact-directory/storybook/
-          echo "<h1><a href="storybook">storybook</a> <a href="visdiff-report">visdiff-report</a></h1>" | tee artifact-directory/index.html
+          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1></center>" | tee artifact-directory/index.html
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
