@@ -14,18 +14,6 @@ const parameters = {
   },
 };
 
-export const SmallSquare4 = {
-  parameters,
-  args: {
-    images: [
-      'https://placehold.co/512x512?text=01',
-      'https://placehold.co/512x512?text=02',
-      'https://placehold.co/512x512?text=03',
-      'https://placehold.co/512x512?text=04',
-    ],
-  },
-};
-
 export const Square1 = {
   parameters,
   args: {
