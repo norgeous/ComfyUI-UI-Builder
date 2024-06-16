@@ -25,17 +25,18 @@ jobs:
         with:
           ref: develop
 
-      - name: 🧰 NPM Install
-        run: |
-          npm ci
-
-      - name: 💾 Cache node_modules
+      - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+
+      - name: 🧰 NPM Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          npm ci
 
   lint:
     needs: [npm-install]
@@ -52,7 +53,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: 🧵 Lint
         run: |
@@ -73,7 +74,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: 🇻 Vite Build
         run: |
@@ -142,7 +143,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: 📕 Build storybook-static
         run: |
@@ -169,7 +170,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: ♻️ Restore cached storybook-static
         uses: actions/cache@v4
@@ -200,7 +201,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: ♻️ Restore cached storybook-static
         uses: actions/cache@v4
@@ -256,7 +257,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: ⚾ Move baseline into report directory
         run: |
