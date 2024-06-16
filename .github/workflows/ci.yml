@@ -283,7 +283,7 @@ jobs:
           echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
           EXITCODE=$((CHANGED + NEW + DELETED))
           echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT
-          ((EXITCODE > 0)) && echo -e "\n❌ Failed, exit code $EXITCODE" | tee -a $GITHUB_STEP_SUMMARY
+          ((EXITCODE > 0)) && echo -e "\n❌ Fail" || echo -e "\n✅ Pass" | tee -a $GITHUB_STEP_SUMMARY
           exit 0
 
       - name: 🆙 Upload artifact
