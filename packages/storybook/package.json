@@ -11,7 +11,7 @@
     "visdiff": "bash ./visdiff.sh",
     "storycap": "storycap --serverCmd \"npm run build && npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
     "storycap:ci": "storycap --serverCmd \"npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
-    "regression": "reg-suit run",
+    "regression": "reg-suit run -q",
     "serve:visdiff": "serve -l 3000 ./visdiff-report/"
   },
   "msw": {
