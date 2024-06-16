@@ -1,5 +1,7 @@
 # UI Builder (develop)
 
+[![🦾 CI](https://github.com/norgeous/ComfyUI-UI-Builder/actions/workflows/ci.yml/badge.svg)](https://github.com/norgeous/ComfyUI-UI-Builder/actions/workflows/ci.yml)
+
 - 👉 [latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
 - 👉 storycaps are in [storycaps](https://github.com/norgeous/ComfyUI-UI-Builder/tree/storycaps) branch
 
