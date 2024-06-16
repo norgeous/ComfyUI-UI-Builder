@@ -199,16 +199,9 @@ jobs:
         run: |
           npx puppeteer browsers install chrome
 
-      - name: ⚾ move baseline to report directory
-        run: |
-          mkdir packages/storybook/visdiff-report/
-          mv _storycaps_ packages/storybook/visdiff-report/expected/
-          mkdir _storycaps_/
-          ls -l _storycaps_/
-          ls -l packages/storybook/visdiff-report/expected/
-
       - name: 🧢 Storycap
         run: |
+          rm -rf _storycaps_
           npm run storycap:ci -w packages/storybook
 
       - name: 💾 Cache storycaps
@@ -250,18 +243,24 @@ jobs:
           path: node_modules
           key: node_modules
 
+      - name: ⚾ Move baseline into report directory
+        run: |
+          mkdir packages/storybook/visdiff-report/
+          mv _storycaps_ packages/storybook/visdiff-report/expected/
+
       - name: ♻️ Restore storycaps
         uses: actions/cache@v4
         with:
           path: _storycaps_
           key: storycaps
 
-      - name: 🎭 compare baseline to new
+      - name: 🎭 Generate visdiff-report
         run: |
           echo "new baseline:"
           ls -l _storycaps_/
           echo "expected:"
           ls -l packages/storybook/visdiff-report/expected/
+          echo "make the report now..."
           npm run regression -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
       - name: 🆙 Upload artifact
