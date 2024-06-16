@@ -47,5 +47,5 @@ export const postVisit = async (page, context) => {
   //     reportFileName: 'exampleReport.html',
   //   },
   // );
-  console.log('!3!', output);
+  // console.log('!3!', output);
 };
