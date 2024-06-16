@@ -224,13 +224,9 @@ jobs:
           git checkout --orphan storycaps
           git rm --cached -rf .
           git add _storycaps_
-          echo "!!!!!!!!!!!!!!!!!!1"
-          git status
-          echo "!!!!!!!!!!!!!!!!!!2"
+          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/%p)\n\n' > README.md
+          git add README.md
           git commit -m "🧢 Storycaps"
-          echo "!!!!!!!!!!!!!!!!!!3"
-          git status
-          echo "!!!!!!!!!!!!!!!!!!4"
 
       - name: 🫸 Force push "storycaps" branch to origin
         run: |
