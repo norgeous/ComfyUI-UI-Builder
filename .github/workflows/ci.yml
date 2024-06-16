@@ -52,7 +52,7 @@ jobs:
           npm run lint >> $GITHUB_STEP_SUMMARY
 
   vite-build:
-    needs: npm-install
+    needs: [lint, npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -119,7 +119,7 @@ jobs:
           git push origin release --force
 
   storybook-static:
-    needs: npm-install
+    needs: [lint, npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout
