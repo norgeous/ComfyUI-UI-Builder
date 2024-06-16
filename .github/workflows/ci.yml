@@ -265,8 +265,9 @@ jobs:
           echo "🆕 New items: $NEW" | tee -a $GITHUB_STEP_SUMMARY
           echo "🗑️ Deleted items: $DELETED" | tee -a $GITHUB_STEP_SUMMARY
           echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
-          # (( $CHANGED > 0 )) || (( $NEW > 0 )) || (( $DELETED > 0 )) && exit 69
-          exit $((CHANGED + NEW + DELETED))
+          EXITCODE=$((CHANGED + NEW + DELETED))
+          ((EXITCODE > 0)) && echo -e "\n❌ Failed, exit code $EXITCODE" | tee -a $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4

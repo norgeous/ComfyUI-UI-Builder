@@ -5,7 +5,7 @@ export default {
   component,
 };
 
-export const SmallSquare4 = {
+export const SmallSquare04 = {
   args: {
     images: [
       'https://placehold.co/512x512?text=01',
@@ -16,13 +16,13 @@ export const SmallSquare4 = {
   },
 };
 
-export const Square1 = {
+export const Square01 = {
   args: {
     images: ['https://placehold.co/1024x1024?text=01'],
   },
 };
 
-export const Square2 = {
+export const Square02 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -31,7 +31,7 @@ export const Square2 = {
   },
 };
 
-export const Square3 = {
+export const Square03 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -41,7 +41,7 @@ export const Square3 = {
   },
 };
 
-export const Square4 = {
+export const Square04 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -126,12 +126,12 @@ export const Square50 = {
   },
 };
 
-export const Landscape1 = {
+export const Landscape01 = {
   args: {
     images: ['https://placehold.co/1344x768?text=01'],
   },
 };
-export const Landscape2 = {
+export const Landscape02 = {
   args: {
     images: [
       'https://placehold.co/1344x768?text=01',
@@ -197,13 +197,13 @@ export const Landscape50 = {
   },
 };
 
-export const Portrait1 = {
+export const Portrait01 = {
   args: {
     images: ['https://placehold.co/768x1344?text=01'],
   },
 };
 
-export const Portrait2 = {
+export const Portrait02 = {
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',
