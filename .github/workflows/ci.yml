@@ -266,7 +266,15 @@ jobs:
           path: _storycaps_
           key: storycaps-${{ hashFiles('src/**','public/**') }}
 
+      - name: ♻️ Restore visdiff-report
+        id: visdiff_report_cache
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ hashFiles('src/**','public/**') }}
+
       - name: 🎭 Generate visdiff-report
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         id: generate
         run: |
           SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
@@ -284,13 +292,14 @@ jobs:
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
           exit 0
 
-      - name: 🆙 Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          path: packages/storybook/visdiff-report
-          name: visdiff-report
+      # - name: 🆙 Upload artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     path: packages/storybook/visdiff-report
+      #     name: visdiff-report
 
       - name: 👋 Exit code
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         run: |
           echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
           exit ${{ steps.generate.outputs.EXITCODE }}
