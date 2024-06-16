@@ -5,7 +5,17 @@ export default {
   component,
 };
 
+const parameters = {
+  screenshot: {
+    viewport: {
+      width: 413, // half the width of github README.md on desktop
+      height: 400,
+    },
+  },
+};
+
 export const SmallSquare4 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/512x512?text=01',
@@ -17,12 +27,14 @@ export const SmallSquare4 = {
 };
 
 export const Square1 = {
+  parameters,
   args: {
     images: ['https://placehold.co/1024x1024?text=01'],
   },
 };
 
 export const Square2 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -32,6 +44,7 @@ export const Square2 = {
 };
 
 export const Square3 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -42,6 +55,7 @@ export const Square3 = {
 };
 
 export const Square4 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -53,6 +67,7 @@ export const Square4 = {
 };
 
 export const Square50 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/100x100?text=01',
@@ -110,11 +125,13 @@ export const Square50 = {
 };
 
 export const Landscape1 = {
+  parameters,
   args: {
     images: ['https://placehold.co/1344x768?text=01'],
   },
 };
 export const Landscape2 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/1344x768?text=01',
@@ -124,6 +141,7 @@ export const Landscape2 = {
 };
 
 export const Landscape50 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/1344x768?text=01',
@@ -181,12 +199,14 @@ export const Landscape50 = {
 };
 
 export const Portrait1 = {
+  parameters,
   args: {
     images: ['https://placehold.co/768x1344?text=01'],
   },
 };
 
 export const Portrait2 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',
@@ -196,6 +216,7 @@ export const Portrait2 = {
 };
 
 export const Portrait50 = {
+  parameters,
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',

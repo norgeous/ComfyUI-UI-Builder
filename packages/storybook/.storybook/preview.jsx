@@ -24,7 +24,7 @@ const preview = {
       delay: 2000, // default 0 msec
       viewport: {
         width: 413, // half the width of github README.md on desktop
-        height: 200,
+        height: 100,
       },
       variants: {
         dark: { forceDark: true },
