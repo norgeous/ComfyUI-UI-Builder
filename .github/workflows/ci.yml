@@ -51,6 +51,9 @@ jobs:
         run: |
           npm run lint
 
+      - name: Adding markdown
+        run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
+
   vite-build:
     needs: npm-install
     runs-on: ubuntu-latest
