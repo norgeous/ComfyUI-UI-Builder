@@ -174,7 +174,7 @@ jobs:
           npm run unittest:ci -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
   storycap:
-    needs: storybook-static
+    needs: [storybook-test]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
