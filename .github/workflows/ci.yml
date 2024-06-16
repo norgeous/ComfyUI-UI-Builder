@@ -129,18 +129,17 @@ jobs:
     needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Checkout "develop" branch
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
       - name: ♻️ Restore storybook-static
         id: storybook_static_cache
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ needs.npm-install.outputs.KEY_BRANCH }}
-
-      - name: ⤵️ Checkout "develop" branch
-        if: steps.storybook_static_cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v4
-        with:
-          ref: develop
 
       - name: ♻️ Restore node_modules
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
