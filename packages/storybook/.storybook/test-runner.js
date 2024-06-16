@@ -35,9 +35,16 @@ export const postVisit = async (page, context) => {
     verbose: false, // hide the "No accessibility violations detected!" message
   };
 
-  await checkA11y(page, '#storybook-root', axeOptions2, skipFailures, 'html', {
-    outputDir: 'axe-reports',
-    reportFileName: 'exampleReport.html',
-  });
-  console.log('!3!');
+  const output = await checkA11y(
+    page,
+    '#storybook-root',
+    axeOptions2,
+    false,
+    'html',
+    {
+      outputDir: '.',
+      reportFileName: 'exampleReport.html',
+    },
+  );
+  console.log('!3!', output);
 };
