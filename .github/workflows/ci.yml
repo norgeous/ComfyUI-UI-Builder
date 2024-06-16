@@ -129,25 +129,27 @@ jobs:
     needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore storybook-static
+        id: storybook_static_cache
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: storybook-static-${{ needs.npm-install.outputs.KEY_BRANCH }}
+
       - name: ⤵️ Checkout "develop" branch
+        if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: develop
 
       - name: ♻️ Restore node_modules
+        if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             packages/storybook/node_modules
           key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
-
-      - name: ♻️ Restore storybook-static
-        id: storybook_static_cache
-        uses: actions/cache@v4
-        with:
-          path: packages/storybook/storybook-static
-          key: storybook-static-${{ hashFiles('src/**', 'public/**') }}
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
