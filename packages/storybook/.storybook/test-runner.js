@@ -27,7 +27,10 @@ export const postVisit = async (page, context) => {
   // the report type: default, v2 or html
   // note: the html reporter will disable terminal logging of failures, the tests wont fail
   // console.log('!1!');
-  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'v2');
+  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'html', {
+    outputDir: '.',
+    reportFileName: 'exampleReport.html',
+  });
   // console.log('!2!');
 
   // const axeOptions2 = {
