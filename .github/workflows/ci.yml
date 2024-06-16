@@ -12,6 +12,7 @@ on:
         'public/**',
         'src/components/**',
         'README.release.md',
+        '**/*.stories.*',
       ]
 
 jobs:
