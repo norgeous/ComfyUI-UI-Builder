@@ -28,6 +28,13 @@ export const postVisit = async (page, context) => {
   console.log('!1!');
   await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'v2');
   console.log('!2!');
-  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'html');
+
+  const axeOptions2 = {
+    detailedReport: true, // per node with an array of numbers of which violations from the summary affect that node
+    // detailedReportOptions: { html: true }, // includes the html of the offending node
+    verbose: false, // hide the "No accessibility violations detected!" message
+  };
+
+  await checkA11y(page, '#storybook-root', axeOptions2, skipFailures, 'html');
   console.log('!3!');
 };
