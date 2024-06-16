@@ -16,8 +16,8 @@ jobs:
       - name: 🔑 Invent keys for this run
         id: cache_keys
         run: |
-          echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
           echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
+          echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
 
       - name: ♻️ Restore node_modules
         id: node_modules_cache
