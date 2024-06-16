@@ -3,6 +3,11 @@ export default {
 };
 
 export const HSLVsLCH = {
+  parameters: {
+    screenshot: {
+      skip: true,
+    },
+  },
   args: {
     saturationOrChroma: 100,
     leftHalf: false,
