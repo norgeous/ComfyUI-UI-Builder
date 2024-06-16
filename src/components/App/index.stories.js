@@ -10,15 +10,21 @@ export const App = {
     layout: 'fullscreen',
     screenshot: {
       viewport: {
-        width: 830,
+        width: 830, // the width of github README.md on desktop
         height: 600,
       },
       variants: {
         small: {
-          viewport: 'iPhone 5',
+          viewport: {
+            width: 413, // half the width of github README.md on desktop
+            height: 600,
+          },
         },
         small_dark: {
-          viewport: 'iPhone 5',
+          viewport: {
+            width: 413, // half the width of github README.md on desktop
+            height: 600,
+          },
           forceDark: true,
         },
       },
