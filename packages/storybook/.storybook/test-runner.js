@@ -19,13 +19,12 @@ export const postVisit = async (page, context) => {
 
   const skipFailures = false;
 
-  // the report type: default, v2 or html
-  // note: the html reporter will disable terminal logging of failures, the tests wont fail
-  const reporter = 'v2';
-
   await configureAxe(page, {
     rules: [{ id: 'color-contrast', selector: '*:not(.muted):not(.muted *)' }],
   });
 
-  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, reporter);
+  // the report type: default, v2 or html
+  // note: the html reporter will disable terminal logging of failures, the tests wont fail
+  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'v2');
+  await checkA11y(page, '#storybook-root', axeOptions, skipFailures, 'html');
 };
