@@ -256,11 +256,17 @@ jobs:
 
       - name: 🎭 Generate visdiff-report
         run: |
-          npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g" | tee $GITHUB_STEP_SUMMARY
-          CHANGED=`cat "$GITHUB_STEP_SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
-          (( $CHANGED > 0 )) && echo -e "\n🎭 $CHANGED Item(s) changed!" | tee -a $GITHUB_STEP_SUMMARY && exit 1
-          (( `cat "$GITHUB_STEP_SUMMARY" | grep "New items: " | sed "s/New items: //"` > 0 )) && echo -e "\n🆕 New item(s)!" | tee -a $GITHUB_STEP_SUMMARY && exit 1
-          (( `cat "$GITHUB_STEP_SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"` > 0 )) && echo -e "\n🗑️ Item(s) deleted!" | tee -a $GITHUB_STEP_SUMMARY && exit 1
+          SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
+          CHANGED=`echo "$SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
+          NEW=`echo "$SUMMARY" | grep "New items: " | sed "s/New items: //"`
+          DELETED=`echo "$SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"`
+          PASSED=`echo "$SUMMARY" | grep "Passed items: " | sed "s/Passed items: //"`
+          echo "🎭 Changed items: $CHANGED" | tee -a $GITHUB_STEP_SUMMARY
+          echo "🆕 New items: $NEW" | tee -a $GITHUB_STEP_SUMMARY
+          echo "🗑️ Deleted items: $DELETED" | tee -a $GITHUB_STEP_SUMMARY
+          echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
+          # (( $CHANGED > 0 )) || (( $NEW > 0 )) || (( $DELETED > 0 )) && exit 69
+          exit $((CHANGED + NEW + DELETED))
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
