@@ -4,7 +4,7 @@ import * as icons from '.';
 const Container = styled.div`
   display: flex;
   gap: 8px;
-  font-size: 40px;
+  font-size: 30px;
   flex-wrap: wrap;
 `;
 
