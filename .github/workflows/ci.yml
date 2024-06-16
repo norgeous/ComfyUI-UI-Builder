@@ -5,15 +5,16 @@ on:
       - develop
 
     # Trigger the action only when files change in the folders defined here
-    paths:
-      [
-        '.github/workflows/ci.yml',
-        'packages/storybook/**',
-        'public/**',
-        'src/components/**',
-        'README.release.md',
-        '**/*.stories.*',
-      ]
+    # paths:
+    #   [
+    #     '.github/workflows/ci.yml',
+    #     'packages/storybook/**',
+    #     'public/**',
+    #     'src/components/**',
+    #     'README.release.md',
+    #     '**/*.stories.*',
+    #     'package.json',
+    #   ]
 
 jobs:
   npm-install:
