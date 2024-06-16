@@ -323,18 +323,20 @@ jobs:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ hashFiles('src/**','public/**') }}
 
-      - name: 🚛 Move visdiff-report into public directory
+      - name: 🎼 Compose artifact
         run: |
-          mv packages/storybook/visdiff-report/ packages/storybook/storybook-static/visdiff-report/
-          ls -lhar packages/storybook/storybook-static
+          mkdir artifact-directory
+          mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
+          mv packages/storybook/storybook-static/ artifact-directory/storybook-static/
+          ls -lhar artifact-directory | tee index2.html
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: packages/storybook/storybook-static
-          name: storybook-static
+          path: artifact-directory
+          name: github-pages-artifact
 
       - name: 🚀 Deploy artifact to Github pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: storybook-static
+          artifact_name: github-pages-artifact
