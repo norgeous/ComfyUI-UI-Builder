@@ -7,7 +7,7 @@
     "build": "storybook build --quiet",
     "serve": "serve -l 6006 -L storybook-static",
     "unittest": "wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache",
-    "unittest:ci": "concurrently -k -s first -n SERVE,TEST -c magenta,blue npm:serve \"npm:unittest -- --ci\"",
+    "unittest:ci": "concurrently -k -s last -n SERVE,TEST -c magenta,blue npm:serve \"npm:unittest -- --ci\"",
     "visdiff": "bash ./visdiff.sh",
     "storycap": "storycap --serverCmd \"npm run build && npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
     "storycap:ci": "storycap --serverCmd \"npm run serve\" --outDir ../../_storycaps_ http://localhost:6006",
