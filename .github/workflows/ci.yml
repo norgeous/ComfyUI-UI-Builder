@@ -317,6 +317,17 @@ jobs:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ hashFiles('src/**','public/**') }}
 
+      - name: ♻️ Restore visdiff-report
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ hashFiles('src/**','public/**') }}
+
+      - name: 🚛 Move visdiff-report into public directory
+        run: |
+          mv packages/storybook/visdiff-report/ packages/storybook/storybook-static/visdiff-report/
+          ls -lhar packages/storybook/storybook-static
+
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
