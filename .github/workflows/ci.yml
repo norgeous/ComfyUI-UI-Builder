@@ -4,18 +4,6 @@ on:
     branches:
       - develop
 
-    # Trigger the action only when files change in the folders defined here
-    # paths:
-    #   [
-    #     '.github/workflows/ci.yml',
-    #     'packages/storybook/**',
-    #     'public/**',
-    #     'src/components/**',
-    #     'README.release.md',
-    #     '**/*.stories.*',
-    #     'package.json',
-    #   ]
-
 jobs:
   npm-install:
     runs-on: ubuntu-latest
@@ -32,7 +20,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json','**/package-lock.json') }}
 
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -77,15 +65,17 @@ jobs:
             packages/storybook/node_modules
           key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
-      - name: 🇻 Vite Build
-        run: |
-          npm run build
-
-      - name: 💾 Cache dist
+      - name: ♻️ Restore dist
+        id: dist_cache
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist
+          key: dist-${{ runner.os }}-${{ hashFiles('src/**','public/**') }}
+
+      - name: 🇻 Vite Build
+        if: steps.dist_cache.outputs.cache-hit != 'true'
+        run: |
+          npm run build
 
   release:
     needs: [lint, vite-build, storybook-test, visdiff-report]
@@ -102,7 +92,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist
+          key: dist-${{ runner.os }}-${{ hashFiles('src/**','public/**') }}
 
       - name: 📋 Prepare orphan "release" branch
         run: |
