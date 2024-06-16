@@ -256,15 +256,7 @@ jobs:
 
       - name: 🎭 Generate visdiff-report
         run: |
-          echo "new baseline:"
-          ls -l _storycaps_/
-          echo "expected:"
-          ls -l packages/storybook/visdiff-report/expected/
-          echo "TERM: $TERM"
-          export TERM=xterm-mono
-          echo "TERM: $TERM"
-          echo "making the report now..."
-          npm run regression -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" >> $GITHUB_STEP_SUMMARY
+          npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info //g" >> $GITHUB_STEP_SUMMARY
           echo "exit code: $?"
           cat "$GITHUB_STEP_SUMMARY"
 
