@@ -49,7 +49,7 @@ jobs:
 
       - name: 🧶 Lint
         run: |
-          npm run lint
+          npm run lint >> $GITHUB_STEP_SUMMARY
 
       - name: Adding markdown
         run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
@@ -151,9 +151,6 @@ jobs:
   storybook-test:
     needs: storybook-static
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     steps:
       - name: ⤵️ Checkout
         uses: actions/checkout@v4
@@ -179,9 +176,6 @@ jobs:
   storycap:
     needs: storybook-static
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     steps:
       - name: ⤵️ Checkout
         uses: actions/checkout@v4
@@ -204,15 +198,42 @@ jobs:
         run: |
           npm run storycap:ci -w packages/storybook
 
-      - name: 🔍 Manually check results
+      - name: 💾 Cache storycaps
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: storycaps
+
+  visdiff:
+    needs: [storycap]
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: ♻️ Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node_modules
+
+      - name: ♻️ Restore storycaps
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: storycaps
+
+      - name: 🎭 compare baseline to new
         run: |
-          git status
+          npm run regression -w packages/storybook
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: storycaps
-          path: _storycaps_
+          path: packages/storybook/visdiff-report
+          name: visdiff
 
   github-pages-deploy:
     needs: [lint, storybook-static, storybook-test, storycap]
@@ -232,10 +253,10 @@ jobs:
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          name: storybook-static-artifact
           path: packages/storybook/storybook-static
+          name: storybook-static
 
       - name: 🚀 Deploy artifact to Github pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: storybook-static-artifact
+          artifact_name: storybook-static
