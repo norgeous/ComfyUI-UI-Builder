@@ -19,8 +19,8 @@ jobs:
       - name: 🔑 Invent keys for this run
         id: cache_keys
         run: |
-          echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
-          echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
+          echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
+          echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
 
   npm-install:
     needs: [cache-keys]
@@ -142,17 +142,18 @@ jobs:
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "develop" branch
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
       - name: ♻️ Restore storybook-static
         id: storybook_static_cache
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.npm-install.outputs.KEY_BRANCH }}
+          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
+      - name: ⤵️ Checkout "develop" branch
+        if: steps.storybook_static_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: develop
 
       - name: ♻️ Restore node_modules
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
