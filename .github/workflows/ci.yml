@@ -260,9 +260,9 @@ jobs:
         run: |
           npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g" >> $GITHUB_STEP_SUMMARY
           cat "$GITHUB_STEP_SUMMARY"
-          (( `cat "$GITHUB_STEP_SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"` > 0 )) && echo "\n Items changed!" >> $GITHUB_STEP_SUMMARY && exit 1
-          (( `cat "$GITHUB_STEP_SUMMARY" | grep "New items: " | sed "s/New items: //"` > 0 )) && echo "\n New items!" >> $GITHUB_STEP_SUMMARY && exit 1
-          (( `cat "$GITHUB_STEP_SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"` > 0 )) && echo "\n Items deleted!" >> $GITHUB_STEP_SUMMARY && exit 1
+          (( `cat "$GITHUB_STEP_SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"` > 0 )) && echo -e "\n Item(s) changed!" >> $GITHUB_STEP_SUMMARY && exit 1
+          (( `cat "$GITHUB_STEP_SUMMARY" | grep "New items: " | sed "s/New items: //"` > 0 )) && echo -e "\n New item(s)!" >> $GITHUB_STEP_SUMMARY && exit 1
+          (( `cat "$GITHUB_STEP_SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"` > 0 )) && echo -e "\n Item(s) deleted!" >> $GITHUB_STEP_SUMMARY && exit 1
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
