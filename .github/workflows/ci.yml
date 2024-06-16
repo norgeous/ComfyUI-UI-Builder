@@ -51,9 +51,6 @@ jobs:
         run: |
           npm run lint >> $GITHUB_STEP_SUMMARY
 
-      - name: Adding markdown
-        run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
-
   vite-build:
     needs: npm-install
     runs-on: ubuntu-latest
@@ -171,7 +168,7 @@ jobs:
 
       - name: 🧪 Storybook smoke, play and a11y tests
         run: |
-          npm run unittest:ci -w packages/storybook
+          npm run unittest:ci -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
   storycap:
     needs: storybook-static
@@ -227,7 +224,7 @@ jobs:
 
       - name: 🎭 compare baseline to new
         run: |
-          npm run regression -w packages/storybook
+          npm run regression -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
