@@ -201,6 +201,7 @@ jobs:
       - name: 🧪 Storybook smoke, play and a11y tests
         run: |
           npm run unittest:ci -w packages/storybook | tee $GITHUB_STEP_SUMMARY
+          ls -l packages/storybook
 
   storycap:
     needs: [cache-keys, storybook-static]
