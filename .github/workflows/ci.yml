@@ -189,6 +189,7 @@ jobs:
           ref: develop
 
       - name: ♻️ Restore node_modules
+        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -197,16 +198,19 @@ jobs:
           key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
+        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: ▶️ Playwright Install
+        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         run: |
           npx playwright install chromium
 
       - name: 🧪 Storybook smoke, play and a11y tests
+        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         run: |
           npm run unittest:ci -w packages/storybook | tee -a TESTRESULT.txt
           EXITCODE=$?
