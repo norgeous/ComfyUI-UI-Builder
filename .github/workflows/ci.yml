@@ -20,7 +20,7 @@ jobs:
         id: cache_keys
         run: |
           echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
-          echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
+          echo "KEY_MODULES=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
 
   npm-install:
     needs: [cache-keys]
@@ -33,7 +33,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ⤵️ Checkout "develop" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -61,7 +61,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 🧵 Lint
         run: |
@@ -91,7 +91,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -164,7 +164,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -186,7 +186,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
@@ -227,7 +227,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -292,7 +292,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ⚾ Move baseline into report directory
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
