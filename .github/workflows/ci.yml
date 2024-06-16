@@ -157,7 +157,7 @@ jobs:
         with:
           ref: develop
 
-      - name: ♻️ Restore cached node_modules
+      - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
           path: |
@@ -165,7 +165,7 @@ jobs:
             packages/storybook/node_modules
           key: node_modules-${{ hashFiles('**/package.json', '**/package-lock.json') }}
 
-      - name: ♻️ Restore cached storybook-static
+      - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
@@ -188,7 +188,7 @@ jobs:
         with:
           ref: develop
 
-      - name: ♻️ Restore cached node_modules
+      - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
           path: |
@@ -196,26 +196,29 @@ jobs:
             packages/storybook/node_modules
           key: node_modules-${{ hashFiles('**/package.json', '**/package-lock.json') }}
 
-      - name: ♻️ Restore cached storybook-static
+      - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ hashFiles('src/**','public/**') }}
 
+      - name: ♻️ Restore storycaps
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: storycaps-${{ hashFiles('src/**','public/**') }}
+
       - name: 👺 Puppeteer Install
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           npx puppeteer browsers install chrome
 
       - name: 🧢 Storycap
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           rm -rf _storycaps_
           npm run storycap:ci -w packages/storybook
-
-      - name: 💾 Cache storycaps
-        uses: actions/cache@v4
-        with:
-          path: _storycaps_
-          key: storycaps
 
       - name: 👤 Setup git user
         run: |
@@ -261,7 +264,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: _storycaps_
-          key: storycaps
+          key: storycaps-${{ hashFiles('src/**','public/**') }}
 
       - name: 🎭 Generate visdiff-report
         id: generate
@@ -299,7 +302,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: ♻️ Restore cached storybook-static
+      - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
