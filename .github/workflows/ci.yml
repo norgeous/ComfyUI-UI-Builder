@@ -58,7 +58,7 @@ jobs:
           key: dist
 
   release:
-    needs: vite-build
+    needs: [vite-build, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       contents: write
