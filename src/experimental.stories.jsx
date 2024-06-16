@@ -5,11 +5,7 @@ export default {
 export const HSLVsLCH = {
   parameters: {
     screenshot: {
-      skip: true, // TODO: this is not working for some reason
-      viewport: {
-        width: 830,
-        height: 700,
-      },
+      skip: true,
     },
   },
   args: {
