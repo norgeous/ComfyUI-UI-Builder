@@ -230,7 +230,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: packages/storybook/visdiff-report
-          name: visdiff
+          name: visdiff-report
 
   github-pages-deploy:
     needs: [lint, storybook-static, storybook-test, storycap]
