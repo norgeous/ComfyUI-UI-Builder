@@ -5,7 +5,7 @@ export default {
   component,
 };
 
-export const SmallSquare04 = {
+export const SmallSquare4 = {
   args: {
     images: [
       'https://placehold.co/512x512?text=01',
@@ -16,13 +16,13 @@ export const SmallSquare04 = {
   },
 };
 
-export const Square01 = {
+export const Square1 = {
   args: {
     images: ['https://placehold.co/1024x1024?text=01'],
   },
 };
 
-export const Square02 = {
+export const Square2 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
@@ -31,40 +31,23 @@ export const Square02 = {
   },
 };
 
-export const Square03 = {
-  args: {
-    images: [
-      'https://placehold.co/1024x1024?text=01',
-      'https://placehold.co/1024x1024?text=02',
-      'https://placehold.co/1024x1024?text=03',
-    ],
-  },
-};
-
-export const Square04 = {
+export const Square3 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
       'https://placehold.co/1024x1024?text=02',
       'https://placehold.co/1024x1024?text=03',
-      'https://placehold.co/1024x1024?text=04',
     ],
   },
 };
 
-export const Square10 = {
+export const Square4 = {
   args: {
     images: [
       'https://placehold.co/1024x1024?text=01',
       'https://placehold.co/1024x1024?text=02',
       'https://placehold.co/1024x1024?text=03',
       'https://placehold.co/1024x1024?text=04',
-      'https://placehold.co/1024x1024?text=05',
-      'https://placehold.co/1024x1024?text=06',
-      'https://placehold.co/1024x1024?text=07',
-      'https://placehold.co/1024x1024?text=08',
-      'https://placehold.co/1024x1024?text=09',
-      'https://placehold.co/1024x1024?text=10',
     ],
   },
 };
@@ -72,66 +55,66 @@ export const Square10 = {
 export const Square50 = {
   args: {
     images: [
-      'https://placehold.co/1024x1024?text=01',
-      'https://placehold.co/1024x1024?text=02',
-      'https://placehold.co/1024x1024?text=03',
-      'https://placehold.co/1024x1024?text=04',
-      'https://placehold.co/1024x1024?text=05',
-      'https://placehold.co/1024x1024?text=06',
-      'https://placehold.co/1024x1024?text=07',
-      'https://placehold.co/1024x1024?text=08',
-      'https://placehold.co/1024x1024?text=09',
-      'https://placehold.co/1024x1024?text=10',
-      'https://placehold.co/1024x1024?text=11',
-      'https://placehold.co/1024x1024?text=12',
-      'https://placehold.co/1024x1024?text=13',
-      'https://placehold.co/1024x1024?text=14',
-      'https://placehold.co/1024x1024?text=15',
-      'https://placehold.co/1024x1024?text=16',
-      'https://placehold.co/1024x1024?text=17',
-      'https://placehold.co/1024x1024?text=18',
-      'https://placehold.co/1024x1024?text=19',
-      'https://placehold.co/1024x1024?text=20',
-      'https://placehold.co/1024x1024?text=21',
-      'https://placehold.co/1024x1024?text=22',
-      'https://placehold.co/1024x1024?text=23',
-      'https://placehold.co/1024x1024?text=24',
-      'https://placehold.co/1024x1024?text=25',
-      'https://placehold.co/1024x1024?text=26',
-      'https://placehold.co/1024x1024?text=27',
-      'https://placehold.co/1024x1024?text=28',
-      'https://placehold.co/1024x1024?text=29',
-      'https://placehold.co/1024x1024?text=30',
-      'https://placehold.co/1024x1024?text=31',
-      'https://placehold.co/1024x1024?text=32',
-      'https://placehold.co/1024x1024?text=33',
-      'https://placehold.co/1024x1024?text=34',
-      'https://placehold.co/1024x1024?text=35',
-      'https://placehold.co/1024x1024?text=36',
-      'https://placehold.co/1024x1024?text=37',
-      'https://placehold.co/1024x1024?text=38',
-      'https://placehold.co/1024x1024?text=39',
-      'https://placehold.co/1024x1024?text=40',
-      'https://placehold.co/1024x1024?text=41',
-      'https://placehold.co/1024x1024?text=42',
-      'https://placehold.co/1024x1024?text=43',
-      'https://placehold.co/1024x1024?text=44',
-      'https://placehold.co/1024x1024?text=45',
-      'https://placehold.co/1024x1024?text=46',
-      'https://placehold.co/1024x1024?text=47',
-      'https://placehold.co/1024x1024?text=48',
-      'https://placehold.co/1024x1024?text=49',
-      'https://placehold.co/1024x1024?text=50',
+      'https://placehold.co/100x100?text=01',
+      'https://placehold.co/100x100?text=02',
+      'https://placehold.co/100x100?text=03',
+      'https://placehold.co/100x100?text=04',
+      'https://placehold.co/100x100?text=05',
+      'https://placehold.co/100x100?text=06',
+      'https://placehold.co/100x100?text=07',
+      'https://placehold.co/100x100?text=08',
+      'https://placehold.co/100x100?text=09',
+      'https://placehold.co/100x100?text=10',
+      'https://placehold.co/100x100?text=11',
+      'https://placehold.co/100x100?text=12',
+      'https://placehold.co/100x100?text=13',
+      'https://placehold.co/100x100?text=14',
+      'https://placehold.co/100x100?text=15',
+      'https://placehold.co/100x100?text=16',
+      'https://placehold.co/100x100?text=17',
+      'https://placehold.co/100x100?text=18',
+      'https://placehold.co/100x100?text=19',
+      'https://placehold.co/100x100?text=20',
+      'https://placehold.co/100x100?text=21',
+      'https://placehold.co/100x100?text=22',
+      'https://placehold.co/100x100?text=23',
+      'https://placehold.co/100x100?text=24',
+      'https://placehold.co/100x100?text=25',
+      'https://placehold.co/100x100?text=26',
+      'https://placehold.co/100x100?text=27',
+      'https://placehold.co/100x100?text=28',
+      'https://placehold.co/100x100?text=29',
+      'https://placehold.co/100x100?text=30',
+      'https://placehold.co/100x100?text=31',
+      'https://placehold.co/100x100?text=32',
+      'https://placehold.co/100x100?text=33',
+      'https://placehold.co/100x100?text=34',
+      'https://placehold.co/100x100?text=35',
+      'https://placehold.co/100x100?text=36',
+      'https://placehold.co/100x100?text=37',
+      'https://placehold.co/100x100?text=38',
+      'https://placehold.co/100x100?text=39',
+      'https://placehold.co/100x100?text=40',
+      'https://placehold.co/100x100?text=41',
+      'https://placehold.co/100x100?text=42',
+      'https://placehold.co/100x100?text=43',
+      'https://placehold.co/100x100?text=44',
+      'https://placehold.co/100x100?text=45',
+      'https://placehold.co/100x100?text=46',
+      'https://placehold.co/100x100?text=47',
+      'https://placehold.co/100x100?text=48',
+      'https://placehold.co/100x100?text=49',
+      'https://placehold.co/100x100?text=50',
     ],
   },
 };
 
-export const Landscape01 = {
+export const Landscape1 = {
   args: {
     images: ['https://placehold.co/1344x768?text=01'],
   },
 };
-export const Landscape02 = {
+export const Landscape2 = {
   args: {
     images: [
       'https://placehold.co/1344x768?text=01',
@@ -197,13 +180,13 @@ export const Landscape50 = {
   },
 };
 
-export const Portrait01 = {
+export const Portrait1 = {
   args: {
     images: ['https://placehold.co/768x1344?text=01'],
   },
 };
 
-export const Portrait02 = {
+export const Portrait2 = {
   args: {
     images: [
       'https://placehold.co/768x1344?text=01',
