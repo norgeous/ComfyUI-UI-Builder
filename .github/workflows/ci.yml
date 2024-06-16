@@ -142,9 +142,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            node_modules
             packages/storybook/storybook-static
-          key: mycache
+          key: storybook-static
 
   storybook-test:
     needs: storybook-static
@@ -155,13 +154,17 @@ jobs:
         with:
           ref: develop
 
-      - name: ♻️ Restore cached node_modules and storybook-static
+      - name: ♻️ Restore cached node_modules
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules
-            packages/storybook/storybook-static
-          key: mycache
+          path: node_modules
+          key: node_modules
+
+      - name: ♻️ Restore cached storybook-static
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: storybook-static
 
       - name: ▶️ Playwright Install
         run: |
@@ -180,13 +183,17 @@ jobs:
         with:
           ref: develop
 
-      - name: ♻️ Restore cached node_modules and storybook-static
+      - name: ♻️ Restore cached node_modules
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules
-            packages/storybook/storybook-static
-          key: mycache
+          path: node_modules
+          key: node_modules
+
+      - name: ♻️ Restore cached storybook-static
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: storybook-static
 
       - name: 👺 Puppeteer Install
         run: |
@@ -216,7 +223,7 @@ jobs:
       - name: ✍️ Commit to orphan "storycaps" branch
         run: |
           git checkout --orphan storycaps
-          git rm .
+          git rm -r .
           git add _storycaps_
           git commit -m "🧢 Storycaps"
 
@@ -265,10 +272,8 @@ jobs:
       - name: ♻️ Restore cached storybook-static
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules
-            packages/storybook/storybook-static
-          key: mycache
+          path: packages/storybook/storybook-static
+          key: storybook-static
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
