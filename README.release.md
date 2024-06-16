@@ -21,4 +21,5 @@ Alternative configurable React UI overlay for Comfy UI
 
 ## Development
 
-👉 source code is in [develop](https://github.com/norgeous/ComfyUI-UI-Builder/tree/develop) branch
+- 👉 source code is in [develop](https://github.com/norgeous/ComfyUI-UI-Builder/tree/develop) branch
+- 👉 storycaps are in [storycaps](https://github.com/norgeous/ComfyUI-UI-Builder/tree/storycaps) branch
