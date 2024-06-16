@@ -260,8 +260,13 @@ jobs:
           ls -l _storycaps_/
           echo "expected:"
           ls -l packages/storybook/visdiff-report/expected/
-          echo "make the report now..."
+          echo "TERM: $TERM"
+          export TERM=xterm-mono
+          echo "TERM: $TERM"
+          echo "making the report now..."
           npm run regression -w packages/storybook >> $GITHUB_STEP_SUMMARY
+          echo "exit code: $?"
+          echo "$GITHUB_STEP_SUMMARY"
 
       - name: 🆙 Upload artifact
         uses: actions/upload-artifact@v4
