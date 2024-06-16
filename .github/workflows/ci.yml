@@ -18,7 +18,7 @@ jobs:
   npm-install:
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout
+      - name: ⤵️ Checkout "develop" branch
         uses: actions/checkout@v4
         with:
           ref: develop
