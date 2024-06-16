@@ -1,6 +1,7 @@
 # UI Builder (develop)
 
-👉 [latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
+- 👉 [latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
+- 👉 storycaps are in [storycaps](https://github.com/norgeous/ComfyUI-UI-Builder/tree/storycaps) branch
 
 ## Development
 
