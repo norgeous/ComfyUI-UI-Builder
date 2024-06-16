@@ -5,8 +5,11 @@ on:
       - develop
 
 jobs:
-  npm-install:
+  cache-keys:
     runs-on: ubuntu-latest
+    outputs:
+      KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
+      KEY_MODULES: ${{ steps.cache_keys.outputs.KEY_MODULES }}
     steps:
       - name: ⤵️ Checkout "develop" branch
         uses: actions/checkout@v4
@@ -16,9 +19,13 @@ jobs:
       - name: 🔑 Invent keys for this run
         id: cache_keys
         run: |
-          echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
+          echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
 
+  npm-install:
+    needs: [cache-keys]
+    runs-on: ubuntu-latest
+    steps:
       - name: ♻️ Restore node_modules
         id: node_modules_cache
         uses: actions/cache@v4
@@ -26,7 +33,13 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ steps.cache_keys.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
+
+      - name: ⤵️ Checkout "develop" branch
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: develop
 
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -34,7 +47,7 @@ jobs:
           npm ci
 
   lint:
-    needs: [npm-install]
+    needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -48,14 +61,14 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 🧵 Lint
         run: |
           npm run lint | tee $GITHUB_STEP_SUMMARY
 
   vite-build:
-    needs: [npm-install]
+    needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -69,7 +82,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore dist
         id: dist_cache
@@ -126,7 +139,7 @@ jobs:
           git push origin release --force
 
   storybook-static:
-    needs: [npm-install]
+    needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -148,7 +161,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -156,7 +169,7 @@ jobs:
           npm run sb:build
 
   storybook-test:
-    needs: [storybook-static]
+    needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -170,7 +183,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
@@ -187,7 +200,7 @@ jobs:
           npm run unittest:ci -w packages/storybook | tee $GITHUB_STEP_SUMMARY
 
   storycap:
-    needs: [storybook-static]
+    needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -201,7 +214,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
         uses: actions/cache@v4
@@ -246,7 +259,7 @@ jobs:
           git push origin storycaps --force
 
   visdiff-report:
-    needs: [storycap]
+    needs: [cache-keys, storycap]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore visdiff-report
@@ -269,7 +282,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: node_modules-${{ needs.npm-install.outputs.KEY_MODULES }}
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ⚾ Move baseline into report directory
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
