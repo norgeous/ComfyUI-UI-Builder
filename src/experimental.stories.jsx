@@ -10,7 +10,7 @@ export const HSLVsLCH = {
       viewport: {
         skip: true,
         width: 830,
-        height: 600,
+        height: 700,
       },
     },
   },
