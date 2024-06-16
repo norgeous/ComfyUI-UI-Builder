@@ -258,6 +258,10 @@ jobs:
 
       - name: 🎭 compare baseline to new
         run: |
+          echo "new baseline:"
+          ls -l _storycaps_/
+          echo "expected:"
+          ls -l packages/storybook/visdiff-report/expected/
           npm run regression -w packages/storybook >> $GITHUB_STEP_SUMMARY
 
       - name: 🆙 Upload artifact
