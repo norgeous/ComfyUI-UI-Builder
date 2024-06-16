@@ -1,10 +1,12 @@
 import { injectAxe, checkA11y, configureAxe } from 'axe-playwright';
 // import { getStoryContext } from '@storybook/test-runner';
 
+// eslint-disable-next-line no-unused-vars
 export const preVisit = async (page, context) => {
   await injectAxe(page);
 };
 
+// eslint-disable-next-line no-unused-vars
 export const postVisit = async (page, context) => {
   // Get the entire context of a story, including parameters, args, argTypes, etc.
   // const storyContext = await getStoryContext(page, context);

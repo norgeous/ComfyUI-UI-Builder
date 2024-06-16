@@ -115,6 +115,7 @@ const insertIntoComfyWorkFlow = (workflow, objectInfo, destination, value) => {
     } = node;
 
     if ([type, title].includes(nodeName)) {
+      // eslint-disable-next-line no-param-reassign
       if (fieldName === 'mode') node.mode = Number(value); // unbypass (mode = 0) or bypass (mode = 4) nodes
 
       const keys = getKeys(objectInfo, type);
