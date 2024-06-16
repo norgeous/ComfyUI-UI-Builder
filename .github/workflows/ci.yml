@@ -32,7 +32,9 @@ jobs:
       - name: 💾 Cache node_modules
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            packages/storybook/node_modules
           key: node_modules
 
   lint:
@@ -133,7 +135,9 @@ jobs:
       - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            packages/storybook/node_modules
           key: node_modules
 
       - name: 📕 Build storybook-static
@@ -158,7 +162,9 @@ jobs:
       - name: ♻️ Restore cached node_modules
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            packages/storybook/node_modules
           key: node_modules
 
       - name: ♻️ Restore cached storybook-static
@@ -187,7 +193,9 @@ jobs:
       - name: ♻️ Restore cached node_modules
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            packages/storybook/node_modules
           key: node_modules
 
       - name: ♻️ Restore cached storybook-static
@@ -241,7 +249,9 @@ jobs:
       - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            packages/storybook/node_modules
           key: node_modules
 
       - name: ⚾ Move baseline into report directory
