@@ -19,7 +19,7 @@ jobs:
       - name: 🔑 Invent keys for this run
         id: cache_keys
         run: |
-          echo "KEY_BRANCH=${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
+          echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
           echo "KEY_MODULES=${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
 
   npm-install:
@@ -89,7 +89,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist-${{ hashFiles('src/**', 'public/**') }}
+          key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -97,7 +97,7 @@ jobs:
           npm run build
 
   release:
-    needs: [lint, vite-build, storybook-test, visdiff-report]
+    needs: [cache-keys, lint, vite-build, storybook-test, visdiff-report]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -111,7 +111,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist-${{ hashFiles('src/**', 'public/**') }}
+          key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 📋 Prepare orphan "release" branch
         run: |
@@ -190,7 +190,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ hashFiles('src/**', 'public/**') }}
+          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: ▶️ Playwright Install
         run: |
@@ -204,12 +204,21 @@ jobs:
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore storycaps
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
       - name: ⤵️ Checkout "develop" branch
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: develop
 
       - name: ♻️ Restore node_modules
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -218,17 +227,11 @@ jobs:
           key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: ♻️ Restore storybook-static
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ hashFiles('src/**', 'public/**') }}
-
-      - name: ♻️ Restore storycaps
-        id: storycaps_cache
-        uses: actions/cache@v4
-        with:
-          path: _storycaps_
-          key: storycaps-${{ hashFiles('src/**', 'public/**') }}
+          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 👺 Puppeteer Install
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -268,7 +271,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ hashFiles('src/**', 'public/**') }}
+          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: ⤵️ Checkout "develop" branch
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -296,7 +299,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: _storycaps_
-          key: storycaps-${{ hashFiles('src/**', 'public/**') }}
+          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -324,7 +327,7 @@ jobs:
           exit ${{ steps.generate.outputs.EXITCODE }}
 
   github-pages-deploy:
-    needs: [lint, storybook-static, storybook-test, visdiff-report]
+    needs: [cache-keys, lint, storybook-static, storybook-test, visdiff-report]
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -334,13 +337,13 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ hashFiles('src/**', 'public/**') }}
+          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: ♻️ Restore visdiff-report
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ hashFiles('src/**', 'public/**') }}
+          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 🎼 Compose artifact
         run: |
