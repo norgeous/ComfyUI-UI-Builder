@@ -328,7 +328,7 @@ jobs:
           mkdir artifact-directory
           mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
           mv packages/storybook/storybook-static/ artifact-directory/storybook-static/
-          ls -lhar artifact-directory | tee index2.html
+          ls -l artifact-directory | tee index.html
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
