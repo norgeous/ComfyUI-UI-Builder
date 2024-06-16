@@ -118,10 +118,11 @@ jobs:
       - name: 📋 Prepare orphan "release" branch
         run: |
           git checkout --orphan release
-          git rm -rf .github/workflows .vscode public packages src _storycaps_
-          git rm -f .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
-          cp README.release.md README.md
-          git rm -f README.release.md
+          git rm --cached -rf .
+          # git rm -rf .github/workflows .vscode public packages src _storycaps_
+          # git rm -f .eslintrc.cjs .gitattributes .gitignore README.md TODO.md index.html jsconfig.json package-lock.json package.json prettier.config.js vite.config.js
+          rm README.md
+          mv README.release.md README.md
           echo -e 'node_modules\n__pycache__\n' > .gitignore
 
       - name: 👤 Setup git user
