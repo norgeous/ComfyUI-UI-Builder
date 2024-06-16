@@ -203,6 +203,8 @@ jobs:
           mkdir packages/storybook/visdiff-report/
           mv _storycaps_ packages/storybook/visdiff-report/expected/
           mkdir _storycaps_/
+          ls -l _storycaps_/
+          ls -l packages/storybook/visdiff-report/expected/
 
       - name: 🧢 Storycap
         run: |
