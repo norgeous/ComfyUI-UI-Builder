@@ -194,7 +194,7 @@ jobs:
       - name: ⚾ move baseline to report directory
         run: |
           mkdir packages/storybook/visdiff-report/
-          mv -r _storycaps_ packages/storybook/visdiff-report/expected/
+          mv _storycaps_ packages/storybook/visdiff-report/expected/
           mkdir _storycaps_/
 
       - name: 🧢 Storycap
