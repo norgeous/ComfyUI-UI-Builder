@@ -208,17 +208,15 @@ jobs:
           path: _storycaps_
           key: storycaps
 
-      - name: 📋 Prepare orphan "storycaps" branch
-        run: |
-          git checkout --orphan storycaps
-
       - name: 👤 Setup git user
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - name: ✍️ Commit to "storycaps" branch
+      - name: ✍️ Commit to orphan "storycaps" branch
         run: |
+          git checkout --orphan storycaps
+          git rm .
           git add _storycaps_
           git commit -m "🧢 Storycaps"
 
