@@ -136,15 +136,17 @@ jobs:
             packages/storybook/node_modules
           key: node_modules-${{ hashFiles('**/package.json', '**/package-lock.json') }}
 
-      - name: 📕 Build storybook-static
-        run: |
-          npm run sb:build
-
-      - name: 💾 Cache storybook-static
+      - name: ♻️ Restore storybook-static
+        id: storybook_static_cache
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static
+          key: storybook-static-${{ hashFiles('src/**','public/**') }}
+
+      - name: 📕 Build storybook-static
+        if: steps.storybook_static_cache.outputs.cache-hit != 'true'
+        run: |
+          npm run sb:build
 
   storybook-test:
     needs: [storybook-static]
@@ -167,7 +169,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static
+          key: storybook-static-${{ hashFiles('src/**','public/**') }}
 
       - name: ▶️ Playwright Install
         run: |
@@ -198,7 +200,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static
+          key: storybook-static-${{ hashFiles('src/**','public/**') }}
 
       - name: 👺 Puppeteer Install
         run: |
@@ -301,7 +303,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static
+          key: storybook-static-${{ hashFiles('src/**','public/**') }}
 
       - name: 🆙 Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
