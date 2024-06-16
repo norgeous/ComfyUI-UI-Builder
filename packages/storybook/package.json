@@ -43,16 +43,16 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.18.0",
-    "@swc/core": "^1.5.29",
-    "@swc/core-darwin-arm64": "^1.5.29",
-    "@swc/core-darwin-x64": "^1.5.29",
-    "@swc/core-linux-arm-gnueabihf": "^1.5.29",
-    "@swc/core-linux-arm64-gnu": "^1.5.29",
-    "@swc/core-linux-arm64-musl": "^1.5.29",
-    "@swc/core-linux-x64-gnu": "^1.5.29",
-    "@swc/core-linux-x64-musl": "^1.5.29",
-    "@swc/core-win32-arm64-msvc": "^1.5.29",
-    "@swc/core-win32-ia32-msvc": "^1.5.29",
-    "@swc/core-win32-x64-msvc": "^1.5.29"
+    "@swc/core": "^1.6.1",
+    "@swc/core-darwin-arm64": "^1.6.1",
+    "@swc/core-darwin-x64": "^1.6.1",
+    "@swc/core-linux-arm-gnueabihf": "^1.6.1",
+    "@swc/core-linux-arm64-gnu": "^1.6.1",
+    "@swc/core-linux-arm64-musl": "^1.6.1",
+    "@swc/core-linux-x64-gnu": "^1.6.1",
+    "@swc/core-linux-x64-musl": "^1.6.1",
+    "@swc/core-win32-arm64-msvc": "^1.6.1",
+    "@swc/core-win32-ia32-msvc": "^1.6.1",
+    "@swc/core-win32-x64-msvc": "^1.6.1"
   }
 }
