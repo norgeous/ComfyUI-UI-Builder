@@ -222,7 +222,7 @@ jobs:
           git checkout --orphan storycaps
           git rm --cached -rf .
           git add _storycaps_
-          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sed 's/ /%20/g' > README.md
+          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > README.md
           git add README.md
           git commit -m "🧢 Storycaps"
 
