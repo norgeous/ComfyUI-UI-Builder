@@ -222,7 +222,7 @@ jobs:
       - name: ✍️ Commit to orphan "storycaps" branch
         run: |
           git checkout --orphan storycaps
-          git rm -rf .
+          git rm --cached -rf .
           git add _storycaps_
           git status
           git commit -m "🧢 Storycaps"
