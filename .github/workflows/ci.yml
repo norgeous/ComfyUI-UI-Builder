@@ -71,25 +71,27 @@ jobs:
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "develop" branch
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
-      - name: ♻️ Restore node_modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            packages/storybook/node_modules
-          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
-
       - name: ♻️ Restore dist
         id: dist_cache
         uses: actions/cache@v4
         with:
           path: dist
           key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
+      - name: ⤵️ Checkout "develop" branch
+        if: steps.dist_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: ♻️ Restore node_modules
+        if: steps.dist_cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/storybook/node_modules
+          key: node_modules-${{ needs.cache-keys.outputs.KEY_MODULES }}
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
