@@ -26,6 +26,7 @@ jobs:
           ref: develop
 
       - name: ♻️ Restore node_modules
+        id: node_modules_cache
         uses: actions/cache@v4
         with:
           path: |
@@ -34,7 +35,7 @@ jobs:
           key: node_modules-${{ runner.os }}-${{ hashFiles('**/package.json') }}
 
       - name: 🧰 NPM Install
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
           npm ci
 
