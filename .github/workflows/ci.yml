@@ -32,6 +32,25 @@ jobs:
           path: node_modules
           key: node_modules
 
+  lint:
+    needs: npm-install
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout "develop" branch
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: ♻️ Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node_modules
+
+      - name: 🧶 Lint
+        run: |
+          npm run lint
+
   vite-build:
     needs: npm-install
     runs-on: ubuntu-latest
@@ -58,7 +77,7 @@ jobs:
           key: dist
 
   release:
-    needs: [vite-build, storybook-test, storycap]
+    needs: [lint, vite-build, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -193,7 +212,7 @@ jobs:
           path: _storycaps_
 
   github-pages-deploy:
-    needs: [storybook-static, storybook-test, storycap]
+    needs: [lint, storybook-static, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       pages: write
