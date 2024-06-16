@@ -5,7 +5,7 @@ export default {
 export const HSLVsLCH = {
   parameters: {
     screenshot: {
-      skip: true,
+      skip: false,
     },
   },
   args: {
