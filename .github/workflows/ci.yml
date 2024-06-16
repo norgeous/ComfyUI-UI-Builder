@@ -49,12 +49,12 @@ jobs:
           path: node_modules
           key: node_modules
 
-      - name: 🧶 Lint
+      - name: 🧵 Lint
         run: |
           npm run lint >> $GITHUB_STEP_SUMMARY
 
   vite-build:
-    needs: [lint, npm-install]
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -79,7 +79,7 @@ jobs:
           key: dist
 
   release:
-    needs: [vite-build, storybook-test, storycap]
+    needs: [lint, vite-build, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -121,7 +121,7 @@ jobs:
           git push origin release --force
 
   storybook-static:
-    needs: [lint, npm-install]
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "develop" branch
@@ -270,7 +270,7 @@ jobs:
           name: visdiff-report
 
   github-pages-deploy:
-    needs: [storybook-static, storybook-test, storycap]
+    needs: [lint, storybook-static, storybook-test, storycap]
     runs-on: ubuntu-latest
     permissions:
       pages: write
