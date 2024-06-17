@@ -12,6 +12,7 @@ concurrency: preview-${{ github.ref }}
 
 jobs:
   ci:
+    name: 🦾 CI
     uses: ./.github/workflows/ci.yml
     with:
       ref: ${{ github.head_ref || github.ref_name }}
