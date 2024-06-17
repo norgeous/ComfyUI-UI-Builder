@@ -12,6 +12,7 @@ jobs:
       ref: 'develop'
 
   release:
+    name: 🚀 Release to "release" branch
     needs: [ci]
     runs-on: ubuntu-latest
     permissions:
@@ -53,6 +54,7 @@ jobs:
           git push origin release --force
 
   github-pages-deploy:
+    name: 🚀 Deploy to Github pages
     needs: [ci]
     runs-on: ubuntu-latest
     permissions:
