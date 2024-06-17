@@ -112,7 +112,7 @@ jobs:
           npm run build
 
   storybook-static:
-    name: 📕 Build storybook-static
+    name: 📕 storybook-static
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -258,7 +258,7 @@ jobs:
           git push origin storycaps --force
 
   visdiff-report:
-    name: 🎭 Visdiff report
+    name: 🎭 Visdiff
     needs: [cache-keys, storycap]
     runs-on: ubuntu-latest
     steps:
