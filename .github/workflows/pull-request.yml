@@ -1,29 +1,35 @@
-# name: Deploy PR previews
+name: ➕ PR
 
-# on:
-#   pull_request:
-#     types:
-#       - opened
-#       - reopened
-#       - synchronize
-#       - closed
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 
-# concurrency: preview-${{ github.ref }}
+concurrency: preview-${{ github.ref }}
 
-# jobs:
-#   deploy-preview:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout this branch
+        uses: actions/checkout@v4
 
-#       - name: Install and Build
-#         if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
-#         run: |
-#           npm install
-#           npm run build
+      # - name: Install and Build
+      #   if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
+      #   run: |
+      #     npm install
+      #     npm run build
 
-#       - name: Deploy preview
-#         uses: rossjrw/pr-preview-action@v1
-#         with:
-#           source-dir: ./build/
+      - name: 🧸 mock Build
+        if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
+        run: |
+          mkdir build
+          echo "this is a test" > build/test.txt
+
+      - name: 🚀 Deploy preview to "gh-pages" branch
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
