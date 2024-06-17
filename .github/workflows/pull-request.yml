@@ -66,11 +66,13 @@ jobs:
           mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test-report.txt gh-pages-directory/
-          echo "<center><h1>" | tee -a gh-pages-directory/index.html
-          echo "<a href="storybook">📕 Storybook</a>" | tee -a gh-pages-directory/index.html
-          echo "<a href="storybook-test-report.txt">🧪 Storybook test report</a>" | tee -a gh-pages-directory/index.html
-          echo "<a href="visdiff-report">🎭 Visdiff report</a>" | tee -a gh-pages-directory/index.html
-          echo "</h1></center>" | tee -a gh-pages-directory/index.html
+          echo "<center>" | tee -a gh-pages-directory/index.html
+          echo "<h1><a href="storybook">📕 Storybook</a></h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1><a href="storybook-test-report.txt">🧪 Storybook test report</a></h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1><a href="visdiff-report">🎭 Visdiff report</a></h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1>${{ needs.ci.outputs.KEY_BRANCH }}</h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1>$(date +'%Y-%m-%d')</h1>" | tee -a gh-pages-directory/index.html
+          echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
         # if: steps.gh_pages_cache.outputs.cache-hit != 'true'
