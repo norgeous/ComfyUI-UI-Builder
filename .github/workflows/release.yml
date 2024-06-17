@@ -1,4 +1,4 @@
-name: 🦾 CI
+name: 🚀 Release
 on:
   push:
     branches:
