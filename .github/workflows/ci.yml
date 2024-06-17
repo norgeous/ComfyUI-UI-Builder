@@ -336,8 +336,15 @@ jobs:
           echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
           EXITCODE=$((CHANGED + NEW + DELETED))
           echo | tee -a $GITHUB_STEP_SUMMARY
+          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
-          exit $EXITCODE
+          exit 0
+
+      - name: 👋 Exit code
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        run: |
+          echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
+          exit ${{ steps.generate.outputs.EXITCODE }}
 
   github-pages-deploy:
     needs: [cache-keys, lint, storybook-static, storybook-test, visdiff-report]
