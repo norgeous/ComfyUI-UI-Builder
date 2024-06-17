@@ -71,7 +71,7 @@ jobs:
           echo "<h1><a href="storybook-test-report.txt">🧪 Storybook test report</a></h1>" | tee -a gh-pages-directory/index.html
           echo "<h1><a href="visdiff-report">🎭 Visdiff report</a></h1>" | tee -a gh-pages-directory/index.html
           echo "<h1>${{ needs.ci.outputs.KEY_BRANCH }}</h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1>$(date +'%Y-%m-%d')</h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1>$(date +'%d-%m-%Y %H:%M:%S')</h1>" | tee -a gh-pages-directory/index.html
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
