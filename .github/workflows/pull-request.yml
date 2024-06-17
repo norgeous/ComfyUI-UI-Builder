@@ -22,12 +22,21 @@ jobs:
     needs: [ci]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore gh-pages
+        id: gh_pages_cache
+        uses: actions/cache@v4
+        with:
+          path: gh-pages-directory
+          key: gh-pages-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
       - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
       - name: ♻️ Restore storybook-static
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
@@ -35,6 +44,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: ♻️ Restore visdiff-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
@@ -42,6 +52,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: storybook-test-report.txt
@@ -49,20 +60,16 @@ jobs:
           fail-on-cache-miss: true
 
       - name: 🎼 Compose artifact
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
-          mkdir artifact-directory
-          mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
-          mv packages/storybook/storybook-static/ artifact-directory/storybook/
-          mv storybook-test-report.txt artifact-directory/
-          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee artifact-directory/index.html
-
-      # - name: 🧸 mock Build
-      #   if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
-      #   run: |
-      #     mkdir build
-      #     echo "this is a test 🚀🚀🚀 ${{ needs.ci.outputs.KEY_BRANCH }}" > build/index.html
+          mkdir gh-pages-directory
+          mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
+          mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
+          mv storybook-test-report.txt gh-pages-directory/
+          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee gh-pages-directory/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
+        # if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: artifact-directory
+          source-dir: gh-pages-directory
