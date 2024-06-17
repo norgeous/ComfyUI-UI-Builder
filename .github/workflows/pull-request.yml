@@ -21,6 +21,11 @@ jobs:
     needs: [ci]
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
       - name: 🧸 mock Build
         if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
         run: |
