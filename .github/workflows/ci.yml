@@ -112,6 +112,7 @@ jobs:
           npm run build
 
   storybook-static:
+    name: 📕 Build storybook-static
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -143,6 +144,7 @@ jobs:
           npm run sb:build
 
   storybook-test:
+    name: 🧪 Storybook tests
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
@@ -190,6 +192,7 @@ jobs:
           exit $EXITCODE
 
   storycap:
+    name: 🧢 Storycap
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
@@ -255,6 +258,7 @@ jobs:
           git push origin storycaps --force
 
   visdiff-report:
+    name: 🎭 Visdiff report
     needs: [cache-keys, storycap]
     runs-on: ubuntu-latest
     steps:
@@ -312,12 +316,12 @@ jobs:
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
           exit 0
 
-      - name: 💾 Save visdiff-report
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+      # - name: 💾 Save visdiff-report
+      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+      #   uses: actions/cache/save@v4
+      #   with:
+      #     path: packages/storybook/visdiff-report
+      #     key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       - name: 👋 Exit code
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
