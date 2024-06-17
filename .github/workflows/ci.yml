@@ -58,6 +58,7 @@ jobs:
           npm ci
 
   lint:
+    name: 🧵 Lint
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -79,6 +80,7 @@ jobs:
           npm run lint | tee $GITHUB_STEP_SUMMARY
 
   vite-build:
+    name: 🇻 Vite Build
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
