@@ -27,13 +27,42 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: 🧸 mock Build
-        if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
+      - name: ♻️ Restore storybook-static
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: storybook-static-${{ needs.ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore visdiff-report
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ needs.ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore storybook-test-report
+        uses: actions/cache@v4
+        with:
+          path: storybook-test-report.txt
+          key: storybook-test-report-${{ needs.ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: 🎼 Compose artifact
         run: |
-          mkdir build
-          echo "this is a test 🚀🚀🚀 ${{ needs.ci.outputs.KEY_BRANCH }}" > build/index.html
+          mkdir artifact-directory
+          mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
+          mv packages/storybook/storybook-static/ artifact-directory/storybook/
+          mv storybook-test-report.txt artifact-directory/
+          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee artifact-directory/index.html
+
+      # - name: 🧸 mock Build
+      #   if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
+      #   run: |
+      #     mkdir build
+      #     echo "this is a test 🚀🚀🚀 ${{ needs.ci.outputs.KEY_BRANCH }}" > build/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: ./build/
+          source-dir: artifact-directory
