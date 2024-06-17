@@ -1,0 +1,100 @@
+name: 🦾 CI
+on:
+  push:
+    branches:
+      - develop
+      - preview-pr
+
+jobs:
+  call-ci:
+    uses: ./.github/workflows/ci.yml@preview-pr
+    with:
+      ref: 'develop'
+
+  release:
+    needs: [call-ci]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: ⤵️ Checkout "develop" branch
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: ♻️ Restore dist
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: dist-${{ needs.call-ci.outputs.KEY_BRANCH }}
+
+      - name: 📋 Prepare orphan "release" branch
+        run: |
+          git checkout --orphan release
+          git rm --cached -rf .
+          rm README.md
+          mv README.release.md README.md
+          echo -e 'node_modules\n__pycache__\n' > .gitignore
+
+      - name: 👤 Setup git user
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: ✍️ Commit to "release" branch
+        run: |
+          git add dist/
+          git add README.md
+          git add .gitignore
+          git commit -m "🇻 Vite Build"
+
+      - name: 🫸 Force push "release" branch to origin
+        run: |
+          git push origin release --force
+
+  github-pages-deploy:
+    needs: [call-ci]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ♻️ Restore storybook-static
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: storybook-static-${{ needs.call-ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore visdiff-report
+        uses: actions/cache@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ needs.call-ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore storybook-test-report
+        uses: actions/cache@v4
+        with:
+          path: storybook-test-report.txt
+          key: storybook-test-report-${{ needs.call-ci.outputs.KEY_BRANCH }}
+          fail-on-cache-miss: true
+
+      - name: 🎼 Compose artifact
+        run: |
+          mkdir artifact-directory
+          mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
+          mv packages/storybook/storybook-static/ artifact-directory/storybook/
+          mv storybook-test-report.txt artifact-directory/
+          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee artifact-directory/index.html
+
+      - name: 🆙 Upload artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: artifact-directory
+          name: github-pages-artifact
+
+      - name: 🚀 Deploy artifact to Github pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-artifact
