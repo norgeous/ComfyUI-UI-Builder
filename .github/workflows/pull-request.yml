@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: gh-pages-directory
-          key: gh-pages-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: gh-pages-${{ needs.ci.outputs.KEY_BRANCH }}
 
       - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
