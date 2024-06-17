@@ -27,7 +27,7 @@ jobs:
         if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
         run: |
           mkdir build
-          echo "this is a test" > build/test.txt
+          echo "this is a test" > build/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
         uses: rossjrw/pr-preview-action@v1
