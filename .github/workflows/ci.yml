@@ -340,6 +340,12 @@ jobs:
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
           exit 0
 
+      - name: 💾 Save visdiff-report
+        uses: actions/cache/save@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
       - name: 👋 Exit code
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         run: |
@@ -392,3 +398,4 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-artifact
+
