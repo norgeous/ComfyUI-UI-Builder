@@ -60,6 +60,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storycaps
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         id: storycaps_cache
         uses: actions/cache@v4
         with:
