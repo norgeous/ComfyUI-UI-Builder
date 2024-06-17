@@ -75,7 +75,7 @@ jobs:
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
-        # if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
