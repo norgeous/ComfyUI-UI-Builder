@@ -8,16 +8,13 @@ on:
       - synchronize
       - closed
 
-env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
 concurrency: preview-${{ github.ref }}
 
 jobs:
   ci:
     uses: ./.github/workflows/ci.yml
     with:
-      ref: $BRANCH_NAME
+      ref: ${{ github.head_ref || github.ref_name }}
 
   deploy-preview:
     name: 🚀 Deploy preview to "gh-pages" branch
