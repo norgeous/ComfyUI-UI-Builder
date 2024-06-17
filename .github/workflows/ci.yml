@@ -15,7 +15,7 @@ on:
 
 jobs:
   cache-keys:
-    name: 🔑 Invent cache keys
+    name: 🔑 Cache keys
     runs-on: ubuntu-latest
     outputs:
       KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
@@ -26,7 +26,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
-      - name: 🔑 Invent keys for this run
+      - name: 🔑 Invent cache keys for this run
         id: cache_keys
         run: |
           echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
