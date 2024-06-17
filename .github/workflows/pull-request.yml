@@ -8,27 +8,27 @@ on:
       - synchronize
       - closed
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 concurrency: preview-${{ github.ref }}
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: $BRANCH_NAME
+
   deploy-preview:
     name: 🚀 Deploy preview to "gh-pages" branch
+    needs: [ci]
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout this branch
-        uses: actions/checkout@v4
-
-      # - name: Install and Build
-      #   if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
-      #   run: |
-      #     npm install
-      #     npm run build
-
       - name: 🧸 mock Build
         if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
         run: |
           mkdir build
-          echo "this is a test 🚀🚀🚀" > build/index.html
+          echo "this is a test 🚀🚀🚀 ${{ needs.ci.outputs.KEY_BRANCH }}" > build/index.html
 
       - name: 🚀 Deploy preview to "gh-pages" branch
         uses: rossjrw/pr-preview-action@v1

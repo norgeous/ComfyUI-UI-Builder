@@ -4,11 +4,14 @@ on:
     branches:
       - develop
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 jobs:
   ci:
     uses: ./.github/workflows/ci.yml
     with:
-      ref: 'develop'
+      ref: $BRANCH_NAME
 
   release:
     name: 🚀 Release to "release" branch

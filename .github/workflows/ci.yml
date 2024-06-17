@@ -46,11 +46,11 @@ jobs:
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -62,10 +62,10 @@ jobs:
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         uses: actions/cache@v4
@@ -91,11 +91,11 @@ jobs:
           path: dist
           key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.dist_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -123,11 +123,11 @@ jobs:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -155,11 +155,11 @@ jobs:
           path: storybook-test-report.txt
           key: storybook-test-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
@@ -203,11 +203,11 @@ jobs:
           path: _storycaps_
           key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -269,11 +269,11 @@ jobs:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
