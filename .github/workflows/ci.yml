@@ -6,6 +6,7 @@ on:
 
 jobs:
   cache-keys:
+    name: 🔑 Invent cache keys
     runs-on: ubuntu-latest
     outputs:
       KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
