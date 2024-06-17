@@ -59,6 +59,18 @@ jobs:
           key: storybook-test-${{ needs.ci.outputs.KEY_BRANCH }}
           fail-on-cache-miss: true
 
+      - name: ♻️ Restore storycaps
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
+
+      - name: ✍️ Create storycaps index.md
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        run: |
+          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > _storycaps_/index.md
+
       - name: 🎼 Compose artifact
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
@@ -66,10 +78,12 @@ jobs:
           mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test-report.txt gh-pages-directory/
+          mv _storycaps_ gh-pages-directory/storycaps/
           echo "<center>" | tee -a gh-pages-directory/index.html
           echo "<h1><a href="storybook">📕 Storybook</a></h1>" | tee -a gh-pages-directory/index.html
           echo "<h1><a href="storybook-test-report.txt">🧪 Storybook test report</a></h1>" | tee -a gh-pages-directory/index.html
           echo "<h1><a href="visdiff-report">🎭 Visdiff report</a></h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1><a href="storycaps">🧢 Storycaps</a></h1>" | tee -a gh-pages-directory/index.html
           echo "<h1>${{ needs.ci.outputs.KEY_BRANCH }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<h1>$(date +'%d-%m-%Y %H:%M:%S')</h1>" | tee -a gh-pages-directory/index.html
           echo "</center>" | tee -a gh-pages-directory/index.html
