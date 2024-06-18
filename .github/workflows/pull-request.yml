@@ -68,10 +68,10 @@ jobs:
           path: _storycaps_
           key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
 
-      - name: ✍️ Create storycaps index.md
+      - name: ✍️ Create storycaps/index.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
-          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > _storycaps_/index.md
+          find _storycaps_ -type f -printf "%P\n" | sort | sed -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
 
       - name: 🎼 Compose artifact
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
