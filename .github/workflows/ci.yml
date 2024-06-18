@@ -158,6 +158,7 @@ jobs:
       - name: 🚪Early Exit with cached results
         if: steps.storybook_test_cache.outputs.cache-hit == 'true'
         run: |
+          echo "🏦 CACHED RESULT!" | tee -a $GITHUB_STEP_SUMMARY
           cat storybook-test/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit `cat storybook-test/EXITCODE`
 
@@ -280,6 +281,7 @@ jobs:
       - name: 🚪Early Exit with cached results
         if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
         run: |
+          echo "🏦 CACHED RESULT!" | tee -a $GITHUB_STEP_SUMMARY
           cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit `cat packages/storybook/visdiff-report/EXITCODE`
 
