@@ -73,6 +73,7 @@ jobs:
       - name: 🎼 Compose artifact
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
+          SBTESTEXITCODE=`cat storybook-test/EXITCODE`
           mkdir gh-pages-directory
           mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
@@ -83,7 +84,7 @@ jobs:
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook test report</a></td><td>❌`cat storybook-test/EXITCODE`</td></tr>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook test report</a></td><td>❌$SBTESTEXITCODE hello</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="visdiff-report">🎭 Visdiff report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "</table>" | tee -a gh-pages-directory/index.html
@@ -92,7 +93,7 @@ jobs:
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: ✍️ Commit to "gh-pages" branch
-        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        # if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
