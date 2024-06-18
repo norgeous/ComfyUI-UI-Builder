@@ -269,13 +269,11 @@ jobs:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
-      - name: 🚪Early Exit
+      - name: 🚪Early Exit with cached results
         if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
         run: |
           cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
-          cat packages/storybook/visdiff-report/summary.txt | tail -n1 | source
-          echo exit code is $EXITCODE
-          exit $EXITCODE
+          exit `cat packages/storybook/visdiff-report/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -307,7 +305,6 @@ jobs:
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        id: generate
         run: |
           SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
           CHANGED=`echo "$SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
@@ -321,7 +318,7 @@ jobs:
           EXITCODE=$((CHANGED + NEW + DELETED))
           echo | tee -a packages/storybook/visdiff-report/summary.txt
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
-          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "$EXITCODE" | tee -a packages/storybook/visdiff-report/EXITCODE
           cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -331,9 +328,3 @@ jobs:
         with:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-
-      # - name: 👋 Exit code
-      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
-      #     exit ${{ steps.generate.outputs.EXITCODE }}
