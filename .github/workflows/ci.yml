@@ -57,7 +57,7 @@ jobs:
           echo "CACHE_KEY_STORYCAP=storycap-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
 
-          echo $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
+          cat $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
 
   npm-install:
     name: 🧰 NPM Install
