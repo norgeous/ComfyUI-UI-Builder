@@ -68,7 +68,7 @@ jobs:
           path: _storycaps_
           key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
 
-      - name: ✍️ Create storycaps/index.html
+      - name: 📄 Create storycaps/index.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           find _storycaps_ -type f -printf "%P\n" | sort | sed -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
@@ -82,12 +82,13 @@ jobs:
           mv storybook-test-report.txt gh-pages-directory/
           mv _storycaps_ gh-pages-directory/storycaps/
           echo "<center>" | tee -a gh-pages-directory/index.html
-          echo "<h1><a href="storybook">📕 Storybook</a></h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1><a href="storybook-test-report.txt">🧪 Storybook test report</a></h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1><a href="visdiff-report">🎭 Visdiff report</a></h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1><a href="storycaps">🧢 Storycaps</a></h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1>${{ needs.ci.outputs.KEY_BRANCH }}</h1>" | tee -a gh-pages-directory/index.html
-          echo "<h1>$(date +'%d-%m-%Y %H:%M:%S')</h1>" | tee -a gh-pages-directory/index.html
+          echo "<h1>${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
+          echo "<h2><a href="storybook">📕 Storybook</a></h2>" | tee -a gh-pages-directory/index.html
+          echo "<h2><a href="storybook-test-report.txt">🧪 Storybook test report</a></h2>" | tee -a gh-pages-directory/index.html
+          echo "<h2><a href="visdiff-report">🎭 Visdiff report</a></h2>" | tee -a gh-pages-directory/index.html
+          echo "<h2><a href="storycaps">🧢 Storycaps</a></h2>" | tee -a gh-pages-directory/index.html
+          echo "<h2>${{ needs.ci.outputs.KEY_BRANCH }}</h2>" | tee -a gh-pages-directory/index.html
+          echo "<h2>$(date +'%d-%m-%Y %H:%M:%S')</h2>" | tee -a gh-pages-directory/index.html
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: ✍️ Commit to "gh-pages" branch
