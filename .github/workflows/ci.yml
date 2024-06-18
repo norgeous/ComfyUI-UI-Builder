@@ -317,8 +317,7 @@ jobs:
           exit $EXITCODE
 
       - name: 💾 Save visdiff-report
-        # if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != ''}}
+        if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' && steps.visdiff_report_cache.outputs.cache-hit != 'true'}}
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
