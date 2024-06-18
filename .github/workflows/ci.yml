@@ -269,6 +269,14 @@ jobs:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
+      - name: 🚪Early Exit
+        if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
+        run: |
+          cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          cat packages/storybook/visdiff-report/summary.txt | tail -n1 | source
+          echo exit code is $EXITCODE
+          exit $EXITCODE
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -306,14 +314,15 @@ jobs:
           NEW=`echo "$SUMMARY" | grep "New items: " | sed "s/New items: //"`
           DELETED=`echo "$SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"`
           PASSED=`echo "$SUMMARY" | grep "Passed items: " | sed "s/Passed items: //"`
-          echo "🎭 Changed items: $CHANGED" | tee -a $GITHUB_STEP_SUMMARY
-          echo "🆕 New items: $NEW" | tee -a $GITHUB_STEP_SUMMARY
-          echo "🗑️ Deleted items: $DELETED" | tee -a $GITHUB_STEP_SUMMARY
-          echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
+          echo "🎭 Changed items: $CHANGED" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "🆕 New items: $NEW" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
           EXITCODE=$((CHANGED + NEW + DELETED))
-          echo | tee -a $GITHUB_STEP_SUMMARY
-          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
-          ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
+          echo | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a packages/storybook/visdiff-report/summary.txt
+          cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       - name: 💾 Save visdiff-report
