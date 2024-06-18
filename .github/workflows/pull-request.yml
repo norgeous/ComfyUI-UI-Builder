@@ -54,7 +54,7 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
-          path: storybook-test-report.txt
+          path: storybook-test
           key: storybook-test-${{ needs.ci.outputs.KEY_BRANCH }}
 
       - name: ♻️ Restore storycaps
