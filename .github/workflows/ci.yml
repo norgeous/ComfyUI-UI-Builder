@@ -334,9 +334,10 @@ jobs:
           echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo | tee -a packages/storybook/visdiff-report/summary.txt
-          ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
-          cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          cat packages/storybook/visdiff-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       - name: 💾 Save visdiff-report
