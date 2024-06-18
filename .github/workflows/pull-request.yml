@@ -78,17 +78,17 @@ jobs:
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test-report.txt gh-pages-directory/
           mv _storycaps_ gh-pages-directory/storycaps/
-          echo "<style>a{text-decoration:none}</style>" | tee -a gh-pages-directory/index.html
-          echo "<h1>Branch: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
+          echo "<style>body{background:black;color:white} a{text-decoration:none}</style>" | tee -a gh-pages-directory/index.html
           echo "<center>" | tee -a gh-pages-directory/index.html
+          echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook-test-report.txt">🧪 Storybook test report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="visdiff-report">🎭 Visdiff report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "</table>" | tee -a gh-pages-directory/index.html
-          echo "<h2>${{ needs.ci.outputs.KEY_BRANCH }}</h2>" | tee -a gh-pages-directory/index.html
-          echo "<h2>built at $(date +'%d-%m-%Y %H:%M:%S %Z')</h2>" | tee -a gh-pages-directory/index.html
+          echo "<h4>${{ needs.ci.outputs.KEY_BRANCH }}</h4>" | tee -a gh-pages-directory/index.html
+          echo "<h4>built at $(date +'%d-%m-%Y %H:%M:%S %Z')</h4>" | tee -a gh-pages-directory/index.html
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: ✍️ Commit to "gh-pages" branch
