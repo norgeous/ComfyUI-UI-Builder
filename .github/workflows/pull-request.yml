@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: gh-pages-directory
-          key: gh-pages-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
 
       - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
@@ -36,70 +36,78 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: ♻️ Restore vite-dist
+      - name: ♻️ Restore Vite dist
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
           path: dist
           key: ${{ needs.ci.outputs.CACHE_KEY_VITE_DIST }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.ci.outputs.KEY_BRANCH }}
-
-      - name: ♻️ Restore visdiff-report
-        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
-        with:
-          path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
           path: storybook-test
-          key: storybook-test-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_SB_TEST }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storycaps
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
-        id: storycaps_cache
         uses: actions/cache/restore@v4
         with:
           path: _storycaps_
-          key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
 
-      - name: 📄 Create storycaps/index.html
+      - name: ♻️ Restore visdiff-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: ${{ needs.ci.outputs.CACHE_KEY_VISDIFF }}
+          fail-on-cache-miss: true
+
+      - name: 📄 Create storycaps index.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           find _storycaps_ -type f -printf "%P\n" | sort | sed -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
 
-      - name: 🎼 Compose artifact
+      - name: 📄 Create ghindex.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
+          echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a ghindex.html
+          echo "<center>" | tee -a ghindex.html
+          echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
+          echo "<table>" | tee -a ghindex.html
+          echo "<tr><td><a href="lint/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>❌</td></tr>" | tee -a ghindex.html
+          echo "</table>" | tee -a ghindex.html
+          echo "<h6>built at: $(date +'%d-%m-%Y %H:%M:%S %Z')</h6>" | tee -a ghindex.html
+          echo "</center>" | tee -a ghindex.html
+
+      - name: 🎼 Compose Artifact
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        run: |
           mkdir gh-pages-directory
-          mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
+          mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
-          mv storybook-test gh-pages-directory/storybook-test
-          mv _storycaps_ gh-pages-directory/storycaps/
-          echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a gh-pages-directory/index.html
-          echo "<center>" | tee -a gh-pages-directory/index.html
-          echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
-          echo "<table>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="lint/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "</table>" | tee -a gh-pages-directory/index.html
-          echo "<h4>built at: $(date +'%d-%m-%Y %H:%M:%S %Z')</h4>" | tee -a gh-pages-directory/index.html
-          echo "<h4>branch cache key: ${{ needs.ci.outputs.KEY_BRANCH }}</h4>" | tee -a gh-pages-directory/index.html
-          echo "</center>" | tee -a gh-pages-directory/index.html
+          mv storybook-test/                      gh-pages-directory/storybook-test/
+          mv _storycaps_/                         gh-pages-directory/storycaps/
+          mv ghindex.html                         gh-pages-directory/index.html
 
       - name: ✍️ Commit to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'

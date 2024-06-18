@@ -6,9 +6,6 @@ on:
         required: true
         type: string
     outputs:
-      KEY_BRANCH:
-        value: ${{ jobs.cache-keys.outputs.KEY_BRANCH }}
-
       CACHE_KEY_NPM_INSTALL:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
       CACHE_KEY_LINT:
@@ -19,8 +16,8 @@ on:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
       CACHE_KEY_SB_TEST:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
-      CACHE_KEY_STORYCAP:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYCAP }}
+      CACHE_KEY_STORYCAPS:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
       CACHE_KEY_VISDIFF:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
       CACHE_KEY_GH_PAGES:
@@ -31,14 +28,12 @@ jobs:
     name: 🔑 Cache Keys
     runs-on: ubuntu-latest
     outputs:
-      KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
-
       CACHE_KEY_NPM_INSTALL: ${{ steps.cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
       CACHE_KEY_LINT: ${{ steps.cache_keys.outputs.CACHE_KEY_LINT }}
       CACHE_KEY_VITE_DIST: ${{ steps.cache_keys.outputs.CACHE_KEY_VITE_DIST }}
       CACHE_KEY_STORYBOOK: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYBOOK }}
       CACHE_KEY_SB_TEST: ${{ steps.cache_keys.outputs.CACHE_KEY_SB_TEST }}
-      CACHE_KEY_STORYCAP: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYCAP }}
+      CACHE_KEY_STORYCAPS: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYCAPS }}
       CACHE_KEY_VISDIFF: ${{ steps.cache_keys.outputs.CACHE_KEY_VISDIFF }}
       CACHE_KEY_GH_PAGES: ${{ steps.cache_keys.outputs.CACHE_KEY_GH_PAGES }}
     steps:
@@ -50,16 +45,14 @@ jobs:
       - name: 🔑 Invent cache keys for this run
         id: cache_keys
         run: |
-          echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT
-
           echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_LINT=lint-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_STORYCAP=storycap-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_GH_PAGES=lint-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_GH_PAGES=gh-pages-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
 
   npm-install:
@@ -104,6 +97,7 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 🧵 Lint
         run: |
@@ -135,6 +129,7 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -151,7 +146,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -167,6 +162,7 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -183,7 +179,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: storybook-test
-          key: storybook-test-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
 
       - name: 🚪Early Exit with cached results
         if: steps.storybook_test_cache.outputs.cache-hit == 'true'
@@ -206,13 +202,15 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
 
       - name: ▶️ Playwright Install
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
@@ -235,7 +233,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: storybook-test
-          key: storybook-test-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
 
   storycap:
     name: 🧢 Storycap
@@ -247,7 +245,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: _storycaps_
-          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -263,13 +261,15 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
 
       - name: 👺 Puppeteer Install
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -313,7 +313,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
 
       - name: 🚪Early Exit with cached results
         if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
@@ -330,12 +330,13 @@ jobs:
 
       - name: ♻️ Restore node_modules
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ⚾ Move baseline into report directory
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -345,10 +346,11 @@ jobs:
 
       - name: ♻️ Restore storycaps
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: _storycaps_
-          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -375,4 +377,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}

@@ -65,21 +65,21 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore visdiff-report
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_VISDIFF }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test-report
         uses: actions/cache@v4
         with:
           path: storybook-test-report.txt
-          key: storybook-test-report-${{ needs.ci.outputs.KEY_BRANCH }}
+          key: ${{ needs.ci.outputs.CACHE_KEY_SB_TEST }}
           fail-on-cache-miss: true
 
       - name: 🎼 Compose artifact
