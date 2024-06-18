@@ -8,8 +8,6 @@ on:
     outputs:
       KEY_BRANCH:
         value: ${{ jobs.cache-keys.outputs.KEY_BRANCH }}
-      KEY_MODULES:
-        value: ${{ jobs.cache-keys.outputs.KEY_MODULES }}
 
       CACHE_KEY_NPM_INSTALL:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
@@ -30,7 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
-      KEY_MODULES: ${{ steps.cache_keys.outputs.KEY_MODULES }}
 
       CACHE_KEY_NPM_INSTALL: ${{ steps.cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
       CACHE_KEY_LINT: ${{ steps.cache_keys.outputs.CACHE_KEY_LINT }}
@@ -48,7 +45,6 @@ jobs:
         id: cache_keys
         run: |
           echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT
-          echo "KEY_MODULES=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
 
           echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_LINT=lint-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
@@ -71,7 +67,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -100,7 +96,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: 🧵 Lint
         run: |
@@ -131,7 +127,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
@@ -163,7 +159,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
@@ -202,7 +198,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: ♻️ Restore storybook-static
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
@@ -259,7 +255,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: ♻️ Restore storybook-static
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -332,7 +328,7 @@ jobs:
           path: |
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: ⚾ Move baseline into report directory
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
