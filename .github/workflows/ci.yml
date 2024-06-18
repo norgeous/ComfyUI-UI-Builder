@@ -314,17 +314,18 @@ jobs:
           echo | tee -a $GITHUB_STEP_SUMMARY
           echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
-          exit 0
+          exit $EXITCODE
 
-      # - name: 💾 Save visdiff-report
+      - name: 💾 Save visdiff-report
+        # if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != ''}}
+        uses: actions/cache/save@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
+      # - name: 👋 Exit code
       #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-      #   uses: actions/cache/save@v4
-      #   with:
-      #     path: packages/storybook/visdiff-report
-      #     key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-
-      - name: 👋 Exit code
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        run: |
-          echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
-          exit ${{ steps.generate.outputs.EXITCODE }}
+      #   run: |
+      #     echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
+      #     exit ${{ steps.generate.outputs.EXITCODE }}
