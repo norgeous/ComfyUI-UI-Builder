@@ -158,7 +158,7 @@ jobs:
       - name: 🚪Early Exit with cached results
         if: steps.storybook_test_cache.outputs.cache-hit == 'true'
         run: |
-          echo -e "🏦 CACHED RESULT!\n" | tee -a $GITHUB_STEP_SUMMARY
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
           cat storybook-test/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit `cat storybook-test/EXITCODE`
 
@@ -199,6 +199,13 @@ jobs:
           echo "$EXITCODE" > storybook-test/EXITCODE
           cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
+
+      - name: 💾 Save storybook-test
+        if: ${{ always() && !cancelled() && hashFiles('storybook-test') != '' && steps.storybook_test_cache.outputs.cache-hit != 'true'}}
+        uses: actions/cache/save@v4
+        with:
+          path: storybook-test
+          key: storybook-test-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
   storycap:
     name: 🧢 Storycap
@@ -281,7 +288,7 @@ jobs:
       - name: 🚪Early Exit with cached results
         if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
         run: |
-          echo -e "🏦 CACHED RESULT!\n" | tee -a $GITHUB_STEP_SUMMARY
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
           cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit `cat packages/storybook/visdiff-report/EXITCODE`
 
@@ -321,11 +328,11 @@ jobs:
           NEW=`echo "$SUMMARY" | grep "New items: " | sed "s/New items: //"`
           DELETED=`echo "$SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"`
           PASSED=`echo "$SUMMARY" | grep "Passed items: " | sed "s/Passed items: //"`
+          EXITCODE=$((CHANGED + NEW + DELETED))
           echo "🎭 Changed items: $CHANGED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "🆕 New items: $NEW" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
-          EXITCODE=$((CHANGED + NEW + DELETED))
           echo | tee -a packages/storybook/visdiff-report/summary.txt
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
