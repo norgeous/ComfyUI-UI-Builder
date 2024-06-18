@@ -80,7 +80,7 @@ jobs:
           npm run lint | tee $GITHUB_STEP_SUMMARY
 
   vite-build:
-    name: 🇻 Vite
+    name: 🇻  Vite
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
