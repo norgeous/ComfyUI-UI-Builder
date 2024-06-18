@@ -23,6 +23,8 @@ on:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYCAP }}
       CACHE_KEY_VISDIFF:
         value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
 
 jobs:
   cache-keys:
@@ -38,6 +40,7 @@ jobs:
       CACHE_KEY_SB_TEST: ${{ steps.cache_keys.outputs.CACHE_KEY_SB_TEST }}
       CACHE_KEY_STORYCAP: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYCAP }}
       CACHE_KEY_VISDIFF: ${{ steps.cache_keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES: ${{ steps.cache_keys.outputs.CACHE_KEY_GH_PAGES }}
     steps:
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         uses: actions/checkout@v4
@@ -56,6 +59,7 @@ jobs:
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYCAP=storycap-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_GH_PAGES=lint-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
 
   npm-install:
