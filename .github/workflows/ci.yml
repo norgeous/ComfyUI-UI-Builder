@@ -152,8 +152,14 @@ jobs:
         id: storybook_test_cache
         uses: actions/cache@v4
         with:
-          path: storybook-test-report.txt
+          path: storybook-test
           key: storybook-test-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+
+      - name: 🚪Early Exit with cached results
+        if: steps.storybook_test_cache.outputs.cache-hit == 'true'
+        run: |
+          cat storybook-test/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat storybook-test/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
@@ -187,8 +193,10 @@ jobs:
         run: |
           npm run unittest:ci -w packages/storybook | tee -a TESTRESULT.txt
           EXITCODE=$?
-          cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test-report.txt
-          cat storybook-test-report.txt > $GITHUB_STEP_SUMMARY
+          mkdir storybook-test
+          cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
+          echo "$EXITCODE" > storybook-test/EXITCODE
+          cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
   storycap:
@@ -318,7 +326,7 @@ jobs:
           EXITCODE=$((CHANGED + NEW + DELETED))
           echo | tee -a packages/storybook/visdiff-report/summary.txt
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
-          echo "$EXITCODE" | tee -a packages/storybook/visdiff-report/EXITCODE
+          echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
           cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
