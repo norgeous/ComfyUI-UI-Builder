@@ -38,32 +38,29 @@ jobs:
 
       - name: ♻️ Restore storybook-static
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: packages/storybook/storybook-static
           key: storybook-static-${{ needs.ci.outputs.KEY_BRANCH }}
-          # fail-on-cache-miss: true
 
       - name: ♻️ Restore visdiff-report
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: packages/storybook/visdiff-report
           key: visdiff-report-${{ needs.ci.outputs.KEY_BRANCH }}
-          # fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: storybook-test-report.txt
           key: storybook-test-${{ needs.ci.outputs.KEY_BRANCH }}
-          # fail-on-cache-miss: true
 
       - name: ♻️ Restore storycaps
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         id: storycaps_cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: _storycaps_
           key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
