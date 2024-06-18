@@ -20,6 +20,7 @@ jobs:
   deploy-preview:
     name: 🚀 Deploy preview
     needs: [ci]
+    if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore gh-pages
