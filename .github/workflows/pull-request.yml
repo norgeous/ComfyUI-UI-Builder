@@ -74,6 +74,7 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           SBTESTEXITCODE=`cat storybook-test/EXITCODE`
+          (($SBTESTEXITCODE == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
           mkdir gh-pages-directory
           mv packages/storybook/visdiff-report/ gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
@@ -84,8 +85,8 @@ jobs:
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook test report</a></td><td>❌$SBTESTEXITCODE hello</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="visdiff-report">🎭 Visdiff report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "</table>" | tee -a gh-pages-directory/index.html
           echo "<h4>built at: $(date +'%d-%m-%Y %H:%M:%S %Z')</h4>" | tee -a gh-pages-directory/index.html
