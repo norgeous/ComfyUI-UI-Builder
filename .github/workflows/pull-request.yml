@@ -83,6 +83,8 @@ jobs:
           echo "<center>" | tee -a gh-pages-directory/index.html
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="lint/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
@@ -93,7 +95,7 @@ jobs:
           echo "</center>" | tee -a gh-pages-directory/index.html
 
       - name: ✍️ Commit to "gh-pages" branch
-        # if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
