@@ -15,7 +15,7 @@ on:
 
 jobs:
   cache-keys:
-    name: 🔑 Cache keys
+    name: 🔑 Cache Keys
     runs-on: ubuntu-latest
     outputs:
       KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
@@ -80,7 +80,7 @@ jobs:
           npm run lint | tee $GITHUB_STEP_SUMMARY
 
   vite-build:
-    name: 🇻 Vite Build
+    name: 🇻 Vite
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -112,7 +112,7 @@ jobs:
           npm run build
 
   storybook-static:
-    name: 📕 Storybook Build
+    name: 📕 Storybook
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -144,7 +144,7 @@ jobs:
           npm run sb:build
 
   storybook-test:
-    name: 🧪 Storybook tests
+    name: 🧪 Storybook Test
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
