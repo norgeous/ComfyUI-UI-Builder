@@ -263,6 +263,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore visdiff-report
+        if: ${{ always() && !cancelled() }}
         id: visdiff_report_cache
         uses: actions/cache@v4
         with:
@@ -316,12 +317,12 @@ jobs:
           ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
-      - name: 💾 Save visdiff-report
-        if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' && steps.visdiff_report_cache.outputs.cache-hit != 'true'}}
-        uses: actions/cache/save@v4
-        with:
-          path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+      # - name: 💾 Save visdiff-report
+      #   if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' && steps.visdiff_report_cache.outputs.cache-hit != 'true'}}
+      #   uses: actions/cache/save@v4
+      #   with:
+      #     path: packages/storybook/visdiff-report
+      #     key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
 
       # - name: 👋 Exit code
       #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
