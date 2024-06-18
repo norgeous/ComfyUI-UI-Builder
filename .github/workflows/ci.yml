@@ -51,7 +51,7 @@ jobs:
 
           echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_LINT=lint-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYCAP=storycap-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
