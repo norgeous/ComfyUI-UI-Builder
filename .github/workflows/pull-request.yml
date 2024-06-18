@@ -79,7 +79,7 @@ jobs:
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test gh-pages-directory/storybook-test
           mv _storycaps_ gh-pages-directory/storycaps/
-          echo "<style>body{background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a gh-pages-directory/index.html
+          echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a gh-pages-directory/index.html
           echo "<center>" | tee -a gh-pages-directory/index.html
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
