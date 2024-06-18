@@ -18,7 +18,7 @@ jobs:
       ref: ${{ github.head_ref || github.ref_name }}
 
   deploy-preview:
-    name: 🚀 Deploy preview
+    name: ✍️ Commit to "gh-pages"
     needs: [ci]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
@@ -69,7 +69,7 @@ jobs:
           key: storycaps-${{ needs.ci.outputs.KEY_BRANCH }}
 
       - name: ✍️ Create storycaps index.md
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > _storycaps_/index.md
 
@@ -90,7 +90,7 @@ jobs:
           echo "<h1>$(date +'%d-%m-%Y %H:%M:%S')</h1>" | tee -a gh-pages-directory/index.html
           echo "</center>" | tee -a gh-pages-directory/index.html
 
-      - name: 🚀 Deploy preview to "gh-pages" branch
+      - name: ✍️ Commit to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
