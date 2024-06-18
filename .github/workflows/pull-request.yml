@@ -83,7 +83,7 @@ jobs:
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a gh-pages-directory/index.html
           echo "<table>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a gh-pages-directory/index.html
-          echo "<tr><td><a href="storybook-test-report.txt">🧪 Storybook test report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
+          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook test report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="visdiff-report">🎭 Visdiff report</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>❌</td></tr>" | tee -a gh-pages-directory/index.html
           echo "</table>" | tee -a gh-pages-directory/index.html
