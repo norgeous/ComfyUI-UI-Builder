@@ -112,7 +112,7 @@ jobs:
           npm run build
 
   storybook-static:
-    name: 📕 storybook-static
+    name: 📕 Storybook Build
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
