@@ -381,6 +381,8 @@ jobs:
           npm run storycap:ci -w packages/storybook | tee -a _storycaps_/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" >  _storycaps_/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a _storycaps_/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a _storycaps_/summary.txt
           cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
