@@ -153,3 +153,4 @@ jobs:
         with:
           source-dir: gh-pages-directory
           action: ${{ github.ref_name == 'develop' && 'deploy' || 'auto' }}
+          umbrella-dir: ${{ github.ref_name == 'develop' && 'develop' || 'pr-preview' }}
