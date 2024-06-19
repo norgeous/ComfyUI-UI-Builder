@@ -23,6 +23,15 @@
 
 ## Next
 
+- CI issues
+  - doesnt put vite build into gh-pages
+  - combine workflows release.yml and pull-request.yml
+  - versioning
+  - probs doesnt handle lint failure properly
+  - needs to be checked more
+  - better job summaries
+  - add job summaries for compose and deploy jobs
+  - fix tty vtt colour code displaying in command outputs on github website, looks ugly (can the commands be run with --no-color or TERM=dumb?)
 - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
 - combine InputTextarea, InputSpeech and InputText into a single type of input
 - README redo
