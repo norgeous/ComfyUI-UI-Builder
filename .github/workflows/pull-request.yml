@@ -108,6 +108,7 @@ jobs:
           echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a ghindex.html
           echo "<center>" | tee -a ghindex.html
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
+          echo "<h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>" | tee -a ghindex.html
           echo "<table>" | tee -a ghindex.html
 
           ((`cat npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
@@ -132,7 +133,6 @@ jobs:
           echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
 
           echo "</table>" | tee -a ghindex.html
-          echo "<h6>built at: $(date +'%d-%m-%Y %H:%M:%S %Z')</h6>" | tee -a ghindex.html
           echo "</center>" | tee -a ghindex.html
 
       - name: 🎼 Compose Artifact
