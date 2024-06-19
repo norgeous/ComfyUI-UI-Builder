@@ -244,7 +244,9 @@ jobs:
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
           ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
           ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
-          cat packages/storybook/storybook-static/summary.txt > $GITHUB_STEP_SUMMARY
+          echo "\`\`\`console" > $GITHUB_STEP_SUMMARY
+          cat packages/storybook/storybook-static/summary.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
