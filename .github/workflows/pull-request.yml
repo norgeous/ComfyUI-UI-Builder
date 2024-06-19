@@ -156,7 +156,9 @@ jobs:
       - name: ✍️ Commit develop to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true' && github.ref_name == 'develop'
         run: |
+          git fetch origin/gh-pages
           git checkout origin/gh-pages
+          rm -rf develop
           git config user.name github-actions
           git config user.email github-actions@github.com
           mv gh-pages-directory develop
