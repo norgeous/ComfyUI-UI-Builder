@@ -288,6 +288,8 @@ jobs:
           mkdir storybook-test
           cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
           echo "$EXITCODE" > storybook-test/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a storybook-test/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a storybook-test/summary.txt
           cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
