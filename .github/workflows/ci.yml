@@ -229,7 +229,7 @@ jobs:
           exit $EXITCODE
 
       - name: 💾 Save storybook-test
-        if: ${{ always() && !cancelled() && hashFiles('storybook-test') != '' && steps.storybook_test_cache.outputs.cache-hit != 'true'}}
+        if: ${{ steps.storybook_test_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
         uses: actions/cache/save@v4
         with:
           path: storybook-test
@@ -373,7 +373,7 @@ jobs:
           exit $EXITCODE
 
       - name: 💾 Save visdiff-report
-        if: ${{ always() && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' && steps.visdiff_report_cache.outputs.cache-hit != 'true'}}
+        if: ${{ steps.visdiff_report_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
