@@ -21,7 +21,7 @@ jobs:
       ref: ${{ github.head_ref || github.ref_name }}
 
   compose:
-    name: 🎼 Compose Artifact "gh-pages"
+    name: 🎼 Compose Artifact
     needs: [ci]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
@@ -148,7 +148,7 @@ jobs:
           mv ghindex.html                         gh-pages-directory/index.html
 
   deploy-preview:
-    name: 🚀 Deploy preview build to "gh-pages" branch
+    name: 🚀 Deploy preview to "gh-pages"
     needs: [ci, compose]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
@@ -164,15 +164,14 @@ jobs:
       # might need to checkout here
 
       - name: ✍️ Commit build to "gh-pages" branch
-        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
 
   deploy-develop:
-    name: 🚀 Deploy develop build to "gh-pages" branch
+    name: 🚀 Deploy develop to "gh-pages"
     needs: [ci, compose]
-    if: ${{ always() && !cancelled() }}
+    if: ${{ always() && !cancelled() && github.ref_name == 'develop' }}
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore gh-pages
@@ -184,13 +183,11 @@ jobs:
           fail-on-cache-miss: true
 
       - name: ⤵️ Checkout "gh-pages" branch
-        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: gh-pages
 
       - name: ✍️ Commit build to "gh-pages" branch
-        if: steps.gh_pages_cache.outputs.cache-hit != 'true' && github.ref_name == 'develop'
         run: |
           rm -rf develop
           git config user.name github-actions
