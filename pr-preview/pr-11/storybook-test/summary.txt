@@ -2,49 +2,49 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/experiments-oklch.test.js (7.666 s)
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputwrapper.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8cf15e1cafe91090ff224d7998bb6410/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/experiments-oklch.test.js (7.539 s)
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputwrapper.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/c42434b7a209b5a4438292e2b5886f1f/app.test.js
 [TEST] 
 [TEST] Test Suites: 37 passed, 37 total
 [TEST] Tests:       52 passed, 52 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        44.135 s
+[TEST] Time:        42.562 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/8cf15e1cafe91090ff224d7998bb6410
+[TEST] [test-storybook] Cleaning up /tmp/c42434b7a209b5a4438292e2b5886f1f
 [TEST] npm run unittest -- --ci exited with code 0
 Pass ✅
