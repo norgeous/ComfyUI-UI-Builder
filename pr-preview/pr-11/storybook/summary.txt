@@ -11,7 +11,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (175 ms)
+info => Manager built (188 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -29,23 +29,23 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mInputRefContext-CmPhBSwH.js                [39m[1m[2m    0.09 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mFormContext-7paO4gYw.js                    [39m[1m[2m    0.13 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mWsContext-9iT9ZgtG.js                      [39m[1m[2m    0.14 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mindex-DDjtG9WW.js                          [39m[1m[2m    0.15 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mdeepEqual-_sTZaZ0q.js                      [39m[1m[2m    0.17 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CaMEndn5.js                          [39m[1m[2m    0.17 kB[22m[1m[22m[2m │ gzip:     0.16 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mindex-gjkr9lMi.js                          [39m[1m[2m    0.17 kB[22m[1m[22m[2m │ gzip:     0.16 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mConfigsContext-JqLhkqbA.js                 [39m[1m[2m    0.21 kB[22m[1m[22m[2m │ gzip:     0.19 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-ZcpY3tNl.js                        [39m[1m[2m    0.22 kB[22m[1m[22m[2m │ gzip:     0.19 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-WIqSUmum.js                          [39m[1m[2m    0.22 kB[22m[1m[22m[2m │ gzip:     0.21 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mstyled-714Mym1w.js                         [39m[1m[2m    0.34 kB[22m[1m[22m[2m │ gzip:     0.24 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-PH288ROH.js                          [39m[1m[2m    0.43 kB[22m[1m[22m[2m │ gzip:     0.31 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mindex.stories-BfKo6KGe.js                  [39m[1m[2m    0.43 kB[22m[1m[22m[2m │ gzip:     0.28 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mindex.stories-UUWawx1P.js                  [39m[1m[2m    0.43 kB[22m[1m[22m[2m │ gzip:     0.28 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CRbi4mQH.js                          [39m[1m[2m    0.46 kB[22m[1m[22m[2m │ gzip:     0.30 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-C6cCv7vA.js                  [39m[1m[2m    0.48 kB[22m[1m[22m[2m │ gzip:     0.30 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-x7YGS4Zy.js                          [39m[1m[2m    0.48 kB[22m[1m[22m[2m │ gzip:     0.32 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-Csld0TKj.js                          [39m[1m[2m    0.49 kB[22m[1m[22m[2m │ gzip:     0.33 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mWithTooltip-KJL26V4Q-B_t1vYEr.js           [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mWithTooltip-KJL26V4Q-GnY9jTYq.js           [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-TkitNT4C.js                  [39m[1m[2m    0.53 kB[22m[1m[22m[2m │ gzip:     0.33 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-DHyMyFHz.js                  [39m[1m[2m    0.54 kB[22m[1m[22m[2m │ gzip:     0.34 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36msyntaxhighlighter-BP7B2CQK-B7DJepRP.js     [39m[1m[2m    0.54 kB[22m[1m[22m[2m │ gzip:     0.33 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36msyntaxhighlighter-BP7B2CQK-B7lBEUqx.js     [39m[1m[2m    0.54 kB[22m[1m[22m[2m │ gzip:     0.33 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-Cjl1rX-q.js                  [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:     0.34 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mreact-18-DAjhTQGP.js                       [39m[1m[2m    0.56 kB[22m[1m[22m[2m │ gzip:     0.35 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-5LVo37mO.js                          [39m[1m[2m    0.61 kB[22m[1m[22m[2m │ gzip:     0.41 kB[22m
@@ -69,11 +69,11 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-agmhXkbS.js                  [39m[1m[2m    0.89 kB[22m[1m[22m[2m │ gzip:     0.48 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-Dc5HNXl1.js                  [39m[1m[2m    0.90 kB[22m[1m[22m[2m │ gzip:     0.47 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mjsx-runtime-X2b_N9AH.js                    [39m[1m[2m    0.92 kB[22m[1m[22m[2m │ gzip:     0.58 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mpreview-2LM1WtuY.js                        [39m[1m[2m    0.95 kB[22m[1m[22m[2m │ gzip:     0.60 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpreview-C9GpH1pJ.js                        [39m[1m[2m    0.95 kB[22m[1m[22m[2m │ gzip:     0.60 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-C68xYUoO.js                          [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:     0.60 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-nPfQbWMd.js                  [39m[1m[2m    1.00 kB[22m[1m[22m[2m │ gzip:     0.51 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CHdWR4mw.js                          [39m[1m[2m    1.03 kB[22m[1m[22m[2m │ gzip:     0.46 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mpreview-P6haTnHp.js                        [39m[1m[2m    1.03 kB[22m[1m[22m[2m │ gzip:     0.68 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpreview-B4UVm8ln.js                        [39m[1m[2m    1.03 kB[22m[1m[22m[2m │ gzip:     0.68 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-BhhMZXcP.js                  [39m[1m[2m    1.04 kB[22m[1m[22m[2m │ gzip:     0.51 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-D4Q7XV8E.js                  [39m[1m[2m    1.07 kB[22m[1m[22m[2m │ gzip:     0.54 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-DCccdXUQ.js                          [39m[1m[2m    1.11 kB[22m[1m[22m[2m │ gzip:     0.54 kB[22m
@@ -90,8 +90,8 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-C02Sac3S.js                  [39m[1m[2m    1.31 kB[22m[1m[22m[2m │ gzip:     0.63 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-C2wnes8W.js                  [39m[1m[2m    1.35 kB[22m[1m[22m[2m │ gzip:     0.64 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-Dd8G7tN4.js                          [39m[1m[2m    1.37 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mui-DJgiljcg.js                             [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.62 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mentry-preview-Cu9Yn3nn.js                  [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.80 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mui-DJgiljcg.js                             [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.62 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-DjgDbn_u.js                          [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.70 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CCoYZxa1.js                          [39m[1m[2m    1.42 kB[22m[1m[22m[2m │ gzip:     0.67 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-D77t6FN2.js                  [39m[1m[2m    1.44 kB[22m[1m[22m[2m │ gzip:     0.63 kB[22m
@@ -131,7 +131,7 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex-uCp2LrAq.js                          [39m[1m[2m    7.18 kB[22m[1m[22m[2m │ gzip:     2.92 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-BAz7FMXc.js                        [39m[1m[2m    7.62 kB[22m[1m[22m[2m │ gzip:     1.56 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-Db4Idchh.js                        [39m[1m[2m    8.11 kB[22m[1m[22m[2m │ gzip:     3.09 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36miframe-EPv7k0Qs.js                         [39m[1m[2m   13.18 kB[22m[1m[22m[2m │ gzip:     3.58 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36miframe-BGPXmexc.js                         [39m[1m[2m   13.18 kB[22m[1m[22m[2m │ gzip:     3.59 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-DizZy_GM.js                          [39m[1m[2m   13.48 kB[22m[1m[22m[2m │ gzip:     5.02 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mui-Dvg6KzJf.js                             [39m[1m[2m   15.36 kB[22m[1m[22m[2m │ gzip:     4.63 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-CsUxK-tU.js                  [39m[1m[2m   16.89 kB[22m[1m[22m[2m │ gzip:     1.91 kB[22m
@@ -139,17 +139,17 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mstyled-components.browser.esm-Drpn4GzW.js  [39m[1m[2m   27.09 kB[22m[1m[22m[2m │ gzip:    10.46 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-4V56_mca.js                          [39m[1m[2m   28.14 kB[22m[1m[22m[2m │ gzip:     8.75 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mutil-BQ0cylCP.js                           [39m[1m[2m   29.16 kB[22m[1m[22m[2m │ gzip:     9.65 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mColor-PRSJMWNM-OeKzRZv-.js                 [39m[1m[2m   31.28 kB[22m[1m[22m[2m │ gzip:    11.89 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mColor-PRSJMWNM-DBgeR5nR.js                 [39m[1m[2m   31.28 kB[22m[1m[22m[2m │ gzip:    11.89 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CvHBa1Gc.js                          [39m[1m[2m   61.07 kB[22m[1m[22m[2m │ gzip:    21.30 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36m_getPrototype-Cxqdo8zk.js                  [39m[1m[2m  114.16 kB[22m[1m[22m[2m │ gzip:    34.84 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-BOkhicXD.js                          [39m[1m[2m  134.00 kB[22m[1m[22m[2m │ gzip:    43.17 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mformatter-2WMMO6ZP-CZ0tR8Lb.js             [39m[1m[2m  210.91 kB[22m[1m[22m[2m │ gzip:    70.72 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mformatter-2WMMO6ZP-CNsLP-xs.js             [39m[1m[2m  210.91 kB[22m[1m[22m[2m │ gzip:    70.72 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mentry-preview-docs-BGIjUIaq.js             [39m[1m[2m  322.31 kB[22m[1m[22m[2m │ gzip:    99.78 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36maxe-C3iONRUh.js                            [39m[1m[2m  482.26 kB[22m[1m[22m[2m │ gzip:   127.25 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CqhhQUir.js                          [39m[1m[33m  524.11 kB[39m[22m[2m │ gzip:   135.48 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mDocsRenderer-K4EAMTCU-B9EAitNw.js          [39m[1m[33m  616.66 kB[39m[22m[2m │ gzip:   187.67 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mpreview-Cwz8XLj2.js                        [39m[1m[33m5,945.58 kB[39m[22m[2m │ gzip: 2,400.09 kB[22m
-[32m✓ built in 19.93s[39m
-info => Preview built (21 s)
+[2mstorybook-static/[22m[2massets/[22m[36mDocsRenderer-K4EAMTCU-B8uvgI3L.js          [39m[1m[33m  616.66 kB[39m[22m[2m │ gzip:   187.67 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpreview-DHSJalMB.js                        [39m[1m[33m5,945.58 kB[39m[22m[2m │ gzip: 2,400.10 kB[22m
+[32m✓ built in 20.48s[39m
+info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 Pass ✅
