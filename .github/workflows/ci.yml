@@ -209,6 +209,13 @@ jobs:
           path: packages/storybook/storybook-static
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
 
+      - name: 🚪Early Exit with cached results
+        if: steps.storybook_static_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat packages/storybook/storybook-static/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat packages/storybook/storybook-static/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -229,7 +236,22 @@ jobs:
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
-          npm run sb:build
+          mkdir packages/storybook/storybook-static
+          npm run sb:build | tee -a packages/storybook/storybook-static/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
+          cat packages/storybook/storybook-static/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save storybook-test
+        if: ${{ steps.storybook_static_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
 
   storybook-test:
     name: 🧪 Storybook Test
