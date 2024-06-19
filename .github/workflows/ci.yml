@@ -85,6 +85,7 @@ jobs:
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
+          mkdir node_modules
           npm ci | tee -a node_modules/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" > node_modules/EXITCODE
