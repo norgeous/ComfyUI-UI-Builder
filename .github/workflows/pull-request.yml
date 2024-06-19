@@ -122,7 +122,7 @@ jobs:
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
           echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat storycaps/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
+          ((`cat _storycaps_/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
           echo "<tr><td><a href="storycaps">🧢 Storycap</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
