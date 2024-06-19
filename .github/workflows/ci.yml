@@ -407,27 +407,6 @@ jobs:
           git commit -m "🧢 Storycaps from CI" | tee -a $GITHUB_STEP_SUMMARY
           git push
 
-      # - name: 👤 Setup git user
-      #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-
-      # - name: ✍️ Commit to orphan "storycaps" branch
-      #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     git checkout --orphan storycaps
-      #     git rm --cached -rf .
-      #     git add _storycaps_
-      #     find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > README.md
-      #     git add README.md
-      #     git commit -m "🧢 Storycaps"
-
-      # - name: 🫸 Force push "storycaps" branch to origin
-      #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     git push origin storycaps --force
-
   visdiff-report:
     name: 🎭 Visdiff
     needs: [cache-keys, storycap]
