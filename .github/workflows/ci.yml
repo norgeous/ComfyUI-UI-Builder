@@ -449,12 +449,17 @@ jobs:
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
-      - name: ⚾ Move baseline into report directory
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        run: |
-          # TODO: this needs to download the baseline from develop branch
-          mkdir packages/storybook/visdiff-report/
-          mv _storycaps_ packages/storybook/visdiff-report/expected/
+      # - name: ⚾ Move baseline into report directory
+      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+      #   run: |
+      #     # TODO: this needs to download the baseline from develop branch
+      #     mkdir packages/storybook/visdiff-report/
+      #     mv _storycaps_ packages/storybook/visdiff-report/expected/
+
+      # - name: 🗑️ Delete _storycaps_ on this branch
+      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+      #   run: |
+      #     rm -r _storycaps_
 
       - name: ♻️ Restore the new storycaps
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
@@ -463,6 +468,20 @@ jobs:
           path: _storycaps_
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
+
+      - name: ✍️ Did any files change?
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        run: |
+          git status
+          # might want to commit them into the branch?
+
+      - name: ⤵️ Checkout _storycaps_ from develop into expected
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: 'develop'
+          filter: '_storycaps_'
+          path: 'packages/storybook/visdiff-report/expected/'
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
