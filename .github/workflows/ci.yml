@@ -85,12 +85,28 @@ jobs:
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
+      - name: ♻️ Restore lint-report
+        id: lint_cache
+        uses: actions/cache@v4
+        with:
+          path: lint-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+
+      - name: 🚪Early Exit with cached results
+        if: steps.lint_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat lint-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat lint-report/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -100,8 +116,21 @@ jobs:
           fail-on-cache-miss: true
 
       - name: 🧵 Lint
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         run: |
-          npm run lint | tee $GITHUB_STEP_SUMMARY
+          mkdir lint-report
+          npm run lint | tee -a lint-report/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" > lint-report/EXITCODE
+          cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
+
+      - name: 💾 Save lint-report
+        if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('lint-report') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: lint-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
 
   vite-build:
     name: 🇻 Vite
