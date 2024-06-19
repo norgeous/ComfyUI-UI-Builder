@@ -11,7 +11,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (188 ms)
+info => Manager built (179 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -23,9 +23,9 @@ computing gzip size...
 [2mstorybook-static/[22m[32miframe.html                                       [39m[1m[2m   15.91 kB[22m[1m[22m[2m │ gzip:     4.41 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-BbP3371Q.js                          [39m[1m[2m    0.05 kB[22m[1m[22m[2m │ gzip:     0.07 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-B4GcaC1c.js                        [39m[1m[2m    0.07 kB[22m[1m[22m[2m │ gzip:     0.08 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mObjectInfoContext-CYsF4dpo.js              [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mSpeechContext-cKuR6Onv.js                  [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mAppContext-DX1Wlwzv.js                     [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mObjectInfoContext-CYsF4dpo.js              [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mInputRefContext-CmPhBSwH.js                [39m[1m[2m    0.09 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mFormContext-7paO4gYw.js                    [39m[1m[2m    0.13 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mWsContext-9iT9ZgtG.js                      [39m[1m[2m    0.14 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
@@ -90,8 +90,8 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-C02Sac3S.js                  [39m[1m[2m    1.31 kB[22m[1m[22m[2m │ gzip:     0.63 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-C2wnes8W.js                  [39m[1m[2m    1.35 kB[22m[1m[22m[2m │ gzip:     0.64 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-Dd8G7tN4.js                          [39m[1m[2m    1.37 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mui-DJgiljcg.js                             [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.62 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mentry-preview-Cu9Yn3nn.js                  [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.80 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mui-DJgiljcg.js                             [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.62 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-DjgDbn_u.js                          [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.70 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CCoYZxa1.js                          [39m[1m[2m    1.42 kB[22m[1m[22m[2m │ gzip:     0.67 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mindex.stories-D77t6FN2.js                  [39m[1m[2m    1.44 kB[22m[1m[22m[2m │ gzip:     0.63 kB[22m
@@ -149,7 +149,7 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CqhhQUir.js                          [39m[1m[33m  524.11 kB[39m[22m[2m │ gzip:   135.48 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mDocsRenderer-K4EAMTCU-B8uvgI3L.js          [39m[1m[33m  616.66 kB[39m[22m[2m │ gzip:   187.67 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-DHSJalMB.js                        [39m[1m[33m5,945.58 kB[39m[22m[2m │ gzip: 2,400.10 kB[22m
-[32m✓ built in 20.25s[39m
-info => Preview built (21 s)
+[32m✓ built in 20.43s[39m
+info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 Pass ✅
