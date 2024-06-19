@@ -463,6 +463,9 @@ jobs:
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         run: |
+          ls -l _storycaps_
+          echo expected below
+          ls -l expected
           mv expected/_storycaps_ packages/storybook/visdiff-report/expected/
           SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
           CHANGED=`echo "$SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
