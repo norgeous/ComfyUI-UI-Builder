@@ -36,6 +36,13 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
+      - name: ♻️ Restore lint-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: lint-report
+          key: ${{ needs.ci.outputs.CACHE_KEY_LINT }}
+
       - name: ♻️ Restore Vite dist
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
@@ -89,7 +96,7 @@ jobs:
           echo "<center>" | tee -a ghindex.html
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
           echo "<table>" | tee -a ghindex.html
-          echo "<tr><td><a href="lint/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a ghindex.html
           echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>✅</td></tr>" | tee -a ghindex.html
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>✅</td></tr>" | tee -a ghindex.html
           echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
@@ -103,6 +110,7 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           mkdir gh-pages-directory
+          mv lint-report/                         gh-pages-directory/lint-report/
           mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test/                      gh-pages-directory/storybook-test/
