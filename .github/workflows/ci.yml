@@ -385,12 +385,18 @@ jobs:
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
-      - name: 💾 Save visdiff-report
+      - name: 💾 Save _storycaps_
         if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
         uses: actions/cache/save@v4
         with:
           path: _storycaps_
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+
+      - name: ✍️ Did any files change?
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        run: |
+          git status | tee -a $GITHUB_STEP_SUMMARY
+          # might want to commit them into the branch?
 
       # - name: 👤 Setup git user
       #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -468,12 +474,6 @@ jobs:
           path: _storycaps_
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
-
-      - name: ✍️ Did any files change?
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        run: |
-          git status
-          # might want to commit them into the branch?
 
       - name: ⤵️ Checkout _storycaps_ from develop into expected
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
