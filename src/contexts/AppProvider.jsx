@@ -7,9 +7,9 @@ import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 import ClientIdContext from '@/contexts/ClientIdContext';
 
-import useComfyPrompt from '../hooks/useComfyPrompt';
-import useComfyInterrupt from '../hooks/useComfyInterrupt';
-import useBodyData from '../hooks/useBodyData';
+import useComfyPrompt from '@/hooks/useComfyPrompt';
+import useComfyInterrupt from '@/hooks/useComfyInterrupt';
+import useBodyData from '@/hooks/useBodyData';
 
 const AppProvider = ({ children = null }) => {
   const clientId = useContext(ClientIdContext);

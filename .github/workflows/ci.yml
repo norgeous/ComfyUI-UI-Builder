@@ -1,29 +1,62 @@
 name: 🦾 CI
 on:
-  push:
-    branches:
-      - develop
+  workflow_call:
+    inputs:
+      ref:
+        required: true
+        type: string
+    outputs:
+      CACHE_KEY_NPM_INSTALL:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+      CACHE_KEY_LINT:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_VITE_DIST:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+      CACHE_KEY_STORYBOOK:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+      CACHE_KEY_SB_TEST:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+      CACHE_KEY_STORYCAPS:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+      CACHE_KEY_VISDIFF:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES:
+        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
 
 jobs:
   cache-keys:
-    name: 🔑 Invent cache keys
+    name: 🔑 Cache Keys
     runs-on: ubuntu-latest
     outputs:
-      KEY_BRANCH: ${{ steps.cache_keys.outputs.KEY_BRANCH }}
-      KEY_MODULES: ${{ steps.cache_keys.outputs.KEY_MODULES }}
+      CACHE_KEY_NPM_INSTALL: ${{ steps.cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
+      CACHE_KEY_LINT: ${{ steps.cache_keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_VITE_DIST: ${{ steps.cache_keys.outputs.CACHE_KEY_VITE_DIST }}
+      CACHE_KEY_STORYBOOK: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYBOOK }}
+      CACHE_KEY_SB_TEST: ${{ steps.cache_keys.outputs.CACHE_KEY_SB_TEST }}
+      CACHE_KEY_STORYCAPS: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYCAPS }}
+      CACHE_KEY_VISDIFF: ${{ steps.cache_keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES: ${{ steps.cache_keys.outputs.CACHE_KEY_GH_PAGES }}
     steps:
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
-      - name: 🔑 Invent keys for this run
+      - name: 🔑 Invent cache keys for this run
         id: cache_keys
         run: |
-          echo "KEY_BRANCH=${{hashFiles('**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
-          echo "KEY_MODULES=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
+          echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_LINT=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_GH_PAGES=gh-pages-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
 
   npm-install:
+    name: 🧰 NPM Install
     needs: [cache-keys]
     runs-on: ubuntu-latest
     steps:
@@ -32,43 +65,107 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: 🚪Early Exit with cached results
+        if: steps.node_modules_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat npm-install-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat npm-install-report/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
-          npm ci
+          mkdir npm-install-report
+          npm ci | tee -a npm-install-report/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" > npm-install-report/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a npm-install-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a npm-install-report/summary.txt
+          cat npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save lint-report
+        if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('node_modules') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            npm-install-report
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
   lint:
+    name: 🧵 Lint
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "develop" branch
+      - name: ♻️ Restore lint-report
+        id: lint_cache
+        uses: actions/cache@v4
+        with:
+          path: lint-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+
+      - name: 🚪Early Exit with cached results
+        if: steps.lint_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat lint-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat lint-report/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 🧵 Lint
+        if: steps.lint_cache.outputs.cache-hit != 'true'
         run: |
-          npm run lint | tee $GITHUB_STEP_SUMMARY
+          mkdir lint-report
+          npm run lint | tee -a lint-report/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" > lint-report/EXITCODE
+          # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a lint-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a lint-report/summary.txt
+          cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
+          git status | tee -a $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save lint-report
+        if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('lint-report') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: lint-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
 
   vite-build:
+    name: 🇻 Vite
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -77,70 +174,32 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.dist_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.dist_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
         run: |
           npm run build
 
-  release:
-    needs: [cache-keys, lint, vite-build, storybook-test, visdiff-report]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: ⤵️ Checkout "develop" branch
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
-      - name: ♻️ Restore dist
-        uses: actions/cache@v4
-        with:
-          path: dist
-          key: dist-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-
-      - name: 📋 Prepare orphan "release" branch
-        run: |
-          git checkout --orphan release
-          git rm --cached -rf .
-          rm README.md
-          mv README.release.md README.md
-          echo -e 'node_modules\n__pycache__\n' > .gitignore
-
-      - name: 👤 Setup git user
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: ✍️ Commit to "release" branch
-        run: |
-          git add dist/
-          git add README.md
-          git add .gitignore
-          git commit -m "🇻 Vite Build"
-
-      - name: 🫸 Force push "release" branch to origin
-        run: |
-          git push origin release --force
-
   storybook-static:
+    name: 📕 Storybook
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -149,76 +208,127 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: 🚪Early Exit with cached results
+        if: steps.storybook_static_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat packages/storybook/storybook-static/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat packages/storybook/storybook-static/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
-          npm run sb:build
+          mkdir packages/storybook/storybook-static
+          npm run sb:build | tee -a packages/storybook/summary.txt
+          EXITCODE=$?
+          mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
+          echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
+          echo "\`\`\`console" > $GITHUB_STEP_SUMMARY
+          cat packages/storybook/storybook-static/summary.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save storybook-test
+        if: ${{ steps.storybook_static_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
 
   storybook-test:
+    name: 🧪 Storybook Test
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
-      - name: ♻️ Restore storybook-test-report
-        id: storybook_test_report_cache
+      - name: ♻️ Restore storybook-test
+        id: storybook_test_cache
         uses: actions/cache@v4
         with:
-          path: storybook-test-report.txt
-          key: storybook-test-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          path: storybook-test
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
 
-      - name: ⤵️ Checkout "develop" branch
-        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
+      - name: 🚪Early Exit with cached results
+        if: steps.storybook_test_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat storybook-test/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat storybook-test/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
-        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
+        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
-        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
+        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
 
       - name: ▶️ Playwright Install
-        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
+        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         run: |
           npx playwright install chromium
 
       - name: 🧪 Storybook smoke, play and a11y tests
-        if: steps.storybook_test_report_cache.outputs.cache-hit != 'true'
+        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         run: |
           npm run unittest:ci -w packages/storybook | tee -a TESTRESULT.txt
           EXITCODE=$?
-          cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test-report.txt
-          cat storybook-test-report.txt > $GITHUB_STEP_SUMMARY
+          mkdir storybook-test
+          cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
+          echo "$EXITCODE" > storybook-test/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a storybook-test/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a storybook-test/summary.txt
+          cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save storybook-test
+        if: ${{ steps.storybook_test_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: storybook-test
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+
   storycap:
+    name: 🧢 Storycap
     needs: [cache-keys, storybook-static]
     runs-on: ubuntu-latest
     steps:
@@ -227,29 +337,39 @@ jobs:
         uses: actions/cache@v4
         with:
           path: _storycaps_
-          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: 🚪Early Exit with cached results
+        if: steps.storycaps_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat _storycaps_/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat _storycaps_/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore node_modules
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
 
       - name: 👺 Puppeteer Install
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -260,30 +380,40 @@ jobs:
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           rm -rf _storycaps_
-          npm run storycap:ci -w packages/storybook
+          mkdir _storycaps_
+          npm run storycap:ci -w packages/storybook | tee -a _storycaps_/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" >  _storycaps_/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a _storycaps_/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a _storycaps_/summary.txt
+          cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
 
-      - name: 👤 Setup git user
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save _storycaps_
+        if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('_storycaps_') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: _storycaps_
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+
+      - name: 🗑️ Delete summary files
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        run: |
+          rm _storycaps_/EXITCODE _storycaps_/summary.txt
+          # rm -r npm-install-report/
+
+      - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-
-      - name: ✍️ Commit to orphan "storycaps" branch
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
-        run: |
-          git checkout --orphan storycaps
-          git rm --cached -rf .
-          git add _storycaps_
-          find _storycaps_ -type f -printf '![storycap](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/storycaps/%p)\n' | sort | sed 's/ /%20/g' > README.md
-          git add README.md
-          git commit -m "🧢 Storycaps"
-
-      - name: 🫸 Force push "storycaps" branch to origin
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
-        run: |
-          git push origin storycaps --force
+          git add _storycaps_ | tee -a $GITHUB_STEP_SUMMARY
+          git commit -m "🧢 Storycaps from CI" | tee -a $GITHUB_STEP_SUMMARY
+          git push
 
   visdiff-report:
+    name: 🎭 Visdiff
     needs: [cache-keys, storycap]
     runs-on: ubuntu-latest
     steps:
@@ -292,112 +422,74 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
 
-      - name: ⤵️ Checkout "develop" branch
+      - name: 🚪Early Exit with cached results
+        if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat packages/storybook/visdiff-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat packages/storybook/visdiff-report/EXITCODE`
+
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: ♻️ Restore node_modules
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            npm-install-report
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore the new storycaps
+        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: _storycaps_
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
+
+      - name: ⤵️ Checkout _storycaps_ from develop into expected
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
           ref: develop
-
-      - name: ♻️ Restore node_modules
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.KEY_MODULES }}
-
-      - name: ⚾ Move baseline into report directory
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        run: |
-          mkdir packages/storybook/visdiff-report/
-          mv _storycaps_ packages/storybook/visdiff-report/expected/
-
-      - name: ♻️ Restore storycaps
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
-        with:
-          path: _storycaps_
-          key: storycaps-${{ needs.cache-keys.outputs.KEY_BRANCH }}
+          sparse-checkout: _storycaps_
+          sparse-checkout-cone-mode: false
+          path: packages/storybook/visdiff-report
 
       - name: 🎭 Generate visdiff-report
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        id: generate
         run: |
+          mv packages/storybook/visdiff-report/_storycaps_ packages/storybook/visdiff-report/expected
           SUMMARY=`npm run regression -w packages/storybook | grep items | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | sed "s/\[reg-suit\] info    //g"`
           CHANGED=`echo "$SUMMARY" | grep "Changed items: " | sed "s/Changed items: //"`
           NEW=`echo "$SUMMARY" | grep "New items: " | sed "s/New items: //"`
           DELETED=`echo "$SUMMARY" | grep "Deleted items: " | sed "s/Deleted items: //"`
           PASSED=`echo "$SUMMARY" | grep "Passed items: " | sed "s/Passed items: //"`
-          echo "🎭 Changed items: $CHANGED" | tee -a $GITHUB_STEP_SUMMARY
-          echo "🆕 New items: $NEW" | tee -a $GITHUB_STEP_SUMMARY
-          echo "🗑️ Deleted items: $DELETED" | tee -a $GITHUB_STEP_SUMMARY
-          echo "✅ Passed items: $PASSED" | tee -a $GITHUB_STEP_SUMMARY
           EXITCODE=$((CHANGED + NEW + DELETED))
-          echo | tee -a $GITHUB_STEP_SUMMARY
-          echo "EXITCODE=$EXITCODE" | tee -a $GITHUB_OUTPUT | tee -a $GITHUB_STEP_SUMMARY
-          ((EXITCODE > 0)) && echo -e "Fail ❌" || echo -e "Pass ✅" | tee -a $GITHUB_STEP_SUMMARY
-          exit 0
+          echo "🎭 Changed items: $CHANGED" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "🆕 New items: $NEW" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
+          echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
+          cat packages/storybook/visdiff-report/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
 
+      # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save visdiff-report
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
+        if: ${{ steps.visdiff_report_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-
-      - name: 👋 Exit code
-        if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-        run: |
-          echo "Exit code: ${{ steps.generate.outputs.EXITCODE }}"
-          exit ${{ steps.generate.outputs.EXITCODE }}
-
-  github-pages-deploy:
-    needs: [cache-keys, lint, storybook-static, storybook-test, visdiff-report]
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: ♻️ Restore storybook-static
-        uses: actions/cache@v4
-        with:
-          path: packages/storybook/storybook-static
-          key: storybook-static-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-          fail-on-cache-miss: true
-
-      - name: ♻️ Restore visdiff-report
-        uses: actions/cache@v4
-        with:
-          path: packages/storybook/visdiff-report
-          key: visdiff-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-          fail-on-cache-miss: true
-
-      - name: ♻️ Restore storybook-test-report
-        uses: actions/cache@v4
-        with:
-          path: storybook-test-report.txt
-          key: storybook-test-report-${{ needs.cache-keys.outputs.KEY_BRANCH }}
-          fail-on-cache-miss: true
-
-      - name: 🎼 Compose artifact
-        run: |
-          mkdir artifact-directory
-          mv packages/storybook/visdiff-report/ artifact-directory/visdiff-report/
-          mv packages/storybook/storybook-static/ artifact-directory/storybook/
-          mv storybook-test-report.txt artifact-directory/
-          echo "<center><h1><a href="storybook">📕 Storybook</a></h1><h1><a href="visdiff-report">🎭 visdiff-report</a></h1><h1><a href="storybook-test-report.txt">📋 storybook-test-report.txt</a></h1></center>" | tee artifact-directory/index.html
-
-      - name: 🆙 Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1
-        with:
-          path: artifact-directory
-          name: github-pages-artifact
-
-      - name: 🚀 Deploy artifact to Github pages
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-artifact
-
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
