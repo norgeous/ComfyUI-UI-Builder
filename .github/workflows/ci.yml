@@ -276,6 +276,13 @@ jobs:
           path: _storycaps_
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
 
+      - name: 🚪Early Exit with cached results
+        if: steps.storycaps_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat _storycaps_/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat _storycaps_/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -309,7 +316,19 @@ jobs:
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           rm -rf _storycaps_
-          npm run storycap:ci -w packages/storybook
+          mkdir _storycaps_
+          npm run storycap:ci -w packages/storybook | tee -a _storycaps_/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" >  _storycaps_/EXITCODE
+          cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      - name: 💾 Save visdiff-report
+        if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: _storycaps_
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
 
       # - name: 👤 Setup git user
       #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
