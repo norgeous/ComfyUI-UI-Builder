@@ -150,7 +150,7 @@ jobs:
   deploy-preview:
     name: 🚀 Deploy preview to "gh-pages"
     needs: [ci, compose]
-    if: ${{ always() && !cancelled() }}
+    if: ${{ always() && !cancelled() && github.ref_name != 'develop' }}
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore gh-pages
@@ -174,6 +174,11 @@ jobs:
     if: ${{ always() && !cancelled() && github.ref_name == 'develop' }}
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Checkout "gh-pages" branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
       - name: ♻️ Restore gh-pages
         id: gh_pages_cache
         uses: actions/cache@v4
@@ -181,11 +186,6 @@ jobs:
           path: gh-pages-directory
           key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
           fail-on-cache-miss: true
-
-      - name: ⤵️ Checkout "gh-pages" branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
 
       - name: ✍️ Commit build to "gh-pages" branch
         run: |
