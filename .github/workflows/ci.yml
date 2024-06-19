@@ -69,6 +69,13 @@ jobs:
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
+      - name: 🚪Early Exit with cached results
+        if: steps.node_modules_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat node_modules/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat node_modules/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -78,7 +85,21 @@ jobs:
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
-          npm ci
+          npm ci | tee -a node_modules/summary.txt
+          EXITCODE=$?
+          echo "$EXITCODE" > node_modules/EXITCODE
+          cat node_modules/summary.txt > $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save lint-report
+        if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('node_modules') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
 
   lint:
     name: 🧵 Lint
@@ -125,6 +146,7 @@ jobs:
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
 
+      # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save lint-report
         if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('lint-report') != '' }}
         uses: actions/cache/save@v4
@@ -257,6 +279,7 @@ jobs:
           cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save storybook-test
         if: ${{ steps.storybook_test_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
         uses: actions/cache/save@v4
@@ -323,6 +346,7 @@ jobs:
           cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save visdiff-report
         if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
         uses: actions/cache/save@v4
@@ -389,10 +413,11 @@ jobs:
       - name: ⚾ Move baseline into report directory
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         run: |
+          # TODO: this needs to download the baseline from develop branch
           mkdir packages/storybook/visdiff-report/
           mv _storycaps_ packages/storybook/visdiff-report/expected/
 
-      - name: ♻️ Restore storycaps
+      - name: ♻️ Restore the new storycaps
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
@@ -420,6 +445,7 @@ jobs:
           cat packages/storybook/visdiff-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save visdiff-report
         if: ${{ steps.visdiff_report_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
         uses: actions/cache/save@v4
