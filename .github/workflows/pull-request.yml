@@ -116,7 +116,7 @@ jobs:
           ((`cat vite/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
           echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat storybook/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
+          ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>$STORYBOOKEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
