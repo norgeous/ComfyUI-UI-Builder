@@ -125,7 +125,7 @@ jobs:
           ((`cat _storycaps_/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
           echo "<tr><td><a href="storycaps">🧢 Storycap</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
+          ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
           echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
 
           echo "</table>" | tee -a ghindex.html
