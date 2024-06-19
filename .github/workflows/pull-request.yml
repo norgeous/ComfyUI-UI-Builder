@@ -20,8 +20,8 @@ jobs:
     with:
       ref: ${{ github.head_ref || github.ref_name }}
 
-  deploy-preview:
-    name: ✍️ Commit to "gh-pages"
+  compose:
+    name: 🎼 Compose Artifact "gh-pages"
     needs: [ci]
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
@@ -147,17 +147,51 @@ jobs:
           mv _storycaps_/                         gh-pages-directory/storycaps/
           mv ghindex.html                         gh-pages-directory/index.html
 
-      - name: ✍️ Push PR preview to "gh-pages" branch
+  deploy-preview:
+    name: 🚀 Deploy preview build to "gh-pages" branch
+    needs: [ci, compose]
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ♻️ Restore gh-pages
+        id: gh_pages_cache
+        uses: actions/cache@v4
+        with:
+          path: gh-pages-directory
+          key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
+          fail-on-cache-miss: true
+
+      # might need to checkout here
+
+      - name: ✍️ Commit build to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
 
-      - name: ✍️ Commit develop to "gh-pages" branch
+  deploy-develop:
+    name: 🚀 Deploy develop build to "gh-pages" branch
+    needs: [ci, compose]
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ♻️ Restore gh-pages
+        id: gh_pages_cache
+        uses: actions/cache@v4
+        with:
+          path: gh-pages-directory
+          key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
+          fail-on-cache-miss: true
+
+      - name: ⤵️ Checkout "gh-pages" branch
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: ✍️ Commit build to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true' && github.ref_name == 'develop'
         run: |
-          git fetch
-          git checkout origin/gh-pages
           rm -rf develop
           git config user.name github-actions
           git config user.email github-actions@github.com
