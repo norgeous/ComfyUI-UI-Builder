@@ -149,6 +149,8 @@ jobs:
           npm run lint | tee -a lint-report/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" > lint-report/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a lint-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a lint-report/summary.txt
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
 
