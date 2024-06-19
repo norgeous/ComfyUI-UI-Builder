@@ -156,5 +156,6 @@ jobs:
       - name: ✍️ Commit develop to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true' && github.ref_name == 'develop'
         run: |
-          git checkout gh-pages
+          git status
+          git checkout origin/gh-pages
           git status
