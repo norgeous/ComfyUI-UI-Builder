@@ -36,6 +36,16 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
+      - name: ♻️ Restore node_modules
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            npm-install-report
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ needs.ci.outputs.CACHE_KEY_NPM_INSTALL }}
+
       - name: ♻️ Restore lint-report
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
@@ -97,7 +107,8 @@ jobs:
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
           echo "<table>" | tee -a ghindex.html
 
-          echo "<tr><td><a href="npm-install-report/summary.txt">🧰 NPM Install</a></td><td>✅</td></tr>" | tee -a ghindex.html
+          ((`cat storybook-test/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
+          echo "<tr><td><a href="npm-install-report/summary.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
 
           echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>✅</td></tr>" | tee -a ghindex.html
 
@@ -120,6 +131,7 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           mkdir gh-pages-directory
+          mv npm-install-report/                  gh-pages-directory/npm-install-report/
           mv lint-report/                         gh-pages-directory/lint-report/
           mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff-report/
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
