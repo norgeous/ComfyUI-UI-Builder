@@ -153,6 +153,7 @@ jobs:
           ((EXITCODE > 0)) && echo "Fail ❌" | tee -a lint-report/summary.txt
           ((EXITCODE == 0)) && echo "Pass ✅" | tee -a lint-report/summary.txt
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
+          git status | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
