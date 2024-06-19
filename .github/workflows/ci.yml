@@ -456,7 +456,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: 'develop'
-          filter: '_storycaps_'
+          sparse-checkout: '_storycaps_'
           path: 'packages/storybook/visdiff-report/expected/'
 
       - name: 🎭 Generate visdiff-report
