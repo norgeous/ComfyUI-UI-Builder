@@ -147,10 +147,14 @@ jobs:
           mv _storycaps_/                         gh-pages-directory/storycaps/
           mv ghindex.html                         gh-pages-directory/index.html
 
-      - name: ✍️ Commit to "gh-pages" branch
+      - name: ✍️ Push PR preview to "gh-pages" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: gh-pages-directory
-          action: ${{ github.ref_name == 'develop' && 'deploy' || 'auto' }}
-          umbrella-dir: ${{ github.ref_name == 'develop' && 'develop' || 'pr-preview' }}
+
+      - name: ✍️ Commit develop to "gh-pages" branch
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true' && github.ref_name == 'develop'
+        run: |
+          git checkout gh-pages
+          git status
