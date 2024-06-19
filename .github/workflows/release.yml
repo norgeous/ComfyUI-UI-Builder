@@ -47,6 +47,7 @@ jobs:
           git add dist/
           git add README.md
           git add .gitignore
+          git add __init__.py
           git commit -m "🇻 Vite Build"
 
       - name: 🫸 Force push "release" branch to origin
