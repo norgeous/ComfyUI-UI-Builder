@@ -1,0 +1,1 @@
+import{r as o}from"./index-uCp2LrAq.js";const t=()=>{},e=o.createContext({config:{directoryName:void 0,baseWorkflow:void 0,configData:{formConfig:[]},formInitialState:{}},configs:[],setConfig:t});export{e as C};
