@@ -65,6 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
@@ -73,8 +74,8 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit == 'true'
         run: |
           echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
-          cat node_modules/summary.txt | tee -a $GITHUB_STEP_SUMMARY
-          exit `cat node_modules/EXITCODE`
+          cat npm-install-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat npm-install-report/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
@@ -85,11 +86,13 @@ jobs:
       - name: 🧰 NPM Install
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
-          mkdir node_modules
-          npm ci | tee -a node_modules/summary.txt
+          mkdir npm-install-report
+          npm ci | tee -a npm-install-report/summary.txt
           EXITCODE=$?
-          echo "$EXITCODE" > node_modules/EXITCODE
-          cat node_modules/summary.txt > $GITHUB_STEP_SUMMARY
+          echo "$EXITCODE" > npm-install-report/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a npm-install-report/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a npm-install-report/summary.txt
+          cat npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
@@ -98,6 +101,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: |
+            npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
