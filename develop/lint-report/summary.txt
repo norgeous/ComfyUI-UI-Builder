@@ -1,0 +1,9 @@
+
+> ui-builder@0.0.0 prelint
+> prettier --log-level silent --write "**/*.{js,cjs,jsx,md,json,html,css}"
+
+
+> ui-builder@0.0.0 lint
+> eslint . --ext .js,.jsx,.cjs --fix
+
+Pass ✅
