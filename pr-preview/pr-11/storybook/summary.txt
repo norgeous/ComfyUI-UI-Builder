@@ -11,7 +11,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (174 ms)
+info => Manager built (188 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -24,8 +24,8 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex-BbP3371Q.js                          [39m[1m[2m    0.05 kB[22m[1m[22m[2m │ gzip:     0.07 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-B4GcaC1c.js                        [39m[1m[2m    0.07 kB[22m[1m[22m[2m │ gzip:     0.08 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mSpeechContext-cKuR6Onv.js                  [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
-[2mstorybook-static/[22m[2massets/[22m[36mObjectInfoContext-CYsF4dpo.js              [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mAppContext-DX1Wlwzv.js                     [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mObjectInfoContext-CYsF4dpo.js              [39m[1m[2m    0.08 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mInputRefContext-CmPhBSwH.js                [39m[1m[2m    0.09 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mFormContext-7paO4gYw.js                    [39m[1m[2m    0.13 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mWsContext-9iT9ZgtG.js                      [39m[1m[2m    0.14 kB[22m[1m[22m[2m │ gzip:     0.14 kB[22m
@@ -149,7 +149,7 @@ computing gzip size...
 [2mstorybook-static/[22m[2massets/[22m[36mindex-CqhhQUir.js                          [39m[1m[33m  524.11 kB[39m[22m[2m │ gzip:   135.48 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mDocsRenderer-K4EAMTCU-B8uvgI3L.js          [39m[1m[33m  616.66 kB[39m[22m[2m │ gzip:   187.67 kB[22m
 [2mstorybook-static/[22m[2massets/[22m[36mpreview-DHSJalMB.js                        [39m[1m[33m5,945.58 kB[39m[22m[2m │ gzip: 2,400.10 kB[22m
-[32m✓ built in 19.85s[39m
+[32m✓ built in 20.25s[39m
 info => Preview built (21 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 Pass ✅
