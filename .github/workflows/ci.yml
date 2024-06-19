@@ -237,8 +237,9 @@ jobs:
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
           mkdir packages/storybook/storybook-static
-          npm run sb:build | tee -a packages/storybook/storybook-static/summary.txt
+          npm run sb:build | tee -a packages/storybook/summary.txt
           EXITCODE=$?
+          mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
           ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
           ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
