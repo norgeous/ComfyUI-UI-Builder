@@ -392,11 +392,21 @@ jobs:
           path: _storycaps_
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
 
+      - name: 🗑️ Delete summary files
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        run: |
+          rm _storycaps_/EXITCODE _storycaps_/summary.txt
+          # rm -r npm-install-report/
+
       - name: ✍️ Did any files change?
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           git status | tee -a $GITHUB_STEP_SUMMARY
-          # might want to commit them into the branch?
+          git add _storycaps_ | tee -a $GITHUB_STEP_SUMMARY
+          git commit -m "🧢 Storycaps from CI"
+          git status | tee -a $GITHUB_STEP_SUMMARY
+          git diff --cached --numstat | tee -a $GITHUB_STEP_SUMMARY
+          git diff --cached --numstat | wc -l | tee -a $GITHUB_STEP_SUMMARY
 
       # - name: 👤 Setup git user
       #   if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -454,18 +464,6 @@ jobs:
             packages/storybook/node_modules
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
-
-      # - name: ⚾ Move baseline into report directory
-      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     # TODO: this needs to download the baseline from develop branch
-      #     mkdir packages/storybook/visdiff-report/
-      #     mv _storycaps_ packages/storybook/visdiff-report/expected/
-
-      # - name: 🗑️ Delete _storycaps_ on this branch
-      #   if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     rm -r _storycaps_
 
       - name: ♻️ Restore the new storycaps
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
