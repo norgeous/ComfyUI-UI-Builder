@@ -651,4 +651,3 @@ jobs:
           mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff/
           mv ghindex.html                         gh-pages-directory/index.html
           ls -l gh-pages-directory
-
