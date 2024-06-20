@@ -6,6 +6,7 @@
 
 ## known bugs
 
+- websocket seems broken, did comfyui change how this works?
 - the way the ci is setup might make it impossible to cleanly pull "release" (default branch)
   - because of "Unable to merge unrelated histories in this repository."
     - workaround: `git reset --hard origin/release`
