@@ -5,6 +5,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 const urls = [
   `wss://${window.location.hostname}:${window.location.port}`,
   `ws://${window.location.hostname}:${window.location.port}`,
+  `wss://localhost:8188`,
   `ws://localhost:8188`,
 ];
 
