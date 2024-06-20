@@ -176,6 +176,13 @@ jobs:
           path: dist
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
+      - name: 🚪Early Exit with cached results
+        if: steps.dist_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat dist/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat dist/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.dist_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -196,7 +203,22 @@ jobs:
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
         run: |
-          npm run build
+          npm run build | tee -a vite-summary.txt
+          EXITCODE=$?
+          mv vite-summary.txt dist/summary.txt
+          echo "$EXITCODE" > dist/EXITCODE
+          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a dist/summary.txt
+          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a dist/summary.txt
+          cat dist/summary.txt >> $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save dist
+        if: ${{ steps.dist_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('dist') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: dist
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
   storybook-static:
     name: 📕 Storybook
@@ -237,16 +259,13 @@ jobs:
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
-          mkdir packages/storybook/storybook-static
           npm run sb:build | tee -a packages/storybook/summary.txt
           EXITCODE=$?
           mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
           ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
           ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
-          echo "\`\`\`console" > $GITHUB_STEP_SUMMARY
           cat packages/storybook/storybook-static/summary.txt >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
@@ -603,7 +622,7 @@ jobs:
           echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat vite/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
-          echo "<tr><td><a href="vite/summary.txt">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="vite">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>$STORYBOOKEMOJI</td></tr>" | tee -a ghindex.html

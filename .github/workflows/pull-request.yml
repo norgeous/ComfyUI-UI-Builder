@@ -72,4 +72,3 @@ jobs:
           git add develop | tee -a $GITHUB_STEP_SUMMARY
           git commit -m "🚀 Deploy develop" | tee -a $GITHUB_STEP_SUMMARY
           git push
-
