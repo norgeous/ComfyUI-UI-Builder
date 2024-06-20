@@ -11,6 +11,7 @@
 - theme switching is not working inside of storybook
 - seed > randomise checkbox doesnt randomise
 - image grid is broken, overflowing
+- is the websocket needlessly refreshing when switching workflows?
 - rescale CFG does not activate?
 - various problems with speech capture
   - fix how words are appended into prompt
@@ -44,6 +45,7 @@
 - style the progress bar correctly
 - styling issue with range input on chrome
 - range input's dual controls should step up / down, not go to max / min
+- url routing, so can link to workflows directly in readme
 
 ## Future
 

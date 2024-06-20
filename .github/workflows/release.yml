@@ -101,7 +101,6 @@ jobs:
           rm dist/EXITCODE dist/summary.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git status | tee -a $GITHUB_STEP_SUMMARY
           git commit -am "🚀 Release from develop" | tee -a $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
           git push | tee -a $GITHUB_STEP_SUMMARY
