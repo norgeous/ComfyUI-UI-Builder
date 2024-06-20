@@ -90,8 +90,8 @@ jobs:
           npm ci | tee -a npm-install-report/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" > npm-install-report/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a npm-install-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a npm-install-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a npm-install-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a npm-install-report/summary.txt
           cat npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -150,8 +150,8 @@ jobs:
           EXITCODE=$?
           echo "$EXITCODE" > lint-report/EXITCODE
           # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a lint-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a lint-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a lint-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a lint-report/summary.txt
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
@@ -176,6 +176,13 @@ jobs:
           path: dist
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
+      - name: 🚪Early Exit with cached results
+        if: steps.dist_cache.outputs.cache-hit == 'true'
+        run: |
+          echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
+          cat dist/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat dist/EXITCODE`
+
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.dist_cache.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
@@ -196,7 +203,22 @@ jobs:
       - name: 🇻 Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
         run: |
-          npm run build
+          NO_COLOR=true npm run build | tee -a vite-summary.txt
+          EXITCODE=$?
+          mv vite-summary.txt dist/summary.txt
+          echo "$EXITCODE" > dist/EXITCODE
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a dist/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a dist/summary.txt
+          cat dist/summary.txt >> $GITHUB_STEP_SUMMARY
+          exit $EXITCODE
+
+      # even if the previous step exits with failure, we still want to save the results
+      - name: 💾 Save dist
+        if: ${{ steps.dist_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('dist') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: dist
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
   storybook-static:
     name: 📕 Storybook
@@ -237,16 +259,13 @@ jobs:
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
-          mkdir packages/storybook/storybook-static
-          npm run sb:build | tee -a packages/storybook/summary.txt
+          npm run sb:build | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a packages/storybook/summary.txt
           EXITCODE=$?
           mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
-          echo "\`\`\`console" > $GITHUB_STEP_SUMMARY
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a packages/storybook/storybook-static/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a packages/storybook/storybook-static/summary.txt
           cat packages/storybook/storybook-static/summary.txt >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
@@ -314,8 +333,8 @@ jobs:
           mkdir storybook-test
           cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
           echo "$EXITCODE" > storybook-test/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a storybook-test/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a storybook-test/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a storybook-test/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a storybook-test/summary.txt
           cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -381,11 +400,11 @@ jobs:
         run: |
           rm -rf _storycaps_
           mkdir _storycaps_
-          npm run storycap:ci -w packages/storybook | tee -a _storycaps_/summary.txt
+          npm run storycap:ci -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a _storycaps_/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" >  _storycaps_/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a _storycaps_/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a _storycaps_/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a _storycaps_/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a _storycaps_/summary.txt
           cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -479,9 +498,8 @@ jobs:
           echo "🆕 New items: $NEW" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
-          echo | tee -a packages/storybook/visdiff-report/summary.txt
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
           cat packages/storybook/visdiff-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
@@ -493,3 +511,143 @@ jobs:
         with:
           path: packages/storybook/visdiff-report
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+
+  compose:
+    name: 🎼 Compose Artifact
+    needs:
+      [
+        cache-keys,
+        npm-install,
+        lint,
+        vite-build,
+        storybook-static,
+        storybook-test,
+        storycap,
+        visdiff-report,
+      ]
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ♻️ Restore gh-pages
+        id: gh_pages_cache
+        uses: actions/cache@v4
+        with:
+          path: gh-pages-directory
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
+
+      - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: ♻️ Restore node_modules
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            npm-install-report
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore lint-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: lint-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore Vite dist
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: dist
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore storybook-static
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/storybook/storybook-static
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore storybook-test
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: storybook-test
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore storycaps
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: _storycaps_
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
+
+      - name: ♻️ Restore visdiff-report
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/storybook/visdiff-report
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+          fail-on-cache-miss: true
+
+      - name: 📄 Create storycaps index.html
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        run: |
+          find _storycaps_/**/*.png -type f -printf "%p\n" | sort | sed -e 's/_storycaps_\///g' -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
+
+      - name: 📄 Create ghindex.html
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        run: |
+          echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a ghindex.html
+          echo "<center>" | tee -a ghindex.html
+          echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
+          echo "<h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>" | tee -a ghindex.html
+          echo "<table>" | tee -a ghindex.html
+
+          ((`cat npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
+          echo "<tr><td><a href="npm-install-report/summary.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
+          echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
+          echo "<tr><td><a href="vite">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
+          echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>$STORYBOOKEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
+          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat _storycaps_/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
+          echo "<tr><td><a href="storycaps">🧢 Storycap</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
+
+          ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
+          echo "<tr><td><a href="visdiff">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
+
+          echo "</table>" | tee -a ghindex.html
+          echo "</center>" | tee -a ghindex.html
+
+      - name: 🎼 Compose Artifact
+        if: steps.gh_pages_cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir gh-pages-directory
+          mv npm-install-report/                  gh-pages-directory/npm-install-report/
+          mv lint-report/                         gh-pages-directory/lint-report/
+          mv dist/                                gh-pages-directory/vite/
+          mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
+          mv storybook-test/                      gh-pages-directory/storybook-test/
+          mv _storycaps_/                         gh-pages-directory/storycaps/
+          mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff/
+          mv ghindex.html                         gh-pages-directory/index.html
+          ls -l gh-pages-directory
