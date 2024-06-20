@@ -90,6 +90,7 @@ jobs:
           npm ci | tee -a npm-install-report/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" > npm-install-report/EXITCODE
+          npm outdated | tee -a npm-install-report/summary.txt
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a npm-install-report/summary.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a npm-install-report/summary.txt
           cat npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
