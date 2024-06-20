@@ -69,6 +69,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           mv gh-pages-directory develop
+          ls -haXlR develop | tee -a $GITHUB_STEP_SUMMARY
           git add develop | tee -a $GITHUB_STEP_SUMMARY
           git commit -m "🚀 Deploy develop" | tee -a $GITHUB_STEP_SUMMARY
-          git push
+          git push | tee -a $GITHUB_STEP_SUMMARY
