@@ -2,25 +2,24 @@
 
 ## Now
 
-- a short break
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - image grid is broken, overflowing
+- range input's dual controls should step up / down, not go to max / min
+- pressing escape when in fullscreen does not unfullscreen the html element
 
 ## known bugs
 
-- theme switching is not working inside of storybook
 - seed > randomise checkbox doesnt randomise
-- is the websocket needlessly refreshing when switching workflows?
-- rescale CFG does not activate?
+- theme switching is not working inside of storybook
 - various problems with speech capture
   - fix how words are appended into prompt
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
 - up and down arrows for prompt weights are shown, but do nothing
-- pressing escape when in fullscreen does not unfullscreen the html element
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
-- range input's dual controls should step up / down, not go to max / min
 - keyboard a11y outlines are broken (broken during retheme work)
+- rescale CFG does not activate?
+- is the websocket needlessly refreshing when switching workflows?
 
 ## Next
 
