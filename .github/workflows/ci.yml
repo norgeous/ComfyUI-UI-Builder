@@ -531,14 +531,15 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.ci.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
 
       - name: ♻️ Restore lint-report
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: lint-report
-          key: ${{ needs.ci.outputs.CACHE_KEY_LINT }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore Vite dist
@@ -546,7 +547,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: dist
-          key: ${{ needs.ci.outputs.CACHE_KEY_VITE_DIST }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
@@ -554,7 +555,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.ci.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test
@@ -562,7 +563,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: storybook-test
-          key: ${{ needs.ci.outputs.CACHE_KEY_SB_TEST }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storycaps
@@ -570,7 +571,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: _storycaps_
-          key: ${{ needs.ci.outputs.CACHE_KEY_STORYCAPS }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore visdiff-report
@@ -578,7 +579,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: packages/storybook/visdiff-report
-          key: ${{ needs.ci.outputs.CACHE_KEY_VISDIFF }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
           fail-on-cache-miss: true
 
       - name: 📄 Create storycaps index.html
