@@ -2,24 +2,11 @@ import { useState, useEffect, useContext } from 'react';
 import getWebSocket from '@/utils/websocket';
 import ConfigsContext from '@/contexts/ConfigsContext';
 
-// const hosts = [window.location.hostname, 'localhost'];
-// const ports = [window.location.port, '8188'];
-
 const urls = [
   `wss://${window.location.hostname}:${window.location.port}`,
   `ws://${window.location.hostname}:${window.location.port}`,
   `ws://localhost:8188`,
 ];
-console.log(urls);
-
-const getWsUrl = (protocol, host, port) =>
-  [
-    { 'http:': 'ws:', 'https:': 'wss:' }[window.location.protocol],
-    '//',
-    host,
-    ':',
-    port,
-  ].join('');
 
 const useComfyWs = clientId => {
   const {
@@ -72,16 +59,6 @@ const useComfyWs = clientId => {
     };
     (async () => {
       setWsStatus('CONNECTING');
-      // const urls = hosts.reduce(
-      //   (acc, host) => [
-      //     ...acc,
-      //     ...ports.map(
-      //       port => `${getWsUrl(host, port)}/ws?clientId=${clientId}`,
-      //     ),
-      //   ],
-      //   [],
-      // );
-      // console.log(urls);
       const socket = await getWebSocket({
         urls,
         onOpen: () => setWsStatus('CONNECTED'),
