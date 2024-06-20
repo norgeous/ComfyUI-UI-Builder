@@ -617,7 +617,10 @@ jobs:
       - name: 📄 Create storycaps index.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
-          find _storycaps_/**/*.png -type f -printf "%p\n" | sort | sed -e 's/_storycaps_\///g' -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
+          echo "<style>body{font-family:Arial;background:black;color:white} div{display:grid;grid-template-columns: 412px 412px; gap:10px} img{max-width:412px}</style>" > _storycaps_/index.html
+          echo "<div>" > _storycaps_/index.html
+          find _storycaps_/**/*.png -type f -printf "%p\n" | sort | sed -e 's/_storycaps_\///g' -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' >> _storycaps_/index.html
+          echo "</div>" > _storycaps_/index.html
 
       - name: 📄 Create ghindex.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
