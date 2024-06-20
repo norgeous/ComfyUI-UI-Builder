@@ -1,0 +1,1 @@
+import{r as o}from"./index-uCp2LrAq.js";import{W as s}from"./WsContext-9iT9ZgtG.js";const r={DEFAULT:"⚫",CONNECTING:"🔵",CONNECTED:"🟢",DISCONNECTED:"🔴"},n=()=>{const{wsStatus:t}=o.useContext(s);return r[t]},c=n;export{c};
