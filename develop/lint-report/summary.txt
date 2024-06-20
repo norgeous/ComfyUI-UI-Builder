@@ -7,11 +7,4 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/hooks/useComfyWs.js
-  13:1  warning  Unexpected console statement                   no-console
-  15:7  error    'getWsUrl' is assigned a value but never used  no-unused-vars
-
-✖ 2 problems (1 error, 1 warning)
-
-
 Pass ✅
