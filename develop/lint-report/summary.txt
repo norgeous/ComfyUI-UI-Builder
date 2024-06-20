@@ -1,6 +1,6 @@
 
 > ui-builder@0.0.0 prelint
-> prettier --log-level silent --write "**/*.{js,cjs,jsx,md,json,html,css}"
+> prettier --log-level silent --write "**/*.{js,cjs,jsx,md,json,html,css,yml}"
 
 
 > ui-builder@0.0.0 lint
