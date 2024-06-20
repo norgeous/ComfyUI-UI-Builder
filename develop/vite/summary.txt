@@ -18,7 +18,7 @@ dist/assets/workflow-DSGEW1x3.js      3.88 kB │ gzip:     1.30 kB
 dist/assets/ui-BeHihGrf.js            4.90 kB │ gzip:     1.34 kB
 dist/assets/ui-kL5BNJYC.js            5.02 kB │ gzip:     1.36 kB
 dist/assets/ui-Dvg6KzJf.js           15.36 kB │ gzip:     4.63 kB
-dist/assets/index-6AXYXgJi.js     6,233.48 kB │ gzip: 2,494.41 kB
-✓ built in 8.38s
+dist/assets/index-C-X3ZAK8.js     6,233.59 kB │ gzip: 2,494.44 kB
+✓ built in 9.27s
 
 Pass ✅
