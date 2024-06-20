@@ -57,6 +57,7 @@
 - video input (for animatediff)
 - video output
 - add lint staged + husky
+- pm2 for single "dev" command
 
 ## Ideas
 

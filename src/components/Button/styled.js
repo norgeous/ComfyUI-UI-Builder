@@ -29,7 +29,4 @@ export const Btn = styled.button.attrs({ type: 'button' })`
   }}
   font-size: 14px;
   line-height: 14px;
-  &:disabled {
-    color: inherit;
-  }
 `;
