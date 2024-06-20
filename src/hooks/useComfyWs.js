@@ -65,8 +65,14 @@ const useComfyWs = clientId => {
     };
     (async () => {
       setWsStatus('CONNECTING');
-      const urls = hosts.map(host =>
-        ports.map(port => `${getWsUrl(host, port)}/ws?clientId=${clientId}`),
+      const urls = hosts.reduce(
+        (acc, host) => [
+          ...acc,
+          ...ports.map(
+            port => `${getWsUrl(host, port)}/ws?clientId=${clientId}`,
+          ),
+        ],
+        [],
       );
       console.log(urls);
       const socket = await getWebSocket({
