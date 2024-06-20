@@ -209,6 +209,7 @@ jobs:
       - name: ⚡ Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
         run: |
+          mv README.release.md README.md
           NO_COLOR=true npm run build | tee -a vite-summary.txt
           EXITCODE=$?
           mv vite-summary.txt dist/summary.txt
