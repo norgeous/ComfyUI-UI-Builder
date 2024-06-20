@@ -84,35 +84,50 @@ jobs:
       - name: ⤵️ Checkout "develop" branch
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release
 
       - name: ♻️ Restore dist
         uses: actions/cache@v4
         with:
           path: dist
           key: ${{ needs.ci.outputs.CACHE_KEY_VITE_DIST }}
+          fail-on-cache-miss: true
 
-      - name: 📋😠 Prepare orphan "release" branch
-        run: |
-          git checkout --orphan release
-          git rm --cached -rf .
-          rm README.md
-          mv README.release.md README.md
-          echo -e 'node_modules\n__pycache__\n' > .gitignore
-
-      - name: 👤 Setup git user
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+      - name: ⤵️ Checkout __init__.py from develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          sparse-checkout: __init__.py
+          sparse-checkout-cone-mode: false
 
       - name: ✍️ Commit to "release" branch
         run: |
-          git add dist/
-          git add README.md
-          git add .gitignore
-          git add __init__.py
-          git commit -m "🇻 Vite Build"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "🚀 Release from develop" | tee -a $GITHUB_STEP_SUMMARY
+          # git push | tee -a $GITHUB_STEP_SUMMARY
 
-      - name: 🫸 Force push "release" branch to origin
-        run: |
-          git push origin release --force # TODO: dont force
+      # - name: 📋😠 Prepare orphan "release" branch
+      #   run: |
+      #     git checkout --orphan release
+      #     git rm --cached -rf .
+      #     rm README.md
+      #     mv README.release.md README.md
+      #     echo -e 'node_modules\n__pycache__\n' > .gitignore
+
+      # - name: 👤 Setup git user
+      #   run: |
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+
+      # - name: ✍️ Commit to "release" branch
+      #   run: |
+      #     git add dist/
+      #     git add README.md
+      #     git add .gitignore
+      #     git add __init__.py
+      #     git commit -m "🇻 Vite Build"
+
+      # - name: 🫸 Force push "release" branch to origin
+      #   run: |
+      #     git push origin release --force # TODO: dont force
