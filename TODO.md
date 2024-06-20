@@ -25,12 +25,11 @@
 ## Next
 
 - CI issues
-  - combine workflows release.yml and pull-request.yml
-  - versioning
-  - probs doesnt handle lint failure properly
-  - needs to be checked more
-  - better job summaries
   - add job summaries for compose and deploy jobs
+  - needs to be checked more if CI is working
+  - probs doesnt handle lint failure properly
+  - smaller job summaries
+  - versioning
 - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
 - combine InputTextarea, InputSpeech and InputText into a single type of input
 - README redo
