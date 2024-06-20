@@ -3,14 +3,13 @@
 ## Now
 
 - a short break
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
+- image grid is broken, overflowing
 
 ## known bugs
 
-- keyboard a11y outlines are broken (broken during retheme work)
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - theme switching is not working inside of storybook
 - seed > randomise checkbox doesnt randomise
-- image grid is broken, overflowing
 - is the websocket needlessly refreshing when switching workflows?
 - rescale CFG does not activate?
 - various problems with speech capture
@@ -20,53 +19,50 @@
 - up and down arrows for prompt weights are shown, but do nothing
 - pressing escape when in fullscreen does not unfullscreen the html element
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
+- range input's dual controls should step up / down, not go to max / min
+- keyboard a11y outlines are broken (broken during retheme work)
 
 ## Next
 
+- image input (for ipa)
+  - example UI
+- more work on adjust weight with CTRL+UP or CTRL+DOWN
+- make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
+- combine InputTextarea, InputSpeech and InputText into a single type of input
+- interrupt and queue features
+  - using multiple instances, how should queue work? clientId adjustments...
+- style the progress bar correctly
+- style the range slider correctly on chrome
+
+## Future
+
+- url routing, so can link to workflows directly in readme
+- README redo / docs
+  - how to make UIB workflows and example links
+  - screenshots of UIB
+- ws reconnect / error message overlay or toaster
+- error handling of missing ckpt or lora
+- errors should appear in a relevent place, eg ckpt
+- storybook mocks
+  - mock for comfyui websocket
+  - mock images for image grid component
 - CI issues
   - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
   - probs doesnt handle lint failure properly
   - smaller job summaries
   - versioning
-- make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
-- combine InputTextarea, InputSpeech and InputText into a single type of input
-- README redo
-  - how to make UIB workflows and example links
-  - screenshots of UIB
-- image input (for ipa)
-  - example UI
-- interrupt and queue features
-  - using multiple instances, how should queue work? clientId adjustments...
-- ws reconnect / error message overlay or toaster
-- error handling of missing ckpt or lora
-- errors should appear in a relevent place, eg ckpt
-- more work on adjust weight with CTRL+UP or CTRL+DOWN
-- style the progress bar correctly
-- styling issue with range input on chrome
-- range input's dual controls should step up / down, not go to max / min
-- url routing, so can link to workflows directly in readme
-
-## Future
-
 - save current formData to LS
   - reset all to default button
 - pwa?
 - video input (for animatediff)
 - video output
-- fix linting problems on develop
 - add lint staged + husky
-- storybook mocks
-  - mock for comfyui websocket
-  - mock images for image grid component
-- run SB a11y tests in pipeline
-- base theme on oklch type colours
 
 ## Ideas
 
-- connect to remote comfyui
 - choose component set / layout in ui config, alternative layouts abstraction
-- interface builder
+- interface builder (with UI for building UIs)
 - more UIs
   - ipadapter example
   - differential diffusion inpainting example
