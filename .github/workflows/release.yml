@@ -89,28 +89,18 @@ jobs:
       - name: ♻️ Restore dist
         uses: actions/cache@v4
         with:
-          path: dist
+          path: |
+            dist
+            README.md
+            __init__.py
           key: ${{ needs.ci.outputs.CACHE_KEY_VITE_DIST }}
           fail-on-cache-miss: true
 
-      - name: ⤵️ Checkout __init__.py from develop
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-          sparse-checkout: |
-            __init__.py
-            README.release.md
-          sparse-checkout-cone-mode: false
-
       - name: ✍️ Commit to "release" branch
         run: |
-          # rm README.md
-          mv README.release.md README.md
-          git status
-          git checkout release
-          git status
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git status | tee -a $GITHUB_STEP_SUMMARY
           git commit -am "🚀 Release from develop" | tee -a $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
           # git push | tee -a $GITHUB_STEP_SUMMARY

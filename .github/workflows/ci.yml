@@ -176,7 +176,10 @@ jobs:
         id: dist_cache
         uses: actions/cache@v4
         with:
-          path: dist
+          path: |
+            dist
+            README.md
+            __init__.py
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
       - name: 🚪Early Exit with cached results
@@ -220,7 +223,10 @@ jobs:
         if: ${{ steps.dist_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('dist') != '' }}
         uses: actions/cache/save@v4
         with:
-          path: dist
+          path: |
+            dist
+            README.md
+            __init__.py
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
 
   storybook-static:
@@ -568,7 +574,10 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
-          path: dist
+          path: |
+            dist
+            README.md
+            __init__.py
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
           fail-on-cache-miss: true
 
