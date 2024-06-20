@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export const Btn = styled.button.attrs({ type: 'button' })`
   background: var(--accent);
   color: var(--accent-fg);
-
+  font-weight: bold;
   margin: 0;
   border: none;
   ${({ $wide }) =>
