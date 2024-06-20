@@ -104,7 +104,7 @@ jobs:
 
       - name: ✍️ Commit to "release" branch
         run: |
-          rm README.md
+          # rm README.md
           mv README.release.md README.md
           git status
           git checkout release
