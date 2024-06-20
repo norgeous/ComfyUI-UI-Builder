@@ -7,10 +7,4 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/hooks/useComfyWs.js
-  69:7  warning  Unexpected console statement  no-console
-
-✖ 1 problem (0 errors, 1 warning)
-
-
 Pass ✅
