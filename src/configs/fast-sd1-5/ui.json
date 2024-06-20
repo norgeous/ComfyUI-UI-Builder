@@ -4,7 +4,8 @@
   "emoji": "⏩",
   "description": "Input prompt with voice, eventually this will be a part of InputTextarea / all prompts by default",
   "theme": {
-    "hue": 180
+    "radius": "0px",
+    "scheme": "cyan darkgoldenrod"
   },
   "tags": ["SD1.5", "S2I"],
   "formConfig": [

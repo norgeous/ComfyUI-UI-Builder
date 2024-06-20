@@ -4,7 +4,8 @@
   "emoji": "🩻",
   "description": "[WIP] SDXL + IPAdapter",
   "theme": {
-    "hue": 0
+    "radius": "2px",
+    "scheme": "firebrick steelblue"
   },
   "tags": ["SDXL", "T2I"],
   "formConfig": [
