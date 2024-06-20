@@ -585,7 +585,7 @@ jobs:
       - name: 📄 Create storycaps index.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
-          find _storycaps_/**.png -type f -printf "%P\n" | sort | sed -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
+          find _storycaps_/**/*.png -type f -printf "%P\n" | sort | sed -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' > _storycaps_/index.html
 
       - name: 📄 Create ghindex.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
@@ -615,7 +615,7 @@ jobs:
           echo "<tr><td><a href="storycaps">🧢 Storycap</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
-          echo "<tr><td><a href="visdiff-report">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="visdiff">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
 
           echo "</table>" | tee -a ghindex.html
           echo "</center>" | tee -a ghindex.html
@@ -630,7 +630,7 @@ jobs:
           mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
           mv storybook-test/                      gh-pages-directory/storybook-test/
           mv _storycaps_/                         gh-pages-directory/storycaps/
-          mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff-report/
+          mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff/
           mv ghindex.html                         gh-pages-directory/index.html
           ls -l gh-pages-directory
 
