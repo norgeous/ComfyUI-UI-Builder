@@ -26,10 +26,10 @@ jobs:
     if: ${{ always() && !cancelled() && github.ref_name != 'develop' }}
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "gh-pages" branch
+      - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: ♻️ Restore gh-pages
         id: gh_pages_cache
