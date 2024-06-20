@@ -168,7 +168,7 @@ jobs:
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
 
   vite-build:
-    name: 🇻 Vite
+    name: ⚡ Vite
     needs: [cache-keys, npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -203,7 +203,7 @@ jobs:
           key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
-      - name: 🇻 Vite Build
+      - name: ⚡ Vite Build
         if: steps.dist_cache.outputs.cache-hit != 'true'
         run: |
           NO_COLOR=true npm run build | tee -a vite-summary.txt
@@ -625,7 +625,7 @@ jobs:
           echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
-          echo "<tr><td><a href="vite">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="vite">⚡ Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
           echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>$STORYBOOKEMOJI</td></tr>" | tee -a ghindex.html

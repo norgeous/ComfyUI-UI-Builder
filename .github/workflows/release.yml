@@ -74,7 +74,7 @@ jobs:
           git push | tee -a $GITHUB_STEP_SUMMARY
 
   release:
-    name: 🚀 Release develop code to "release" branch
+    name: 🚀 Release
     needs: [ci]
     if: ${{ !cancelled() && github.ref_name == 'develop' }}
     runs-on: ubuntu-latest
