@@ -3,7 +3,9 @@ import getWebSocket from '@/utils/websocket';
 import ConfigsContext from '@/contexts/ConfigsContext';
 
 const urls = [
+  `wss://${window.location.hostname}:${window.location.port}`,
   `ws://${window.location.hostname}:${window.location.port}`,
+  `wss://localhost:8188`,
   `ws://localhost:8188`,
 ];
 
@@ -59,7 +61,7 @@ const useComfyWs = clientId => {
     (async () => {
       setWsStatus('CONNECTING');
       const socket = await getWebSocket({
-        urls,
+        urls: urls.map(url => `${url}/ws?clientId=${clientId}`),
         onOpen: () => setWsStatus('CONNECTED'),
       });
 
