@@ -11,7 +11,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (179 ms)
+info => Manager built (183 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -149,7 +149,7 @@ storybook-static/assets/axe-C3iONRUh.js                              482.26 kB �
 storybook-static/assets/index-CqhhQUir.js                            524.11 kB │ gzip:   135.48 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-DNhaLaEa.js            616.66 kB │ gzip:   187.67 kB
 storybook-static/assets/preview-0x4-6Ixn.js                        5,945.53 kB │ gzip: 2,400.08 kB
-✓ built in 20.45s
+✓ built in 20.23s
 info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
