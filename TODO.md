@@ -24,7 +24,6 @@
 ## Next
 
 - CI issues
-  - vite build doesnt work in gh-pages
   - combine workflows release.yml and pull-request.yml
   - versioning
   - probs doesnt handle lint failure properly
