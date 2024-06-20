@@ -6,9 +6,6 @@
 
 ## known bugs
 
-- the way the ci is setup might make it impossible to cleanly pull "release" (default branch)
-  - because of "Unable to merge unrelated histories in this repository."
-    - workaround: `git reset --hard origin/release`
 - keyboard a11y outlines are broken (broken during retheme work)
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - theme switching is not working inside of storybook
