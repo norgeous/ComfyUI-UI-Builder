@@ -90,8 +90,8 @@ jobs:
           npm ci | tee -a npm-install-report/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" > npm-install-report/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a npm-install-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a npm-install-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a npm-install-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a npm-install-report/summary.txt
           cat npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -150,8 +150,8 @@ jobs:
           EXITCODE=$?
           echo "$EXITCODE" > lint-report/EXITCODE
           # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a lint-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a lint-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a lint-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a lint-report/summary.txt
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
@@ -207,8 +207,8 @@ jobs:
           EXITCODE=$?
           mv vite-summary.txt dist/summary.txt
           echo "$EXITCODE" > dist/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a dist/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a dist/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a dist/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a dist/summary.txt
           cat dist/summary.txt >> $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -263,8 +263,8 @@ jobs:
           EXITCODE=$?
           mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/storybook-static/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/storybook-static/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a packages/storybook/storybook-static/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a packages/storybook/storybook-static/summary.txt
           cat packages/storybook/storybook-static/summary.txt >> $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -333,8 +333,8 @@ jobs:
           mkdir storybook-test
           cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
           echo "$EXITCODE" > storybook-test/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a storybook-test/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a storybook-test/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a storybook-test/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a storybook-test/summary.txt
           cat storybook-test/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -403,8 +403,8 @@ jobs:
           npm run storycap:ci -w packages/storybook | tee -a _storycaps_/summary.txt
           EXITCODE=$?
           echo "$EXITCODE" >  _storycaps_/EXITCODE
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a _storycaps_/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a _storycaps_/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a _storycaps_/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a _storycaps_/summary.txt
           cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
@@ -498,9 +498,8 @@ jobs:
           echo "🆕 New items: $NEW" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "🗑️ Deleted items: $DELETED" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "✅ Passed items: $PASSED" | tee -a packages/storybook/visdiff-report/summary.txt
-          echo | tee -a packages/storybook/visdiff-report/summary.txt
-          ((EXITCODE > 0)) && echo "Fail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
-          ((EXITCODE == 0)) && echo "Pass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a packages/storybook/visdiff-report/summary.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a packages/storybook/visdiff-report/summary.txt
           echo "$EXITCODE" > packages/storybook/visdiff-report/EXITCODE
           cat packages/storybook/visdiff-report/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
@@ -621,7 +620,7 @@ jobs:
           ((`cat lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
           echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat vite/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
+          ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
           echo "<tr><td><a href="vite">🇻 Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
