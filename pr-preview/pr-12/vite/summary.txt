@@ -19,5 +19,6 @@ computing gzip size...
 [2mdist/[22m[2massets/[22m[36mui-kL5BNJYC.js        [39m[1m[2m    5.02 kB[22m[1m[22m[2m │ gzip:     1.36 kB[22m
 [2mdist/[22m[2massets/[22m[36mui-Dvg6KzJf.js        [39m[1m[2m   15.36 kB[22m[1m[22m[2m │ gzip:     4.63 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-CykdvJ50.js     [39m[1m[33m6,233.40 kB[39m[22m[2m │ gzip: 2,494.43 kB[22m
-[32m✓ built in 7.97s[39m
+[32m✓ built in 9.58s[39m
+
 Pass ✅
