@@ -43,7 +43,7 @@ const StatusBar = () => {
           <GithubIcon aria-label="Github" />
         </a>
         <a
-          href="https://norgeous.github.io/ComfyUI-UI-Builder/"
+          href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
           target="_blank"
         >
           <StorybookIcon aria-label="Storybook" />
