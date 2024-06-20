@@ -651,7 +651,7 @@ jobs:
           echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat _storycaps_/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
-          echo "<tr><td><a href="storycaps">🧢 Storycap</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
           echo "<tr><td><a href="visdiff">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
