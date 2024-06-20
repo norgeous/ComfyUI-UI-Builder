@@ -13,6 +13,7 @@
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - theme switching is not working inside of storybook
 - seed > randomise checkbox doesnt randomise
+- image grid is broken, overflowing
 - rescale CFG does not activate?
 - various problems with speech capture
   - fix how words are appended into prompt
