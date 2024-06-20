@@ -66,8 +66,6 @@ const useComfyWs = clientId => {
 
       if (!socket) return;
 
-      console.log(new URL(socket.url).host);
-
       // set the running comfy instance url
       setComfyUrl(`http://${new URL(socket.url).host}`);
 

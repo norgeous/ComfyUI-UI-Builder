@@ -19,4 +19,3 @@ Alternative configurable React UI overlay for [ComfyUI](https://github.com/comfy
   - The default branch (`release`) has the transpiled js code for convenience
 - Run ComfyUI with `--enable-cors-header http://localhost:5173 --enable-cors-header https://norgeous.github.io --listen 0.0.0.0` ⚠️ UNSAFE ⚠️
 - Visit http://127.0.0.1:8188/ui/ or https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/
-
