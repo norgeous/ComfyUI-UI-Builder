@@ -3,8 +3,9 @@ import getWebSocket from '@/utils/websocket';
 import ConfigsContext from '@/contexts/ConfigsContext';
 
 const urls = [
+  'ws://localhost:8188',
+  `ws://localhost:${window.location.port}`,
   `ws://${window.location.hostname}:${window.location.port}`,
-  `ws://localhost:8188`,
 ];
 
 const useComfyWs = clientId => {
@@ -65,16 +66,10 @@ const useComfyWs = clientId => {
 
       if (!socket) return;
 
+      console.log(new URL(socket.url).host);
+
       // set the running comfy instance url
-      setComfyUrl(
-        [
-          window.location.protocol,
-          '//',
-          window.location.hostname,
-          ':',
-          new URL(socket.url).port, // the port of the websocket
-        ].join(''),
-      );
+      setComfyUrl(`http://${new URL(socket.url).host}`);
 
       socket.addEventListener('close', () => setWsStatus('DISCONNECTED'));
       socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console

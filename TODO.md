@@ -11,6 +11,7 @@
   - because of "Unable to merge unrelated histories in this repository."
     - workaround: `git reset --hard origin/release`
 - theme switching is not working inside of storybook
+- keyboard a11y outlines are broken (broken during retheme work)
 - seed > randomise checkbox doesnt randomise
 - rescale CFG does not activate
 - various problems with speech capture

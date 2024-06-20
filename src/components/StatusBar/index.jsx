@@ -10,7 +10,8 @@ import StatusLight from '@/components/StatusLight';
 import { Bar, Tray } from './styled';
 
 const StatusBar = () => {
-  const { lastWsMessage, isGenerating, progress } = useContext(WsContext);
+  const { comfyUrl, lastWsMessage, isGenerating, progress } =
+    useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -22,7 +23,7 @@ const StatusBar = () => {
   return (
     <Bar>
       <div>
-        <StatusLight /> {lastWsMessage}{' '}
+        <StatusLight /> {comfyUrl} {lastWsMessage}{' '}
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Tray>
