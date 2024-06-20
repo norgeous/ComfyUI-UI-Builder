@@ -1,0 +1,23 @@
+
+> ui-builder@0.0.0 build
+> vite build
+
+[36mvite v5.3.1 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 324 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                   [39m[1m[2m    0.39 kB[22m[1m[22m[2m │ gzip:     0.27 kB[22m
+[2mdist/[22m[2massets/[22m[36mui-CCWRwqdi.js        [39m[1m[2m    1.19 kB[22m[1m[22m[2m │ gzip:     0.56 kB[22m
+[2mdist/[22m[2massets/[22m[36mui-DJgiljcg.js        [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:     0.62 kB[22m
+[2mdist/[22m[2massets/[22m[36mworkflow-B-5AHK9g.js  [39m[1m[2m    3.53 kB[22m[1m[22m[2m │ gzip:     1.07 kB[22m
+[2mdist/[22m[2massets/[22m[36mworkflow-DL1I6gAS.js  [39m[1m[2m    3.53 kB[22m[1m[22m[2m │ gzip:     1.23 kB[22m
+[2mdist/[22m[2massets/[22m[36mworkflow-DiiP0wJ_.js  [39m[1m[2m    3.87 kB[22m[1m[22m[2m │ gzip:     1.30 kB[22m
+[2mdist/[22m[2massets/[22m[36mworkflow-D9upwNrD.js  [39m[1m[2m    3.87 kB[22m[1m[22m[2m │ gzip:     1.30 kB[22m
+[2mdist/[22m[2massets/[22m[36mworkflow-DSGEW1x3.js  [39m[1m[2m    3.88 kB[22m[1m[22m[2m │ gzip:     1.30 kB[22m
+[2mdist/[22m[2massets/[22m[36mui-BeHihGrf.js        [39m[1m[2m    4.90 kB[22m[1m[22m[2m │ gzip:     1.34 kB[22m
+[2mdist/[22m[2massets/[22m[36mui-kL5BNJYC.js        [39m[1m[2m    5.02 kB[22m[1m[22m[2m │ gzip:     1.36 kB[22m
+[2mdist/[22m[2massets/[22m[36mui-Dvg6KzJf.js        [39m[1m[2m   15.36 kB[22m[1m[22m[2m │ gzip:     4.63 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-CykdvJ50.js     [39m[1m[33m6,233.40 kB[39m[22m[2m │ gzip: 2,494.43 kB[22m
+[32m✓ built in 7.97s[39m
+Pass ✅
