@@ -11,7 +11,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (184 ms)
+info => Manager built (187 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -23,9 +23,9 @@ computing gzip size...
 storybook-static/iframe.html                                          15.91 kB │ gzip:     4.41 kB
 storybook-static/assets/index-BbP3371Q.js                              0.05 kB │ gzip:     0.07 kB
 storybook-static/assets/preview-B4GcaC1c.js                            0.07 kB │ gzip:     0.08 kB
+storybook-static/assets/AppContext-DX1Wlwzv.js                         0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/SpeechContext-cKuR6Onv.js                      0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/ObjectInfoContext-CYsF4dpo.js                  0.08 kB │ gzip:     0.10 kB
-storybook-static/assets/AppContext-DX1Wlwzv.js                         0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/InputRefContext-CmPhBSwH.js                    0.09 kB │ gzip:     0.10 kB
 storybook-static/assets/FormContext-7paO4gYw.js                        0.13 kB │ gzip:     0.14 kB
 storybook-static/assets/WsContext-9iT9ZgtG.js                          0.14 kB │ gzip:     0.14 kB
@@ -149,7 +149,7 @@ storybook-static/assets/axe-C3iONRUh.js                              482.26 kB �
 storybook-static/assets/index-CqhhQUir.js                            524.11 kB │ gzip:   135.48 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-CCiAa7Ys.js            616.66 kB │ gzip:   187.67 kB
 storybook-static/assets/preview-B6Kbnh8O.js                        5,945.50 kB │ gzip: 2,400.06 kB
-✓ built in 20.85s
+✓ built in 20.45s
 info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
