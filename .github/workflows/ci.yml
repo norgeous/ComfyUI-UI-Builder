@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_LINT=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', 'README.release.md')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '!**.stories.js', '!**.stories.jsx', '**/public', 'README.release.md')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
@@ -150,12 +150,14 @@ jobs:
         run: |
           mkdir lint-report
           npm run lint | tee -a lint-report/summary.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" > lint-report/EXITCODE
           # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a lint-report/summary.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a lint-report/summary.txt
           cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
+          echo | tee -a $GITHUB_STEP_SUMMARY
+          echo | tee -a $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import screenfull from 'screenfull';
 import { Container, Outer } from './styled';
 import Item from './Item';
 
@@ -72,15 +73,24 @@ const ImageGrid = ({ images = [] }) => {
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
+    if (!screenfull.isEnabled) return () => {};
+    const syncronise = () => {
+      setOpen(screenfull.isFullscreen ? open : undefined);
+    };
+
     if (open !== undefined) {
-      ref.current.requestFullscreen?.().then(() => {
-        setTimeout(() => setIsFullscreen(true), 100); // this is to give some time for fullscreen to settle
+      screenfull.request(ref.current).then(() => {
+        setTimeout(() => setIsFullscreen(true), 50); // this is to give some time for fullscreen to settle (on firefox)
       });
-    } else
-      window.document
-        .exitFullscreen()
-        .then(() => setIsFullscreen(false))
-        .catch(() => {});
+      screenfull.on('change', syncronise);
+    } else {
+      screenfull.exit();
+      setIsFullscreen(false);
+    }
+
+    return () => {
+      if (open !== undefined) screenfull.off('change', syncronise);
+    };
   }, [open]);
 
   if (!images.length) return null;

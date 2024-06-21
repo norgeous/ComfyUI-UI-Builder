@@ -2,7 +2,6 @@
 
 ## Now
 
-- ImageGrid: pressing escape when in fullscreen does not unfullscreen the html element
 - style the progress bar correctly
 
 ## known bugs
