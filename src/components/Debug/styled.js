@@ -21,7 +21,7 @@ export const Pre = styled.pre`
   white-space: pre-wrap;
   background: #000e;
   color: #0f0;
-  padding: 40px;
+  padding: 20px;
   margin: 0;
   border: 0;
   z-index: 10;
