@@ -68,3 +68,4 @@
   - ipadapter example
   - differential diffusion inpainting example
   - animatediff example
+  - SD3M example
