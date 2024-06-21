@@ -23,7 +23,7 @@ jobs:
   deploy-preview:
     name: 🚀 Deploy preview to "gh-pages"
     needs: [ci]
-    if: ${{ always() && !cancelled() && github.ref_name != 'develop' }}
+    if: ${{ always() && !cancelled() && (github.head_ref || github.ref_name) != 'develop' }}
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
