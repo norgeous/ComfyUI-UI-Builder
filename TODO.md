@@ -1,6 +1,6 @@
 # TODO
 
-## known bugs
+## Known Bugs
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
