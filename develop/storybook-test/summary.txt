@@ -2,73 +2,96 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputrange.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputrange.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/debug.test.js
+[TEST]   ● Console
+[TEST] 
+[TEST]     console.log
+[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
+[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
+[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
+[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
+[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
+[TEST] 
+[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
+[TEST] 
+[TEST]     console.log
+[TEST]       ┌─────────┬──────────────────┬────────────┐
+[TEST]       │ (index) │      target      │ violations │
+[TEST]       ├─────────┼──────────────────┼────────────┤
+[TEST]       │    0    │ '[".sc-fUnNpA"]' │   '[0]'    │
+[TEST]       └─────────┴──────────────────┴────────────┘
+[TEST] 
+[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
+[TEST] 
 [TEST]   ● Debug › Debug Open › play-test
 [TEST] 
-[TEST]     page.evaluate: StorybookTestRunnerError: undefined is not a spy or a call to a spy!
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
-[TEST]       at Object.playFunctionThrewException (packages/storybook/<anonymous>:343:16)
-[TEST]       at packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:7:8828
-[TEST]           at Array.forEach (<anonymous>)
-[TEST]       at Channel.handleEvent (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:7:8812)
-[TEST]       at handler (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:7:7900)
-[TEST]       at Channel.emit (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:7:7955)
-[TEST]       at packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:144:4159
-[TEST]       at StoryRender.runPhase (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:144:943)
-[TEST]       at StoryRender.render (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:144:4105)
-[TEST]       at evaluate (../../../../../tmp/4544e680a79374e46726ca646d74c27b/debug.test.js:58:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/4544e680a79374e46726ca646d74c27b/debug.test.js:79:9)
+[TEST]     Expected value to strictly be equal to:
+[TEST]       0
+[TEST]     Received:
+[TEST]       1
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/experiments-oklch.test.js (7.575 s)
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputwrapper.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4544e680a79374e46726ca646d74c27b/app.test.js
+[TEST]     Message:
+[TEST]       1 accessibility violation was detected
+[TEST] 
+[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
+[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
+[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/experiments-oklch.test.js (7.593 s)
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputwrapper.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/app.test.js
 [TEST] 
 [TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/4544e680a79374e46726ca646d74c27b/debug.test.js
+[TEST] FAIL ../../../../../tmp/7c905f7421e3d5cc8bb5e001d555d765/debug.test.js
 [TEST] 
 [TEST] 
-[TEST]       at handler (packages/storybook/http:/127.0.0.1:6006/sb-preview/runtime.js:7:7900)
+[TEST]       0
+[TEST]       1
+[TEST] 
+[TEST] 
 [TEST] 
 [TEST] 
 [TEST] Test Suites: 1 failed, 36 passed, 37 total
 [TEST] Tests:       1 failed, 51 passed, 52 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        40.361 s
+[TEST] Time:        40.902 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/4544e680a79374e46726ca646d74c27b
+[TEST] [test-storybook] Cleaning up /tmp/7c905f7421e3d5cc8bb5e001d555d765
 [TEST] npm error Lifecycle script `unittest` failed with error:
 [TEST] npm error Error: command failed
 [TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
