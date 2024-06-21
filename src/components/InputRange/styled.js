@@ -43,7 +43,7 @@ export const Input = styled.input.attrs({ type: 'range' })`
   box-sizing: border-box;
   accent-color: var(--accent);
   margin: 0;
-  border-radius: 2px;
+  border-radius: 4px;
   background: transparent;
   background-image: linear-gradient(90deg, var(--accent), var(--accent));
   background-repeat: no-repeat;
