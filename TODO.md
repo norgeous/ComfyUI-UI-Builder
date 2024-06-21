@@ -41,14 +41,14 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
-  - removing the preview from gh-pages branch once the PR closed / merged is very slow and can be accelerated by skipping the build steps
-  - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
   - probs doesnt handle lint failure properly
+  - add job summaries for compose and deploy jobs
   - smaller job summaries
-  - versioning
+  - versioning, using github releases?
   - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
+  - is the release job not deleting old dist files?
 - save current formData to LS
   - reset all to default button
 - pwa?
