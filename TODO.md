@@ -47,6 +47,8 @@
   - probs doesnt handle lint failure properly
   - smaller job summaries
   - versioning
+  - separate out commiting storycaps job (its kindof hidden)
+  - separate out `npm outdated` job, it can run in parallel with lint, etc
 - save current formData to LS
   - reset all to default button
 - pwa?
