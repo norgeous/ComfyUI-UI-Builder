@@ -5,34 +5,35 @@
 - image grid is broken, overflowing
 - style the progress bar correctly
 - pressing escape when in fullscreen does not unfullscreen the html element
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 
 ## known bugs
 
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - theme switching is not working inside of storybook
+- the websocket is needlessly refreshing when switching workflows. pyramid order
+- up and down arrows for prompt weights are shown, but do nothing
 - various problems with speech capture
   - fix how words are appended into prompt
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
-- up and down arrows for prompt weights are shown, but do nothing
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 - keyboard a11y outlines are broken (broken during retheme work)
 - rescale CFG does not activate?
-- is the websocket needlessly refreshing when switching workflows?
 
 ## Next
 
-- image input (for ipa)
-  - example UI
 - more work on adjust weight with CTRL+UP or CTRL+DOWN
 - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
 - combine InputTextarea, InputSpeech and InputText into a single type of input
-- interrupt and queue features
+- interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
+- autogen should fire when any form field changes and the queue is empty
 
 ## Future
 
+- image input (for ipa)
+  - example UI
 - storybook mocks
   - mock for comfyui websocket
   - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
