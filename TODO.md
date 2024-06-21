@@ -6,6 +6,7 @@
 
 ## known bugs
 
+- is the release job not deleting old dist files? seems to not override exisitng dist files (releasing is broken)
 - keyboard a11y outlines are broken (broken during retheme work)
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - seed > randomise dice icon doesnt randomise on generation or autogen
@@ -49,7 +50,6 @@
   - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
   - delete preview job also runs the release by accident
-  - is the release job not deleting old dist files?
 - save current formData to LS
   - reset all to default button
 - pwa?
