@@ -56,7 +56,9 @@ const InputRange = ({
           {!isPips && minLabel && (
             <Sublabel
               className="muted"
-              onClick={() => handleChange(options[0].value)}
+              onClick={() =>
+                handleChange(options[Math.max(0, index - 1)].value)
+              }
             >
               <ArrowLeftIcon />
               <SublabelText className="muted">{minLabel}</SublabelText>
@@ -75,7 +77,11 @@ const InputRange = ({
           {!isPips && maxLabel && (
             <Sublabel
               className="muted"
-              onClick={() => handleChange(options[options.length - 1].value)}
+              onClick={() =>
+                handleChange(
+                  options[Math.min(options.length - 1, index + 1)].value,
+                )
+              }
             >
               <SublabelText className="muted">{maxLabel}</SublabelText>
               <ArrowRightIcon />

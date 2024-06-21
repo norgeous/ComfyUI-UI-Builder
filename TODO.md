@@ -2,7 +2,6 @@
 
 ## Now
 
-- range input's dual controls should step up / down, not go to max / min
 - pressing escape when in fullscreen does not unfullscreen the html element
 - style the range slider correctly on chrome
 - image grid is broken, overflowing
