@@ -15,3 +15,7 @@ export const Tray = styled.div`
   gap: 4px;
   overflow-x: auto;
 `;
+
+export const Link = styled.a`
+  color: inherit;
+`;

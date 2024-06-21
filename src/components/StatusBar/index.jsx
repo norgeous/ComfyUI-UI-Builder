@@ -7,7 +7,7 @@ import AppContext from '@/contexts/AppContext';
 import Debug from '@/components/Debug';
 import { GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
-import { Bar, Tray } from './styled';
+import { Bar, Link, Tray } from './styled';
 
 const StatusBar = () => {
   const { comfyUrl, lastWsMessage, isGenerating, progress } =
@@ -36,18 +36,18 @@ const StatusBar = () => {
         />
         <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
         <Debug label="bodyData" data={bodyData} />
-        <a
+        <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
           target="_blank"
         >
           <GithubIcon aria-label="Github" />
-        </a>
-        <a
+        </Link>
+        <Link
           href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
           target="_blank"
         >
           <StorybookIcon aria-label="Storybook" />
-        </a>
+        </Link>
       </Tray>
     </Bar>
   );
