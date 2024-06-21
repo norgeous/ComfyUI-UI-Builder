@@ -5,59 +5,34 @@ on:
       ref:
         required: true
         type: string
-    outputs:
       CACHE_KEY_NPM_INSTALL:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+        required: true
+        type: string
       CACHE_KEY_LINT:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_LINT }}
+        required: true
+        type: string
       CACHE_KEY_VITE_DIST:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+        required: true
+        type: string
       CACHE_KEY_STORYBOOK:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+        required: true
+        type: string
       CACHE_KEY_SB_TEST:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+        required: true
+        type: string
       CACHE_KEY_STORYCAPS:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+        required: true
+        type: string
       CACHE_KEY_VISDIFF:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+        required: true
+        type: string
       CACHE_KEY_GH_PAGES:
-        value: ${{ jobs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
+        required: true
+        type: string
 
 jobs:
-  cache-keys:
-    name: 🔑 Cache Keys
-    runs-on: ubuntu-latest
-    outputs:
-      CACHE_KEY_NPM_INSTALL: ${{ steps.cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
-      CACHE_KEY_LINT: ${{ steps.cache_keys.outputs.CACHE_KEY_LINT }}
-      CACHE_KEY_VITE_DIST: ${{ steps.cache_keys.outputs.CACHE_KEY_VITE_DIST }}
-      CACHE_KEY_STORYBOOK: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYBOOK }}
-      CACHE_KEY_SB_TEST: ${{ steps.cache_keys.outputs.CACHE_KEY_SB_TEST }}
-      CACHE_KEY_STORYCAPS: ${{ steps.cache_keys.outputs.CACHE_KEY_STORYCAPS }}
-      CACHE_KEY_VISDIFF: ${{ steps.cache_keys.outputs.CACHE_KEY_VISDIFF }}
-      CACHE_KEY_GH_PAGES: ${{ steps.cache_keys.outputs.CACHE_KEY_GH_PAGES }}
-    steps:
-      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
-
-      - name: 🔑 Invent cache keys for this run
-        id: cache_keys
-        run: |
-          echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_LINT=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '!**.stories.js', '!**.stories.jsx', '**/public', 'README.release.md')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_GH_PAGES=gh-pages-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
-          cat $GITHUB_OUTPUT > $GITHUB_STEP_SUMMARY
-
   npm-install:
     name: 🧰 NPM Install
-    needs: [cache-keys]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore node_modules
@@ -68,7 +43,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
 
       - name: 🚪Early Exit with cached results
         if: steps.node_modules_cache.outputs.cache-hit == 'true'
@@ -107,11 +82,11 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
 
   lint:
     name: 🧵 Lint
-    needs: [cache-keys, npm-install]
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore lint-report
@@ -119,7 +94,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: lint-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+          key: ${{ inputs.CACHE_KEY_LINT }}
 
       - name: 🚪Early Exit with cached results
         if: steps.lint_cache.outputs.cache-hit == 'true'
@@ -142,7 +117,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: 🧵 Lint
@@ -167,11 +142,11 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: lint-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+          key: ${{ inputs.CACHE_KEY_LINT }}
 
   vite-build:
     name: ⚡ Vite
-    needs: [cache-keys, npm-install]
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore dist
@@ -182,7 +157,7 @@ jobs:
             dist
             README.md
             __init__.py
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+          key: ${{ inputs.CACHE_KEY_VITE_DIST }}
 
       - name: 🚪Early Exit with cached results
         if: steps.dist_cache.outputs.cache-hit == 'true'
@@ -205,7 +180,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: ⚡ Vite Build
@@ -230,11 +205,11 @@ jobs:
             dist
             README.md
             __init__.py
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+          key: ${{ inputs.CACHE_KEY_VITE_DIST }}
 
   storybook-static:
     name: 📕 Storybook
-    needs: [cache-keys, npm-install]
+    needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore storybook-static
@@ -242,7 +217,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ inputs.CACHE_KEY_STORYBOOK }}
 
       - name: 🚪Early Exit with cached results
         if: steps.storybook_static_cache.outputs.cache-hit == 'true'
@@ -265,7 +240,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: 📕 Build storybook-static
@@ -286,11 +261,11 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ inputs.CACHE_KEY_STORYBOOK }}
 
   storybook-test:
     name: 🧪 Storybook Test
-    needs: [cache-keys, storybook-static]
+    needs: [storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore storybook-test
@@ -298,7 +273,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: storybook-test
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+          key: ${{ inputs.CACHE_KEY_SB_TEST }}
 
       - name: 🚪Early Exit with cached results
         if: steps.storybook_test_cache.outputs.cache-hit == 'true'
@@ -321,7 +296,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
@@ -329,7 +304,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
       - name: ▶️ Playwright Install
@@ -356,11 +331,11 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: storybook-test
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+          key: ${{ inputs.CACHE_KEY_SB_TEST }}
 
   storycap:
     name: 🧢 Storycap
-    needs: [cache-keys, storybook-static]
+    needs: [storybook-static]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore storycaps
@@ -368,7 +343,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: _storycaps_
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
       - name: 🚪Early Exit with cached results
         if: steps.storycaps_cache.outputs.cache-hit == 'true'
@@ -391,7 +366,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
@@ -399,7 +374,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
       - name: 👺 Puppeteer Install
@@ -426,7 +401,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: _storycaps_
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
       - name: 🗑️ Delete summary files
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
@@ -445,7 +420,7 @@ jobs:
 
   visdiff-report:
     name: 🎭 Visdiff
-    needs: [cache-keys, storycap]
+    needs: [storycap]
     runs-on: ubuntu-latest
     steps:
       - name: ♻️ Restore visdiff-report
@@ -453,7 +428,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/storybook/visdiff-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+          key: ${{ inputs.CACHE_KEY_VISDIFF }}
 
       - name: 🚪Early Exit with cached results
         if: steps.visdiff_report_cache.outputs.cache-hit == 'true'
@@ -476,7 +451,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore the new storycaps
@@ -484,7 +459,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: _storycaps_
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
       - name: ⤵️ Checkout _storycaps_ from develop into expected
@@ -523,13 +498,12 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+          key: ${{ inputs.CACHE_KEY_VISDIFF }}
 
   compose:
     name: 🎼 Compose Artifact
     needs:
       [
-        cache-keys,
         npm-install,
         lint,
         vite-build,
@@ -546,7 +520,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: gh-pages-directory
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
+          key: ${{ inputs.CACHE_KEY_GH_PAGES }}
 
       - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
@@ -562,7 +536,7 @@ jobs:
             npm-install-report
             node_modules
             packages/storybook/node_modules
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore lint-report
@@ -570,7 +544,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: lint-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+          key: ${{ inputs.CACHE_KEY_LINT }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore Vite dist
@@ -581,7 +555,7 @@ jobs:
             dist
             README.md
             __init__.py
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+          key: ${{ inputs.CACHE_KEY_VITE_DIST }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-static
@@ -589,7 +563,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: packages/storybook/storybook-static
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+          key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storybook-test
@@ -597,7 +571,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: storybook-test
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+          key: ${{ inputs.CACHE_KEY_SB_TEST }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore storycaps
@@ -605,7 +579,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: _storycaps_
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
       - name: ♻️ Restore visdiff-report
@@ -613,7 +587,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: packages/storybook/visdiff-report
-          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+          key: ${{ inputs.CACHE_KEY_VISDIFF }}
           fail-on-cache-miss: true
 
       - name: 📄 Create storycaps index.html
@@ -634,7 +608,6 @@ jobs:
           echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a ghindex.html
           echo "<center>" | tee -a ghindex.html
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
-          echo "<h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>" | tee -a ghindex.html
           echo "<table>" | tee -a ghindex.html
 
           ((`cat npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
@@ -659,6 +632,7 @@ jobs:
           echo "<tr><td><a href="visdiff">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
 
           echo "</table>" | tee -a ghindex.html
+          echo "<h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>" | tee -a ghindex.html
           echo "</center>" | tee -a ghindex.html
 
       - name: 🎼 Compose Artifact
