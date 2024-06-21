@@ -2,14 +2,14 @@
 
 ## Now
 
-- pressing escape when in fullscreen does not unfullscreen the html element
 - image grid is broken, overflowing
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - style the progress bar correctly
+- pressing escape when in fullscreen does not unfullscreen the html element
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 
 ## known bugs
 
-- seed > randomise checkbox doesnt randomise
+- seed > randomise dice icon doesnt randomise on generation or autogen
 - theme switching is not working inside of storybook
 - various problems with speech capture
   - fix how words are appended into prompt
@@ -33,16 +33,12 @@
 
 ## Future
 
-- url routing, so can link to workflows directly in readme
-- README redo / docs
-  - how to make UIB workflows and example links
-  - screenshots of UIB
+- storybook mocks
+  - mock for comfyui websocket
+  - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
 - ws reconnect / error message overlay or toaster
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
-- storybook mocks
-  - mock for comfyui websocket
-  - mock images for image grid component
 - CI issues
   - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
@@ -56,6 +52,11 @@
 - video output
 - add lint staged + husky
 - pm2 for single "dev" command
+- make SB a11y tests also test dark mode
+- url routing, so can link to workflows directly in readme
+- README redo / docs
+  - how to make UIB workflows and example links
+  - screenshots of UIB
 
 ## Ideas
 
