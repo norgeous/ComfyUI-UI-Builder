@@ -42,6 +42,7 @@
 - errors should appear in a relevent place, eg ckpt
 - CI issues
   - removing the preview from gh-pages branch once the PR closed / merged is very slow and can be accelerated by skipping the build steps
+  - is not removing the PR preview from GH pages?
   - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
   - probs doesnt handle lint failure properly
