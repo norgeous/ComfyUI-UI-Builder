@@ -14,15 +14,73 @@ on:
 concurrency: preview-${{ github.ref }}
 
 jobs:
+  cache-keys:
+    name: 🔑 Cache Keys
+    runs-on: ubuntu-latest
+    outputs:
+      CACHE_KEY_NPM_INSTALL: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
+      CACHE_KEY_LINT: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_VITE_DIST: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_VITE_DIST }}
+      CACHE_KEY_STORYBOOK: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_STORYBOOK }}
+      CACHE_KEY_SB_TEST: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_SB_TEST }}
+      CACHE_KEY_STORYCAPS: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_STORYCAPS }}
+      CACHE_KEY_VISDIFF: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_GH_PAGES }}
+      GH_PAGES_CACHE_HIT: ${{ steps.check_cache_hit.outputs.GH_PAGES_CACHE_HIT }}
+    steps:
+      - name: ⤵️ Checkout "${{ github.head_ref || github.ref_name }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: 🔑 Invent cache keys for this run
+        id: invent_cache_keys
+        run: |
+          echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_LINT=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '!**.stories.js', '!**.stories.jsx', '**/public', 'README.release.md')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_GH_PAGES=gh-pages-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
+          cat $GITHUB_OUTPUT >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: ♻️ Restore gh-pages
+        id: gh_pages_cache
+        uses: actions/cache@v4
+        with:
+          path: gh-pages-directory
+          key: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_GH_PAGES }}
+
+      - name: ⏩ Check gh-pages already exists
+        id: check_cache_hit
+        run: |
+          echo "GH_PAGES_CACHE_HIT=${{steps.gh_pages_cache.outputs.cache-hit}}" | tee -a $GITHUB_OUTPUT
+          echo "Already cached? ${{steps.invent_cache_keys.outputs.CACHE_KEY_GH_PAGES}}" | tee -a $GITHUB_STEP_SUMMARY
+          echo ${{steps.gh_pages_cache.outputs.cache-hit}} | tee -a $GITHUB_STEP_SUMMARY
+
   ci:
+    needs: [cache-keys]
     name: 🦾 CI
+    if: needs.cache-keys.outputs.GH_PAGES_CACHE_HIT != 'true'
     uses: ./.github/workflows/ci.yml
     with:
       ref: ${{ github.head_ref || github.ref_name }}
+      CACHE_KEY_NPM_INSTALL: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
+      CACHE_KEY_LINT: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_VITE_DIST: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
+      CACHE_KEY_STORYBOOK: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
+      CACHE_KEY_SB_TEST: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}
+      CACHE_KEY_STORYCAPS: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYCAPS }}
+      CACHE_KEY_VISDIFF: ${{ needs.cache-keys.outputs.CACHE_KEY_VISDIFF }}
+      CACHE_KEY_GH_PAGES: ${{ needs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
 
   deploy-preview:
     name: 🚀 Deploy preview to "gh-pages"
-    needs: [ci]
+    needs: [cache-keys, ci]
     if: ${{ always() && !cancelled() && (github.head_ref || github.ref_name) != 'develop' }}
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +94,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: gh-pages-directory
-          key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
           fail-on-cache-miss: true
 
       - name: ✍️ Commit build to "gh-pages" branch
@@ -46,7 +104,7 @@ jobs:
 
   deploy-develop:
     name: 🚀 Deploy develop to "gh-pages"
-    needs: [ci]
+    needs: [cache-keys, ci]
     if: ${{ always() && !cancelled() && github.ref_name == 'develop' }}
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +118,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: gh-pages-directory
-          key: ${{ needs.ci.outputs.CACHE_KEY_GH_PAGES }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_GH_PAGES }}
           fail-on-cache-miss: true
 
       - name: ✍️ Commit build to "gh-pages" branch
@@ -75,7 +133,7 @@ jobs:
 
   release:
     name: 🚀 Release
-    needs: [ci]
+    needs: [cache-keys, ci]
     if: ${{ !cancelled() && github.ref_name == 'develop' }}
     runs-on: ubuntu-latest
     permissions:
@@ -93,7 +151,7 @@ jobs:
             dist
             README.md
             __init__.py
-          key: ${{ needs.ci.outputs.CACHE_KEY_VITE_DIST }}
+          key: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
           fail-on-cache-miss: true
 
       - name: ✍️ Commit to "release" branch
