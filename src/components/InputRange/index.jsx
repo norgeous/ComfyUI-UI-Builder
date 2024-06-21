@@ -7,6 +7,7 @@ import InputWrapper from '@/components/InputWrapper';
 import InputHeader from '@/components/InputHeader';
 import {
   RangeWrapper,
+  RangeInner,
   Input,
   Sublabels,
   Sublabel,
@@ -43,20 +44,24 @@ const InputRange = ({
         {children}
       </InputHeader>
       <RangeWrapper>
-        <Input
-          ref={ref}
-          id={id}
-          min="0"
-          step="1"
-          max={options.length - 1}
-          value={index}
-          onChange={event => onChange(options[event.target.value].value)}
-        />
+        <RangeInner>
+          <Input
+            ref={ref}
+            id={id}
+            min="0"
+            step="1"
+            max={options.length - 1}
+            value={index}
+            onChange={event => onChange(options[event.target.value].value)}
+          />
+        </RangeInner>
         <Sublabels $isPips={isPips}>
           {!isPips && minLabel && (
             <Sublabel
               className="muted"
-              onClick={() => handleChange(options[0].value)}
+              onClick={() =>
+                handleChange(options[Math.max(0, index - 1)].value)
+              }
             >
               <ArrowLeftIcon />
               <SublabelText className="muted">{minLabel}</SublabelText>
@@ -75,7 +80,11 @@ const InputRange = ({
           {!isPips && maxLabel && (
             <Sublabel
               className="muted"
-              onClick={() => handleChange(options[options.length - 1].value)}
+              onClick={() =>
+                handleChange(
+                  options[Math.min(options.length - 1, index + 1)].value,
+                )
+              }
             >
               <SublabelText className="muted">{maxLabel}</SublabelText>
               <ArrowRightIcon />

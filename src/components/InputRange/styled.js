@@ -6,11 +6,15 @@ export const RangeWrapper = styled.div`
   gap: 3.33333333px; /* to make it the same height as a text input */
 `;
 
+export const RangeInner = styled.div`
+  height: 14px;
+  padding-top: 6px;
+`;
+
 const track = css`
   width: 100%;
   height: 8px;
   cursor: pointer;
-  background: var(--input-bg);
   border: 1px solid var(--bg4);
   border-radius: 100px;
 `;
@@ -21,25 +25,30 @@ const thumb = css`
   box-sizing: border-box;
   height: 20px;
   width: 20px;
-  border-radius: 10px;
+  border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
 `;
 
 const progress = css`
-  background: var(--accent);
+  background: transparent;
   height: 8px;
 `;
 
 export const Input = styled.input.attrs({ type: 'range' })`
   display: block;
   width: 100%;
-  height: 20px;
+  height: 8px;
   min-width: 100%;
   box-sizing: border-box;
   accent-color: var(--accent);
   margin: 0;
+  border-radius: 6px;
   background: transparent;
+  background-image: linear-gradient(90deg, var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size: ${({ value, max }) => `${100 * (value / max)}%`} 100%;
+
   &::-moz-range-track {
     ${track}
   }
