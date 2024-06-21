@@ -59,7 +59,11 @@ jobs:
         id: check_cache_hit
         run: |
           echo "GH_PAGES_CACHE_HIT=${{steps.gh_pages_cache.outputs.cache-hit}}" | tee -a $GITHUB_OUTPUT
-          echo "Already cached? ${{steps.invent_cache_keys.outputs.CACHE_KEY_GH_PAGES}}" | tee -a $GITHUB_STEP_SUMMARY
+          cat $GITHUB_OUTPUT >> $GITHUB_STEP_SUMMARY
+          echo | tee -a $GITHUB_STEP_SUMMARY
+          ${{ steps.gh_pages_cache.outputs.cache-hit == 'true'}} && echo 'TRUE' | tee -a $GITHUB_STEP_SUMMARY
+          ${{ steps.gh_pages_cache.outputs.cache-hit != 'true'}} && echo 'FALSE' | tee -a $GITHUB_STEP_SUMMARY
+          echo "Already cached?" | tee -a $GITHUB_STEP_SUMMARY
           echo ${{steps.gh_pages_cache.outputs.cache-hit}} | tee -a $GITHUB_STEP_SUMMARY
 
   ci:
