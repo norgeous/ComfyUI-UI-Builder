@@ -50,18 +50,17 @@
   - smaller job summaries
   - versioning
   - using github releases?
-- save current formData to LS
-  - reset all to default button
+- save current formData to LS?
+  - reset all to default button?
 - pwa
-- video input (for animatediff)
-- video output
-- add lint staged + husky
+- video input and output (for animatediff)
 - pm2 for single "dev" command
 - make SB a11y tests also test dark mode
 - url routing, so can link to workflows directly in readme
 - README redo / docs
   - how to make UIB workflows and example links
-  - screenshots of UIB
+  - more screenshots of UIB
+- add lint staged + husky
 
 ## Ideas
 
