@@ -6,7 +6,6 @@
 
 ## known bugs
 
-- is the release job not deleting old dist files? seems to not override exisitng dist files (releasing is broken)
 - keyboard a11y outlines are broken (broken during retheme work)
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - seed > randomise dice icon doesnt randomise on generation or autogen

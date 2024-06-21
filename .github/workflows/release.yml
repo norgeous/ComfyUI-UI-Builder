@@ -146,6 +146,11 @@ jobs:
         with:
           ref: release
 
+      - name: 🗑️ Delete everything in branch
+        run: |
+          git rm -r .
+          echo -e "__pycache__\nnode_modules\nstorybook-static\nvisdiff-report" > .gitignore
+
       - name: ♻️ Restore dist
         uses: actions/cache@v4
         with:
