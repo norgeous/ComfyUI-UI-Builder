@@ -63,7 +63,7 @@ jobs:
         run: |
           mkdir npm-install-report
           npm ci | tee -a npm-install-report/summary.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" > npm-install-report/EXITCODE
           echo "\`\`\`console" | tee -a npm-install-report/summary.txt
           npm outdated | tee -a npm-install-report/summary.txt
@@ -188,7 +188,7 @@ jobs:
         run: |
           mv README.release.md README.md
           NO_COLOR=true npm run build | tee -a vite-summary.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           mv vite-summary.txt dist/summary.txt
           echo "$EXITCODE" > dist/EXITCODE
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a dist/summary.txt
@@ -247,7 +247,7 @@ jobs:
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
           npm run sb:build | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a packages/storybook/summary.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a packages/storybook/storybook-static/summary.txt
@@ -316,7 +316,7 @@ jobs:
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         run: |
           npm run unittest:ci -w packages/storybook | tee -a TESTRESULT.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           mkdir storybook-test
           cat TESTRESULT.txt | grep "\[TEST\]" > storybook-test/summary.txt
           echo "$EXITCODE" > storybook-test/EXITCODE
@@ -388,7 +388,7 @@ jobs:
           rm -rf _storycaps_
           mkdir _storycaps_
           npm run storycap:ci -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a _storycaps_/summary.txt
-          EXITCODE=$?
+          EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" >  _storycaps_/EXITCODE
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a _storycaps_/summary.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a _storycaps_/summary.txt
