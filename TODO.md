@@ -2,10 +2,12 @@
 
 ## Now
 
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - image grid is broken, overflowing
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - range input's dual controls should step up / down, not go to max / min
 - pressing escape when in fullscreen does not unfullscreen the html element
+- style the range slider correctly on chrome
+- style the progress bar correctly
 
 ## known bugs
 
@@ -30,8 +32,6 @@
 - combine InputTextarea, InputSpeech and InputText into a single type of input
 - interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
-- style the progress bar correctly
-- style the range slider correctly on chrome
 
 ## Future
 
