@@ -20,7 +20,7 @@ export const Pre = styled.pre`
   inset: 0;
   white-space: pre-wrap;
   background: #000e;
-  color: green;
+  color: #0f0;
   padding: 40px;
   margin: 0;
   border: 0;
