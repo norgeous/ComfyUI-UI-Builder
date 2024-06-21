@@ -48,6 +48,7 @@
   - versioning, using github releases?
   - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
+  - delete preview job also runs the release by accident
   - is the release job not deleting old dist files?
 - save current formData to LS
   - reset all to default button
