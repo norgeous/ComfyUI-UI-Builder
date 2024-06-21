@@ -2,7 +2,6 @@
 
 ## Now
 
-- image grid is broken, overflowing
 - pressing escape when in fullscreen does not unfullscreen the html element
 - style the progress bar correctly
 
