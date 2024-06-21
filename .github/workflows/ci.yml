@@ -504,7 +504,6 @@ jobs:
     name: 🎼 Compose Artifact
     needs:
       [
-        cache-keys,
         npm-install,
         lint,
         vite-build,
