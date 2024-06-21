@@ -2,12 +2,12 @@
 
 ## Now
 
-- image grid is broken, overflowing
-- pressing escape when in fullscreen does not unfullscreen the html element
+- ImageGrid: pressing escape when in fullscreen does not unfullscreen the html element
 - style the progress bar correctly
 
 ## known bugs
 
+- keyboard a11y outlines are broken (broken during retheme work)
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - theme switching is not working inside of storybook
@@ -18,8 +18,8 @@
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
-- keyboard a11y outlines are broken (broken during retheme work)
 - rescale CFG does not activate?
+- ImageGrid: stops listening to window resize (?) after hitting generate again
 
 ## Next
 
@@ -29,6 +29,7 @@
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 - autogen should fire when any form field changes and the queue is empty
+- ImageGrid: show spinner while images are loading
 
 ## Future
 
@@ -41,6 +42,7 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
+  - removing the preview from gh-pages branch once the PR closed / merged is very slow and can be accelerated by skipping the build steps
   - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
   - probs doesnt handle lint failure properly
@@ -67,3 +69,4 @@
   - ipadapter example
   - differential diffusion inpainting example
   - animatediff example
+  - SD3M example

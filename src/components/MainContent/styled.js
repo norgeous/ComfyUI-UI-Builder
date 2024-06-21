@@ -5,6 +5,7 @@ export const Main = styled.main`
   flex-direction: column;
   position: relative;
   height: 100%;
+  overflow: hidden;
 `;
 
 export const ContentArea = styled.div`
