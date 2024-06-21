@@ -7,6 +7,7 @@ import InputWrapper from '@/components/InputWrapper';
 import InputHeader from '@/components/InputHeader';
 import {
   RangeWrapper,
+  RangeInner,
   Input,
   Sublabels,
   Sublabel,
@@ -43,15 +44,17 @@ const InputRange = ({
         {children}
       </InputHeader>
       <RangeWrapper>
-        <Input
-          ref={ref}
-          id={id}
-          min="0"
-          step="1"
-          max={options.length - 1}
-          value={index}
-          onChange={event => onChange(options[event.target.value].value)}
-        />
+        <RangeInner>
+          <Input
+            ref={ref}
+            id={id}
+            min="0"
+            step="1"
+            max={options.length - 1}
+            value={index}
+            onChange={event => onChange(options[event.target.value].value)}
+          />
+        </RangeInner>
         <Sublabels $isPips={isPips}>
           {!isPips && minLabel && (
             <Sublabel
