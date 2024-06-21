@@ -3,10 +3,10 @@
 ## Now
 
 - style the progress bar correctly
+- keyboard a11y outlines are broken (broken during retheme work)
 
 ## known bugs
 
-- keyboard a11y outlines are broken (broken during retheme work)
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - the websocket is needlessly refreshing when switching workflows. pyramid order
