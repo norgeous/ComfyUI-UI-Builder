@@ -2,8 +2,8 @@
 
 ## Now
 
-- pressing escape when in fullscreen does not unfullscreen the html element
 - style the range slider correctly on chrome
+- pressing escape when in fullscreen does not unfullscreen the html element
 - image grid is broken, overflowing
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - style the progress bar correctly
