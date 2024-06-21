@@ -151,6 +151,7 @@ jobs:
           mkdir lint-report
           npm run lint | tee -a lint-report/summary.txt
           EXITCODE=$?
+          echo "EXITCODE: $EXITCODE"
           echo "$EXITCODE" > lint-report/EXITCODE
           # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a lint-report/summary.txt
