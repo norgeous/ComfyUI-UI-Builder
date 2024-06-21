@@ -61,7 +61,7 @@ jobs:
           echo "GH_PAGES_CACHE_HIT=${{steps.gh_pages_cache.outputs.cache-hit}}" | tee -a $GITHUB_OUTPUT
           echo | tee -a $GITHUB_STEP_SUMMARY
           ${{ steps.gh_pages_cache.outputs.cache-hit == 'true'}} && echo '⏩ gh-pages cache restored! Skipping CI...' | tee -a $GITHUB_STEP_SUMMARY
-          ${{ steps.gh_pages_cache.outputs.cache-hit != 'true'}} && echo '🦾 Starting CI...' | tee -a $GITHUB_STEP_SUMMARY
+          ${{ steps.gh_pages_cache.outputs.cache-hit != 'true'}} && echo '🦾 gh-pages cache does not exist. Starting CI...' | tee -a $GITHUB_STEP_SUMMARY
 
   ci:
     needs: [cache-keys]
