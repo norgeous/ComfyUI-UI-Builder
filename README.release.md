@@ -9,8 +9,8 @@ Alternative configurable React UI overlay for [ComfyUI](https://github.com/comfy
 
 ## Implements
 
-- [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - Basic SDXL
+- [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - [a few more](https://github.com/norgeous/ComfyUI-UI-Builder/tree/develop/src/configs) [WIP]
 
 ## How to use
