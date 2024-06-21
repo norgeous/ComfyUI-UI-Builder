@@ -41,6 +41,7 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
+  - removing the PR once closed / merged is very slow and can be accelerated by skipping the build steps
   - add job summaries for compose and deploy jobs
   - needs to be checked more if CI is working
   - probs doesnt handle lint failure properly
