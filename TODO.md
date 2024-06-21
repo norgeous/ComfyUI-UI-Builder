@@ -1,10 +1,5 @@
 # TODO
 
-## Now
-
-- style the progress bar correctly
-- keyboard a11y outlines are broken (broken during retheme work)
-
 ## known bugs
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
@@ -14,6 +9,11 @@
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
 - rescale CFG does not activate?
+
+## Now
+
+- style the progress bar correctly
+- keyboard a11y outlines are broken (broken during retheme work)
 
 ## Next
 
