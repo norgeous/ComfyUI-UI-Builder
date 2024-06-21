@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import screenfull from 'screenfull';
 import { Container, Outer } from './styled';
