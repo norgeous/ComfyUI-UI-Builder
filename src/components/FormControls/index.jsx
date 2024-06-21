@@ -33,7 +33,7 @@ const FormControls = () => {
   }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
+    <Layout column>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout>
         {!auto && (
@@ -55,7 +55,7 @@ const FormControls = () => {
           </Button>
         </Tooltip>
       </Layout>
-    </>
+    </Layout>
   );
 };
 
