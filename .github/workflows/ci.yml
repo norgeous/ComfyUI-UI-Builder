@@ -149,7 +149,7 @@ jobs:
         if: steps.lint_cache.outputs.cache-hit != 'true'
         run: |
           mkdir lint-report
-          npm run lint | tee -a lint-report/summary.txt
+          npm run lint # | tee -a lint-report/summary.txt
           EXITCODE=$?
           echo "EXITCODE: $EXITCODE"
           echo "$EXITCODE" > lint-report/EXITCODE
