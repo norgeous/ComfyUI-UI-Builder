@@ -2,11 +2,12 @@
 
 ## Now
 
-- pressing escape when in fullscreen does not unfullscreen the html element
+- ImageGrid: pressing escape when in fullscreen does not unfullscreen the html element
 - style the progress bar correctly
 
 ## known bugs
 
+- keyboard a11y outlines are broken (broken during retheme work)
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - theme switching is not working inside of storybook
@@ -17,8 +18,8 @@
     - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
     - how to handle when utterances are updated?
 - ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
-- keyboard a11y outlines are broken (broken during retheme work)
 - rescale CFG does not activate?
+- ImageGrid: stops listening to window resize (?) after hitting generate again
 
 ## Next
 
@@ -28,6 +29,7 @@
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 - autogen should fire when any form field changes and the queue is empty
+- ImageGrid: show spinner while images are loading
 
 ## Future
 
