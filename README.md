@@ -2,7 +2,7 @@
 
 - 👉 [latest release](https://github.com/norgeous/ComfyUI-UI-Builder/)
 - 👉 [github pages](https://norgeous.github.io/ComfyUI-UI-Builder/develop/)
-- 👉 [gh-pages](https://github.com/norgeous/ComfyUI-UI-Builder/tree/gh-pages) branch
+- 👉 [gh-pages branch](https://github.com/norgeous/ComfyUI-UI-Builder/tree/gh-pages)
 
 This is almost ready for you to look at yet, but got a few things [todo](./TODO.md)
 
