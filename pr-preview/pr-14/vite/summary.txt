@@ -1,0 +1,24 @@
+
+> ui-builder@0.0.0 build
+> vite build
+
+vite v5.3.1 building for production...
+transforming...
+✓ 324 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                       0.39 kB │ gzip:     0.27 kB
+dist/assets/ui-CCWRwqdi.js            1.19 kB │ gzip:     0.56 kB
+dist/assets/ui-DvTBfsQg.js            1.43 kB │ gzip:     0.64 kB
+dist/assets/workflow-B-5AHK9g.js      3.53 kB │ gzip:     1.07 kB
+dist/assets/workflow-DL1I6gAS.js      3.53 kB │ gzip:     1.23 kB
+dist/assets/workflow-DiiP0wJ_.js      3.87 kB │ gzip:     1.30 kB
+dist/assets/workflow-D9upwNrD.js      3.87 kB │ gzip:     1.30 kB
+dist/assets/workflow-DSGEW1x3.js      3.88 kB │ gzip:     1.30 kB
+dist/assets/ui-65Qd45Dm.js            4.93 kB │ gzip:     1.36 kB
+dist/assets/ui-kL5BNJYC.js            5.02 kB │ gzip:     1.36 kB
+dist/assets/ui-Dvg6KzJf.js           15.36 kB │ gzip:     4.63 kB
+dist/assets/index-DwJXaxke.js     6,233.79 kB │ gzip: 2,494.53 kB
+✓ built in 9.39s
+
+Pass ✅
