@@ -5,7 +5,7 @@
 - seed > randomise dice icon doesnt randomise on generation or autogen
 - interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - the websocket is needlessly refreshing when switching workflows. pyramid order
-- ethnic bias broken in comfy dungeon vs original implimentation, use a PRNG based on seed to select one (or two) from the list
+- comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
 - rescale CFG does not activate?
@@ -30,6 +30,7 @@
 
 ## Future
 
+- preview "completed" prompt in sidebar?
 - image input (for ipa)
   - example UI
 - storybook mocks
