@@ -12,8 +12,6 @@
 
 ## Now
 
-- popup menu with https://floating-ui.com/docs/react
-
 ## Next
 
 - interrupt and queue features (styling 50% done already)

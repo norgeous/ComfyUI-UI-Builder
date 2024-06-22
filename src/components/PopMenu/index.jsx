@@ -8,7 +8,7 @@ import {
   useInteractions,
   autoPlacement,
 } from '@floating-ui/react';
-import { Menu, Button } from './styled';
+import { Button, Menu, MenuItem } from './styled';
 
 const PopMenu = ({ className = undefined, children = null, options = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,11 +28,6 @@ const PopMenu = ({ className = undefined, children = null, options = [] }) => {
   return (
     <>
       <Button
-        style={
-          {
-            // marginTop: '100px',
-          }
-        }
         className={className}
         ref={refs.setReference}
         onClick={() => setIsOpen(!isOpen)}
@@ -48,7 +43,7 @@ const PopMenu = ({ className = undefined, children = null, options = [] }) => {
         >
           {options.map(({ label, onClick }) => (
             <div key={label}>
-              <Button onClick={onClick}>{label}</Button>
+              <MenuItem onClick={onClick}>{label}</MenuItem>
             </div>
           ))}
         </Menu>

@@ -1,12 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import WsContext from '@/contexts/WsContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
-import Debug from '@/components/Debug';
-import { GithubIcon, StorybookIcon } from '@/components/Icons';
+import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
+import PopMenu from '@/components/PopMenu';
+import Debug from '@/components/Debug';
 import { Bar, Link, Tray } from './styled';
 
 const StatusBar = () => {
@@ -20,6 +21,38 @@ const StatusBar = () => {
     useContext(ObjectInfoContext);
   const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
+  const [debugData, setDebugData] = useState();
+  const debugOptions = [
+    { label: 'formState', onClick: () => setDebugData('formState') },
+    { label: 'adapted', onClick: () => setDebugData('adapted') },
+    {
+      label: 'baseWorkflow',
+      onClick: () => setDebugData('baseWorkflow'),
+    },
+    {
+      label: 'objectInfo',
+      onClick: () => setDebugData('objectInfo'),
+    },
+    {
+      label: 'adaptedComfyWorkflow',
+      onClick: () => setDebugData('adaptedComfyWorkflow'),
+    },
+    { label: 'bodyData', onClick: () => setDebugData('bodyData') },
+  ];
+
+  const debugDatum = {
+    formState,
+    adapted,
+    baseWorkflow,
+    objectInfo: {
+      objectInfoLoading,
+      objectInfoError,
+      objectInfo,
+    },
+    adaptedComfyWorkflow,
+    bodyData,
+  }[debugData];
+
   return (
     <Bar>
       <div>
@@ -27,15 +60,12 @@ const StatusBar = () => {
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Tray>
-        <Debug label="formState" data={formState} />
-        <Debug label="adapted" data={adapted} />
-        <Debug label="baseWorkflow" data={baseWorkflow} />
-        <Debug
-          label="objectInfo"
-          data={{ objectInfoLoading, objectInfoError, objectInfo }}
-        />
-        <Debug label="adaptedComfyWorkflow" data={adaptedComfyWorkflow} />
-        <Debug label="bodyData" data={bodyData} />
+        <PopMenu options={debugOptions}>
+          <BugIcon />
+        </PopMenu>
+        {debugData && (
+          <Debug onClick={() => setDebugData()} data={debugDatum} />
+        )}
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
           target="_blank"

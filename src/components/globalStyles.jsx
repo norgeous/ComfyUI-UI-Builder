@@ -118,18 +118,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .muted {
-    /* opacity: 0.4; */
     color: var(--fg-mute);
   }
 
   ::-webkit-scrollbar {
     width: 3px;
+    height: 3px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(155, 155, 155, 0.5);
+    background-color: var(--accent);
     border-radius: 20px;
     border: transparent;
   }

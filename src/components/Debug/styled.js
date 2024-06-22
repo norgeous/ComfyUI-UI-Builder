@@ -1,25 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  background: transparent;
-  border: none;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  color: inherit;
-  &:hover {
-    color: var(--fg0);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-`;
-
+// eslint-disable-next-line import/prefer-default-export
 export const Pre = styled.pre`
   position: absolute;
   inset: 0;
