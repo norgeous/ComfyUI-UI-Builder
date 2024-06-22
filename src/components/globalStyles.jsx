@@ -52,7 +52,7 @@ export const Theme1Style = createGlobalStyle`
         --fg2: ${inventFG(bgsLight[2])};
         --fg3: ${inventFG(bgsLight[3])};
         --fg4: ${inventFG(bgsLight[4])};
-        --fg-mute: ${inventFG(bgsLight[0])}80; // 50% opacity
+        --fg-mute: ${inventFG(bgsLight[0])}99; // 60% opacity
       `;
 
       const dark = css`
@@ -66,7 +66,7 @@ export const Theme1Style = createGlobalStyle`
         --fg2: ${inventFG(bgsDark[2])};
         --fg3: ${inventFG(bgsDark[3])};
         --fg4: ${inventFG(bgsDark[4])};
-        --fg-mute: ${inventFG(bgsDark[0])}80; // 50% opacity
+        --fg-mute: ${inventFG(bgsDark[0])}99; // 60% opacity
       `;
 
       return css`
