@@ -7,19 +7,19 @@ export default {
 };
 
 const One = styled.div`
-  padding: 5px;
+  padding: 10px;
   background: cyan;
 `;
 const Two = styled.div`
-  padding: 5px;
+  padding: 10px;
   background: yellow;
 `;
 const Thr = styled.div`
-  padding: 5px;
+  padding: 10px;
   background: magenta;
 `;
 const Fou = styled.div`
-  padding: 5px;
+  padding: 10px;
   background: black;
 `;
 
