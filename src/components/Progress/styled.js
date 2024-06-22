@@ -16,6 +16,7 @@ export const Progress = styled.progress.attrs({ max: 1 })`
   }
   &::-webkit-progress-value {
     background: var(--accent);
+    border-radius: var(--radius);
   }
 
   // firefox
@@ -23,5 +24,6 @@ export const Progress = styled.progress.attrs({ max: 1 })`
   border-radius: var(--radius); // firefox only
   &::-moz-progress-bar {
     background: var(--accent);
+    border-radius: var(--radius);
   }
 `;
