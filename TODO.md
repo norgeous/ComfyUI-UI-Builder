@@ -12,10 +12,11 @@
 
 ## Now
 
-## Next
-
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
+
+## Next
+
 - autogen should fire when any form field changes and the queue is empty
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
