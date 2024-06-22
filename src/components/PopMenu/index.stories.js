@@ -12,7 +12,6 @@ export const PopMenu = {
     options: [
       { label: 'Option 1', onClick: fn() },
       { label: 'Option 2', onClick: fn() },
-      { label: 'Option 3', onClick: fn() },
     ],
   },
   play: async ({ canvasElement }) => {

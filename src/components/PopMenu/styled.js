@@ -5,7 +5,7 @@ export const Button = styled.button`
   background: transparent;
   border: none;
   color: var(--fg-mute);
-  border-radius: 4px;
+  border-radius: var(--radius);
   &:hover {
     color: var(--fg);
   }
