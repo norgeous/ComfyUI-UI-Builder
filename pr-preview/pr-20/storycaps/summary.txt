@@ -6,88 +6,88 @@ info Wait for connecting storybook server http://localhost:6006.
 info Executable Chromium path: /home/runner/.cache/puppeteer/chrome/linux-126.0.6478.63/chrome-linux64/chrome
 info Storycap runs with managed mode
 info Found 52 stories.
-info Screenshot stored: ../../_storycaps_/Collapsable/Collapsable.png in 3327 msec.
-info Screenshot stored: ../../_storycaps_/Button/Primary.png in 3360 msec.
-info Screenshot stored: ../../_storycaps_/Button/Secondary.png in 3446 msec.
-info Screenshot stored: ../../_storycaps_/App/App.png in 3542 msec.
-info Screenshot stored: ../../_storycaps_/ErrorText/Error Text.png in 2164 msec.
-info Screenshot stored: ../../_storycaps_/Debug/Debug.png in 2248 msec.
-info Screenshot stored: ../../_storycaps_/FormControls/Form Controls.png in 2176 msec.
-info Screenshot stored: ../../_storycaps_/FormBuilder/Form Builder.png in 2480 msec.
-info Screenshot stored: ../../_storycaps_/HeaderButton/Header Button.png in 2148 msec.
-info Screenshot stored: ../../_storycaps_/FormHeader/Form Header.png in 2201 msec.
-info Screenshot stored: ../../_storycaps_/HeaderInfo/Header Info.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/Collapsable/Collapsable.png in 3409 msec.
+info Screenshot stored: ../../_storycaps_/Button/Secondary.png in 3491 msec.
+info Screenshot stored: ../../_storycaps_/Button/Primary.png in 3557 msec.
+info Screenshot stored: ../../_storycaps_/App/App.png in 3688 msec.
+info Screenshot stored: ../../_storycaps_/Debug/Debug.png in 2229 msec.
+info Screenshot stored: ../../_storycaps_/ErrorText/Error Text.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/FormControls/Form Controls.png in 2175 msec.
+info Screenshot stored: ../../_storycaps_/FormBuilder/Form Builder.png in 2498 msec.
+info Screenshot stored: ../../_storycaps_/HeaderButton/Header Button.png in 2182 msec.
+info Screenshot stored: ../../_storycaps_/FormHeader/Form Header.png in 2200 msec.
+info Screenshot stored: ../../_storycaps_/HeaderInfo/Header Info.png in 2151 msec.
 info Screenshot stored: ../../_storycaps_/HeaderToggle/Header Toggle.png in 2156 msec.
-info Screenshot stored: ../../_storycaps_/Icons/Icons.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputCheckbox/Input Checkbox.png in 2194 msec.
-info Screenshot stored: ../../_storycaps_/InputFile/Input File.png in 2262 msec.
-info Screenshot stored: ../../_storycaps_/InputHeader/Input Header.png in 2148 msec.
+info Screenshot stored: ../../_storycaps_/Icons/Icons.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputCheckbox/Input Checkbox.png in 2279 msec.
+info Screenshot stored: ../../_storycaps_/InputFile/Input File.png in 2274 msec.
+info Screenshot stored: ../../_storycaps_/InputHeader/Input Header.png in 2169 msec.
 info Screenshot stored: ../../_storycaps_/InputMissing/Input Missing.png in 2148 msec.
-info Screenshot stored: ../../_storycaps_/InputNumber/Input Number.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputNumber/Input Number.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/InputRange/Dual.png in 2146 msec.
-info Screenshot stored: ../../_storycaps_/InputRange/Pips.png in 2232 msec.
+info Screenshot stored: ../../_storycaps_/InputRange/Pips.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/InputSeed/Input Seed.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/InputSelect/Input Select.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputSelect/Input Select.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/InputSelectCkpt/Input Select Ckpt.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/InputSpeech/Input Speech.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/InputText/Input Text.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/InputText/Input Text.png in 2150 msec.
 info Screenshot stored: ../../_storycaps_/InputTextarea/Input Textarea.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/InputWrapper/Input Wrapper.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/Layout/Layout.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/MainContent/Main Content.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/PopMenu/Pop Menu.png in 2182 msec.
-info Screenshot stored: ../../_storycaps_/Progress/Progress.png in 2167 msec.
-info Screenshot stored: ../../_storycaps_/Pyramid/Pyramid.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/InputWrapper/Input Wrapper.png in 2148 msec.
+info Screenshot stored: ../../_storycaps_/Layout/Layout.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/MainContent/Main Content.png in 2167 msec.
+info Screenshot stored: ../../_storycaps_/Progress/Progress.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/PopMenu/Pop Menu.png in 2165 msec.
+info Screenshot stored: ../../_storycaps_/Pyramid/Pyramid.png in 2165 msec.
 info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Error.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Loading.png in 2150 msec.
 info Screenshot stored: ../../_storycaps_/QueueItem/Loading.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/ResetButton/Reset Button.png in 2166 msec.
+info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Loading.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/ResetButton/Reset Button.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/Sidebar/Sidebar.png in 2495 msec.
-info Screenshot stored: ../../_storycaps_/StatusBar/Status Bar.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/StatusLight/Status Light.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/Tooltip/Tooltip.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/Button/Primary_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/Collapsable/Collapsable_dark.png in 2472 msec.
-info Screenshot stored: ../../_storycaps_/Button/Secondary_dark.png in 2167 msec.
-info Screenshot stored: ../../_storycaps_/App/App_dark.png in 2489 msec.
-info Screenshot stored: ../../_storycaps_/ErrorText/Error Text_dark.png in 2113 msec.
-info Screenshot stored: ../../_storycaps_/App/App_small.png in 2546 msec.
-info Screenshot stored: ../../_storycaps_/App/App_small_dark.png in 2500 msec.
-info Screenshot stored: ../../_storycaps_/Debug/Debug_dark.png in 2460 msec.
-info Screenshot stored: ../../_storycaps_/FormControls/Form Controls_dark.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/HeaderButton/Header Button_dark.png in 2449 msec.
-info Screenshot stored: ../../_storycaps_/FormBuilder/Form Builder_dark.png in 2500 msec.
-info Screenshot stored: ../../_storycaps_/FormHeader/Form Header_dark.png in 2168 msec.
-info Screenshot stored: ../../_storycaps_/HeaderInfo/Header Info_dark.png in 2171 msec.
-info Screenshot stored: ../../_storycaps_/HeaderToggle/Header Toggle_dark.png in 2181 msec.
-info Screenshot stored: ../../_storycaps_/InputCheckbox/Input Checkbox_dark.png in 2165 msec.
-info Screenshot stored: ../../_storycaps_/Icons/Icons_dark.png in 2218 msec.
-info Screenshot stored: ../../_storycaps_/InputFile/Input File_dark.png in 2154 msec.
+info Screenshot stored: ../../_storycaps_/StatusLight/Status Light.png in 2148 msec.
+info Screenshot stored: ../../_storycaps_/StatusBar/Status Bar.png in 2166 msec.
+info Screenshot stored: ../../_storycaps_/Tooltip/Tooltip.png in 2166 msec.
+info Screenshot stored: ../../_storycaps_/Button/Secondary_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/Button/Primary_dark.png in 2151 msec.
+info Screenshot stored: ../../_storycaps_/Collapsable/Collapsable_dark.png in 2474 msec.
+info Screenshot stored: ../../_storycaps_/App/App_dark.png in 2539 msec.
+info Screenshot stored: ../../_storycaps_/Debug/Debug_dark.png in 2172 msec.
+info Screenshot stored: ../../_storycaps_/App/App_small.png in 2600 msec.
+info Screenshot stored: ../../_storycaps_/App/App_small_dark.png in 2583 msec.
+info Screenshot stored: ../../_storycaps_/ErrorText/Error Text_dark.png in 2477 msec.
+info Screenshot stored: ../../_storycaps_/FormControls/Form Controls_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/HeaderButton/Header Button_dark.png in 2463 msec.
+info Screenshot stored: ../../_storycaps_/FormBuilder/Form Builder_dark.png in 2497 msec.
+info Screenshot stored: ../../_storycaps_/FormHeader/Form Header_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/HeaderInfo/Header Info_dark.png in 2257 msec.
+info Screenshot stored: ../../_storycaps_/HeaderToggle/Header Toggle_dark.png in 2161 msec.
+info Screenshot stored: ../../_storycaps_/Icons/Icons_dark.png in 2173 msec.
+info Screenshot stored: ../../_storycaps_/InputCheckbox/Input Checkbox_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/InputFile/Input File_dark.png in 2186 msec.
 info Screenshot stored: ../../_storycaps_/InputHeader/Input Header_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputMissing/Input Missing_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputMissing/Input Missing_dark.png in 2148 msec.
 info Screenshot stored: ../../_storycaps_/InputNumber/Input Number_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputRange/Dual_dark.png in 2146 msec.
-info Screenshot stored: ../../_storycaps_/InputRange/Pips_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputSeed/Input Seed_dark.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/InputSelect/Input Select_dark.png in 2167 msec.
+info Screenshot stored: ../../_storycaps_/InputRange/Dual_dark.png in 2162 msec.
+info Screenshot stored: ../../_storycaps_/InputRange/Pips_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputSeed/Input Seed_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputSelect/Input Select_dark.png in 2166 msec.
 info Screenshot stored: ../../_storycaps_/InputSelectCkpt/Input Select Ckpt_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputSpeech/Input Speech_dark.png in 2167 msec.
-info Screenshot stored: ../../_storycaps_/InputText/Input Text_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/InputTextarea/Input Textarea_dark.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/InputWrapper/Input Wrapper_dark.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/Layout/Layout_dark.png in 2166 msec.
-info Screenshot stored: ../../_storycaps_/MainContent/Main Content_dark.png in 2148 msec.
-info Screenshot stored: ../../_storycaps_/PopMenu/Pop Menu_dark.png in 2182 msec.
-info Screenshot stored: ../../_storycaps_/Progress/Progress_dark.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/Pyramid/Pyramid_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Error_dark.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Loading_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputSpeech/Input Speech_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/InputText/Input Text_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputTextarea/Input Textarea_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/InputWrapper/Input Wrapper_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/Layout/Layout_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/MainContent/Main Content_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/Progress/Progress_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/PopMenu/Pop Menu_dark.png in 2166 msec.
+info Screenshot stored: ../../_storycaps_/Pyramid/Pyramid_dark.png in 2148 msec.
+info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Error_dark.png in 2166 msec.
 info Screenshot stored: ../../_storycaps_/QueueItem/Loading_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/QueueItem/Interrupt Loading_dark.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/ResetButton/Reset Button_dark.png in 2149 msec.
-info Screenshot stored: ../../_storycaps_/StatusBar/Status Bar_dark.png in 2149 msec.
+info Screenshot stored: ../../_storycaps_/StatusLight/Status Light_dark.png in 2149 msec.
 info Screenshot stored: ../../_storycaps_/Sidebar/Sidebar_dark.png in 2479 msec.
-info Screenshot stored: ../../_storycaps_/StatusLight/Status Light_dark.png in 2150 msec.
-info Screenshot stored: ../../_storycaps_/Tooltip/Tooltip_dark.png in 2150 msec.
-info Screenshot was ended successfully in 51314 msec capturing 82 PNGs.
+info Screenshot stored: ../../_storycaps_/StatusBar/Status Bar_dark.png in 2150 msec.
+info Screenshot stored: ../../_storycaps_/Tooltip/Tooltip_dark.png in 2149 msec.
+info Screenshot was ended successfully in 51261 msec capturing 82 PNGs.
 
 Pass ✅
