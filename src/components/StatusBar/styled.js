@@ -17,5 +17,12 @@ export const Tray = styled.div`
 `;
 
 export const Link = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: inherit;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
 `;

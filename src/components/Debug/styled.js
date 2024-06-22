@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   background: transparent;
   color: var(--fg0);
@@ -12,6 +14,10 @@ export const Button = styled.button`
   opacity: 0.5;
   &:hover {
     opacity: 1;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
   }
 `;
 
