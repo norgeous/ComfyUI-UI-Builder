@@ -49,6 +49,11 @@ export const Input = styled.input.attrs({ type: 'range' })`
   background-repeat: no-repeat;
   background-size: ${({ value, max }) => `${100 * (value / max)}%`} 100%;
 
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   &::-moz-range-track {
     ${track}
   }
@@ -59,7 +64,7 @@ export const Input = styled.input.attrs({ type: 'range' })`
     ${thumb}
   }
 
-  -webkit-appearance: none;
+  appearance: none;
   &::-webkit-slider-runnable-track {
     ${track}
   }

@@ -15,7 +15,7 @@ export const Textarea = styled.textarea`
   padding: 4px 8px;
   resize: vertical;
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 `;

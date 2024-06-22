@@ -8,6 +8,7 @@ export const Progress = styled.progress.attrs({ max: 1 })`
   border-radius: 0;
   height: 8px;
   border: 0;
+
   // webkit (chrome)
   &::-webkit-progress-bar {
     background: var(--bg2);
@@ -16,8 +17,8 @@ export const Progress = styled.progress.attrs({ max: 1 })`
     background: var(--accent);
   }
 
-  // firefox only
-  background: var(--bg2);
+  // firefox
+  background: var(--bg2); // firefox only
   &::-moz-progress-bar {
     background: var(--accent);
   }

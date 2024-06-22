@@ -18,7 +18,7 @@ export const CollapsableHeader = styled.button`
   cursor: pointer;
   border: none;
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: -2px;
   }
 `;

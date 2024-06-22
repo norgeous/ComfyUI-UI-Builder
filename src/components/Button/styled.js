@@ -29,4 +29,8 @@ export const Btn = styled.button.attrs({ type: 'button' })`
   }}
   font-size: 14px;
   line-height: 14px;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 `;

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import WsContext from '@/contexts/WsContext';
+import { Light } from './styled';
 
 const emojis = {
   DEFAULT: '⚫',
@@ -10,7 +11,7 @@ const emojis = {
 
 const StatusLight = () => {
   const { wsStatus } = useContext(WsContext);
-  return emojis[wsStatus];
+  return <Light>{emojis[wsStatus]}</Light>;
 };
 
 export default StatusLight;
