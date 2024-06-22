@@ -11,6 +11,7 @@ export const Loading = {
     jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
+    progress: 0.25,
     onInterrupt: fn(),
   },
 };
@@ -20,6 +21,7 @@ export const InterruptLoading = {
     jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
+    progress: 0.5,
     onInterrupt: fn(),
     interruptLoading: true,
   },
@@ -30,6 +32,7 @@ export const InterruptError = {
     jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
+    progress: 0.75,
     onInterrupt: fn(),
     interruptError: 'There was a problem with the interrupt',
   },
