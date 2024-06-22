@@ -74,7 +74,7 @@ jobs:
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
-      - name: 💾 Save lint-report
+      - name: 💾 Save npm-install-report
         if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('node_modules') != '' }}
         uses: actions/cache/save@v4
         with:
@@ -256,7 +256,7 @@ jobs:
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
-      - name: 💾 Save storybook-test
+      - name: 💾 Save storybook-static
         if: ${{ steps.storybook_static_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
         uses: actions/cache/save@v4
         with:

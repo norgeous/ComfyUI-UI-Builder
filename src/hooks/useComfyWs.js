@@ -35,7 +35,7 @@ const useComfyWs = clientId => {
           const nodeType = config.baseWorkflow.nodes.find(
             ({ id }) => id === Number(data.data.node),
           ).type;
-          setLastWsMessage(`EXECUTING ${nodeType}`);
+          setLastWsMessage(nodeType);
         }
       },
       executed: data => {

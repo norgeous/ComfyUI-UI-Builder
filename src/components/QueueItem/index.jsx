@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import { SpinnerIcon, InterruptIcon, WarningIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
+import Progress from '@/components/Progress';
 import { QueueTitle } from './styled';
 
 const getInterruptIcon = ({ interruptLoading, interruptError }) => {
@@ -12,21 +13,21 @@ const getInterruptIcon = ({ interruptLoading, interruptError }) => {
 };
 
 const QueueItem = ({
-  jobName = '',
   isLoading = false,
   status = 'unknown',
+  progress = 0,
   onInterrupt = () => {},
   interruptLoading = false,
   interruptError = '',
 }) => (
   <Layout center>
     {isLoading && <SpinnerIcon />}
-    <QueueTitle>
-      {jobName} ({status})
-    </QueueTitle>
-    <Tooltip text={interruptError || `Interrupt ${jobName}`}>
+    <QueueTitle>{status}</QueueTitle>
+
+    <Progress value={progress} />
+    <Tooltip text={interruptError || 'Interrupt'}>
       <Button
-        aria-label={interruptError || `Interrupt ${jobName}`}
+        aria-label={interruptError || 'Interrupt'}
         disabled={interruptLoading}
         onClick={onInterrupt}
       >
@@ -37,9 +38,9 @@ const QueueItem = ({
 );
 
 QueueItem.propTypes = {
-  jobName: PropTypes.string,
   isLoading: PropTypes.bool,
   status: PropTypes.string,
+  progress: PropTypes.number,
   onInterrupt: PropTypes.func,
   interruptLoading: PropTypes.bool,
   interruptError: PropTypes.string,

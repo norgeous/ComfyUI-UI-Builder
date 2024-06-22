@@ -8,18 +8,18 @@ export default {
 
 export const Loading = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
-    status: 'Running...',
+    status: 'Running…',
+    progress: 0.25,
     onInterrupt: fn(),
   },
 };
 
 export const InterruptLoading = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
-    status: 'Running...',
+    status: 'Running…',
+    progress: 0.5,
     onInterrupt: fn(),
     interruptLoading: true,
   },
@@ -27,9 +27,9 @@ export const InterruptLoading = {
 
 export const InterruptError = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
-    status: 'Running...',
+    status: 'Running…',
+    progress: 0.75,
     onInterrupt: fn(),
     interruptError: 'There was a problem with the interrupt',
   },

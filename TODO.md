@@ -3,19 +3,20 @@
 ## Known Bugs
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 - the websocket is needlessly refreshing when switching workflows. pyramid order
 - comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
-- rescale CFG does not activate?
+- rescale CFG does not activate? maybe
 
 ## Now
 
-## Next
-
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
+- interrupt prompt doesn't work in dev mode (connect to same address as ws)
+
+## Next
+
 - autogen should fire when any form field changes and the queue is empty
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
