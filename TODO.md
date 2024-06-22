@@ -12,7 +12,6 @@
 
 ## Now
 
-- keyboard a11y outlines are broken (broken during retheme work)
 - popup menu with https://floating-ui.com/docs/react
 
 ## Next

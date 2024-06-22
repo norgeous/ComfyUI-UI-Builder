@@ -13,7 +13,7 @@ export const Input = styled.input.attrs({ type: 'number' })`
   border-radius: var(--radius);
   padding: 8px 4px;
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 `;

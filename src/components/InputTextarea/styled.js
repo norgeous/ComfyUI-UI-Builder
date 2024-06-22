@@ -11,7 +11,7 @@ export const Textarea = styled.textarea`
   width: 100%;
   border-radius: var(--radius);
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
   min-height: 80px;

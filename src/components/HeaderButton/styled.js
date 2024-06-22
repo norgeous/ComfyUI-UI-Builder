@@ -10,7 +10,7 @@ export const InputHeaderButton = styled.button`
   font-size: 0.75rem; // 12px
   padding: 0;
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
     border-radius: var(--radius);
   }

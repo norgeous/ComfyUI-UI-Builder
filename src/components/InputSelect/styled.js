@@ -13,7 +13,7 @@ export const Select = styled.select`
   border-radius: var(--radius);
   padding: 8px 4px;
   &:focus-visible {
-    outline: 2px solid var(--input-outline);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 `;
