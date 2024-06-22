@@ -2,6 +2,17 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   display: block;
+  background: transparent;
+  border: none;
+  color: var(--fg-mute);
+  border-radius: 4px;
+  &:hover {
+    color: var(--fg);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
 `;
 
 export const Menu = styled.span`
