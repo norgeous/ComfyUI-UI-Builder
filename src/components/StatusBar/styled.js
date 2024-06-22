@@ -5,6 +5,7 @@ export const Bar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 4px;
+  color: var(--fg-mute);
   background: var(--page-bg);
   padding: 4px;
 `;
@@ -21,6 +22,9 @@ export const Link = styled.a`
   justify-content: center;
   align-items: center;
   color: inherit;
+  &:hover {
+    color: var(--fg0);
+  }
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: -2px;

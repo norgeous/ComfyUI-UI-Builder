@@ -6,14 +6,13 @@ export const Button = styled.button`
   align-items: center;
   padding: 0;
   background: transparent;
-  color: var(--fg0);
   border: none;
   width: 18px;
   height: 18px;
   cursor: pointer;
-  opacity: 0.5;
+  color: inherit;
   &:hover {
-    opacity: 1;
+    color: var(--fg0);
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
