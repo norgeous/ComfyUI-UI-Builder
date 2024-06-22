@@ -4,7 +4,7 @@ import WsContext from '@/contexts/WsContext';
 import QueueItem from '@/components/QueueItem';
 
 const Queue = () => {
-  const { progress, isGenerating } = useContext(WsContext);
+  const { progress, lastWsMessage, isGenerating } = useContext(WsContext);
 
   const { executeInterrupt, interruptLoading, interruptError } =
     useContext(AppContext);
@@ -13,9 +13,8 @@ const Queue = () => {
 
   return (
     <QueueItem
-      jobName="Job 1"
       isLoading={isGenerating}
-      status="Running..."
+      status={`${lastWsMessage} ${isGenerating && `${Math.round(progress * 100)}%`}`}
       progress={progress}
       onInterrupt={executeInterrupt}
       interruptLoading={interruptLoading}

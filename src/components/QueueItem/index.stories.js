@@ -8,7 +8,6 @@ export default {
 
 export const Loading = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
     progress: 0.25,
@@ -18,7 +17,6 @@ export const Loading = {
 
 export const InterruptLoading = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
     progress: 0.5,
@@ -29,7 +27,6 @@ export const InterruptLoading = {
 
 export const InterruptError = {
   args: {
-    jobName: 'Job 1',
     isLoading: true,
     status: 'Running…',
     progress: 0.75,
