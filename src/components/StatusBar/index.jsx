@@ -60,24 +60,26 @@ const StatusBar = () => {
         {isGenerating && `${Math.round(progress * 100)}%`}
       </div>
       <Tray>
-        <PopMenu options={debugOptions}>
-          <BugIcon />
-        </PopMenu>
-        {debugData && (
-          <Debug onClick={() => setDebugData()} data={debugDatum} />
-        )}
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
           target="_blank"
         >
           <GithubIcon aria-label="Github" />
         </Link>
+
         <Link
           href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
           target="_blank"
         >
           <StorybookIcon aria-label="Storybook" />
         </Link>
+
+        <PopMenu aria-label="Debug Data Options" options={debugOptions}>
+          <BugIcon />
+        </PopMenu>
+        {debugData && (
+          <Debug onClick={() => setDebugData()} data={debugDatum} />
+        )}
       </Tray>
     </Bar>
   );

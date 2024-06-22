@@ -10,7 +10,12 @@ import {
 } from '@floating-ui/react';
 import { Button, Menu, MenuItem } from './styled';
 
-const PopMenu = ({ className = undefined, children = null, options = [] }) => {
+const PopMenu = ({
+  className = undefined,
+  children = null,
+  options = [],
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     placement: 'auto',
@@ -28,6 +33,7 @@ const PopMenu = ({ className = undefined, children = null, options = [] }) => {
   return (
     <>
       <Button
+        {...props} // eslint-disable-line react/jsx-props-no-spreading
         className={className}
         ref={refs.setReference}
         onClick={() => setIsOpen(!isOpen)}

@@ -2,9 +2,9 @@
 
 Alternative configurable React UI overlay for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 
-[![Preview](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/_storycaps_/App/App_dark.png 'Preview')](https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/)
-
 - 👉 Source code is in [develop](https://github.com/norgeous/ComfyUI-UI-Builder/tree/develop) branch
+
+[![Preview](https://raw.githubusercontent.com/norgeous/ComfyUI-UI-Builder/develop/_storycaps_/App/App_dark.png 'Preview')](https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/)
 
 ## Implements
 
