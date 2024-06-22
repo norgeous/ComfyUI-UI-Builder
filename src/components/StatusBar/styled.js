@@ -6,7 +6,7 @@ export const Bar = styled.div`
   justify-content: space-between;
   gap: 4px;
   color: var(--fg-mute);
-  background: var(--page-bg);
+  background: var(--bg0);
   padding: 4px;
 `;
 
