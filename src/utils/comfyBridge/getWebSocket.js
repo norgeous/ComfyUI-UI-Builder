@@ -13,7 +13,7 @@ const socketPromise = (url, onChange) =>
   });
 
 // try to make socket from list, one-by-one until it opens or timeout occurs
-const getWebSocket = async ({ clientId, wsUrls, onChange }) => {
+const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
   let socket;
 
   for (let i = 0; i < wsUrls.length; i += 1) {
@@ -34,6 +34,8 @@ const getWebSocket = async ({ clientId, wsUrls, onChange }) => {
 
   if (!socket) throw new Error('no socket found, retry is not implemented yet');
 
+  onConnect();
+
   socket.addEventListener('close', event => onChange({ closeEvent: event }));
   socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console
   socket.addEventListener('message', event =>
@@ -44,7 +46,7 @@ const getWebSocket = async ({ clientId, wsUrls, onChange }) => {
 
   onChange({ comfyUrl });
 
-  // return comfyUrl;
+  return socket;
 };
 
 export default getWebSocket;

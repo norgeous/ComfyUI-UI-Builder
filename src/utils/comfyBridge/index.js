@@ -12,31 +12,65 @@ import simpleFetch from './simpleFetch';
 // - image and video uploading and downloading
 
 const defaultWsUrls = [
-  `ws://localhost:${window.location.port}`,
   'ws://localhost:8188',
+  `ws://localhost:${window.location.port}`,
   `ws://${window.location.hostname}:${window.location.port}`,
 ];
 
+// find open websocket (and attach callbacks) from a list of urls
+// TODO: add retry here
+const connectWs = ({
+  wsUrls = defaultWsUrls,
+  onChange = () => {},
+  onConnect = () => {},
+}) => {
+  const wsId = uuidv4();
+  onChange({ wsId });
+  return getWebSocket({
+    clientId: wsId,
+    wsUrls,
+    onChange,
+    onConnect,
+  });
+};
+
+// Get all the object info (node info)
+const getObjectInfo = ({ comfyUrl, onChange }) => {
+  if (!comfyUrl) return;
+  simpleFetch({
+    url: `${comfyUrl}/object_info`,
+    onChange,
+    adapter: res => res.json(),
+  });
+};
+
 // callback based object for communicating with comfyui api
 const comfyBridge = () => {
-  // find open websocket (and attach callbacks) from a list of urls
-  // TODO: add retry here
-  const connectWs = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
-    const wsId = uuidv4();
-    onChange({ wsId });
-    getWebSocket({
-      clientId: wsId,
-      wsUrls,
-      onChange,
-    });
+  const state = {
+    ws: {},
+    objectInfo: {},
   };
 
-  // Get all the object info (node info)
-  const getObjectInfo = ({ comfyUrl, onChange }) => {
-    simpleFetch({
-      url: `${comfyUrl}/object_info`,
-      onChange,
-      adapter: res => res.json(),
+  const connect = async ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
+    const handleChangeWs = newData => {
+      state.ws = { ...state.ws, ...newData };
+      onChange(state);
+    };
+
+    const handleChangeObjectInfo = newData => {
+      state.objectInfo = { ...state.objectInfo, ...newData };
+      onChange(state);
+    };
+
+    state.socket = await connectWs({
+      wsUrls,
+      onChange: handleChangeWs,
+      onConnect: () => {
+        getObjectInfo({
+          comfyUrl: state.ws.comfyUrl,
+          onChange: handleChangeObjectInfo,
+        });
+      },
     });
   };
 
@@ -59,7 +93,20 @@ const comfyBridge = () => {
     });
   };
 
-  return { connectWs, getObjectInfo, prompt };
+  const destroy = () => {
+    state.ws = undefined;
+    state.objectInfo = undefined;
+    state.socket?.close();
+  };
+
+  return {
+    state,
+    connect,
+    // connectWs,
+    // getObjectInfo,
+    prompt,
+    destroy,
+  };
 };
 
 export default comfyBridge;
