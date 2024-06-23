@@ -10,7 +10,10 @@
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/contexts/ComfyBridgeProvider.jsx
   15:5  warning  Unexpected console statement  no-console
 
-✖ 1 problem (0 errors, 1 warning)
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/comfyBridge/index.js
+  57:7  warning  Unexpected console statement  no-console
+
+✖ 2 problems (0 errors, 2 warnings)
 
 
 Pass ✅
