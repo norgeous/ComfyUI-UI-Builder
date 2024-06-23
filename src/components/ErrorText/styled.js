@@ -12,6 +12,7 @@ export const Box = styled.div`
 
 export const DismissButton = styled.button`
   cursor: pointer;
+  color: inherit;
   background: transparent;
   border: none;
   padding: 6px;
