@@ -38,7 +38,7 @@ const comfyBridge = () => {
   // Get all the object info (node info)
   const getObjectInfo = async ({ comfyUrl }) => {
     // fetch
-    console.log({ comfyUrl });
+    console.log({ comfyUrl }); // eslint-disable-line no-console
   };
 
   // prompting

@@ -28,7 +28,7 @@ const getWebSocket = async ({ clientId, wsUrls, onChangeWs }) => {
         break; // stop searching
       }
     } catch (error) {
-      // console.error(error);
+      console.error(error); // eslint-disable-line no-console
     }
   }
 

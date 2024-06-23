@@ -39,6 +39,7 @@
   - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
   - separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
+  - lint should also report how many occurences of "eslint-disable" rules that there are across all files
   - use tmp dir for reports / command outputs / exitcodes
   - abstracting repeated code / DRY up the CI
   - delete preview job also runs the release by accident
