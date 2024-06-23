@@ -54,6 +54,7 @@ const comfyBridge = () => {
   const connect = async ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
     const handleChangeWs = newData => {
       state.ws = { ...state.ws, ...newData };
+      console.log('calling the original react', state);
       onChange(state);
     };
 
@@ -62,7 +63,7 @@ const comfyBridge = () => {
       onChange(state);
     };
 
-    state.socket = await connectWs({
+    connectWs({
       wsUrls,
       onChange: handleChangeWs,
       onConnect: () => {

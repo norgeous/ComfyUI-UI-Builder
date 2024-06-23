@@ -44,7 +44,7 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
 
   const comfyUrl = `http://${new URL(socket.url).host}`;
 
-  onChange({ comfyUrl });
+  onChange({ comfyUrl, socket });
 
   return socket;
 };

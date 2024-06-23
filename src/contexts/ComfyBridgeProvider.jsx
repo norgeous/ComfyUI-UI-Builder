@@ -13,7 +13,9 @@ const ComfyBridgeProvider = ({ children = null }) => {
   // TODO: if this fails to connect, perhaps display a message about ComfyUI --listen setting
   useEffect(() => {
     console.log('do i fire once?');
-    bridge.connect({ onChange: setData });
+    bridge.connect({
+      onChange: newData => setData(oldData => ({ ...oldData, ...newData })),
+    });
     return () => bridge.destroy();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
