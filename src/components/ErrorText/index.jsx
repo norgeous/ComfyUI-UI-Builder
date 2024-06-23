@@ -9,7 +9,10 @@ const ErrorText = ({ children }) => {
   return (
     <Box>
       <WarningIcon /> {children}
-      <DismissButton onClick={() => setHiddenByUser(true)}>
+      <DismissButton
+        onClick={() => setHiddenByUser(true)}
+        aria-label="Dismiss error message"
+      >
         <DismissIcon />
       </DismissButton>
     </Box>
