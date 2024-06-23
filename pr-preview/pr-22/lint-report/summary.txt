@@ -7,4 +7,10 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/contexts/ComfyBridgeProvider.jsx
+  15:5  warning  Unexpected console statement  no-console
+
+✖ 1 problem (0 errors, 1 warning)
+
+
 Pass ✅
