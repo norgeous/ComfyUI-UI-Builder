@@ -41,10 +41,7 @@ const FormControls = () => {
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
           </Button>
         )}
-        <Tooltip
-          text="Automatic Generation (on change to Positive Prompt when the queue is empty)"
-          wide={auto}
-        >
+        <Tooltip text="Automatic Generation" wide={auto}>
           <Button
             variant="secondary"
             aria-label="Automatic Generation"
