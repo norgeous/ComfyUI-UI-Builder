@@ -1,4 +1,4 @@
-import getFormInitialState from '../utils/getFormInitialState';
+import getFormInitialState from '@/utils/getFormInitialState';
 
 const files = import.meta.glob('./**/*.json');
 

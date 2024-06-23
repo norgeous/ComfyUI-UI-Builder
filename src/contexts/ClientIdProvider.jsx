@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
+import uuidv4 from '@/utils/uuidv4';
 import ClientIdContext from './ClientIdContext';
-import uuidv4 from '../utils/uuidv4';
 
 const clientId = uuidv4(); // generated every time the page refreshes
 

@@ -1,4 +1,4 @@
-import uuidv4 from '../uuidv4';
+import uuidv4 from '@/utils/uuidv4';
 import getWebSocket from './getWebSocket';
 
 // new package to do the following (without react)

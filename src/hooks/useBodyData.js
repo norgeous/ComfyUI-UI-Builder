@@ -1,7 +1,7 @@
 import comfyWorkflowToComfyPrompt, {
   insertIntoComfyWorkFlow,
-} from '../utils/comfyBridge/comfyWorkflowToComfyPrompt';
-import executeAdapter from '../utils/executeAdapter';
+} from '@/utils/comfyBridge/comfyWorkflowToComfyPrompt';
+import executeAdapter from '@/utils/executeAdapter';
 
 const useBodyData = ({
   clientId,
