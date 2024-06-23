@@ -11,9 +11,6 @@
 
 ## Now
 
-- interrupt and queue features (styling 50% done already)
-  - using multiple instances, how should queue work? clientId adjustments...
-
 ## Next
 
 - autogen should fire when any form field changes and the queue is empty
