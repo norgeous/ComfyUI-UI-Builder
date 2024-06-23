@@ -1,7 +1,7 @@
 // new package to do the following (without react)
 
 // - websockets
-//   - find the ws!
+//   - find the ws! retry if not found
 //   - current node name
 //   - progress
 // - get objectInfo
