@@ -34,6 +34,8 @@
 - toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
 - ws reconnect / error message overlay or toaster
 - ImageGrid: show spinner while images are loading
+- ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
+- ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
