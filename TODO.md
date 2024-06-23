@@ -13,7 +13,6 @@
 
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
-- interrupt prompt doesn't work in dev mode (connect to same address as ws)
 
 ## Next
 
