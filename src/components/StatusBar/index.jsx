@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import ComfyBridgeContext from '@/contexts/ComfyBridgeContext';
 import WsContext from '@/contexts/WsContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
@@ -11,6 +12,7 @@ import Debug from '@/components/Debug';
 import { Bar, Link, Tray } from './styled';
 
 const StatusBar = () => {
+  const comfyBridge = useContext(ComfyBridgeContext);
   const { comfyUrl } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
@@ -20,8 +22,9 @@ const StatusBar = () => {
     useContext(ObjectInfoContext);
   const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
-  const [debugData, setDebugData] = useState();
+  const [debugData, setDebugData] = useState('comfyBridge');
   const debugOptions = [
+    { label: 'comfyBridge', onClick: () => setDebugData('comfyBridge') },
     { label: 'formState', onClick: () => setDebugData('formState') },
     { label: 'adapted', onClick: () => setDebugData('adapted') },
     {
@@ -40,6 +43,7 @@ const StatusBar = () => {
   ];
 
   const debugDatum = {
+    comfyBridge,
     formState,
     adapted,
     baseWorkflow,

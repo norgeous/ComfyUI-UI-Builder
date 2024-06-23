@@ -1,5 +1,6 @@
 import uuidv4 from '@/utils/uuidv4';
 import getWebSocket from './getWebSocket';
+import simpleFetch from './simpleFetch';
 
 // new package to do the following (without react)
 
@@ -11,45 +12,51 @@ import getWebSocket from './getWebSocket';
 // - image and video uploading and downloading
 
 const defaultWsUrls = [
-  'ws://localhost:8188',
   `ws://localhost:${window.location.port}`,
+  'ws://localhost:8188',
   `ws://${window.location.hostname}:${window.location.port}`,
 ];
 
+// callback based object for communicating with comfyui api
 const comfyBridge = () => {
-  // find open websocket (and attach callback) from a list of urls
-  // returns the url of comfy, for later GET requests to API
+  // find open websocket (and attach callbacks) from a list of urls
   // TODO: add retry here
-  const connectWs = async ({
-    wsUrls = defaultWsUrls,
-    onChangeWs = () => {},
-  }) => {
-    // create uuid for websocket
+  const connectWs = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
     const wsId = uuidv4();
-
-    const comfyUrl = await getWebSocket({
+    onChange({ wsId });
+    getWebSocket({
       clientId: wsId,
       wsUrls,
-      onChangeWs,
+      onChange,
     });
-
-    return comfyUrl;
   };
 
   // Get all the object info (node info)
-  const getObjectInfo = async ({ comfyUrl }) => {
-    // fetch
-    console.log({ comfyUrl }); // eslint-disable-line no-console
+  const getObjectInfo = ({ comfyUrl, onChange }) => {
+    simpleFetch({
+      url: `${comfyUrl}/object_info`,
+      onChange,
+      adapter: res => res.json(),
+    });
   };
 
   // prompting
-  const prompt = async () => {
-    // create uuid for this job
+  const prompt = ({ comfyUrl, promptData, onChange }) => {
     const jobId = uuidv4();
-
-    // fetch
-
-    return jobId;
+    onChange({ jobId });
+    simpleFetch({
+      url: `${comfyUrl}/prompt`,
+      options: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id: jobId,
+          prompt: promptData,
+        }),
+      },
+      onChange,
+      adapter: res => res.json(),
+    });
   };
 
   return { connectWs, getObjectInfo, prompt };

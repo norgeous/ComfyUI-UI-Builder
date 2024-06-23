@@ -10,10 +10,6 @@ const simpleFetch = ({
   fetch(url, {
     method: 'GET',
     cache: 'no-cache',
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Access-Control-Allow-Origin': '*',
-    },
     ...options,
   })
     .then(async res => {
