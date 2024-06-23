@@ -4,7 +4,7 @@ import useComfyApi from './useComfyApi';
 
 const useComfyInterrupt = () => {
   const { comfyUrl } = useContext(WsContext);
-  useComfyApi({
+  return useComfyApi({
     fetchUrl: `${comfyUrl}/interrupt`,
     options: {
       method: 'POST',
