@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import getWebSocket from '@/utils/websocket';
 import ConfigsContext from '@/contexts/ConfigsContext';
+import getWebSocket from '@/utils/comfyBridge/getWebSocket';
 
 const urls = [
   'ws://localhost:8188',
