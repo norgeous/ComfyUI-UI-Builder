@@ -19,6 +19,7 @@ const defaultWsUrls = [
 const comfyBridge = () => {
   // find open websocket (and attach callback) from a list of urls
   // returns the url of comfy, for later GET requests to API
+  // TODO: add retry here
   const connectWs = async ({
     wsUrls = defaultWsUrls,
     onChangeWs = () => {},
