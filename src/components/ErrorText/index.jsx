@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
-import { WarningIcon } from '@/components/Icons';
-import { Box } from './styled';
+import { DismissIcon, WarningIcon } from '@/components/Icons';
+import { useState } from 'react';
+import { Box, DismissButton } from './styled';
 
-const ErrorText = ({ children }) => (
-  <Box>
-    <WarningIcon /> {children}
-  </Box>
-);
+const ErrorText = ({ children }) => {
+  const [hiddenByUser, setHiddenByUser] = useState(false);
+  if (hiddenByUser) return null;
+  return (
+    <Box>
+      <WarningIcon /> {children}
+      <DismissButton onClick={() => setHiddenByUser(true)}>
+        <DismissIcon />
+      </DismissButton>
+    </Box>
+  );
+};
 
 ErrorText.propTypes = {
   children: PropTypes.node.isRequired,
