@@ -23,7 +23,7 @@ export const Btn = styled.button.attrs({ type: 'button' })`
       return css`
         background: transparent;
         color: var(--fg0);
-        border: 1px solid var(--bg4);
+        border: 1px solid var(--bg5);
       `;
     return undefined;
   }}
