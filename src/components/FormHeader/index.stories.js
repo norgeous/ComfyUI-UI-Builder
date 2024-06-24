@@ -6,5 +6,6 @@ export default {
 };
 
 export const FormHeader = {
+  parameters: { layout: 'fullscreen' },
   args: {},
 };
