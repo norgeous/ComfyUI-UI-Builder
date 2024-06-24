@@ -5,9 +5,10 @@ import component from '.';
 const HoverMe = styled.div`
   border: 1px solid red;
   margin: 0 auto;
-  width: 100px;
+  width: 60px;
   text-align: center;
   padding: 5px;
+  font-size: 12px;
 `;
 
 export default {
