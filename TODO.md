@@ -54,6 +54,7 @@
   - versioning
   - using github releases?
   - report and check bundle size / dist dir size
+  - rename the develop/vite dir in `gh-pages` to `release/build`
 - save current formData to LS?
   - reset all to default button?
 - pwa
