@@ -9,7 +9,7 @@ export default {
 export const HeaderButton = {
   args: {
     label: 'I am a HeaderButton',
-    children: 'R',
+    children: 'H',
   },
   play: async ({ canvasElement }) => {
     await userEvent.hover(canvasElement.querySelector('span'));
