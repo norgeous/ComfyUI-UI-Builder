@@ -11,7 +11,7 @@
 
 ## Now
 
-- interrupt and queue features (styling 50% done already)
+- interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
 
 ## Next
