@@ -53,6 +53,7 @@
   - smaller job summaries
   - versioning
   - using github releases?
+  - report bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
 - pwa
