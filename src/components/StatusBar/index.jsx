@@ -13,7 +13,7 @@ import { Bar, Link, Tray } from './styled';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
-  const { comfyUrl } = useContext(WsContext);
+  const { wsStatus, comfyUrl } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -59,7 +59,7 @@ const StatusBar = () => {
   return (
     <Bar>
       <div>
-        <StatusLight /> {comfyUrl}
+        <StatusLight status={wsStatus} /> {comfyUrl}
       </div>
       <Tray>
         <Link
