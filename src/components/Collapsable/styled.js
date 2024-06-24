@@ -6,8 +6,8 @@ export const CollapsableContainer = styled.div`
 `;
 
 export const CollapsableHeader = styled.button`
-  background: var(--bg3);
-  color: var(--fg3);
+  background: var(--bg5);
+  color: var(--fg5);
 
   width: 100%;
   display: flex;
@@ -30,8 +30,8 @@ export const HeaderText = styled.div`
 `;
 
 export const Collapse = styled.div`
-  background: var(--bg2);
-  color: var(--fg2);
+  background: var(--bg4);
+  color: var(--fg4);
 
   display: grid;
   transition: grid-template-rows 350ms;

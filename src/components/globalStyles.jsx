@@ -26,20 +26,20 @@ export const Theme1Style = createGlobalStyle`
       const [bg, accent] = [parts[0], parts[1] || parts[0]];
 
       const bgsLight = [
-        setOKLCHLightness(bg, 0.95),
         setOKLCHLightness(bg, 0.9),
-        setOKLCHLightness(bg, 0.85),
-        setOKLCHLightness(bg, 0.8),
-        setOKLCHLightness(bg, 0.75),
+        setOKLCHLightness(bg, 0.86),
+        setOKLCHLightness(bg, 0.82),
+        setOKLCHLightness(bg, 0.78),
+        setOKLCHLightness(bg, 0.74),
         setOKLCHLightness(bg, 0.7),
       ];
 
       const bgsDark = [
-        setOKLCHLightness(bg, 0.05),
         setOKLCHLightness(bg, 0.1),
-        setOKLCHLightness(bg, 0.15),
-        setOKLCHLightness(bg, 0.2),
-        setOKLCHLightness(bg, 0.25),
+        setOKLCHLightness(bg, 0.14),
+        setOKLCHLightness(bg, 0.18),
+        setOKLCHLightness(bg, 0.22),
+        setOKLCHLightness(bg, 0.26),
         setOKLCHLightness(bg, 0.3),
       ];
 
