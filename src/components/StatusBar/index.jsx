@@ -58,9 +58,7 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      <div>
-        <StatusLight status={wsStatus} /> {comfyUrl}
-      </div>
+      <StatusLight status={wsStatus} /> {comfyUrl}
       <Tray>
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
