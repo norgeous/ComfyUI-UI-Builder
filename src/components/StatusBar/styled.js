@@ -5,8 +5,8 @@ export const Bar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 4px;
-  color: var(--fg-mute);
   background: var(--bg0);
+  color: var(--fg-mute);
   padding: 4px;
 `;
 

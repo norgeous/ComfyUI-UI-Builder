@@ -5,7 +5,6 @@ import { bgfg } from '@/components/GlobalStyles';
 export const Textarea = styled.textarea`
   ${bgfg(3)}
   border: 1px solid var(--bg4);
-
   display: block;
   box-sizing: border-box;
   width: 100%;
