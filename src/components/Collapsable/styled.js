@@ -7,7 +7,7 @@ export const CollapsableContainer = styled.div`
 `;
 
 export const CollapsableHeader = styled.button`
-  ${bgfg(5)}
+  ${bgfg(4)}
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,7 @@ export const HeaderText = styled.div`
 `;
 
 export const Collapse = styled.div`
-  ${bgfg(4)}
+  ${bgfg(3)}
   display: grid;
   transition: grid-template-rows 350ms;
   grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
