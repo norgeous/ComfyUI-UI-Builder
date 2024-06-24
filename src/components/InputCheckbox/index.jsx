@@ -24,7 +24,7 @@ const InputCheckbox = ({
   const { label: checkboxLabel } = options[index];
 
   return (
-    <Layout gap="sm" column>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
