@@ -25,7 +25,6 @@ export const TooltipText = styled.span`
   z-index: 1;
   top: 100%;
   left: 50%;
-  margin-top: 5px;
   transform: translate(-50%);
   white-space: preserve-breaks;
 `;

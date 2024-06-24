@@ -1,11 +1,19 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useFloating, offset, flip, shift, arrow } from '@floating-ui/react';
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  arrow,
+} from '@floating-ui/react';
 import { Arrow, TooltipText, TooltipWrap } from './styled';
 
 const Tooltip = ({
   className = undefined,
   text = undefined,
+  placement = 'top',
   wide = false,
   lm = false,
   children = null,
@@ -13,15 +21,16 @@ const Tooltip = ({
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef(null);
   const { refs, floatingStyles, context } = useFloating({
-    placement: 'top',
+    placement,
     middleware: [
-      offset(14),
+      offset(7),
       flip(),
       shift({ padding: 2 }),
       arrow({ element: arrowRef }),
     ],
     open: isOpen,
     onOpenChange: setIsOpen,
+    whileElementsMounted: autoUpdate,
   });
 
   return (
@@ -48,6 +57,7 @@ const Tooltip = ({
 
 Tooltip.propTypes = {
   className: PropTypes.string,
+  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   text: PropTypes.string,
   lm: PropTypes.bool,
   wide: PropTypes.bool,

@@ -2,10 +2,20 @@ import { userEvent } from '@storybook/test';
 import styled from 'styled-components';
 import component from '.';
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+`;
+
 const HoverMe = styled.div`
-  border: 1px solid red;
-  margin: 0 auto;
-  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f55;
+  width: 30px;
+  height: 30px;
   text-align: center;
   padding: 5px;
   font-size: 12px;
@@ -14,11 +24,52 @@ const HoverMe = styled.div`
 export default {
   title: 'Tooltip',
   component,
+  decorators: [
+    S => (
+      <Container>
+        <S />
+      </Container>
+    ),
+  ],
 };
 
-export const Tooltip = {
+export const Top = {
   args: {
-    text: 'This is the tooltip text!',
+    text: 'My Tooltip',
+    placement: 'top',
+    children: <HoverMe>Hover Me</HoverMe>,
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
+  },
+};
+
+export const Right = {
+  args: {
+    text: 'My Tooltip',
+    placement: 'right',
+    children: <HoverMe>Hover Me</HoverMe>,
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
+  },
+};
+
+export const Bottom = {
+  args: {
+    text: 'My Tooltip',
+    placement: 'bottom',
+    children: <HoverMe>Hover Me</HoverMe>,
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
+  },
+};
+
+export const Left = {
+  args: {
+    text: 'My Tooltip',
+    placement: 'left',
     children: <HoverMe>Hover Me</HoverMe>,
   },
   play: async ({ canvasElement }) => {
