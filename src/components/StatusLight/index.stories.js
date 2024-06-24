@@ -1,3 +1,4 @@
+import { userEvent, within } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -6,29 +7,37 @@ export default {
 };
 
 export const DEFAULT = {
-  parameters: { screenshot: { viewport: { width: 54, height: 54 } } },
   args: {
     status: 'DEFAULT',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };
 
 export const CONNECTING = {
-  parameters: { screenshot: { viewport: { width: 54, height: 54 } } },
   args: {
     status: 'CONNECTING',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };
 
 export const CONNECTED = {
-  parameters: { screenshot: { viewport: { width: 54, height: 54 } } },
   args: {
     status: 'CONNECTED',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };
 
 export const DISCONNECTED = {
-  parameters: { screenshot: { viewport: { width: 54, height: 54 } } },
   args: {
     status: 'DISCONNECTED',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };
