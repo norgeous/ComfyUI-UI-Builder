@@ -17,7 +17,7 @@ const Tooltip = ({
     middleware: [
       offset(14),
       flip(),
-      shift({ padding: 14 }),
+      shift({ padding: 2 }),
       arrow({ element: arrowRef }),
     ],
     open: isOpen,
