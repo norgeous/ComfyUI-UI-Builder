@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { bgfg } from '@/components/GlobalStyles';
 
 export const CollapsableContainer = styled.div`
   border-radius: var(--radius);
@@ -6,9 +7,7 @@ export const CollapsableContainer = styled.div`
 `;
 
 export const CollapsableHeader = styled.button`
-  background: var(--bg3);
-  color: var(--fg3);
-
+  ${bgfg(4)}
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -30,9 +29,7 @@ export const HeaderText = styled.div`
 `;
 
 export const Collapse = styled.div`
-  background: var(--bg2);
-  color: var(--fg2);
-
+  ${bgfg(3)}
   display: grid;
   transition: grid-template-rows 350ms;
   grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};

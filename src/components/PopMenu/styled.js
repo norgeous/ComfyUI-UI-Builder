@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { bgfg } from '@/components/GlobalStyles';
 
 export const Button = styled.button`
   cursor: pointer;
@@ -20,10 +21,9 @@ export const Button = styled.button`
 `;
 
 export const Menu = styled.span`
+  ${bgfg(1)}
   position: absolute;
   font-size: 0.75rem; // 12px
-  background: var(--bg1);
-  color: var(--fg1);
   text-align: center;
   border-radius: 6px;
   padding: 8px;

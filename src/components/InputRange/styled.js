@@ -15,7 +15,7 @@ const track = css`
   width: 100%;
   height: 8px;
   cursor: pointer;
-  border: 1px solid var(--bg4);
+  border: 1px solid var(--bg5);
   border-radius: 100px;
 `;
 

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputNumber from '@/components/InputNumber';
 import HeaderToggle from '@/components/HeaderToggle';
-import { RandomiseIcon, ShuffleIcon } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
+import { RandomiseIcon, ShuffleIcon } from '@/components/Icons';
 
 const InputSeed = ({
   value = undefined,
