@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
-import InputWrapper from '@/components/InputWrapper';
 import { Select } from './styled';
 
 const InputSelect = ({
@@ -22,7 +22,7 @@ const InputSelect = ({
   );
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
@@ -38,7 +38,7 @@ const InputSelect = ({
           </option>
         ))}
       </Select>
-    </InputWrapper>
+    </Layout>
   );
 };
 

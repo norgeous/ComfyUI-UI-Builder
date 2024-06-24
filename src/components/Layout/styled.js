@@ -2,21 +2,21 @@ import styled, { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Flex = styled.div`
-  display: flex;
-  gap: 8px;
-  ${({ $column }) =>
-    $column &&
+  ${({ $pad }) =>
+    $pad &&
     css`
-      flex-direction: column;
+      padding: 8px;
     `}
+  display: flex;
   ${({ $center }) =>
     $center &&
     css`
       align-items: center;
     `}
-  ${({ $pad }) =>
-    $pad &&
+  gap: ${({ $gap }) => ({ sm: '4px' })[$gap] || '8px'};
+  ${({ $column }) =>
+    $column &&
     css`
-      padding: 8px;
+      flex-direction: column;
     `}
 `;

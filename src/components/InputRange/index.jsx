@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
-import { ArrowLeftIcon, ArrowRightIcon } from '@/components/Icons';
-import InputWrapper from '@/components/InputWrapper';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
+import { ArrowLeftIcon, ArrowRightIcon } from '@/components/Icons';
 import {
   RangeWrapper,
   RangeInner,
@@ -39,7 +39,7 @@ const InputRange = ({
   };
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
@@ -92,7 +92,7 @@ const InputRange = ({
           )}
         </Sublabels>
       </RangeWrapper>
-    </InputWrapper>
+    </Layout>
   );
 };
 
