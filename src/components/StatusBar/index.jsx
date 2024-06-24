@@ -58,7 +58,7 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      <Tray>
+      <Tray $shrinkable>
         <StatusLight status={comfyBridge.ws?.status} />
         <StatusText>
           {comfyBridge.ws?.wsStatus} {comfyUrl}
