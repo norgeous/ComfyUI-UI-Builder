@@ -13,10 +13,12 @@ const HoverMe = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f55;
+  background: #0ff;
+  color: black;
+  font-weight: bold;
   width: 60px;
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   font-size: 12px;
 `;
 
