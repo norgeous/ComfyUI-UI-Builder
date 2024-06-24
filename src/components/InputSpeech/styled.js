@@ -10,7 +10,7 @@ export const Textarea = styled.textarea`
   box-sizing: border-box;
   width: 100%;
   border-radius: var(--radius);
-  min-height: 80px;
+  min-height: 60px;
   line-height: 21px;
   padding: 4px 8px;
   resize: vertical;
