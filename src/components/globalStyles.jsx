@@ -26,19 +26,21 @@ export const Theme1Style = createGlobalStyle`
       const [bg, accent] = [parts[0], parts[1] || parts[0]];
 
       const bgsLight = [
-        setOKLCHLightness(bg, 0.92),
-        setOKLCHLightness(bg, 0.84),
-        setOKLCHLightness(bg, 0.76),
-        setOKLCHLightness(bg, 0.68),
-        setOKLCHLightness(bg, 0.5),
+        setOKLCHLightness(bg, 0.95),
+        setOKLCHLightness(bg, 0.9),
+        setOKLCHLightness(bg, 0.85),
+        setOKLCHLightness(bg, 0.8),
+        setOKLCHLightness(bg, 0.75),
+        setOKLCHLightness(bg, 0.7),
       ];
 
       const bgsDark = [
-        setOKLCHLightness(bg, 0.08),
-        setOKLCHLightness(bg, 0.16),
-        setOKLCHLightness(bg, 0.24),
-        setOKLCHLightness(bg, 0.32),
-        setOKLCHLightness(bg, 0.5),
+        setOKLCHLightness(bg, 0.05),
+        setOKLCHLightness(bg, 0.1),
+        setOKLCHLightness(bg, 0.15),
+        setOKLCHLightness(bg, 0.2),
+        setOKLCHLightness(bg, 0.25),
+        setOKLCHLightness(bg, 0.3),
       ];
 
       const light = css`
@@ -47,11 +49,13 @@ export const Theme1Style = createGlobalStyle`
         --bg2: ${bgsLight[2]};
         --bg3: ${bgsLight[3]};
         --bg4: ${bgsLight[4]};
+        --bg5: ${bgsLight[5]};
         --fg0: ${inventFG(bgsLight[0])};
         --fg1: ${inventFG(bgsLight[1])};
         --fg2: ${inventFG(bgsLight[2])};
         --fg3: ${inventFG(bgsLight[3])};
         --fg4: ${inventFG(bgsLight[4])};
+        --fg5: ${inventFG(bgsLight[5])};
         --fg-mute: ${inventFG(bgsLight[0])}99; // 60% opacity
       `;
 
@@ -61,11 +65,13 @@ export const Theme1Style = createGlobalStyle`
         --bg2: ${bgsDark[2]};
         --bg3: ${bgsDark[3]};
         --bg4: ${bgsDark[4]};
+        --bg5: ${bgsDark[5]};
         --fg0: ${inventFG(bgsDark[0])};
         --fg1: ${inventFG(bgsDark[1])};
         --fg2: ${inventFG(bgsDark[2])};
         --fg3: ${inventFG(bgsDark[3])};
         --fg4: ${inventFG(bgsDark[4])};
+        --fg5: ${inventFG(bgsDark[5])};
         --fg-mute: ${inventFG(bgsDark[0])}99; // 60% opacity
       `;
 
@@ -122,8 +128,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
