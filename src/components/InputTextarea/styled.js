@@ -14,7 +14,7 @@ export const Textarea = styled.textarea`
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-  min-height: 80px;
+  min-height: 60px;
   line-height: 21px;
   padding: 4px 8px;
   resize: vertical;
