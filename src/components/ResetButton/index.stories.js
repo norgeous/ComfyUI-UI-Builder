@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test';
+import { fn, userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -9,5 +9,8 @@ export default {
 export const ResetButton = {
   args: {
     onClick: fn(),
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };

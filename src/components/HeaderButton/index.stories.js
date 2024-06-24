@@ -1,3 +1,4 @@
+import { userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -7,7 +8,10 @@ export default {
 
 export const HeaderButton = {
   args: {
-    label: 'test label',
+    label: 'I am a HeaderButton',
     children: 'R',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };
