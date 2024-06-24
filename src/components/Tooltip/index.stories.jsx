@@ -14,8 +14,7 @@ const HoverMe = styled.div`
   justify-content: center;
   align-items: center;
   background: #f55;
-  width: 30px;
-  height: 30px;
+  width: 60px;
   text-align: center;
   padding: 5px;
   font-size: 12px;
