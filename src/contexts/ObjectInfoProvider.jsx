@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import useComfyApi from '@/hooks/useComfyApi';
 import ObjectInfoContext from './ObjectInfoContext';
-import useComfyApi from '../hooks/useComfyApi';
 import WsContext from './WsContext';
 
 const ObjectInfoProvider = ({ children = null }) => {

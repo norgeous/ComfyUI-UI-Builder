@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import noop from '../utils/noop';
+import noop from '@/utils/noop';
 
 const ConfigsContext = createContext({
   config: {
