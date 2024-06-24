@@ -22,8 +22,8 @@ export const Btn = styled.button.attrs({ type: 'button' })`
     if ($variant === 'secondary')
       return css`
         background: transparent;
-        border: 1px solid var(--bg4);
         color: var(--fg0);
+        border: 1px solid var(--bg4);
       `;
     return undefined;
   }}
