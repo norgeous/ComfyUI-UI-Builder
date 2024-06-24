@@ -16,11 +16,9 @@ export const Scrollable = styled.div`
 `;
 
 export const Header = styled.header`
-  background: var(--bg2);
-  color: var(--fg2);
+  ${bgfg(2)}
 `;
 
 export const Footer = styled.footer`
-  background: var(--bg2);
-  color: var(--fg2);
+  ${bgfg(2)}
 `;
