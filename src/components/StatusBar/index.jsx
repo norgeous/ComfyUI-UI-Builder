@@ -11,7 +11,7 @@ import Debug from '@/components/Debug';
 import { Bar, Link, Tray } from './styled';
 
 const StatusBar = () => {
-  const { comfyUrl } = useContext(WsContext);
+  const { wsStatus, comfyUrl } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -54,9 +54,7 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      <div>
-        <StatusLight /> {comfyUrl}
-      </div>
+      <StatusLight status={wsStatus} /> {comfyUrl}
       <Tray>
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"

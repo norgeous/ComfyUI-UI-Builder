@@ -4,6 +4,7 @@ export const Button = styled.button`
   cursor: pointer;
   display: block;
   background: transparent;
+  font-size: inherit;
   border: none;
   color: var(--fg-mute);
   border-radius: var(--radius);
