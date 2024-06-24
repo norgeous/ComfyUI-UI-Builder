@@ -25,9 +25,9 @@ export default {
   title: 'Tooltip',
   component,
   decorators: [
-    S => (
+    Story => (
       <Container>
-        <S />
+        <Story />
       </Container>
     ),
   ],

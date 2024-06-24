@@ -23,9 +23,9 @@ const Tooltip = ({
   const { refs, floatingStyles, context } = useFloating({
     placement,
     middleware: [
-      offset(7),
+      offset(10),
       flip(),
-      shift({ padding: 2 }),
+      shift({ padding: 4 }),
       arrow({ element: arrowRef }),
     ],
     open: isOpen,
