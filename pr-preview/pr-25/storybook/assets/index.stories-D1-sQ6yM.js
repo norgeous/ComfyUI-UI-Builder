@@ -1,3 +1,0 @@
-import{c as s}from"./index-DRJiN5Gl.js";import"./jsx-runtime-X2b_N9AH.js";import"./index-uCp2LrAq.js";import"./_commonjsHelpers-BosuxZz1.js";import"./index-D3ylJrlI.js";import"./index-BiKVFdKX.js";import"./styled-components.browser.esm-Drpn4GzW.js";import"./index-BAMY2Nnw.js";import"./index-ENyULWse.js";import"./floating-ui.react-CDqbCaSC.js";import"./index-BOkhicXD.js";const x={title:"HeaderInfo",component:s},r={args:{}};var o,e,t;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
-  args: {}
-}`,...(t=(e=r.parameters)==null?void 0:e.docs)==null?void 0:t.source}}};const H=["HeaderInfo"];export{r as HeaderInfo,H as __namedExportsOrder,x as default};
