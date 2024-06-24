@@ -22,7 +22,7 @@ const StatusBar = () => {
     useContext(ObjectInfoContext);
   const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
-  const [debugData, setDebugData] = useState('comfyBridge');
+  const [debugData, setDebugData] = useState();
   const debugOptions = [
     { label: 'comfyBridge', onClick: () => setDebugData('comfyBridge') },
     { label: 'formState', onClick: () => setDebugData('formState') },
