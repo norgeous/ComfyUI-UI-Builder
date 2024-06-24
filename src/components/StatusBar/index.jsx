@@ -8,7 +8,7 @@ import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
-import { Bar, Link, Tray } from './styled';
+import { Bar, Link, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
   const { wsStatus, comfyUrl } = useContext(WsContext);
@@ -54,7 +54,10 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      <StatusLight status={wsStatus} /> {comfyUrl}
+      <Tray $shrinkable>
+        <StatusLight status={wsStatus} />
+        <StatusText>{comfyUrl}</StatusText>
+      </Tray>
       <Tray>
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
