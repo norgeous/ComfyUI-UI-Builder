@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons';
-import InputWrapper from '@/components/InputWrapper';
 import { Textarea } from './styled';
 
 // prevent ctrl+up moving to start of input
@@ -81,7 +81,7 @@ const InputTextarea = ({
   };
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         <ArrowUpIcon />
         <ArrowDownIcon />
@@ -95,7 +95,7 @@ const InputTextarea = ({
         onKeyDown={preventer}
         onKeyUp={specialControls}
       />
-    </InputWrapper>
+    </Layout>
   );
 };
 

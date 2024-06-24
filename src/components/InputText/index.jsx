@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
-import InputWrapper from '@/components/InputWrapper';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import { Input } from './styled';
 
@@ -17,7 +17,7 @@ const InputText = ({
   const ref = useContext(InputRefContext);
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
@@ -35,7 +35,7 @@ const InputText = ({
           ))}
         </datalist>
       )}
-    </InputWrapper>
+    </Layout>
   );
 };
 

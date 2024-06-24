@@ -2,11 +2,11 @@ import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import SpeechContext from '@/contexts/SpeechContext';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import ErrorText from '@/components/ErrorText';
 import { SpinnerIcon, MicMutedIcon, MicUnmutedIcon } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
-import InputWrapper from '@/components/InputWrapper';
 import { Textarea } from './styled';
 
 const InputTextarea = ({
@@ -30,7 +30,7 @@ const InputTextarea = ({
   }, [tail]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {!vosk && !loading && (
           <HeaderButton
@@ -63,7 +63,7 @@ const InputTextarea = ({
         value={value}
         onChange={event => onChange(event.target.value)}
       />
-    </InputWrapper>
+    </Layout>
   );
 };
 
