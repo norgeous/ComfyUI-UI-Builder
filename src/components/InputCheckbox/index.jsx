@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
+import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
-import InputWrapper from '@/components/InputWrapper';
 import { Label, Checkbox } from './styled';
 
 const InputCheckbox = ({
@@ -24,7 +24,7 @@ const InputCheckbox = ({
   const { label: checkboxLabel } = options[index];
 
   return (
-    <InputWrapper>
+    <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
@@ -38,7 +38,7 @@ const InputCheckbox = ({
         />{' '}
         {checkboxLabel}
       </Label>
-    </InputWrapper>
+    </Layout>
   );
 };
 

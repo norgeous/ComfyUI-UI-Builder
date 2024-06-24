@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import Select from '@/components/InputSelect';
+import Layout from '@/components/Layout';
 import ErrorText from '@/components/ErrorText';
-import InputWrapper from '@/components/InputWrapper';
 import Button from '@/components/Button';
 import { Img, Input } from './styled';
 
@@ -51,7 +51,7 @@ const InputFile = ({
         value={value}
         onChange={handleSelectChange}
       />
-      <InputWrapper>
+      <Layout pad column gap="sm">
         <Button variant="secondary" onClick={() => ref.current.click()}>
           Choose a new file to upload...
         </Button>
@@ -62,7 +62,7 @@ const InputFile = ({
           onChange={handleFileChange}
         />
         {error && <ErrorText>{error}</ErrorText>}
-      </InputWrapper>
+      </Layout>
     </>
   );
 };
