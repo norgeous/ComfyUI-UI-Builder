@@ -19,6 +19,6 @@ dist/assets/ui-65Qd45Dm.js            4.93 kB │ gzip:     1.36 kB
 dist/assets/ui-kL5BNJYC.js            5.02 kB │ gzip:     1.36 kB
 dist/assets/ui-Dvg6KzJf.js           15.36 kB │ gzip:     4.63 kB
 dist/assets/index-B6z96tNF.js     6,245.40 kB │ gzip: 2,497.90 kB
-✓ built in 9.02s
+✓ built in 9.24s
 
 Pass ✅
