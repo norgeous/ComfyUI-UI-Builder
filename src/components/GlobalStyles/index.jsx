@@ -31,7 +31,7 @@ export const Theme1Style = createGlobalStyle`
         setOKLCHLightness(bg, 0.82),
         setOKLCHLightness(bg, 0.78),
         setOKLCHLightness(bg, 0.74),
-        setOKLCHLightness(bg, 0.7),
+        setOKLCHLightness(bg, 0.55),
       ];
 
       const bgsDark = [
@@ -40,7 +40,7 @@ export const Theme1Style = createGlobalStyle`
         setOKLCHLightness(bg, 0.18),
         setOKLCHLightness(bg, 0.22),
         setOKLCHLightness(bg, 0.26),
-        setOKLCHLightness(bg, 0.3),
+        setOKLCHLightness(bg, 0.45),
       ];
 
       const light = css`
