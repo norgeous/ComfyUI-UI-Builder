@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { FloatingArrow } from '@floating-ui/react';
 
 export const TooltipWrap = styled.span`
+  display: inline-flex;
   ${({ $lm }) =>
     $lm &&
     css`
