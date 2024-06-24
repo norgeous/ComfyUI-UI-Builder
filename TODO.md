@@ -8,7 +8,6 @@
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
 - rescale CFG does not activate? maybe
-- tooltip placement is not correct in all stories
 
 ## Now
 
