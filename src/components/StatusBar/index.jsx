@@ -9,11 +9,11 @@ import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
-import { Bar, Link, Tray } from './styled';
+import { Bar, Link, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
-  const { wsStatus, comfyUrl } = useContext(WsContext);
+  const { comfyUrl } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -58,7 +58,12 @@ const StatusBar = () => {
 
   return (
     <Bar>
-      <StatusLight status={wsStatus} /> {comfyUrl}
+      <Tray>
+        <StatusLight status={comfyBridge.ws?.status} />
+        <StatusText>
+          {comfyBridge.ws?.wsStatus} {comfyUrl}
+        </StatusText>
+      </Tray>
       <Tray>
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"

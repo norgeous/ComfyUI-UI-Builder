@@ -6,15 +6,21 @@ export const Bar = styled.div`
   justify-content: space-between;
   gap: 4px;
   color: var(--fg-mute);
-  background: var(--bg0);
+  background: var(--bg1);
   padding: 4px;
+  font-size: 18px;
 `;
 
 export const Tray = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 4px;
   overflow-x: auto;
+`;
+
+export const StatusText = styled.div`
+  font-size: 12px;
 `;
 
 export const Link = styled.a`

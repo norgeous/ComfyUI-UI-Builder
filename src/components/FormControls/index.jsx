@@ -5,8 +5,8 @@ import WsContext from '@/contexts/WsContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
-import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
+import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 
 const FormControls = () => {
   const { isGenerating } = useContext(WsContext);

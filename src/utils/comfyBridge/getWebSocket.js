@@ -1,4 +1,4 @@
-const TIMEOUT = 1000;
+const TIMEOUT = 1500;
 
 const socketPromise = (url, onChange) =>
   new Promise((resolve, reject) => {

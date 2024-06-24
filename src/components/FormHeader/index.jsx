@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import Select from '@/components/InputSelect';
-import { Description, Header } from './styled';
+import { Description } from './styled';
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);
@@ -21,7 +21,7 @@ const UiSelector = () => {
   const value = config.configData.name;
 
   return (
-    <Header>
+    <>
       <Select
         id="ui"
         label="UI Builder"
@@ -33,7 +33,7 @@ const UiSelector = () => {
       <Description className="muted">
         {config.configData.description}
       </Description>
-    </Header>
+    </>
   );
 };
 

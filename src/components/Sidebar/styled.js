@@ -16,3 +16,13 @@ export const Scrollable = styled.div`
   overflow-y: auto;
   flex-grow: 1;
 `;
+
+export const Header = styled.header`
+  background: var(--bg2);
+  color: var(--fg2);
+`;
+
+export const Footer = styled.footer`
+  background: var(--bg2);
+  color: var(--fg2);
+`;
