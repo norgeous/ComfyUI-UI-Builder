@@ -34,14 +34,19 @@
 - storybook mocks
   - mock for comfyui websocket
   - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
+- toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
 - ws reconnect / error message overlay or toaster
 - ImageGrid: show spinner while images are loading
+- ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
+- ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
   - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
   - separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
+  - lint should also report how many occurences of "eslint-disable" rules that there are across all files
+  - report on js files that have code comments containing "TODO"
   - use tmp dir for reports / command outputs / exitcodes
   - abstracting repeated code / DRY up the CI
   - delete preview job also runs the release by accident
@@ -51,6 +56,7 @@
   - smaller job summaries
   - versioning
   - using github releases?
+  - report and check bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
 - pwa

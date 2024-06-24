@@ -1,3 +1,4 @@
+import { fn, userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -7,6 +8,12 @@ export default {
 
 export const HeaderToggle = {
   args: {
-    children: 'hello',
+    label: 'I am a HeaderToggle',
+    value: true,
+    onChange: fn(),
+    children: 'T',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
   },
 };

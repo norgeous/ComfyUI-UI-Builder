@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test';
+import { fn, within, userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -12,6 +12,10 @@ export const Loading = {
     status: 'Running…',
     progress: 0.25,
     onInterrupt: fn(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
   },
 };
 

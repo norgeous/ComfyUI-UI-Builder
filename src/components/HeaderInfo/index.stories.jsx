@@ -1,3 +1,4 @@
+import { userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -6,5 +7,10 @@ export default {
 };
 
 export const HeaderInfo = {
-  args: {},
+  args: {
+    text: 'I am a HeaderInfo',
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.hover(canvasElement.querySelector('span'));
+  },
 };
