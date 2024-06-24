@@ -78,6 +78,7 @@ const comfyBridge = () => {
   // prompting
   const prompt = ({ comfyUrl, promptData, onChange }) => {
     const jobId = uuidv4();
+    // TODO: the job id needs to go into the queue
     onChange({ jobId });
     simpleFetch({
       url: `${comfyUrl}/prompt`,
