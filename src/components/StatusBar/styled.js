@@ -8,7 +8,6 @@ export const Bar = styled.div`
   color: var(--fg-mute);
   background: var(--bg1);
   padding: 4px;
-  font-size: 18px;
 `;
 
 export const Tray = styled.div`
@@ -20,7 +19,7 @@ export const Tray = styled.div`
 `;
 
 export const StatusText = styled.div`
-  font-size: 12px;
+  font-size: 10px;
 `;
 
 export const Link = styled.a`
