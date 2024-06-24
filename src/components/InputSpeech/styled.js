@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { bgfg } from '@/components/GlobalStyles';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Textarea = styled.textarea`
-  background: var(--bg3);
-  color: var(--fg3);
+  ${bgfg(3)}
   border: 1px solid var(--bg4);
 
   display: block;

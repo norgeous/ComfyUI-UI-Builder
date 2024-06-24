@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import { bgfg } from '@/components/GlobalStyles';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Select = styled.select`
-  background: var(--bg3);
-  color: var(--fg3);
+  ${bgfg(3)}
   border: 1px solid var(--bg4);
-
   display: block;
   width: 100%;
   min-width: 100%;
