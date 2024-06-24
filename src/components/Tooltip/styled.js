@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FloatingArrow } from '@floating-ui/react';
+import { bgfg } from '@/components/GlobalStyles';
 
 export const TooltipWrap = styled.span`
   display: inline-flex;
@@ -16,10 +17,9 @@ export const TooltipWrap = styled.span`
 `;
 
 export const TooltipText = styled.span`
+  ${bgfg(1)}
   position: absolute;
   font-size: 0.75rem; // 12px
-  background: var(--bg1);
-  color: var(--fg1);
   text-align: center;
   border-radius: 6px;
   padding: 8px;

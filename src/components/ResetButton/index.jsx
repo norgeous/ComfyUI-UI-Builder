@@ -7,6 +7,7 @@ const ResetButton = ({ onClick = () => {} }) => (
     <ResetIcon />
   </HeaderButton>
 );
+
 ResetButton.propTypes = {
   onClick: PropTypes.func,
 };
