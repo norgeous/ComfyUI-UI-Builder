@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import WsContext from '@/contexts/WsContext';
+import PropTypes from 'prop-types';
 import { Light } from './styled';
 
 const emojis = {
@@ -9,9 +8,10 @@ const emojis = {
   DISCONNECTED: '🔴',
 };
 
-const StatusLight = () => {
-  const { wsStatus } = useContext(WsContext);
-  return <Light>{emojis[wsStatus]}</Light>;
+const StatusLight = ({ status = 'DEFAULT' }) => <Light>{emojis[status]}</Light>;
+
+StatusLight.propTypes = {
+  status: PropTypes.string,
 };
 
 export default StatusLight;
