@@ -140,3 +140,9 @@ export const GlobalStyle = createGlobalStyle`
     border: transparent;
   }
 `;
+
+// a bit like a mixin
+export const bgfg = level => css`
+  background: var(${`--bg${level}`});
+  color: var(${`--fg${level}`});
+`;

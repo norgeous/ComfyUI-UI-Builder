@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Providers from '@/Providers';
-import { GlobalStyle, Theme1Style } from '@/components/globalStyles';
-
 import { useParameter, useState, useEffect } from '@storybook/preview-api';
 import { isScreenshot } from 'storycap';
+import { GlobalStyle, Theme1Style } from '@/components/GlobalStyles';
 
 const useStorycapCurrentVariant = () => {
   const screenshot = useParameter('screenshot');
