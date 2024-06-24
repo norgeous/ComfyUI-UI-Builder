@@ -1,4 +1,4 @@
-import { userEvent, within } from '@storybook/test';
+import { userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
