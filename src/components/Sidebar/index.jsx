@@ -3,23 +3,20 @@ import FormBuilder from '@/components/FormBuilder';
 import FormControls from '@/components/FormControls';
 import Layout from '@/components/Layout';
 import Queue from '@/components/Queue';
-import { Side, Scrollable, Header, Footer } from './styled';
 
 const Sidebar = () => (
-  <Side>
-    <Header>
+  <Layout column bgfg={1} as="aside">
+    <Layout column bgfg={2} as="header">
       <FormHeader />
-    </Header>
-    <Scrollable>
+    </Layout>
+    <Layout pad column vscroll bgfg={1}>
       <FormBuilder />
-    </Scrollable>
-    <Footer>
-      <Layout pad column>
-        <Queue />
-        <FormControls />
-      </Layout>
-    </Footer>
-  </Side>
+    </Layout>
+    <Layout pad column bgfg={2} as="footer">
+      <Queue />
+      <FormControls />
+    </Layout>
+  </Layout>
 );
 
 export default Sidebar;

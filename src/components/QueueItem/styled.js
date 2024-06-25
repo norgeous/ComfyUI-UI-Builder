@@ -4,5 +4,10 @@ import styled from 'styled-components';
 export const QueueTitle = styled.div`
   flex-grow: 1;
   font-size: 12px;
-  white-space: nowrap;
+  overflow: hidden;
+  & div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;

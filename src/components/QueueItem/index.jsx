@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import { SpinnerIcon, InterruptIcon, WarningIcon } from '@/components/Icons';
+import {
+  SpinnerIcon,
+  InterruptIcon,
+  WarningIcon,
+  DismissIcon,
+} from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
 import { QueueTitle } from './styled';
@@ -17,37 +22,60 @@ const QueueItem = ({
   loading = false,
   error = undefined,
   data = undefined,
-  status = 'unknown',
+  status = undefined,
   progress = 0,
   onInterrupt = () => {},
   interruptLoading = false,
   interruptError = '',
-}) => (
-  <Layout center>
-    {loading && <SpinnerIcon />}
-    <QueueTitle>
-      <div>
-        {error} {data?.error?.message}
-      </div>
-      <div className="muted" style={{ fontSize: 10 }}>
-        {id}
-      </div>
-    </QueueTitle>
+  onRemove = () => {},
+}) => {
+  if (error) {
+    return (
+      <Layout center>
+        <QueueTitle>
+          <div>
+            ERROR: [{error}] {data?.error?.message}
+          </div>
+          <div className="muted" style={{ fontSize: 10 }}>
+            {id}
+          </div>
+        </QueueTitle>
 
-    <Progress value={progress} />
-    {loading && (
-      <Tooltip text={interruptError || 'Interrupt'}>
-        <Button
-          aria-label={interruptError || 'Interrupt'}
-          disabled={interruptLoading}
-          onClick={onInterrupt}
-        >
-          {getInterruptIcon({ interruptLoading, interruptError })}
-        </Button>
-      </Tooltip>
-    )}
-  </Layout>
-);
+        <Tooltip text="Remove">
+          <Button aria-label="Remove" onClick={onRemove}>
+            <DismissIcon />
+          </Button>
+        </Tooltip>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout center>
+      {loading && <SpinnerIcon />}
+      <QueueTitle>
+        <div>{status}</div>
+        <div className="muted" style={{ fontSize: 10 }}>
+          {id}
+        </div>
+      </QueueTitle>
+
+      {!!progress && <Progress value={progress} />}
+
+      {loading && (
+        <Tooltip text={interruptError || 'Interrupt'}>
+          <Button
+            aria-label={interruptError || 'Interrupt'}
+            disabled={interruptLoading}
+            onClick={onInterrupt}
+          >
+            {getInterruptIcon({ interruptLoading, interruptError })}
+          </Button>
+        </Tooltip>
+      )}
+    </Layout>
+  );
+};
 
 QueueItem.propTypes = {
   loading: PropTypes.bool,

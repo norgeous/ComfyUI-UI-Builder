@@ -30,10 +30,13 @@ const FormControls = () => {
   };
 
   return (
-    <Layout column>
-      {data.queue.map(item => (
-        <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
-      ))}
+    <>
+      {/* <div style={{ overflow: 'auto', maxHeight: 300 }}> */}
+      <Layout column vscroll>
+        {data.queue.map(item => (
+          <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
+        ))}
+      </Layout>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout>
         {!auto && (
@@ -52,7 +55,7 @@ const FormControls = () => {
           </Button>
         </Tooltip>
       </Layout>
-    </Layout>
+    </>
   );
 };
 

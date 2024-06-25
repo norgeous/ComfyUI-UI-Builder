@@ -6,9 +6,19 @@ export default {
   component,
 };
 
+export const Failed = {
+  args: {
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: false,
+    error: '469',
+    data: { error: { message: 'There was a problem' } },
+  },
+};
+
 export const Loading = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.25,
     onInterrupt: fn(),
@@ -21,7 +31,8 @@ export const Loading = {
 
 export const InterruptLoading = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.5,
     onInterrupt: fn(),
@@ -31,7 +42,8 @@ export const InterruptLoading = {
 
 export const InterruptError = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.75,
     onInterrupt: fn(),
