@@ -16,7 +16,7 @@ const Layout = ({
 Layout.propTypes = {
   pad: PropTypes.bool,
   column: PropTypes.bool,
-  gap: PropTypes.oneOf('sm'),
+  gap: PropTypes.oneOf(['sm']),
   center: PropTypes.bool,
   children: PropTypes.node,
 };
