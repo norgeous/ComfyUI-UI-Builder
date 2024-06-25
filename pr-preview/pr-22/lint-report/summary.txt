@@ -10,13 +10,7 @@
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/GlobalStyles/index.jsx
   145:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/contexts/ComfyBridgeProvider.jsx
-  15:5  warning  Unexpected console statement  no-console
-
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/comfyBridge/index.js
-  57:7  warning  Unexpected console statement  no-console
-
-✖ 3 problems (0 errors, 3 warnings)
+✖ 1 problem (0 errors, 1 warning)
 
 
 Pass ✅
