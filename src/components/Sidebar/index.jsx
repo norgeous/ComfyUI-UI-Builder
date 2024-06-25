@@ -26,7 +26,7 @@ const Sidebar = () => {
           bgfg={2}
           style={{ flexGrow: 0, flexShrink: 0, maxHeight: 80 }}
         >
-          {data.queue.map(item => (
+          {data.queue.toReversed().map(item => (
             <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
           ))}
         </Layout>
