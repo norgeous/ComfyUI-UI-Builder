@@ -22,7 +22,7 @@ const StatusBar = () => {
     useContext(ObjectInfoContext);
   const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
-  const [debugData, setDebugData] = useState();
+  const [debugData, setDebugData] = useState('comfyBridge');
   const debugOptions = [
     { label: 'comfyBridge', onClick: () => setDebugData('comfyBridge') },
     { label: 'formState', onClick: () => setDebugData('formState') },
@@ -61,7 +61,7 @@ const StatusBar = () => {
       <Tray $shrinkable>
         <StatusLight status={comfyBridge.ws?.status} />
         <StatusText>
-          {comfyBridge.ws?.wsStatus} {comfyUrl}
+          {comfyBridge.ws?.statusText} {comfyUrl}
         </StatusText>
       </Tray>
       <Tray>

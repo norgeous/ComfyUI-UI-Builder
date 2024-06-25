@@ -12,9 +12,11 @@ import simpleFetch from './simpleFetch';
 // - image and video uploading and downloading
 
 const defaultWsUrls = [
-  'ws://localhost:8188',
-  `ws://localhost:${window.location.port}`,
-  `ws://${window.location.hostname}:${window.location.port}`,
+  ...new Set([
+    'ws://localhost:8188',
+    `ws://localhost:${window.location.port}`,
+    `ws://${window.location.hostname}:${window.location.port}`,
+  ]),
 ];
 
 // find open websocket (and attach callbacks) from a list of urls
@@ -24,10 +26,10 @@ const connectWs = ({
   onChange = () => {},
   onConnect = () => {},
 }) => {
-  const wsId = uuidv4();
-  onChange({ wsId });
+  const id = uuidv4();
+  onChange({ id });
   return getWebSocket({
-    clientId: wsId,
+    clientId: id,
     wsUrls,
     onChange,
     onConnect,
@@ -45,38 +47,34 @@ const getObjectInfo = ({ comfyUrl, onChange }) => {
 };
 
 // callback based object for communicating with comfyui api
-const comfyBridge = () => {
+const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
   const state = {
     ws: {},
     objectInfo: {},
+    queue: [],
+  };
+  const updateState = (key, newData) => {
+    state[key] = { ...state[key], ...newData };
+    onChange(state);
   };
 
-  const connect = async ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
-    const handleChangeWs = newData => {
-      state.ws = { ...state.ws, ...newData };
-      console.log('calling the original react', state);
-      onChange(state);
-    };
-
-    const handleChangeObjectInfo = newData => {
-      state.objectInfo = { ...state.objectInfo, ...newData };
-      onChange(state);
-    };
-
+  // connect to comfy ws and then object info
+  const connect = async () => {
     connectWs({
       wsUrls,
-      onChange: handleChangeWs,
+      onChange: newData => updateState('ws', newData),
       onConnect: () => {
         getObjectInfo({
           comfyUrl: state.ws.comfyUrl,
-          onChange: handleChangeObjectInfo,
+          onChange: newData => updateState('objectInfo', newData),
         });
       },
     });
   };
 
   // prompting
-  const prompt = ({ comfyUrl, promptData, onChange }) => {
+  const prompt = ({ comfyUrl, promptData }) => {
+    // TODO: convert the prompt format here!
     const jobId = uuidv4();
     // TODO: the job id needs to go into the queue
     onChange({ jobId });
@@ -90,8 +88,8 @@ const comfyBridge = () => {
           prompt: promptData,
         }),
       },
-      onChange,
       adapter: res => res.json(),
+      onChange,
     });
   };
 
@@ -104,8 +102,6 @@ const comfyBridge = () => {
   return {
     state,
     connect,
-    // connectWs,
-    // getObjectInfo,
     prompt,
     destroy,
   };

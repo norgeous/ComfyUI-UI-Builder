@@ -18,21 +18,30 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
 
   for (let i = 0; i < wsUrls.length; i += 1) {
     const wsUrl = wsUrls[i];
-    onChange({ wsStatus: `trying ${wsUrl}` });
+    onChange({ status: 'CONNECTING', statusText: `Connecting to ${wsUrl}` });
     const url = `${wsUrl}/ws?clientId=${clientId}`;
     try {
       const soc = await socketPromise(url, onChange); // eslint-disable-line no-await-in-loop
 
       if (soc) {
         socket = soc;
+        onChange({ status: 'CONNECTED', statusText: `Found at ${wsUrl}` });
         break; // stop searching
       }
+
+      onChange({ status: 'DISCONNECTED', statusText: `Not found at ${wsUrl}` });
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
     }
   }
 
-  if (!socket) throw new Error('no socket found, retry is not implemented yet');
+  if (!socket) {
+    onChange({
+      status: 'DISCONNECTED',
+      statusText: 'Websocket not found',
+    });
+    throw new Error('no socket found, retry is not implemented yet');
+  }
 
   onConnect();
 
