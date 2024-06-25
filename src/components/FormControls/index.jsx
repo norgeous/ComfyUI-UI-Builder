@@ -31,7 +31,6 @@ const FormControls = () => {
 
   return (
     <Layout column>
-      <pre>{JSON.stringify(data.ws, null, 2)}</pre>
       {data.queue.map(item => (
         <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
       ))}
