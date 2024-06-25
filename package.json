@@ -18,8 +18,8 @@
     "outdated": "npm outdated"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.17",
-    "colorjs.io": "^0.5.0",
+    "@floating-ui/react": "^0.26.18",
+    "colorjs.io": "^0.5.1",
     "microphone-stream": "^6.0.1",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
