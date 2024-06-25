@@ -31,7 +31,7 @@ const QueueItem = ({
 }) => {
   if (error) {
     return (
-      <Layout center>
+      <Layout center gap="md">
         <QueueTitle>
           <div>
             ERROR: [{error}] {data?.error?.message}
@@ -51,7 +51,7 @@ const QueueItem = ({
   }
 
   return (
-    <Layout center>
+    <Layout center gap="md">
       {loading && <SpinnerIcon />}
       <QueueTitle>
         <div>{status}</div>

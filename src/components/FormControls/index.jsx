@@ -7,7 +7,6 @@ import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
 import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
-import QueueItem from '../QueueItem';
 
 const FormControls = () => {
   const { bridge, data } = useContext(ComfyBridgeContext);
@@ -31,11 +30,6 @@ const FormControls = () => {
 
   return (
     <>
-      <Layout column vscroll>
-        {data.queue.map(item => (
-          <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
-        ))}
-      </Layout>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout gap="md">
         {!auto && (
