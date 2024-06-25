@@ -43,8 +43,6 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
     throw new Error('no socket found, retry is not implemented yet');
   }
 
-  onConnect();
-
   socket.addEventListener('close', event => onChange({ closeEvent: event }));
   socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console
   socket.addEventListener('message', event =>
@@ -55,7 +53,8 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
 
   onChange({ comfyUrl, socket });
 
-  return socket;
+  onConnect();
+  // return socket;
 };
 
 export default getWebSocket;
