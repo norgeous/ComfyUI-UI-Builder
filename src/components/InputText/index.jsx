@@ -17,7 +17,7 @@ const InputText = ({
   const ref = useContext(InputRefContext);
 
   return (
-    <Layout pad column gap="sm">
+    <Layout column gap="sm">
       <InputHeader id={id} label={label} info={info}>
         {children}
       </InputHeader>
