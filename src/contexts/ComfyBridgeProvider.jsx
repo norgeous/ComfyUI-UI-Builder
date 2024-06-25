@@ -5,7 +5,11 @@ import ComfyBridgeContext from './ComfyBridgeContext';
 
 const useComfyBridge = () => {
   const [bridge, setBridge] = useState();
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    ws: {},
+    objectInfo: {},
+    queue: [],
+  });
   const updateData = newData =>
     setData(oldData => ({
       ...oldData,

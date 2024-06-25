@@ -57,6 +57,22 @@ const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
     state[key] = { ...state[key], ...newData };
     onChange(state);
   };
+  const updateQueueById = newData => {
+    const existingItem = state.queue.find(({ id }) => id === newData.id);
+    const otherItems = state.queue.filter(({ id }) => id !== newData.id);
+    console.log({ newData, existingItem, otherItems });
+    state.queue = existingItem
+      ? [
+          ...otherItems,
+          // update exisitng item
+          {
+            ...existingItem,
+            ...newData,
+          },
+        ]
+      : [...state.queue, newData]; // append to queue
+    onChange(state);
+  };
 
   // connect to comfy ws and then object info
   const connect = async () => {
@@ -74,22 +90,20 @@ const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
 
   // prompting
   const prompt = ({ comfyUrl, promptData }) => {
+    const id = uuidv4();
     // TODO: convert the prompt format here!
-    const jobId = uuidv4();
-    // TODO: the job id needs to go into the queue
-    onChange({ jobId });
     simpleFetch({
       url: `${comfyUrl}/prompt`,
       options: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          client_id: jobId,
+          client_id: id,
           prompt: promptData,
         }),
       },
       adapter: res => res.json(),
-      onChange,
+      onChange: newData => updateQueueById({ id, ...newData }),
     });
   };
 

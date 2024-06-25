@@ -13,7 +13,10 @@ const getInterruptIcon = ({ interruptLoading, interruptError }) => {
 };
 
 const QueueItem = ({
-  isLoading = false,
+  id = undefined,
+  loading = false,
+  error = undefined,
+  data = undefined,
   status = 'unknown',
   progress = 0,
   onInterrupt = () => {},
@@ -21,24 +24,33 @@ const QueueItem = ({
   interruptError = '',
 }) => (
   <Layout center>
-    {isLoading && <SpinnerIcon />}
-    <QueueTitle>{status}</QueueTitle>
+    {loading && <SpinnerIcon />}
+    <QueueTitle>
+      <div>
+        {error} {data?.error?.message}
+      </div>
+      <div className="muted" style={{ fontSize: 10 }}>
+        {id}
+      </div>
+    </QueueTitle>
 
     <Progress value={progress} />
-    <Tooltip text={interruptError || 'Interrupt'}>
-      <Button
-        aria-label={interruptError || 'Interrupt'}
-        disabled={interruptLoading}
-        onClick={onInterrupt}
-      >
-        {getInterruptIcon({ interruptLoading, interruptError })}
-      </Button>
-    </Tooltip>
+    {loading && (
+      <Tooltip text={interruptError || 'Interrupt'}>
+        <Button
+          aria-label={interruptError || 'Interrupt'}
+          disabled={interruptLoading}
+          onClick={onInterrupt}
+        >
+          {getInterruptIcon({ interruptLoading, interruptError })}
+        </Button>
+      </Tooltip>
+    )}
   </Layout>
 );
 
 QueueItem.propTypes = {
-  isLoading: PropTypes.bool,
+  loading: PropTypes.bool,
   status: PropTypes.string,
   progress: PropTypes.number,
   onInterrupt: PropTypes.func,

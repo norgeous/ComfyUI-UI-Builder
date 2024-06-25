@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
 import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
+import QueueItem from '../QueueItem';
 
 const FormControls = () => {
   const { bridge, data } = useContext(ComfyBridgeContext);
@@ -25,13 +26,15 @@ const FormControls = () => {
       const newSeed = Math.floor(Math.random() * 10 ** 10);
       updateFormState({ seed: newSeed });
     }
-    bridge.prompt();
+    bridge.prompt({ comfyUrl: data.ws.comfyUrl, promptData: {} });
   };
 
   return (
     <Layout column>
       <pre>{JSON.stringify(data.ws, null, 2)}</pre>
-      <pre>{JSON.stringify(data.queue, null, 2)}</pre>
+      {data.queue.map(item => (
+        <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
+      ))}
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout>
         {!auto && (

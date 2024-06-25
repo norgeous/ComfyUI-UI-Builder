@@ -21,14 +21,17 @@ const StatusBar = () => {
 
   const [debugData, setDebugData] = useState();
   const debugOptions = [
-    { label: 'comfyBridge.ws', onClick: () => setDebugData('comfyBridge.ws') },
     {
-      label: 'comfyBridge.objectInfo',
-      onClick: () => setDebugData('comfyBridge.objectInfo'),
+      label: 'comfyBridge.data.ws',
+      onClick: () => setDebugData('comfyBridge.data.ws'),
     },
     {
-      label: 'comfyBridge.queue',
-      onClick: () => setDebugData('comfyBridge.queue'),
+      label: 'comfyBridge.data.objectInfo',
+      onClick: () => setDebugData('comfyBridge.data.objectInfo'),
+    },
+    {
+      label: 'comfyBridge.data.queue',
+      onClick: () => setDebugData('comfyBridge.data.queue'),
     },
     { label: 'formState', onClick: () => setDebugData('formState') },
     { label: 'adapted', onClick: () => setDebugData('adapted') },
@@ -44,9 +47,9 @@ const StatusBar = () => {
   ];
 
   const debugDatum = {
-    'comfyBridge.ws': comfyBridge.ws,
-    'comfyBridge.objectInfo': comfyBridge.objectInfo,
-    'comfyBridge.queue': comfyBridge.queue,
+    'comfyBridge.data.ws': comfyBridge.data.ws,
+    'comfyBridge.data.objectInfo': comfyBridge.data.objectInfo,
+    'comfyBridge.data.queue': comfyBridge.data.queue,
     formState,
     adapted,
     baseWorkflow,
@@ -57,9 +60,9 @@ const StatusBar = () => {
   return (
     <Bar>
       <Tray $shrinkable>
-        <StatusLight status={comfyBridge.ws?.status} />
+        <StatusLight status={comfyBridge.data.ws.status} />
         <StatusText>
-          {comfyBridge.ws?.statusText} {comfyUrl}
+          {comfyBridge.data.ws.statusText} {comfyUrl}
         </StatusText>
       </Tray>
       <Tray>

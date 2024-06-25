@@ -6,10 +6,10 @@ import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, WarningIcon } from '@/components/Icons';
 
 const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
-  const { objectInfo } = useContext(ComfyBridgeContext);
+  const { data } = useContext(ComfyBridgeContext);
 
   const ckptOptions =
-    objectInfo?.data?.CheckpointLoaderSimple.input.required.ckpt_name[0];
+    data.objectInfo?.data?.CheckpointLoaderSimple.input.required.ckpt_name[0];
 
   return (
     <InputText
@@ -23,7 +23,7 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
           <WarningIcon />
         </Tooltip>
       )}
-      {objectInfo?.loading && <SpinnerIcon />}
+      {data.objectInfo?.loading && <SpinnerIcon />}
     </InputText>
   );
 };
