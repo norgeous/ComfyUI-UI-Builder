@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import comfyBridge from '@/utils/comfyBridge';
 import ComfyBridgeContext from './ComfyBridgeContext';
 
-const ComfyBridgeProvider = ({ children = null }) => {
+const useComfyBridge = () => {
+  const [bridge, setBridge] = useState();
   const [data, setData] = useState({});
   const updateData = newData =>
     setData(oldData => ({
@@ -14,17 +15,20 @@ const ComfyBridgeProvider = ({ children = null }) => {
   // on mount, try to find the open websocket
   // TODO: if this fails to connect, perhaps display a message about ComfyUI --listen setting
   useEffect(() => {
-    const bridge = comfyBridge({ onChange: updateData });
-    bridge.connect();
-    return () => bridge.destroy();
+    const newBridge = comfyBridge({ onChange: updateData });
+    newBridge.connect();
+    setBridge(newBridge);
+    return () => newBridge.destroy();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
-    <ComfyBridgeContext.Provider value={data}>
-      {children}
-    </ComfyBridgeContext.Provider>
-  );
+  return { bridge, data };
 };
+
+const ComfyBridgeProvider = ({ children = null }) => (
+  <ComfyBridgeContext.Provider value={useComfyBridge()}>
+    {children}
+  </ComfyBridgeContext.Provider>
+);
 
 ComfyBridgeProvider.propTypes = {
   children: PropTypes.node,
