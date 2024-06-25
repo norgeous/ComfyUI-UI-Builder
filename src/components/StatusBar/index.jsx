@@ -3,7 +3,6 @@ import ComfyBridgeContext from '@/contexts/ComfyBridgeContext';
 import WsContext from '@/contexts/WsContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
 import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
@@ -18,22 +17,24 @@ const StatusBar = () => {
   const {
     config: { baseWorkflow },
   } = useContext(ConfigsContext);
-  const { objectInfoLoading, objectInfoError, objectInfo } =
-    useContext(ObjectInfoContext);
   const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
 
   const [debugData, setDebugData] = useState();
   const debugOptions = [
-    { label: 'comfyBridge', onClick: () => setDebugData('comfyBridge') },
+    { label: 'comfyBridge.ws', onClick: () => setDebugData('comfyBridge.ws') },
+    {
+      label: 'comfyBridge.objectInfo',
+      onClick: () => setDebugData('comfyBridge.objectInfo'),
+    },
+    {
+      label: 'comfyBridge.queue',
+      onClick: () => setDebugData('comfyBridge.queue'),
+    },
     { label: 'formState', onClick: () => setDebugData('formState') },
     { label: 'adapted', onClick: () => setDebugData('adapted') },
     {
       label: 'baseWorkflow',
       onClick: () => setDebugData('baseWorkflow'),
-    },
-    {
-      label: 'objectInfo',
-      onClick: () => setDebugData('objectInfo'),
     },
     {
       label: 'adaptedComfyWorkflow',
@@ -43,15 +44,12 @@ const StatusBar = () => {
   ];
 
   const debugDatum = {
-    comfyBridge,
+    'comfyBridge.ws': comfyBridge.ws,
+    'comfyBridge.objectInfo': comfyBridge.objectInfo,
+    'comfyBridge.queue': comfyBridge.queue,
     formState,
     adapted,
     baseWorkflow,
-    objectInfo: {
-      objectInfoLoading,
-      objectInfoError,
-      objectInfo,
-    },
     adaptedComfyWorkflow,
     bodyData,
   }[debugData];
