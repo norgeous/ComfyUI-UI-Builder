@@ -9,7 +9,7 @@ const Sidebar = () => (
     <Layout column bgfg={2} as="header">
       <FormHeader />
     </Layout>
-    <Layout pad column vscroll bgfg={1}>
+    <Layout pad column gap="md" vscroll bgfg={1}>
       <FormBuilder />
     </Layout>
     <Layout pad column bgfg={2} as="footer">

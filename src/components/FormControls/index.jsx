@@ -31,14 +31,13 @@ const FormControls = () => {
 
   return (
     <>
-      {/* <div style={{ overflow: 'auto', maxHeight: 300 }}> */}
       <Layout column vscroll>
         {data.queue.map(item => (
           <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
         ))}
       </Layout>
       {promptError && <ErrorText>{promptError}</ErrorText>}
-      <Layout>
+      <Layout gap="md">
         {!auto && (
           <Button wide onClick={handleClick}>
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
