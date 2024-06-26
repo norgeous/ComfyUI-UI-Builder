@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { data } = useContext(ComfyBridgeContext);
 
   return (
-    <Layout column bgfg={1} as="aside">
+    <Layout column bgfg={1} as="aside" style={{ height: '100%' }}>
       <Layout column bgfg={2} as="header">
         <FormHeader />
       </Layout>
