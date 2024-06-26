@@ -7,7 +7,7 @@ export const Progress = styled.progress.attrs({ max: 1 })`
   width: 100%;
   height: 8px;
   border: 0;
-  min-width: 50px;
+  min-width: 40px;
   flex: 1 1;
 
   // webkit (chrome)

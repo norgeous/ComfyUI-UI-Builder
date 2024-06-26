@@ -42,7 +42,7 @@ const QueueItem = ({
           </div>
         </QueueTitle>
 
-        <Tooltip text="Remove">
+        <Tooltip lm text="Remove">
           <Button aria-label="Remove" onClick={onRemove}>
             <DismissIcon />
           </Button>
@@ -64,7 +64,7 @@ const QueueItem = ({
       {!!progress && <Progress value={progress} />}
 
       {loading && (
-        <Tooltip text={interruptError || 'Interrupt'}>
+        <Tooltip lm text={interruptError || 'Interrupt'}>
           <Button
             aria-label={interruptError || 'Interrupt'}
             disabled={interruptLoading}
