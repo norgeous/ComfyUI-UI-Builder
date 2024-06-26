@@ -32,6 +32,7 @@ const QueueItem = ({
   if (error) {
     return (
       <Layout center gap="md">
+        <WarningIcon />
         <QueueTitle>
           <div>
             ERROR: [{error}] {data?.error?.message}

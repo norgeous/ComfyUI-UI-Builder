@@ -13,6 +13,10 @@ export const Failed = {
     error: '469',
     data: { error: { message: 'There was a problem' } },
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
 };
 
 export const Loading = {
@@ -38,6 +42,10 @@ export const InterruptLoading = {
     onInterrupt: fn(),
     interruptLoading: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
 };
 
 export const InterruptError = {
@@ -48,5 +56,9 @@ export const InterruptError = {
     progress: 0.75,
     onInterrupt: fn(),
     interruptError: 'There was a problem with the interrupt',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
   },
 };
