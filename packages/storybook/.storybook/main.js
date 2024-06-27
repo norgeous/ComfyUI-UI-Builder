@@ -20,7 +20,7 @@ const config = {
 
   docs: {},
 
-  staticDirs: ['./public', '../../../public'],
+  staticDirs: ['../public', '../../../public'],
 
   core: {
     disableTelemetry: true,
