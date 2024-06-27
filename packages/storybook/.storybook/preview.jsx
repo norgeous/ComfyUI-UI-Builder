@@ -35,7 +35,8 @@ const preview = {
     },
   },
 
-  decorators: [mswLoader, withScreenshot, ProjectDecorator],
+  loaders: [mswLoader],
+  decorators: [withScreenshot, ProjectDecorator],
 };
 
 export default preview;
