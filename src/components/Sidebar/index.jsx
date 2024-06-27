@@ -13,8 +13,9 @@ const Sidebar = () => {
     <Layout
       as="aside"
       column
+      fullHeight
       bgfg={1}
-      style={{ height: '100%', overflow: 'hidden' }}
+      style={{ overflow: 'hidden' }}
     >
       <Layout as="header" column bgfg={2}>
         <FormHeader />
@@ -27,7 +28,7 @@ const Sidebar = () => {
           pad
           column
           gap="md"
-          vscroll
+          scrollable
           bgfg={2}
           style={{ flexGrow: 0, flexShrink: 0, maxHeight: 80 }}
         >

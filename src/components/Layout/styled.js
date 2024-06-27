@@ -26,11 +26,16 @@ export const Flex = styled.div`
     css`
       flex-direction: column;
     `}
-  ${({ $vscroll }) =>
-    $vscroll &&
+  ${({ $scrollable }) =>
+    $scrollable &&
     css`
-      overflow-y: auto;
+      overflow: auto;
       flex-grow: 1;
     `}
   ${({ $bgfg }) => $bgfg && bgfg($bgfg)}
+  ${({ $fullHeight }) =>
+    $fullHeight &&
+    css`
+      height: 100%;
+    `}
 `;

@@ -6,8 +6,9 @@ const Layout = ({
   column = false,
   gap = undefined,
   center = false,
-  vscroll = false,
+  scrollable = false,
   bgfg = undefined,
+  fullHeight = false,
   children = null,
   ...props
 }) => (
@@ -17,8 +18,9 @@ const Layout = ({
     $column={column}
     $gap={gap}
     $center={center}
-    $vscroll={vscroll}
+    $scrollable={scrollable}
     $bgfg={bgfg}
+    $fullHeight={fullHeight}
   >
     {children}
   </Flex>
@@ -29,8 +31,9 @@ Layout.propTypes = {
   column: PropTypes.bool,
   gap: PropTypes.oneOf(['sm', 'md']),
   center: PropTypes.bool,
-  vscroll: PropTypes.bool,
+  scrollable: PropTypes.bool,
   bgfg: PropTypes.number,
+  fullHeight: PropTypes.bool,
   children: PropTypes.node,
 };
 
