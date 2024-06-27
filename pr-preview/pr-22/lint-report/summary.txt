@@ -17,9 +17,10 @@
   30:3  error  'onRemove' is missing in props validation  react/prop-types
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/comfyBridge/index.js
-  63:5  warning  Unexpected console statement  no-console
+  50:7  error    'queue' is assigned a value but never used  no-unused-vars
+  66:5  warning  Unexpected console statement                no-console
 
-✖ 6 problems (4 errors, 2 warnings)
+✖ 7 problems (5 errors, 2 warnings)
 
 
 Fail ❌
