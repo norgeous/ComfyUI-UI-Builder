@@ -47,7 +47,7 @@ const getObjectInfo = ({ comfyUrl, onChange }) => {
   });
 };
 
-const queue = queueController();
+const queue = queueController({});
 
 // callback based object for communicating with comfyui api
 const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
