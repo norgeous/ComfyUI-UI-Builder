@@ -1,5 +1,8 @@
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
 import ProjectDecorator from '../ProjectDecorator';
+
+initialize(); // Initialize MSW
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -32,7 +35,7 @@ const preview = {
     },
   },
 
-  decorators: [withScreenshot, ProjectDecorator],
+  decorators: [mswLoader, withScreenshot, ProjectDecorator],
 };
 
 export default preview;
