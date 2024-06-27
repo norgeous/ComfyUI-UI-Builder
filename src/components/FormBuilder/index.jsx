@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Layout from '@/components/Layout';
 import FormContext from '@/contexts/FormContext';
 import Input from '@/components/Input';
 import Collapsable from '@/components/Collapsable';
@@ -9,7 +10,7 @@ const FormBuilder = () => {
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
   return (
-    <>
+    <Layout pad column gap="md" vscroll bgfg={1}>
       {accordionGroups.map(accordionGroup => {
         const itemsInGroup = formConfig.filter(
           ({ group }) => group === accordionGroup,
@@ -43,7 +44,7 @@ const FormBuilder = () => {
           </Collapsable>
         );
       })}
-    </>
+    </Layout>
   );
 };
 

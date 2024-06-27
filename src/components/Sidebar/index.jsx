@@ -1,27 +1,27 @@
 import { useContext } from 'react';
 import ComfyBridgeContext from '@/contexts/ComfyBridgeContext';
+import Layout from '@/components/Layout';
 import FormHeader from '@/components/FormHeader';
 import FormBuilder from '@/components/FormBuilder';
 import FormControls from '@/components/FormControls';
-import Layout from '@/components/Layout';
-import QueueItem from '../QueueItem';
+import QueueItem from '@/components/QueueItem';
 
 const Sidebar = () => {
   const { data } = useContext(ComfyBridgeContext);
 
   return (
     <Layout
+      as="aside"
       column
       bgfg={1}
-      as="aside"
       style={{ height: '100%', overflow: 'hidden' }}
     >
-      <Layout column bgfg={2} as="header">
+      <Layout as="header" column bgfg={2}>
         <FormHeader />
       </Layout>
-      <Layout pad column gap="md" vscroll bgfg={1}>
-        <FormBuilder />
-      </Layout>
+
+      <FormBuilder />
+
       {!!data.queue.length && (
         <Layout
           pad
@@ -36,7 +36,7 @@ const Sidebar = () => {
           ))}
         </Layout>
       )}
-      <Layout pad column gap="md" bgfg={2} as="footer">
+      <Layout as="footer" pad column gap="md" bgfg={2}>
         <FormControls />
       </Layout>
     </Layout>
