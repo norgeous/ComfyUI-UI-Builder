@@ -31,6 +31,7 @@ const Sidebar = () => {
           ))}
         </Layout>
       )}
+
       <Layout as="footer" pad column gap="md" bgfg={2}>
         <FormControls />
       </Layout>
