@@ -10,6 +10,7 @@ export const Layout = {
     pad: true,
     column: true,
     center: true,
+    gap: 'md',
     children: (
       <>
         <div>item1</div>
