@@ -1,6 +1,7 @@
 import uuidv4 from '@/utils/uuidv4';
 import getWebSocket from './getWebSocket';
 import simpleFetch from './simpleFetch';
+import queueController from './queueController';
 
 // new package to do the following (without react)
 
@@ -45,6 +46,8 @@ const getObjectInfo = ({ comfyUrl, onChange }) => {
     adapter: res => res.json(),
   });
 };
+
+const queue = queueController();
 
 // callback based object for communicating with comfyui api
 const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
@@ -103,7 +106,8 @@ const comfyBridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
         }),
       },
       adapter: res => res.json(),
-      onChange: newData => updateQueueById({ id, ...newData }),
+      onChange: newData =>
+        updateQueueById({ id, onRemove: () => {}, ...newData }),
     });
   };
 
