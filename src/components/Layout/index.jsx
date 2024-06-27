@@ -6,9 +6,22 @@ const Layout = ({
   column = false,
   gap = undefined,
   center = false,
+  scrollable = false,
+  bgfg = undefined,
+  fullHeight = false,
   children = null,
+  ...props
 }) => (
-  <Flex $pad={pad} $column={column} $gap={gap} $center={center}>
+  <Flex
+    {...props} // eslint-disable-line react/jsx-props-no-spreading
+    $pad={pad}
+    $column={column}
+    $gap={gap}
+    $center={center}
+    $scrollable={scrollable}
+    $bgfg={bgfg}
+    $fullHeight={fullHeight}
+  >
     {children}
   </Flex>
 );
@@ -16,8 +29,11 @@ const Layout = ({
 Layout.propTypes = {
   pad: PropTypes.bool,
   column: PropTypes.bool,
-  gap: PropTypes.oneOf(['sm']),
+  gap: PropTypes.oneOf(['sm', 'md']),
   center: PropTypes.bool,
+  scrollable: PropTypes.bool,
+  bgfg: PropTypes.number,
+  fullHeight: PropTypes.bool,
   children: PropTypes.node,
 };
 

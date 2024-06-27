@@ -4,6 +4,7 @@ import { bgfg } from '@/components/GlobalStyles';
 export const CollapsableContainer = styled.div`
   border-radius: var(--radius);
   overflow: hidden;
+  flex-shrink: 0;
 `;
 
 export const CollapsableHeader = styled.button`
