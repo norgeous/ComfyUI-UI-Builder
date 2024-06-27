@@ -37,5 +37,6 @@ export const Flex = styled.div`
     $fullHeight &&
     css`
       height: 100%;
+      overflow: hidden;
     `}
 `;
