@@ -1,6 +1,6 @@
-🎭 Changed items: 92
+🎭 Changed items: 20
 🆕 New items: 2
 🗑️ Deleted items: 0
-✅ Passed items: 0
+✅ Passed items: 72
 
 Fail ❌
