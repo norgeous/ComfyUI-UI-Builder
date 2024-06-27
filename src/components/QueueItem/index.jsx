@@ -20,7 +20,7 @@ const QueueItem = ({
   interruptLoading = false,
   interruptError = '',
 }) => (
-  <Layout center>
+  <Layout center gap="sm">
     {isLoading && <SpinnerIcon />}
     <QueueTitle>{status}</QueueTitle>
 
