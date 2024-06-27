@@ -10,7 +10,7 @@ const FormBuilder = () => {
   const accordionGroups = [...new Set(formConfig.map(({ group }) => group))];
 
   return (
-    <Layout column>
+    <Layout pad column gap="md" scrollable>
       {accordionGroups.map(accordionGroup => {
         const itemsInGroup = formConfig.filter(
           ({ group }) => group === accordionGroup,
