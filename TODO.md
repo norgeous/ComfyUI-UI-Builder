@@ -3,11 +3,10 @@
 ## Known Bugs
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
-- the websocket is needlessly refreshing when switching workflows. pyramid order
-- comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
+- the websocket is needlessly refreshing when switching workflows. pyramid order?
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
-- rescale CFG does not activate? maybe
+- comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 
 ## Now
 
