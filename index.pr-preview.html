@@ -10,6 +10,13 @@
         background: black;
         color: white;
       }
+      h1,
+      h4 {
+        text-align: center;
+      }
+      table {
+        margin: 0 auto;
+      }
       a {
         color: white;
         text-decoration: none;
@@ -25,7 +32,7 @@
       </tr>
       <tr>
         <td><a href="lint-report/OUTPUT.txt">🧵 Lint</a></td>
-        <td>$LINTEMOJI</td>
+        <td>{{LINTEMOJI}}</td>
       </tr>
       <tr>
         <td><a href="vite">⚡ Vite</a></td>
@@ -48,6 +55,6 @@
         <td>$VISDIFFEMOJI</td>
       </tr>
     </table>
-    <h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>
+    <h4>Built on: {{DATE}}</h4>
   </body>
 </html>

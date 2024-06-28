@@ -616,7 +616,7 @@ jobs:
           find _storycaps_/**/*.png -type f -printf "%p\n" | sort | sed -e 's/_storycaps_\///g' -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' >> _storycaps_/index.html
           echo "</div>" >> _storycaps_/index.html
 
-      - name: 📄 Create ghindex.html
+      - name: 📄 Update template index.pr-preview.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           ((`cat ${{ runner.temp }}/npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
@@ -626,23 +626,10 @@ jobs:
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
           ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
-          echo "<style>body{font-family:Arial;background:black;color:white} a{color:white;text-decoration:none}</style>" | tee -a ghindex.html
-          echo "<center>" | tee -a ghindex.html
-          echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
-          echo "<table>" | tee -a ghindex.html
-          echo "<tr><td><a href="npm-install-report/OUTPUT.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="lint-report/OUTPUT.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="vite">⚡ Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="storybook">📕 Storybook</a></td><td>$STORYBOOKEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
-          echo "<tr><td><a href="visdiff">🎭 Visdiff</a></td><td>$VISDIFFEMOJI</td></tr>" | tee -a ghindex.html
-          echo "</table>" | tee -a ghindex.html
-          echo "<h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>" | tee -a ghindex.html
-          echo "</center>" | tee -a ghindex.html
-
           sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
           sed -i "s/{{NPMINSTALLEMOJI}}/$NPMINSTALLEMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{LINTEMOJI}}/$LINTEMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{DATE}}/$(date +'%d/%m/%Y %H:%M:%S %Z')/g" -i index.pr-preview.html
 
       - name: 🎼 Compose Artifact
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
