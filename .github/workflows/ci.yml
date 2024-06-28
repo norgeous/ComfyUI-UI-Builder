@@ -625,10 +625,10 @@ jobs:
           echo "<table>" | tee -a ghindex.html
 
           ((`cat ${{ runner.temp }}/npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
-          echo "<tr><td><a href="npm-install-report/summary.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="npm-install-report/OUTPUT.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat ${{ runner.temp }}/lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
-          echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
+          echo "<tr><td><a href="lint-report/OUTPUT.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
           echo "<tr><td><a href="vite">⚡ Vite</a></td><td>$VITEEMOJI</td></tr>" | tee -a ghindex.html
