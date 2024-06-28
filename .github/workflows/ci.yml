@@ -129,16 +129,26 @@ jobs:
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           cat ${{ runner.temp }}/lint-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
+
           echo | tee -a $GITHUB_STEP_SUMMARY
           echo | tee -a $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
-          MODIFIED_COUNT=`git status -s -uno | wc -l`
-          echo "MODIFIED_COUNT $MODIFIED_COUNT"
+          LINT_MODIFIED_COUNT=`git status -s -uno | wc -l`
+          echo "LINT_MODIFIED_COUNT $LINT_MODIFIED_COUNT"
           exit $EXITCODE
+
+      - name: ✍️ Commit lint changes back into "${{ inputs.ref }}" branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add . | tee -a $GITHUB_STEP_SUMMARY
+          git commit -m "🧵 Lint from CI" | tee -a $GITHUB_STEP_SUMMARY
+          git status
+          # git push
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save lint-report
-        if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('lint-report') != '' }}
+        if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled()}}
         uses: actions/cache/save@v4
         with:
           path: ${{ runner.temp }}/lint-report
