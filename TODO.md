@@ -43,7 +43,8 @@
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
-- CI: separate out `npm outdated` job, it can run in parallel with lint, etc
+- CI: separate out `npm outdated` job, it can run in parallel with lint, etc. Also consider `npx npm-check-updates`
+- CI: unused files check
 - CI: rename the develop/vite dir in `gh-pages` to `release/build`
 - CI: add a job to report how many occurences of "eslint-disable" rules that there are across all files
 - CI: report on js files that have code comments containing "TODO"
