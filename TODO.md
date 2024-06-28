@@ -3,14 +3,16 @@
 ## Known Bugs
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
-- the websocket is needlessly refreshing when switching workflows. pyramid order
-- comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
+- the websocket is needlessly refreshing when switching workflows. pyramid order?
 - ImageGrid: stops listening to window resize (?) after hitting generate again
 - theme switching is not working inside of storybook
-- rescale CFG does not activate? maybe
+- comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 
 ## Now
 
+- CI: use tmp dir for reports / command outputs / exitcodes
+- CI: separate out commiting storycaps job (its kindof hidden)
+- CI: separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 
@@ -41,23 +43,18 @@
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
-- CI issues
-  - separate out commiting storycaps job (its kindof hidden)
-  - separate out `npm outdated` job, it can run in parallel with lint, etc
-  - separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
-  - lint should also report how many occurences of "eslint-disable" rules that there are across all files
-  - report on js files that have code comments containing "TODO"
-  - use tmp dir for reports / command outputs / exitcodes
-  - abstracting repeated code / DRY up the CI
-  - delete preview job also runs the release by accident
-  - needs to be checked more if CI is working
-    - probs doesnt handle lint failure properly
-  - add job summaries for compose and deploy jobs
-  - smaller job summaries
-  - versioning
-  - using github releases?
-  - report and check bundle size / dist dir size
-  - rename the develop/vite dir in `gh-pages` to `release/build`
+- CI: separate out `npm outdated` job, it can run in parallel with lint, etc
+- CI: rename the develop/vite dir in `gh-pages` to `release/build`
+- CI: add a job to report how many occurences of "eslint-disable" rules that there are across all files
+- CI: report on js files that have code comments containing "TODO"
+- CI: abstracting repeated code / DRY up the CI
+- CI: delete preview job also runs the release by accident
+- CI: needs to be checked more if CI is working
+- CI: add job summaries for compose and deploy jobs
+- CI: smaller job summaries
+- CI: versioning
+- CI: using github releases?
+- CI: report and check bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
 - pwa
