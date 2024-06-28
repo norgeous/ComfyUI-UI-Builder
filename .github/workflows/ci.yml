@@ -413,37 +413,6 @@ jobs:
           path: _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
-  storycap-commit:
-    name: ✍️ Storycap commit
-    needs: [storycap]
-    if: needs.storycap.outputs.CHANGE_COUNT > 0
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
-
-      - name: ♻️ Restore storycaps
-        id: storycaps_cache
-        uses: actions/cache@v4
-        with:
-          path: _storycaps_
-          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
-          fail-on-cache-miss: true
-
-      - name: 🗑️ Delete summary files
-        run: |
-          rm _storycaps_/EXITCODE _storycaps_/summary.txt
-
-      - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add _storycaps_ | tee -a $GITHUB_STEP_SUMMARY
-          git commit -m "🧢 Storycaps from CI" | tee -a $GITHUB_STEP_SUMMARY
-          git push
-
   visdiff-report:
     name: 🎭 Visdiff
     needs: [storycap]
@@ -674,3 +643,34 @@ jobs:
           mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff/
           mv ghindex.html                         gh-pages-directory/index.html
           ls -l gh-pages-directory
+
+  storycap-commit:
+    name: ✍️ Storycap commit
+    needs: [storycap]
+    if: needs.storycap.outputs.CHANGE_COUNT > 0
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: ♻️ Restore storycaps
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
+
+      - name: 🗑️ Delete summary files
+        run: |
+          rm _storycaps_/EXITCODE _storycaps_/summary.txt
+
+      - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add _storycaps_ | tee -a $GITHUB_STEP_SUMMARY
+          git commit -m "🧢 Storycaps from CI" | tee -a $GITHUB_STEP_SUMMARY
+          git push
