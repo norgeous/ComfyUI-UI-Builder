@@ -644,14 +644,15 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
           mkdir gh-pages-directory
-          mv npm-install-report/                  gh-pages-directory/npm-install-report/
-          mv lint-report/                         gh-pages-directory/lint-report/
-          mv dist/                                gh-pages-directory/vite/
-          mv packages/storybook/storybook-static/ gh-pages-directory/storybook/
-          mv storybook-test/                      gh-pages-directory/storybook-test/
-          mv _storycaps_/                         gh-pages-directory/storycaps/
-          mv packages/storybook/visdiff-report/   gh-pages-directory/visdiff/
-          mv ghindex.html                         gh-pages-directory/index.html
+          mv ${{ runner.temp }}/npm-install-report/   gh-pages-directory/npm-install-report/
+          mv lint-report/                             gh-pages-directory/lint-report/
+          mv dist/                                    gh-pages-directory/vite/
+          mv packages/storybook/storybook-static/     gh-pages-directory/storybook/
+          mv storybook-test/                          gh-pages-directory/storybook-test/
+          mv _storycaps_/                             gh-pages-directory/storycaps/
+          mv ${{ runner.temp }}/storycap-report/      gh-pages-directory/storycaps/storycap-report/
+          mv packages/storybook/visdiff-report/       gh-pages-directory/visdiff/
+          mv ghindex.html                             gh-pages-directory/index.html
           ls -l gh-pages-directory
 
   storycap-commit:
