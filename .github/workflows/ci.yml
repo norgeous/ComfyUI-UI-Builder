@@ -49,7 +49,7 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit == 'true'
         run: |
           echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
-          cat ${{ runner.temp }}/npm-install-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
+          cat ${{ runner.temp }}/npm-install-report/OUTPUT.txt | tee -a $GITHUB_STEP_SUMMARY
           exit `cat ${{ runner.temp }}/npm-install-report/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
@@ -62,13 +62,13 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: |
           mkdir ${{ runner.temp }}/npm-install-report
-          npm ci | tee -a ${{ runner.temp }}/npm-install-report/summary.txt
+          npm ci | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" > ${{ runner.temp }}/npm-install-report/EXITCODE
-          npm outdated | tee -a ${{ runner.temp }}/npm-install-report/summary.txt
-          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/npm-install-report/summary.txt
-          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/npm-install-report/summary.txt
-          cat ${{ runner.temp }}/npm-install-report/summary.txt > $GITHUB_STEP_SUMMARY
+          npm outdated | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
+          cat ${{ runner.temp }}/npm-install-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
