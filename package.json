@@ -15,7 +15,8 @@
     "sb:unittest": "npm run unittest -w packages/storybook",
     "sb:unittest:ci": "npm run unittest:ci -w packages/storybook",
     "sb:storycap": "npm run storycap -w packages/storybook",
-    "outdated": "npm outdated"
+    "outdated": "npm outdated",
+    "fix-msw-deps": "rm -r packages/storybook/node_modules/msw packages/storybook/node_modules/.cache/storybook/; cp -r node_modules/msw packages/storybook/node_modules/msw"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.18",
