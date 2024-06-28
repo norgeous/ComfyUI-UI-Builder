@@ -91,15 +91,15 @@ jobs:
         id: lint_cache
         uses: actions/cache@v4
         with:
-          path: lint-report
+          path: ${{ runner.temp }}/lint-report
           key: ${{ inputs.CACHE_KEY_LINT }}
 
       - name: 🚪Early Exit with cached results
         if: steps.lint_cache.outputs.cache-hit == 'true'
         run: |
           echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
-          cat lint-report/summary.txt | tee -a $GITHUB_STEP_SUMMARY
-          exit `cat lint-report/EXITCODE`
+          cat ${{ runner.temp }}/lint-report/OUTPUT.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat ${{ runner.temp }}/lint-report/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.lint_cache.outputs.cache-hit != 'true'
@@ -121,14 +121,14 @@ jobs:
       - name: 🧵 Lint
         if: steps.lint_cache.outputs.cache-hit != 'true'
         run: |
-          mkdir lint-report
-          npm run lint | tee -a lint-report/summary.txt
+          mkdir ${{ runner.temp }}/lint-report
+          npm run lint | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
-          echo "$EXITCODE" > lint-report/EXITCODE
+          echo "$EXITCODE" > ${{ runner.temp }}/lint-report/EXITCODE
           # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
-          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a lint-report/summary.txt
-          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a lint-report/summary.txt
-          cat lint-report/summary.txt > $GITHUB_STEP_SUMMARY
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
+          cat ${{ runner.temp }}/lint-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           echo | tee -a $GITHUB_STEP_SUMMARY
           echo | tee -a $GITHUB_STEP_SUMMARY
           git status | tee -a $GITHUB_STEP_SUMMARY
@@ -141,7 +141,7 @@ jobs:
         if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('lint-report') != '' }}
         uses: actions/cache/save@v4
         with:
-          path: lint-report
+          path: ${{ runner.temp }}/lint-report
           key: ${{ inputs.CACHE_KEY_LINT }}
 
   vite-build:
@@ -338,7 +338,7 @@ jobs:
     needs: [storybook-static]
     runs-on: ubuntu-latest
     outputs:
-      CHANGE_COUNT: ${{ steps.check-changes.outputs.CHANGE_COUNT }}
+      STORYCAP_CHANGE_COUNT: ${{ steps.check-changes.outputs.STORYCAP_CHANGE_COUNT }}
     steps:
       - name: ♻️ Restore storycaps
         id: storycaps_cache
@@ -405,9 +405,9 @@ jobs:
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           git status
-          CHANGE_COUNT=`git status -s | wc -l`
-          echo "Change count is $CHANGE_COUNT" | tee -a $GITHUB_STEP_SUMMARY
-          echo "CHANGE_COUNT=$CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
+          STORYCAP_CHANGE_COUNT=`git status -s | wc -l`
+          echo "Change count is $STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_STEP_SUMMARY
+          echo "STORYCAP_CHANGE_COUNT=$STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save _storycaps_
@@ -546,7 +546,7 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
-          path: lint-report
+          path: ${{ runner.temp }}/lint-report
           key: ${{ inputs.CACHE_KEY_LINT }}
           fail-on-cache-miss: true
 
@@ -658,7 +658,7 @@ jobs:
   storycap-commit:
     name: ✍️ Storycap commit
     needs: [storycap]
-    if: needs.storycap.outputs.CHANGE_COUNT > 0
+    if: needs.storycap.outputs.STORYCAP_CHANGE_COUNT > 0
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
