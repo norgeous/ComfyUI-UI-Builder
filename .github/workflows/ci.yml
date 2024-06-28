@@ -406,6 +406,7 @@ jobs:
         run: |
           git status
           CHANGE_COUNT=`git status -s | wc -l`
+          echo "Change count is $CHANGE_COUNT" | tee -a $GITHUB_STEP_SUMMARY
           echo "CHANGE_COUNT=$CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
 
       # even if the previous step exits with failure, we still want to save the results
