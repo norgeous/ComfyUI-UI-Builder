@@ -344,7 +344,9 @@ jobs:
         id: storycaps_cache
         uses: actions/cache@v4
         with:
-          path: _storycaps_
+          path: |
+            ${{ runner.temp }}/storycap-report
+            _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
       - name: 🚪Early Exit with cached results
@@ -389,12 +391,13 @@ jobs:
         run: |
           rm -rf _storycaps_
           mkdir _storycaps_
-          npm run storycap:ci -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a _storycaps_/summary.txt
+          mkdir ${{ runner.temp }}/storycap-report
+          npm run storycap:ci -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
-          echo "$EXITCODE" >  _storycaps_/EXITCODE
-          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a _storycaps_/summary.txt
-          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a _storycaps_/summary.txt
-          cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
+          echo "$EXITCODE" >  ${{ runner.temp }}/storycap-report/EXITCODE
+          ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
+          ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
+          cat ${{ runner.temp }}/storycap-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
       - name: 🕵️ Count changes
@@ -410,7 +413,9 @@ jobs:
         if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('_storycaps_') != '' }}
         uses: actions/cache/save@v4
         with:
-          path: _storycaps_
+          path: |
+            ${{ runner.temp }}/storycap-report
+            _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
   visdiff-report:
@@ -453,7 +458,9 @@ jobs:
         if: steps.visdiff_report_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
-          path: _storycaps_
+          path: |
+            ${{ runner.temp }}/storycap-report
+            _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
@@ -573,7 +580,9 @@ jobs:
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         uses: actions/cache/restore@v4
         with:
-          path: _storycaps_
+          path: |
+            ${{ runner.temp }}/storycap-report
+            _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
@@ -659,7 +668,9 @@ jobs:
         id: storycaps_cache
         uses: actions/cache@v4
         with:
-          path: _storycaps_
+          path: |
+            ${{ runner.temp }}/storycap-report
+            _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
