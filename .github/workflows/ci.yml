@@ -674,10 +674,6 @@ jobs:
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
           fail-on-cache-miss: true
 
-      - name: 🗑️ Delete summary files
-        run: |
-          rm _storycaps_/EXITCODE _storycaps_/summary.txt
-
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         run: |
           git config user.name github-actions
