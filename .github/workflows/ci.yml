@@ -255,7 +255,7 @@ jobs:
       - name: 📕 Build storybook-static
         if: steps.storybook_static_cache.outputs.cache-hit != 'true'
         run: |
-          npm run sb:build | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a packages/storybook/summary.txt
+          npm run build -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a packages/storybook/summary.txt
           EXITCODE=${PIPESTATUS[0]}
           mv packages/storybook/summary.txt packages/storybook/storybook-static/summary.txt
           echo "$EXITCODE" > packages/storybook/storybook-static/EXITCODE
