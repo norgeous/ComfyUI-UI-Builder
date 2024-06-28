@@ -15,8 +15,7 @@
     "sb:unittest": "npm run unittest -w packages/storybook",
     "sb:unittest:ci": "npm run unittest:ci -w packages/storybook",
     "sb:storycap": "npm run storycap -w packages/storybook",
-    "outdated": "npm outdated",
-    "fix-msw-deps": "rm -r packages/storybook/node_modules/msw packages/storybook/node_modules/.cache/storybook/; cp -r node_modules/msw packages/storybook/node_modules/msw"
+    "outdated": "npm outdated"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.18",
@@ -51,14 +50,5 @@
   },
   "peerDependencies": {
     "@storybook/test": "^8.1.9"
-  },
-  "overrides": {
-    "msw": "2.3.0-ws.rc-7",
-    "msw-storybook-addon": {
-      "msw": "2.3.0-ws.rc-7"
-    }
-  },
-  "msw": {
-    "workerDirectory": "packages/storybook/public"
   }
 }
