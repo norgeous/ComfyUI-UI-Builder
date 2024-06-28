@@ -624,10 +624,10 @@ jobs:
           echo "<h1>Summary for: ${{ github.head_ref || github.ref_name }}</h1>" | tee -a ghindex.html
           echo "<table>" | tee -a ghindex.html
 
-          ((`cat npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
+          ((`cat ${{ runner.temp }}/npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
           echo "<tr><td><a href="npm-install-report/summary.txt">🧰 NPM Install</a></td><td>$NPMINSTALLEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
+          ((`cat ${{ runner.temp }}/lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
           echo "<tr><td><a href="lint-report/summary.txt">🧵 Lint</a></td><td>$LINTEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
@@ -639,7 +639,7 @@ jobs:
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
           echo "<tr><td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td><td>$SBTESTEMOJI</td></tr>" | tee -a ghindex.html
 
-          ((`cat _storycaps_/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
+          ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
           echo "<tr><td><a href="storycaps">🧢 Storycaps</a></td><td>$STORYCAPEMOJI</td></tr>" | tee -a ghindex.html
 
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
