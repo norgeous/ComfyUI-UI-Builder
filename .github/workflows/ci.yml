@@ -654,7 +654,7 @@ jobs:
         run: |
           mkdir gh-pages-directory
           mv ${{ runner.temp }}/npm-install-report/   gh-pages-directory/npm-install-report/
-          mv lint-report/                             gh-pages-directory/lint-report/
+          mv ${{ runner.temp }}/lint-report/          gh-pages-directory/lint-report/
           mv dist/                                    gh-pages-directory/vite/
           mv packages/storybook/storybook-static/     gh-pages-directory/storybook/
           mv storybook-test/                          gh-pages-directory/storybook-test/
