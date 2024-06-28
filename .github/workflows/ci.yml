@@ -86,6 +86,8 @@ jobs:
     name: 🧵 Lint
     needs: [npm-install]
     runs-on: ubuntu-latest
+    outputs:
+      LINT_MODIFIED_COUNT: ${{ steps.lint.outputs.LINT_MODIFIED_COUNT }}
     steps:
       - name: ♻️ Restore lint-report
         id: lint_cache
@@ -119,6 +121,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: 🧵 Lint
+        id: lint
         if: steps.lint_cache.outputs.cache-hit != 'true'
         run: |
           mkdir ${{ runner.temp }}/lint-report
@@ -129,22 +132,18 @@ jobs:
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           cat ${{ runner.temp }}/lint-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
-
-          echo | tee -a $GITHUB_STEP_SUMMARY
-          echo | tee -a $GITHUB_STEP_SUMMARY
-          git status | tee -a $GITHUB_STEP_SUMMARY
           LINT_MODIFIED_COUNT=`git status -s -uno | wc -l`
-          echo "LINT_MODIFIED_COUNT $LINT_MODIFIED_COUNT"
+          echo "LINT_MODIFIED_COUNT=$LINT_MODIFIED_COUNT" | tee -a $GITHUB_OUTPUT
           exit $EXITCODE
 
       - name: ✍️ Commit lint changes back into "${{ inputs.ref }}" branch
+        if: steps.lint.outputs.LINT_MODIFIED_COUNT > 0
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add . | tee -a $GITHUB_STEP_SUMMARY
           git commit -m "🧵 Lint from CI" | tee -a $GITHUB_STEP_SUMMARY
-          git status
-          # git push
+          git push
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save lint-report
