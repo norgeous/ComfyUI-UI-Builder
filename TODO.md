@@ -11,6 +11,9 @@
 
 ## Now
 
+- CI
+  - use tmp dir for reports / command outputs / exitcodes
+  - separate out commiting storycaps job (its kindof hidden)
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 
@@ -42,12 +45,10 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI issues
-  - separate out commiting storycaps job (its kindof hidden)
   - separate out `npm outdated` job, it can run in parallel with lint, etc
   - separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
   - lint should also report how many occurences of "eslint-disable" rules that there are across all files
   - report on js files that have code comments containing "TODO"
-  - use tmp dir for reports / command outputs / exitcodes
   - abstracting repeated code / DRY up the CI
   - delete preview job also runs the release by accident
   - needs to be checked more if CI is working
