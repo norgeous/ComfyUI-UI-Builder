@@ -401,6 +401,7 @@ jobs:
         id: check-changes
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
+          git status
           CHANGE_COUNT=`git status -s | wc -l`
           echo "CHANGE_COUNT=$CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
 
@@ -432,12 +433,10 @@ jobs:
           fail-on-cache-miss: true
 
       - name: 🗑️ Delete summary files
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           rm _storycaps_/EXITCODE _storycaps_/summary.txt
 
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
