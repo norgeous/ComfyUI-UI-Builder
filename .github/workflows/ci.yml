@@ -337,6 +337,8 @@ jobs:
     name: 🧢 Storycap
     needs: [storybook-static]
     runs-on: ubuntu-latest
+    outputs:
+      CHANGE_COUNT: ${{ steps.check-changes.outputs.CHANGE_COUNT }}
     steps:
       - name: ♻️ Restore storycaps
         id: storycaps_cache
@@ -395,6 +397,13 @@ jobs:
           cat _storycaps_/summary.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      - name: 🕵️ Count changes
+        id: check-changes
+        if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        run: |
+          CHANGE_COUNT=`git status -s | wc -l`
+          echo "CHANGE_COUNT=$CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
+
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save _storycaps_
         if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('_storycaps_') != '' }}
@@ -403,11 +412,29 @@ jobs:
           path: _storycaps_
           key: ${{ inputs.CACHE_KEY_STORYCAPS }}
 
+  storycap-commit:
+    name: ✍️ Storycap commit
+    needs: [storycap]
+    if: needs.storycap.outputs.CHANGE_COUNT > 0
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: ♻️ Restore storycaps
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: _storycaps_
+          key: ${{ inputs.CACHE_KEY_STORYCAPS }}
+          fail-on-cache-miss: true
+
       - name: 🗑️ Delete summary files
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
         run: |
           rm _storycaps_/EXITCODE _storycaps_/summary.txt
-          # rm -r npm-install-report/
 
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
