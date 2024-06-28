@@ -633,8 +633,9 @@ jobs:
           sed -i "s/{{VITEEMOJI}}/$VITEEMOJI/g" -i index.pr-preview.html
           sed -i "s/{{STORYBOOKEMOJI}}/$STORYBOOKEMOJI/g" -i index.pr-preview.html
           sed -i "s/{{SBTESTEMOJI}}/$SBTESTEMOJI/g" -i index.pr-preview.html
-          # sed -i "s/{{STORYCAPEMOJI}}/$STORYCAPEMOJI/g" -i index.pr-preview.html
-          # sed -i "s/{{VISDIFFEMOJI}}/$VISDIFFEMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{STORYCAPEMOJI}}/$STORYCAPEMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{VISDIFFEMOJI}}/$VISDIFFEMOJI/g" -i index.pr-preview.html
+          echo $DATE
           # sed -i "s/{{DATE}}/$DATE/g" -i index.pr-preview.html
 
       - name: 🎼 Compose Artifact
