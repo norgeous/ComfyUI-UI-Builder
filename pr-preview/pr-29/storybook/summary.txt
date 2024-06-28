@@ -1,8 +1,4 @@
 
-> ui-builder@0.0.0 sb:build
-> npm run build -w packages/storybook
-
-
 > @ui-builder/storybook@0.0.0 build
 > storybook build --quiet
 
@@ -11,7 +7,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (179 ms)
+info => Manager built (192 ms)
 info => Building preview..
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
@@ -108,8 +104,8 @@ storybook-static/assets/index-Lr0IKWY3.js                              2.39 kB �
 storybook-static/assets/index-Thx6jCf_.js                              2.42 kB │ gzip:     1.11 kB
 storybook-static/assets/experimental.stories-Dl--VqyX.js               2.45 kB │ gzip:     0.94 kB
 storybook-static/assets/index.stories-B2SLnQD3.js                      2.46 kB │ gzip:     0.73 kB
-storybook-static/assets/index-z1xMQG4V.js                              2.48 kB │ gzip:     1.10 kB
 storybook-static/assets/index-Cmb-1Lpt.js                              2.48 kB │ gzip:     1.07 kB
+storybook-static/assets/index-z1xMQG4V.js                              2.48 kB │ gzip:     1.10 kB
 storybook-static/assets/index-BuxHonki.js                              2.50 kB │ gzip:     0.96 kB
 storybook-static/assets/index-DYADbu9O.js                              2.59 kB │ gzip:     1.26 kB
 storybook-static/assets/index.stories-Bi5SZ03f.js                      2.83 kB │ gzip:     0.92 kB
@@ -149,7 +145,7 @@ storybook-static/assets/index-PX7pnrjg.js                            479.04 kB �
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-Ca3DyqnG.js            618.67 kB │ gzip:   188.37 kB
 storybook-static/assets/preview-OmpoDB4e.js                        5,886.86 kB │ gzip: 2,376.68 kB
-✓ built in 20.45s
+✓ built in 20.00s
 info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
