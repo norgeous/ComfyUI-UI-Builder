@@ -353,8 +353,8 @@ jobs:
         if: steps.storycaps_cache.outputs.cache-hit == 'true'
         run: |
           echo -e "⚠️ CACHED RESULT! ⚠️\n" | tee -a $GITHUB_STEP_SUMMARY
-          cat _storycaps_/summary.txt | tee -a $GITHUB_STEP_SUMMARY
-          exit `cat _storycaps_/EXITCODE`
+          cat ${{ runner.temp }}/storycap-report/OUTPUT.txt | tee -a $GITHUB_STEP_SUMMARY
+          exit `cat ${{ runner.temp }}/storycap-report/EXITCODE`
 
       - name: ⤵️ Checkout "${{ inputs.ref }}" branch
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
