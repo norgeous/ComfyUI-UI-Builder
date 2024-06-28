@@ -112,7 +112,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -177,7 +177,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -237,7 +237,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -293,7 +293,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -365,7 +365,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -474,7 +474,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
@@ -559,7 +559,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            npm-install-report
+            ${{ runner.temp }}/npm-install-report
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
