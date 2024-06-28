@@ -8,8 +8,7 @@
 
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/.storybook/preview.jsx
-  15:5   warning  Unexpected console statement  no-console
-  85:15  warning  Unexpected console statement  no-console
+  10:5  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/GlobalStyles/index.jsx
   145:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
@@ -24,7 +23,7 @@
   50:7  error    'queue' is assigned a value but never used  no-unused-vars
   66:5  warning  Unexpected console statement                no-console
 
-✖ 9 problems (5 errors, 4 warnings)
+✖ 8 problems (5 errors, 3 warnings)
 
 
 Fail ❌
