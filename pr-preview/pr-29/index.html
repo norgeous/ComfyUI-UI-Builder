@@ -10,6 +10,13 @@
         background: black;
         color: white;
       }
+      h1,
+      h4 {
+        text-align: center;
+      }
+      table {
+        margin: 0 auto;
+      }
       a {
         color: white;
         text-decoration: none;
@@ -25,29 +32,29 @@
       </tr>
       <tr>
         <td><a href="lint-report/OUTPUT.txt">🧵 Lint</a></td>
-        <td>$LINTEMOJI</td>
+        <td>✅</td>
       </tr>
       <tr>
         <td><a href="vite">⚡ Vite</a></td>
-        <td>$VITEEMOJI</td>
+        <td>{{VITEEMOJI}}</td>
       </tr>
       <tr>
         <td><a href="storybook">📕 Storybook</a></td>
-        <td>$STORYBOOKEMOJI</td>
+        <td>{{STORYBOOKEMOJI}}</td>
       </tr>
       <tr>
         <td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td>
-        <td>$SBTESTEMOJI</td>
+        <td>{{SBTESTEMOJI}}</td>
       </tr>
       <tr>
         <td><a href="storycaps">🧢 Storycaps</a></td>
-        <td>$STORYCAPEMOJI</td>
+        <td>{{STORYCAPEMOJI}}</td>
       </tr>
       <tr>
         <td><a href="visdiff">🎭 Visdiff</a></td>
-        <td>$VISDIFFEMOJI</td>
+        <td>{{VISDIFFEMOJI}}</td>
       </tr>
     </table>
-    <h4>Built on: $(date +'%d/%m/%Y %H:%M:%S %Z')</h4>
+    <h4>Built on: {{DATE}}</h4>
   </body>
 </html>
