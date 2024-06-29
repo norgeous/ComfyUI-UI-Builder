@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Branch Report</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: black;
+        color: white;
+      }
+      h1,
+      h4 {
+        text-align: center;
+      }
+      table {
+        margin: 0 auto;
+      }
+      th,
+      td {
+        /* border: 1px solid red; */
+        padding: 4px;
+      }
+      td:not(:first-child) {
+        text-align: center;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Summary for: {{BRANCH}}</h1>
+    <table>
+      <tr>
+        <th>Job</th>
+        <th>Command Output Link</th>
+        <th>Exit Code</th>
+        <th>Status</th>
+        <th>Build Link</th>
+      </tr>
+      <tr>
+        <td>🧰 NPM Install</td>
+        <td><a href="npm-install-report/OUTPUT.txt">📓</a></td>
+        <td>{{NPMINSTALL_EXITCODE}}</td>
+        <td>{{NPMINSTALL_EMOJI}}</td>
+      </tr>
+      <tr>
+        <td>🧵 Lint</td>
+        <td><a href="lint-report/OUTPUT.txt">📓</a></td>
+        <td>{{LINT_EXITCODE}}</td>
+        <td>{{LINT_EMOJI}}</td>
+      </tr>
+      <tr>
+        <td>⚡ Vite</td>
+        <td><a href="vite/summary.txt">📓</a></td>
+        <td>{{VITE_EXITCODE}}</td>
+        <td>{{VITE_EMOJI}}</td>
+        <td><a href="vite">➡️</a></td>
+      </tr>
+      <tr>
+        <td>📕 Storybook</td>
+        <td><a href="storybook/summary.txt">📓</a></td>
+        <td>{{STORYBOOK_EXITCODE}}</td>
+        <td>{{STORYBOOK_EMOJI}}</td>
+        <td><a href="storybook">➡️</a></td>
+      </tr>
+      <tr>
+        <td>🧪 Storybook Test</td>
+        <td><a href="storybook-test/summary.txt">📓</a></td>
+        <td>{{SBTEST_EXITCODE}}</td>
+        <td>{{SBTEST_EMOJI}}</td>
+      </tr>
+      <tr>
+        <td>🧢 Storycaps</td>
+        <td><a href="storycaps/storycap-report/OUTPUT.txt">📓</a></td>
+        <td>{{STORYCAP_EXITCODE}}</td>
+        <td>{{STORYCAP_EMOJI}}</td>
+        <td><a href="storycaps">➡️</a></td>
+      </tr>
+      <tr>
+        <td>🎭 Visdiff</td>
+        <td><a href="visdiff/summary.txt">📓</a></td>
+        <td>{{VISDIFF_EXITCODE}}</td>
+        <td>{{VISDIFF_EMOJI}}</td>
+        <td><a href="visdiff">➡️</a></td>
+      </tr>
+    </table>
+    <h4>Built on: {{BUILDDATE}}</h4>
+  </body>
+</html>
