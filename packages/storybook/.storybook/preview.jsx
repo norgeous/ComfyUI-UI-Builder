@@ -1,15 +1,12 @@
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
 import { ws } from 'msw';
+import comfyUiWsMock from '@ui-builder/comfybridge/comfyUiWsMock';
 import ProjectDecorator from '../ProjectDecorator';
 
-const service = ws.link('*');
+const service = ws.link('ws://localhost:8188/ws');
 
-initialize({}, [
-  service.on('connection', ({ client }) => {
-    console.log('outgoing ws connection:', client.url);
-  }),
-]);
+initialize({}, [service.on('connection', comfyUiWsMock)]);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
