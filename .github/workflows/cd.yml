@@ -20,6 +20,7 @@ jobs:
     outputs:
       CACHE_KEY_NPM_INSTALL: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_NPM_INSTALL }}
       CACHE_KEY_LINT: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_LINT_CHANGES: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_LINT_CHANGES }}
       CACHE_KEY_VITE_DIST: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_VITE_DIST }}
       CACHE_KEY_STORYBOOK: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_STORYBOOK }}
       CACHE_KEY_SB_TEST: ${{ steps.invent_cache_keys.outputs.CACHE_KEY_SB_TEST }}
@@ -38,6 +39,7 @@ jobs:
         run: |
           echo "CACHE_KEY_NPM_INSTALL=node_modules-${{hashFiles('**/package.json', '**/package-lock.json')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_LINT=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_LINT_CHANGES=lint-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VITE_DIST=vite-dist-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '!**.stories.js', '!**.stories.jsx', '**/public', 'README.release.md')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYBOOK=storybook-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
@@ -73,6 +75,7 @@ jobs:
       ref: ${{ github.head_ref || github.ref_name }}
       CACHE_KEY_NPM_INSTALL: ${{ needs.cache-keys.outputs.CACHE_KEY_NPM_INSTALL }}
       CACHE_KEY_LINT: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT }}
+      CACHE_KEY_LINT_CHANGES: ${{ needs.cache-keys.outputs.CACHE_KEY_LINT_CHANGES }}
       CACHE_KEY_VITE_DIST: ${{ needs.cache-keys.outputs.CACHE_KEY_VITE_DIST }}
       CACHE_KEY_STORYBOOK: ${{ needs.cache-keys.outputs.CACHE_KEY_STORYBOOK }}
       CACHE_KEY_SB_TEST: ${{ needs.cache-keys.outputs.CACHE_KEY_SB_TEST }}

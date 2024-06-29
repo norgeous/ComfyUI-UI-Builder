@@ -11,6 +11,9 @@ on:
       CACHE_KEY_LINT:
         required: true
         type: string
+      CACHE_KEY_LINT_CHANGES:
+        required: true
+        type: string
       CACHE_KEY_VITE_DIST:
         required: true
         type: string
@@ -136,15 +139,6 @@ jobs:
           echo "LINT_MODIFIED_COUNT=$LINT_MODIFIED_COUNT" | tee -a $GITHUB_OUTPUT
           exit $EXITCODE
 
-      - name: ✍️ Commit lint changes back into "${{ inputs.ref }}" branch
-        if: steps.lint.outputs.LINT_MODIFIED_COUNT > 0
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add . | tee -a $GITHUB_STEP_SUMMARY
-          git commit -m "🧵 Lint from CI" | tee -a $GITHUB_STEP_SUMMARY
-          git push
-
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save lint-report
         if: ${{ steps.lint_cache.outputs.cache-hit != 'true' && !cancelled()}}
@@ -152,6 +146,13 @@ jobs:
         with:
           path: ${{ runner.temp }}/lint-report
           key: ${{ inputs.CACHE_KEY_LINT }}
+
+      - name: 💾 Save lint changes
+        if: ${{ steps.lint.outputs.LINT_MODIFIED_COUNT > 0}}
+        uses: actions/cache/save@v4
+        with:
+          path: .
+          key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
   vite-build:
     name: ⚡ Vite
@@ -651,6 +652,33 @@ jobs:
           mv packages/storybook/visdiff-report/       gh-pages-directory/visdiff/
           mv index.pr-preview.html                    gh-pages-directory/index.html
           ls -l gh-pages-directory
+
+  lint-commit:
+    name: ✍️ Lint commit
+    needs: [lint]
+    if: needs.lint.outputs.LINT_MODIFIED_COUNT > 0
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: ♻️ Restore lint-changes
+        id: storycaps_cache
+        uses: actions/cache@v4
+        with:
+          path: .
+          key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
+          fail-on-cache-miss: true
+
+      - name: ✍️ Commit lint changes back into "${{ inputs.ref }}" branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add . | tee -a $GITHUB_STEP_SUMMARY
+          git commit -m "🧵 Lint from CI" | tee -a $GITHUB_STEP_SUMMARY
+          git push
 
   storycap-commit:
     name: ✍️ Storycap commit
