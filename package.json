@@ -10,12 +10,7 @@
     "build": "vite build",
     "prelint": "prettier --log-level silent --write \"**/*.{js,cjs,jsx,md,json,html,css,yml}\"",
     "lint": "eslint . --ext .js,.jsx,.cjs --fix",
-    "sb": "npm run sb -w packages/storybook",
-    "sb:build": "npm run build -w packages/storybook",
-    "sb:unittest": "npm run unittest -w packages/storybook",
-    "sb:unittest:ci": "npm run unittest:ci -w packages/storybook",
-    "sb:storycap": "npm run storycap -w packages/storybook",
-    "outdated": "npm outdated"
+    "sb": "npm run sb -w packages/storybook"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.18",
