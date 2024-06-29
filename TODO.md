@@ -11,8 +11,6 @@
 ## Now
 
 - CI: use tmp dir for reports / command outputs / exitcodes
-- CI: separate out commiting storycaps job (its kindof hidden)
-- CI: separate out lint --fix changes commit, this doesnt actually happen at the moment so needs work, but needs to be a separate job
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 
@@ -43,7 +41,7 @@
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
-- CI: separate out `npm outdated` job, it can run in parallel with lint, etc. Also consider `npx npm-check-updates`
+- CI: show `npm outdated` step results in gh-pages deployment. Also consider `npx npm-check-updates`
 - CI: unused files check
 - CI: rename the develop/vite dir in `gh-pages` to `release/build`
 - CI: add a job to report how many occurences of "eslint-disable" rules that there are across all files
