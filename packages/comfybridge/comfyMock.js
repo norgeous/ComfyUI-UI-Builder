@@ -7,9 +7,6 @@ import { ws, http, HttpResponse } from 'msw';
 // also can receieve interrupts to items in the queue
 // finally send back 1 or more mock images (perhaps svgs?) via ws
 
-// mock object_info GET
-//   - ckpts, lora, previously uploaded images
-
 const availableCkpt = ['mock-model-one-XL.safetensors', 'mock-two.SDXL.ckpt'];
 
 const service = ws.link('ws://localhost:8188/ws');
@@ -21,6 +18,8 @@ const wsMock = service.on('connection', ({ client }) => {
   );
 });
 
+// mock object_info GET
+//   - ckpts, lora, previously uploaded images
 const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
   HttpResponse.json({
     CheckpointLoaderSimple: {
