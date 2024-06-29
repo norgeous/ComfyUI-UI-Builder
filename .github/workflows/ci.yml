@@ -651,26 +651,26 @@ jobs:
           NPMINSTALL_EXITCODE=`cat ${{ runner.temp }}/npm-install-report/EXITCODE`
           LINT_EXITCODE=`cat ${{ runner.temp }}/lint-report/EXITCODE`
 
-          (($NPMINSTALL_EXITCODE == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
-          (($LINT_EXITCODE == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
-          ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
-          ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
-          ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
-          ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
-          ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
+          (($NPMINSTALL_EXITCODE == 0)) && NPMINSTALL_EMOJI='✅' || NPMINSTALL_EMOJI='❌'
+          (($LINT_EXITCODE == 0)) && LINT_EMOJI='✅' || LINT_EMOJI='❌'
+          ((`cat dist/EXITCODE` == 0)) && VITE_EMOJI='✅' || VITE_EMOJI='❌'
+          ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOK_EMOJI='✅' || STORYBOOK_EMOJI='❌'
+          ((`cat storybook-test/EXITCODE` == 0)) && SBTEST_EMOJI='✅' || SBTEST_EMOJI='❌'
+          ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAP_EMOJI='✅' || STORYCAP_EMOJI='❌'
+          ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFF_EMOJI='✅' || VISDIFF_EMOJI='❌'
           BUILDDATE=$(date +'%d/%m/%Y %H:%M:%S %Z')
 
           sed -i "s/{{NPMINSTALL_EXITCODE}}/$NPMINSTALL_EXITCODE/g" -i index.pr-preview.html
           sed -i "s/{{LINT_EXITCODE}}/$LINT_EXITCODE/g" -i index.pr-preview.html
 
           sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
-          sed -i "s/{{NPMINSTALLEMOJI}}/$NPMINSTALLEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{LINTEMOJI}}/$LINTEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{VITEEMOJI}}/$VITEEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{STORYBOOKEMOJI}}/$STORYBOOKEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{SBTESTEMOJI}}/$SBTESTEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{STORYCAPEMOJI}}/$STORYCAPEMOJI/g" -i index.pr-preview.html
-          sed -i "s/{{VISDIFFEMOJI}}/$VISDIFFEMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{NPMINSTALL_EMOJI}}/$NPMINSTALL_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{LINT_EMOJI}}/$LINT_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{VITE_EMOJI}}/$VITE_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{STORYBOOK_EMOJI}}/$STORYBOOK_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{SBTEST_EMOJI}}/$SBTEST_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{STORYCAP_EMOJI}}/$STORYCAP_EMOJI/g" -i index.pr-preview.html
+          sed -i "s/{{VISDIFF_EMOJI}}/$VISDIFF_EMOJI/g" -i index.pr-preview.html
           sed -i "s|{{BUILDDATE}}|$BUILDDATE|g" -i index.pr-preview.html
 
       - name: 🎼 Compose Artifact
