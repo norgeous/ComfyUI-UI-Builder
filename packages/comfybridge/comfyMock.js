@@ -1,6 +1,4 @@
-import { ws } from 'msw';
-
-const service = ws.link('ws://localhost:8188/ws');
+import { ws, http, HttpResponse } from 'msw';
 
 // mocks of comfy ui for msw in storybook
 
@@ -12,6 +10,7 @@ const service = ws.link('ws://localhost:8188/ws');
 // mock object_info GET
 //   - ckpts, lora, previously uploaded images
 
+const service = ws.link('ws://localhost:8188/ws');
 const wsMock = service.on('connection', ({ client }) => {
   console.log(
     '@ui-builder/comfybridge mock ws connection established!',
@@ -20,4 +19,28 @@ const wsMock = service.on('connection', ({ client }) => {
   );
 });
 
-export default { wsMock };
+const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
+  HttpResponse.json({
+    id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
+    firstName: 'John',
+    lastName: 'Maverick',
+  }),
+);
+
+const promptMock = http.get('http://localhost:8188/prompt', () =>
+  HttpResponse.json({
+    id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
+    firstName: 'John',
+    lastName: 'Maverick',
+  }),
+);
+
+const interruptMock = http.get('http://localhost:8188/interrupt', () =>
+  HttpResponse.json({
+    id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
+    firstName: 'John',
+    lastName: 'Maverick',
+  }),
+);
+
+export default [wsMock, objectInfoMock, promptMock, interruptMock];

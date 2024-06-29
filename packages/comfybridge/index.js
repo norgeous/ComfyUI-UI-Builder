@@ -1,7 +1,7 @@
 import uuidv4 from './utils/uuidv4';
 import getWebSocket from './websocket/getWebSocket';
 import simpleFetch from './queue/simpleFetch';
-import queueController from './queueController';
+import queueController from './queue/queueController';
 
 // new package to do the following (without react)
 
