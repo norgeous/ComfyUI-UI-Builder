@@ -156,6 +156,7 @@ jobs:
           npm run lint | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
           LINT_MODIFIED_COUNT=`git status -s -uno | wc -l`
+          echo "Lint has modified $LINT_MODIFIED_COUNT files" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           echo "LINT_MODIFIED_COUNT=$LINT_MODIFIED_COUNT" | tee -a $GITHUB_OUTPUT
           echo "$EXITCODE" > ${{ runner.temp }}/lint-report/EXITCODE
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
