@@ -435,19 +435,13 @@ jobs:
           npm run storycap:ci -w packages/storybook | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" >  ${{ runner.temp }}/storycap-report/EXITCODE
+          STORYCAP_CHANGE_COUNT=`git status -s | wc -l`
+          echo "Change count is $STORYCAP_CHANGE_COUNT" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
+          echo "STORYCAP_CHANGE_COUNT=$STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           cat ${{ runner.temp }}/storycap-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
-
-      - name: 🕵️ Count changes
-        id: check-changes
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
-        run: |
-          git status
-          STORYCAP_CHANGE_COUNT=`git status -s | wc -l`
-          echo "Change count is $STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_STEP_SUMMARY
-          echo "STORYCAP_CHANGE_COUNT=$STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save _storycaps_
