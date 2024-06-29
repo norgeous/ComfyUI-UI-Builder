@@ -650,10 +650,11 @@ jobs:
         run: |
           NPMINSTALL_EXITCODE=`cat ${{ runner.temp }}/npm-install-report/EXITCODE`
           LINT_EXITCODE=`cat ${{ runner.temp }}/lint-report/EXITCODE`
+          VITE_EXITCODE=`cat dist/EXITCODE`
 
           (($NPMINSTALL_EXITCODE == 0)) && NPMINSTALL_EMOJI='✅' || NPMINSTALL_EMOJI='❌'
           (($LINT_EXITCODE == 0)) && LINT_EMOJI='✅' || LINT_EMOJI='❌'
-          ((`cat dist/EXITCODE` == 0)) && VITE_EMOJI='✅' || VITE_EMOJI='❌'
+          (($VITE_EXITCODE == 0)) && VITE_EMOJI='✅' || VITE_EMOJI='❌'
           ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOK_EMOJI='✅' || STORYBOOK_EMOJI='❌'
           ((`cat storybook-test/EXITCODE` == 0)) && SBTEST_EMOJI='✅' || SBTEST_EMOJI='❌'
           ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAP_EMOJI='✅' || STORYCAP_EMOJI='❌'
@@ -662,6 +663,7 @@ jobs:
 
           sed -i "s/{{NPMINSTALL_EXITCODE}}/$NPMINSTALL_EXITCODE/g" -i index.pr-preview.html
           sed -i "s/{{LINT_EXITCODE}}/$LINT_EXITCODE/g" -i index.pr-preview.html
+          sed -i "s/{{VITE_EXITCODE}}/$VITE_EXITCODE/g" -i index.pr-preview.html
 
           sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
           sed -i "s/{{NPMINSTALL_EMOJI}}/$NPMINSTALL_EMOJI/g" -i index.pr-preview.html
