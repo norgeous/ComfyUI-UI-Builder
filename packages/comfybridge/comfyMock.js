@@ -6,6 +6,7 @@ import { ws, http, HttpResponse } from 'msw';
 // then spit out ws events based on delays (mock nodes executing)
 // also can receieve interrupts to items in the queue
 // finally send back 1 or more mock images (perhaps svgs?) via ws
+// test ci...
 
 const availableCkpt = ['mock-model-one-XL.safetensors', 'mock-two.SDXL.ckpt'];
 
