@@ -68,11 +68,15 @@ jobs:
           npm ci | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" > ${{ runner.temp }}/npm-install-report/EXITCODE
-          npm outdated | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/npm-install-report/OUTPUT.txt
           cat ${{ runner.temp }}/npm-install-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
+
+      - name: 🆙 NPM outdated
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: |
+          npm outdated | tee -a $GITHUB_STEP_SUMMARY
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save npm-install-report
