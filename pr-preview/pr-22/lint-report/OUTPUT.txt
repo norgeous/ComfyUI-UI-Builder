@@ -8,7 +8,7 @@
 
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/comfyMock.js
-  14:3  warning  Unexpected console statement  no-console
+  15:3  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/index.js
   66:5  warning  Unexpected console statement  no-console
