@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import comfybridge from '@ui-builder/comfybridge';
 import comfyBridge from '@/utils/comfyBridge';
 import ComfyBridgeContext from './ComfyBridgeContext';
+
+console.log({ comfybridge });
 
 const useComfyBridge = () => {
   const [bridge, setBridge] = useState();
