@@ -10,7 +10,6 @@
 
 ## Now
 
-- CI: use tmp dir for reports / command outputs / exitcodes
 - interrupt and queue features (styling 50% done already)
   - using multiple instances, how should queue work? clientId adjustments...
 
@@ -41,7 +40,9 @@
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
+- CI: use tmp dir for all reports / command outputs / exitcodes
 - CI: show `npm outdated` step results in gh-pages "branch report"
+- CI: smaller job summaries
 - CI: use bash html sed templating to make the storycaps/index.html
 - CI: unused files check
 - CI: rename the develop/vite dir in `gh-pages` to `release/build`
@@ -49,9 +50,7 @@
 - CI: report on js files that have code comments containing "TODO"
 - CI: abstracting repeated code / DRY up the CI
 - CI: delete preview job also runs the release by accident
-- CI: needs to be checked more if CI is working
 - CI: add job summaries for compose and deploy jobs
-- CI: smaller job summaries
 - CI: versioning
 - CI: using github releases?
 - CI: report and check bundle size / dist dir size
