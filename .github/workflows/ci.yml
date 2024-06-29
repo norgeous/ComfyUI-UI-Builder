@@ -648,8 +648,11 @@ jobs:
       - name: 📄 Update template index.pr-preview.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
-          ((`cat ${{ runner.temp }}/npm-install-report/EXITCODE` == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
-          ((`cat ${{ runner.temp }}/lint-report/EXITCODE` == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
+          NPMINSTALL_EXITCODE=`cat ${{ runner.temp }}/npm-install-report/EXITCODE`
+          LINT_EXITCODE=`cat ${{ runner.temp }}/lint-report/EXITCODE`
+
+          (($NPMINSTALL_EXITCODE == 0)) && NPMINSTALLEMOJI='✅' || NPMINSTALLEMOJI='❌'
+          (($LINT_EXITCODE == 0)) && LINTEMOJI='✅' || LINTEMOJI='❌'
           ((`cat dist/EXITCODE` == 0)) && VITEEMOJI='✅' || VITEEMOJI='❌'
           ((`cat packages/storybook/storybook-static/EXITCODE` == 0)) && STORYBOOKEMOJI='✅' || STORYBOOKEMOJI='❌'
           ((`cat storybook-test/EXITCODE` == 0)) && SBTESTEMOJI='✅' || SBTESTEMOJI='❌'
@@ -657,7 +660,8 @@ jobs:
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
           BUILDDATE=$(date +'%d/%m/%Y %H:%M:%S %Z')
 
-          sed -i "s/{{NPMINSTALL_EXITCODE}}/`cat ${{ runner.temp }}/npm-install-report/EXITCODE`/g" -i index.pr-preview.html
+          sed -i "s/{{NPMINSTALL_EXITCODE}}/$NPMINSTALL_EXITCODE/g" -i index.pr-preview.html
+          sed -i "s/{{LINT_EXITCODE}}/$LINT_EXITCODE/g" -i index.pr-preview.html
 
           sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
           sed -i "s/{{NPMINSTALLEMOJI}}/$NPMINSTALLEMOJI/g" -i index.pr-preview.html
