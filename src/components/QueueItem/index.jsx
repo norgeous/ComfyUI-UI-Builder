@@ -79,12 +79,16 @@ const QueueItem = ({
 };
 
 QueueItem.propTypes = {
+  id: PropTypes.string,
   loading: PropTypes.bool,
+  error: PropTypes.string,
+  data: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   status: PropTypes.string,
   progress: PropTypes.number,
   onInterrupt: PropTypes.func,
   interruptLoading: PropTypes.bool,
   interruptError: PropTypes.string,
+  onRemove: PropTypes.func,
 };
 
 export default QueueItem;
