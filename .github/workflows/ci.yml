@@ -665,7 +665,6 @@ jobs:
           ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore lint-changes
-        id: storycaps_cache
         uses: actions/cache@v4
         with:
           path: .
@@ -692,7 +691,6 @@ jobs:
           ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore storycaps
-        id: storycaps_cache
         uses: actions/cache@v4
         with:
           path: |
