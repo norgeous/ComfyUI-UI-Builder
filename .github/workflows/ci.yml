@@ -106,7 +106,9 @@ jobs:
 
       - name: 🆙 NPM Outdated
         run: |
+          echo "\`\`\`console" | tee -a $GITHUB_STEP_SUMMARY
           npm outdated | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" | tee -a $GITHUB_STEP_SUMMARY
 
   lint:
     name: 🧵 Lint
@@ -175,10 +177,10 @@ jobs:
         with:
           path: |
             ./*
-            !.git/*
-            !.github/*
-            !node_modules/*
-            !_storycaps_/*
+            !.git
+            !.github
+            !node_modules
+            !_storycaps_
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
   vite-build:
@@ -696,10 +698,10 @@ jobs:
         with:
           path: |
             ./*
-            !.git/*
-            !.github/*
-            !node_modules/*
-            !_storycaps_/*
+            !.git
+            !.github
+            !node_modules
+            !_storycaps_
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
           fail-on-cache-miss: true
 
