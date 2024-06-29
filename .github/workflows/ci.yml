@@ -684,6 +684,8 @@ jobs:
           git config user.email github-actions@github.com
           git add . | tee -a $GITHUB_STEP_SUMMARY
           git commit -m "🧵 Lint from CI" | tee -a $GITHUB_STEP_SUMMARY
+          git status
+          ls -haXl
           git push
 
   storycap-commit:
