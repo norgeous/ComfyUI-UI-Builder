@@ -89,6 +89,11 @@ jobs:
     needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
       - name: ♻️ Restore node_modules
         uses: actions/cache@v4
         with:
