@@ -106,9 +106,9 @@ jobs:
 
       - name: 🆙 NPM Outdated
         run: |
-          echo "\`\`\`console" | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
           npm outdated | tee -a $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
   lint:
     name: 🧵 Lint
