@@ -134,12 +134,12 @@ jobs:
           mkdir ${{ runner.temp }}/lint-report
           npm run lint | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
+          LINT_MODIFIED_COUNT=`git status -s -uno | wc -l`
+          echo "LINT_MODIFIED_COUNT=$LINT_MODIFIED_COUNT" | tee -a $GITHUB_OUTPUT
           echo "$EXITCODE" > ${{ runner.temp }}/lint-report/EXITCODE
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           cat ${{ runner.temp }}/lint-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
-          LINT_MODIFIED_COUNT=`git status -s -uno | wc -l`
-          echo "LINT_MODIFIED_COUNT=$LINT_MODIFIED_COUNT" | tee -a $GITHUB_OUTPUT
           exit $EXITCODE
 
       # even if the previous step exits with failure, we still want to save the results
@@ -665,10 +665,10 @@ jobs:
     if: needs.lint.outputs.LINT_MODIFIED_COUNT > 0
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
+      # - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore lint-changes
         uses: actions/cache@v4
