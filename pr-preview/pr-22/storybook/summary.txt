@@ -7,7 +7,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (176 ms)
+info => Manager built (171 ms)
 info => Building preview..
 info => Copying static files: public at storybook-static
 info => Copying static files: ../../public at storybook-static
@@ -20,8 +20,8 @@ computing gzip size...
 storybook-static/iframe.html                                          15.91 kB │ gzip:     4.41 kB
 storybook-static/assets/index-BbP3371Q.js                              0.05 kB │ gzip:     0.07 kB
 storybook-static/assets/preview-B4GcaC1c.js                            0.07 kB │ gzip:     0.08 kB
-storybook-static/assets/SpeechContext-CGWUamV5.js                      0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/AppContext-kKnWjy1_.js                         0.08 kB │ gzip:     0.10 kB
+storybook-static/assets/SpeechContext-CGWUamV5.js                      0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/ComfyBridgeContext-CTMRF_Mz.js                 0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/InputRefContext-5kgal7hN.js                    0.09 kB │ gzip:     0.10 kB
 storybook-static/assets/FormContext-BvePLfBF.js                        0.13 kB │ gzip:     0.14 kB
@@ -55,8 +55,8 @@ storybook-static/assets/index-Cahrx41K.js                              0.87 kB �
 storybook-static/assets/index.stories-B0X_c-Li.js                      0.92 kB │ gzip:     0.49 kB
 storybook-static/assets/jsx-runtime-Nms4Y4qS.js                        0.92 kB │ gzip:     0.58 kB
 storybook-static/assets/index-CBgsHpUN.js                              0.93 kB │ gzip:     0.58 kB
-storybook-static/assets/index.stories-Cb3OcMyq.js                      0.96 kB │ gzip:     0.50 kB
 storybook-static/assets/index-DGrXjN0i.js                              0.96 kB │ gzip:     0.58 kB
+storybook-static/assets/index.stories-Cb3OcMyq.js                      0.96 kB │ gzip:     0.50 kB
 storybook-static/assets/preview-CVAZ09U1.js                            0.98 kB │ gzip:     0.62 kB
 storybook-static/assets/index.stories-B9oLoFHH.js                      1.00 kB │ gzip:     0.52 kB
 storybook-static/assets/preview-gtHI_ihW.js                            1.03 kB │ gzip:     0.68 kB
@@ -147,7 +147,7 @@ storybook-static/assets/index-PX7pnrjg.js                            479.04 kB �
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-DgYYeEou.js            618.67 kB │ gzip:   188.37 kB
 storybook-static/assets/preview-BhbXAt-5.js                        5,970.23 kB │ gzip: 2,403.09 kB
-✓ built in 21.11s
+✓ built in 20.96s
 info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
