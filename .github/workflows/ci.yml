@@ -85,7 +85,7 @@ jobs:
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
 
   npm-outdated:
-    name: 🆙 NPM Outdated
+    name: ⏰ NPM Outdated
     needs: [npm-install]
     runs-on: ubuntu-latest
     steps:
@@ -104,10 +104,14 @@ jobs:
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
           fail-on-cache-miss: true
 
-      - name: 🆙 NPM Outdated
+      - name: ⏰ NPM Outdated
         run: |
           echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
           npm outdated | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+          echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
+          npx -y npm-check-updates | tee -a $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
   lint:
