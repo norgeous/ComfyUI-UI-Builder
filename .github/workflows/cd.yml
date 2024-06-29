@@ -13,6 +13,10 @@ on:
 
 concurrency: preview-${{ github.ref }}
 
+# delete all caches with
+# https://cli.github.com/
+# gh cache delete --all
+
 jobs:
   cache-keys:
     name: 🔑 Cache Keys
