@@ -1,19 +1,9 @@
 
-added 1866 packages, and audited 1868 packages in 29s
+added 1866 packages, and audited 1868 packages in 38s
 
 317 packages are looking for funding
   run `npm fund` for details
 
 found 0 vulnerabilities
-Package                        Current  Wanted  Latest  Location             Depended by
-@swc/core-darwin-arm64         MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-darwin-x64           MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-linux-arm-gnueabihf  MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-linux-arm64-gnu      MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-linux-arm64-musl     MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-win32-arm64-msvc     MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-win32-ia32-msvc      MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-@swc/core-win32-x64-msvc       MISSING   1.6.5   1.6.5  -                    storybook@npm:@ui-builder/storybook@0.0.0
-eslint                          8.57.0  8.57.0   9.6.0  node_modules/eslint  ComfyUI-UI-Builder
 
 Pass ✅
