@@ -75,7 +75,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save npm-install-report
-        if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('node_modules') != '' }}
+        if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: |
@@ -246,7 +246,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save dist
-        if: ${{ steps.dist_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('dist') != '' }}
+        if: ${{ steps.dist_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: |
@@ -305,7 +305,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save storybook-static
-        if: ${{ steps.storybook_static_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
+        if: ${{ steps.storybook_static_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/storybook-static
@@ -375,7 +375,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save storybook-test
-        if: ${{ steps.storybook_test_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('storybook-test') != '' }}
+        if: ${{ steps.storybook_test_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: storybook-test
@@ -453,7 +453,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save _storycaps_
-        if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('_storycaps_') != '' }}
+        if: ${{ steps.storycaps_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: |
@@ -539,7 +539,7 @@ jobs:
 
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save visdiff-report
-        if: ${{ steps.visdiff_report_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('packages/storybook/visdiff-report') != '' }}
+        if: ${{ steps.visdiff_report_cache.outputs.cache-hit != 'true' && !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: packages/storybook/visdiff-report
