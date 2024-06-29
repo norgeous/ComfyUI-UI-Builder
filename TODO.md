@@ -42,6 +42,7 @@
 - error handling of missing ckpt or lora
 - errors should appear in a relevent place, eg ckpt
 - CI: show `npm outdated` step results in gh-pages "branch report"
+- CI: use bash html sed templating to make the storycaps/index.html
 - CI: unused files check
 - CI: rename the develop/vite dir in `gh-pages` to `release/build`
 - CI: add a job to report how many occurences of "eslint-disable" rules that there are across all files
