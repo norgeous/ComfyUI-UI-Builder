@@ -158,6 +158,7 @@ jobs:
             !.git
             !.github
             !node_modules
+            !_storycaps_
             .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
@@ -678,6 +679,7 @@ jobs:
             !.git
             !.github
             !node_modules
+            !_storycaps_
             .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
           fail-on-cache-miss: true
