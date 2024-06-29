@@ -111,7 +111,7 @@ jobs:
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
           echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
-          npx -y npm-check-updates | tee -a $GITHUB_STEP_SUMMARY
+          npx -y npm-check-updates -ws | tee -a $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
   lint:
