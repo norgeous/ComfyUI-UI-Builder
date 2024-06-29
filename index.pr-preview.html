@@ -17,6 +17,14 @@
       table {
         margin: 0 auto;
       }
+      th,
+      td {
+        /* border: 1px solid red; */
+        padding: 4px;
+      }
+      td:not(:first-child) {
+        text-align: center;
+      }
       a {
         color: white;
         text-decoration: none;
@@ -27,20 +35,32 @@
     <h1>Summary for: {{BRANCH}}</h1>
     <table>
       <tr>
-        <td><a href="npm-install-report/OUTPUT.txt">🧰 NPM Install</a></td>
+        <th>Job</th>
+        <th>Status</th>
+        <th>Result</th>
+        <th>Build Link</th>
+      </tr>
+      <tr>
+        <td>🧰 NPM Install</td>
         <td>{{NPMINSTALLEMOJI}}</td>
+        <td><a href="npm-install-report/OUTPUT.txt">📄</a></td>
       </tr>
       <tr>
-        <td><a href="lint-report/OUTPUT.txt">🧵 Lint</a></td>
+        <td>🧵 Lint</td>
         <td>{{LINTEMOJI}}</td>
+        <td><a href="lint-report/OUTPUT.txt">📄</a></td>
       </tr>
       <tr>
-        <td><a href="vite">⚡ Vite</a></td>
+        <td>⚡ Vite</td>
         <td>{{VITEEMOJI}}</td>
+        <td><a href="vite/summary.txt">📄</a></td>
+        <td><a href="vite">➡️</a></td>
       </tr>
       <tr>
         <td><a href="storybook">📕 Storybook</a></td>
         <td>{{STORYBOOKEMOJI}}</td>
+        <td><a href="storybook/summary.txt">📄</a></td>
+        <td><a href="storybook">➡️</a></td>
       </tr>
       <tr>
         <td><a href="storybook-test/summary.txt">🧪 Storybook Test</a></td>
