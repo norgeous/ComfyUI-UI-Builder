@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ComfyBridgeContext from '@/contexts/ComfyBridgeContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
 import Layout from '@/components/Layout';
 import FormHeader from '@/components/FormHeader';
 import FormBuilder from '@/components/FormBuilder';

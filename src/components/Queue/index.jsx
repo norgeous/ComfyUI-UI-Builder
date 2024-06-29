@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import AppContext from '@/contexts/AppContext';
-import WsContext from '@/contexts/WsContext';
 import QueueItem from '@/components/QueueItem';
+import WsContext from '@/contexts/WsContext';
 
 const Queue = () => {
   const { progress, lastWsMessage, isGenerating } = useContext(WsContext);

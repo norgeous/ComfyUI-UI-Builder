@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import WsContext from '@/contexts/WsContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
 import StatusBar from '@/components/StatusBar';
 import { ContentArea, Main } from './styled';
 
 const MainContent = () => {
-  const { comfyUrl, output } = useContext(WsContext);
+  const { comfyUrl, output } = useContext(ComfyBridgeContext);
   const images = (output?.images || []).map(
     ({ filename }) => `${comfyUrl}/view?type=output&filename=${filename}`,
   );

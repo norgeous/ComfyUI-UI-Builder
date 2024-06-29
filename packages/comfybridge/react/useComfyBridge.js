@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import comfybridge from '@ui-builder/comfybridge';
-import comfyBridge from '@/utils/comfyBridge';
-import ComfyBridgeContext from './ComfyBridgeContext';
-
-console.log({ comfybridge });
+import comfybridge from '../index';
 
 const useComfyBridge = () => {
   const [bridge, setBridge] = useState();
@@ -22,7 +17,7 @@ const useComfyBridge = () => {
   // on mount, try to find the open websocket
   // TODO: if this fails to connect, perhaps display a message about ComfyUI --listen setting
   useEffect(() => {
-    const newBridge = comfyBridge({ onChange: updateData });
+    const newBridge = comfybridge({ onChange: updateData });
     newBridge.connect();
     setBridge(newBridge);
     return () => newBridge.destroy();
@@ -31,14 +26,4 @@ const useComfyBridge = () => {
   return { bridge, data };
 };
 
-const ComfyBridgeProvider = ({ children = null }) => (
-  <ComfyBridgeContext.Provider value={useComfyBridge()}>
-    {children}
-  </ComfyBridgeContext.Provider>
-);
-
-ComfyBridgeProvider.propTypes = {
-  children: PropTypes.node,
-};
-
-export default ComfyBridgeProvider;
+export default useComfyBridge;

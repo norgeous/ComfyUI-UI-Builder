@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Pyramid from '@/components/Pyramid';
-import ComfyBridgeProvider from '@/contexts/ComfyBridgeProvider';
+import ComfyBridgeProvider from '@ui-builder/comfybridge/ComfyBridgeProvider';
 
 import ConfigsProvider from '@/contexts/ConfigsProvider';
 import FormProvider from '@/contexts/FormProvider';

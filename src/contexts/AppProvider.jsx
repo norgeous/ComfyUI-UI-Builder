@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import ConfigsContext from '@/contexts/ConfigsContext';
 import FormContext from '@/contexts/FormContext';
-import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 import AppContext from '@/contexts/AppContext';
-import ClientIdContext from '@/contexts/ClientIdContext';
 
 import useComfyPrompt from '@/hooks/useComfyPrompt';
 import useComfyInterrupt from '@/hooks/useComfyInterrupt';
 import useBodyData from '@/hooks/useBodyData';
+import ClientIdContext from '@/contexts/ClientIdContext';
+import ObjectInfoContext from '@/contexts/ObjectInfoContext';
 
 const AppProvider = ({ children = null }) => {
   const clientId = useContext(ClientIdContext);

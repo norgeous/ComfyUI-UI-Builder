@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import ComfyBridgeContext from '@/contexts/ComfyBridgeContext';
-import WsContext from '@/contexts/WsContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
 import AppContext from '@/contexts/AppContext';
+
 import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
@@ -12,7 +12,6 @@ import { Bar, Link, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
-  const { comfyUrl } = useContext(WsContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
@@ -62,7 +61,7 @@ const StatusBar = () => {
       <Tray $shrinkable>
         <StatusLight status={comfyBridge.data.ws.status} />
         <StatusText>
-          {comfyBridge.data.ws.statusText} {comfyUrl}
+          {comfyBridge.data.ws.statusText} {comfyBridge.comfyUrl}
         </StatusText>
       </Tray>
       <Tray>
