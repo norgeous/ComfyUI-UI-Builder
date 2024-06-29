@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import InputText from '@/components/InputText';
 import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, WarningIcon } from '@/components/Icons';

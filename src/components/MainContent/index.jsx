@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
 import StatusBar from '@/components/StatusBar';
 import { ContentArea, Main } from './styled';

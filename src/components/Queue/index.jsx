@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import QueueItem from '@/components/QueueItem';
 
 const Queue = () => {

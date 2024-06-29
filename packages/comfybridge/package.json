@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "exports": {
     ".": "./index.js",
-    "./ComfyBridgeContext": "./react/ComfyBridgeContext.js",
-    "./ComfyBridgeProvider": "./react/ComfyBridgeProvider.jsx",
+    "./react/ComfyBridgeContext": "./react/ComfyBridgeContext.js",
+    "./react/ComfyBridgeProvider": "./react/ComfyBridgeProvider.jsx",
     "./comfyMock": "./comfyMock.js"
   },
   "dependencies": {

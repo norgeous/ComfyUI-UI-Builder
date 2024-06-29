@@ -10,6 +10,8 @@ import { ws, http, HttpResponse } from 'msw';
 // mock object_info GET
 //   - ckpts, lora, previously uploaded images
 
+const availableCkpt = ['mock-model-one-XL.safetensors', 'mock-two.SDXL.ckpt'];
+
 const service = ws.link('ws://localhost:8188/ws');
 const wsMock = service.on('connection', ({ client }) => {
   console.log(
@@ -21,9 +23,13 @@ const wsMock = service.on('connection', ({ client }) => {
 
 const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
   HttpResponse.json({
-    id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
-    firstName: 'John',
-    lastName: 'Maverick',
+    CheckpointLoaderSimple: {
+      input: {
+        required: {
+          ckpt_name: [availableCkpt],
+        },
+      },
+    },
   }),
 );
 
