@@ -25,5 +25,6 @@
 
 ✖ 8 problems (5 errors, 3 warnings)
 
+Lint has modified 1 files
 
 Fail ❌

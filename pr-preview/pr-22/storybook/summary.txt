@@ -1,8 +1,4 @@
 
-> ui-builder@0.0.0 sb:build
-> npm run build -w packages/storybook
-
-
 > @ui-builder/storybook@0.0.0 build
 > storybook build --quiet
 
@@ -11,7 +7,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (210 ms)
+info => Manager built (180 ms)
 info => Building preview..
 info => Copying static files: public at storybook-static
 info => Copying static files: ../../public at storybook-static
@@ -24,8 +20,8 @@ computing gzip size...
 storybook-static/iframe.html                                          15.91 kB │ gzip:     4.41 kB
 storybook-static/assets/index-BbP3371Q.js                              0.05 kB │ gzip:     0.07 kB
 storybook-static/assets/preview-B4GcaC1c.js                            0.07 kB │ gzip:     0.08 kB
-storybook-static/assets/ComfyBridgeContext-CTMRF_Mz.js                 0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/SpeechContext-CGWUamV5.js                      0.08 kB │ gzip:     0.10 kB
+storybook-static/assets/ComfyBridgeContext-CTMRF_Mz.js                 0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/AppContext-kKnWjy1_.js                         0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/InputRefContext-5kgal7hN.js                    0.09 kB │ gzip:     0.10 kB
 storybook-static/assets/FormContext-BvePLfBF.js                        0.13 kB │ gzip:     0.14 kB
@@ -151,8 +147,8 @@ storybook-static/assets/index-PX7pnrjg.js                            479.04 kB �
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-BO8YW3Ts.js            618.67 kB │ gzip:   188.38 kB
 storybook-static/assets/preview-B7kYLrj8.js                        5,970.17 kB │ gzip: 2,403.05 kB
-✓ built in 22.23s
-info => Preview built (23 s)
+✓ built in 21.06s
+info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
 Pass ✅
