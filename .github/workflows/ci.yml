@@ -688,10 +688,10 @@ jobs:
     if: needs.lint.outputs.LINT_MODIFIED_COUNT > 0
     runs-on: ubuntu-latest
     steps:
-      # - name: ⤵️ Checkout "${{ inputs.ref }}" branch
-      #   uses: actions/checkout@v4
-      #   with:
-      #     ref: ${{ inputs.ref }}
+      - name: ⤵️ Checkout "${{ inputs.ref }}" branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
 
       - name: ♻️ Restore lint-changes
         uses: actions/cache@v4
