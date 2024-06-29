@@ -156,6 +156,7 @@ jobs:
         with:
           path: |
             !.git
+            !.github
             .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
@@ -674,6 +675,7 @@ jobs:
         with:
           path: |
             !.git
+            !.github
             .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
           fail-on-cache-miss: true
