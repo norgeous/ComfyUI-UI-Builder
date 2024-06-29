@@ -12,5 +12,6 @@
 
 ✖ 1 problem (0 errors, 1 warning)
 
+Lint has modified 0 files
 
 Pass ✅
