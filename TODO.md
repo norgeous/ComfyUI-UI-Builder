@@ -42,6 +42,7 @@
 - errors should appear in a relevent place, eg ckpt
 - CI: use tmp dir for all reports / command outputs / exitcodes
 - CI: show `npm outdated` step results in gh-pages "branch report"
+- CI: wrong branch name in develop branch report https://norgeous.github.io/ComfyUI-UI-Builder/develop/
 - CI: smaller job summaries
 - CI: use bash html sed templating to make the storycaps/index.html
 - CI: unused files check
