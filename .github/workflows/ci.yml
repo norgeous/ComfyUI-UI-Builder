@@ -648,6 +648,8 @@ jobs:
       - name: 📄 Update template index.pr-preview.html
         if: steps.gh_pages_cache.outputs.cache-hit != 'true'
         run: |
+          BRANCH=${{ github.head_ref || github.ref_name }}
+
           NPMINSTALL_EXITCODE=`cat ${{ runner.temp }}/npm-install-report/EXITCODE`
           LINT_EXITCODE=`cat ${{ runner.temp }}/lint-report/EXITCODE`
           VITE_EXITCODE=`cat dist/EXITCODE`
@@ -663,7 +665,10 @@ jobs:
           (($SBTEST_EXITCODE == 0)) && SBTEST_EMOJI='✅' || SBTEST_EMOJI='❌'
           (($STORYCAP_EXITCODE == 0)) && STORYCAP_EMOJI='✅' || STORYCAP_EMOJI='❌'
           (($VISDIFF_EXITCODE == 0)) && VISDIFF_EMOJI='✅' || VISDIFF_EMOJI='❌'
+
           BUILDDATE=$(date +'%d/%m/%Y %H:%M:%S %Z')
+
+          sed -i "s/{{BRANCH}}/$BRANCH/g" -i index.pr-preview.html
 
           sed -i "s/{{NPMINSTALL_EXITCODE}}/$NPMINSTALL_EXITCODE/g" -i index.pr-preview.html
           sed -i "s/{{LINT_EXITCODE}}/$LINT_EXITCODE/g" -i index.pr-preview.html
@@ -673,7 +678,6 @@ jobs:
           sed -i "s/{{STORYCAP_EXITCODE}}/$STORYCAP_EXITCODE/g" -i index.pr-preview.html
           sed -i "s/{{VISDIFF_EXITCODE}}/$VISDIFF_EXITCODE/g" -i index.pr-preview.html
 
-          sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
           sed -i "s/{{NPMINSTALL_EMOJI}}/$NPMINSTALL_EMOJI/g" -i index.pr-preview.html
           sed -i "s/{{LINT_EMOJI}}/$LINT_EMOJI/g" -i index.pr-preview.html
           sed -i "s/{{VITE_EMOJI}}/$VITE_EMOJI/g" -i index.pr-preview.html
@@ -681,6 +685,7 @@ jobs:
           sed -i "s/{{SBTEST_EMOJI}}/$SBTEST_EMOJI/g" -i index.pr-preview.html
           sed -i "s/{{STORYCAP_EMOJI}}/$STORYCAP_EMOJI/g" -i index.pr-preview.html
           sed -i "s/{{VISDIFF_EMOJI}}/$VISDIFF_EMOJI/g" -i index.pr-preview.html
+
           sed -i "s|{{BUILDDATE}}|$BUILDDATE|g" -i index.pr-preview.html
 
       - name: 🎼 Compose Artifact
