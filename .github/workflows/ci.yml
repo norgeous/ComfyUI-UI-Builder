@@ -656,6 +656,9 @@ jobs:
           ((`cat ${{ runner.temp }}/storycap-report/EXITCODE` == 0)) && STORYCAPEMOJI='✅' || STORYCAPEMOJI='❌'
           ((`cat packages/storybook/visdiff-report/EXITCODE` == 0)) && VISDIFFEMOJI='✅' || VISDIFFEMOJI='❌'
           BUILDDATE=$(date +'%d/%m/%Y %H:%M:%S %Z')
+
+          sed -i "s/{{NPMINSTALL_EXITCODE}}/`cat ${{ runner.temp }}/npm-install-report/EXITCODE`/g" -i index.pr-preview.html
+
           sed -i "s/{{BRANCH}}/${{ github.head_ref || github.ref_name }}/g" -i index.pr-preview.html
           sed -i "s/{{NPMINSTALLEMOJI}}/$NPMINSTALLEMOJI/g" -i index.pr-preview.html
           sed -i "s/{{LINTEMOJI}}/$LINTEMOJI/g" -i index.pr-preview.html
