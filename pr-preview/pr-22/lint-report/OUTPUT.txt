@@ -7,8 +7,8 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/comfyUiWsMock.js
-  4:3  warning  Unexpected console statement  no-console
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/comfyMock.js
+  17:3  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/index.js
   66:5  warning  Unexpected console statement  no-console
