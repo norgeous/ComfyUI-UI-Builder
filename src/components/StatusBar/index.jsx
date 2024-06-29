@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/ComfyBridgeContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import AppContext from '@/contexts/AppContext';
 
 import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
@@ -16,7 +15,8 @@ const StatusBar = () => {
   const {
     config: { baseWorkflow },
   } = useContext(ConfigsContext);
-  const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
+  const { adapted, adaptedComfyWorkflow, bodyData } =
+    useContext(ComfyBridgeContext);
 
   const [debugData, setDebugData] = useState();
   const debugOptions = [
