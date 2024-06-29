@@ -7,8 +7,8 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/.storybook/preview.jsx
-  10:5  warning  Unexpected console statement  no-console
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/comfyUiWsMock.js
+  2:3  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/GlobalStyles/index.jsx
   145:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
