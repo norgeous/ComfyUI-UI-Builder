@@ -174,11 +174,11 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: |
-            .
-            !.git
-            !.github
-            !node_modules
-            !_storycaps_
+            ./*
+            !.git/*
+            !.github/*
+            !node_modules/*
+            !_storycaps_/*
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
   vite-build:
@@ -695,11 +695,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            .
-            !.git
-            !.github
-            !node_modules
-            !_storycaps_
+            ./*
+            !.git/*
+            !.github/*
+            !node_modules/*
+            !_storycaps_/*
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
           fail-on-cache-miss: true
 
