@@ -43,6 +43,7 @@ const preview = {
   },
 
   loaders: [mswLoader],
+
   decorators: [withScreenshot, ProjectDecorator],
 };
 
