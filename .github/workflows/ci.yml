@@ -135,7 +135,6 @@ jobs:
           npm run lint | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" > ${{ runner.temp }}/lint-report/EXITCODE
-          # TODO: this might not be enough as the linter runs with --fix and --silent, we mighht need to check git status and commit changes
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           ((EXITCODE == 0)) && echo -e "\nPass ✅" | tee -a ${{ runner.temp }}/lint-report/OUTPUT.txt
           cat ${{ runner.temp }}/lint-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
@@ -155,7 +154,9 @@ jobs:
         if: ${{ steps.lint.outputs.LINT_MODIFIED_COUNT > 0}}
         uses: actions/cache/save@v4
         with:
-          path: .
+          path: |
+            !.git
+            .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
 
   vite-build:
@@ -671,7 +672,9 @@ jobs:
       - name: ♻️ Restore lint-changes
         uses: actions/cache@v4
         with:
-          path: .
+          path: |
+            !.git
+            .
           key: ${{ inputs.CACHE_KEY_LINT_CHANGES }}
           fail-on-cache-miss: true
 
