@@ -73,11 +73,6 @@ jobs:
           cat ${{ runner.temp }}/npm-install-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
-      - name: 🆙 NPM outdated
-        if: steps.node_modules_cache.outputs.cache-hit != 'true'
-        run: |
-          npm outdated | tee -a $GITHUB_STEP_SUMMARY
-
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save npm-install-report
         if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() && hashFiles('node_modules') != '' }}
@@ -88,6 +83,25 @@ jobs:
             node_modules
             packages/storybook/node_modules
           key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
+
+  npm-outdated:
+    name: 🆙 NPM Outdated
+    needs: [npm-install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: ♻️ Restore node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/npm-install-report
+            node_modules
+            packages/storybook/node_modules
+          key: ${{ inputs.CACHE_KEY_NPM_INSTALL }}
+          fail-on-cache-miss: true
+
+      - name: 🆙 NPM Outdated
+        run: |
+          npm outdated | tee -a $GITHUB_STEP_SUMMARY
 
   lint:
     name: 🧵 Lint
