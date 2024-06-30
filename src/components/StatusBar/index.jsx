@@ -61,7 +61,8 @@ const StatusBar = () => {
       <Tray $shrinkable>
         <StatusLight status={comfyBridge.data.ws.status} />
         <StatusText>
-          {comfyBridge.data.ws.statusText} {comfyBridge.comfyUrl}
+          {comfyBridge.data.ws.statusText} {comfyBridge.comfyUrl}{' '}
+          {JSON.stringify(comfyBridge.data.ws.messageEvent)}
         </StatusText>
       </Tray>
       <Tray>

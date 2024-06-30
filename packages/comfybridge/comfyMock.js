@@ -9,11 +9,16 @@ import { ws, http, HttpResponse } from 'msw';
 // test ci...
 
 const service = ws.link('ws://localhost:8188/ws');
-const wsMock = service.on('connection', ({ client }) => {
-  console.log(
-    '@ui-builder/comfybridge mock ws connection established!',
-    client.url,
-    client,
+const wsMock = service.on('connection', ({ client, ...other }) => {
+  // console.log(
+  //   '@ui-builder/comfybridge mock ws connection established!',
+  //   client.url,
+  //   client,
+  //   other,
+  // );
+  setInterval(
+    () => client.send(JSON.stringify({ date: new Date().getTime() })),
+    1000,
   );
 });
 

@@ -45,9 +45,9 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
 
   socket.addEventListener('close', event => onChange({ closeEvent: event }));
   socket.addEventListener('error', d => console.error('WSERROR', d)); // eslint-disable-line no-console
-  socket.addEventListener('message', event =>
-    onChange({ messageEvent: JSON.parse(event.data) }),
-  );
+  socket.addEventListener('message', event => {
+    onChange({ messageEvent: JSON.parse(event.data) });
+  });
 
   const comfyUrl = `http://${new URL(socket.url).host}`;
 
