@@ -386,7 +386,7 @@ jobs:
     needs: [storybook-static]
     runs-on: ubuntu-latest
     outputs:
-      STORYCAP_CHANGE_COUNT: ${{ steps.check-changes.outputs.STORYCAP_CHANGE_COUNT }}
+      STORYCAP_CHANGE_COUNT: ${{ steps.storycap.outputs.STORYCAP_CHANGE_COUNT }}
     steps:
       - name: ♻️ Restore storycaps
         id: storycaps_cache
@@ -436,6 +436,7 @@ jobs:
 
       - name: 🧢 Storycap
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
+        id: storycap
         run: |
           rm -rf _storycaps_
           mkdir _storycaps_
