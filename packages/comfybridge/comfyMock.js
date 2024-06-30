@@ -18,7 +18,7 @@ const wsMock = service.on('connection', ({ client }) => {
 });
 
 // mock object_info GET
-// TODO: lora, previously uploaded images
+// TODO: previously uploaded images
 const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
   HttpResponse.json({
     CheckpointLoaderSimple: {
@@ -30,6 +30,19 @@ const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
               'mock-two.SDXL.ckpt',
               'my-checkpoint.SD15.safetensors',
               'SDXL/my-checkpoint.SDXL.safetensors',
+            ],
+          ],
+        },
+      },
+    },
+    LoraLoader: {
+      input: {
+        required: {
+          ckpt_name: [
+            [
+              'mock-lora-1.safetensors',
+              'mock-lora-2.safetensors',
+              'mock-lora-3.safetensors',
             ],
           ],
         },
