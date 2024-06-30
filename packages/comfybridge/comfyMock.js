@@ -38,7 +38,7 @@ const objectInfoMock = http.get('http://localhost:8188/object_info', () =>
     LoraLoader: {
       input: {
         required: {
-          ckpt_name: [
+          lora_name: [
             [
               'mock-lora-1.safetensors',
               'mock-lora-2.safetensors',
