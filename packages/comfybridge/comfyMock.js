@@ -16,10 +16,9 @@ const wsMock = service.on('connection', ({ client, ...other }) => {
   //   client,
   //   other,
   // );
-  setInterval(
-    () => client.send(JSON.stringify({ date: new Date().getTime() })),
-    1000,
-  );
+  setInterval(() => {
+    client.send(JSON.stringify({ date: new Date().getTime() }));
+  }, 1000);
 });
 
 // mock object_info GET
