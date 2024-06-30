@@ -8,15 +8,8 @@ import { ws, http, HttpResponse } from 'msw';
 // finally send back 1 or more mock images (perhaps svgs?) via ws
 // test ci...
 
-console.log('loaded mock file');
-
 const service = ws.link(`ws://${window.location.host}/ws`);
-const wsMock = service.on('connection', ({ client, ...other }) => {
-  // console.log({ client, other });
-  // setInterval(() => {
-  //   client.send(JSON.stringify({ date: new Date().getTime() }));
-  // }, 10000);
-});
+const wsMock = service.on('connection', ({ client, ...other }) => {});
 
 // mock object_info GET
 // TODO: previously uploaded images
@@ -46,6 +39,21 @@ const objectInfoMock = http.get(
                 'mock-lora-1.safetensors',
                 'mock-lora-2.safetensors',
                 'mock-lora-3.safetensors',
+              ],
+            ],
+          },
+        },
+      },
+      LoadImage: {
+        input: {
+          required: {
+            image: [
+              [
+                'image1.jpg',
+                'image2.jpg',
+                'image3.jpg',
+                'image4.jpg',
+                'image5.jpg',
               ],
             ],
           },
