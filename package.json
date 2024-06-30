@@ -13,7 +13,7 @@
     "sb": "npm run sb -w packages/storybook"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.18",
+    "@floating-ui/react": "^0.26.19",
     "@ui-builder/comfybridge": "*",
     "colorjs.io": "^0.5.2",
     "microphone-stream": "^6.0.1",
