@@ -9,21 +9,19 @@ const captions = {
   DISCONNECTED: 'Disconnected',
 };
 
-const emojis = {
-  DEFAULT: '⚫',
-  CONNECTING: '🔵',
-  CONNECTED: '🟢',
-  DISCONNECTED: '🔴',
-};
-
 const StatusLight = ({ status = 'DEFAULT' }) => (
   <Tooltip text={captions[status]}>
-    <Light>{emojis[status]}</Light>
+    <Light status={status} />
   </Tooltip>
 );
 
 StatusLight.propTypes = {
-  status: PropTypes.string,
+  status: PropTypes.oneOf([
+    'DEFAULT',
+    'CONNECTING',
+    'CONNECTED',
+    'DISCONNECTED',
+  ]),
 };
 
 export default StatusLight;
