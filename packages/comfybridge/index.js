@@ -14,9 +14,9 @@ import queueController from './queue/queueController';
 
 const defaultWsUrls = [
   ...new Set([
+    `ws://${window.location.hostname}:${window.location.port}`,
     'ws://localhost:8188',
     `ws://localhost:${window.location.port}`,
-    `ws://${window.location.hostname}:${window.location.port}`,
   ]),
 ];
 
