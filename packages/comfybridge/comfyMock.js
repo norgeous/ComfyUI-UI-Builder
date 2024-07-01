@@ -101,11 +101,10 @@ const imageMock = http.get(
         y="256"
         dy=".36em"
         text-anchor="middle"
-        font-family="Arial,
-        Helvetica,
-        sans-serif"
-        font-size="200"
-        fill="darkgrey"
+        font-family="Tahoma, Helvetica, sans-serif"
+        fonmt-weight="bold"
+        font-size="250"
+        fill="grey"
       >
         ${url.searchParams.get('filename')}
       </text>
