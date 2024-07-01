@@ -108,7 +108,7 @@ export const Square50 = {
       'http://localhost:6006/view?filename=47',
       'http://localhost:6006/view?filename=48',
       'http://localhost:6006/view?filename=49',
-      'http://localhost:6006/view?filename=50',
+      'http://localhost:6006/view?filename=50x',
     ],
   },
 };
