@@ -8,6 +8,14 @@ import { ws, http, HttpResponse } from 'msw';
 // finally send back 1 or more mock images (perhaps svgs?) via ws
 // test ci...
 
+const mockJobEvents = [
+  { type: 'execution_start' },
+  { type: 'executing', data: { node: 1 } },
+  { type: 'progress', data: { value: 1, max: 28 } },
+  { type: 'executed', data: { output: { images: ['0001.png'] } } },
+  { type: '' },
+];
+
 const service = ws.link(`ws://${window.location.host}/ws`);
 const wsMock = service.on('connection', ({ client, ...other }) => {});
 
@@ -64,6 +72,7 @@ const promptMock = http.post(`http://${window.location.host}/prompt`, () => {
   setInterval(() => {
     service.broadcast(JSON.stringify({ mate: new Date().getTime() }));
   }, 1000);
+
   return HttpResponse.json({
     id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
     firstName: 'John',
@@ -72,6 +81,7 @@ const promptMock = http.post(`http://${window.location.host}/prompt`, () => {
 });
 
 const interruptMock = http.get(`http://${window.location.host}/interrupt`, () =>
+  // find job id in the queue and cancel the interval?
   HttpResponse.json({
     id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
     firstName: 'John',
@@ -79,4 +89,35 @@ const interruptMock = http.get(`http://${window.location.host}/interrupt`, () =>
   }),
 );
 
-export default [wsMock, objectInfoMock, promptMock, interruptMock];
+const imageMock = http.get(
+  `http://${window.location.host}/view`,
+  ({ request }) => {
+    const url = new URL(request.url);
+    const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+      <rect width="512" height="512" fill="lightgrey" />
+      <text
+        x="256"
+        y="256"
+        dy=".36em"
+        text-anchor="middle"
+        font-family="Arial,
+        Helvetica,
+        sans-serif"
+        font-size="200"
+        fill="darkgrey"
+      >
+        ${url.searchParams.get('filename')}
+      </text>
+    </svg>
+  `;
+
+    return HttpResponse.xml(svg, {
+      headers: {
+        'Content-Type': 'image/svg+xml',
+      },
+    });
+  },
+);
+
+export default [wsMock, objectInfoMock, promptMock, interruptMock, imageMock];
