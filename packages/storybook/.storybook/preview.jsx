@@ -1,4 +1,4 @@
-import { initialize, mswLoader } from 'msw-storybook-addon';
+import { initialize, mswLoader, getWorker } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
 import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
@@ -36,7 +36,7 @@ const preview = {
     },
   },
 
-  loaders: [mswLoader],
+  loaders: [mswLoader, () => getWorker().start()],
 
   decorators: [withScreenshot, ProjectDecorator],
 };
