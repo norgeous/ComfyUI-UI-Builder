@@ -7,7 +7,7 @@ export default {
 
 const parameters = {
   screenshot: {
-    skip: true, // temporary until image mock is in place / fix grid calc triggering at right time
+    // skip: true, // temporary until image mock is in place / fix grid calc triggering at right time
     viewport: {
       width: 412, // half the width of github README.md on desktop
       height: 400,
