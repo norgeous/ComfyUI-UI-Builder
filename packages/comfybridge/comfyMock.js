@@ -11,8 +11,6 @@ import { ws, http, HttpResponse } from 'msw';
 const service = ws.link(`ws://${window.location.host}/ws`);
 const wsMock = service.on('connection', ({ client, ...other }) => {});
 
-// mock object_info GET
-// TODO: previously uploaded images
 const objectInfoMock = http.get(
   `http://${window.location.host}/object_info`,
   () =>
