@@ -20,7 +20,7 @@ const config = {
 
   docs: {},
 
-  staticDirs: ['../public', '../../../public'],
+  staticDirs: ['../msw-public', '../../../public'],
 
   core: {
     disableTelemetry: true,
