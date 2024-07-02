@@ -11,7 +11,13 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['dist', 'storybook-static', 'visdiff-report', '!.storybook'],
+  ignorePatterns: [
+    'dist',
+    'storybook-static',
+    'visdiff-report',
+    '!.storybook',
+    'mockServiceWorker.js',
+  ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: {
     react: { version: '18.2' },

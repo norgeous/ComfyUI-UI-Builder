@@ -49,3 +49,5 @@ export const postVisit = async (page, context) => {
   // );
   // console.log('!3!', output);
 };
+
+export const tags = { skip: ['skip-test'] };
