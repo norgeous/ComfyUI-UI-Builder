@@ -13,24 +13,13 @@ export default {
   },
 };
 
-const parameters = {
-  screenshot: {
-    viewport: {
-      width: 412, // half the width of github README.md on desktop
-      height: 400,
-    },
-  },
-};
-
 export const Square1 = {
-  // parameters,
   args: {
     images: ['http://localhost:6006/view?filename=01&width=1024&height=1024'],
   },
 };
 
 export const Square2 = {
-  // parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -40,7 +29,6 @@ export const Square2 = {
 };
 
 export const Square3 = {
-  parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -51,7 +39,6 @@ export const Square3 = {
 };
 
 export const Square4 = {
-  parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -63,7 +50,6 @@ export const Square4 = {
 };
 
 export const Square25 = {
-  parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -96,7 +82,6 @@ export const Square25 = {
 };
 
 export const Square50 = {
-  parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -154,7 +139,6 @@ export const Square50 = {
 };
 
 export const Landscape1 = {
-  parameters,
   args: {
     imageSize: [1344, 768],
     images: ['http://localhost:6006/view?filename=01&width=1344&height=768'],
@@ -162,7 +146,6 @@ export const Landscape1 = {
 };
 
 export const Landscape2 = {
-  parameters,
   args: {
     imageSize: [1344, 768],
     images: [
@@ -173,7 +156,6 @@ export const Landscape2 = {
 };
 
 export const Landscape50 = {
-  parameters,
   args: {
     imageSize: [1344, 768],
     images: [
@@ -231,77 +213,77 @@ export const Landscape50 = {
   },
 };
 
-// export const Portrait1 = {
-//   parameters,
-//   args: {
-//     images: ['https://placehold.co/768x1344?text=01'],
-//   },
-// };
+export const Portrait1 = {
+  args: {
+    imageSize: [768, 1344],
+    images: ['http://localhost:6006/view?filename=01&width=768&height=1344'],
+  },
+};
 
-// export const Portrait2 = {
-//   parameters,
-//   args: {
-//     images: [
-//       'https://placehold.co/768x1344?text=01',
-//       'https://placehold.co/768x1344?text=02',
-//     ],
-//   },
-// };
+export const Portrait2 = {
+  args: {
+    imageSize: [768, 1344],
+    images: [
+      'http://localhost:6006/view?filename=01&width=768&height=1344',
+      'http://localhost:6006/view?filename=02&width=768&height=1344',
+    ],
+  },
+};
 
-// export const Portrait50 = {
-//   parameters,
-//   args: {
-//     images: [
-//       'https://placehold.co/768x1344?text=01',
-//       'https://placehold.co/768x1344?text=02',
-//       'https://placehold.co/768x1344?text=03',
-//       'https://placehold.co/768x1344?text=04',
-//       'https://placehold.co/768x1344?text=05',
-//       'https://placehold.co/768x1344?text=06',
-//       'https://placehold.co/768x1344?text=07',
-//       'https://placehold.co/768x1344?text=08',
-//       'https://placehold.co/768x1344?text=09',
-//       'https://placehold.co/768x1344?text=10',
-//       'https://placehold.co/768x1344?text=11',
-//       'https://placehold.co/768x1344?text=12',
-//       'https://placehold.co/768x1344?text=13',
-//       'https://placehold.co/768x1344?text=14',
-//       'https://placehold.co/768x1344?text=15',
-//       'https://placehold.co/768x1344?text=16',
-//       'https://placehold.co/768x1344?text=17',
-//       'https://placehold.co/768x1344?text=18',
-//       'https://placehold.co/768x1344?text=19',
-//       'https://placehold.co/768x1344?text=20',
-//       'https://placehold.co/768x1344?text=21',
-//       'https://placehold.co/768x1344?text=22',
-//       'https://placehold.co/768x1344?text=23',
-//       'https://placehold.co/768x1344?text=24',
-//       'https://placehold.co/768x1344?text=25',
-//       'https://placehold.co/768x1344?text=26',
-//       'https://placehold.co/768x1344?text=27',
-//       'https://placehold.co/768x1344?text=28',
-//       'https://placehold.co/768x1344?text=29',
-//       'https://placehold.co/768x1344?text=30',
-//       'https://placehold.co/768x1344?text=31',
-//       'https://placehold.co/768x1344?text=32',
-//       'https://placehold.co/768x1344?text=33',
-//       'https://placehold.co/768x1344?text=34',
-//       'https://placehold.co/768x1344?text=35',
-//       'https://placehold.co/768x1344?text=36',
-//       'https://placehold.co/768x1344?text=37',
-//       'https://placehold.co/768x1344?text=38',
-//       'https://placehold.co/768x1344?text=39',
-//       'https://placehold.co/768x1344?text=40',
-//       'https://placehold.co/768x1344?text=41',
-//       'https://placehold.co/768x1344?text=42',
-//       'https://placehold.co/768x1344?text=43',
-//       'https://placehold.co/768x1344?text=44',
-//       'https://placehold.co/768x1344?text=45',
-//       'https://placehold.co/768x1344?text=46',
-//       'https://placehold.co/768x1344?text=47',
-//       'https://placehold.co/768x1344?text=48',
-//       'https://placehold.co/768x1344?text=49',
-//       'https://placehold.co/768x1344?text=50',
-//     ],
-//   },
-// };
+export const Portrait50 = {
+  args: {
+    imageSize: [768, 1344],
+    images: [
+      'http://localhost:6006/view?filename=01&width=768&height=1344',
+      'http://localhost:6006/view?filename=02&width=768&height=1344',
+      'http://localhost:6006/view?filename=03&width=768&height=1344',
+      'http://localhost:6006/view?filename=04&width=768&height=1344',
+      'http://localhost:6006/view?filename=05&width=768&height=1344',
+      'http://localhost:6006/view?filename=06&width=768&height=1344',
+      'http://localhost:6006/view?filename=07&width=768&height=1344',
+      'http://localhost:6006/view?filename=08&width=768&height=1344',
+      'http://localhost:6006/view?filename=09&width=768&height=1344',
+      'http://localhost:6006/view?filename=10&width=768&height=1344',
+      'http://localhost:6006/view?filename=11&width=768&height=1344',
+      'http://localhost:6006/view?filename=12&width=768&height=1344',
+      'http://localhost:6006/view?filename=13&width=768&height=1344',
+      'http://localhost:6006/view?filename=14&width=768&height=1344',
+      'http://localhost:6006/view?filename=15&width=768&height=1344',
+      'http://localhost:6006/view?filename=16&width=768&height=1344',
+      'http://localhost:6006/view?filename=17&width=768&height=1344',
+      'http://localhost:6006/view?filename=18&width=768&height=1344',
+      'http://localhost:6006/view?filename=19&width=768&height=1344',
+      'http://localhost:6006/view?filename=20&width=768&height=1344',
+      'http://localhost:6006/view?filename=21&width=768&height=1344',
+      'http://localhost:6006/view?filename=22&width=768&height=1344',
+      'http://localhost:6006/view?filename=23&width=768&height=1344',
+      'http://localhost:6006/view?filename=24&width=768&height=1344',
+      'http://localhost:6006/view?filename=25&width=768&height=1344',
+      'http://localhost:6006/view?filename=26&width=768&height=1344',
+      'http://localhost:6006/view?filename=27&width=768&height=1344',
+      'http://localhost:6006/view?filename=28&width=768&height=1344',
+      'http://localhost:6006/view?filename=29&width=768&height=1344',
+      'http://localhost:6006/view?filename=30&width=768&height=1344',
+      'http://localhost:6006/view?filename=31&width=768&height=1344',
+      'http://localhost:6006/view?filename=32&width=768&height=1344',
+      'http://localhost:6006/view?filename=33&width=768&height=1344',
+      'http://localhost:6006/view?filename=34&width=768&height=1344',
+      'http://localhost:6006/view?filename=35&width=768&height=1344',
+      'http://localhost:6006/view?filename=36&width=768&height=1344',
+      'http://localhost:6006/view?filename=37&width=768&height=1344',
+      'http://localhost:6006/view?filename=38&width=768&height=1344',
+      'http://localhost:6006/view?filename=39&width=768&height=1344',
+      'http://localhost:6006/view?filename=40&width=768&height=1344',
+      'http://localhost:6006/view?filename=41&width=768&height=1344',
+      'http://localhost:6006/view?filename=42&width=768&height=1344',
+      'http://localhost:6006/view?filename=43&width=768&height=1344',
+      'http://localhost:6006/view?filename=44&width=768&height=1344',
+      'http://localhost:6006/view?filename=45&width=768&height=1344',
+      'http://localhost:6006/view?filename=46&width=768&height=1344',
+      'http://localhost:6006/view?filename=47&width=768&height=1344',
+      'http://localhost:6006/view?filename=48&width=768&height=1344',
+      'http://localhost:6006/view?filename=49&width=768&height=1344',
+      'http://localhost:6006/view?filename=50&width=768&height=1344',
+    ],
+  },
+};
