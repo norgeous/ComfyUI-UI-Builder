@@ -6,7 +6,9 @@ import ProjectDecorator from '../ProjectDecorator';
 
 initialize(
   {
-    serviceWorker: { url: '/pr-preview/pr-22/storybook/mockServiceWorker.js' },
+    serviceWorker: {
+      url: '/ComfyUI-UI-Builder/pr-preview/pr-22/storybook/mockServiceWorker.js',
+    },
   },
   [...comfyMock],
 );
