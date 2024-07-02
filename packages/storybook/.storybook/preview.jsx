@@ -8,14 +8,14 @@ const { origin, pathname } = window.location;
 const path = pathname.substring(0, pathname.lastIndexOf('/'));
 const base = `${origin}${path}`;
 
-console.log({ origin, pathname, path, base });
+console.log({ base });
 
 initialize(
   {
     serviceWorker: {
       url: `${base}/mockServiceWorker.js`,
       options: {
-        scope: `${path}/`,
+        scope: `${base}/`,
       },
     },
   },
