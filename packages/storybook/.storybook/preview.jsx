@@ -54,7 +54,7 @@ const preview = {
     },
   },
 
-  loaders: [mswLoader, () => getWorker().start(options)],
+  loaders: [mswLoader, () => getWorker().start(options, [...comfyMock])],
 
   decorators: [withScreenshot, ProjectDecorator],
 };
