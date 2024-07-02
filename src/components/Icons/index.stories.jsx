@@ -13,6 +13,14 @@ export default {
 };
 
 export const Icons = {
+  parameters: {
+    screenshot: {
+      viewport: {
+        width: 214,
+        height: 214,
+      },
+    },
+  },
   render: () => (
     <Container>
       {Object.entries(icons).map(([name, Icon]) => (

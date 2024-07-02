@@ -27,6 +27,12 @@
   // the values you've explicitly set, above.
   "editor.detectIndentation": false,
 
+  // set LF as the default End of line delimiter
+  "files.eol": "\n",
+
+  // make intellisense suggestions a bit nicer
+  "editor.suggestSelection": "recentlyUsed",
+
   // show the parent directory name after filenames in open tabs
   // this is useful for projects with a lot of index.js files
   "workbench.editor.labelFormat": "short"

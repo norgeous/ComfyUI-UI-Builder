@@ -1,5 +1,4 @@
 import { createContext } from 'react';
-import noop from '@/utils/noop';
 
 const ConfigsContext = createContext({
   config: {
@@ -11,7 +10,7 @@ const ConfigsContext = createContext({
     formInitialState: {},
   },
   configs: [],
-  setConfig: noop,
+  setConfig: () => {},
 });
 
 export default ConfigsContext;

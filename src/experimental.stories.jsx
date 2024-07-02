@@ -1,13 +1,14 @@
 export default {
   title: '_Experiments/OKLCH',
-};
-
-export const HSLVsLCH = {
+  tags: ['skip-test'],
   parameters: {
     screenshot: {
       skip: true,
     },
   },
+};
+
+export const HSLVsLCH = {
   args: {
     saturationOrChroma: 100,
     leftHalf: false,
