@@ -4,18 +4,18 @@ import { withScreenshot } from 'storycap';
 import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
 
-const { pathname } = window.location;
-const path = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-const base = `${window.location.origin}${path}`;
+const { origin, pathname } = window.location;
+const path = pathname.substring(0, pathname.lastIndexOf('/'));
+const base = `${origin}${path}`;
 
-console.log({ pathname, base });
+console.log({ origin, pathname, path, base });
 
 initialize(
   {
     serviceWorker: {
-      url: `${base}mockServiceWorker.js`,
+      url: `${base}/mockServiceWorker.js`,
       options: {
-        scope: base,
+        scope: `${path}/`,
       },
     },
   },
