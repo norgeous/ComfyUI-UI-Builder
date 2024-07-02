@@ -95,7 +95,7 @@ const imageMock = http.get(
     const url = new URL(request.url);
     const width = url.searchParams.get('width') || 512;
     const height = url.searchParams.get('height') || 512;
-    const fontSize = width / 2;
+    const fontSize = Math.min(width, height) / 2;
     const svg = `
     <svg
       xmlns="http://www.w3.org/2000/svg"
