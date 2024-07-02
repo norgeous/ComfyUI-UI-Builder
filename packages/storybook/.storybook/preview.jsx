@@ -8,8 +8,6 @@ const { origin, pathname } = window.location;
 const path = pathname.substring(0, pathname.lastIndexOf('/'));
 const base = `${origin}${path}`;
 
-console.log({ base });
-
 const options = {
   serviceWorker: {
     url: `${base}/mockServiceWorker.js`,
