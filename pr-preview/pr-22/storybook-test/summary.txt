@@ -2,49 +2,49 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/78661dd949ffcd9130c018c756219cce/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/6dacc6176a978ffebf080a6f3a25c382/app.test.js
 [TEST] 
 [TEST] Test Suites: 1 skipped, 36 passed, 36 of 37 total
 [TEST] Tests:       1 skipped, 58 passed, 59 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        37.208 s
+[TEST] Time:        37.765 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/78661dd949ffcd9130c018c756219cce
+[TEST] [test-storybook] Cleaning up /tmp/6dacc6176a978ffebf080a6f3a25c382
 [TEST] npm run unittest -- --ci exited with code 0
 
 Pass ✅
