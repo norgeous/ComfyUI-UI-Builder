@@ -445,6 +445,7 @@ jobs:
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" >  ${{ runner.temp }}/storycap-report/EXITCODE
           STORYCAP_CHANGE_COUNT=`git status -s | wc -l`
+          ls -lR _storycaps_
           git status
           echo -e "\nPNG file Change count is $STORYCAP_CHANGE_COUNT" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           echo "STORYCAP_CHANGE_COUNT=$STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
@@ -764,6 +765,7 @@ jobs:
 
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         run: |
+          ls -lR _storycaps_
           git config user.name github-actions
           git config user.email github-actions@github.com
           git status
