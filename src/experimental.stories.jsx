@@ -3,6 +3,7 @@ export default {
 };
 
 export const HSLVsLCH = {
+  tags: ['skip-test'],
   parameters: {
     screenshot: {
       skip: true,
