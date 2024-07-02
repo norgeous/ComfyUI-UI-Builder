@@ -9,7 +9,7 @@ const parameters = {
   screenshot: {
     viewport: {
       width: 412, // half the width of github README.md on desktop
-      height: 412,
+      height: 400,
     },
   },
 };
@@ -17,7 +17,7 @@ const parameters = {
 export const Square1 = {
   parameters,
   args: {
-    images: ['http://localhost:6006/view?filename=01'],
+    images: ['http://localhost:6006/view?filename=01&width=1024&height=1024'],
   },
 };
 
