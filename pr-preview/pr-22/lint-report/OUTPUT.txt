@@ -17,7 +17,10 @@
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/GlobalStyles/index.jsx
   145:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
 
-✖ 4 problems (2 errors, 2 warnings)
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/ImageGrid2/index.jsx
+  9:22  error  'imageSize' is missing in props validation  react/prop-types
+
+✖ 5 problems (3 errors, 2 warnings)
 
 Lint has modified 0 files
 
