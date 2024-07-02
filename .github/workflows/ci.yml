@@ -73,6 +73,14 @@ jobs:
           cat ${{ runner.temp }}/npm-install-report/OUTPUT.txt > $GITHUB_STEP_SUMMARY
           exit $EXITCODE
 
+      - name: ▶️ Playwright Install
+        run: |
+          npx playwright install chromium
+
+      - name: 👺 Puppeteer Install
+        run: |
+          npx puppeteer browsers install chrome
+
       # even if the previous step exits with failure, we still want to save the results
       - name: 💾 Save npm-install-report
         if: ${{ steps.node_modules_cache.outputs.cache-hit != 'true' && !cancelled() }}
@@ -355,11 +363,6 @@ jobs:
           key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
-      - name: ▶️ Playwright Install
-        if: steps.storybook_test_cache.outputs.cache-hit != 'true'
-        run: |
-          npx playwright install chromium
-
       - name: 🧪 Storybook smoke, play and a11y tests
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         run: |
@@ -428,11 +431,6 @@ jobs:
           path: packages/storybook/storybook-static
           key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
-
-      - name: 👺 Puppeteer Install
-        if: steps.storycaps_cache.outputs.cache-hit != 'true'
-        run: |
-          npx puppeteer browsers install chrome
 
       - name: 🧢 Storycap
         if: steps.storycaps_cache.outputs.cache-hit != 'true'
