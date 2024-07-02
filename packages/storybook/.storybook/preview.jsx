@@ -13,9 +13,11 @@ console.log({ base });
 initialize(
   {
     serviceWorker: {
-      url: `${base}/mockServiceWorker.js`,
+      // url: `${base}/mockServiceWorker.js`,
+      url: `./mockServiceWorker.js`,
       options: {
-        scope: `${base}/`,
+        // scope: `${base}/`,
+        scope: `./`,
       },
     },
   },
