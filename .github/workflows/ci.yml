@@ -644,7 +644,7 @@ jobs:
           echo "<style>" >> _storycaps_/index.html
           echo "body{ background: black; display: flex; justify-content: center; }" >> _storycaps_/index.html
           echo "div{ display: grid; grid-template-columns: auto auto; gap: 4px; }" >> _storycaps_/index.html
-          echo "img{ display: block; width: 100%; max-width: 412px; object-fit: none; }" >> _storycaps_/index.html
+          echo "img{ display: block; width: 100%; max-width: 412px; object-fit: scale-down; }" >> _storycaps_/index.html
           echo "</style>" >> _storycaps_/index.html
           echo "<div>" >> _storycaps_/index.html
           find _storycaps_/**/*.png -type f -printf "%p\n" | sort | sed -e 's/_storycaps_\///g' -e 's/ /%20/g' -e 's/^/<img src="/g' -e 's/$/" \/>/g' >> _storycaps_/index.html
