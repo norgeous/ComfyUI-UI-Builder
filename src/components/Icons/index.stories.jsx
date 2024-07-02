@@ -13,6 +13,12 @@ export default {
 };
 
 export const Icons = {
+  parameters: {
+    viewport: {
+      width: 252,
+      height: 252,
+    },
+  },
   render: () => (
     <Container>
       {Object.entries(icons).map(([name, Icon]) => (
