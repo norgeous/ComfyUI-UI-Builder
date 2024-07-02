@@ -50,8 +50,4 @@ export const postVisit = async (page, context) => {
   // console.log('!3!', output);
 };
 
-export const tags = {
-  include: ['test-only', 'pages'],
-  exclude: ['no-tests', 'tokens'],
-  skip: ['skip-test', 'layout'],
-};
+export const tags = { skip: ['skip-test'] };
