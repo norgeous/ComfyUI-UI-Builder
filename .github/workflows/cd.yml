@@ -49,7 +49,7 @@ jobs:
           echo "CACHE_KEY_SB_TEST=sb-test-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_STORYCAPS=storycaps-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
           echo "CACHE_KEY_VISDIFF=visdiff-${{hashFiles('**/package.json', '**/package-lock.json', '**/src', '**/public', '**/packages/storybook', '_storycaps_')}}" | tee -a $GITHUB_OUTPUT
-          echo "CACHE_KEY_GH_PAGES=gh-pages-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
+          echo "CACHE_KEY_GH_PAGES=gh-pages-${{github.head_ref || github.ref_name}}-${{hashFiles('**', '!.git/**')}}" | tee -a $GITHUB_OUTPUT
           echo "\`\`\`console" >> $GITHUB_STEP_SUMMARY
           cat $GITHUB_OUTPUT >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
