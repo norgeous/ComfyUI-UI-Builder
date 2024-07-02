@@ -103,7 +103,7 @@ const imageMock = http.get(
       width="${width}"
       height="${height}"
     >
-      <rect width="${width}" height="${height}" fill="lightgrey" />
+      <rect width="${width}" height="${height}" fill="whitesmoke" />
       <text
         x="${width / 2}"
         y="${height / 2}"
