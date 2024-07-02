@@ -8,6 +8,9 @@ initialize(
   {
     serviceWorker: {
       url: '/ComfyUI-UI-Builder/pr-preview/pr-22/storybook/mockServiceWorker.js',
+      options: {
+        scope: '/ComfyUI-UI-Builder/pr-preview/pr-22/storybook/',
+      },
     },
   },
   [...comfyMock],
