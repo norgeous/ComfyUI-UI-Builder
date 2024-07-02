@@ -69,7 +69,7 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
 const promptMock = http.post(`${window.location.origin}/prompt`, () => {
   setInterval(() => {
     service.broadcast(
-      JSON.stringify({ mate: new Date().getTime(), r: Math.random() }),
+      JSON.stringify({ d: new Date().getTime(), r: Math.random() }),
     );
   }, 1000);
 
