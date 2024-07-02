@@ -754,6 +754,10 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
+      - name: ✍️ folder before?
+        run: |
+          ls -l _storycaps_
+
       - name: ♻️ Restore storycaps
         uses: actions/cache@v4
         with:
@@ -765,7 +769,7 @@ jobs:
 
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         run: |
-          ls -lR _storycaps_
+          ls -l _storycaps_
           git config user.name github-actions
           git config user.email github-actions@github.com
           git status
