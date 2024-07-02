@@ -7,7 +7,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (182 ms)
+info => Manager built (192 ms)
 info => Building preview..
 info => Copying static files: msw-public at storybook-static
 info => Copying static files: ../../public at storybook-static
@@ -20,8 +20,8 @@ computing gzip size...
 storybook-static/iframe.html                                          15.91 kB │ gzip:     4.41 kB
 storybook-static/assets/index-BbP3371Q.js                              0.05 kB │ gzip:     0.07 kB
 storybook-static/assets/preview-B4GcaC1c.js                            0.07 kB │ gzip:     0.08 kB
-storybook-static/assets/ComfyBridgeContext-CTMRF_Mz.js                 0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/SpeechContext-CGWUamV5.js                      0.08 kB │ gzip:     0.10 kB
+storybook-static/assets/ComfyBridgeContext-CTMRF_Mz.js                 0.08 kB │ gzip:     0.10 kB
 storybook-static/assets/InputRefContext-5kgal7hN.js                    0.09 kB │ gzip:     0.10 kB
 storybook-static/assets/FormContext-BvePLfBF.js                        0.13 kB │ gzip:     0.14 kB
 storybook-static/assets/deepEqual-_sTZaZ0q.js                          0.17 kB │ gzip:     0.15 kB
@@ -31,11 +31,11 @@ storybook-static/assets/index-DO6smgbx.js                              0.43 kB �
 storybook-static/assets/index-DlpNa54Y.js                              0.46 kB │ gzip:     0.30 kB
 storybook-static/assets/index-CWuWN1S5.js                              0.48 kB │ gzip:     0.32 kB
 storybook-static/assets/index-BiFCI9CN.js                              0.49 kB │ gzip:     0.33 kB
-storybook-static/assets/WithTooltip-KJL26V4Q-CryPVOra.js               0.54 kB │ gzip:     0.31 kB
+storybook-static/assets/WithTooltip-KJL26V4Q-CrNiU5GJ.js               0.54 kB │ gzip:     0.31 kB
 storybook-static/assets/index.stories-D7WNI1Vq.js                      0.54 kB │ gzip:     0.34 kB
 storybook-static/assets/index.stories-D6VVCD-m.js                      0.55 kB │ gzip:     0.34 kB
 storybook-static/assets/react-18-C80jiYne.js                           0.56 kB │ gzip:     0.35 kB
-storybook-static/assets/syntaxhighlighter-BP7B2CQK-YuXaP5eG.js         0.58 kB │ gzip:     0.34 kB
+storybook-static/assets/syntaxhighlighter-BP7B2CQK-CaJ2A-Li.js         0.58 kB │ gzip:     0.34 kB
 storybook-static/assets/preview-6uLYm2Ic.js                            0.64 kB │ gzip:     0.44 kB
 storybook-static/assets/styled-BU-Jpcej.js                             0.64 kB │ gzip:     0.31 kB
 storybook-static/assets/index.stories-DmeAQZCx.js                      0.68 kB │ gzip:     0.40 kB
@@ -53,10 +53,10 @@ storybook-static/assets/index.stories-B0X_c-Li.js                      0.92 kB �
 storybook-static/assets/jsx-runtime-Nms4Y4qS.js                        0.92 kB │ gzip:     0.58 kB
 storybook-static/assets/index-BOxNEIrd.js                              0.93 kB │ gzip:     0.58 kB
 storybook-static/assets/index-BzvP4Elr.js                              0.97 kB │ gzip:     0.59 kB
-storybook-static/assets/preview-CWi_izFE.js                            0.98 kB │ gzip:     0.62 kB
+storybook-static/assets/preview-BGxl8Ka6.js                            0.98 kB │ gzip:     0.62 kB
 storybook-static/assets/index.stories-Baht_vNf.js                      1.00 kB │ gzip:     0.56 kB
 storybook-static/assets/index.stories-0hl3LOhk.js                      1.00 kB │ gzip:     0.52 kB
-storybook-static/assets/preview-DSwV6KAr.js                            1.03 kB │ gzip:     0.68 kB
+storybook-static/assets/preview-B6h6tZdb.js                            1.03 kB │ gzip:     0.68 kB
 storybook-static/assets/index-CSsaBqt9.js                              1.03 kB │ gzip:     0.56 kB
 storybook-static/assets/index.stories-DkrwyCms.js                      1.05 kB │ gzip:     0.53 kB
 storybook-static/assets/index.stories-xRXVpdG6.js                      1.06 kB │ gzip:     0.52 kB
@@ -126,7 +126,7 @@ storybook-static/assets/index-_yNpx1b8.js                              5.12 kB �
 storybook-static/assets/index-BwDkhjyp.js                              7.18 kB │ gzip:     2.92 kB
 storybook-static/assets/preview-BAz7FMXc.js                            7.62 kB │ gzip:     1.56 kB
 storybook-static/assets/preview-Db4Idchh.js                            8.11 kB │ gzip:     3.09 kB
-storybook-static/assets/iframe-As9zg85B.js                            13.37 kB │ gzip:     3.60 kB
+storybook-static/assets/iframe-DuepMlIb.js                            13.37 kB │ gzip:     3.60 kB
 storybook-static/assets/ui-Dvg6KzJf.js                                15.36 kB │ gzip:     4.63 kB
 storybook-static/assets/index-n3Wug2HJ.js                             15.74 kB │ gzip:     5.71 kB
 storybook-static/assets/index.stories-BoksxBry.js                     24.38 kB │ gzip:     2.07 kB
@@ -134,19 +134,19 @@ storybook-static/assets/styled-components.browser.esm-Cm6OPFyG.js     27.09 kB �
 storybook-static/assets/index-4V56_mca.js                             28.14 kB │ gzip:     8.75 kB
 storybook-static/assets/util-BQ0cylCP.js                              29.16 kB │ gzip:     9.65 kB
 storybook-static/assets/floating-ui.react-BQk9wdfR.js                 29.85 kB │ gzip:    11.32 kB
-storybook-static/assets/Color-PRSJMWNM-Bgbv4yE8.js                    31.31 kB │ gzip:    11.90 kB
+storybook-static/assets/Color-PRSJMWNM-RLQ-8NZ-.js                    31.31 kB │ gzip:    11.90 kB
 storybook-static/assets/index-wo4bmeOh.js                             58.98 kB │ gzip:    23.59 kB
 storybook-static/assets/index-D_h4Ovhh.js                             61.57 kB │ gzip:    21.48 kB
 storybook-static/assets/_getPrototype-Cxqdo8zk.js                    114.16 kB │ gzip:    34.84 kB
 storybook-static/assets/index-B8XB3FuZ.js                            134.00 kB │ gzip:    43.17 kB
-storybook-static/assets/formatter-2WMMO6ZP-CHBEjLA4.js               210.94 kB │ gzip:    70.74 kB
+storybook-static/assets/formatter-2WMMO6ZP-DvvmDkLb.js               210.94 kB │ gzip:    70.74 kB
 storybook-static/assets/entry-preview-docs-BpOLz8-O.js               322.31 kB │ gzip:    99.78 kB
 storybook-static/assets/index-PX7pnrjg.js                            479.04 kB │ gzip:   121.33 kB
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
-storybook-static/assets/DocsRenderer-K4EAMTCU-Dtf7sy36.js            618.67 kB │ gzip:   188.37 kB
-storybook-static/assets/preview-BGHNrBPJ.js                        5,982.89 kB │ gzip: 2,407.29 kB
-✓ built in 21.40s
-info => Preview built (23 s)
+storybook-static/assets/DocsRenderer-K4EAMTCU-Da3wnguZ.js            618.67 kB │ gzip:   188.38 kB
+storybook-static/assets/preview-famF2Rnk.js                        5,982.93 kB │ gzip: 2,407.31 kB
+✓ built in 21.11s
+info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
 Pass ✅
