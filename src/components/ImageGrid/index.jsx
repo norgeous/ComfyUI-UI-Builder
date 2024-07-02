@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import screenfull from 'screenfull';
-import { Container, Outer } from './styled';
+import { Button, Container, Outer } from './styled';
 import Item from './Item';
+import { MaximiseIcon, MinimiseIcon } from '../Icons';
 
 const gapSizePx = 8;
 
 const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
+  const [scaleUp, setScaleUp] = useState(false);
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
@@ -79,6 +81,11 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
 
   return (
     <Outer ref={ref}>
+      {isFullscreen && (
+        <Button onClick={() => setScaleUp(!scaleUp)}>
+          {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
+        </Button>
+      )}
       <Container
         $gapSizePx={gapSizePx}
         $columnCount={columnCount}
@@ -92,6 +99,7 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
             src={image}
             onClick={() => setOpen(open !== undefined ? undefined : i)}
             $open={open}
+            $scaleUp={scaleUp}
             scrollTo={isFullscreen && open === i}
           />
         ))}
