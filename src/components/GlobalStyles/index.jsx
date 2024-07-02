@@ -141,6 +141,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const DisableAnimations = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  input {
+    caret-color: transparent !important;
+  }
+`;
+
 // a bit like a mixin
 export const bgfg = level => css`
   background: var(${`--bg${level}`});
