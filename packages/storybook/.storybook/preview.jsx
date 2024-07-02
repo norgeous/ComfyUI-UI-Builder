@@ -1,9 +1,10 @@
 import { initialize, mswLoader, getWorker } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
 
-initialize({}, [...comfyMock]);
+initialize({ serviceWorker: { url: 'mockServiceWorker.js' } }, [...comfyMock]);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
