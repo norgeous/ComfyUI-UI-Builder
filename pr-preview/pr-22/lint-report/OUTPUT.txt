@@ -15,7 +15,7 @@
   66:5  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/.storybook/preview.jsx
-  9:1  warning  Unexpected console statement  no-console
+  11:1  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/GlobalStyles/index.jsx
   157:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
