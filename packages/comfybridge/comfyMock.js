@@ -93,17 +93,20 @@ const imageMock = http.get(
   `http://${window.location.host}/view`,
   ({ request }) => {
     const url = new URL(request.url);
+    const width = url.searchParams.get('width') || 512;
+    const height = url.searchParams.get('height') || 512;
+    const fontSize = width / 2;
     const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-      <rect width="512" height="512" fill="lightgrey" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
+      <rect width="${width}" height="${height}" fill="lightgrey" />
       <text
-        x="256"
-        y="256"
+        x="${width / 2}"
+        y="${height / 2}"
+        font-size="${fontSize}"
         dy=".36em"
         text-anchor="middle"
         font-family="Tahoma, Helvetica, sans-serif"
         fonmt-weight="bold"
-        font-size="250"
         fill="grey"
       >
         ${url.searchParams.get('filename')}
