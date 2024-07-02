@@ -9,7 +9,7 @@ const parameters = {
   screenshot: {
     viewport: {
       width: 412, // half the width of github README.md on desktop
-      height: 400,
+      height: 412,
     },
   },
 };
