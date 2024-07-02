@@ -1,9 +1,8 @@
 import { useContext, useState } from 'react';
-import WsContext from '@/contexts/WsContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import ObjectInfoContext from '@/contexts/ObjectInfoContext';
-import AppContext from '@/contexts/AppContext';
+
 import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
@@ -11,26 +10,33 @@ import Debug from '@/components/Debug';
 import { Bar, Link, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
-  const { wsStatus, comfyUrl } = useContext(WsContext);
+  const comfyBridge = useContext(ComfyBridgeContext);
   const { formState } = useContext(FormContext);
   const {
     config: { baseWorkflow },
   } = useContext(ConfigsContext);
-  const { objectInfoLoading, objectInfoError, objectInfo } =
-    useContext(ObjectInfoContext);
-  const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
+  const { adapted, adaptedComfyWorkflow, bodyData } =
+    useContext(ComfyBridgeContext);
 
   const [debugData, setDebugData] = useState();
   const debugOptions = [
+    {
+      label: 'comfyBridge.data.ws',
+      onClick: () => setDebugData('comfyBridge.data.ws'),
+    },
+    {
+      label: 'comfyBridge.data.objectInfo',
+      onClick: () => setDebugData('comfyBridge.data.objectInfo'),
+    },
+    {
+      label: 'comfyBridge.data.queue',
+      onClick: () => setDebugData('comfyBridge.data.queue'),
+    },
     { label: 'formState', onClick: () => setDebugData('formState') },
     { label: 'adapted', onClick: () => setDebugData('adapted') },
     {
       label: 'baseWorkflow',
       onClick: () => setDebugData('baseWorkflow'),
-    },
-    {
-      label: 'objectInfo',
-      onClick: () => setDebugData('objectInfo'),
     },
     {
       label: 'adaptedComfyWorkflow',
@@ -40,14 +46,12 @@ const StatusBar = () => {
   ];
 
   const debugDatum = {
+    'comfyBridge.data.ws': comfyBridge.data.ws,
+    'comfyBridge.data.objectInfo': comfyBridge.data.objectInfo,
+    'comfyBridge.data.queue': comfyBridge.data.queue,
     formState,
     adapted,
     baseWorkflow,
-    objectInfo: {
-      objectInfoLoading,
-      objectInfoError,
-      objectInfo,
-    },
     adaptedComfyWorkflow,
     bodyData,
   }[debugData];
@@ -55,8 +59,11 @@ const StatusBar = () => {
   return (
     <Bar>
       <Tray $shrinkable>
-        <StatusLight status={wsStatus} />
-        <StatusText>{comfyUrl}</StatusText>
+        <StatusLight status={comfyBridge.data.ws.status} />
+        <StatusText>
+          {comfyBridge.data.ws.statusText} {comfyBridge.comfyUrl}{' '}
+          {JSON.stringify(comfyBridge.data.ws.messageEvent)}
+        </StatusText>
       </Tray>
       <Tray>
         <Link

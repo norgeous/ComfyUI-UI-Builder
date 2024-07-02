@@ -1,4 +1,4 @@
-import useComfyApi from './useComfyApi';
+import useComfyApi from './queue/useComfyApi';
 
 const useComfyUpload = ({ file, enabled, onComplete }) => {
   const formData = new FormData();

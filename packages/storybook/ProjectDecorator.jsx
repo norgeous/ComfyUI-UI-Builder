@@ -1,7 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { useParameter, useState, useEffect } from '@storybook/preview-api';
 import { isScreenshot } from 'storycap';
-import { GlobalStyle, Theme1Style } from '@/components/GlobalStyles';
+import {
+  DisableAnimations,
+  GlobalStyle,
+  Theme1Style,
+} from '@/components/GlobalStyles';
 import Providers from '@/Providers';
 
 const useStorycapCurrentVariant = () => {
@@ -29,6 +33,7 @@ const ProjectDecorator = Story => {
   return (
     <>
       <GlobalStyle />
+      {isScreenshot() && <DisableAnimations />}
       <Theme1Style forceDark={storycapVariantData?.forceDark} />
       <Providers>
         <Story />

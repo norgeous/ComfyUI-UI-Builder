@@ -34,17 +34,27 @@ export const Img = styled.img`
   cursor: pointer;
   display: block;
   max-width: 100%;
-  ${({ $open }) =>
+  ${({ $open, $scaleUp }) =>
     $open !== undefined
       ? css`
           scroll-snap-stop: normal;
           scroll-snap-align: center;
           max-height: 100svh;
           height: 100svh;
-          object-fit: scale-down;
+          ${!$scaleUp && `object-fit: scale-down`};
         `
       : css`
           max-height: 100%;
           min-height: 0;
         `}
+`;
+
+export const Button = styled.button`
+  display: block;
+  padding: 4px;
+  border: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
 `;

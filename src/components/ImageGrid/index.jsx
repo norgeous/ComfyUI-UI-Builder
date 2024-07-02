@@ -1,44 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import screenfull from 'screenfull';
-import { Container, Outer } from './styled';
+import { Button, Container, Outer } from './styled';
 import Item from './Item';
+import { MaximiseIcon, MinimiseIcon } from '../Icons';
 
 const gapSizePx = 8;
 
-const ImageGrid = ({ images = [] }) => {
-  const [imgDim, setImgDim] = useState({});
+const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
+  const [scaleUp, setScaleUp] = useState(false);
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
 
-  const onLoad = event => {
-    const { src, naturalWidth, naturalHeight } = event.target;
-    setImgDim(old => ({
-      ...old,
-      [src]: {
-        w: naturalWidth,
-        h: naturalHeight,
-        a: naturalHeight / naturalWidth,
-      },
-    }));
-  };
-
   const calculateColumnCount = () => {
-    // wait until all images have loaded
-    if (images.length !== Object.keys(imgDim).length) return;
-
     if (!ref.current) return;
 
     const { width, height } = ref.current.getBoundingClientRect();
 
-    const imgDims = Object.values(imgDim);
-
     const newColumnCount =
-      imgDims
-        .map(({ w, h, a }, i) => {
+      images
+        .map((image, i) => {
+          const [w, h] = imageSize;
+          const a = h / w;
           const cc = i + 1;
-          const rowCount = Math.ceil(imgDims.length / cc);
+          const rowCount = Math.ceil(images.length / cc);
 
           const hGaps = gapSizePx * (cc - 1);
           const vGaps = gapSizePx * (rowCount - 1);
@@ -60,16 +46,14 @@ const ImageGrid = ({ images = [] }) => {
     setColumnCount(newColumnCount);
   };
 
-  useEffect(calculateColumnCount, [ref, imgDim, images]);
+  useEffect(calculateColumnCount, [ref, images, imageSize]);
 
   useEffect(() => {
     window.addEventListener('resize', calculateColumnCount);
     return () => {
       window.removeEventListener('resize', calculateColumnCount);
     };
-  }, [ref, imgDim, images]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => setImgDim({}), [images]);
+  }, [ref, images]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
@@ -97,6 +81,11 @@ const ImageGrid = ({ images = [] }) => {
 
   return (
     <Outer ref={ref}>
+      {isFullscreen && (
+        <Button onClick={() => setScaleUp(!scaleUp)}>
+          {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
+        </Button>
+      )}
       <Container
         $gapSizePx={gapSizePx}
         $columnCount={columnCount}
@@ -109,8 +98,8 @@ const ImageGrid = ({ images = [] }) => {
             alt=""
             src={image}
             onClick={() => setOpen(open !== undefined ? undefined : i)}
-            onLoad={onLoad}
             $open={open}
+            $scaleUp={scaleUp}
             scrollTo={isFullscreen && open === i}
           />
         ))}

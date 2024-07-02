@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import AppContext from '@/contexts/AppContext';
-import WsContext from '@/contexts/WsContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import QueueItem from '@/components/QueueItem';
 
 const Queue = () => {
-  const { progress, lastWsMessage, isGenerating } = useContext(WsContext);
+  const { progress, lastWsMessage, isGenerating } =
+    useContext(ComfyBridgeContext);
 
   const { executeInterrupt, interruptLoading, interruptError } =
-    useContext(AppContext);
+    useContext(ComfyBridgeContext);
 
   if (!isGenerating) return null;
 

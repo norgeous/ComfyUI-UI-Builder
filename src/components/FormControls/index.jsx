@@ -1,36 +1,30 @@
-import { useContext, useEffect, useState } from 'react';
-import AppContext from '@/contexts/AppContext';
+import { useContext, useState } from 'react';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import FormContext from '@/contexts/FormContext';
-import WsContext from '@/contexts/WsContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
-import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
+import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 
 const FormControls = () => {
-  const { isGenerating } = useContext(WsContext);
+  const { bridge, data, promptLoading, promptError } =
+    useContext(ComfyBridgeContext);
+
   const [auto, setAuto] = useState(false);
 
   const {
-    formState: { positivePrompt, enableSeedRandomisation },
+    formState: { enableSeedRandomisation },
     updateFormState,
   } = useContext(FormContext);
-
-  const { executePrompt, promptLoading, promptError } = useContext(AppContext);
 
   const handleClick = () => {
     if (enableSeedRandomisation) {
       const newSeed = Math.floor(Math.random() * 10 ** 10);
       updateFormState({ seed: newSeed });
     }
-    executePrompt();
+    bridge.prompt({ comfyUrl: data.ws.comfyUrl, promptData: {} });
   };
-
-  // autoprompting
-  useEffect(() => {
-    if (auto && positivePrompt && !isGenerating) executePrompt();
-  }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

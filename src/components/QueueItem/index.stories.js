@@ -6,9 +6,23 @@ export default {
   component,
 };
 
+export const Failed = {
+  args: {
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: false,
+    error: '469',
+    data: { error: { message: 'There was a problem' } },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
+};
+
 export const Loading = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.25,
     onInterrupt: fn(),
@@ -21,20 +35,30 @@ export const Loading = {
 
 export const InterruptLoading = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.5,
     onInterrupt: fn(),
     interruptLoading: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
 };
 
 export const InterruptError = {
   args: {
-    isLoading: true,
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: true,
     status: 'Running…',
     progress: 0.75,
     onInterrupt: fn(),
     interruptError: 'There was a problem with the interrupt',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
   },
 };

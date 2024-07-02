@@ -10,7 +10,8 @@
 
 ## Now
 
-- interrupt and queue features (styling 50% done already)
+- ws reconnect / error message overlay or toaster
+- interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
 
 ## Next
@@ -34,7 +35,6 @@
   - mock for comfyui websocket
   - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
 - toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
-- ws reconnect / error message overlay or toaster
 - ImageGrid: show spinner while images are loading
 - ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)

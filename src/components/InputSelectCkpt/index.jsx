@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import ObjectInfoContext from '@/contexts/ObjectInfoContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import InputText from '@/components/InputText';
+import Tooltip from '@/components/Tooltip';
+import { SpinnerIcon, WarningIcon } from '@/components/Icons';
 
 const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
-  const { objectInfo } = useContext(ObjectInfoContext);
+  const { data } = useContext(ComfyBridgeContext);
 
   const ckptOptions =
-    objectInfo?.CheckpointLoaderSimple.input.required.ckpt_name[0];
+    data.objectInfo?.data?.CheckpointLoaderSimple.input.required.ckpt_name[0];
 
   return (
     <InputText
@@ -15,7 +17,14 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
       id={id}
       value={value}
       options={ckptOptions || []}
-    />
+    >
+      {!ckptOptions && (
+        <Tooltip text="No checkpoints available">
+          <WarningIcon />
+        </Tooltip>
+      )}
+      {data.objectInfo?.loading && <SpinnerIcon />}
+    </InputText>
   );
 };
 
