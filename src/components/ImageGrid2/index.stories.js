@@ -17,7 +17,6 @@ const parameters = {
 export const Square1 = {
   parameters,
   args: {
-    imageSize: [512, 512],
     images: ['http://localhost:6006/view?filename=01'],
   },
 };
