@@ -49,7 +49,7 @@ const getWebSocket = async ({ clientId, wsUrls, onChange, onConnect }) => {
     onChange({ messageEvent: JSON.parse(event.data) });
   });
 
-  const comfyUrl = `http://${new URL(socket.url).host}`;
+  const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
 
   onChange({ comfyUrl, socket });
 
