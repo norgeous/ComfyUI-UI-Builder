@@ -757,6 +757,7 @@ jobs:
       - name: ✍️ folder before?
         run: |
           ls -lR _storycaps_
+          git status
 
       - name: ♻️ Restore storycaps
         uses: actions/cache@v4
