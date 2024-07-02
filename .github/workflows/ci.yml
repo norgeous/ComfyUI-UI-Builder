@@ -754,9 +754,9 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
-      - name: ✍️ folder before?
+      - name: 🗑️ Delete old _storycaps_
         run: |
-          ls -lR _storycaps_
+          rm -rf _storycaps_
           git status
 
       - name: ♻️ Restore storycaps

@@ -43,6 +43,7 @@
 - CI: use tmp dir for all reports / command outputs / exitcodes
 - CI: show `npm outdated` step results in gh-pages "branch report"
 - CI: wrong branch name in develop branch report after merging a PR https://norgeous.github.io/ComfyUI-UI-Builder/develop/ (because of action caching)
+- CI: storycap cache doesnt save deletions
 - CI: smaller job summaries
 - CI: use bash html sed templating to make the storycaps/index.html
 - CI: unused files check
