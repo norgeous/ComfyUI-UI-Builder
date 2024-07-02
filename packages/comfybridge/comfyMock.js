@@ -97,7 +97,12 @@ const imageMock = http.get(
     const height = url.searchParams.get('height') || 512;
     const fontSize = width / 2;
     const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 ${width} ${height}"
+      width="${width}"
+      height="${height}"
+    >
       <rect width="${width}" height="${height}" fill="lightgrey" />
       <text
         x="${width / 2}"
