@@ -3,6 +3,14 @@ import component from '.';
 export default {
   title: 'ImageGrid',
   component,
+  parameters: {
+    screenshot: {
+      viewport: {
+        width: 412, // half the width of github README.md on desktop
+        height: 400,
+      },
+    },
+  },
 };
 
 const parameters = {
@@ -15,14 +23,14 @@ const parameters = {
 };
 
 export const Square1 = {
-  parameters,
+  // parameters,
   args: {
     images: ['http://localhost:6006/view?filename=01&width=1024&height=1024'],
   },
 };
 
 export const Square2 = {
-  parameters,
+  // parameters,
   args: {
     images: [
       'http://localhost:6006/view?filename=01',
@@ -145,25 +153,29 @@ export const Square50 = {
   },
 };
 
-// export const Landscape1 = {
-//   parameters,
-//   args: {
-//     images: ['https://placehold.co/1344x768?text=01'],
-//   },
-// };
-// export const Landscape2 = {
-//   parameters,
-//   args: {
-//     images: [
-//       'https://placehold.co/1344x768?text=01',
-//       'https://placehold.co/1344x768?text=02',
-//     ],
-//   },
-// };
+export const Landscape1 = {
+  parameters,
+  args: {
+    imageSize: [1344, 768],
+    images: ['http://localhost:6006/view?filename=01&width=1344&height=768'],
+  },
+};
+
+export const Landscape2 = {
+  parameters,
+  args: {
+    imageSize: [1344, 768],
+    images: [
+      'http://localhost:6006/view?filename=01&width=1344&height=768',
+      'http://localhost:6006/view?filename=02&width=1344&height=768',
+    ],
+  },
+};
 
 export const Landscape50 = {
   parameters,
   args: {
+    imageSize: [1344, 768],
     images: [
       'http://localhost:6006/view?filename=01&width=1344&height=768',
       'http://localhost:6006/view?filename=02&width=1344&height=768',
