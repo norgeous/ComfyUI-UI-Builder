@@ -4,7 +4,12 @@ import { withScreenshot } from 'storycap';
 import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
 
-initialize({ serviceWorker: { url: 'mockServiceWorker.js' } }, [...comfyMock]);
+initialize(
+  {
+    serviceWorker: { url: '/pr-preview/pr-22/storybook/mockServiceWorker.js' },
+  },
+  [...comfyMock],
+);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
