@@ -10,19 +10,18 @@ const base = `${origin}${path}`;
 
 console.log({ base });
 
-initialize(
-  {
-    serviceWorker: {
-      // url: `${base}/mockServiceWorker.js`,
-      url: `./mockServiceWorker.js`,
-      options: {
-        // scope: `${base}/`,
-        scope: `./`,
-      },
+const options = {
+  serviceWorker: {
+    url: `${base}/mockServiceWorker.js`,
+    // url: `./mockServiceWorker.js`,
+    options: {
+      // scope: `${base}/`,
+      scope: `./`,
     },
   },
-  [...comfyMock],
-);
+};
+
+initialize(options, [...comfyMock]);
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -55,7 +54,7 @@ const preview = {
     },
   },
 
-  loaders: [mswLoader, () => getWorker().start()],
+  loaders: [mswLoader, () => getWorker().start(options)],
 
   decorators: [withScreenshot, ProjectDecorator],
 };
