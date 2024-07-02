@@ -756,7 +756,7 @@ jobs:
 
       - name: ✍️ folder before?
         run: |
-          ls -l _storycaps_
+          ls -lR _storycaps_
 
       - name: ♻️ Restore storycaps
         uses: actions/cache@v4
@@ -769,11 +769,13 @@ jobs:
 
       - name: ✍️ Commit changed pngs back into "${{ inputs.ref }}" branch
         run: |
-          ls -l _storycaps_
+          ls -lR _storycaps_
           git config user.name github-actions
           git config user.email github-actions@github.com
           git status
+          echo about to add files to staged
           git add _storycaps_ | tee -a $GITHUB_STEP_SUMMARY
+          echo done
           git commit -m "🧢 Storycaps from CI" | tee -a $GITHUB_STEP_SUMMARY
           git status
           git push
