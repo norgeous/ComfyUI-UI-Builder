@@ -445,6 +445,7 @@ jobs:
           EXITCODE=${PIPESTATUS[0]}
           echo "$EXITCODE" >  ${{ runner.temp }}/storycap-report/EXITCODE
           STORYCAP_CHANGE_COUNT=`git status -s | wc -l`
+          git status
           echo -e "\nPNG file Change count is $STORYCAP_CHANGE_COUNT" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
           echo "STORYCAP_CHANGE_COUNT=$STORYCAP_CHANGE_COUNT" | tee -a $GITHUB_OUTPUT
           ((EXITCODE > 0)) && echo -e "\nFail ❌" | tee -a ${{ runner.temp }}/storycap-report/OUTPUT.txt
