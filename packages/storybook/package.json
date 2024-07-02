@@ -14,7 +14,7 @@
     "serve:visdiff": "serve -l 3000 ./visdiff-report/"
   },
   "msw": {
-    "workerDirectory": "public"
+    "workerDirectory": "msw-public"
   },
   "dependencies": {
     "@storybook/addon-a11y": "^8.1.11",
