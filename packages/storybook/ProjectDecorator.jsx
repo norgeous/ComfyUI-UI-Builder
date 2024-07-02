@@ -27,8 +27,7 @@ const useStorycapCurrentVariant = () => {
   return { storycapVariant, storycapVariantData };
 };
 
-const ProjectDecorator = (Story, ...other) => {
-  console.log({ Story, other });
+const ProjectDecorator = Story => {
   const { storycapVariantData } = useStorycapCurrentVariant();
 
   return (
