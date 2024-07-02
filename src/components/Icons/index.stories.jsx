@@ -14,9 +14,11 @@ export default {
 
 export const Icons = {
   parameters: {
-    viewport: {
-      width: 214,
-      height: 214,
+    screenshot: {
+      viewport: {
+        width: 214,
+        height: 214,
+      },
     },
   },
   render: () => (
