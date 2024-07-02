@@ -52,7 +52,13 @@ const preview = {
     },
   },
 
-  loaders: [mswLoader, () => getWorker().start(options, [...comfyMock])],
+  loaders: [
+    mswLoader,
+    () =>
+      getWorker().start(options, [
+        /* ...comfyMock */
+      ]),
+  ],
 
   decorators: [withScreenshot, ProjectDecorator],
 };

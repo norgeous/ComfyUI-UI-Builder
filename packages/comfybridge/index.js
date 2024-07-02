@@ -77,7 +77,7 @@ const comfybridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
     onChange(state);
   };
 
-  // connect to comfy ws and then object info
+  // connect to comfy ws and then get object info
   const connect = async () => {
     connectWs({
       wsUrls,
