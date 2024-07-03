@@ -1,29 +1,27 @@
 import uuidv4 from './utils/uuidv4';
 
-const TIMEOUT = 1500; // websocket is rejected if it fails to open within this amount of ms
+const TIMEOUT = 2500; // websocket is rejected if it fails to open within this amount of ms
 
 const socketPromise = ({ url, onChange, onMessage }) =>
-  new Promise((resolve, reject) => {
+  new Promise(resolve => {
     const socket = new WebSocket(url);
-    socket.addEventListener('open', () => {
-      const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
-      onChange({ status: 'CONNECTED', comfyUrl });
-    });
-    socket.addEventListener('close', () => {
-      onChange({ status: 'DISCONNECTED' });
-    });
-    socket.addEventListener('error', err => {
-      console.error('WS ERROR', err); // eslint-disable-line no-console
-      onChange({ status: 'DISCONNECTED' });
-    });
-    socket.addEventListener('message', event => {
-      onMessage(JSON.parse(event.data));
-    });
+
     setTimeout(async () => {
       if (socket.readyState !== WebSocket.OPEN) {
         socket.close();
-        reject(new Error(`WebSocket ${url} Timeout after ${TIMEOUT}ms`));
+        onChange({ status: 'DEFAULT' });
+        resolve(undefined);
       } else {
+        socket.addEventListener('open', () => {
+          const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
+          onChange({ status: 'CONNECTED', comfyUrl });
+        });
+        socket.addEventListener('close', () => {
+          onChange({ status: 'DISCONNECTED' });
+        });
+        socket.addEventListener('message', event => {
+          onMessage(JSON.parse(event.data));
+        });
         resolve(socket);
       }
     }, TIMEOUT);
@@ -38,7 +36,7 @@ const defaultWsUrls = [
 ];
 
 const loop = ({ onChange, onMessage }) =>
-  new Promise((resolve, reject) => {
+  new Promise(resolve => {
     (async () => {
       const id = uuidv4();
 
@@ -46,6 +44,7 @@ const loop = ({ onChange, onMessage }) =>
       // eslint-disable-next-line no-restricted-syntax
       for (const wsUrl of defaultWsUrls) {
         const url = `${wsUrl}/ws?clientId=${id}`;
+
         onChange({ status: 'CONNECTING', statusText: wsUrl });
         const socket = await socketPromise({ url, onChange, onMessage });
         if (socket) {
@@ -53,7 +52,8 @@ const loop = ({ onChange, onMessage }) =>
           break; // stop searching
         }
       }
-      reject();
+
+      resolve(undefined);
     })();
   });
 
@@ -62,19 +62,28 @@ const sleep = delta =>
     setTimeout(resolve, delta);
   });
 
-const connectWs = async ({ onChange, onMessage }) => {
+const connectWs = ({ onChange, onMessage }) => {
+  let active = true;
   let socket;
 
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    if (
-      !socket ||
-      [WebSocket.CLOSED, WebSocket.CLOSING].includes(socket.readyState)
-    ) {
-      socket = await loop({ onChange, onMessage });
+  (async () => {
+    while (active) {
+      if (
+        !socket ||
+        [WebSocket.CLOSED, WebSocket.CLOSING].includes(socket.readyState)
+      ) {
+        socket = await loop({ onChange, onMessage });
+      }
+      onChange({ statusText: 'Waiting…' });
+      await sleep(5_000);
     }
-    await sleep(10_000);
-  }
+  })();
+
+  const destroyRetry = () => {
+    active = false;
+  };
+
+  return { destroyRetry };
 };
 
 export default connectWs;

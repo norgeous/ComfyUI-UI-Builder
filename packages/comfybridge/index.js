@@ -30,6 +30,7 @@ const comfybridge = ({ onChange = () => {} }) => {
     queue: [],
   };
   const updateState = (key, newData) => {
+    console.log({ key, ...newData });
     state[key] = { ...state[key], ...newData };
     onChange(state);
   };
@@ -51,7 +52,7 @@ const comfybridge = ({ onChange = () => {} }) => {
 
   // connect to comfy ws and then get object info
   const connect = async () => {
-    connectWs({
+    const { destroyRetry } = connectWs({
       // wsUrls,
       onChange: newData => updateState('ws', newData),
       // onConnect: () => {
@@ -61,6 +62,7 @@ const comfybridge = ({ onChange = () => {} }) => {
       //   });
       // },
     });
+    state.destroyRetry = destroyRetry;
   };
 
   // prompting
@@ -87,6 +89,7 @@ const comfybridge = ({ onChange = () => {} }) => {
     state.ws = undefined;
     state.objectInfo = undefined;
     state.socket?.close();
+    state.destroyRetry();
   };
 
   return {
