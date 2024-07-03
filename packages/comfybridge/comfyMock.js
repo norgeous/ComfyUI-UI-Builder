@@ -104,8 +104,8 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
 const promptMock = http.post(
   `${window.location.origin}/prompt`,
   async ({ request }) => {
-    const { client_id } = JSON.parse(await request.text());
-    mockQueue.push(...mockJobEvents.map(mje => ({ client_id, ...mje })));
+    const { client_id } = JSON.parse(await request.text()); // eslint-disable-line camelcase
+    mockQueue.push(...mockJobEvents.map(mje => ({ client_id, ...mje }))); // eslint-disable-line camelcase
 
     return HttpResponse.json({
       id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
