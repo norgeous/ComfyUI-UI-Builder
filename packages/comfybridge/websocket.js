@@ -1,6 +1,6 @@
 import uuidv4 from './utils/uuidv4';
 
-const TIMEOUT = 2500; // websocket is rejected if it fails to open within this amount of ms
+const TIMEOUT = 1500; // websocket is rejected if it fails to open within this amount of ms
 
 const socketPromise = ({ url, onChange, onMessage }) =>
   new Promise(resolve => {
