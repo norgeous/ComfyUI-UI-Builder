@@ -4,11 +4,10 @@ import styled from 'styled-components';
 export const Progress = styled.progress.attrs({ max: 1 })`
   appearance: none;
   display: block;
-  width: 100%;
-  max-height: 4px;
-  border: 0;
   min-width: 40px;
-  flex: 1 1;
+  width: 100%;
+  height: 4px;
+  border: 0;
 
   // webkit (chrome)
   &::-webkit-progress-bar {
