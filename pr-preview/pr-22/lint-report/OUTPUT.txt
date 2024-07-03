@@ -8,7 +8,9 @@
 
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/comfyMock.js
-  12:55  error  'other' is defined but never used  no-unused-vars
+   12:55  error  'other' is defined but never used            no-unused-vars
+  107:13  error  Identifier 'client_id' is not in camel case  camelcase
+  108:51  error  Identifier 'client_id' is not in camel case  camelcase
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/index.js
   66:5  warning  Unexpected console statement  no-console
@@ -19,7 +21,7 @@
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/ImageGrid/index.jsx
   10:22  error  'imageSize' is missing in props validation  react/prop-types
 
-✖ 4 problems (2 errors, 2 warnings)
+✖ 6 problems (4 errors, 2 warnings)
 
 Lint has modified 0 files
 
