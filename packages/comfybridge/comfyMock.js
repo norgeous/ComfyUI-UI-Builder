@@ -8,16 +8,51 @@ import { ws, http, HttpResponse } from 'msw';
 // finally send back 1 or more mock images (perhaps svgs?) via ws
 // test ci...
 
+const service = ws.link(`ws://${window.location.host}/ws`);
+const wsMock = service.on('connection', ({ client, ...other }) => {});
+
 const mockJobEvents = [
   { type: 'execution_start' },
   { type: 'executing', data: { node: 1 } },
   { type: 'progress', data: { value: 1, max: 28 } },
+  { type: 'progress', data: { value: 2, max: 28 } },
+  { type: 'progress', data: { value: 3, max: 28 } },
+  { type: 'progress', data: { value: 4, max: 28 } },
+  { type: 'progress', data: { value: 5, max: 28 } },
+  { type: 'progress', data: { value: 6, max: 28 } },
+  { type: 'progress', data: { value: 7, max: 28 } },
+  { type: 'progress', data: { value: 8, max: 28 } },
+  { type: 'progress', data: { value: 9, max: 28 } },
+  { type: 'progress', data: { value: 10, max: 28 } },
+  { type: 'progress', data: { value: 11, max: 28 } },
+  { type: 'progress', data: { value: 12, max: 28 } },
+  { type: 'progress', data: { value: 13, max: 28 } },
+  { type: 'progress', data: { value: 14, max: 28 } },
+  { type: 'progress', data: { value: 15, max: 28 } },
+  { type: 'progress', data: { value: 16, max: 28 } },
+  { type: 'progress', data: { value: 17, max: 28 } },
+  { type: 'progress', data: { value: 18, max: 28 } },
+  { type: 'progress', data: { value: 19, max: 28 } },
+  { type: 'progress', data: { value: 20, max: 28 } },
+  { type: 'progress', data: { value: 21, max: 28 } },
+  { type: 'progress', data: { value: 22, max: 28 } },
+  { type: 'progress', data: { value: 23, max: 28 } },
+  { type: 'progress', data: { value: 24, max: 28 } },
+  { type: 'progress', data: { value: 25, max: 28 } },
+  { type: 'progress', data: { value: 26, max: 28 } },
+  { type: 'progress', data: { value: 27, max: 28 } },
+  { type: 'progress', data: { value: 28, max: 28 } },
   { type: 'executed', data: { output: { images: ['0001.png'] } } },
-  { type: '' },
 ];
 
-const service = ws.link(`ws://${window.location.host}/ws`);
-const wsMock = service.on('connection', ({ client, ...other }) => {});
+const mockQueue = [];
+
+// queue eater
+setInterval(() => {
+  if (!mockQueue.length) return;
+  const nextItem = mockQueue.shift();
+  service.broadcast(JSON.stringify(nextItem));
+}, 500);
 
 const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
   HttpResponse.json({
@@ -67,11 +102,7 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
 );
 
 const promptMock = http.post(`${window.location.origin}/prompt`, () => {
-  setInterval(() => {
-    service.broadcast(
-      JSON.stringify({ d: new Date().getTime(), r: Math.random() }),
-    );
-  }, 1000);
+  mockQueue.push(...mockJobEvents);
 
   return HttpResponse.json({
     id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
