@@ -1,4 +1,4 @@
-import uuidv4 from '../utils/uuidv4';
+import uuidv4 from './utils/uuidv4';
 
 const TIMEOUT = 1500; // websocket is rejected if it fails to open within this amount of ms
 
