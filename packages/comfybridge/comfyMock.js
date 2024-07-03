@@ -13,6 +13,7 @@ const wsMock = service.on('connection', ({ client, ...other }) => {});
 
 const mockJobEvents = [
   { type: 'execution_start' },
+  { type: 'status', data: { node: 1 } },
   { type: 'executing', data: { node: 1 } },
   { type: 'progress', data: { value: 1, max: 28 } },
   { type: 'progress', data: { value: 2, max: 28 } },
@@ -43,6 +44,8 @@ const mockJobEvents = [
   { type: 'progress', data: { value: 27, max: 28 } },
   { type: 'progress', data: { value: 28, max: 28 } },
   { type: 'executed', data: { output: { images: ['0001.png'] } } },
+  // { type: 'execution_cached' },
+  // { type: 'execution_interrupted' },
 ];
 
 const mockQueue = [];
