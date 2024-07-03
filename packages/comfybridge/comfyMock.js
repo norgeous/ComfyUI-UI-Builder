@@ -10,7 +10,7 @@ import uuidv4 from './utils/uuidv4';
 // test ci...
 
 const service = ws.link(`ws://${window.location.host}/ws`);
-const wsMock = service.on('connection', ({ client, ...other }) => {});
+const wsMock = service.on('connection', () => {});
 
 const getMockJobEvents = ({ promptId }) => [
   { type: 'status', data: { status: { exec_info: { queue_remaining: 1 } } } },
