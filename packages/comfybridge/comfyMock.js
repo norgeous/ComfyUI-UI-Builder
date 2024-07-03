@@ -1,4 +1,5 @@
 import { ws, http, HttpResponse } from 'msw';
+import uuidv4 from './utils/uuidv4';
 
 // mocks of comfy ui for msw in storybook
 
@@ -11,41 +12,141 @@ import { ws, http, HttpResponse } from 'msw';
 const service = ws.link(`ws://${window.location.host}/ws`);
 const wsMock = service.on('connection', ({ client, ...other }) => {});
 
-const mockJobEvents = [
-  { type: 'execution_start' },
-  { type: 'status', data: { node: 1 } },
-  { type: 'executing', data: { node: 1 } },
-  { type: 'progress', data: { value: 1, max: 28 } },
-  { type: 'progress', data: { value: 2, max: 28 } },
-  { type: 'progress', data: { value: 3, max: 28 } },
-  { type: 'progress', data: { value: 4, max: 28 } },
-  { type: 'progress', data: { value: 5, max: 28 } },
-  { type: 'progress', data: { value: 6, max: 28 } },
-  { type: 'progress', data: { value: 7, max: 28 } },
-  { type: 'progress', data: { value: 8, max: 28 } },
-  { type: 'progress', data: { value: 9, max: 28 } },
-  { type: 'progress', data: { value: 10, max: 28 } },
-  { type: 'progress', data: { value: 11, max: 28 } },
-  { type: 'progress', data: { value: 12, max: 28 } },
-  { type: 'progress', data: { value: 13, max: 28 } },
-  { type: 'progress', data: { value: 14, max: 28 } },
-  { type: 'progress', data: { value: 15, max: 28 } },
-  { type: 'progress', data: { value: 16, max: 28 } },
-  { type: 'progress', data: { value: 17, max: 28 } },
-  { type: 'progress', data: { value: 18, max: 28 } },
-  { type: 'progress', data: { value: 19, max: 28 } },
-  { type: 'progress', data: { value: 20, max: 28 } },
-  { type: 'progress', data: { value: 21, max: 28 } },
-  { type: 'progress', data: { value: 22, max: 28 } },
-  { type: 'progress', data: { value: 23, max: 28 } },
-  { type: 'progress', data: { value: 24, max: 28 } },
-  { type: 'progress', data: { value: 25, max: 28 } },
-  { type: 'progress', data: { value: 26, max: 28 } },
-  { type: 'progress', data: { value: 27, max: 28 } },
-  { type: 'progress', data: { value: 28, max: 28 } },
-  { type: 'executed', data: { output: { images: ['0001.png'] } } },
-  // { type: 'execution_cached' },
-  // { type: 'execution_interrupted' },
+const getMockJobEvents = ({ promptId }) => [
+  { type: 'status', data: { status: { exec_info: { queue_remaining: 1 } } } },
+  { type: 'execution_start', data: { prompt_id: promptId } },
+  {
+    type: 'execution_cached',
+    data: { prompt_id: promptId, nodes: ['1', '5', '6', '4'] },
+  },
+  { type: 'executing', data: { prompt_id: promptId, node: '7' } },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 1, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 2, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 3, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 4, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 5, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 6, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 7, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 8, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 9, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 10, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 11, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 12, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 13, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 14, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 15, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 16, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 17, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 18, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 19, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 20, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 21, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 22, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 23, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 24, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 25, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 26, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 27, max: 28 },
+  },
+  {
+    type: 'progress',
+    data: { prompt_id: promptId, node: '7', value: 28, max: 28 },
+  },
+  { type: 'executing', data: { prompt_id: promptId, node: '8' } },
+  { type: 'executing', data: { prompt_id: promptId, node: '13' } },
+  {
+    type: 'executed',
+    data: {
+      prompt_id: promptId,
+      node: '13',
+      output: {
+        images: [{ filename: 'SDXL_0001_.png', subfolder: '', type: 'output' }],
+      },
+    },
+  },
+  { type: 'status', data: { status: { exec_info: { queue_remaining: 0 } } } },
+  { type: 'executing', data: { prompt_id: promptId, node: null } },
+  // { type: 'execution_interrupted', data:{} },
 ];
 
 const mockQueue = [];
@@ -104,19 +205,17 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
   }),
 );
 
-const promptMock = http.post(
-  `${window.location.origin}/prompt`,
-  async ({ request }) => {
-    const { client_id } = JSON.parse(await request.text()); // eslint-disable-line camelcase
-    mockQueue.push(...mockJobEvents.map(mje => ({ client_id, ...mje }))); // eslint-disable-line camelcase
+const promptMock = http.post(`${window.location.origin}/prompt`, () => {
+  const promptId = uuidv4();
+  const mockJobEvents = getMockJobEvents(promptId);
+  mockQueue.push(...mockJobEvents);
 
-    return HttpResponse.json({
-      id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
-      firstName: 'John',
-      lastName: 'Maverick',
-    });
-  },
-);
+  return HttpResponse.json({
+    prompt_id: promptId,
+    number: 1,
+    node_errors: {},
+  });
+});
 
 const interruptMock = http.get(`${window.location.origin}/interrupt`, () =>
   // find job id in the queue and cancel the interval?
