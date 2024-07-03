@@ -218,12 +218,13 @@ const promptMock = http.post(`${window.location.origin}/prompt`, () => {
 });
 
 const interruptMock = http.get(`${window.location.origin}/interrupt`, () =>
-  // find job id in the queue and cancel the interval?
-  HttpResponse.json({
-    id: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d',
-    firstName: 'John',
-    lastName: 'Maverick',
-  }),
+  // find the currently "executing" prompt id
+  // find items matching the prompt id in the websocket event queue
+  // replace them with one new item:
+  // { type: 'execution_interrupted', data:{ prompt_id: promptId } },
+  // {"type": "status", "data": {"status": {"exec_info": {"queue_remaining": 0}}}}
+  // {"type": "executing", "data": {"node": null, prompt_id: promptId}}
+  HttpResponse(),
 );
 
 const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
