@@ -1,9 +1,7 @@
 import uuidv4 from './utils/uuidv4';
-import getWebSocket from './websocket/getWebSocket';
 import simpleFetch from './queue/simpleFetch';
 import queueController from './queue/queueController';
-
-// new package to do the following (without react)
+import connectWs from './websocket';
 
 // TODO:
 // - get objectInfo
@@ -11,31 +9,6 @@ import queueController from './queue/queueController';
 //   - executePrompt
 //   - executeInterrupt
 // - image and video uploading and downloading
-
-const defaultWsUrls = [
-  ...new Set([
-    `ws://${window.location.hostname}:${window.location.port}`,
-    'ws://localhost:8188',
-    `ws://localhost:${window.location.port}`,
-  ]),
-];
-
-// find open websocket (and attach callbacks) from a list of urls
-// TODO: add retry here
-const connectWs = ({
-  wsUrls = defaultWsUrls,
-  onChange = () => {},
-  onConnect = () => {},
-}) => {
-  const id = uuidv4();
-  onChange({ id });
-  return getWebSocket({
-    clientId: id,
-    wsUrls,
-    onChange,
-    onConnect,
-  });
-};
 
 // Get all the object info (node info)
 const getObjectInfo = ({ comfyUrl, onChange }) => {
@@ -50,7 +23,7 @@ const getObjectInfo = ({ comfyUrl, onChange }) => {
 const queue = queueController({});
 
 // callback based object for communicating with comfyui api
-const comfybridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
+const comfybridge = ({ onChange = () => {} }) => {
   const state = {
     ws: {},
     objectInfo: {},
@@ -79,14 +52,14 @@ const comfybridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
   // connect to comfy ws and then get object info
   const connect = async () => {
     connectWs({
-      wsUrls,
+      // wsUrls,
       onChange: newData => updateState('ws', newData),
-      onConnect: () => {
-        getObjectInfo({
-          comfyUrl: state.ws.comfyUrl,
-          onChange: newData => updateState('objectInfo', newData),
-        });
-      },
+      // onConnect: () => {
+      //   getObjectInfo({
+      //     comfyUrl: state.ws.comfyUrl,
+      //     onChange: newData => updateState('objectInfo', newData),
+      //   });
+      // },
     });
   };
 
