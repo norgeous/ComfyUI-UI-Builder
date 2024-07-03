@@ -1,11 +1,10 @@
 import{p as r}from"./styled-components.browser.esm-Cm6OPFyG.js";const o=r.progress.attrs({max:1})`
   appearance: none;
   display: block;
-  width: 100%;
-  max-height: 4px;
-  border: 0;
   min-width: 40px;
-  flex: 1 1;
+  width: 100%;
+  height: 4px;
+  border: 0;
 
   // webkit (chrome)
   &::-webkit-progress-bar {

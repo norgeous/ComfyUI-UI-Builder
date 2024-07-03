@@ -687,11 +687,10 @@ Error generating stack: `+V.message+`
 `,Uz=()=>{const{formConfig:U}=K.useContext(b0),F=[...new Set(U.map(({group:Q})=>Q))];return x.jsx(SF,{pad:!0,column:!0,gap:"md",scrollable:!0,children:F.map(Q=>{const B=U.filter(({group:R})=>R===Q);return x.jsx(Eh,{title:Q,children:x.jsx(_H,{children:B.map(({id:R,colSpan:V,defaultValue:l,defaultValueIndex:J,options:d,...W})=>x.jsx($H,{colSpan:V,children:x.jsx(nh,{...W,id:R,defaultValue:l??d[J].value,options:d})},R))})},Q)})})},Fz=()=>{const{bridge:U,data:F,promptLoading:Q,promptError:B}=K.useContext(RR),[R,V]=K.useState(!1),{formState:{enableSeedRandomisation:l},updateFormState:J}=K.useContext(b0),d=()=>{if(l){const W=Math.floor(Math.random()*1e10);J({seed:W})}U.prompt({comfyUrl:F.ws.comfyUrl,promptData:{}})};return x.jsxs(x.Fragment,{children:[B&&x.jsx(ed,{children:B}),x.jsxs(SF,{gap:"md",children:[!R&&x.jsx(aV,{wide:!0,onClick:d,children:Q?x.jsx(j0,{}):"Generate"}),x.jsx(_Q,{text:"Automatic Generation",wide:R,children:x.jsx(aV,{variant:"secondary","aria-label":"Automatic Generation",onClick:()=>V(!R),wide:R,children:R?x.jsx(Ob,{}):x.jsx(ib,{})})})]})]})},Qz=FU.progress.attrs({max:1})`
   appearance: none;
   display: block;
-  width: 100%;
-  max-height: 4px;
-  border: 0;
   min-width: 40px;
-  flex: 1 1;
+  width: 100%;
+  height: 4px;
+  border: 0;
 
   // webkit (chrome)
   &::-webkit-progress-bar {
