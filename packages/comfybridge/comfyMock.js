@@ -91,11 +91,11 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
         required: {
           image: [
             [
-              'image1.jpg',
-              'image2.jpg',
-              'image3.jpg',
-              'image4.jpg',
-              'image5.jpg',
+              'mock-image1.jpg',
+              'mock-image2.jpg',
+              'mock-image3.jpg',
+              'mock-image4.jpg',
+              'mock-image5.jpg',
             ],
           ],
         },
