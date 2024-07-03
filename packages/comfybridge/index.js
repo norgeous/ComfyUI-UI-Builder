@@ -63,7 +63,6 @@ const comfybridge = ({ wsUrls = defaultWsUrls, onChange = () => {} }) => {
   const updateQueueById = newData => {
     const existingItem = state.queue.find(({ id }) => id === newData.id);
     const otherItems = state.queue.filter(({ id }) => id !== newData.id);
-    console.log({ newData, existingItem, otherItems });
     state.queue = existingItem
       ? [
           ...otherItems,

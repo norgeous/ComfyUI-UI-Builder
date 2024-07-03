@@ -26,9 +26,7 @@ export const postVisit = async (page, context) => {
 
   // the report type: default, v2 or html
   // note: the html reporter will disable terminal logging of failures, the tests wont fail
-  // console.log('!1!');
   await checkA11y(page, '#storybook-root', axeOptions, skipFailures); // , 'v2');
-  // console.log('!2!');
 
   // const axeOptions2 = {
   //   detailedReport: true, // per node with an array of numbers of which violations from the summary affect that node
@@ -47,7 +45,6 @@ export const postVisit = async (page, context) => {
   //     reportFileName: 'exampleReport.html',
   //   },
   // );
-  // console.log('!3!', output);
 };
 
 export const tags = { skip: ['skip-test'] };
