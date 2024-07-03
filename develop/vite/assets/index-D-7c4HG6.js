@@ -213,7 +213,7 @@ Error generating stack: `+V.message+`
   border-radius: 50%; // circle
   transition: background-position 250ms ease-in-out;
   background: linear-gradient(
-    -180deg,
+    in oklch -180deg,
     grey,
     black,
     deepskyblue,
