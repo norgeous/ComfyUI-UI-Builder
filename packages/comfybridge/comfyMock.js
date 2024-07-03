@@ -207,7 +207,7 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
 
 const promptMock = http.post(`${window.location.origin}/prompt`, () => {
   const promptId = uuidv4();
-  const mockJobEvents = getMockJobEvents(promptId);
+  const mockJobEvents = getMockJobEvents({ promptId });
   mockQueue.push(...mockJobEvents);
 
   return HttpResponse.json({

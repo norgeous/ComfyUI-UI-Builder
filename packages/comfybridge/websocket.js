@@ -6,15 +6,16 @@ const socketPromise = ({ url, onChange, onMessage }) =>
   new Promise(resolve => {
     const socket = new WebSocket(url);
 
+    socket.addEventListener('open', () => {
+      const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
+      onChange({ status: 'CONNECTED', comfyUrl });
+    });
+
     setTimeout(async () => {
       if (socket.readyState !== WebSocket.OPEN) {
         socket.close();
         resolve(undefined);
       } else {
-        socket.addEventListener('open', () => {
-          const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
-          onChange({ status: 'CONNECTED', comfyUrl });
-        });
         socket.addEventListener('close', () => {
           onChange({ status: 'DISCONNECTED' });
         });
@@ -72,8 +73,11 @@ const connectWs = ({ onChange, onMessage }) => {
         [WebSocket.CLOSED, WebSocket.CLOSING].includes(socket.readyState)
       ) {
         socket = await loop({ onChange, onMessage });
+
+        if (!socket) {
+          onChange({ status: 'DEFAULT', statusText: 'Waiting…' });
+        }
       }
-      onChange({ status: 'DEFAULT', statusText: 'Waiting…' });
       await sleep(5_000);
     }
   })();

@@ -55,6 +55,7 @@ const comfybridge = ({ onChange = () => {} }) => {
     const { destroyRetry } = connectWs({
       // wsUrls,
       onChange: newData => updateState('ws', newData),
+      onMessage: message => updateState('ws', { message }),
       // onConnect: () => {
       //   getObjectInfo({
       //     comfyUrl: state.ws.comfyUrl,
