@@ -7,12 +7,12 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (211 ms)
+info => Manager built (233 ms)
 info => Building preview..
 info => Copying static files: msw-public at storybook-static
 info => Copying static files: ../../public at storybook-static
 info Using tsconfig paths for react-docgen
-vite v5.3.2 building for production...
+vite v5.3.3 building for production...
 transforming...
 ✓ 974 modules transformed.
 rendering chunks...
@@ -54,11 +54,11 @@ storybook-static/assets/jsx-runtime-Nms4Y4qS.js                        0.92 kB �
 storybook-static/assets/index.stories-BwmAp_9l.js                      0.92 kB │ gzip:     0.49 kB
 storybook-static/assets/index-DTDTLdmj.js                              0.93 kB │ gzip:     0.58 kB
 storybook-static/assets/index-B6rg_Y8z.js                              0.96 kB │ gzip:     0.59 kB
-storybook-static/assets/preview-BR82ARDW.js                            0.98 kB │ gzip:     0.62 kB
+storybook-static/assets/preview-BR82ARDW.js                            0.99 kB │ gzip:     0.63 kB
 storybook-static/assets/index.stories-BX-60YGN.js                      1.00 kB │ gzip:     0.56 kB
 storybook-static/assets/index.stories-DKub949v.js                      1.00 kB │ gzip:     0.52 kB
 storybook-static/assets/index-HI52Cy3X.js                              1.02 kB │ gzip:     0.52 kB
-storybook-static/assets/preview-CO6Elym9.js                            1.03 kB │ gzip:     0.68 kB
+storybook-static/assets/preview-CO6Elym9.js                            1.04 kB │ gzip:     0.69 kB
 storybook-static/assets/index.stories-J4jHm7Qp.js                      1.05 kB │ gzip:     0.54 kB
 storybook-static/assets/index.stories-TFMagIwS.js                      1.06 kB │ gzip:     0.52 kB
 storybook-static/assets/index.stories-B-00T9VS.js                      1.10 kB │ gzip:     0.57 kB
@@ -127,7 +127,7 @@ storybook-static/assets/ui-kL5BNJYC.js                                 5.02 kB �
 storybook-static/assets/index-BwDkhjyp.js                              7.18 kB │ gzip:     2.92 kB
 storybook-static/assets/preview-BAz7FMXc.js                            7.62 kB │ gzip:     1.56 kB
 storybook-static/assets/preview-Db4Idchh.js                            8.11 kB │ gzip:     3.09 kB
-storybook-static/assets/iframe-CoQXDJFk.js                            13.41 kB │ gzip:     3.62 kB
+storybook-static/assets/iframe-CoQXDJFk.js                            13.42 kB │ gzip:     3.63 kB
 storybook-static/assets/ui-Dvg6KzJf.js                                15.36 kB │ gzip:     4.63 kB
 storybook-static/assets/index-BGHfn8iy.js                             15.72 kB │ gzip:     5.71 kB
 storybook-static/assets/index.stories-d6bmN8Ei.js                     17.10 kB │ gzip:     1.88 kB
@@ -144,10 +144,10 @@ storybook-static/assets/formatter-2WMMO6ZP-BAok5Um7.js               210.94 kB �
 storybook-static/assets/entry-preview-docs-BpOLz8-O.js               322.31 kB │ gzip:    99.78 kB
 storybook-static/assets/index-PX7pnrjg.js                            479.04 kB │ gzip:   121.33 kB
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
-storybook-static/assets/DocsRenderer-K4EAMTCU-CNZNUXxM.js            618.67 kB │ gzip:   188.37 kB
+storybook-static/assets/DocsRenderer-K4EAMTCU-CNZNUXxM.js            618.68 kB │ gzip:   188.38 kB
 storybook-static/assets/preview-BOS_-G_n.js                        5,886.86 kB │ gzip: 2,376.68 kB
-✓ built in 20.26s
-info => Preview built (21 s)
+✓ built in 20.82s
+info => Preview built (22 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
 Pass ✅
