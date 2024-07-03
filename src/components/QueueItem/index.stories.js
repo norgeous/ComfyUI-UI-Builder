@@ -62,3 +62,17 @@ export const InterruptError = {
     await userEvent.hover(canvas.getByRole('button'));
   },
 };
+
+export const Complete = {
+  args: {
+    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    loading: false,
+    status: 'Done!',
+    progress: 1,
+    onInterrupt: fn(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
+};

@@ -55,7 +55,7 @@ setInterval(() => {
   if (!mockQueue.length) return;
   const nextItem = mockQueue.shift();
   service.broadcast(JSON.stringify(nextItem));
-}, 2000);
+}, 200);
 
 const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
   HttpResponse.json({
