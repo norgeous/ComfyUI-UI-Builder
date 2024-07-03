@@ -9,7 +9,6 @@ const socketPromise = ({ url, onChange, onMessage }) =>
     setTimeout(async () => {
       if (socket.readyState !== WebSocket.OPEN) {
         socket.close();
-        onChange({ status: 'DEFAULT' });
         resolve(undefined);
       } else {
         socket.addEventListener('open', () => {
@@ -74,7 +73,7 @@ const connectWs = ({ onChange, onMessage }) => {
       ) {
         socket = await loop({ onChange, onMessage });
       }
-      onChange({ statusText: 'Waiting…' });
+      onChange({ status: 'DEFAULT', statusText: 'Waiting…' });
       await sleep(5_000);
     }
   })();
