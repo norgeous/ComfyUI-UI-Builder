@@ -2,12 +2,17 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const QueueTitle = styled.div`
-  font-size: 12px;
+  font-size: 10px;
   overflow: hidden;
+  flex-grow: 1;
+
   & div {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  flex: 0 1 fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 `;

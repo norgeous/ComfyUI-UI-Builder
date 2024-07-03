@@ -31,7 +31,7 @@ const QueueItem = ({
 }) => {
   if (error) {
     return (
-      <Layout center gap="md">
+      <Layout center pad rounded gap="md" bgfg={3}>
         <WarningIcon />
         <QueueTitle>
           <div>
@@ -52,16 +52,13 @@ const QueueItem = ({
   }
 
   return (
-    <Layout center gap="md">
+    <Layout center pad rounded gap="md" bgfg={3}>
       {loading && <SpinnerIcon />}
       <QueueTitle>
         <div>{status}</div>
-        <div className="muted" style={{ fontSize: 10 }}>
-          {id}
-        </div>
+        <div className="muted">{id}</div>
+        {!!progress && <Progress value={progress} />}
       </QueueTitle>
-
-      {!!progress && <Progress value={progress} />}
 
       {loading && (
         <Tooltip lm text={interruptError || 'Interrupt'}>

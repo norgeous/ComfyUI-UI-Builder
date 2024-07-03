@@ -33,6 +33,11 @@ export const Flex = styled.div`
       flex-grow: 1;
     `}
   ${({ $bgfg }) => $bgfg && bgfg($bgfg)}
+  ${({ $rounded }) =>
+    $rounded &&
+    css`
+      border-radius: var(--radius);
+    `}
   ${({ $fullHeight }) =>
     $fullHeight &&
     css`
