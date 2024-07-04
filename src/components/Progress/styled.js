@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Progress = styled.progress.attrs({ max: 1 })`
+export const Progress = styled.progress`
   appearance: none;
   display: block;
   min-width: 40px;
