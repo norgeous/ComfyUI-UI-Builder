@@ -35,8 +35,35 @@ const QueueItem = ({
   value = undefined,
   max = undefined,
 }) => {
+  const isError = false;
+  const isComplete = (type === 'executing' && node === null) || isError;
+  const isProgressing = type === 'progress';
+
   return (
-    <pre>{JSON.stringify({ promptId, type, node, value, max }, null, 2)}</pre>
+    <Layout center pad rounded gap="md" bgfg={3}>
+      {!isComplete && <SpinnerIcon />}
+      {isError && <WarningIcon />}
+      <QueueTitle>
+        {isError && (
+          <div>
+            ERROR: [{error}] {data?.error?.message}
+          </div>
+        )}
+        <div>
+          {node} {!isComplete && type}{' '}
+          <span className="muted" style={{ fontSize: 10 }}>
+            {promptId}
+          </span>
+        </div>
+        {isProgressing && <Progress value={value} max={max} />}
+      </QueueTitle>
+
+      <Tooltip lm text="Remove">
+        <Button aria-label="Remove" onClick={onRemove}>
+          <DismissIcon />
+        </Button>
+      </Tooltip>
+    </Layout>
   );
   if (error) {
     return (
