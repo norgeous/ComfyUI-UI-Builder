@@ -7,7 +7,7 @@
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (183 ms)
+info => Manager built (186 ms)
 info => Building preview..
 info => Copying static files: msw-public at storybook-static
 info => Copying static files: ../../public at storybook-static
@@ -146,8 +146,8 @@ storybook-static/assets/index-PX7pnrjg.js                            479.04 kB �
 storybook-static/assets/axe-C3iONRUh.js                              482.26 kB │ gzip:   127.25 kB
 storybook-static/assets/DocsRenderer-K4EAMTCU-UIqfQ-pL.js            618.68 kB │ gzip:   188.38 kB
 storybook-static/assets/preview-B_tyBww_.js                        5,886.86 kB │ gzip: 2,376.68 kB
-✓ built in 21.19s
-info => Preview built (22 s)
+✓ built in 19.62s
+info => Preview built (21 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
 Pass ✅
