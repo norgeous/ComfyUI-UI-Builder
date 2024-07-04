@@ -13,6 +13,10 @@ export const Failed = {
     error: '469',
     data: { error: { message: 'There was a problem' } },
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getByRole('button'));
+  },
 };
 
 export const Loading = {
@@ -66,9 +70,5 @@ export const Complete = {
     status: 'Done!',
     progress: 1,
     onInterrupt: fn(),
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByRole('button'));
   },
 };
