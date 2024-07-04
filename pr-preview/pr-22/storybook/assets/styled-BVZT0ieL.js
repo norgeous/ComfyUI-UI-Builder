@@ -1,4 +1,4 @@
-import{p as r}from"./styled-components.browser.esm-Cm6OPFyG.js";const o=r.progress.attrs({max:1})`
+import{p as r}from"./styled-components.browser.esm-Cm6OPFyG.js";const o=r.progress`
   appearance: none;
   display: block;
   min-width: 40px;

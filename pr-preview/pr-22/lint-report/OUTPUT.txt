@@ -19,7 +19,7 @@
   34:3  error  'node' is missing in props validation      react/prop-types
   35:3  error  'value' is missing in props validation     react/prop-types
   36:3  error  'max' is missing in props validation       react/prop-types
-  41:3  error  Unreachable code                           no-unreachable
+  68:3  error  Unreachable code                           no-unreachable
 
 ✖ 8 problems (6 errors, 2 warnings)
 
