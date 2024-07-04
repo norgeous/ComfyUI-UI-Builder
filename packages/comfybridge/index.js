@@ -1,6 +1,6 @@
 import uuidv4 from './utils/uuidv4';
 import simpleFetch from './queue/simpleFetch';
-import queueController from './queue/queueController';
+// import queueController from './queue/queueController';
 import connectWs from './websocket';
 
 // TODO:
@@ -20,41 +20,49 @@ import connectWs from './websocket';
 //   });
 // };
 
-const queue = queueController({});
+// const queue = queueController({});
 
 // callback based object for communicating with comfyui api
 const comfybridge = ({ onChange = () => {} }) => {
   const state = {
     ws: {},
     objectInfo: {},
-    queue: [],
+    queue: {},
   };
   const updateState = (key, newData) => {
     state[key] = { ...state[key], ...newData };
     onChange(state);
   };
-  const updateQueueById = newData => {
-    const existingItem = state.queue.find(({ id }) => id === newData.id);
-    const otherItems = state.queue.filter(({ id }) => id !== newData.id);
-    state.queue = existingItem
-      ? [
-          ...otherItems,
-          // update exisitng item
-          {
-            ...existingItem,
-            ...newData,
-          },
-        ]
-      : [...state.queue, newData]; // append to queue
-    onChange(state);
-  };
+  // const updateQueueById = newData => {
+  //   const existingItem = state.queue.find(({ id }) => id === newData.id);
+  //   const otherItems = state.queue.filter(({ id }) => id !== newData.id);
+  //   state.queue = existingItem
+  //     ? [
+  //         ...otherItems,
+  //         // update exisitng item
+  //         {
+  //           ...existingItem,
+  //           ...newData,
+  //         },
+  //       ]
+  //     : [...state.queue, newData]; // append to queue
+  //   onChange(state);
+  // };
 
   // connect to comfy ws and then get object info
   const connect = async () => {
     const { destroyRetry } = connectWs({
-      // wsUrls,
       onChange: newData => updateState('ws', newData),
-      onMessage: message => updateState('ws', { message }), // these need to mostly go into the queue
+      onMessage: message => {
+        const { data = {}, type } = message;
+        const { prompt_id: promptId, ...otherData } = data;
+
+        if (promptId) {
+          updateState('queue', {
+            [promptId]: { ...state.queue[promptId], type, ...otherData },
+          });
+        } else console.log(message);
+      },
       // onConnect: () => {
       //   getObjectInfo({
       //     comfyUrl: state.ws.comfyUrl,
@@ -80,8 +88,14 @@ const comfybridge = ({ onChange = () => {} }) => {
         }),
       },
       adapter: res => res.json(),
-      onChange: newData =>
-        updateQueueById({ id, onRemove: () => {}, ...newData }),
+      onChange: ({ data = {} }) => {
+        const { prompt_id: promptId } = data;
+        if (promptId) {
+          updateState('queue', {
+            [promptId]: {},
+          });
+        }
+      },
     });
   };
 
@@ -94,7 +108,8 @@ const comfybridge = ({ onChange = () => {} }) => {
 
   return {
     state,
-    queue,
+    updateState,
+
     connect,
     prompt,
     destroy,

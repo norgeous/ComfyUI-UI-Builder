@@ -28,7 +28,16 @@ const QueueItem = ({
   interruptLoading = false,
   interruptError = '',
   onRemove = () => {},
+
+  promptId = undefined,
+  type = undefined, // execution_start | execution_cached | executing | progress | executed
+  node = undefined,
+  value = undefined,
+  max = undefined,
 }) => {
+  return (
+    <pre>{JSON.stringify({ promptId, type, node, value, max }, null, 2)}</pre>
+  );
   if (error) {
     return (
       <Layout center pad rounded gap="md" bgfg={3}>

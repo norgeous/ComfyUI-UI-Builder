@@ -9,6 +9,11 @@ import QueueItem from '@/components/QueueItem';
 const Sidebar = () => {
   const { data } = useContext(ComfyBridgeContext);
 
+  const queue = Object.entries(data.queue).map(([promptId, item]) => ({
+    promptId,
+    ...item,
+  }));
+
   return (
     <Layout as="aside" column fullHeight bgfg={1}>
       <Layout as="header" column bgfg={2}>
@@ -17,17 +22,17 @@ const Sidebar = () => {
 
       <FormBuilder />
 
-      {!!data.queue.length && (
+      {!!queue.length && (
         <Layout
           pad
           column
           gap="md"
           scrollable
           bgfg={2}
-          style={{ flexGrow: 0, flexShrink: 0, maxHeight: 80 }}
+          style={{ flexGrow: 0, flexShrink: 0, maxHeight: '50%' }}
         >
-          {data.queue.toReversed().map(item => (
-            <QueueItem key={item.id} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
+          {queue.toReversed().map(item => (
+            <QueueItem key={item.promptId} {...item} /> // eslint-disable-line react/jsx-props-no-spreading
           ))}
         </Layout>
       )}
