@@ -2,8 +2,8 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/imagegrid.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/imagegrid.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/queueitem.test.js
 [TEST]   ● QueueItem › Complete › play-test
 [TEST] 
 [TEST]     page.evaluate: StorybookTestRunnerError: 
@@ -68,87 +68,84 @@
 [TEST]      [90m 195 |[39m           hasPlayFn
 [TEST]      [90m 196 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
-[TEST]       at evaluate (../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/queueitem.test.js:193:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/queueitem.test.js:214:9)
+[TEST]       at evaluate (../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/queueitem.test.js:193:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/queueitem.test.js:214:9)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/app.test.js
 [TEST] 
 [TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/0a2320a9c853b2d7527c7e7bef90c554/queueitem.test.js
+[TEST] FAIL ../../../../../tmp/eb7413fba8042bf32352c2b4b5f4e022/queueitem.test.js
 [TEST] 
+[TEST]     An error occurred in the following story. Access the link for full output:
 [TEST] 
 [TEST]     Message:
 [TEST] 
 [TEST] 
-[TEST]       progressbar:
 [TEST] 
 [TEST]       Name "":
 [TEST]       <progress
-[TEST]         value="1"
+[TEST]         max="1"
+[TEST]       />
 [TEST] 
 [TEST] 
+[TEST]     <div
 [TEST]       id="storybook-root"
+[TEST]     >
 [TEST]       <div
 [TEST]       >
-[TEST]         >
-[TEST]           <div>
-[TEST]           <div
+[TEST]             Done!
 [TEST]           >
-[TEST]             max="1"
+[TEST]             baadb00b-babe-462f-cafe-d34dd00dcafe
+[TEST]           </div>
 [TEST]         </div>
-[TEST]       </div>
+[TEST]     </div>
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST]     Browser logs:
 [TEST] 
-[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
 [TEST] 
-[TEST]      [90m     |[39m                                   [31m[1m^[22m[39m
-[TEST]      [90m 194 |[39m           id[33m,[39m
-[TEST]      [90m 195 |[39m           hasPlayFn
 [TEST] 
 [TEST] 
 [TEST] 
 [TEST] Test Suites: 1 failed, 1 skipped, 35 passed, 36 of 37 total
 [TEST] Tests:       1 failed, 1 skipped, 58 passed, 60 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        39.561 s
+[TEST] Time:        39.64 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/0a2320a9c853b2d7527c7e7bef90c554
+[TEST] [test-storybook] Cleaning up /tmp/eb7413fba8042bf32352c2b4b5f4e022
 [TEST] npm error Lifecycle script `unittest` failed with error:
 [TEST] npm error Error: command failed
 [TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
