@@ -11,14 +11,14 @@ import connectWs from './websocket';
 // - image and video uploading and downloading
 
 // Get all the object info (node info)
-const getObjectInfo = ({ comfyUrl, onChange }) => {
-  if (!comfyUrl) return;
-  simpleFetch({
-    url: `${comfyUrl}/object_info`,
-    onChange,
-    adapter: res => res.json(),
-  });
-};
+// const getObjectInfo = ({ comfyUrl, onChange }) => {
+//   if (!comfyUrl) return;
+//   simpleFetch({
+//     url: `${comfyUrl}/object_info`,
+//     onChange,
+//     adapter: res => res.json(),
+//   });
+// };
 
 const queue = queueController({});
 
