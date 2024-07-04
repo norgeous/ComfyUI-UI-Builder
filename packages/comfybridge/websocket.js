@@ -20,7 +20,6 @@ const socketPromise = ({ url, onChange, onMessage }) =>
           onChange({ status: 'DISCONNECTED' });
         });
         socket.addEventListener('message', event => {
-          console.log('onMessage', onMessage);
           onMessage(JSON.parse(event.data));
         });
         resolve(socket);
