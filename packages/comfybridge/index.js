@@ -30,7 +30,6 @@ const comfybridge = ({ onChange = () => {} }) => {
     queue: [],
   };
   const updateState = (key, newData) => {
-    // console.log({ key, ...newData });
     state[key] = { ...state[key], ...newData };
     onChange(state);
   };
