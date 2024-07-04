@@ -21,11 +21,15 @@ export const Failed = {
 
 export const Loading = {
   args: {
-    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
-    loading: true,
-    status: 'Running…',
-    progress: 0.25,
-    onInterrupt: fn(),
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    type: 'progress',
+    node: '7',
+    value: 4,
+    max: 28,
+    // loading: true,
+    // status: 'Running…',
+    // progress: 0.25,
+    // onInterrupt: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
