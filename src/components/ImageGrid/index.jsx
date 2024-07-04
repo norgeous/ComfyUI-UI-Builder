@@ -109,6 +109,7 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
 };
 
 ImageGrid.propTypes = {
+  imageSize: PropTypes.arrayOf(PropTypes.number),
   images: PropTypes.arrayOf(PropTypes.string),
 };
 
