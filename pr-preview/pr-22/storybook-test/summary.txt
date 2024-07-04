@@ -2,49 +2,309 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/8293a18ba960f2ac77db53f1674c3d00/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/imagegrid.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js
+[TEST]   ● QueueItem › Failed › play-test
 [TEST] 
-[TEST] Test Suites: 1 skipped, 36 passed, 36 of 37 total
-[TEST] Tests:       1 skipped, 59 passed, 60 total
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/queueitem--failed&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST]     There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+[TEST] 
+[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]       </pre>
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [0m [90m 11 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 12 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 13 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m    |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 14 |[39m           id[33m,[39m
+[TEST]      [90m 15 |[39m           hasPlayFn
+[TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:34:9)
+[TEST] 
+[TEST]   ● QueueItem › Loading › play-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/queueitem--loading&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST]     There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+[TEST] 
+[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]       </pre>
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [0m [90m 56 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 57 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 58 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m    |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 59 |[39m           id[33m,[39m
+[TEST]      [90m 60 |[39m           hasPlayFn
+[TEST]      [90m 61 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:58:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:79:9)
+[TEST] 
+[TEST]   ● QueueItem › Interrupt Loading › play-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/queueitem--interrupt-loading&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST]     There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+[TEST] 
+[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]       </pre>
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [0m [90m 101 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 102 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 103 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m     |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 104 |[39m           id[33m,[39m
+[TEST]      [90m 105 |[39m           hasPlayFn
+[TEST]      [90m 106 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:103:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:124:9)
+[TEST] 
+[TEST]   ● QueueItem › Interrupt Error › play-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/queueitem--interrupt-error&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST]     There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+[TEST] 
+[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]       </pre>
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=7fbdeea5-d115-42fa-988c-bed983b95f66","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST] 
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=7fbdeea5-d115-42fa-988c-bed983b95f66","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST] 
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=7fbdeea5-d115-42fa-988c-bed983b95f66","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST] 
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=7fbdeea5-d115-42fa-988c-bed983b95f66","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST] 
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=7fbdeea5-d115-42fa-988c-bed983b95f66","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST] 
+[TEST]     [0m [90m 146 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 147 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 148 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m     |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 149 |[39m           id[33m,[39m
+[TEST]      [90m 150 |[39m           hasPlayFn
+[TEST]      [90m 151 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:148:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js:169:9)
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/app.test.js
+[TEST] 
+[TEST] Summary of all failing tests
+[TEST] FAIL ../../../../../tmp/864e17fe5ce3383614b7937978ecf8e9/queueitem.test.js
+[TEST] 
+[TEST] 
+[TEST]     Message:
+[TEST] 
+[TEST] 
+[TEST]     <div
+[TEST]     >
+[TEST]       <pre>
+[TEST]       </pre>
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     [0m [90m 11 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     <div
+[TEST]     >
+[TEST]         {}
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]      [90m 57 |[39m         }
+[TEST]      [90m 60 |[39m           hasPlayFn
+[TEST] 
+[TEST] 
+[TEST]   ● QueueItem › Interrupt Loading › play-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST] 
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST] 
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]      [90m 102 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 103 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m 104 |[39m           id[33m,[39m
+[TEST] 
+[TEST] 
+[TEST]   ● QueueItem › Interrupt Error › play-test
+[TEST] 
+[TEST]     http://127.0.0.1:6006/?path=/story/queueitem--interrupt-error&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
+[TEST] 
+[TEST] 
+[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
+[TEST]       id="storybook-root"
+[TEST]     >
+[TEST]       <pre>
+[TEST]         {}
+[TEST]       </pre>
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     [0m [90m 146 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 147 |[39m         }
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] Test Suites: 1 failed, 1 skipped, 35 passed, 36 of 37 total
+[TEST] Tests:       4 failed, 1 skipped, 55 passed, 60 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        37.429 s
+[TEST] Time:        37.134 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/8293a18ba960f2ac77db53f1674c3d00
-[TEST] npm run unittest -- --ci exited with code 0
+[TEST] [test-storybook] Cleaning up /tmp/864e17fe5ce3383614b7937978ecf8e9
+[TEST] npm error Lifecycle script `unittest` failed with error:
+[TEST] npm error Error: command failed
+[TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
+[TEST] npm error   at location: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook
+[TEST] npm run unittest -- --ci exited with code 1
 
-Pass ✅
+Fail ❌
