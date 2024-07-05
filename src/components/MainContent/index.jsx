@@ -6,22 +6,20 @@ import StatusBar from '@/components/StatusBar';
 import { ContentArea, Main } from './styled';
 
 const MainContent = () => {
-  const { data, comfyUrl, output } = useContext(ComfyBridgeContext);
+  const { data } = useContext(ComfyBridgeContext);
 
-  const images = (output?.images || []).map(
-    ({ filename }) => `${comfyUrl}/view?type=output&filename=${filename}`,
-  );
+  const queue = Object.entries(data.queue)
+    .map(([promptId, item]) => ({
+      promptId,
+      images: item.output?.images.map(
+        ({ filename }) =>
+          `${data.ws.comfyUrl}/view?type=output&filename=${filename}`,
+      ),
+      ...item,
+    }))
+    .toReversed();
 
-  console.log(data);
-
-  const queue = Object.entries(data.queue).map(([promptId, item]) => ({
-    promptId,
-    images: item.output?.images.map(
-      ({ filename }) =>
-        `${data.ws.comfyUrl}/view?type=output&filename=${filename}`,
-    ),
-    ...item,
-  }));
+  const { images } = queue[0];
 
   return (
     <Main>
