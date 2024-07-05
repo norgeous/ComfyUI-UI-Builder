@@ -9,7 +9,7 @@ import {
 } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
-import { QueueTitle } from './styled';
+import { Img, QueueTitle } from './styled';
 
 const getInterruptIcon = ({ interruptLoading, interruptError }) => {
   if (interruptError) return <WarningIcon />;
@@ -34,6 +34,7 @@ const QueueItem = ({
   node = undefined,
   value = undefined,
   max = undefined,
+  images = undefined,
 }) => {
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
@@ -42,13 +43,7 @@ const QueueItem = ({
   return (
     <Layout center pad rounded gap="md" bgfg={3} style={{ maxWidth: 90 }}>
       {!isComplete && <SpinnerIcon />}
-      {isError && <WarningIcon />}
       <QueueTitle>
-        {isError && (
-          <div>
-            ERROR: [{error}] {data?.error?.message}
-          </div>
-        )}
         <div>
           {node} {!isComplete && type}{' '}
           <span className="muted" style={{ fontSize: 10 }}>
@@ -58,6 +53,8 @@ const QueueItem = ({
         {isProgressing && <Progress value={value} max={max} />}
       </QueueTitle>
 
+      {images && <Img src={`${images[0]}`} />}
+
       <Tooltip lm text="Remove">
         <Button small aria-label="Remove" onClick={onRemove}>
           <DismissIcon />
@@ -65,50 +62,50 @@ const QueueItem = ({
       </Tooltip>
     </Layout>
   );
-  if (error) {
-    return (
-      <Layout center pad rounded gap="md" bgfg={3}>
-        <WarningIcon />
-        <QueueTitle>
-          <div>
-            ERROR: [{error}] {data?.error?.message}
-          </div>
-          <div className="muted" style={{ fontSize: 10 }}>
-            {id}
-          </div>
-        </QueueTitle>
+  // if (error) {
+  //   return (
+  //     <Layout center pad rounded gap="md" bgfg={3}>
+  //       <WarningIcon />
+  //       <QueueTitle>
+  //         <div>
+  //           ERROR: [{error}] {data?.error?.message}
+  //         </div>
+  //         <div className="muted" style={{ fontSize: 10 }}>
+  //           {id}
+  //         </div>
+  //       </QueueTitle>
 
-        <Tooltip lm text="Remove">
-          <Button aria-label="Remove" onClick={onRemove}>
-            <DismissIcon />
-          </Button>
-        </Tooltip>
-      </Layout>
-    );
-  }
+  //       <Tooltip lm text="Remove">
+  //         <Button aria-label="Remove" onClick={onRemove}>
+  //           <DismissIcon />
+  //         </Button>
+  //       </Tooltip>
+  //     </Layout>
+  //   );
+  // }
 
-  return (
-    <Layout center pad rounded gap="md" bgfg={3}>
-      {loading && <SpinnerIcon />}
-      <QueueTitle>
-        <div>{status}</div>
-        <div className="muted">{id}</div>
-        {!!progress && <Progress value={progress} />}
-      </QueueTitle>
+  // return (
+  //   <Layout center pad rounded gap="md" bgfg={3}>
+  //     {loading && <SpinnerIcon />}
+  //     <QueueTitle>
+  //       <div>{status}</div>
+  //       <div className="muted">{id}</div>
+  //       {!!progress && <Progress value={progress} />}
+  //     </QueueTitle>
 
-      {loading && (
-        <Tooltip lm text={interruptError || 'Interrupt'}>
-          <Button
-            aria-label={interruptError || 'Interrupt'}
-            disabled={interruptLoading}
-            onClick={onInterrupt}
-          >
-            {getInterruptIcon({ interruptLoading, interruptError })}
-          </Button>
-        </Tooltip>
-      )}
-    </Layout>
-  );
+  //     {loading && (
+  //       <Tooltip lm text={interruptError || 'Interrupt'}>
+  //         <Button
+  //           aria-label={interruptError || 'Interrupt'}
+  //           disabled={interruptLoading}
+  //           onClick={onInterrupt}
+  //         >
+  //           {getInterruptIcon({ interruptLoading, interruptError })}
+  //         </Button>
+  //       </Tooltip>
+  //     )}
+  //   </Layout>
+  // );
 };
 
 QueueItem.propTypes = {

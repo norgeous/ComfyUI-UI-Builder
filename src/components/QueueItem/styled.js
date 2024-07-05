@@ -16,3 +16,10 @@ export const QueueTitle = styled.div`
   flex-direction: column;
   gap: 4px;
 `;
+
+export const Img = styled.img.attrs({ crossOrigin: 'anonymous' })`
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;

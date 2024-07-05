@@ -3,15 +3,8 @@ import Layout from '@/components/Layout';
 import QueueItem from '@/components/QueueItem';
 
 const Timeline = ({ items = [] }) => (
-  <Layout
-    pad
-    // column
-    gap="md"
-    scrollable
-    bgfg={2}
-    style={{ flexGrow: 0 }}
-  >
-    {items.map(item => (
+  <Layout pad gap="md" scrollable bgfg={2} style={{ flexGrow: 0 }}>
+    {items.toReversed().map(item => (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <QueueItem key={item.promptId} {...item} />
     ))}

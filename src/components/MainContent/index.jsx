@@ -12,8 +12,14 @@ const MainContent = () => {
     ({ filename }) => `${comfyUrl}/view?type=output&filename=${filename}`,
   );
 
+  console.log(data);
+
   const queue = Object.entries(data.queue).map(([promptId, item]) => ({
     promptId,
+    images: item.output?.images.map(
+      ({ filename }) =>
+        `${data.ws.comfyUrl}/view?type=output&filename=${filename}`,
+    ),
     ...item,
   }));
 
