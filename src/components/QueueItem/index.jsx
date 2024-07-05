@@ -59,7 +59,7 @@ const QueueItem = ({
       </QueueTitle>
 
       <Tooltip lm text="Remove">
-        <Button aria-label="Remove" onClick={onRemove}>
+        <Button small aria-label="Remove" onClick={onRemove}>
           <DismissIcon />
         </Button>
       </Tooltip>
