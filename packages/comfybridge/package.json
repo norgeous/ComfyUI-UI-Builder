@@ -5,7 +5,8 @@
     ".": "./index.js",
     "./react/ComfyBridgeContext": "./react/ComfyBridgeContext.js",
     "./react/ComfyBridgeProvider": "./react/ComfyBridgeProvider.jsx",
-    "./comfyMock": "./comfyMock.js"
+    "./comfyMock": "./comfyMock.js",
+    "./utils/comfyWorkflowToComfyPrompt": "./utils/comfyWorkflowToComfyPrompt.js"
   },
   "dependencies": {
     "msw": "2.3.0-ws.rc-7",

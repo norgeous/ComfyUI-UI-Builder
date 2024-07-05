@@ -2,7 +2,7 @@ import uuidv4 from './utils/uuidv4';
 
 const TIMEOUT = 1500; // websocket is rejected if it fails to open within this amount of ms
 
-const socketPromise = ({ url, onChange, onMessage }) =>
+const socketPromise = ({ url, onChange, onConnect, onMessage }) =>
   new Promise(resolve => {
     const socket = new WebSocket(url);
 
@@ -23,6 +23,7 @@ const socketPromise = ({ url, onChange, onMessage }) =>
           onMessage(JSON.parse(event.data));
         });
         resolve(socket);
+        onConnect();
       }
     }, TIMEOUT);
   });
@@ -35,7 +36,7 @@ const defaultWsUrls = [
   ]),
 ];
 
-const loop = ({ onChange, onMessage }) =>
+const loop = ({ onChange, onConnect, onMessage }) =>
   new Promise(resolve => {
     (async () => {
       const id = uuidv4();
@@ -46,7 +47,12 @@ const loop = ({ onChange, onMessage }) =>
         const url = `${wsUrl}/ws?clientId=${id}`;
 
         onChange({ status: 'CONNECTING', statusText: wsUrl });
-        const socket = await socketPromise({ url, onChange, onMessage });
+        const socket = await socketPromise({
+          url,
+          onChange,
+          onConnect,
+          onMessage,
+        });
         if (socket) {
           resolve(socket);
           break; // stop searching
@@ -62,7 +68,7 @@ const sleep = delta =>
     setTimeout(resolve, delta);
   });
 
-const connectWs = ({ onChange, onMessage }) => {
+const connectWs = ({ onChange, onConnect, onMessage }) => {
   let active = true;
   let socket;
 
@@ -72,7 +78,7 @@ const connectWs = ({ onChange, onMessage }) => {
         !socket ||
         [WebSocket.CLOSED, WebSocket.CLOSING].includes(socket.readyState)
       ) {
-        socket = await loop({ onChange, onMessage });
+        socket = await loop({ onChange, onConnect, onMessage });
 
         if (!socket) {
           onChange({ status: 'DEFAULT', statusText: 'Waiting…' });
