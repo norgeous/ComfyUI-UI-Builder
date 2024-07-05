@@ -33,21 +33,6 @@ const comfybridge = ({ onChange = () => {} }) => {
     state[key] = { ...state[key], ...newData };
     onChange(state);
   };
-  // const updateQueueById = newData => {
-  //   const existingItem = state.queue.find(({ id }) => id === newData.id);
-  //   const otherItems = state.queue.filter(({ id }) => id !== newData.id);
-  //   state.queue = existingItem
-  //     ? [
-  //         ...otherItems,
-  //         // update exisitng item
-  //         {
-  //           ...existingItem,
-  //           ...newData,
-  //         },
-  //       ]
-  //     : [...state.queue, newData]; // append to queue
-  //   onChange(state);
-  // };
 
   // connect to comfy ws and then get object info
   const connect = async () => {
