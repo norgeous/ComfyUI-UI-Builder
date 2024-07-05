@@ -2,50 +2,132 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/maincontent.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/timeline.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/4e1f8f8239e21d0969127528037f33ea/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/resetbutton.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/maincontent.test.js
+[TEST]   ● MainContent › Main Content › play-test
 [TEST] 
-[TEST] Test Suites: 1 skipped, 37 passed, 37 of 38 total
-[TEST] Tests:       1 skipped, 57 passed, 58 total
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/maincontent--main-content&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Cannot destructure property 'images' of 't[0]' as it is undefined.
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [0m [90m 11 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 12 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 13 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m    |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 14 |[39m           id[33m,[39m
+[TEST]      [90m 15 |[39m           hasPlayFn
+[TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/08754969125b5297d77b80812026b43c/maincontent.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/08754969125b5297d77b80812026b43c/maincontent.test.js:34:9)
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/timeline.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/debug.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/08754969125b5297d77b80812026b43c/app.test.js
+[TEST]   ● App › App › smoke-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
+[TEST]     http://127.0.0.1:6006/?path=/story/app--app&addonPanel=storybook/interactions/panel
+[TEST] 
+[TEST]     Message:
+[TEST]      Cannot destructure property 'images' of 't[0]' as it is undefined.
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
+[TEST] 
+[TEST]     Browser logs:
+[TEST] 
+[TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
+[TEST] 
+[TEST]     [0m [90m 11 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
+[TEST]      [90m 12 |[39m         }
+[TEST]     [31m[1m>[22m[39m[90m 13 |[39m         [36mconst[39m result [33m=[39m [36mawait[39m page[33m.[39mevaluate(({
+[TEST]      [90m    |[39m                                   [31m[1m^[22m[39m
+[TEST]      [90m 14 |[39m           id[33m,[39m
+[TEST]      [90m 15 |[39m           hasPlayFn
+[TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST]       at evaluate (../../../../../tmp/08754969125b5297d77b80812026b43c/app.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/08754969125b5297d77b80812026b43c/app.test.js:34:9)
+[TEST] 
+[TEST] Summary of all failing tests
+[TEST] FAIL ../../../../../tmp/08754969125b5297d77b80812026b43c/maincontent.test.js
+[TEST] 
+[TEST] 
+[TEST]     Message:
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]     Message:
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST]      [90m 12 |[39m         }
+[TEST] 
+[TEST] 
+[TEST] 
+[TEST] Test Suites: 2 failed, 1 skipped, 35 passed, 37 of 38 total
+[TEST] Tests:       2 failed, 1 skipped, 55 passed, 58 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        36.844 s
+[TEST] Time:        37.649 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/4e1f8f8239e21d0969127528037f33ea
-[TEST] npm run unittest -- --ci exited with code 0
+[TEST] [test-storybook] Cleaning up /tmp/08754969125b5297d77b80812026b43c
+[TEST] npm error Lifecycle script `unittest` failed with error:
+[TEST] npm error Error: command failed
+[TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
+[TEST] npm error   at location: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook
+[TEST] npm run unittest -- --ci exited with code 1
 
-Pass ✅
+Fail ❌
