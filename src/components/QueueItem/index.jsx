@@ -40,7 +40,7 @@ const QueueItem = ({
   const isProgressing = type === 'progress';
 
   return (
-    <Layout center pad rounded gap="md" bgfg={3} style={{ maxWidth: 150 }}>
+    <Layout center pad rounded gap="md" bgfg={3} style={{ maxWidth: 90 }}>
       {!isComplete && <SpinnerIcon />}
       {isError && <WarningIcon />}
       <QueueTitle>
