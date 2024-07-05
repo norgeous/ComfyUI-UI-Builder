@@ -1,5 +1,5 @@
 
-added 1868 packages, and audited 1871 packages in 33s
+added 1868 packages, and audited 1871 packages in 34s
 
 318 packages are looking for funding
   run `npm fund` for details
