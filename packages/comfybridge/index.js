@@ -57,15 +57,13 @@ const comfybridge = ({ onChange = () => {} }) => {
 
   // prompting
   const prompt = ({ comfyUrl, promptData }) => {
-    const id = uuidv4(); // this should probs be the websocket id
-    // TODO: convert the prompt format here!
     simpleFetch({
       url: `${comfyUrl}/prompt`,
       options: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          client_id: id,
+          client_id: state.ws.clientId,
           prompt: promptData,
         }),
       },

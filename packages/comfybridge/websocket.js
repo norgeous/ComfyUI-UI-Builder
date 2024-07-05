@@ -2,13 +2,15 @@ import uuidv4 from './utils/uuidv4';
 
 const TIMEOUT = 1500; // websocket is rejected if it fails to open within this amount of ms
 
-const socketPromise = ({ url, onChange, onConnect, onMessage }) =>
+const socketPromise = ({ wsUrl, onChange, onConnect, onMessage }) =>
   new Promise(resolve => {
+    const clientId = uuidv4();
+    const url = `${wsUrl}/ws?clientId=${clientId}`;
     const socket = new WebSocket(url);
 
     socket.addEventListener('open', () => {
       const comfyUrl = `${window.location.protocol}//${new URL(socket.url).host}`;
-      onChange({ status: 'CONNECTED', comfyUrl });
+      onChange({ status: 'CONNECTED', clientId, comfyUrl });
     });
 
     setTimeout(async () => {
@@ -39,16 +41,12 @@ const defaultWsUrls = [
 const loop = ({ onChange, onConnect, onMessage }) =>
   new Promise(resolve => {
     (async () => {
-      const id = uuidv4();
-
       /* eslint-disable no-await-in-loop */
       // eslint-disable-next-line no-restricted-syntax
       for (const wsUrl of defaultWsUrls) {
-        const url = `${wsUrl}/ws?clientId=${id}`;
-
         onChange({ status: 'CONNECTING', statusText: wsUrl });
         const socket = await socketPromise({
-          url,
+          wsUrl,
           onChange,
           onConnect,
           onMessage,
