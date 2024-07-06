@@ -32,16 +32,17 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   cursor: pointer;
+  user-select: none;
   display: block;
   max-width: 100%;
-  ${({ $open, $scaleUp }) =>
+  object-fit: ${({ $scaleUp }) => ($scaleUp ? 'scale-down' : 'contain')};
+  ${({ $open }) =>
     $open !== undefined
       ? css`
           scroll-snap-stop: normal;
           scroll-snap-align: center;
           max-height: 100svh;
           height: 100svh;
-          ${!$scaleUp && `object-fit: scale-down`};
         `
       : css`
           max-height: 100%;
