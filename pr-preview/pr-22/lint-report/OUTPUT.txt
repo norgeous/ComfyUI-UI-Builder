@@ -7,6 +7,9 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/index.js
+  76:9  warning  Unexpected console statement  no-console
+
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/useComfyUpload.js
   1:25  error  Unable to resolve path to module './queue/useComfyApi'  import/no-unresolved
   1:25  error  Missing file extension for "./queue/useComfyApi"        import/extensions
@@ -15,27 +18,26 @@
   157:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/QueueItem/index.jsx
-   36:3   error  'promptId' is missing in props validation                      react/prop-types
-   37:3   error  'type' is missing in props validation                          react/prop-types
-   38:3   error  'node' is missing in props validation                          react/prop-types
-   39:3   error  'value' is missing in props validation                         react/prop-types
-   40:3   error  'max' is missing in props validation                           react/prop-types
-   41:3   error  'images' is missing in props validation                        react/prop-types
-   43:11  error  'data' is assigned a value but never used                      no-unused-vars
-  124:3   error  'id' PropType is defined but prop is never used                react/no-unused-prop-types
-  125:3   error  'loading' PropType is defined but prop is never used           react/no-unused-prop-types
-  126:3   error  'error' PropType is defined but prop is never used             react/no-unused-prop-types
-  127:3   error  'data' PropType is defined but prop is never used              react/no-unused-prop-types
-  128:3   error  'status' PropType is defined but prop is never used            react/no-unused-prop-types
-  129:3   error  'progress' PropType is defined but prop is never used          react/no-unused-prop-types
-  130:3   error  'onInterrupt' PropType is defined but prop is never used       react/no-unused-prop-types
-  131:3   error  'interruptLoading' PropType is defined but prop is never used  react/no-unused-prop-types
-  132:3   error  'interruptError' PropType is defined but prop is never used    react/no-unused-prop-types
+  12:3  error  'promptId' is missing in props validation                      react/prop-types
+  13:3  error  'type' is missing in props validation                          react/prop-types
+  14:3  error  'node' is missing in props validation                          react/prop-types
+  15:3  error  'value' is missing in props validation                         react/prop-types
+  16:3  error  'max' is missing in props validation                           react/prop-types
+  17:3  error  'images' is missing in props validation                        react/prop-types
+  58:3  error  'id' PropType is defined but prop is never used                react/no-unused-prop-types
+  59:3  error  'loading' PropType is defined but prop is never used           react/no-unused-prop-types
+  60:3  error  'error' PropType is defined but prop is never used             react/no-unused-prop-types
+  61:3  error  'data' PropType is defined but prop is never used              react/no-unused-prop-types
+  62:3  error  'status' PropType is defined but prop is never used            react/no-unused-prop-types
+  63:3  error  'progress' PropType is defined but prop is never used          react/no-unused-prop-types
+  64:3  error  'onInterrupt' PropType is defined but prop is never used       react/no-unused-prop-types
+  65:3  error  'interruptLoading' PropType is defined but prop is never used  react/no-unused-prop-types
+  66:3  error  'interruptError' PropType is defined but prop is never used    react/no-unused-prop-types
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/executeAdapter.js
   50:7  warning  Unexpected console statement  no-console
 
-✖ 20 problems (18 errors, 2 warnings)
+✖ 20 problems (17 errors, 3 warnings)
 
 Lint has modified 0 files
 
