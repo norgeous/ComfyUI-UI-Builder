@@ -141,12 +141,7 @@
       "properties": {
         "Node name for S&R": "CLIPTextEncodeSDXL+"
       },
-      "widgets_values": [
-        1024,
-        1024,
-        4,
-        "fantasy illustration digital painting closeup of a 30yo human female fighter. High quality, detailed, high resolution, (D&D:1.1), (Lord of the rings:0.8). DEFAULT"
-      ]
+      "widgets_values": [1024, 1024, 4, "POSITIVE PROMPT DEFAULT"]
     },
     {
       "id": 5,
