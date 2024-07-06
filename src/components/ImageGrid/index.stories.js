@@ -155,6 +155,17 @@ export const Landscape2 = {
   },
 };
 
+export const Landscape3 = {
+  args: {
+    imageSize: [1344, 768],
+    images: [
+      'http://localhost:6006/view?filename=01&width=1344&height=768',
+      'http://localhost:6006/view?filename=02&width=1344&height=768',
+      'http://localhost:6006/view?filename=03&width=1344&height=768',
+    ],
+  },
+};
+
 export const Landscape50 = {
   args: {
     imageSize: [1344, 768],
@@ -226,6 +237,17 @@ export const Portrait2 = {
     images: [
       'http://localhost:6006/view?filename=01&width=768&height=1344',
       'http://localhost:6006/view?filename=02&width=768&height=1344',
+    ],
+  },
+};
+
+export const Portrait3 = {
+  args: {
+    // imageSize: [768, 1344],
+    images: [
+      'http://localhost:6006/view?filename=01&width=768&height=1344',
+      'http://localhost:6006/view?filename=02&width=768&height=1344',
+      'http://localhost:6006/view?filename=03&width=768&height=1344',
     ],
   },
 };
