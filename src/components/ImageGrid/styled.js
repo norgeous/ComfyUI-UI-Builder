@@ -35,7 +35,7 @@ export const Img = styled.img`
   user-select: none;
   display: block;
   max-width: 100%;
-  object-fit: ${({ $scaleUp }) => ($scaleUp ? 'scale-down' : 'contain')};
+  object-fit: ${({ $scaleUp }) => ($scaleUp ? 'contain' : 'scale-down')};
   ${({ $open }) =>
     $open !== undefined
       ? css`
