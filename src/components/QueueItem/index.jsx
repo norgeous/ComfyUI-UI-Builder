@@ -1,46 +1,23 @@
 import PropTypes from 'prop-types';
-
 import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
-
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import {
-  SpinnerIcon,
-  // InterruptIcon,
-  // WarningIcon,
-  DismissIcon,
-} from '@/components/Icons';
+import { SpinnerIcon, DismissIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
 import { Img, QueueTitle } from './styled';
 
-// const getInterruptIcon = ({ interruptLoading, interruptError }) => {
-//   if (interruptError) return <WarningIcon />;
-//   if (interruptLoading) return <SpinnerIcon />;
-//   return <InterruptIcon />;
-// };
-
 const QueueItem = ({
-  // id = undefined,
-  // loading = false,
-  // error = undefined,
-  // data = undefined,
-  // status = undefined,
-  // progress = 0,
-  // onInterrupt = () => {},
-  // interruptLoading = false,
-  // interruptError = '',
-  onRemove = () => {},
-
   promptId = undefined,
   type = undefined, // execution_start | execution_cached | executing | progress | executed
   node = undefined,
   value = undefined,
   max = undefined,
   images = undefined,
+  onRemove = () => {},
 }) => {
-  const { data, bridge } = useContext(ComfyBridgeContext);
+  const { bridge } = useContext(ComfyBridgeContext);
 
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
@@ -48,7 +25,16 @@ const QueueItem = ({
 
   return (
     <Layout center pad rounded gap="md" bgfg={3} style={{ maxWidth: 90 }}>
+      <Button
+        small
+        aria-label="Select"
+        onClick={() => bridge.updateState('queueSelected', { promptId })}
+      >
+        {images && <Img src={`${images[0]}`} />}
+      </Button>
+
       {!isComplete && <SpinnerIcon />}
+
       <QueueTitle>
         <div>
           {node} {!isComplete && type}{' '}
@@ -59,14 +45,6 @@ const QueueItem = ({
         {isProgressing && <Progress value={value} max={max} />}
       </QueueTitle>
 
-      <Button
-        small
-        aria-label="Select"
-        onClick={() => bridge.updateState('queueSelected', { promptId })}
-      >
-        {images && <Img src={`${images[0]}`} />}
-      </Button>
-
       <Tooltip lm text="Remove">
         <Button small aria-label="Remove" onClick={onRemove}>
           <DismissIcon />
@@ -74,50 +52,6 @@ const QueueItem = ({
       </Tooltip>
     </Layout>
   );
-  // if (error) {
-  //   return (
-  //     <Layout center pad rounded gap="md" bgfg={3}>
-  //       <WarningIcon />
-  //       <QueueTitle>
-  //         <div>
-  //           ERROR: [{error}] {data?.error?.message}
-  //         </div>
-  //         <div className="muted" style={{ fontSize: 10 }}>
-  //           {id}
-  //         </div>
-  //       </QueueTitle>
-
-  //       <Tooltip lm text="Remove">
-  //         <Button aria-label="Remove" onClick={onRemove}>
-  //           <DismissIcon />
-  //         </Button>
-  //       </Tooltip>
-  //     </Layout>
-  //   );
-  // }
-
-  // return (
-  //   <Layout center pad rounded gap="md" bgfg={3}>
-  //     {loading && <SpinnerIcon />}
-  //     <QueueTitle>
-  //       <div>{status}</div>
-  //       <div className="muted">{id}</div>
-  //       {!!progress && <Progress value={progress} />}
-  //     </QueueTitle>
-
-  //     {loading && (
-  //       <Tooltip lm text={interruptError || 'Interrupt'}>
-  //         <Button
-  //           aria-label={interruptError || 'Interrupt'}
-  //           disabled={interruptLoading}
-  //           onClick={onInterrupt}
-  //         >
-  //           {getInterruptIcon({ interruptLoading, interruptError })}
-  //         </Button>
-  //       </Tooltip>
-  //     )}
-  //   </Layout>
-  // );
 };
 
 QueueItem.propTypes = {
