@@ -29,6 +29,10 @@ const StatusBar = () => {
       onClick: () => setDebugData('comfyBridge.data.objectInfo'),
     },
     {
+      label: 'comfyBridge.data.prompt',
+      onClick: () => setDebugData('comfyBridge.data.prompt'),
+    },
+    {
       label: 'comfyBridge.data.queue',
       onClick: () => setDebugData('comfyBridge.data.queue'),
     },
@@ -52,6 +56,7 @@ const StatusBar = () => {
   const debugDatum = {
     'comfyBridge.data.ws': comfyBridge.data.ws,
     'comfyBridge.data.objectInfo': comfyBridge.data.objectInfo,
+    'comfyBridge.data.prompt': comfyBridge.data.prompt,
     'comfyBridge.data.queue': comfyBridge.data.queue,
     'comfyBridge.data.queueSelected': comfyBridge.data.queueSelected,
     formState,

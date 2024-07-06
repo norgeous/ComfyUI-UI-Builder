@@ -23,6 +23,7 @@ const comfybridge = ({ onChange = () => {} }) => {
   const state = {
     ws: {},
     objectInfo: {},
+    prompt: {},
     queue: {},
     queueSelected: {},
   };
@@ -71,8 +72,11 @@ const comfybridge = ({ onChange = () => {} }) => {
         }),
       },
       adapter: res => res.json(),
-      onChange: ({ data = {} }) => {
-        const { prompt_id: promptId } = data;
+      onChange: newState => {
+        console.log('prompt onchgange', newState);
+        updateState('prompt', newState);
+
+        const { prompt_id: promptId } = newState.data || {};
         if (promptId) {
           updateState('queue', {
             [promptId]: {},

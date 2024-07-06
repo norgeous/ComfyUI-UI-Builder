@@ -6,6 +6,7 @@ const useComfyBridge = () => {
   const [data, setData] = useState({
     ws: {},
     objectInfo: {},
+    prompt: {},
     queue: {},
     queueSelected: {},
   });

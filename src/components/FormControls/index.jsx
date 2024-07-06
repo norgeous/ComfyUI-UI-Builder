@@ -15,8 +15,8 @@ import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 
 const FormControls = () => {
-  const { bridge, data, promptLoading, promptError } =
-    useContext(ComfyBridgeContext);
+  const { bridge, data } = useContext(ComfyBridgeContext);
+  const { error: promptError, loading: promptLoading } = data.prompt;
 
   const [auto, setAuto] = useState(false);
 
