@@ -73,7 +73,6 @@ const comfybridge = ({ onChange = () => {} }) => {
       },
       adapter: res => res.json(),
       onChange: newState => {
-        console.log('prompt onchgange', newState);
         updateState('prompt', newState);
 
         const { prompt_id: promptId } = newState.data || {};
