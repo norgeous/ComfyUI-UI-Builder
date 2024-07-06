@@ -47,7 +47,7 @@ const FormControls = () => {
 
     const adaptedComfyWorkflow = adapted.reduce(
       (acc, { destination, value }) =>
-        insertIntoComfyWorkFlow(acc, data.objectInfo, destination, value),
+        insertIntoComfyWorkFlow(acc, data.objectInfo.data, destination, value),
       clone,
     );
 
