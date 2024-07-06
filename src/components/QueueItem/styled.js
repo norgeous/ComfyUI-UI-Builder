@@ -15,6 +15,7 @@ export const QueueTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  max-width: 90px;
 `;
 
 export const Img = styled.img.attrs({ crossOrigin: 'anonymous' })`
