@@ -21,7 +21,7 @@ const useImageSize = image => {
 const gapSizePx = 8;
 
 const ImageGrid = ({ images = [] }) => {
-  const [scaleUp, setScaleUp] = useState(false);
+  const [scaleUp, setScaleUp] = useState(true);
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
