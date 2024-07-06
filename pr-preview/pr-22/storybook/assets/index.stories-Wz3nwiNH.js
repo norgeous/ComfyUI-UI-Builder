@@ -1,0 +1,51 @@
+import{j as t}from"./jsx-runtime-Nms4Y4qS.js";import{c as n}from"./index-DIKafRrh.js";import{c as s}from"./index-o-oHw3n_.js";import{c as a}from"./index-BJTGTFMl.js";import{p as e}from"./styled-components.browser.esm-Cm6OPFyG.js";import"./index-BwDkhjyp.js";import"./_commonjsHelpers-BosuxZz1.js";import"./ComfyBridgeContext-CTMRF_Mz.js";import"./index-Dqhrf-t8.js";import"./index-D3ylJrlI.js";import"./index-CrqPYF-W.js";import"./index-8QjCjCSO.js";import"./index-D0Aq9VeK.js";import"./index-wo4bmeOh.js";import"./index-BmIk0z0o.js";import"./index-KviudHZg.js";import"./index-CHiMFBbc.js";import"./floating-ui.react-BQk9wdfR.js";import"./index-B8XB3FuZ.js";import"./styled-BVZT0ieL.js";import"./index-ENcA_t3y.js";import"./index-DR5XvYCU.js";import"./InputRefContext-5kgal7hN.js";import"./deepEqual-_sTZaZ0q.js";import"./index-CWOaoGeb.js";import"./index-DAeR070I.js";import"./index-xqhxN9BK.js";import"./FormContext-BvePLfBF.js";import"./index-cDxTADxk.js";import"./index-BwJUGV3a.js";import"./index-DO6smgbx.js";import"./index-B7x-VDT7.js";import"./index-xkWOUWsV.js";import"./index-CTYjAF7x.js";import"./index-DohsDmGq.js";import"./index-BTPnNvjF.js";import"./index-D0vYhE_2.js";import"./index-DTEvBq80.js";import"./index-CzHlZZz-.js";import"./SpeechContext-CGWUamV5.js";import"./index-DKZpsVba.js";import"./index-Cx9io6iu.js";import"./index-DaYdeqPJ.js";import"./index-BDeGgbMT.js";import"./index-C3gnsgyT.js";import"./index-DCdg15hX.js";import"./index-DOxmqhEU.js";import"./index-BK5_XIt8.js";import"./index-BAMY2Nnw.js";const d=e.div`
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`,h=e.div`
+  overflow: hidden;
+  flex-grow: 1;
+  display: grid;
+
+  // portrait first
+  grid-template-rows: auto 400px;
+
+  // landscape overrides
+  @media (min-aspect-ratio: 1/1) {
+    grid-template-rows: none;
+    grid-template-columns: 460px auto;
+    & > :first-child {
+      order: 2; // change the order on landscape, so that sidebar is first
+    }
+  }
+`,m=()=>t.jsxs(d,{children:[t.jsxs(h,{children:[t.jsx(n,{}),t.jsx(s,{})]}),t.jsx(a,{})]}),c=m;m.__docgenInfo={description:"",methods:[],displayName:"App"};const st={title:"App",component:c},o={parameters:{layout:"fullscreen",screenshot:{viewport:{width:830,height:600},variants:{small:{viewport:{width:412,height:700}},small_dark:{viewport:{width:412,height:700},forceDark:!0}}}},args:{}};var r,i,p;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`{
+  parameters: {
+    layout: 'fullscreen',
+    screenshot: {
+      viewport: {
+        width: 830,
+        // the width of github README.md on desktop
+        height: 600
+      },
+      variants: {
+        small: {
+          viewport: {
+            width: 412,
+            // half the width of github README.md on desktop
+            height: 700
+          }
+        },
+        small_dark: {
+          viewport: {
+            width: 412,
+            // half the width of github README.md on desktop
+            height: 700
+          },
+          forceDark: true
+        }
+      }
+    }
+  },
+  args: {}
+}`,...(p=(i=o.parameters)==null?void 0:i.docs)==null?void 0:p.source}}};const at=["App"];export{o as App,at as __namedExportsOrder,st as default};

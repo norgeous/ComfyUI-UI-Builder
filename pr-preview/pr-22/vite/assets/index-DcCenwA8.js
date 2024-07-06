@@ -321,142 +321,32 @@ Error generating stack: `+V.message+`
   width: 30px;
   height: 30px;
   object-fit: contain;
-`,P2=({promptId:U=void 0,type:F=void 0,node:Q=void 0,value:B=void 0,max:R=void 0,images:V=void 0,onRemove:l=()=>{}})=>{const{bridge:J}=s.useContext(RR),W=F==="executing"&&Q===null||!1,Z=F==="progress";return o.jsxs(aF,{center:!0,pad:!0,rounded:!0,gap:"md",bgfg:3,children:[o.jsx(TV,{small:!0,"aria-label":"Select",onClick:()=>J.updateState("queueSelected",{promptId:U}),children:V&&o.jsx(SH,{src:`${V[0]}`})}),!W&&o.jsx(kd,{}),o.jsxs(ZH,{children:[o.jsxs("div",{children:[Q," ",!W&&F," ",o.jsx("span",{className:"muted",style:{fontSize:10},children:U})]}),Z&&o.jsx(WH,{value:B,max:R})]}),o.jsx(oB,{lm:!0,text:"Remove",children:o.jsx(TV,{small:!0,"aria-label":"Remove",onClick:l,children:o.jsx(g1,{})})})]})};P2.propTypes={id:I.string,loading:I.bool,error:I.string,data:I.any,status:I.string,progress:I.number,onInterrupt:I.func,interruptLoading:I.bool,interruptError:I.string,onRemove:I.func};const q2=({items:U=[]})=>o.jsx(aF,{pad:!0,gap:"md",scrollable:!0,bgfg:2,style:{flexGrow:0},children:U.map(F=>o.jsx(P2,{...F},F.promptId))});q2.propTypes={items:I.arrayOf(I.shape({}))};const NH=UU.span`
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--fg0);
-  border-radius: 50%; // circle
-  transition: background-position 250ms ease-in-out;
-  background: linear-gradient(
-    in oklch -180deg,
-    grey,
-    black,
-    deepskyblue,
-    blue,
-    chartreuse,
-    green,
-    crimson,
-    darkred
-  );
-  background-size: 100% 700%;
-  background-repeat: no-repeat;
-  background-position: ${({status:U})=>({DEFAULT:"0% 0%",CONNECTING:"0% 33.33%",CONNECTED:"0% 66.66%",DISCONNECTED:"0% 100%"})[U]};
-`,nH={DEFAULT:"Status unknown",CONNECTING:"Connecting…",CONNECTED:"Connected!",DISCONNECTED:"Disconnected"},A2=({status:U="DEFAULT"})=>o.jsx(oB,{text:nH[U],children:o.jsx(NH,{status:U})});A2.propTypes={status:I.oneOf(["DEFAULT","CONNECTING","CONNECTED","DISCONNECTED"])};const EH=UU.button`
-  cursor: pointer;
-  display: block;
-  background: transparent;
-  font-size: inherit;
-  border: none;
-  color: var(--fg-mute);
-  border-radius: var(--radius);
-  margin: 0;
-  padding: 0;
-  &:hover {
-    color: var(--fg0);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-`,kH=UU.span`
-  ${aQ(1)}
-  position: absolute;
-  font-size: 0.75rem; // 12px
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px;
-  z-index: 1;
-  top: 100%;
-  left: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`,TH=UU.button`
-  cursor: pointer;
-  display: block;
-  background: transparent;
-  border: none;
-  color: var(--fg-mute);
-  border-radius: var(--radius);
-  margin: 0;
-  padding: 0;
-  &:hover {
-    color: var(--fg0);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-  width: 100%;
-  text-align: left;
-`,_2=({className:U=void 0,children:F=null,options:Q=[],...B})=>{const[R,V]=s.useState(!1),{refs:l,floatingStyles:J,context:d}=f2({placement:"auto",middleware:[yX(),s2(),L2({padding:14})],open:R,onOpenChange:a=>{V(a)}}),W=BH(d),{getReferenceProps:Z,getFloatingProps:D}=VH([W]);return o.jsxs(o.Fragment,{children:[o.jsx(EH,{...B,className:U,ref:l.setReference,onClick:()=>V(!R),...Z(),children:F}),R&&o.jsx(kH,{ref:l.setFloating,style:J,...D(),children:Q.map(({label:a,onClick:p})=>o.jsx("div",{children:o.jsx(TH,{onClick:p,children:a})},a))})]})};_2.propTypes={className:I.string,lm:I.bool,wide:I.bool,children:I.node,options:I.arrayOf(I.shape({label:I.string,onClick:I.func}))};const DH=UU.pre`
-  position: absolute;
-  inset: 0;
-  white-space: pre-wrap;
-  background: #000e;
-  color: #0f0;
-  padding: 20px;
-  margin: 0;
-  border: 0;
-  z-index: 10;
-  overflow: scroll;
-`,$2=({onClick:U=()=>{},data:F=void 0})=>o.jsx(DH,{onClick:U,children:JSON.stringify(F,null,2)});$2.propTypes={onClick:I.func,data:I.any};const aH=UU.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 4px;
-  color: var(--fg-mute);
-  background: var(--bg1);
-  padding: 4px;
-`,rT=UU.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-  overflow: hidden;
-  flex-shrink: ${({$shrinkable:U})=>U?1:0};
-`,CH=UU.div`
-  font-size: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`,xT=UU.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: inherit;
-  &:hover {
-    color: var(--fg0);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-`,hH=()=>{const U=s.useContext(RR),{formState:F}=s.useContext(b0),{config:{baseWorkflow:Q}}=s.useContext(tV),{adapted:B,adaptedComfyWorkflow:R,bodyData:V}=s.useContext(RR),[l,J]=s.useState(),d=[{label:"comfyBridge.data.ws",onClick:()=>J("comfyBridge.data.ws")},{label:"comfyBridge.data.objectInfo",onClick:()=>J("comfyBridge.data.objectInfo")},{label:"comfyBridge.data.prompt",onClick:()=>J("comfyBridge.data.prompt")},{label:"comfyBridge.data.queue",onClick:()=>J("comfyBridge.data.queue")},{label:"comfyBridge.data.queueSelected",onClick:()=>J("comfyBridge.data.queueSelected")},{label:"formState",onClick:()=>J("formState")},{label:"adapted",onClick:()=>J("adapted")},{label:"baseWorkflow",onClick:()=>J("baseWorkflow")},{label:"adaptedComfyWorkflow",onClick:()=>J("adaptedComfyWorkflow")},{label:"bodyData",onClick:()=>J("bodyData")}],W={"comfyBridge.data.ws":U.data.ws,"comfyBridge.data.objectInfo":U.data.objectInfo,"comfyBridge.data.prompt":U.data.prompt,"comfyBridge.data.queue":U.data.queue,"comfyBridge.data.queueSelected":U.data.queueSelected,formState:F,adapted:B,baseWorkflow:Q,adaptedComfyWorkflow:R,bodyData:V}[l];return o.jsxs(aH,{children:[o.jsxs(rT,{$shrinkable:!0,children:[o.jsx(A2,{status:U.data.ws.status}),o.jsx(CH,{children:U.data.ws.statusText})]}),o.jsxs(rT,{children:[o.jsx(xT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:o.jsx(vb,{"aria-label":"Github"})}),o.jsx(xT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:o.jsx(sb,{"aria-label":"Storybook"})}),o.jsx(_2,{"aria-label":"Debug Data Options",options:d,children:o.jsx(xb,{})}),l&&o.jsx($2,{onClick:()=>J(),data:W})]})]})},pH=UU.main`
+`,P2=({promptId:U=void 0,type:F=void 0,node:Q=void 0,value:B=void 0,max:R=void 0,images:V=void 0,onRemove:l=()=>{}})=>{const{bridge:J}=s.useContext(RR),W=F==="executing"&&Q===null||!1,Z=F==="progress";return o.jsxs(aF,{center:!0,pad:!0,rounded:!0,gap:"md",bgfg:3,children:[o.jsx(TV,{small:!0,"aria-label":"Select",onClick:()=>J.updateState("queueSelected",{promptId:U}),children:V&&o.jsx(SH,{src:`${V[0]}`})}),!W&&o.jsx(kd,{}),o.jsxs(ZH,{children:[o.jsxs("div",{children:[Q," ",!W&&F," ",o.jsx("span",{className:"muted",style:{fontSize:10},children:U})]}),Z&&o.jsx(WH,{value:B,max:R})]}),o.jsx(oB,{lm:!0,text:"Remove",children:o.jsx(TV,{small:!0,"aria-label":"Remove",onClick:l,children:o.jsx(g1,{})})})]})};P2.propTypes={id:I.string,loading:I.bool,error:I.string,data:I.any,status:I.string,progress:I.number,onInterrupt:I.func,interruptLoading:I.bool,interruptError:I.string,onRemove:I.func};const q2=({items:U=[]})=>o.jsx(aF,{pad:!0,gap:"md",scrollable:!0,bgfg:2,style:{flexGrow:0},children:U.map(F=>o.jsx(P2,{...F},F.promptId))});q2.propTypes={items:I.arrayOf(I.shape({}))};const NH=UU.main`
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
   position: relative;
   height: 100%;
   overflow: hidden;
-`,tH=UU.div`
+`,nH=UU.div`
   ${aQ(0)}
-  flex: 1;
+  flex: 1 1 50%;
   padding: 10px;
   overflow: hidden;
   background-size: 8px 8px;
   background-position: center center;
   background-image: radial-gradient(circle, var(--bg2) 1px, transparent 1px);
-`,MH=()=>{const{data:U}=s.useContext(RR),F=Object.entries(U.queue).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(({filename:J})=>`${U.ws.comfyUrl}/view?type=output&filename=${J}`),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return o.jsxs(pH,{children:[o.jsx(tH,{children:o.jsx(f1,{images:B})}),o.jsx(q2,{items:F}),o.jsx(hH,{})]})},rQ=s.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},Uh=({text:U=void 0})=>o.jsx(oB,{text:U,children:o.jsx(wb,{className:"muted"})});Uh.propTypes={text:I.string};const eH=UU.div`
+`,EH=()=>{const{data:U}=s.useContext(RR),F=Object.entries(U.queue).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(({filename:J})=>`${U.ws.comfyUrl}/view?type=output&filename=${J}`),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return o.jsxs(NH,{children:[o.jsx(nH,{children:o.jsx(f1,{images:B})}),o.jsx(q2,{items:F})]})},rQ=s.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},A2=({text:U=void 0})=>o.jsx(oB,{text:U,children:o.jsx(wb,{className:"muted"})});A2.propTypes={text:I.string};const kH=UU.div`
   display: flex;
   align-items: center;
   gap: 4px;
   font-size: 12px;
-`,YH=UU.label`
+`,TH=UU.label`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.875rem; // 12px
-`,vB=({id:U=void 0,label:F=void 0,info:Q=void 0,children:B=null})=>o.jsxs(eH,{children:[F&&o.jsx(YH,{htmlFor:U,children:F}),Q&&o.jsx(Uh,{text:Q}),B]});vB.propTypes={id:I.string,label:I.string,info:I.string,children:I.node};const cH=UU.select`
+`,vB=({id:U=void 0,label:F=void 0,info:Q=void 0,children:B=null})=>o.jsxs(kH,{children:[F&&o.jsx(TH,{htmlFor:U,children:F}),Q&&o.jsx(A2,{text:Q}),B]});vB.propTypes={id:I.string,label:I.string,info:I.string,children:I.node};const DH=UU.select`
   ${aQ(4)}
   border: 1px solid var(--bg5);
   display: block;
@@ -469,10 +359,10 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-`,Md=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ),d=B.findIndex(W=>W.value===R||td(W.value,R));return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsx(cH,{ref:J,id:U,value:d,onChange:W=>V(B[W.target.value].value),children:B.map(({label:W},Z)=>o.jsx("option",{value:String(Z),children:W},W))})]})};Md.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const mH=UU.div`
+`,Md=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ),d=B.findIndex(W=>W.value===R||td(W.value,R));return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsx(DH,{ref:J,id:U,value:d,onChange:W=>V(B[W.target.value].value),children:B.map(({label:W},Z)=>o.jsx("option",{value:String(Z),children:W},W))})]})};Md.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const aH=UU.div`
   padding: 0 8px 8px;
   font-size: 12px;
-`,GH=()=>{const{config:U,configs:F,setConfig:Q}=s.useContext(tV),B=l=>{const J=F.find(({configData:{name:d}})=>d===l);Q(J)},R=F.map(({configData:{emoji:l,name:J,version:d}})=>({label:`${l} ${J} ${d}`,value:J})),V=U.configData.name;return o.jsxs(o.Fragment,{children:[o.jsx(Md,{id:"ui",label:"UI Builder",options:R,defaultValueIndex:0,value:V,onChange:B}),o.jsx(mH,{className:"muted",children:U.configData.description})]})},bH=UU.button`
+`,CH=()=>{const{config:U,configs:F,setConfig:Q}=s.useContext(tV),B=l=>{const J=F.find(({configData:{name:d}})=>d===l);Q(J)},R=F.map(({configData:{emoji:l,name:J,version:d}})=>({label:`${l} ${J} ${d}`,value:J})),V=U.configData.name;return o.jsxs(o.Fragment,{children:[o.jsx(Md,{id:"ui",label:"UI Builder",options:R,defaultValueIndex:0,value:V,onChange:B}),o.jsx(aH,{className:"muted",children:U.configData.description})]})},hH=UU.button`
   cursor: pointer;
   display: block;
   border: none;
@@ -491,20 +381,20 @@ Error generating stack: `+V.message+`
   &:hover > * {
     opacity: 1;
   }
-`,fR=({className:U=void 0,label:F=void 0,onClick:Q=()=>{},lm:B=!1,children:R=null,...V})=>o.jsx(oB,{className:U,text:F,lm:B,children:o.jsx(bH,{"aria-label":F,onClick:Q,...V,children:R})});fR.propTypes={className:I.string,label:I.string,lm:I.bool,onClick:I.func,children:I.node};const Fh=({onClick:U=()=>{}})=>o.jsx(fR,{label:"Reset",lm:!0,onClick:U,children:o.jsx(yb,{})});Fh.propTypes={onClick:I.func};const Qh=({type:U=void 0})=>o.jsxs("div",{children:["Component type ",o.jsx("strong",{children:U})," not found"]});Qh.propTypes={type:I.string};const XH=UU.div`
+`,fR=({className:U=void 0,label:F=void 0,onClick:Q=()=>{},lm:B=!1,children:R=null,...V})=>o.jsx(oB,{className:U,text:F,lm:B,children:o.jsx(hH,{"aria-label":F,onClick:Q,...V,children:R})});fR.propTypes={className:I.string,label:I.string,lm:I.bool,onClick:I.func,children:I.node};const _2=({onClick:U=()=>{}})=>o.jsx(fR,{label:"Reset",lm:!0,onClick:U,children:o.jsx(yb,{})});_2.propTypes={onClick:I.func};const $2=({type:U=void 0})=>o.jsxs("div",{children:["Component type ",o.jsx("strong",{children:U})," not found"]});$2.propTypes={type:I.string};const pH=UU.div`
   display: flex;
   flex-direction: column;
   gap: 3.33333333px; /* to make it the same height as a text input */
-`,HH=UU.div`
+`,tH=UU.div`
   height: 14px;
   padding-top: 6px;
-`,oT=GU`
+`,rT=GU`
   width: 100%;
   height: 8px;
   cursor: pointer;
   border: 1px solid var(--bg5);
   border-radius: 100px;
-`,vT=GU`
+`,xT=GU`
   border: none;
   border: 2px solid #fff;
   box-sizing: border-box;
@@ -513,10 +403,10 @@ Error generating stack: `+V.message+`
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
-`,zH=GU`
+`,MH=GU`
   background: transparent;
   height: 8px;
-`,rH=UU.input.attrs({type:"range"})`
+`,eH=UU.input.attrs({type:"range"})`
   display: block;
   width: 100%;
   height: 8px;
@@ -536,46 +426,46 @@ Error generating stack: `+V.message+`
   }
 
   &::-moz-range-track {
-    ${oT}
+    ${rT}
   }
   &::-moz-range-progress {
-    ${zH}
+    ${MH}
   }
   &::-moz-range-thumb {
-    ${vT}
+    ${xT}
   }
 
   appearance: none;
   &::-webkit-slider-runnable-track {
-    ${oT}
+    ${rT}
   }
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     margin-top: -6px;
-    ${vT}
+    ${xT}
   }
-`,xH=UU.div`
+`,YH=UU.div`
   padding: ${({$isPips:U})=>U?"0 10px":0};
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-`,jT=UU.div`
+`,oT=UU.div`
   cursor: pointer;
   display: inline-flex;
   place-items: center;
   gap: 4px;
   overflow: hidden;
-`,OT=UU.div`
+`,vT=UU.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`,oH=UU.div`
+`,cH=UU.div`
   display: flex;
   justify-content: center;
   text-align: center;
   cursor: pointer;
   width: 0;
-`,Bh=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ),d=B.findIndex(p=>p.value===R||td(p.value,R)),W=B.every(({label:p})=>p),Z=B[0].label,D=B[B.length-1].label,a=p=>{J.current.focus(),V(p)};return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsxs(XH,{children:[o.jsx(HH,{children:o.jsx(rH,{ref:J,id:U,min:"0",step:"1",max:B.length-1,value:d,onChange:p=>V(B[p.target.value].value)})}),o.jsxs(xH,{$isPips:W,children:[!W&&Z&&o.jsxs(jT,{className:"muted",onClick:()=>a(B[Math.max(0,d-1)].value),children:[o.jsx(Hb,{}),o.jsx(OT,{className:"muted",children:Z})]}),W&&(B==null?void 0:B.map(({label:p,value:h})=>o.jsx(oH,{className:"muted",onClick:()=>a(h),children:p},p))),!W&&D&&o.jsxs(jT,{className:"muted",onClick:()=>a(B[Math.min(B.length-1,d+1)].value),children:[o.jsx(OT,{className:"muted",children:D}),o.jsx(zb,{})]})]})]})]})};Bh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const vH=UU.textarea`
+`,Uh=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ),d=B.findIndex(p=>p.value===R||td(p.value,R)),W=B.every(({label:p})=>p),Z=B[0].label,D=B[B.length-1].label,a=p=>{J.current.focus(),V(p)};return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsxs(pH,{children:[o.jsx(tH,{children:o.jsx(eH,{ref:J,id:U,min:"0",step:"1",max:B.length-1,value:d,onChange:p=>V(B[p.target.value].value)})}),o.jsxs(YH,{$isPips:W,children:[!W&&Z&&o.jsxs(oT,{className:"muted",onClick:()=>a(B[Math.max(0,d-1)].value),children:[o.jsx(Hb,{}),o.jsx(vT,{className:"muted",children:Z})]}),W&&(B==null?void 0:B.map(({label:p,value:h})=>o.jsx(cH,{className:"muted",onClick:()=>a(h),children:p},p))),!W&&D&&o.jsxs(oT,{className:"muted",onClick:()=>a(B[Math.min(B.length-1,d+1)].value),children:[o.jsx(vT,{className:"muted",children:D}),o.jsx(zb,{})]})]})]})]})};Uh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const mH=UU.textarea`
   ${aQ(4)}
   border: 1px solid var(--bg5);
   display: block;
@@ -590,7 +480,7 @@ Error generating stack: `+V.message+`
   line-height: 21px;
   padding: 4px 8px;
   resize: vertical;
-`,jH=U=>{U.ctrlKey&&["ArrowUp","ArrowDown"].includes(U.key)&&U.preventDefault()},Rh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ),J=d=>{if(d.ctrlKey&&["ArrowUp","ArrowDown"].includes(d.key)){d.preventDefault();const{selectionStart:W,selectionEnd:Z}=l.current,D=B.slice(0,W),a=B.slice(W,Z),p=B.slice(Z),h=a.lastIndexOf(":"),t=a.slice(0,h>0?h:void 0).replace("(",""),G=Number(a.slice(h+1).trim().replace(")",""))||1,n={ArrowUp:(G+.1).toFixed(1),ArrowDown:(G-.1).toFixed(1)}[d.key],k=n!=="1.0"?`(${t}:${n})`:t,C=`${D+k+p}`;R(C),setTimeout(()=>{l.current.selectionStart=W,l.current.selectionEnd=W+k.length},0)}};return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsxs(vB,{id:U,label:F,info:Q,children:[o.jsx(rb,{}),o.jsx(Xb,{}),V]}),o.jsx(vH,{ref:l,id:U,value:B,onChange:d=>R(d.target.value),onKeyDown:jH,onKeyUp:J})]})};Rh.propTypes={id:I.string,label:I.string,info:I.string,onChange:I.func,value:I.any,children:I.node};const OH=UU.input.attrs({type:"text"})`
+`,GH=U=>{U.ctrlKey&&["ArrowUp","ArrowDown"].includes(U.key)&&U.preventDefault()},Fh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ),J=d=>{if(d.ctrlKey&&["ArrowUp","ArrowDown"].includes(d.key)){d.preventDefault();const{selectionStart:W,selectionEnd:Z}=l.current,D=B.slice(0,W),a=B.slice(W,Z),p=B.slice(Z),h=a.lastIndexOf(":"),t=a.slice(0,h>0?h:void 0).replace("(",""),G=Number(a.slice(h+1).trim().replace(")",""))||1,n={ArrowUp:(G+.1).toFixed(1),ArrowDown:(G-.1).toFixed(1)}[d.key],k=n!=="1.0"?`(${t}:${n})`:t,C=`${D+k+p}`;R(C),setTimeout(()=>{l.current.selectionStart=W,l.current.selectionEnd=W+k.length},0)}};return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsxs(vB,{id:U,label:F,info:Q,children:[o.jsx(rb,{}),o.jsx(Xb,{}),V]}),o.jsx(mH,{ref:l,id:U,value:B,onChange:d=>R(d.target.value),onKeyDown:GH,onKeyUp:J})]})};Fh.propTypes={id:I.string,label:I.string,info:I.string,onChange:I.func,value:I.any,children:I.node};const bH=UU.input.attrs({type:"text"})`
   ${aQ(4)}
   border: 1px solid var(--bg5);
   display: block;
@@ -603,7 +493,7 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-`,Qn=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ);return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsx(OH,{ref:J,id:U,value:R,onChange:d=>V(d.target.value),list:B.length?`${U}-list`:void 0}),!!B.length&&o.jsx("datalist",{id:`${U}-list`,children:B.map(d=>o.jsx("option",{"aria-label":d,value:d},d))})]})};Qn.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.string),value:I.string,onChange:I.func,children:I.node};const iH=UU.input.attrs({type:"number"})`
+`,Qn=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=s.useContext(rQ);return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsx(bH,{ref:J,id:U,value:R,onChange:d=>V(d.target.value),list:B.length?`${U}-list`:void 0}),!!B.length&&o.jsx("datalist",{id:`${U}-list`,children:B.map(d=>o.jsx("option",{"aria-label":d,value:d},d))})]})};Qn.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.string),value:I.string,onChange:I.func,children:I.node};const XH=UU.input.attrs({type:"number"})`
   ${aQ(4)}
   border: 1px solid var(--bg5);
   display: block;
@@ -616,7 +506,7 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-`,Bn=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ);return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:V}),o.jsx(iH,{ref:l,id:U,value:B,onChange:J=>R(Number(J.target.value))})]})};Bn.propTypes={id:I.string,label:I.string,info:I.string,value:I.number,onChange:I.func,children:I.node};const Vh=({id:U=void 0,value:F=void 0,...Q})=>{var V,l,J;const{data:B}=s.useContext(RR),R=(l=(V=B.objectInfo)==null?void 0:V.data)==null?void 0:l.CheckpointLoaderSimple.input.required.ckpt_name[0];return o.jsxs(Qn,{...Q,id:U,value:F,options:R||[],children:[!R&&o.jsx(oB,{text:"No checkpoints available",children:o.jsx(u1,{})}),((J=B.objectInfo)==null?void 0:J.loading)&&o.jsx(kd,{})]})};Vh.propTypes={id:I.string,value:I.string};const wH=UU.div`
+`,Bn=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ);return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:V}),o.jsx(XH,{ref:l,id:U,value:B,onChange:J=>R(Number(J.target.value))})]})};Bn.propTypes={id:I.string,label:I.string,info:I.string,value:I.number,onChange:I.func,children:I.node};const Qh=({id:U=void 0,value:F=void 0,...Q})=>{var V,l,J;const{data:B}=s.useContext(RR),R=(l=(V=B.objectInfo)==null?void 0:V.data)==null?void 0:l.CheckpointLoaderSimple.input.required.ckpt_name[0];return o.jsxs(Qn,{...Q,id:U,value:F,options:R||[],children:[!R&&o.jsx(oB,{text:"No checkpoints available",children:o.jsx(u1,{})}),((J=B.objectInfo)==null?void 0:J.loading)&&o.jsx(kd,{})]})};Qh.propTypes={id:I.string,value:I.string};const HH=UU.div`
   background: #ff000077;
   font-size: 0.75rem; // 12px
   display: flex;
@@ -624,21 +514,21 @@ Error generating stack: `+V.message+`
   align-items: center;
   padding: 6px 8px;
   border-radius: 4px;
-`,IH=UU.button`
+`,zH=UU.button`
   cursor: pointer;
   color: inherit;
   background: transparent;
   border: none;
   padding: 6px;
   margin: -6px -8px -6px auto;
-`,ed=({children:U})=>{const[F,Q]=s.useState(!1);return F?null:o.jsxs(wH,{children:[o.jsx(u1,{})," ",U,o.jsx(IH,{onClick:()=>Q(!0),"aria-label":"Dismiss error message",children:o.jsx(g1,{})})]})};ed.propTypes={children:I.node.isRequired};const yH=UU.input.attrs({type:"file"})`
+`,ed=({children:U})=>{const[F,Q]=s.useState(!1);return F?null:o.jsxs(HH,{children:[o.jsx(u1,{})," ",U,o.jsx(zH,{onClick:()=>Q(!0),"aria-label":"Dismiss error message",children:o.jsx(g1,{})})]})};ed.propTypes={children:I.node.isRequired};const rH=UU.input.attrs({type:"file"})`
   display: none;
-`,LH=UU.img`
+`,xH=UU.img`
   width: 200px;
   max-width: 100%;
   margin: 0 auto;
   display: block;
-`,sH=[".jpg",".jpeg",".jfif",".pjpeg",".pjp",".png",".webp"],lh=({id:U=void 0,defaultValue:F=void 0,value:Q=void 0,options:B=[],onChange:R=()=>{},onFileUpload:V=()=>{},error:l=void 0,...J})=>{const d=s.useContext(rQ),W=D=>R(D),Z=D=>{if(D.target.files){const a=D.target.files[0];V(a);const p=URL.createObjectURL(a);R(p)}};return o.jsxs(o.Fragment,{children:[o.jsx(Md,{...J,id:U,options:B,defaultValue:F,value:Q,onChange:W}),o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(TV,{variant:"secondary",onClick:()=>d.current.click(),children:"Choose a new file to upload..."}),Q&&o.jsx(LH,{alt:"",src:Q}),o.jsx(yH,{ref:d,accept:sH.join(","),onChange:Z}),l&&o.jsx(ed,{children:l})]})]})};lh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.string})),defaultValue:I.string,value:I.string,onChange:I.func,onFileUpload:I.func,error:I.string,isLoading:I.bool};const KH=UU.textarea`
+`,oH=[".jpg",".jpeg",".jfif",".pjpeg",".pjp",".png",".webp"],Bh=({id:U=void 0,defaultValue:F=void 0,value:Q=void 0,options:B=[],onChange:R=()=>{},onFileUpload:V=()=>{},error:l=void 0,...J})=>{const d=s.useContext(rQ),W=D=>R(D),Z=D=>{if(D.target.files){const a=D.target.files[0];V(a);const p=URL.createObjectURL(a);R(p)}};return o.jsxs(o.Fragment,{children:[o.jsx(Md,{...J,id:U,options:B,defaultValue:F,value:Q,onChange:W}),o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(TV,{variant:"secondary",onClick:()=>d.current.click(),children:"Choose a new file to upload..."}),Q&&o.jsx(xH,{alt:"",src:Q}),o.jsx(rH,{ref:d,accept:oH.join(","),onChange:Z}),l&&o.jsx(ed,{children:l})]})]})};Bh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.string})),defaultValue:I.string,value:I.string,onChange:I.func,onFileUpload:I.func,error:I.string,isLoading:I.bool};const vH=UU.textarea`
   ${aQ(4)}
   border: 1px solid var(--bg5);
   display: block;
@@ -653,7 +543,7 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-`,Jh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ),{targetId:J,unmutedId:d,setUnmutedId:W,loading:Z,error:D,vosk:a,tail:p}=s.useContext(k1),h=J===U,t=d===U;return s.useEffect(()=>{h&&R(p)},[p]),o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsxs(vB,{id:U,label:F,info:Q,children:[!a&&!Z&&o.jsx(fR,{label:"Enable Speech Capture",onClick:()=>W(U),children:o.jsx(rW,{})}),!a&&Z&&h&&o.jsx(kd,{}),!a&&Z&&!h&&o.jsx(fR,{label:"loading elsewhere",children:o.jsx(rW,{})}),a&&o.jsx(fR,{label:t?"Unmuted":"Muted",onClick:()=>W(t?void 0:U),children:t?o.jsx(rW,{}):o.jsx(jb,{})}),V]}),D&&h&&o.jsx(ed,{children:D}),o.jsx(KH,{ref:l,id:U,value:B,onChange:G=>R(G.target.value)})]})};Jh.propTypes={id:I.string,label:I.string,info:I.string,onChange:I.func,value:I.any,children:I.node};const uH=UU.button`
+`,Rh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},children:V=null})=>{const l=s.useContext(rQ),{targetId:J,unmutedId:d,setUnmutedId:W,loading:Z,error:D,vosk:a,tail:p}=s.useContext(k1),h=J===U,t=d===U;return s.useEffect(()=>{h&&R(p)},[p]),o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsxs(vB,{id:U,label:F,info:Q,children:[!a&&!Z&&o.jsx(fR,{label:"Enable Speech Capture",onClick:()=>W(U),children:o.jsx(rW,{})}),!a&&Z&&h&&o.jsx(kd,{}),!a&&Z&&!h&&o.jsx(fR,{label:"loading elsewhere",children:o.jsx(rW,{})}),a&&o.jsx(fR,{label:t?"Unmuted":"Muted",onClick:()=>W(t?void 0:U),children:t?o.jsx(rW,{}):o.jsx(jb,{})}),V]}),D&&h&&o.jsx(ed,{children:D}),o.jsx(vH,{ref:l,id:U,value:B,onChange:G=>R(G.target.value)})]})};Rh.propTypes={id:I.string,label:I.string,info:I.string,onChange:I.func,value:I.any,children:I.node};const jH=UU.button`
   cursor: pointer;
   display: block;
   border: none;
@@ -677,7 +567,7 @@ Error generating stack: `+V.message+`
         opacity: 1;
       }
     `}
-`,dh=({label:U=void 0,value:F=!1,onChange:Q=()=>{},children:B=null})=>o.jsx(oB,{text:`${U} (${F?"On":"Off"})`,children:o.jsx(uH,{"aria-label":`${U} (${F?"On":"Off"})`,onClick:()=>Q(!F),value:F,children:B})});dh.propTypes={label:I.string,value:I.bool,onChange:I.func,children:I.node};const Wh=({value:U=void 0,onChange:F=()=>{},children:Q=null,...B})=>{const R=s.useContext(rQ),{seed:V,random:l}=U,J=Z=>{F({seed:Z,random:!1})},d=Z=>{F({seed:V,random:Z})},W=()=>{var D;const Z=Math.floor(Math.random()*1e10);F({seed:Z,random:!1}),(D=R.current)==null||D.focus()};return o.jsxs(Bn,{...B,value:V,onChange:J,children:[o.jsx(dh,{label:"Randomise",value:l,onChange:d,children:o.jsx(Ib,{})}),o.jsx(fR,{label:"Shuffle",onClick:W,children:o.jsx(Lb,{})}),Q]})};Wh.propTypes={value:I.shape({seed:I.number,random:I.bool}),onChange:I.func,children:I.node};const gH=UU.label`
+`,Vh=({label:U=void 0,value:F=!1,onChange:Q=()=>{},children:B=null})=>o.jsx(oB,{text:`${U} (${F?"On":"Off"})`,children:o.jsx(jH,{"aria-label":`${U} (${F?"On":"Off"})`,onClick:()=>Q(!F),value:F,children:B})});Vh.propTypes={label:I.string,value:I.bool,onChange:I.func,children:I.node};const lh=({value:U=void 0,onChange:F=()=>{},children:Q=null,...B})=>{const R=s.useContext(rQ),{seed:V,random:l}=U,J=Z=>{F({seed:Z,random:!1})},d=Z=>{F({seed:V,random:Z})},W=()=>{var D;const Z=Math.floor(Math.random()*1e10);F({seed:Z,random:!1}),(D=R.current)==null||D.focus()};return o.jsxs(Bn,{...B,value:V,onChange:J,children:[o.jsx(Vh,{label:"Randomise",value:l,onChange:d,children:o.jsx(Ib,{})}),o.jsx(fR,{label:"Shuffle",onClick:W,children:o.jsx(Lb,{})}),Q]})};lh.propTypes={value:I.shape({seed:I.number,random:I.bool}),onChange:I.func,children:I.node};const OH=UU.label`
   display: block;
   width: 100%;
   margin: 0;
@@ -687,15 +577,15 @@ Error generating stack: `+V.message+`
   padding: 9px 0;
   cursor: pointer;
   font-size: 0.875rem;
-`,fH=UU.input.attrs({type:"checkbox"})`
+`,iH=UU.input.attrs({type:"checkbox"})`
   display: block;
   accent-color: var(--accent);
   margin: 0;
-`,Zh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},options:V=[],children:l=null})=>{const J=s.useContext(rQ),d=V.findIndex(Z=>Z.value===B||td(Z.value,B)),{label:W}=V[d];return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsxs(gH,{children:[o.jsx(fH,{ref:J,checked:!!d,onChange:Z=>R(V[Number(Z.currentTarget.checked)].value)})," ",W]})]})};Zh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const PH={select:Md,range:Bh,textarea:Rh,text:Qn,number:Bn,checkbox:Zh,selectckpt:Vh,fileupload:lh,speech:Jh,seed:Wh},Sh=({type:U=void 0,id:F=void 0,label:Q=void 0,info:B=void 0,defaultValue:R=void 0,value:V=void 0,onChange:l=()=>{},onChangeData:J={},...d})=>{const W=PH[U]||Qh,Z=s.useRef(),{formState:D,updateFormState:a}=s.useContext(b0),p=V??D[F],h=n=>{const k={[F]:n,...J};a(k),l(n)},t=()=>{var n;h(R),(n=Z.current)==null||n.focus()},G=p!==R;return o.jsx(rQ.Provider,{value:Z,children:o.jsx(W,{...d,id:F,type:U,label:Q,info:B,value:p,onChange:h,children:G&&o.jsx(Fh,{onClick:t})})})};Sh.propTypes={type:I.string,id:I.string,label:I.string,info:I.string,defaultValue:I.any,value:I.any,onChange:I.func,onChangeData:I.object};const qH=UU.div`
+`,Jh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},options:V=[],children:l=null})=>{const J=s.useContext(rQ),d=V.findIndex(Z=>Z.value===B||td(Z.value,B)),{label:W}=V[d];return o.jsxs(aF,{pad:!0,column:!0,gap:"sm",children:[o.jsx(vB,{id:U,label:F,info:Q,children:l}),o.jsxs(OH,{children:[o.jsx(iH,{ref:J,checked:!!d,onChange:Z=>R(V[Number(Z.currentTarget.checked)].value)})," ",W]})]})};Jh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const wH={select:Md,range:Uh,textarea:Fh,text:Qn,number:Bn,checkbox:Jh,selectckpt:Qh,fileupload:Bh,speech:Rh,seed:lh},dh=({type:U=void 0,id:F=void 0,label:Q=void 0,info:B=void 0,defaultValue:R=void 0,value:V=void 0,onChange:l=()=>{},onChangeData:J={},...d})=>{const W=wH[U]||$2,Z=s.useRef(),{formState:D,updateFormState:a}=s.useContext(b0),p=V??D[F],h=n=>{const k={[F]:n,...J};a(k),l(n)},t=()=>{var n;h(R),(n=Z.current)==null||n.focus()},G=p!==R;return o.jsx(rQ.Provider,{value:Z,children:o.jsx(W,{...d,id:F,type:U,label:Q,info:B,value:p,onChange:h,children:G&&o.jsx(_2,{onClick:t})})})};dh.propTypes={type:I.string,id:I.string,label:I.string,info:I.string,defaultValue:I.any,value:I.any,onChange:I.func,onChangeData:I.object};const IH=UU.div`
   border-radius: var(--radius);
   overflow: hidden;
   flex-shrink: 0;
-`,AH=UU.button`
+`,yH=UU.button`
   ${aQ(4)}
   width: 100%;
   display: flex;
@@ -709,29 +599,146 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: -2px;
   }
-`,_H=UU.div`
+`,LH=UU.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`,$H=UU.div`
+`,sH=UU.div`
   ${aQ(3)}
   display: grid;
   transition: grid-template-rows 350ms;
   grid-template-rows: ${({$isOpen:U})=>U?"1fr":"0fr"};
-`,Uz=UU.div`
+`,KH=UU.div`
   overflow: hidden;
-`,Fz=UU.div`
+`,uH=UU.div`
   padding: 8px;
-`,Nh=({title:U="",defaultIsOpen:F=!0,children:Q=null})=>{const[B,R]=s.useState(F),V=()=>R(!B);return o.jsxs(qH,{children:[o.jsxs(AH,{onClick:V,children:[o.jsx(_H,{children:U}),o.jsx(ob,{$isOpen:B})]}),o.jsx($H,{$isOpen:B,children:o.jsx(Uz,{$isOpen:B,children:o.jsx(Fz,{children:Q})})})]})};Nh.propTypes={title:I.string,defaultIsOpen:I.bool,children:I.node};const Qz=UU.div`
+`,Wh=({title:U="",defaultIsOpen:F=!0,children:Q=null})=>{const[B,R]=s.useState(F),V=()=>R(!B);return o.jsxs(IH,{children:[o.jsxs(yH,{onClick:V,children:[o.jsx(LH,{children:U}),o.jsx(ob,{$isOpen:B})]}),o.jsx(sH,{$isOpen:B,children:o.jsx(KH,{$isOpen:B,children:o.jsx(uH,{children:Q})})})]})};Wh.propTypes={title:I.string,defaultIsOpen:I.bool,children:I.node};const gH=UU.div`
   display: grid;
   grid-template-columns: 50% 50%;
-`,Bz=UU.div`
+`,fH=UU.div`
   ${({colSpan:U})=>U===2&&GU`
       grid-column: 1 / span 2;
     `}
-`,Rz=()=>{const{formConfig:U}=s.useContext(b0),F=[...new Set(U.map(({group:Q})=>Q))];return o.jsx(aF,{pad:!0,column:!0,gap:"md",scrollable:!0,children:F.map(Q=>{const B=U.filter(({group:R})=>R===Q);return o.jsx(Nh,{title:Q,children:o.jsx(Qz,{children:B.map(({id:R,colSpan:V,defaultValue:l,defaultValueIndex:J,options:d,...W})=>o.jsx(Bz,{colSpan:V,children:o.jsx(Sh,{...W,id:R,defaultValue:l??d[J].value,options:d})},R))})},Q)})})},Vz=U=>typeof U=="object"&&!Array.isArray(U)&&U!==null,lz=U=>Object.fromEntries(Object.entries(U).reduce((F,[Q,B])=>Vz(B)?[...F,...Object.entries(B)]:[...F,[Q,B]],[])),Jz=({objectInfo:U,formState:F,adapterConfig:Q})=>{if(!Q)return[];const B=lz(F),R={get:(d,W)=>[d,B[W]].filter(Z=>Z).join(" "),raw:(d,W)=>[d,W].filter(Z=>Z).join(" "),num:(d,W)=>Number(W),if:(d,W)=>{if(B[W]||B[W]===0)return d},clear:()=>{},multiply:(d,W)=>Number(d)*Number(B[W]),round:d=>Math.round(d),add:(d,W)=>Number(d)+Number(B[W]),findInCkptNames:d=>{if(console.log({objectInfo:U}),!!U)return U.CheckpointLoaderSimple.input.required.ckpt_name[0].find(W=>W.toLowerCase().includes(d.toLowerCase()))},findInLoraNames:d=>{if(U)return U.LoraLoader.input.required.lora_name[0].find(W=>W.toLowerCase().includes(d.toLowerCase()))}},V=(d,W)=>{const[Z,D]=W.split(":");return R[Z](d,D)},l=(d,W)=>{if(Array.isArray(W)){let Z=!1;return W.reduce((p,h)=>{if(Array.isArray(h))return[...p,h];if(Z)return p;const[t,G]=h.split(":");return t==="if"?(R[t](d,G)||(Z=!0),p):[...p,h]},[]).reduce(l,d)}return V(d,W)};return Q.map(({destination:d,actions:W})=>({destination:d,value:l(void 0,W)}))},dz=U=>U.nodes.reduce((Q,{id:B,mode:R,inputs:V,outputs:l})=>({...Q,...l==null?void 0:l.reduce((J,{links:d,name:W},Z)=>({...J,...(d||[]).reduce((D,a)=>({...D,[a]:{link:[String(B),Z],bypassTo:R===4&&(V==null?void 0:V.find(({type:p})=>p===W).link)}}),{})}),{})}),{}),nh=(U,F)=>{const{link:Q,bypassTo:B}=U[F];return B?nh(U,B):Q},Eh=(U,F)=>{var R,V;const Q=Object.keys(((V=(R=U==null?void 0:U[F])==null?void 0:R.input)==null?void 0:V.required)||{}),B=Q.indexOf("seed");return F==="KSampler"&&B!==-1&&Q.splice(B+1,0,"control_after_generate"),F==="SamplerCustom"?["model","positive","negative","sampler","sigmas","latent_image","add_noise","noise_seed","control_after_generate","cfg"]:Q},Wz=({comfyWorkflow:U,objectInfo:F})=>{if(!U)return{};const Q=dz(structuredClone(U));return structuredClone(U).nodes.reduce((R,{id:V,type:l,mode:J,inputs:d,widgets_values:W=[]})=>{if(J===4)return R;const D=Eh(F,l).reduce((a,p)=>{var G;const h=(G=d==null?void 0:d.find(({name:n})=>n===p))==null?void 0:G.link,t=h?nh(Q,h):W.shift();return{...a,[p]:t}},{});return{...R,[V]:{class_type:l,inputs:D}}},{})},Zz=(U,F,Q,B)=>{const[R,V]=Q.split(" > "),l=structuredClone(U).nodes.map(J=>{const{type:d,title:W,inputs:Z,widgets_values:D}=J;if([d,W].includes(R)){V==="mode"&&(J.mode=Number(B));const a=Eh(F,d),p=(Z==null?void 0:Z.map(({name:G})=>G))||[],t=a.filter(G=>!p.includes(G)).findIndex(G=>G===V);D[t]=B}return J});return{...U,nodes:l}},Sz=()=>{const{bridge:U,data:F}=s.useContext(RR),{error:Q,loading:B}=F.prompt,[R,V]=s.useState(!1),{config:l,config:{baseWorkflow:J}}=s.useContext(tV),{formState:d,formState:{enableSeedRandomisation:W},updateFormState:Z}=s.useContext(b0),D=()=>{if(W){const G=Math.floor(Math.random()*1e10);Z({seed:G})}const a=Jz({objectInfo:F.objectInfo.data,formState:d,adapterConfig:l.configData.adapterConfig}),p=structuredClone({...J}),h=a.reduce((G,{destination:n,value:k})=>Zz(G,F.objectInfo.data,n,k),p),t=Wz({comfyWorkflow:h,objectInfo:F.objectInfo.data});U.prompt({comfyUrl:F.ws.comfyUrl,promptData:t})};return o.jsxs(o.Fragment,{children:[Q&&o.jsx(ed,{children:Q}),o.jsxs(aF,{gap:"md",children:[!R&&o.jsx(TV,{wide:!0,onClick:D,children:B?o.jsx(kd,{}):"Generate"}),o.jsx(oB,{text:"Automatic Generation",wide:R,children:o.jsx(TV,{variant:"secondary","aria-label":"Automatic Generation",onClick:()=>V(!R),wide:R,children:R?o.jsx(Ob,{}):o.jsx(ib,{})})})]})]})},Nz=()=>o.jsxs(aF,{as:"aside",column:!0,fullHeight:!0,bgfg:1,children:[o.jsx(aF,{as:"header",column:!0,bgfg:2,children:o.jsx(GH,{})}),o.jsx(Rz,{}),o.jsx(aF,{as:"footer",pad:!0,column:!0,gap:"md",bgfg:2,children:o.jsx(Sz,{})})]}),nz=UU.div`
-  display: grid;
+`,PH=()=>{const{formConfig:U}=s.useContext(b0),F=[...new Set(U.map(({group:Q})=>Q))];return o.jsx(aF,{pad:!0,column:!0,gap:"md",scrollable:!0,children:F.map(Q=>{const B=U.filter(({group:R})=>R===Q);return o.jsx(Wh,{title:Q,children:o.jsx(gH,{children:B.map(({id:R,colSpan:V,defaultValue:l,defaultValueIndex:J,options:d,...W})=>o.jsx(fH,{colSpan:V,children:o.jsx(dh,{...W,id:R,defaultValue:l??d[J].value,options:d})},R))})},Q)})})},qH=U=>typeof U=="object"&&!Array.isArray(U)&&U!==null,AH=U=>Object.fromEntries(Object.entries(U).reduce((F,[Q,B])=>qH(B)?[...F,...Object.entries(B)]:[...F,[Q,B]],[])),_H=({objectInfo:U,formState:F,adapterConfig:Q})=>{if(!Q)return[];const B=AH(F),R={get:(d,W)=>[d,B[W]].filter(Z=>Z).join(" "),raw:(d,W)=>[d,W].filter(Z=>Z).join(" "),num:(d,W)=>Number(W),if:(d,W)=>{if(B[W]||B[W]===0)return d},clear:()=>{},multiply:(d,W)=>Number(d)*Number(B[W]),round:d=>Math.round(d),add:(d,W)=>Number(d)+Number(B[W]),findInCkptNames:d=>{if(console.log({objectInfo:U}),!!U)return U.CheckpointLoaderSimple.input.required.ckpt_name[0].find(W=>W.toLowerCase().includes(d.toLowerCase()))},findInLoraNames:d=>{if(U)return U.LoraLoader.input.required.lora_name[0].find(W=>W.toLowerCase().includes(d.toLowerCase()))}},V=(d,W)=>{const[Z,D]=W.split(":");return R[Z](d,D)},l=(d,W)=>{if(Array.isArray(W)){let Z=!1;return W.reduce((p,h)=>{if(Array.isArray(h))return[...p,h];if(Z)return p;const[t,G]=h.split(":");return t==="if"?(R[t](d,G)||(Z=!0),p):[...p,h]},[]).reduce(l,d)}return V(d,W)};return Q.map(({destination:d,actions:W})=>({destination:d,value:l(void 0,W)}))},$H=U=>U.nodes.reduce((Q,{id:B,mode:R,inputs:V,outputs:l})=>({...Q,...l==null?void 0:l.reduce((J,{links:d,name:W},Z)=>({...J,...(d||[]).reduce((D,a)=>({...D,[a]:{link:[String(B),Z],bypassTo:R===4&&(V==null?void 0:V.find(({type:p})=>p===W).link)}}),{})}),{})}),{}),Zh=(U,F)=>{const{link:Q,bypassTo:B}=U[F];return B?Zh(U,B):Q},Sh=(U,F)=>{var R,V;const Q=Object.keys(((V=(R=U==null?void 0:U[F])==null?void 0:R.input)==null?void 0:V.required)||{}),B=Q.indexOf("seed");return F==="KSampler"&&B!==-1&&Q.splice(B+1,0,"control_after_generate"),F==="SamplerCustom"?["model","positive","negative","sampler","sigmas","latent_image","add_noise","noise_seed","control_after_generate","cfg"]:Q},Uz=({comfyWorkflow:U,objectInfo:F})=>{if(!U)return{};const Q=$H(structuredClone(U));return structuredClone(U).nodes.reduce((R,{id:V,type:l,mode:J,inputs:d,widgets_values:W=[]})=>{if(J===4)return R;const D=Sh(F,l).reduce((a,p)=>{var G;const h=(G=d==null?void 0:d.find(({name:n})=>n===p))==null?void 0:G.link,t=h?Zh(Q,h):W.shift();return{...a,[p]:t}},{});return{...R,[V]:{class_type:l,inputs:D}}},{})},Fz=(U,F,Q,B)=>{const[R,V]=Q.split(" > "),l=structuredClone(U).nodes.map(J=>{const{type:d,title:W,inputs:Z,widgets_values:D}=J;if([d,W].includes(R)){V==="mode"&&(J.mode=Number(B));const a=Sh(F,d),p=(Z==null?void 0:Z.map(({name:G})=>G))||[],t=a.filter(G=>!p.includes(G)).findIndex(G=>G===V);D[t]=B}return J});return{...U,nodes:l}},Qz=()=>{const{bridge:U,data:F}=s.useContext(RR),{error:Q,loading:B}=F.prompt,[R,V]=s.useState(!1),{config:l,config:{baseWorkflow:J}}=s.useContext(tV),{formState:d,formState:{enableSeedRandomisation:W},updateFormState:Z}=s.useContext(b0),D=()=>{if(W){const G=Math.floor(Math.random()*1e10);Z({seed:G})}const a=_H({objectInfo:F.objectInfo.data,formState:d,adapterConfig:l.configData.adapterConfig}),p=structuredClone({...J}),h=a.reduce((G,{destination:n,value:k})=>Fz(G,F.objectInfo.data,n,k),p),t=Uz({comfyWorkflow:h,objectInfo:F.objectInfo.data});U.prompt({comfyUrl:F.ws.comfyUrl,promptData:t})};return o.jsxs(o.Fragment,{children:[Q&&o.jsx(ed,{children:Q}),o.jsxs(aF,{gap:"md",children:[!R&&o.jsx(TV,{wide:!0,onClick:D,children:B?o.jsx(kd,{}):"Generate"}),o.jsx(oB,{text:"Automatic Generation",wide:R,children:o.jsx(TV,{variant:"secondary","aria-label":"Automatic Generation",onClick:()=>V(!R),wide:R,children:R?o.jsx(Ob,{}):o.jsx(ib,{})})})]})]})},Bz=()=>o.jsxs(aF,{as:"aside",column:!0,fullHeight:!0,bgfg:1,children:[o.jsx(aF,{as:"header",column:!0,bgfg:2,children:o.jsx(CH,{})}),o.jsx(PH,{}),o.jsx(aF,{as:"footer",pad:!0,column:!0,gap:"md",bgfg:2,children:o.jsx(Qz,{})})]}),Rz=UU.span`
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--fg0);
+  border-radius: 50%; // circle
+  transition: background-position 250ms ease-in-out;
+  background: linear-gradient(
+    in oklch -180deg,
+    grey,
+    black,
+    deepskyblue,
+    blue,
+    chartreuse,
+    green,
+    crimson,
+    darkred
+  );
+  background-size: 100% 700%;
+  background-repeat: no-repeat;
+  background-position: ${({status:U})=>({DEFAULT:"0% 0%",CONNECTING:"0% 33.33%",CONNECTED:"0% 66.66%",DISCONNECTED:"0% 100%"})[U]};
+`,Vz={DEFAULT:"Status unknown",CONNECTING:"Connecting…",CONNECTED:"Connected!",DISCONNECTED:"Disconnected"},Nh=({status:U="DEFAULT"})=>o.jsx(oB,{text:Vz[U],children:o.jsx(Rz,{status:U})});Nh.propTypes={status:I.oneOf(["DEFAULT","CONNECTING","CONNECTED","DISCONNECTED"])};const lz=UU.button`
+  cursor: pointer;
+  display: block;
+  background: transparent;
+  font-size: inherit;
+  border: none;
+  color: var(--fg-mute);
+  border-radius: var(--radius);
+  margin: 0;
+  padding: 0;
+  &:hover {
+    color: var(--fg0);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+`,Jz=UU.span`
+  ${aQ(1)}
+  position: absolute;
+  font-size: 0.75rem; // 12px
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`,dz=UU.button`
+  cursor: pointer;
+  display: block;
+  background: transparent;
+  border: none;
+  color: var(--fg-mute);
+  border-radius: var(--radius);
+  margin: 0;
+  padding: 0;
+  &:hover {
+    color: var(--fg0);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  width: 100%;
+  text-align: left;
+`,nh=({className:U=void 0,children:F=null,options:Q=[],...B})=>{const[R,V]=s.useState(!1),{refs:l,floatingStyles:J,context:d}=f2({placement:"auto",middleware:[yX(),s2(),L2({padding:14})],open:R,onOpenChange:a=>{V(a)}}),W=BH(d),{getReferenceProps:Z,getFloatingProps:D}=VH([W]);return o.jsxs(o.Fragment,{children:[o.jsx(lz,{...B,className:U,ref:l.setReference,onClick:()=>V(!R),...Z(),children:F}),R&&o.jsx(Jz,{ref:l.setFloating,style:J,...D(),children:Q.map(({label:a,onClick:p})=>o.jsx("div",{children:o.jsx(dz,{onClick:p,children:a})},a))})]})};nh.propTypes={className:I.string,lm:I.bool,wide:I.bool,children:I.node,options:I.arrayOf(I.shape({label:I.string,onClick:I.func}))};const Wz=UU.pre`
+  position: absolute;
+  inset: 0;
+  white-space: pre-wrap;
+  background: #000e;
+  color: #0f0;
+  padding: 20px;
+  margin: 0;
+  border: 0;
+  z-index: 10;
+  overflow: scroll;
+`,Eh=({onClick:U=()=>{},data:F=void 0})=>o.jsx(Wz,{onClick:U,children:JSON.stringify(F,null,2)});Eh.propTypes={onClick:I.func,data:I.any};const Zz=UU.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 4px;
+  color: var(--fg-mute);
+  background: var(--bg1);
+  padding: 4px;
+`,jT=UU.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  flex-shrink: ${({$shrinkable:U})=>U?1:0};
+`,Sz=UU.div`
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`,OT=UU.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  &:hover {
+    color: var(--fg0);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+`,Nz=()=>{const U=s.useContext(RR),{formState:F}=s.useContext(b0),{config:{baseWorkflow:Q}}=s.useContext(tV),{adapted:B,adaptedComfyWorkflow:R,bodyData:V}=s.useContext(RR),[l,J]=s.useState(),d=[{label:"comfyBridge.data.ws",onClick:()=>J("comfyBridge.data.ws")},{label:"comfyBridge.data.objectInfo",onClick:()=>J("comfyBridge.data.objectInfo")},{label:"comfyBridge.data.prompt",onClick:()=>J("comfyBridge.data.prompt")},{label:"comfyBridge.data.queue",onClick:()=>J("comfyBridge.data.queue")},{label:"comfyBridge.data.queueSelected",onClick:()=>J("comfyBridge.data.queueSelected")},{label:"formState",onClick:()=>J("formState")},{label:"adapted",onClick:()=>J("adapted")},{label:"baseWorkflow",onClick:()=>J("baseWorkflow")},{label:"adaptedComfyWorkflow",onClick:()=>J("adaptedComfyWorkflow")},{label:"bodyData",onClick:()=>J("bodyData")}],W={"comfyBridge.data.ws":U.data.ws,"comfyBridge.data.objectInfo":U.data.objectInfo,"comfyBridge.data.prompt":U.data.prompt,"comfyBridge.data.queue":U.data.queue,"comfyBridge.data.queueSelected":U.data.queueSelected,formState:F,adapted:B,baseWorkflow:Q,adaptedComfyWorkflow:R,bodyData:V}[l];return o.jsxs(Zz,{children:[o.jsxs(jT,{$shrinkable:!0,children:[o.jsx(Nh,{status:U.data.ws.status}),o.jsx(Sz,{children:U.data.ws.statusText})]}),o.jsxs(jT,{children:[o.jsx(OT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:o.jsx(vb,{"aria-label":"Github"})}),o.jsx(OT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:o.jsx(sb,{"aria-label":"Storybook"})}),o.jsx(nh,{"aria-label":"Debug Data Options",options:d,children:o.jsx(xb,{})}),l&&o.jsx(Eh,{onClick:()=>J(),data:W})]})]})},nz=UU.div`
   height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`,Ez=UU.div`
+  overflow: hidden;
+  flex-grow: 1;
+  display: grid;
 
   // portrait first
   grid-template-rows: auto 400px;
@@ -744,4 +751,4 @@ Error generating stack: `+V.message+`
       order: 2; // change the order on landscape, so that sidebar is first
     }
   }
-`,Ez=()=>o.jsxs(nz,{children:[o.jsx(MH,{}),o.jsx(Nz,{})]});PW.createRoot(document.getElementById("root")).render(o.jsxs(s.StrictMode,{children:[o.jsx(P3,{}),o.jsxs(D1,{children:[o.jsx(f3,{}),o.jsx(Ez,{})]})]}));
+`,kz=()=>o.jsxs(nz,{children:[o.jsxs(Ez,{children:[o.jsx(EH,{}),o.jsx(Bz,{})]}),o.jsx(Nz,{})]});PW.createRoot(document.getElementById("root")).render(o.jsxs(s.StrictMode,{children:[o.jsx(P3,{}),o.jsxs(D1,{children:[o.jsx(f3,{}),o.jsx(kz,{})]})]}));
