@@ -7,9 +7,6 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/index.js
-  76:9  warning  Unexpected console statement  no-console
-
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/comfybridge/useComfyUpload.js
   1:25  error  Unable to resolve path to module './queue/useComfyApi'  import/no-unresolved
   1:25  error  Missing file extension for "./queue/useComfyApi"        import/extensions
@@ -37,7 +34,7 @@
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/executeAdapter.js
   50:7  warning  Unexpected console statement  no-console
 
-✖ 20 problems (17 errors, 3 warnings)
+✖ 19 problems (17 errors, 2 warnings)
 
 Lint has modified 0 files
 
