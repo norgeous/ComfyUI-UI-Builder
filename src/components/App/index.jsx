@@ -1,11 +1,15 @@
 import MainContent from '@/components/MainContent';
 import Sidebar from '@/components/Sidebar';
-import { Page } from './styled';
+import StatusBar from '@/components/StatusBar';
+import { Content, Page } from './styled';
 
 const App = () => (
   <Page>
-    <MainContent />
-    <Sidebar />
+    <Content>
+      <MainContent />
+      <Sidebar />
+    </Content>
+    <StatusBar />
   </Page>
 );
 

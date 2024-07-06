@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
 import Timeline from '@/components//Timeline';
-import StatusBar from '@/components/StatusBar';
 import { ContentArea, Main } from './styled';
 
 const MainContent = () => {
@@ -28,7 +27,6 @@ const MainContent = () => {
         <ImageGrid images={images} />
       </ContentArea>
       <Timeline items={queue} />
-      <StatusBar />
     </Main>
   );
 };

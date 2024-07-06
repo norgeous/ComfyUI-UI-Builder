@@ -2,8 +2,16 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Page = styled.div`
-  display: grid;
   height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+export const Content = styled.div`
+  overflow: hidden;
+  flex-grow: 1;
+  display: grid;
 
   // portrait first
   grid-template-rows: auto 400px;

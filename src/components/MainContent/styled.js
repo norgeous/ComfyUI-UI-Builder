@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { bgfg } from '@/components/GlobalStyles';
 
 export const Main = styled.main`
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -11,7 +12,7 @@ export const Main = styled.main`
 
 export const ContentArea = styled.div`
   ${bgfg(0)}
-  flex: 1;
+  flex: 1 1 50%;
   padding: 10px;
   overflow: hidden;
   background-size: 8px 8px;
