@@ -140,7 +140,7 @@ const getMockJobEvents = ({ promptId }) => [
       prompt_id: promptId,
       node: '13',
       output: {
-        images: [{ filename: 'SDXL_0001_.png', subfolder: '', type: 'output' }],
+        images: [{ filename: '01', subfolder: '', type: 'output' }],
       },
     },
   },
@@ -229,8 +229,8 @@ const interruptMock = http.get(`${window.location.origin}/interrupt`, () =>
 
 const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
   const url = new URL(request.url);
-  const width = url.searchParams.get('width') || 512;
-  const height = url.searchParams.get('height') || 512;
+  const width = url.searchParams.get('width') || 1024;
+  const height = url.searchParams.get('height') || 1024;
   const fontSize = Math.min(width, height) / 2;
   const svg = `
     <svg
