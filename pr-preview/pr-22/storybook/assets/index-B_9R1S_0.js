@@ -26,7 +26,7 @@ import{j as a}from"./jsx-runtime-Nms4Y4qS.js";import{r as s}from"./index-BwDkhjy
   user-select: none;
   display: block;
   max-width: 100%;
-  object-fit: ${({$scaleUp:e})=>e?"scale-down":"contain"};
+  object-fit: ${({$scaleUp:e})=>e?"contain":"scale-down"};
   ${({$open:e})=>e!==void 0?x`
           scroll-snap-stop: normal;
           scroll-snap-align: center;

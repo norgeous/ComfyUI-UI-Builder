@@ -81,7 +81,7 @@ Error generating stack: `+V.message+`
   user-select: none;
   display: block;
   max-width: 100%;
-  object-fit: ${({$scaleUp:U})=>U?"scale-down":"contain"};
+  object-fit: ${({$scaleUp:U})=>U?"contain":"scale-down"};
   ${({$open:U})=>U!==void 0?GU`
           scroll-snap-stop: normal;
           scroll-snap-align: center;
