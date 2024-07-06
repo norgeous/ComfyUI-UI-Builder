@@ -19,7 +19,8 @@ const MainContent = () => {
     }))
     .toReversed();
 
-  const { images } = queue[0];
+  const selected = data.queueSelected.promptId;
+  const { images } = queue.find(({ promptId }) => promptId === selected) || {};
 
   return (
     <Main>

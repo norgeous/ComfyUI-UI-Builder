@@ -1,4 +1,3 @@
-import uuidv4 from './utils/uuidv4';
 import simpleFetch from './utils/simpleFetch';
 import connectWs from './websocket';
 
@@ -25,6 +24,7 @@ const comfybridge = ({ onChange = () => {} }) => {
     ws: {},
     objectInfo: {},
     queue: {},
+    queueSelected: {},
   };
   const updateState = (key, newData) => {
     state[key] = { ...state[key], ...newData };
@@ -49,7 +49,10 @@ const comfybridge = ({ onChange = () => {} }) => {
           updateState('queue', {
             [promptId]: { ...state.queue[promptId], type, ...otherData },
           });
-        } else console.log(message);
+          if (type === 'executed') {
+            updateState('queueSelected', { promptId });
+          }
+        } // else console.log(message);
       },
     });
     state.destroyRetry = destroyRetry;

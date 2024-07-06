@@ -32,6 +32,10 @@ const StatusBar = () => {
       label: 'comfyBridge.data.queue',
       onClick: () => setDebugData('comfyBridge.data.queue'),
     },
+    {
+      label: 'comfyBridge.data.queueSelected',
+      onClick: () => setDebugData('comfyBridge.data.queueSelected'),
+    },
     { label: 'formState', onClick: () => setDebugData('formState') },
     { label: 'adapted', onClick: () => setDebugData('adapted') },
     {
@@ -49,6 +53,7 @@ const StatusBar = () => {
     'comfyBridge.data.ws': comfyBridge.data.ws,
     'comfyBridge.data.objectInfo': comfyBridge.data.objectInfo,
     'comfyBridge.data.queue': comfyBridge.data.queue,
+    'comfyBridge.data.queueSelected': comfyBridge.data.queueSelected,
     formState,
     adapted,
     baseWorkflow,

@@ -1,32 +1,36 @@
 import PropTypes from 'prop-types';
+
+import { useContext } from 'react';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
+
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import {
   SpinnerIcon,
-  InterruptIcon,
-  WarningIcon,
+  // InterruptIcon,
+  // WarningIcon,
   DismissIcon,
 } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
 import { Img, QueueTitle } from './styled';
 
-const getInterruptIcon = ({ interruptLoading, interruptError }) => {
-  if (interruptError) return <WarningIcon />;
-  if (interruptLoading) return <SpinnerIcon />;
-  return <InterruptIcon />;
-};
+// const getInterruptIcon = ({ interruptLoading, interruptError }) => {
+//   if (interruptError) return <WarningIcon />;
+//   if (interruptLoading) return <SpinnerIcon />;
+//   return <InterruptIcon />;
+// };
 
 const QueueItem = ({
-  id = undefined,
-  loading = false,
-  error = undefined,
-  data = undefined,
-  status = undefined,
-  progress = 0,
-  onInterrupt = () => {},
-  interruptLoading = false,
-  interruptError = '',
+  // id = undefined,
+  // loading = false,
+  // error = undefined,
+  // data = undefined,
+  // status = undefined,
+  // progress = 0,
+  // onInterrupt = () => {},
+  // interruptLoading = false,
+  // interruptError = '',
   onRemove = () => {},
 
   promptId = undefined,
@@ -36,6 +40,8 @@ const QueueItem = ({
   max = undefined,
   images = undefined,
 }) => {
+  const { data, bridge } = useContext(ComfyBridgeContext);
+
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
   const isProgressing = type === 'progress';
@@ -53,7 +59,13 @@ const QueueItem = ({
         {isProgressing && <Progress value={value} max={max} />}
       </QueueTitle>
 
-      {images && <Img src={`${images[0]}`} />}
+      <Button
+        small
+        aria-label="Select"
+        onClick={() => bridge.updateState('queueSelected', { promptId })}
+      >
+        {images && <Img src={`${images[0]}`} />}
+      </Button>
 
       <Tooltip lm text="Remove">
         <Button small aria-label="Remove" onClick={onRemove}>
