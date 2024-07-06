@@ -5,13 +5,28 @@ import { Button, Container, Outer } from './styled';
 import Item from './Item';
 import { MaximiseIcon, MinimiseIcon } from '../Icons';
 
+const useImageSize = image => {
+  const [size, setSize] = useState([512, 512]);
+
+  useEffect(() => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => setSize([img.naturalWidth, img.naturalHeight]);
+    img.src = image;
+  }, [image]);
+
+  return size;
+};
+
 const gapSizePx = 8;
 
-const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
+const ImageGrid = ({ images = [] }) => {
   const [scaleUp, setScaleUp] = useState(false);
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
+
+  const [w, h] = useImageSize(images[0]); // size of first image in batch
 
   const calculateColumnCount = () => {
     if (!ref.current) return;
@@ -21,7 +36,7 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
     const newColumnCount =
       images
         .map((image, i) => {
-          const [w, h] = imageSize;
+          // const [w, h] = imageSize;
           const a = h / w;
           const cc = i + 1;
           const rowCount = Math.ceil(images.length / cc);
@@ -46,7 +61,7 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
     setColumnCount(newColumnCount);
   };
 
-  useEffect(calculateColumnCount, [ref, images, imageSize]);
+  useEffect(calculateColumnCount, [ref, images, w, h]);
 
   useEffect(() => {
     window.addEventListener('resize', calculateColumnCount);
@@ -109,7 +124,6 @@ const ImageGrid = ({ imageSize = [512, 512], images = [] }) => {
 };
 
 ImageGrid.propTypes = {
-  imageSize: PropTypes.arrayOf(PropTypes.number),
   images: PropTypes.arrayOf(PropTypes.string),
 };
 
