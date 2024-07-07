@@ -2,488 +2,10 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] FAIL browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/imagegrid.test.js
-[TEST]   ● Console
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬───────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │        id        │  impact   │                                                    description                                                    │ nodes │
-[TEST]       ├─────────┼──────────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'color-contrast' │ 'serious' │ 'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds' │   1   │
-[TEST]       └─────────┴──────────────────┴───────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────────────────────────────┬────────────┐
-[TEST]       │ (index) │                  target                  │ violations │
-[TEST]       ├─────────┼──────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │ '["#storybook-root > div:nth-child(1)"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────────────────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]   ● ImageGrid › Square 1 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Square 2 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Square 3 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Square 4 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Square 25 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Square 50 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Landscape 1 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Landscape 2 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Landscape 3 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Landscape 50 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Portrait 1 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Portrait 2 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Portrait 3 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST]   ● ImageGrid › Portrait 50 › smoke-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/tooltip.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/tooltip.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/queueitem.test.js
 [TEST]   ● QueueItem › Loading › play-test
 [TEST] 
 [TEST]     page.evaluate: StorybookTestRunnerError: 
@@ -535,9 +57,9 @@
 [TEST] 
 [TEST]     [1m[33mwarn[39m[22m: [MSW] Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
 [TEST] 
-[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=dd8f2ad5-c941-4365-b36d-8a3193df9fd7","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=5c7317c7-29ef-41a7-b161-cfd2f81f1e8f","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
 [TEST] 
-[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=dd8f2ad5-c941-4365-b36d-8a3193df9fd7","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
+[TEST]     [1m[34mlog[39m[22m: Client:, {"CONNECTING":0,"OPEN":1,"CLOSING":2,"CLOSED":3,"_onopen":null,"_onmessage":null,"_onerror":null,"_onclose":null,"url":"ws://127.0.0.1:6006/ws?clientId=5c7317c7-29ef-41a7-b161-cfd2f81f1e8f","protocol":"","extensions":"","binaryType":"blob","readyState":1,"bufferedAmount":0}
 [TEST] 
 [TEST]     [0m [90m 11 |[39m           [36mawait[39m globalThis[33m.[39m__sbPreVisit(page[33m,[39m context)[33m;[39m
 [TEST]      [90m 12 |[39m         }
@@ -547,24 +69,24 @@
 [TEST]      [90m 15 |[39m           hasPlayFn
 [TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
-[TEST]       at evaluate (../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/queueitem.test.js:13:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/queueitem.test.js:34:9)
+[TEST]       at evaluate (../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/queueitem.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/queueitem.test.js:34:9)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/resetbutton.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/resetbutton.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/maincontent.test.js
 [TEST]   ● MainContent › Main Content › play-test
 [TEST] 
 [TEST]     page.evaluate: StorybookTestRunnerError: 
@@ -617,166 +139,40 @@
 [TEST]      [90m 15 |[39m           hasPlayFn
 [TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
-[TEST]       at evaluate (../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/maincontent.test.js:13:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/maincontent.test.js:34:9)
+[TEST]       at evaluate (../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/maincontent.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/maincontent.test.js:34:9)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/timeline.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/timeline.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/app.test.js
 [TEST] 
 [TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/imagegrid.test.js
+[TEST] FAIL ../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/queueitem.test.js
+[TEST]   ● QueueItem › Loading › play-test
 [TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST] 
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST] 
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]       1
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST] 
-[TEST]     Message:
-[TEST] 
-[TEST] 
-[TEST] FAIL ../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/queueitem.test.js
-[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
 [TEST] 
 [TEST] 
 [TEST] 
 [TEST]     <button
 [TEST]     />
 [TEST] 
+[TEST]     Ignored nodes: comments, script, style
 [TEST]     <button
 [TEST]     >
 [TEST]       <svg
@@ -784,64 +180,69 @@
 [TEST]         stroke="currentColor"
 [TEST]         width="1em"
 [TEST]       >
+[TEST]         <path
 [TEST]         />
+[TEST]       </svg>
 [TEST]     </button>
 [TEST] 
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST]     --------------------------------------------------
-[TEST] 
-[TEST]     Browser logs:
 [TEST] 
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST]      [90m 15 |[39m           hasPlayFn
 [TEST] 
 [TEST] 
-[TEST] FAIL ../../../../../tmp/16b8b8204339a19f84906e8f2d6ff125/maincontent.test.js
 [TEST] 
+[TEST] FAIL ../../../../../tmp/42beb67a467d86ea4adf5f08df15808c/maincontent.test.js
+[TEST]   ● MainContent › Main Content › play-test
+[TEST] 
+[TEST]     page.evaluate: StorybookTestRunnerError: 
+[TEST]     An error occurred in the following story. Access the link for full output:
 [TEST] 
 [TEST]     Message:
+[TEST]      Unable to find an accessible element with the role "button"
 [TEST] 
+[TEST]     Here are the accessible roles:
 [TEST] 
 [TEST]       main:
 [TEST] 
+[TEST]       Name "":
 [TEST]       <main
 [TEST]         class="sc-dtImxT bMNJIw"
+[TEST]       />
 [TEST] 
 [TEST] 
-[TEST]     Ignored nodes: comments, script, style
+[TEST]     <div
 [TEST]       id="storybook-root"
 [TEST]     >
 [TEST]       <main
+[TEST]         class="sc-dtImxT bMNJIw"
 [TEST]       >
 [TEST]         <div
 [TEST]           class="sc-kOPcje iNUOZj"
 [TEST]         />
 [TEST]         <div
-[TEST]           class="sc-bXCLgj fsfFFb"
 [TEST]           style="flex-grow: 0;"
 [TEST]         />
-[TEST]       </main>
 [TEST]     </div>
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST]     Browser logs:
 [TEST] 
 [TEST] 
-[TEST]      [90m 12 |[39m         }
+[TEST]      [90m 15 |[39m           hasPlayFn
+[TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST] Test Suites: 3 failed, 1 skipped, 34 passed, 37 of 38 total
-[TEST] Tests:       16 failed, 1 skipped, 43 passed, 60 total
+[TEST] Test Suites: 2 failed, 1 skipped, 35 passed, 37 of 38 total
+[TEST] Tests:       2 failed, 1 skipped, 57 passed, 60 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        38.502 s
+[TEST] Time:        37.251 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/16b8b8204339a19f84906e8f2d6ff125
+[TEST] [test-storybook] Cleaning up /tmp/42beb67a467d86ea4adf5f08df15808c
 [TEST] npm error Lifecycle script `unittest` failed with error:
 [TEST] npm error Error: command failed
 [TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
