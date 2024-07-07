@@ -15,36 +15,29 @@ export default {
 
 export const Square1 = {
   args: {
-    images: ['/view?filename=01&width=1024&height=1024'],
+    images: ['/view?filename=01'],
   },
 };
 
 export const Square2 = {
   args: {
-    images: [
-      'http://localhost:6006/view?filename=01',
-      'http://localhost:6006/view?filename=02',
-    ],
+    images: ['/view?filename=01', '/view?filename=02'],
   },
 };
 
 export const Square3 = {
   args: {
-    images: [
-      'http://localhost:6006/view?filename=01',
-      'http://localhost:6006/view?filename=02',
-      'http://localhost:6006/view?filename=03',
-    ],
+    images: ['/view?filename=01', '/view?filename=02', '/view?filename=03'],
   },
 };
 
 export const Square4 = {
   args: {
     images: [
-      'http://localhost:6006/view?filename=01',
-      'http://localhost:6006/view?filename=02',
-      'http://localhost:6006/view?filename=03',
-      'http://localhost:6006/view?filename=04',
+      '/view?filename=01',
+      '/view?filename=02',
+      '/view?filename=03',
+      '/view?filename=04',
     ],
   },
 };
