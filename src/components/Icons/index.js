@@ -60,6 +60,4 @@ export const SpinnerIcon = styled(styled(FaSpinner)(baseIconCss))`
 export const StorybookIcon = styled(SiStorybook)(baseIconCss);
 export const WarningIcon = styled(FaTriangleExclamation)(baseIconCss);
 export const DismissIcon = styled(FaXmark)(baseIconCss);
-export const MaximiseIcon = styled(FaMaximize)(baseIconCss);
-export const MinimiseIcon = styled(FaMinimize)(baseIconCss);
 export const SettingsIcon = styled(FaGear)(baseIconCss);
