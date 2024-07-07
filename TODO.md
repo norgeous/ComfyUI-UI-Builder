@@ -17,7 +17,6 @@
 - tidy up code (linting, remove Timeline or Queue component)
 - queue doesnt handle cached nodes very well
 - reset checkpoint button not showing up after change
-- DebugMenu stories
 - tray items need tooltips
 
 ## Next
