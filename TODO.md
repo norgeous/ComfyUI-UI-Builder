@@ -15,8 +15,6 @@
 - fix prompt interrupt
 - comfy bridge readme
 - tidy up code
-- fix buggy imagegrid
-  - ImageGrid: stops listening to window resize (?) after hitting generate again / calculation is wrong
 - reset checkpoint button not working
 - settings cog in status bar
   - scale images up toggle
