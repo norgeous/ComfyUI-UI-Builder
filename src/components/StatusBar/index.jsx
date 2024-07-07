@@ -12,7 +12,7 @@ import {
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
-import { Bar, Link, Button, StatusText, Tray } from './styled';
+import { Bar, Link, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
@@ -92,16 +92,22 @@ const StatusBar = () => {
           <StorybookIcon aria-label="Storybook" />
         </Link>
 
-        <PopMenu aria-label="Debug Data Options" options={debugOptions}>
+        <PopMenu aria-label="View Debug Data" options={debugOptions}>
           <BugIcon />
         </PopMenu>
         {debugData && (
           <Debug onClick={() => setDebugData()} data={debugDatum} />
         )}
 
-        <Button onClick={() => alert('WIP')}>
+        <PopMenu
+          aria-label="View Debug Data"
+          options={[
+            { label: 'op1', onClick: () => alert('WIP') },
+            { label: 'op2', onClick: () => alert('WIP') },
+          ]}
+        >
           <SettingsIcon aria-label="Settings" />
-        </Button>
+        </PopMenu>
       </Tray>
     </Bar>
   );
