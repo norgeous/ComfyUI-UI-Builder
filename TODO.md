@@ -8,7 +8,6 @@
 
 ## Now
 
-- remove queue item button not working
 - hide title on completed items
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
@@ -17,10 +16,8 @@
 - comfy bridge readme
 - tidy up code
 - fix buggy imagegrid
-  - ImageGrid: stops listening to window resize (?) after hitting generate again
+  - ImageGrid: stops listening to window resize (?) after hitting generate again / calculation is wrong
 - reset checkpoint button not working
-- interrupt and queue features
-  - using multiple instances, how should queue work? clientId adjustments...
 - settings cog in status bar
   - scale images up toggle
 
