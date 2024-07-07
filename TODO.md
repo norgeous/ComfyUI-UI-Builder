@@ -15,17 +15,18 @@
 - fix prompt interrupt
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
-- settings cog in status bar
+- SettingsMenu
   - scale images up toggle
   - pixel optimisation toggle
+  - SettingsMenu stories
+  - needs a context
 - reset checkpoint button not showing up after change
 - DebugMenu stories
-- SettingsMenu stories
 - tray items need tooltips
 
 ## Next
 
-- settings cog in status bar
+- SettingsMenu
   - save history to local storage toggle
   - save changes to local storage toggle
   - show prompt/settings as caption?
