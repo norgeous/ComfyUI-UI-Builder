@@ -13,13 +13,14 @@ import { Button, Menu, MenuItem } from './styled';
 const PopMenu = ({
   className = undefined,
   children = null,
+  menuContents = null,
   options = [],
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     placement: 'auto',
-    middleware: [autoPlacement(), flip(), shift({ padding: 14 })],
+    middleware: [autoPlacement(), flip(), shift({ padding: 4 })],
     open: isOpen,
     onOpenChange: newIsOpen => {
       setIsOpen(newIsOpen);
@@ -52,6 +53,7 @@ const PopMenu = ({
               <MenuItem onClick={onClick}>{label}</MenuItem>
             </div>
           ))}
+          {menuContents}
         </Menu>
       )}
     </>
@@ -63,6 +65,7 @@ PopMenu.propTypes = {
   lm: PropTypes.bool,
   wide: PropTypes.bool,
   children: PropTypes.node,
+  menuContents: PropTypes.node,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
