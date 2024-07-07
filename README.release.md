@@ -15,7 +15,7 @@ Alternative configurable React UI overlay for [ComfyUI](https://github.com/comfy
 ## How to use without install
 
 - Run ComfyUI with `--enable-cors-header https://norgeous.github.io --listen 0.0.0.0` ⚠️ UNSAFE ⚠️
-- Visit https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/
+- Visit https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/ in firefox
 
 ## How to install into ComfyUI
 
