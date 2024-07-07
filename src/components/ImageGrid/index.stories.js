@@ -133,14 +133,14 @@ export const Square50 = {
 
 export const Landscape1 = {
   args: {
-    imageSize: [1344, 768],
+    // imageSize: [1344, 768],
     images: ['/view?filename=01&width=1344&height=768'],
   },
 };
 
 export const Landscape2 = {
   args: {
-    imageSize: [1344, 768],
+    // imageSize: [1344, 768],
     images: [
       '/view?filename=01&width=1344&height=768',
       '/view?filename=02&width=1344&height=768',
@@ -150,7 +150,7 @@ export const Landscape2 = {
 
 export const Landscape3 = {
   args: {
-    imageSize: [1344, 768],
+    // imageSize: [1344, 768],
     images: [
       '/view?filename=01&width=1344&height=768',
       '/view?filename=02&width=1344&height=768',
@@ -161,7 +161,7 @@ export const Landscape3 = {
 
 export const Landscape50 = {
   args: {
-    imageSize: [1344, 768],
+    // imageSize: [1344, 768],
     images: [
       '/view?filename=01&width=1344&height=768',
       '/view?filename=02&width=1344&height=768',
@@ -219,14 +219,14 @@ export const Landscape50 = {
 
 export const Portrait1 = {
   args: {
-    imageSize: [768, 1344],
+    // imageSize: [768, 1344],
     images: ['/view?filename=01&width=768&height=1344'],
   },
 };
 
 export const Portrait2 = {
   args: {
-    imageSize: [768, 1344],
+    // imageSize: [768, 1344],
     images: [
       '/view?filename=01&width=768&height=1344',
       '/view?filename=02&width=768&height=1344',
@@ -247,7 +247,7 @@ export const Portrait3 = {
 
 export const Portrait50 = {
   args: {
-    imageSize: [768, 1344],
+    // imageSize: [768, 1344],
     images: [
       '/view?filename=01&width=768&height=1344',
       '/view?filename=02&width=768&height=1344',
