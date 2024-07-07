@@ -21,6 +21,7 @@ import {
   FaXmark,
   FaMaximize,
   FaMinimize,
+  FaGear,
 } from 'react-icons/fa6';
 import { SiStorybook } from 'react-icons/si';
 
@@ -61,3 +62,4 @@ export const WarningIcon = styled(FaTriangleExclamation)(baseIconCss);
 export const DismissIcon = styled(FaXmark)(baseIconCss);
 export const MaximiseIcon = styled(FaMaximize)(baseIconCss);
 export const MinimiseIcon = styled(FaMinimize)(baseIconCss);
+export const SettingsIcon = styled(FaGear)(baseIconCss);
