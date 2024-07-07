@@ -1,22 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import screenfull from 'screenfull';
 import { Button, Container, Outer } from './styled';
 import Item from './Item';
 import { MaximiseIcon, MinimiseIcon } from '../Icons';
-
-const useImageSize = image => {
-  const [size, setSize] = useState([512, 512]);
-
-  useEffect(() => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => setSize([img.naturalWidth, img.naturalHeight]);
-    img.src = image;
-  }, [image]);
-
-  return size;
-};
+import calculateColumnCount from './calc';
+import useImageSize from './useImageSize';
 
 const gapSizePx = 8;
 
@@ -25,50 +14,31 @@ const ImageGrid = ({ images = [] }) => {
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
-
+  const { width, height } = ref.current?.getBoundingClientRect() || {};
   const [w, h] = useImageSize(images[0]); // size of first image in batch
-
-  const calculateColumnCount = () => {
+  const calculate = useCallback(() => {
     if (!ref.current) return;
 
-    const { width, height } = ref.current.getBoundingClientRect();
-
-    const newColumnCount =
-      images
-        .map((image, i) => {
-          // const [w, h] = imageSize;
-          const a = h / w;
-          const cc = i + 1;
-          const rowCount = Math.ceil(images.length / cc);
-
-          const hGaps = gapSizePx * (cc - 1);
-          const vGaps = gapSizePx * (rowCount - 1);
-
-          // the maximal size of each cell in the grid, given the current layout
-          const cellWidthMax = (width - hGaps) / cc;
-          const cellHeightMax = (height - vGaps) / rowCount;
-
-          const aspect2 = 1 / a; // inverse aspect
-
-          const imgWidth = Math.min(w, cellWidthMax, cellHeightMax / a);
-          const imgHeight = Math.min(h, cellHeightMax, cellWidthMax / aspect2);
-          const imgArea = imgWidth * imgHeight;
-
-          return imgArea;
-        })
-        .reduce((iMax, x, i, arr) => (x > arr[iMax] ? i : iMax), 0) + 1; // find index of largest area and add 1
+    const newColumnCount = calculateColumnCount({
+      containerWidth: width,
+      containerHeight: height,
+      naturalImageWidth: w,
+      naturalImageHeight: h,
+      gapSizePx,
+      imageCount: images.length,
+    });
 
     setColumnCount(newColumnCount);
-  };
+  }, [h, height, images.length, w, width]);
 
-  useEffect(calculateColumnCount, [ref, images, w, h]);
+  useEffect(calculate, [calculate]);
 
   useEffect(() => {
-    window.addEventListener('resize', calculateColumnCount);
+    window.addEventListener('resize', calculate);
     return () => {
-      window.removeEventListener('resize', calculateColumnCount);
+      window.removeEventListener('resize', calculate);
     };
-  }, [ref, images]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ref, images, calculate]);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
@@ -95,31 +65,36 @@ const ImageGrid = ({ images = [] }) => {
   if (!images.length) return null;
 
   return (
-    <Outer ref={ref}>
-      {isFullscreen && (
-        <Button onClick={() => setScaleUp(!scaleUp)}>
-          {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
-        </Button>
-      )}
-      <Container
-        $gapSizePx={gapSizePx}
-        $columnCount={columnCount}
-        $open={open}
-        onClick={() => setOpen(undefined)}
-      >
-        {images.map((image, i) => (
-          <Item
-            key={image}
-            alt=""
-            src={image}
-            onClick={() => setOpen(open !== undefined ? undefined : i)}
-            $open={open}
-            $scaleUp={scaleUp}
-            scrollTo={isFullscreen && open === i}
-          />
-        ))}
-      </Container>
-    </Outer>
+    <>
+      <div style={{ position: 'absolute', background: 'darkred' }}>
+        {w}x{h}
+      </div>
+      <Outer ref={ref}>
+        {isFullscreen && (
+          <Button onClick={() => setScaleUp(!scaleUp)}>
+            {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
+          </Button>
+        )}
+        <Container
+          $gapSizePx={gapSizePx}
+          $columnCount={columnCount}
+          $open={open}
+          onClick={() => setOpen(undefined)}
+        >
+          {images.map((image, i) => (
+            <Item
+              key={image}
+              alt=""
+              src={image}
+              onClick={() => setOpen(open !== undefined ? undefined : i)}
+              $open={open}
+              $scaleUp={scaleUp}
+              scrollTo={isFullscreen && open === i}
+            />
+          ))}
+        </Container>
+      </Outer>
+    </>
   );
 };
 
