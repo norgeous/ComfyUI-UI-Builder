@@ -19,8 +19,6 @@ import {
   FaCircleQuestion,
   FaGithub,
   FaXmark,
-  FaMaximize,
-  FaMinimize,
   FaGear,
 } from 'react-icons/fa6';
 import { SiStorybook } from 'react-icons/si';
