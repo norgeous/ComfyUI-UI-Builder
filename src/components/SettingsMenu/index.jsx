@@ -1,8 +1,8 @@
+import { useContext } from 'react';
 import SettingsContext from '@/contexts/SettingsContext';
 import { SettingsIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
 import { Label, Checkbox } from '@/components/InputCheckbox/styled';
-import { useContext } from 'react';
 
 const SettingsMenu = () => {
   const {
@@ -22,7 +22,7 @@ const SettingsMenu = () => {
                 updateSettings({ scaleUp: event.target.checked })
               }
             />{' '}
-            Scale images beyond their natural size
+            Scale images beyond their natural size (in fullscreen)
           </Label>
           <Label>
             <Checkbox

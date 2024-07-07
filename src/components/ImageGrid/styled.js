@@ -36,6 +36,8 @@ export const Img = styled.img`
   display: block;
   max-width: 100%;
   object-fit: ${({ $scaleUp }) => ($scaleUp ? 'contain' : 'scale-down')};
+  image-rendering: ${({ $pixelSmooth }) =>
+    $pixelSmooth ? 'auto' : 'pixelated'};
   ${({ $open }) =>
     $open !== undefined
       ? css`
@@ -48,14 +50,4 @@ export const Img = styled.img`
           max-height: 100%;
           min-height: 0;
         `}
-`;
-
-export const Button = styled.button`
-  display: block;
-  padding: 4px;
-  border: none;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 100;
 `;
