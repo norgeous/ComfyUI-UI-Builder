@@ -1,14 +1,24 @@
 import { SettingsIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
+import { Label, Checkbox } from '@/components/InputCheckbox/styled';
 
 const SettingsMenu = () => {
-  const options = [
-    { label: 'op1', onClick: () => alert('WIP') },
-    { label: 'op2', onClick: () => alert('WIP') },
-  ];
+  console.log('!');
 
   return (
-    <PopMenu aria-label="View Debug Data" options={options}>
+    <PopMenu
+      aria-label="View Debug Data"
+      menuContents={
+        <>
+          <Label>
+            <Checkbox /> Scale images larger than their natural size
+          </Label>
+          <Label>
+            <Checkbox /> Pixel optimisation smooth
+          </Label>
+        </>
+      }
+    >
       <SettingsIcon aria-label="Settings" />
     </PopMenu>
   );
