@@ -3,11 +3,16 @@ import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
 
-import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
+import {
+  BugIcon,
+  GithubIcon,
+  SettingsIcon,
+  StorybookIcon,
+} from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
-import { Bar, Link, StatusText, Tray } from './styled';
+import { Bar, Link, Button, StatusText, Tray } from './styled';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
@@ -93,6 +98,10 @@ const StatusBar = () => {
         {debugData && (
           <Debug onClick={() => setDebugData()} data={debugDatum} />
         )}
+
+        <Button onClick={() => alert('WIP')}>
+          <SettingsIcon aria-label="Settings" />
+        </Button>
       </Tray>
     </Bar>
   );
