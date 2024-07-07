@@ -2,29 +2,34 @@
 
 ## Known Bugs
 
-- seed > randomise dice icon doesnt randomise on generation or autogen
 - the websocket is needlessly refreshing when switching workflows. pyramid order?
-- ImageGrid: stops listening to window resize (?) after hitting generate again
-- theme switching is not working inside of storybook
+- theme switching is not working inside of storybook when switching workflows in App story
 - comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 
 ## Now
 
-- settings cog in status bar
-- remove queue item button
+- remove queue item button not working
 - hide title on completed items
 - fix the autoprompt
-- tidy up code
+  - autogen should fire when any form field changes and the queue is empty
+  - seed > randomise dice icon doesnt randomise on generation or autogen
 - comfy bridge readme
-- show prompt/settings in results?
+- tidy up code
 - fix buggy imagegrid
+  - ImageGrid: stops listening to window resize (?) after hitting generate again
 - reset checkpoint button not working
 - interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
+- settings cog in status bar
+  - scale images up toggle
 
 ## Next
 
-- autogen should fire when any form field changes and the queue is empty
+- settings cog in status bar
+  - pixel optimisation toggle
+  - save history to local storage toggle
+  - save changes to local storage toggle
+  - show prompt/settings as caption?
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
     - more work on adjust weight with CTRL+UP or CTRL+DOWN
