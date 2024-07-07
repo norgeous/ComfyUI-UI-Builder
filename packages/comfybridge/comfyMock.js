@@ -243,7 +243,6 @@ const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
       height="${height}"
     >
       <rect width="${width}" height="${height}" fill="whitesmoke" />
-      
       <text
         x="${width / 2}"
         y="${height / 10}"
