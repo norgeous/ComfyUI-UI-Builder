@@ -15,7 +15,7 @@ export default {
 
 export const Square1 = {
   args: {
-    images: ['http://localhost:6006/view?filename=01&width=1024&height=1024'],
+    images: ['/view?filename=01&width=1024&height=1024'],
   },
 };
 
