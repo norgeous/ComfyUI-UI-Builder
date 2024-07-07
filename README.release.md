@@ -12,11 +12,6 @@ Alternative configurable React UI overlay for [ComfyUI](https://github.com/comfy
 - [Comfy Dungeon](https://github.com/cubiq/Comfy_Dungeon)
 - [a few more](https://github.com/norgeous/ComfyUI-UI-Builder/tree/develop/src/configs) [WIP]
 
-## How to use without install
-
-- Run ComfyUI with `--enable-cors-header https://norgeous.github.io --listen 0.0.0.0` ⚠️ UNSAFE ⚠️
-- Visit https://norgeous.github.io/ComfyUI-UI-Builder/develop/vite/
-
 ## How to install into ComfyUI
 
 - Clone this repo into the `ComfyUI/custom_nodes` directory.
