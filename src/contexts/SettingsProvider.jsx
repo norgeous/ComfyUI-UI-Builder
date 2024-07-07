@@ -9,7 +9,6 @@ const useSettings = () => {
   });
 
   const updateSettings = newSetting => {
-    console.log(newSetting);
     setSettings({ ...settings, ...newSetting });
   };
 
