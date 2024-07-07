@@ -8,7 +8,7 @@
 
 ## Now
 
-- hide title on completed items / styling Q items more
+- hide title on completed items / styling Q items more + story for each state
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
   - seed > randomise dice icon doesnt randomise on generation or autogen
