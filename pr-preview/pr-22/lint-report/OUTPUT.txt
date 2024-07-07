@@ -15,13 +15,12 @@
   157:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/SettingsMenu/index.jsx
-  6:36  warning  Unexpected alert  no-alert
-  7:36  warning  Unexpected alert  no-alert
+  6:3  warning  Unexpected console statement  no-console
 
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/executeAdapter.js
   50:7  warning  Unexpected console statement  no-console
 
-✖ 6 problems (2 errors, 4 warnings)
+✖ 5 problems (2 errors, 3 warnings)
 
 Lint has modified 0 files
 
