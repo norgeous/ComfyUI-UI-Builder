@@ -13,6 +13,7 @@
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
   - seed > randomise dice icon doesnt randomise on generation or autogen
+- fix prompt interrupt
 - comfy bridge readme
 - tidy up code
 - fix buggy imagegrid

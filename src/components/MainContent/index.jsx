@@ -8,6 +8,7 @@ const MainContent = () => {
   const { data } = useContext(ComfyBridgeContext);
 
   const queue = Object.entries(data.queue)
+    .filter(([, item]) => item)
     .map(([promptId, item]) => ({
       promptId,
       images: item.output?.images.map(

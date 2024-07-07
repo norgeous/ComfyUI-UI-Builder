@@ -11,17 +11,20 @@ import { Img, QueueTitle } from './styled';
 const QueueItem = ({
   promptId = undefined,
   type = undefined, // execution_start | execution_cached | executing | progress | executed
-  node = undefined,
-  value = undefined,
-  max = undefined,
+  node = undefined, // node number string
+  value = undefined, // progress value
+  max = undefined, // progress max
   images = undefined,
-  onRemove = () => {},
 }) => {
   const { bridge } = useContext(ComfyBridgeContext);
 
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
   const isProgressing = type === 'progress';
+
+  const handleRemove = () => {
+    bridge.updateState('queue', { [promptId]: undefined });
+  };
 
   return (
     <Layout center pad rounded gap="md" bgfg={3}>
@@ -46,7 +49,7 @@ const QueueItem = ({
       </QueueTitle>
 
       <Tooltip lm text="Remove">
-        <Button small aria-label="Remove" onClick={onRemove}>
+        <Button small aria-label="Remove" onClick={handleRemove}>
           <DismissIcon />
         </Button>
       </Tooltip>
@@ -55,16 +58,12 @@ const QueueItem = ({
 };
 
 QueueItem.propTypes = {
-  id: PropTypes.string,
-  loading: PropTypes.bool,
-  error: PropTypes.string,
-  data: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  status: PropTypes.string,
-  progress: PropTypes.number,
-  onInterrupt: PropTypes.func,
-  interruptLoading: PropTypes.bool,
-  interruptError: PropTypes.string,
-  onRemove: PropTypes.func,
+  promptId: PropTypes.string,
+  type: PropTypes.string,
+  node: PropTypes.string,
+  value: PropTypes.number,
+  max: PropTypes.number,
+  images: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default QueueItem;
