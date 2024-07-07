@@ -10,7 +10,14 @@
 
 ## Now
 
-- ws reconnect / error message overlay or toaster
+- settings cog in status bar
+- remove queue item button
+- hide title on completed items
+- fix the autoprompt
+- tidy up code
+- comfy bridge readme
+- show prompt/settings in results?
+- fix buggy imagegrid
 - interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
 
