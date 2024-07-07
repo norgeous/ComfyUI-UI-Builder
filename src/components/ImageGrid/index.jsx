@@ -14,10 +14,10 @@ const ImageGrid = ({ images = [] }) => {
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
-  const { width, height } = ref.current?.getBoundingClientRect() || {};
   const [w, h] = useImageSize(images[0]); // size of first image in batch
   const calculate = useCallback(() => {
     if (!ref.current) return;
+    const { width, height } = ref.current.getBoundingClientRect();
 
     const newColumnCount = calculateColumnCount({
       containerWidth: width,
@@ -29,7 +29,7 @@ const ImageGrid = ({ images = [] }) => {
     });
 
     setColumnCount(newColumnCount);
-  }, [h, height, images.length, w, width]);
+  }, [images, w, h]);
 
   useEffect(calculate, [calculate]);
 
@@ -38,7 +38,7 @@ const ImageGrid = ({ images = [] }) => {
     return () => {
       window.removeEventListener('resize', calculate);
     };
-  }, [ref, images, calculate]);
+  }, [calculate]);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
@@ -65,36 +65,31 @@ const ImageGrid = ({ images = [] }) => {
   if (!images.length) return null;
 
   return (
-    <>
-      <div style={{ position: 'absolute', background: 'darkred' }}>
-        {w}x{h}
-      </div>
-      <Outer ref={ref}>
-        {isFullscreen && (
-          <Button onClick={() => setScaleUp(!scaleUp)}>
-            {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
-          </Button>
-        )}
-        <Container
-          $gapSizePx={gapSizePx}
-          $columnCount={columnCount}
-          $open={open}
-          onClick={() => setOpen(undefined)}
-        >
-          {images.map((image, i) => (
-            <Item
-              key={image}
-              alt=""
-              src={image}
-              onClick={() => setOpen(open !== undefined ? undefined : i)}
-              $open={open}
-              $scaleUp={scaleUp}
-              scrollTo={isFullscreen && open === i}
-            />
-          ))}
-        </Container>
-      </Outer>
-    </>
+    <Outer ref={ref}>
+      {isFullscreen && (
+        <Button onClick={() => setScaleUp(!scaleUp)}>
+          {scaleUp ? <MinimiseIcon /> : <MaximiseIcon />}
+        </Button>
+      )}
+      <Container
+        $gapSizePx={gapSizePx}
+        $columnCount={columnCount}
+        $open={open}
+        onClick={() => setOpen(undefined)}
+      >
+        {images.map((image, i) => (
+          <Item
+            key={image}
+            alt=""
+            src={image}
+            onClick={() => setOpen(open !== undefined ? undefined : i)}
+            $open={open}
+            $scaleUp={scaleUp}
+            scrollTo={isFullscreen && open === i}
+          />
+        ))}
+      </Container>
+    </Outer>
   );
 };
 
