@@ -31,10 +31,13 @@
   65:3  error  'interruptLoading' PropType is defined but prop is never used  react/no-unused-prop-types
   66:3  error  'interruptError' PropType is defined but prop is never used    react/no-unused-prop-types
 
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/StatusBar/index.jsx
+  102:32  warning  Unexpected alert  no-alert
+
 /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/utils/executeAdapter.js
   50:7  warning  Unexpected console statement  no-console
 
-✖ 19 problems (17 errors, 2 warnings)
+✖ 20 problems (17 errors, 3 warnings)
 
 Lint has modified 0 files
 
