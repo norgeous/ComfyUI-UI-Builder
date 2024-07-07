@@ -47,7 +47,6 @@ const executeAdapter = ({ objectInfo, formState, adapterConfig }) => {
 
     // find the actual ckpt name (needed as some users have sub folder in checkpoints folder)
     findInCkptNames: previous => {
-      console.log({ objectInfo });
       if (!objectInfo) return undefined;
       return objectInfo.CheckpointLoaderSimple.input.required.ckpt_name[0].find(
         ckpt => ckpt.toLowerCase().includes(previous.toLowerCase()),
