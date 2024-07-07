@@ -39,22 +39,3 @@ export const Link = styled.a`
     outline-offset: -2px;
   }
 `;
-
-export const Button = styled.button`
-  cursor: pointer;
-  display: block;
-  background: transparent;
-  font-size: inherit;
-  border: none;
-  color: var(--fg-mute);
-  border-radius: var(--radius);
-  margin: 0;
-  padding: 0;
-  &:hover {
-    color: var(--fg0);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-  }
-`;
