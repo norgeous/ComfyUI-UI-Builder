@@ -19,15 +19,17 @@ const StatusBar = () => {
         <Link
           href="https://github.com/norgeous/ComfyUI-UI-Builder/"
           target="_blank"
+          aria-label="Github"
         >
-          <GithubIcon aria-label="Github" />
+          <GithubIcon />
         </Link>
 
         <Link
           href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
           target="_blank"
+          aria-label="Storybook"
         >
-          <StorybookIcon aria-label="Storybook" />
+          <StorybookIcon />
         </Link>
 
         <DebugMenu />
