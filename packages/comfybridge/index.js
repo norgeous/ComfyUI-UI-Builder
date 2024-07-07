@@ -60,9 +60,9 @@ const comfybridge = ({ onChange = () => {} }) => {
   };
 
   // prompting
-  const prompt = ({ comfyUrl, promptData }) => {
+  const prompt = ({ promptData }) => {
     simpleFetch({
-      url: `${comfyUrl}/prompt`,
+      url: `${state.ws.comfyUrl}/prompt`,
       options: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

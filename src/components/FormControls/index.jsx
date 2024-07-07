@@ -56,7 +56,7 @@ const FormControls = () => {
       objectInfo: data.objectInfo.data,
     });
 
-    bridge.prompt({ comfyUrl: data.ws.comfyUrl, promptData });
+    bridge.prompt({ promptData });
   };
 
   return (
