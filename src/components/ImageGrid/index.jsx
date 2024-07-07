@@ -14,22 +14,25 @@ const ImageGrid = ({ images = [] }) => {
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
-  const [w, h] = useImageSize(images[0]); // size of first image in batch
+  const [naturalImageWidth, naturalImageHeight] = useImageSize(images[0]); // size of first image in batch
+
   const calculate = useCallback(() => {
     if (!ref.current) return;
-    const { width, height } = ref.current.getBoundingClientRect();
+
+    const { width: containerWidth, height: containerHeight } =
+      ref.current.getBoundingClientRect();
 
     const newColumnCount = calculateColumnCount({
-      containerWidth: width,
-      containerHeight: height,
-      naturalImageWidth: w,
-      naturalImageHeight: h,
+      containerWidth,
+      containerHeight,
+      naturalImageWidth,
+      naturalImageHeight,
       gapSizePx,
       imageCount: images.length,
     });
 
     setColumnCount(newColumnCount);
-  }, [images, w, h]);
+  }, [images, naturalImageHeight, naturalImageWidth]);
 
   useEffect(calculate, [calculate]);
 
