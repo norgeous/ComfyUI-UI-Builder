@@ -8,13 +8,13 @@
 
 ## Now
 
-- hide title on completed items
+- hide title on completed items / styling Q items more
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
   - seed > randomise dice icon doesnt randomise on generation or autogen
 - fix prompt interrupt
 - comfy bridge readme
-- tidy up code
+- tidy up code (linting, remove Timeline or Queue component)
 - reset checkpoint button not working
 - settings cog in status bar
   - scale images up toggle
