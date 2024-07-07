@@ -8,21 +8,24 @@
 
 ## Now
 
-- hide title on completed items / styling Q items more
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
   - seed > randomise dice icon doesnt randomise on generation or autogen
+- hide title on completed items / styling Q items more
 - fix prompt interrupt
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
-- reset checkpoint button not working
 - settings cog in status bar
   - scale images up toggle
+  - pixel optimisation toggle
+- reset checkpoint button not showing up after change
+- DebugMenu stories
+- SettingsMenu stories
+- tray items need tooltips
 
 ## Next
 
 - settings cog in status bar
-  - pixel optimisation toggle
   - save history to local storage toggle
   - save changes to local storage toggle
   - show prompt/settings as caption?
