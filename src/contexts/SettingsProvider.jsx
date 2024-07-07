@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import ConfigsContext from './ConfigsContext';
+import SettingsContext from './SettingsContext';
 
 const useSettings = () => {
   const [settings, setSettings] = useState({
@@ -8,19 +8,21 @@ const useSettings = () => {
     pixelSmooth: true,
   });
 
-  const updateSetting = newSetting =>
+  const updateSettings = newSetting => {
+    console.log(newSetting);
     setSettings({ ...settings, ...newSetting });
+  };
 
   return {
     settings,
-    updateSetting,
+    updateSettings,
   };
 };
 
 const SettingsProvider = ({ children = null }) => (
-  <ConfigsContext.Provider value={useSettings()}>
+  <SettingsContext.Provider value={useSettings()}>
     {children}
-  </ConfigsContext.Provider>
+  </SettingsContext.Provider>
 );
 
 SettingsProvider.propTypes = { children: PropTypes.node };

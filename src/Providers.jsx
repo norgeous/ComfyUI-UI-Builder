@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import Pyramid from '@/components/Pyramid';
 import ComfyBridgeProvider from '@ui-builder/comfybridge/react/ComfyBridgeProvider';
+import SettingsProvider from '@/contexts/SettingsProvider';
 import ConfigsProvider from '@/contexts/ConfigsProvider';
 import FormProvider from '@/contexts/FormProvider';
 import SpeechProvider from '@/contexts/SpeechProvider';
 
 const Providers = ({ children = null }) => (
   <Pyramid>
+    <SettingsProvider />
     <ComfyBridgeProvider />
     <ConfigsProvider />
     <FormProvider />
