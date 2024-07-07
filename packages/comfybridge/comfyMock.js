@@ -140,7 +140,9 @@ const getMockJobEvents = ({ promptId }) => [
       prompt_id: promptId,
       node: '13',
       output: {
-        images: [{ filename: '01', subfolder: '', type: 'output' }],
+        images: [
+          { filename: '01', subfolder: '', type: 'output', subtitle: promptId },
+        ],
       },
     },
   },
@@ -232,6 +234,7 @@ const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
   const width = url.searchParams.get('width') || 1024;
   const height = url.searchParams.get('height') || 1024;
   const fontSize = Math.min(width, height) / 2;
+  const fontSize2 = Math.min(width, height) / 10;
   const svg = `
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -240,6 +243,19 @@ const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
       height="${height}"
     >
       <rect width="${width}" height="${height}" fill="whitesmoke" />
+      
+      <text
+        x="${width / 2}"
+        y="${height / 10}"
+        dy=".36em"
+        text-anchor="middle"
+        font-size="${fontSize2}"
+        font-family="Tahoma, Helvetica, sans-serif"
+        fonmt-weight="bold"
+        fill="grey"
+      >
+        Mock Image
+      </text>
       <text
         x="${width / 2}"
         y="${height / 2}"
@@ -251,6 +267,18 @@ const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
         fill="grey"
       >
         ${url.searchParams.get('filename')}
+      </text>
+      <text
+        x="${width / 2}"
+        y="${(height / 10) * 9}"
+        dy=".36em"
+        text-anchor="middle"
+        font-size="${fontSize2 / 2}"
+        font-family="Tahoma, Helvetica, sans-serif"
+        fonmt-weight="bold"
+        fill="grey"
+      >
+        ${url.searchParams.get('subtitle') || ''}
       </text>
     </svg>
   `;
