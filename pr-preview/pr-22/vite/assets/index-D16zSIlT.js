@@ -337,7 +337,7 @@ Error generating stack: `+V.message+`
   background-size: 8px 8px;
   background-position: center center;
   background-image: radial-gradient(circle, var(--bg2) 1px, transparent 1px);
-`,TH=()=>{const{data:U}=s.useContext(RR),F=Object.entries(U.queue).filter(([,R])=>R).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(({filename:J})=>`${U.ws.comfyUrl}/view?type=output&filename=${J}`),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return o.jsxs(EH,{children:[o.jsx(kH,{children:o.jsx(f1,{images:B})}),o.jsx(q2,{items:F})]})},rQ=s.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},A2=({text:U=void 0})=>o.jsx(oB,{text:U,children:o.jsx(Ib,{className:"muted"})});A2.propTypes={text:y.string};const DH=UU.div`
+`,TH=()=>{const{data:U}=s.useContext(RR),F=Object.entries(U.queue).filter(([,R])=>R).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(J=>{const d=new URLSearchParams;return Object.entries(J).forEach(([W,Z])=>d.append(W,Z)),`${U.ws.comfyUrl}/view?${d.toString()}`}),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return o.jsxs(EH,{children:[o.jsx(kH,{children:o.jsx(f1,{images:B})}),o.jsx(q2,{items:F})]})},rQ=s.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},A2=({text:U=void 0})=>o.jsx(oB,{text:U,children:o.jsx(Ib,{className:"muted"})});A2.propTypes={text:y.string};const DH=UU.div`
   display: flex;
   align-items: center;
   gap: 4px;
