@@ -15,11 +15,9 @@
 - fix prompt interrupt
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
+- queue doesnt handle cached nodes very well
 - SettingsMenu
-  - scale images up toggle
-  - pixel optimisation toggle
   - SettingsMenu stories
-  - needs a context
 - reset checkpoint button not showing up after change
 - DebugMenu stories
 - tray items need tooltips
