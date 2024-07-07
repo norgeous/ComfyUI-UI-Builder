@@ -18,6 +18,7 @@
 - comfy bridge readme
 - show prompt/settings in results?
 - fix buggy imagegrid
+- reset checkpoint button not working
 - interrupt and queue features
   - using multiple instances, how should queue work? clientId adjustments...
 
