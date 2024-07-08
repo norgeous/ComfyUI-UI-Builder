@@ -5,7 +5,6 @@ export const Main = styled.main`
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  position: relative;
   height: 100%;
   overflow: hidden;
 `;
