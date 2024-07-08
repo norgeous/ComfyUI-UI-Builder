@@ -18,6 +18,7 @@ const QueueItem = ({
 }) => {
   const { bridge } = useContext(ComfyBridgeContext);
 
+  const isQueued = type === undefined;
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
   const isProgressing = type === 'progress';
@@ -27,26 +28,37 @@ const QueueItem = ({
   };
 
   return (
-    <Layout center pad rounded gap="md" bgfg={3}>
-      <Button
-        small
-        aria-label="Select"
-        onClick={() => bridge.updateState('queueSelected', { promptId })}
-      >
-        {images && <Img src={`${images[0]}`} />}
-      </Button>
+    <Layout
+      center
+      pad
+      rounded
+      gap="md"
+      bgfg={3}
+      style={{ display: 'inline-flex' }}
+    >
+      {!isComplete && !isQueued && <SpinnerIcon />}
 
-      {!isComplete && <SpinnerIcon />}
+      {!!images?.length && (
+        <Button
+          small
+          aria-label="Select"
+          onClick={() => bridge.updateState('queueSelected', { promptId })}
+        >
+          {images && <Img src={`${images[0]}`} />}
+        </Button>
+      )}
 
-      <QueueTitle>
-        <div>
-          {node} {!isComplete && type}{' '}
-          <span className="muted" style={{ fontSize: 10 }}>
-            {promptId}
-          </span>
-        </div>
-        {isProgressing && <Progress value={value} max={max} />}
-      </QueueTitle>
+      {!isComplete && (
+        <QueueTitle>
+          <div>
+            {node} {type}{' '}
+            <span className="muted" style={{ fontSize: 10 }}>
+              {promptId}
+            </span>
+          </div>
+          {isProgressing && <Progress value={value} max={max} />}
+        </QueueTitle>
+      )}
 
       <Tooltip lm text="Remove">
         <Button aria-label="Remove" onClick={handleRemove}>

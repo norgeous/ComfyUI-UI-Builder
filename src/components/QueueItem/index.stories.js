@@ -6,6 +6,12 @@ export default {
   component,
 };
 
+export const Queued = {
+  args: {
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+  },
+};
+
 export const Loading = {
   args: {
     promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
