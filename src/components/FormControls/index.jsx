@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 
 import executeAdapter from '@/utils/executeAdapter';
@@ -31,7 +31,7 @@ const FormControls = () => {
     updateFormState,
   } = useContext(FormContext);
 
-  const handleClick = () => {
+  const handlePrompt = () => {
     if (enableSeedRandomisation) {
       const newSeed = Math.floor(Math.random() * 10 ** 10);
       updateFormState({ seed: newSeed });
@@ -59,12 +59,20 @@ const FormControls = () => {
     bridge.prompt({ promptData });
   };
 
+  // auto prompting on change
+  useEffect(() => {
+    const isGenerating = Object.values(data.queue)
+      .map(({ node }) => node !== null)
+      .some(v => v);
+    if (auto && !isGenerating) handlePrompt();
+  }, [formState, auto]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <Layout as="footer" pad column gap="md" bgfg={2}>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout gap="md">
         {!auto && (
-          <Button wide onClick={handleClick}>
+          <Button wide onClick={handlePrompt}>
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
           </Button>
         )}

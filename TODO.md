@@ -7,9 +7,7 @@
 
 ## Now
 
-- fix the autoprompt
-  - autogen should fire when any form field changes and the queue is empty
-  - seed > randomise dice icon doesnt randomise on generation or autogen
+- seed > randomise dice icon doesnt randomise on generation or autogen
 - reset checkpoint button not showing up after change
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
