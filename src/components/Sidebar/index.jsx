@@ -6,9 +6,7 @@ const Sidebar = () => (
   <Layout as="aside" column fullHeight bgfg={1}>
     <FormBuilder />
 
-    <Layout as="footer" pad column gap="md" bgfg={2}>
-      <FormControls />
-    </Layout>
+    <FormControls />
   </Layout>
 );
 export default Sidebar;

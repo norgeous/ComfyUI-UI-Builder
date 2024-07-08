@@ -60,7 +60,7 @@ const FormControls = () => {
   };
 
   return (
-    <>
+    <Layout as="footer" pad column gap="md" bgfg={2}>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout gap="md">
         {!auto && (
@@ -79,7 +79,7 @@ const FormControls = () => {
           </Button>
         </Tooltip>
       </Layout>
-    </>
+    </Layout>
   );
 };
 
