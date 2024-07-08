@@ -2,7 +2,6 @@
 
 ## Known Bugs
 
-- the websocket is needlessly refreshing when switching workflows. pyramid order?
 - theme switching is not working inside of storybook when switching workflows in App story
 - comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 
@@ -12,11 +11,11 @@
 - fix the autoprompt
   - autogen should fire when any form field changes and the queue is empty
   - seed > randomise dice icon doesnt randomise on generation or autogen
+- reset checkpoint button not showing up after change
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
-- reset checkpoint button not showing up after change
 - tray items need tooltips
 
 ## Next
