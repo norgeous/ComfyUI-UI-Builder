@@ -356,7 +356,7 @@ Error generating stack: `+V.message+`
 `,Md=({id:U=void 0,label:F=void 0,info:Q=void 0,options:B=[],value:R=void 0,onChange:V=()=>{},children:l=null})=>{const J=L.useContext(rQ),d=B.findIndex(W=>W.value===R||td(W.value,R));return r.jsxs(CF,{pad:!0,column:!0,gap:"sm",children:[r.jsx(jB,{id:U,label:F,info:Q,children:l}),r.jsx(hH,{ref:J,id:U,value:d,onChange:W=>V(B[W.target.value].value),children:B.map(({label:W},Z)=>r.jsx("option",{value:String(Z),children:W},W))})]})};Md.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const pH=FU.div`
   padding: 0 8px 8px;
   font-size: 12px;
-`,tH=()=>{const{config:U,configs:F,setConfig:Q}=L.useContext(tV),B=l=>{const J=F.find(({configData:{name:d}})=>d===l);Q(J)},R=F.map(({configData:{emoji:l,name:J,version:d}})=>({label:`${l} ${J} ${d}`,value:J})),V=U.configData.name;return r.jsxs(r.Fragment,{children:[r.jsx(Md,{id:"ui",label:"UI Builder",options:R,defaultValueIndex:0,value:V,onChange:B}),r.jsx(pH,{className:"muted",children:U.configData.description})]})},MH=FU.button`
+`,tH=()=>{const{config:U,configs:F,setConfig:Q}=L.useContext(tV),B=l=>{const J=F.find(({configData:{name:d}})=>d===l);Q(J)},R=F.map(({configData:{emoji:l,name:J,version:d}})=>({label:`${l} ${J} ${d}`,value:J})),V=U.configData.name;return r.jsxs(CF,{as:"header",column:!0,bgfg:2,children:[r.jsx(Md,{id:"ui",label:"UI Builder",options:R,defaultValueIndex:0,value:V,onChange:B}),r.jsx(pH,{className:"muted",children:U.configData.description})]})},MH=FU.button`
   cursor: pointer;
   display: block;
   border: none;
@@ -745,4 +745,4 @@ Error generating stack: `+V.message+`
       order: 2; // change the order on landscape, so that sidebar is first
     }
   }
-`,az=()=>r.jsxs(Tz,{children:[r.jsx(CF,{as:"header",column:!0,bgfg:2,children:r.jsx(tH,{})}),r.jsxs(Dz,{children:[r.jsx(DH,{}),r.jsx(Rz,{})]}),r.jsx(kz,{})]});fW.createRoot(document.getElementById("root")).render(r.jsxs(L.StrictMode,{children:[r.jsx(J3,{}),r.jsxs(t1,{children:[r.jsx(l3,{}),r.jsx(az,{})]})]}));
+`,az=()=>r.jsxs(Tz,{children:[r.jsx(tH,{}),r.jsxs(Dz,{children:[r.jsx(DH,{}),r.jsx(Rz,{})]}),r.jsx(kz,{})]});fW.createRoot(document.getElementById("root")).render(r.jsxs(L.StrictMode,{children:[r.jsx(J3,{}),r.jsxs(t1,{children:[r.jsx(l3,{}),r.jsx(az,{})]})]}));
