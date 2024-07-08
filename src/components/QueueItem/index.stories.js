@@ -1,4 +1,4 @@
-import { fn, within, userEvent } from '@storybook/test';
+import { within, userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -22,10 +22,11 @@ export const Loading = {
 
 export const Complete = {
   args: {
-    id: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
-    loading: false,
-    status: 'Done!',
-    progress: 1,
-    onInterrupt: fn(),
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    type: 'executing',
+    node: null,
+    value: 28,
+    max: 28,
+    images: ['/view?filename=01'],
   },
 };
