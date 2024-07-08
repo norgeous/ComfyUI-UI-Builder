@@ -8,6 +8,7 @@
 ## Now
 
 - seed > randomise dice icon doesnt randomise on generation or autogen
+- ImageGrid: pushes sidebar to be smaller than i want when populated
 - reset checkpoint button not showing up after change
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
