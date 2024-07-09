@@ -723,7 +723,7 @@ Error generating stack: `+V.message+`
     outline: 2px solid var(--accent);
     outline-offset: -2px;
   }
-`,kz=()=>{const U=L.useContext(cB);return x.jsxs(nz,{children:[x.jsxs(IT,{$shrinkable:!0,children:[x.jsx(Dh,{status:U.data.ws.status}),x.jsx(Ez,{children:U.data.ws.statusText})]}),x.jsxs(IT,{children:[x.jsx(DQ,{text:"Github",children:x.jsx(yT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:x.jsx(u3,{})})}),x.jsx(DQ,{text:"Storybook",children:x.jsx(yT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:x.jsx(UX,{})})}),x.jsx(Nz,{}),x.jsx(Zz,{})]})]})},Tz=FU.div`
+`,kz=()=>{const U=L.useContext(cB);return x.jsxs(nz,{children:[x.jsxs(IT,{$shrinkable:!0,children:[x.jsx(Dh,{status:U.data.ws.status}),x.jsx(Ez,{children:U.data.ws.statusText})]}),x.jsxs(IT,{children:[x.jsx(DQ,{text:"Github",children:x.jsx(yT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:x.jsx(u3,{"aria-label":"Github"})})}),x.jsx(DQ,{text:"Storybook",children:x.jsx(yT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:x.jsx(UX,{"aria-label":"Storybook"})})}),x.jsx(Nz,{}),x.jsx(Zz,{})]})]})},Tz=FU.div`
   height: 100svh;
   display: flex;
   flex-direction: column;
