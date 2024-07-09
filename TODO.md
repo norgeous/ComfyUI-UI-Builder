@@ -8,12 +8,12 @@
 ## Now
 
 - reset checkpoint button not showing up after change
+- tray items need tooltips
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
-- tray items need tooltips
-- seed > randomise dice icon doesnt randomise on generation or autogen
+- seed > randomise dice icon doesnt randomise on generation or autogen?
 
 ## Next
 
