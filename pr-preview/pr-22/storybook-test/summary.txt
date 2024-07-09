@@ -2,10 +2,10 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/tooltip.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/tooltip.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/queueitem.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -42,59 +42,23 @@
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputmissing.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/settingsmenu.test.js
-[TEST]   ● Console
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬───────────────┬────────────┬─────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │      id       │   impact   │               description               │ nodes │
-[TEST]       ├─────────┼───────────────┼────────────┼─────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'button-name' │ 'critical' │ 'Ensures buttons have discernible text' │   1   │
-[TEST]       └─────────┴───────────────┴────────────┴─────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬────────────┐
-[TEST]       │ (index) │      target      │ violations │
-[TEST]       ├─────────┼──────────────────┼────────────┤
-[TEST]       │    0    │ '[".sc-hzhKNl"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]   ● SettingsMenu › Settings Menu › play-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/resetbutton.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/settingsmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/resetbutton.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/maincontent.test.js
 [TEST]   ● MainContent › Main Content › play-test
 [TEST] 
 [TEST]     page.evaluate: StorybookTestRunnerError: 
@@ -147,24 +111,23 @@
 [TEST]      [90m 15 |[39m           hasPlayFn
 [TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
-[TEST]       at evaluate (../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/maincontent.test.js:13:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/maincontent.test.js:34:9)
+[TEST]       at evaluate (../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/maincontent.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/maincontent.test.js:34:9)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/headerinfo.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/headerinfo.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/statusbar.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
-[TEST]       ┌─────────┬───────────────┬────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │      id       │   impact   │                                               description                                               │ nodes │
-[TEST]       ├─────────┼───────────────┼────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'button-name' │ 'critical' │                                 'Ensures buttons have discernible text'                                 │   2   │
-[TEST]       │    1    │  'link-name'  │ 'serious'  │                                  'Ensures links have discernible text'                                  │   2   │
-[TEST]       │    2    │ 'svg-img-alt' │ 'serious'  │ 'Ensures <svg> elements with an img, graphics-document or graphics-symbol role have an accessible text' │   1   │
-[TEST]       └─────────┴───────────────┴────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
+[TEST]       ┌─────────┬───────────────┬───────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
+[TEST]       │ (index) │      id       │  impact   │                                               description                                               │ nodes │
+[TEST]       ├─────────┼───────────────┼───────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
+[TEST]       │    0    │  'link-name'  │ 'serious' │                                  'Ensures links have discernible text'                                  │   2   │
+[TEST]       │    1    │ 'svg-img-alt' │ 'serious' │ 'Ensures <svg> elements with an img, graphics-document or graphics-symbol role have an accessible text' │   1   │
+[TEST]       └─────────┴───────────────┴───────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
 [TEST] 
 [TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
 [TEST] 
@@ -172,11 +135,9 @@
 [TEST]       ┌─────────┬───────────────────────────────────────────────────────────────────────────────┬────────────┐
 [TEST]       │ (index) │                                    target                                     │ violations │
 [TEST]       ├─────────┼───────────────────────────────────────────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │           '[".sc-dAbbbq.iSFZoJ:nth-child(3) > .sc-fHjqbK.dzTbLY"]'            │   '[0]'    │
-[TEST]       │    1    │           '[".sc-dAbbbq.iSFZoJ:nth-child(4) > .sc-fHjqbK.dzTbLY"]'            │   '[0]'    │
-[TEST]       │    2    │ '[".sc-dAbbbq.iSFZoJ:nth-child(1) > .sc-kOHUsU.gRaIed[target=\\"_blank\\"]"]' │   '[1]'    │
-[TEST]       │    3    │ '[".sc-dAbbbq.iSFZoJ:nth-child(2) > .sc-kOHUsU.gRaIed[target=\\"_blank\\"]"]' │   '[1]'    │
-[TEST]       │    4    │                               '[".sc-eldOKa"]'                                │   '[2]'    │
+[TEST]       │    0    │ '[".sc-dAbbbq.iSFZoJ:nth-child(1) > .sc-kOHUsU.gRaIed[target=\\"_blank\\"]"]' │   '[0]'    │
+[TEST]       │    1    │ '[".sc-dAbbbq.iSFZoJ:nth-child(2) > .sc-kOHUsU.gRaIed[target=\\"_blank\\"]"]' │   '[0]'    │
+[TEST]       │    2    │                               '[".sc-eldOKa"]'                                │   '[1]'    │
 [TEST]       └─────────┴───────────────────────────────────────────────────────────────────────────────┴────────────┘
 [TEST] 
 [TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
@@ -188,74 +149,37 @@
 [TEST]     Expected value to strictly be equal to:
 [TEST]       0
 [TEST]     Received:
-[TEST]       3
+[TEST]       2
 [TEST] 
 [TEST]     Message:
-[TEST]       3 accessibility violations were detected
+[TEST]       2 accessibility violations were detected
 [TEST] 
 [TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/errortext.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/debugmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/debugmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/timeline.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/debug.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/app.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
-[TEST]       ┌─────────┬───────────────┬────────────┬─────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │      id       │   impact   │               description               │ nodes │
-[TEST]       ├─────────┼───────────────┼────────────┼─────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'button-name' │ 'critical' │ 'Ensures buttons have discernible text' │   1   │
-[TEST]       └─────────┴───────────────┴────────────┴─────────────────────────────────────────┴───────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬──────────────────┬────────────┐
-[TEST]       │ (index) │      target      │ violations │
-[TEST]       ├─────────┼──────────────────┼────────────┤
-[TEST]       │    0    │ '[".sc-hzhKNl"]' │   '[0]'    │
-[TEST]       └─────────┴──────────────────┴────────────┘
-[TEST] 
-[TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
-[TEST] 
-[TEST]   ● DebugMenu › Debug Menu › play-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Expected value to strictly be equal to:
-[TEST]       0
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/timeline.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/debug.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/app.test.js
-[TEST]   ● Console
-[TEST] 
-[TEST]     console.log
-[TEST]       ┌─────────┬───────────────┬────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
-[TEST]       │ (index) │      id       │   impact   │                                               description                                               │ nodes │
-[TEST]       ├─────────┼───────────────┼────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
-[TEST]       │    0    │ 'button-name' │ 'critical' │                                 'Ensures buttons have discernible text'                                 │   2   │
-[TEST]       │    1    │  'link-name'  │ 'serious'  │                                  'Ensures links have discernible text'                                  │   2   │
-[TEST]       │    2    │ 'svg-img-alt' │ 'serious'  │ 'Ensures <svg> elements with an img, graphics-document or graphics-symbol role have an accessible text' │   1   │
-[TEST]       └─────────┴───────────────┴────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
+[TEST]       ┌─────────┬───────────────┬───────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────┐
+[TEST]       │ (index) │      id       │  impact   │                                               description                                               │ nodes │
+[TEST]       ├─────────┼───────────────┼───────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────┤
+[TEST]       │    0    │  'link-name'  │ 'serious' │                                  'Ensures links have discernible text'                                  │   2   │
+[TEST]       │    1    │ 'svg-img-alt' │ 'serious' │ 'Ensures <svg> elements with an img, graphics-document or graphics-symbol role have an accessible text' │   1   │
+[TEST]       └─────────┴───────────────┴───────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────┘
 [TEST] 
 [TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:31:25)
 [TEST] 
@@ -263,11 +187,9 @@
 [TEST]       ┌─────────┬───────────────────────────────────────────────────────────────────────────────┬────────────┐
 [TEST]       │ (index) │                                    target                                     │ violations │
 [TEST]       ├─────────┼───────────────────────────────────────────────────────────────────────────────┼────────────┤
-[TEST]       │    0    │           '[".sc-hmdnzv.jCflaU:nth-child(3) > .sc-jnOFWn.eDBZCo"]'            │   '[0]'    │
-[TEST]       │    1    │           '[".sc-hmdnzv.jCflaU:nth-child(4) > .sc-jnOFWn.eDBZCo"]'            │   '[0]'    │
-[TEST]       │    2    │ '[".sc-hmdnzv.jCflaU:nth-child(1) > .sc-brPMkR.fsvtVC[target=\\"_blank\\"]"]' │   '[1]'    │
-[TEST]       │    3    │ '[".sc-hmdnzv.jCflaU:nth-child(2) > .sc-brPMkR.fsvtVC[target=\\"_blank\\"]"]' │   '[1]'    │
-[TEST]       │    4    │                               '[".sc-feUYzb"]'                                │   '[2]'    │
+[TEST]       │    0    │ '[".sc-hmdnzv.jCflaU:nth-child(1) > .sc-brPMkR.fsvtVC[target=\\"_blank\\"]"]' │   '[0]'    │
+[TEST]       │    1    │ '[".sc-hmdnzv.jCflaU:nth-child(2) > .sc-brPMkR.fsvtVC[target=\\"_blank\\"]"]' │   '[0]'    │
+[TEST]       │    2    │                               '[".sc-feUYzb"]'                                │   '[1]'    │
 [TEST]       └─────────┴───────────────────────────────────────────────────────────────────────────────┴────────────┘
 [TEST] 
 [TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
@@ -279,114 +201,90 @@
 [TEST]     Expected value to strictly be equal to:
 [TEST]       0
 [TEST]     Received:
-[TEST]       3
+[TEST]       2
 [TEST] 
 [TEST]     Message:
-[TEST]       3 accessibility violations were detected
+[TEST]       2 accessibility violations were detected
 [TEST] 
 [TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
 [TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/queueitem.test.js
+[TEST] FAIL ../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/queueitem.test.js
 [TEST] 
-[TEST] 
-[TEST]       0
-[TEST]       1
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
 [TEST]       0
+[TEST]     Received:
 [TEST]       1
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]     An error occurred in the following story. Access the link for full output:
 [TEST] 
 [TEST]     Message:
 [TEST] 
-[TEST]     Here are the accessible roles:
+[TEST] 
+[TEST] FAIL ../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/maincontent.test.js
+[TEST] 
+[TEST] 
+[TEST]     Message:
+[TEST] 
 [TEST] 
 [TEST]       main:
 [TEST] 
 [TEST]       Name "":
-[TEST]         class="sc-iHGNiK geTDLM"
+[TEST]       <main
 [TEST]       />
 [TEST] 
-[TEST]       --------------------------------------------------
 [TEST] 
-[TEST]     Ignored nodes: comments, script, style
 [TEST]     <div
-[TEST]       id="storybook-root"
 [TEST]     >
 [TEST]       <main
-[TEST]         class="sc-iHGNiK geTDLM"
 [TEST]       >
 [TEST]         <div
 [TEST]         />
-[TEST]         <div
 [TEST]           class="sc-fqkwJk cHHXIx"
-[TEST]           style="flex-grow: 0;"
 [TEST]         />
-[TEST]       </main>
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST]     Browser logs:
 [TEST] 
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST] FAIL ../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/statusbar.test.js
-[TEST]   ● StatusBar › Status Bar › smoke-test
 [TEST] 
+[TEST]      [90m 12 |[39m         }
+[TEST] 
+[TEST] 
+[TEST] FAIL ../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/statusbar.test.js
+[TEST] 
+[TEST] 
+[TEST]       0
+[TEST]       2
+[TEST] 
+[TEST]     Message:
+[TEST]       2 accessibility violations were detected
+[TEST] 
+[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
+[TEST] 
+[TEST] FAIL ../../../../../tmp/01182e51a47dec21991413a32ce6b9cb/app.test.js
+[TEST]   ● App › App › smoke-test
+[TEST] 
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
 [TEST]     Expected value to strictly be equal to:
 [TEST]       0
 [TEST]     Received:
-[TEST]       3
+[TEST]       2
 [TEST] 
 [TEST]     Message:
-[TEST]       3 accessibility violations were detected
-[TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
-[TEST] FAIL ../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/debugmenu.test.js
-[TEST]   ● DebugMenu › Debug Menu › play-test
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]     Received:
-[TEST]       1
-[TEST] 
-[TEST]     Message:
-[TEST]       1 accessibility violation was detected
-[TEST] 
-[TEST] 
-[TEST] FAIL ../../../../../tmp/21a7ce6cff2189162c62ff93bde09be6/app.test.js
-[TEST] 
-[TEST]     assert.strictEqual(received, expected)
-[TEST] 
-[TEST]       0
-[TEST]     Received:
-[TEST]       3
-[TEST] 
-[TEST]     Message:
+[TEST]       2 accessibility violations were detected
 [TEST] 
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
+[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
 [TEST] 
-[TEST] Test Suites: 6 failed, 1 skipped, 33 passed, 39 of 40 total
-[TEST] Tests:       6 failed, 1 skipped, 57 passed, 64 total
+[TEST] Test Suites: 4 failed, 1 skipped, 35 passed, 39 of 40 total
+[TEST] Tests:       4 failed, 1 skipped, 59 passed, 64 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        40.727 s
+[TEST] Time:        41.007 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/21a7ce6cff2189162c62ff93bde09be6
+[TEST] [test-storybook] Cleaning up /tmp/01182e51a47dec21991413a32ce6b9cb
 [TEST] npm error Lifecycle script `unittest` failed with error:
 [TEST] npm error Error: command failed
 [TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
