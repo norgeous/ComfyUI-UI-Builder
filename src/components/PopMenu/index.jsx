@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   useFloating,
-  flip,
   shift,
   useDismiss,
   useInteractions,
@@ -21,7 +20,10 @@ const PopMenu = ({
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     placement: 'auto',
-    middleware: [autoPlacement(), flip(), shift({ padding: 4 })],
+    middleware: [
+      autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
+      shift({ padding: 4 }),
+    ],
     open: isOpen,
     onOpenChange: newIsOpen => {
       setIsOpen(newIsOpen);
