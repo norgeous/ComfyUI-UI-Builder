@@ -13,6 +13,7 @@ import{j as t}from"./jsx-runtime-Nms4Y4qS.js";import{r as v}from"./index-BwDkhjy
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 `,I=n.span`
   ${j(1)}

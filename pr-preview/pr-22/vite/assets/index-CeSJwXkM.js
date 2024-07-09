@@ -647,6 +647,7 @@ Error generating stack: `+V.message+`
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 `,dz=FU.span`
   ${CQ(1)}
@@ -721,6 +722,7 @@ Error generating stack: `+V.message+`
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 `,kz=()=>{const U=L.useContext(cB);return x.jsxs(nz,{children:[x.jsxs(IT,{$shrinkable:!0,children:[x.jsx(ah,{status:U.data.ws.status}),x.jsx(Ez,{children:U.data.ws.statusText})]}),x.jsxs(IT,{children:[x.jsx(DQ,{text:"Github",children:x.jsx(yT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:x.jsx(g3,{"aria-label":"Github"})})}),x.jsx(DQ,{text:"Storybook",children:x.jsx(yT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:x.jsx(FX,{"aria-label":"Storybook"})})}),x.jsx(Nz,{}),x.jsx(Zz,{})]})]})},Tz=FU.div`
   height: 100svh;
