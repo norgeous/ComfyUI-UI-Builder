@@ -31,7 +31,7 @@ const MainContent = () => {
       <ContentArea>
         <ImageGrid images={images} />
       </ContentArea>
-      <Timeline items={queue} />
+      {!!queue.length && <Timeline items={queue} />}
     </Main>
   );
 };
