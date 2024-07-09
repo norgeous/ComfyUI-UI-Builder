@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import { GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
+import Tooltip from '@/components/Tooltip';
 import SettingsMenu from '@/components/SettingsMenu';
+import DebugMenu from '@/components/DebugMenu';
 import { Bar, Link, StatusText, Tray } from './styled';
-import DebugMenu from '../DebugMenu';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
@@ -16,21 +17,25 @@ const StatusBar = () => {
         <StatusText>{comfyBridge.data.ws.statusText}</StatusText>
       </Tray>
       <Tray>
-        <Link
-          href="https://github.com/norgeous/ComfyUI-UI-Builder/"
-          target="_blank"
-          aria-label="Github"
-        >
-          <GithubIcon />
-        </Link>
+        <Tooltip text="Github">
+          <Link
+            href="https://github.com/norgeous/ComfyUI-UI-Builder/"
+            target="_blank"
+            // aria-label="Github"
+          >
+            <GithubIcon />
+          </Link>
+        </Tooltip>
 
-        <Link
-          href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
-          target="_blank"
-          aria-label="Storybook"
-        >
-          <StorybookIcon />
-        </Link>
+        <Tooltip text="Storybook">
+          <Link
+            href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
+            target="_blank"
+            // aria-label="Storybook"
+          >
+            <StorybookIcon />
+          </Link>
+        </Tooltip>
 
         <DebugMenu />
 

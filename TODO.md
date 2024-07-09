@@ -7,8 +7,7 @@
 
 ## Now
 
-- reset checkpoint button not showing up after change
-- tray items need tooltips
+- reset checkpoint button not showing up after change / same issue on workflow selector
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
 - comfy bridge readme
