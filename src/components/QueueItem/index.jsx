@@ -44,7 +44,7 @@ const QueueItem = ({
           aria-label="Select"
           onClick={() => bridge.updateState('queueSelected', { promptId })}
         >
-          {images && <Img src={`${images[0]}`} />}
+          {images && <Img alt="" src={`${images[0]}`} />}
         </Button>
       )}
 
