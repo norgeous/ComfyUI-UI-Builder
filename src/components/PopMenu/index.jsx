@@ -8,10 +8,12 @@ import {
   useInteractions,
   autoPlacement,
 } from '@floating-ui/react';
+import Tooltip from '@/components/Tooltip';
 import { Button, Menu, MenuItem } from './styled';
 
 const PopMenu = ({
   className = undefined,
+  tooltip = undefined,
   children = null,
   menuContents = null,
   options = [],
@@ -32,7 +34,7 @@ const PopMenu = ({
   const { getReferenceProps, getFloatingProps } = useInteractions([dismiss]);
 
   return (
-    <>
+    <Tooltip text={tooltip} hidden={isOpen}>
       <Button
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         className={className}
@@ -56,12 +58,13 @@ const PopMenu = ({
           {menuContents}
         </Menu>
       )}
-    </>
+    </Tooltip>
   );
 };
 
 PopMenu.propTypes = {
   className: PropTypes.string,
+  tooltip: PropTypes.string,
   lm: PropTypes.bool,
   wide: PropTypes.bool,
   children: PropTypes.node,

@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import FormContext from '@/contexts/FormContext';
 import ConfigsContext from '@/contexts/ConfigsContext';
-import Tooltip from '@/components/Tooltip';
 import { BugIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
@@ -66,11 +65,9 @@ const DebugMenu = () => {
 
   return (
     <>
-      <Tooltip text="View Debug Data">
-        <PopMenu options={debugOptions}>
-          <BugIcon />
-        </PopMenu>
-      </Tooltip>
+      <PopMenu options={debugOptions} tooltip="View Debug Data">
+        <BugIcon />
+      </PopMenu>
       {debugData && <Debug onClick={() => setDebugData()} data={debugDatum} />}
     </>
   );
