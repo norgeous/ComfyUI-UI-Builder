@@ -16,4 +16,8 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   display: block;
   accent-color: var(--accent);
   margin: 0;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 `;
