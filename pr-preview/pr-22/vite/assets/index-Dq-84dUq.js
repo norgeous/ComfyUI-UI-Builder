@@ -647,7 +647,6 @@ Error generating stack: `+V.message+`
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: -2px;
   }
 `,dz=FU.span`
   ${CQ(1)}
@@ -704,8 +703,8 @@ Error generating stack: `+V.message+`
   flex-direction: row;
   align-items: center;
   gap: 4px;
-  overflow: hidden;
   flex-shrink: ${({$shrinkable:U})=>U?1:0};
+  overflow: ${({$shrinkable:U})=>U?"hidden":"visible"};
 `,Ez=FU.div`
   font-size: 10px;
   overflow: hidden;
@@ -716,12 +715,12 @@ Error generating stack: `+V.message+`
   justify-content: center;
   align-items: center;
   color: inherit;
+  border-radius: var(--radius);
   &:hover {
     color: var(--fg0);
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: -2px;
   }
 `,kz=()=>{const U=L.useContext(cB);return x.jsxs(nz,{children:[x.jsxs(IT,{$shrinkable:!0,children:[x.jsx(ah,{status:U.data.ws.status}),x.jsx(Ez,{children:U.data.ws.statusText})]}),x.jsxs(IT,{children:[x.jsx(DQ,{text:"Github",children:x.jsx(yT,{href:"https://github.com/norgeous/ComfyUI-UI-Builder/",target:"_blank",children:x.jsx(g3,{"aria-label":"Github"})})}),x.jsx(DQ,{text:"Storybook",children:x.jsx(yT,{href:"https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/",target:"_blank",children:x.jsx(FX,{"aria-label":"Storybook"})})}),x.jsx(Nz,{}),x.jsx(Zz,{})]})]})},Tz=FU.div`
   height: 100svh;
