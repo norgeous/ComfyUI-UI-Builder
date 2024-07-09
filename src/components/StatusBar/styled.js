@@ -15,8 +15,8 @@ export const Tray = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 4px;
-  overflow: hidden;
   flex-shrink: ${({ $shrinkable }) => ($shrinkable ? 1 : 0)};
+  overflow: ${({ $shrinkable }) => ($shrinkable ? 'hidden' : 'visible')};
 `;
 
 export const StatusText = styled.div`
@@ -31,11 +31,11 @@ export const Link = styled.a`
   justify-content: center;
   align-items: center;
   color: inherit;
+  border-radius: var(--radius);
   &:hover {
     color: var(--fg0);
   }
   &:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: -2px;
   }
 `;
