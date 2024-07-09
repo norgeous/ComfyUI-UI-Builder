@@ -2,10 +2,12 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   useFloating,
+  autoUpdate,
+  offset,
+  autoPlacement,
   shift,
   useDismiss,
   useInteractions,
-  autoPlacement,
 } from '@floating-ui/react';
 import Tooltip from '@/components/Tooltip';
 import { Button, Menu } from './styled';
@@ -21,6 +23,7 @@ const PopMenu = ({
   const { refs, floatingStyles, context } = useFloating({
     placement: 'auto',
     middleware: [
+      offset(4),
       autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
       shift({ padding: 4 }),
     ],
@@ -28,6 +31,7 @@ const PopMenu = ({
     onOpenChange: newIsOpen => {
       setIsOpen(newIsOpen);
     },
+    whileElementsMounted: autoUpdate,
   });
 
   const dismiss = useDismiss(context);
