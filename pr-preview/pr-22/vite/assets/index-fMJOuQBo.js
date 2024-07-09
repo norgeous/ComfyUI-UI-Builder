@@ -329,7 +329,7 @@ Error generating stack: `+V.message+`
   background-size: 8px 8px;
   background-position: center center;
   background-image: radial-gradient(circle, var(--bg2) 1px, transparent 1px);
-`,DH=()=>{const{data:U}=L.useContext(cB),F=Object.entries(U.queue).filter(([,R])=>R).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(J=>{const d=new URLSearchParams;return Object.entries(J).forEach(([W,Z])=>d.append(W,Z)),`${U.ws.comfyUrl}/view?${d.toString()}`}),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return x.jsxs(kH,{children:[x.jsx(TH,{children:x.jsx(P1,{images:B})}),x.jsx(Qh,{items:F})]})},xQ=L.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},Bh=({text:U=void 0})=>x.jsx(DQ,{text:U,children:x.jsx(A3,{className:"muted"})});Bh.propTypes={text:I.string};const aH=FU.div`
+`,DH=()=>{const{data:U}=L.useContext(cB),F=Object.entries(U.queue).filter(([,R])=>R).map(([R,V])=>{var l;return{promptId:R,images:(l=V.output)==null?void 0:l.images.map(J=>{const d=new URLSearchParams;return Object.entries(J).forEach(([W,Z])=>d.append(W,Z)),`${U.ws.comfyUrl}/view?${d.toString()}`}),...V}}).toReversed(),Q=U.queueSelected.promptId,{images:B}=F.find(({promptId:R})=>R===Q)||{};return x.jsxs(kH,{children:[x.jsx(TH,{children:x.jsx(P1,{images:B})}),!!F.length&&x.jsx(Qh,{items:F})]})},xQ=L.createContext(null),td=(U,F)=>{const Q=Object.keys,B=typeof U;return U&&F&&B==="object"&&B===typeof F?Q(U).length===Q(F).length&&Q(U).every(V=>td(U[V],F[V])):U===F},Bh=({text:U=void 0})=>x.jsx(DQ,{text:U,children:x.jsx(A3,{className:"muted"})});Bh.propTypes={text:I.string};const aH=FU.div`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -574,6 +574,10 @@ Error generating stack: `+V.message+`
   display: block;
   accent-color: var(--accent);
   margin: 0;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 `,nh=({id:U=void 0,label:F=void 0,info:Q=void 0,value:B=void 0,onChange:R=()=>{},options:V=[],children:l=null})=>{const J=L.useContext(xQ),d=V.findIndex(Z=>Z.value===B||td(Z.value,B)),{label:W}=V[d];return x.jsxs(CF,{pad:!0,column:!0,gap:"sm",children:[x.jsx(jB,{id:U,label:F,info:Q,children:l}),x.jsxs(tS,{children:[x.jsx(MS,{ref:J,checked:!!d,onChange:Z=>R(V[Number(Z.currentTarget.checked)].value)})," ",W]})]})};nh.propTypes={id:I.string,label:I.string,info:I.string,options:I.arrayOf(I.shape({label:I.string,value:I.any})),value:I.any,onChange:I.func,children:I.node};const IH={select:Md,range:lh,textarea:Jh,text:Rn,number:Vn,checkbox:nh,selectckpt:dh,fileupload:Wh,speech:Zh,seed:Nh},Eh=({type:U=void 0,id:F=void 0,label:Q=void 0,info:B=void 0,defaultValue:R=void 0,value:V=void 0,onChange:l=()=>{},onChangeData:J={},...d})=>{const W=IH[U]||Vh,Z=L.useRef(),{formState:k,updateFormState:a}=L.useContext(b0),p=V??k[F],h=n=>{const T={[F]:n,...J};a(T),l(n)},t=()=>{var n;h(R),(n=Z.current)==null||n.focus()},G=p!==R;return x.jsx(xQ.Provider,{value:Z,children:x.jsx(W,{...d,id:F,type:U,label:Q,info:B,value:p,onChange:h,children:G&&x.jsx(Rh,{onClick:t})})})};Eh.propTypes={type:I.string,id:I.string,label:I.string,info:I.string,defaultValue:I.any,value:I.any,onChange:I.func,onChangeData:I.object};const yH=FU.div`
   border-radius: var(--radius);
   overflow: hidden;
