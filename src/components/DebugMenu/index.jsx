@@ -5,6 +5,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import { BugIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
+import { MenuItem } from '../PopMenu/styled';
 
 const DebugMenu = () => {
   const comfyBridge = useContext(ComfyBridgeContext);
@@ -65,7 +66,14 @@ const DebugMenu = () => {
 
   return (
     <>
-      <PopMenu options={debugOptions} tooltip="View Debug Data">
+      <PopMenu
+        tooltip="View Debug Data"
+        menuContents={debugOptions.map(({ label, onClick }) => (
+          <div key={label}>
+            <MenuItem onClick={onClick}>{label}</MenuItem>
+          </div>
+        ))}
+      >
         <BugIcon />
       </PopMenu>
       {debugData && <Debug onClick={() => setDebugData()} data={debugDatum} />}

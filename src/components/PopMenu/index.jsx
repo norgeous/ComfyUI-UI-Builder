@@ -9,14 +9,13 @@ import {
   autoPlacement,
 } from '@floating-ui/react';
 import Tooltip from '@/components/Tooltip';
-import { Button, Menu, MenuItem } from './styled';
+import { Button, Menu } from './styled';
 
 const PopMenu = ({
   className = undefined,
   tooltip = undefined,
   children = null,
   menuContents = null,
-  options = [],
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +49,6 @@ const PopMenu = ({
           style={floatingStyles}
           {...getFloatingProps()} // eslint-disable-line react/jsx-props-no-spreading
         >
-          {options.map(({ label, onClick }) => (
-            <div key={label}>
-              <MenuItem onClick={onClick}>{label}</MenuItem>
-            </div>
-          ))}
           {menuContents}
         </Menu>
       )}
