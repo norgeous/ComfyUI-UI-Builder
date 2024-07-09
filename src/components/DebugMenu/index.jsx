@@ -74,7 +74,7 @@ const DebugMenu = () => {
           </div>
         ))}
       >
-        <BugIcon />
+        <BugIcon aria-label="View Debug Data" />
       </PopMenu>
       {debugData && <Debug onClick={() => setDebugData()} data={debugDatum} />}
     </>

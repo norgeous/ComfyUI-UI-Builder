@@ -36,7 +36,7 @@ const SettingsMenu = () => {
         </>
       }
     >
-      <SettingsIcon />
+      <SettingsIcon aria-label="Settings" />
     </PopMenu>
   );
 };

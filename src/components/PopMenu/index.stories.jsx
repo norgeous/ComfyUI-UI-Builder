@@ -10,10 +10,19 @@ export const PopMenuTooltip = {
   args: {
     children: 'Click Me',
     tooltip: 'tooltip',
-    options: [
-      { label: 'Option 1', onClick: fn() },
-      { label: 'Option 2', onClick: fn() },
-    ],
+    menuContents: (
+      <>
+        <button type="button" onClick={fn()}>
+          Option 1
+        </button>
+        <button type="button" onClick={fn()}>
+          Option 2
+        </button>
+        <button type="button" onClick={fn()}>
+          Option 3
+        </button>
+      </>
+    ),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -25,10 +34,19 @@ export const PopMenuOpen = {
   args: {
     children: 'Click Me',
     tooltip: 'tooltip',
-    options: [
-      { label: 'Option 1', onClick: fn() },
-      { label: 'Option 2', onClick: fn() },
-    ],
+    menuContents: (
+      <>
+        <button type="button" onClick={fn()}>
+          Option 1
+        </button>
+        <button type="button" onClick={fn()}>
+          Option 2
+        </button>
+        <button type="button" onClick={fn()}>
+          Option 3
+        </button>
+      </>
+    ),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
