@@ -10,6 +10,7 @@ export const DebugMenu = {
   parameters: {
     screenshot: {
       viewport: {
+        width: 412,
         height: 250,
       },
     },
