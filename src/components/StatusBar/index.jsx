@@ -21,9 +21,8 @@ const StatusBar = () => {
           <Link
             href="https://github.com/norgeous/ComfyUI-UI-Builder/"
             target="_blank"
-            // aria-label="Github"
           >
-            <GithubIcon />
+            <GithubIcon aria-label="Github" />
           </Link>
         </Tooltip>
 
@@ -31,9 +30,8 @@ const StatusBar = () => {
           <Link
             href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
             target="_blank"
-            // aria-label="Storybook"
           >
-            <StorybookIcon />
+            <StorybookIcon aria-label="Storybook" />
           </Link>
         </Tooltip>
 
