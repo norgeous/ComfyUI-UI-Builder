@@ -2,10 +2,10 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/tooltip.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/tooltip.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/queueitem.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -42,13 +42,14 @@
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputmissing.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/settingsmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputmissing.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/settingsmenu.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -64,7 +65,7 @@
 [TEST]       ┌─────────┬──────────────────┬────────────┐
 [TEST]       │ (index) │      target      │ violations │
 [TEST]       ├─────────┼──────────────────┼────────────┤
-[TEST]       │    0    │ '[".sc-dAbbbq"]' │   '[0]'    │
+[TEST]       │    0    │ '[".sc-hzhKNl"]' │   '[0]'    │
 [TEST]       └─────────┴──────────────────┴────────────┘
 [TEST] 
 [TEST]       at DefaultTerminalReporter.<anonymous> (node_modules/axe-playwright/dist/reporter/defaultTerminalReporter.js:43:29)
@@ -85,15 +86,15 @@
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/formcontrols.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/resetbutton.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/resetbutton.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/maincontent.test.js
 [TEST]   ● MainContent › Main Content › play-test
 [TEST] 
 [TEST]     page.evaluate: StorybookTestRunnerError: 
@@ -146,14 +147,14 @@
 [TEST]      [90m 15 |[39m           hasPlayFn
 [TEST]      [90m 16 |[39m         }) [33m=>[39m __test(id[33m,[39m hasPlayFn)[33m,[39m {[0m
 [TEST] 
-[TEST]       at evaluate (../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/maincontent.test.js:13:35)
-[TEST]       at Object.<anonymous> (../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/maincontent.test.js:34:9)
+[TEST]       at evaluate (../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/maincontent.test.js:13:35)
+[TEST]       at Object.<anonymous> (../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/maincontent.test.js:34:9)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/collapsable.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/headerinfo.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/headerinfo.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/statusbar.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -196,11 +197,11 @@
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/errortext.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/debugmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/errortext.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/debugmenu.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -237,15 +238,14 @@
 [TEST]       at node_modules/axe-playwright/dist/index.js:140:51
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/timeline.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/debug.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/app.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/timeline.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/debug.test.js
+[TEST] FAIL browser: chromium ../../../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/app.test.js
 [TEST]   ● Console
 [TEST] 
 [TEST]     console.log
@@ -289,8 +289,7 @@
 [TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
 [TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/queueitem.test.js
-[TEST]   ● QueueItem › Complete › smoke-test
+[TEST] FAIL ../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/queueitem.test.js
 [TEST] 
 [TEST] 
 [TEST]     Received:
@@ -299,18 +298,20 @@
 [TEST]     Message:
 [TEST] 
 [TEST] 
-[TEST] FAIL ../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/settingsmenu.test.js
 [TEST] 
 [TEST] 
+[TEST]       0
 [TEST]     Received:
 [TEST]       1
 [TEST] 
-[TEST] 
-[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
-[TEST] 
+[TEST]     Message:
 [TEST] 
 [TEST] 
 [TEST] 
+[TEST] 
+[TEST]     Message:
+[TEST] 
+[TEST]     Here are the accessible roles:
 [TEST] 
 [TEST]       main:
 [TEST] 
@@ -319,46 +320,49 @@
 [TEST]         class="sc-iHGNiK geTDLM"
 [TEST]       />
 [TEST] 
+[TEST]       --------------------------------------------------
 [TEST] 
 [TEST]     Ignored nodes: comments, script, style
 [TEST]     <div
 [TEST]       id="storybook-root"
 [TEST]     >
 [TEST]       <main
-[TEST]         class="sc-iHGNiK geTDLM"
 [TEST]       >
-[TEST]         <div
 [TEST]           class="sc-dtBeHJ eMZAAa"
-[TEST]         />
 [TEST]         <div
-[TEST]           class="sc-fqkwJk cHHXIx"
-[TEST]           style="flex-grow: 0;"
+[TEST]         />
 [TEST]       </main>
-[TEST]     </div>
+[TEST] 
+[TEST] 
+[TEST]     --------------------------------------------------
 [TEST] 
 [TEST] 
 [TEST] 
-[TEST]     Browser logs:
+[TEST]      [90m 14 |[39m           id[33m,[39m
 [TEST] 
 [TEST] 
-[TEST]      [90m 12 |[39m         }
-[TEST]      [90m 15 |[39m           hasPlayFn
-[TEST] 
-[TEST] 
-[TEST] FAIL ../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/statusbar.test.js
+[TEST] FAIL ../../../../../tmp/277ccab22725105fbe5e7dcbd63f02b7/statusbar.test.js
 [TEST]   ● StatusBar › Status Bar › smoke-test
 [TEST] 
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
+[TEST]     Expected value to strictly be equal to:
 [TEST]       0
 [TEST]     Received:
 [TEST]       3
 [TEST] 
+[TEST]     Message:
 [TEST] 
+[TEST]       at node_modules/axe-playwright/dist/index.js:140:51
+[TEST]       at fulfilled (node_modules/axe-playwright/dist/index.js:28:58)
 [TEST] 
-[TEST] FAIL ../../../../../tmp/6f14f88f7efe9bf17bb88d146e50488e/debugmenu.test.js
+[TEST]   ● DebugMenu › Debug Menu › play-test
 [TEST] 
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
+[TEST]     Expected value to strictly be equal to:
 [TEST]       0
+[TEST]     Received:
 [TEST]       1
 [TEST] 
 [TEST]     Message:
@@ -366,21 +370,21 @@
 [TEST] 
 [TEST] 
 [TEST] 
+[TEST]     assert.strictEqual(received, expected)
 [TEST] 
 [TEST]       0
-[TEST]     Received:
+[TEST]       3
 [TEST] 
 [TEST]     Message:
 [TEST] 
-[TEST]       at testResultDependsOnViolations (node_modules/axe-playwright/dist/utils.js:16:26)
 [TEST] 
 [TEST] 
 [TEST] Test Suites: 6 failed, 1 skipped, 33 passed, 39 of 40 total
-[TEST] Tests:       6 failed, 1 skipped, 56 passed, 63 total
+[TEST] Tests:       6 failed, 1 skipped, 57 passed, 64 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        40.781 s
+[TEST] Time:        42.526 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/6f14f88f7efe9bf17bb88d146e50488e
+[TEST] [test-storybook] Cleaning up /tmp/277ccab22725105fbe5e7dcbd63f02b7
 [TEST] npm error Lifecycle script `unittest` failed with error:
 [TEST] npm error Error: command failed
 [TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
