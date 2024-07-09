@@ -7,6 +7,13 @@ export default {
 };
 
 export const DebugMenu = {
+  parameters: {
+    screenshot: {
+      viewport: {
+        height: 250,
+      },
+    },
+  },
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
