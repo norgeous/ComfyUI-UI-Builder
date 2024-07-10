@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FloatingArrow } from '@floating-ui/react';
-import { bgfg } from '@/components/GlobalStyles';
+import bgfg from '@/components/GlobalStyles/bgfg';
 
 export const TooltipWrap = styled.span`
   display: inline-flex;

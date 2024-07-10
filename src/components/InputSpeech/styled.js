@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgfg } from '@/components/GlobalStyles';
+import bgfg from '@/components/GlobalStyles/bgfg';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Textarea = styled.textarea`
