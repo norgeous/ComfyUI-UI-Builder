@@ -21,7 +21,7 @@ const QueueItem = ({
   const isQueued = type === undefined;
   const isError = false;
   const isComplete = (type === 'executing' && node === null) || isError;
-  const isProgressing = type === 'progress';
+  const isProgressing = !isComplete && !isQueued;
 
   const handleRemove = () => {
     bridge.updateState('queue', { [promptId]: undefined });
@@ -36,8 +36,6 @@ const QueueItem = ({
       bgfg={3}
       style={{ display: 'inline-flex' }}
     >
-      {!isComplete && !isQueued && <SpinnerIcon />}
-
       {!!images?.length && (
         <Button
           small
@@ -49,20 +47,23 @@ const QueueItem = ({
       )}
 
       {isProgressing && (
-        <QueueTitle>
-          <div>
-            {node} {type}{' '}
-            <span className="muted" style={{ fontSize: 10 }}>
-              {promptId}
-            </span>
-          </div>
-          <Progress value={value} max={max} />
-        </QueueTitle>
+        <>
+          <SpinnerIcon />
+          <QueueTitle>
+            <div>
+              {node}{' '}
+              <span className="muted" style={{ fontSize: 10 }}>
+                {promptId}
+              </span>
+            </div>
+            <Progress value={value} max={max} />
+          </QueueTitle>
+        </>
       )}
 
       {isQueued && (
         <Tooltip lm text="Cancel">
-          <Button aria-label="Cencel" onClick={handleRemove}>
+          <Button small aria-label="Cancel" onClick={handleRemove}>
             <DismissIcon />
           </Button>
         </Tooltip>
@@ -70,7 +71,7 @@ const QueueItem = ({
 
       {isProgressing && (
         <Tooltip lm text="Interrupt">
-          <Button aria-label="Interrupt" onClick={handleRemove}>
+          <Button small aria-label="Interrupt" onClick={handleRemove}>
             <InterruptIcon />
           </Button>
         </Tooltip>
@@ -78,7 +79,7 @@ const QueueItem = ({
 
       {isComplete && (
         <Tooltip lm text="Remove">
-          <Button aria-label="Remove" onClick={handleRemove}>
+          <Button small aria-label="Remove" onClick={handleRemove}>
             <DismissIcon />
           </Button>
         </Tooltip>
