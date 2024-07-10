@@ -1,22 +1,6 @@
-import simpleFetch from './utils/simpleFetch';
-import connectWs from './websocket';
-
-// TODO:
-// - get objectInfo
-// - queue
-//   - executePrompt
-//   - executeInterrupt
-// - image and video uploading and downloading
-
-// Get all the object info (node info)
-const getObjectInfo = ({ comfyUrl, onChange }) => {
-  if (!comfyUrl) return;
-  simpleFetch({
-    url: `${comfyUrl}/object_info`,
-    onChange,
-    adapter: res => res.json(),
-  });
-};
+import connectWs from './api/websocket';
+import getObjectInfo from './api/objectInfo';
+import prompt from './api/prompt';
 
 // callback based object for communicating with comfyui api
 const comfybridge = ({ onChange = () => {} }) => {
@@ -38,7 +22,7 @@ const comfybridge = ({ onChange = () => {} }) => {
       onChange: newData => updateState('ws', newData),
       onConnect: () => {
         getObjectInfo({
-          comfyUrl: state.ws.comfyUrl,
+          state,
           onChange: newData => updateState('objectInfo', newData),
         });
       },
@@ -59,32 +43,6 @@ const comfybridge = ({ onChange = () => {} }) => {
     state.destroyRetry = destroyRetry;
   };
 
-  // prompting
-  const prompt = ({ promptData }) => {
-    simpleFetch({
-      url: `${state.ws.comfyUrl}/prompt`,
-      options: {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          client_id: state.ws.clientId,
-          prompt: promptData,
-        }),
-      },
-      adapter: res => res.json(),
-      onChange: newState => {
-        updateState('prompt', newState);
-
-        const { prompt_id: promptId } = newState.data || {};
-        if (promptId) {
-          updateState('queue', {
-            [promptId]: {},
-          });
-        }
-      },
-    });
-  };
-
   const destroy = () => {
     state.ws = undefined;
     state.objectInfo = undefined;
@@ -97,7 +55,7 @@ const comfybridge = ({ onChange = () => {} }) => {
     updateState,
 
     connect,
-    prompt,
+    prompt: ({ promptData }) => prompt({ state, updateState, promptData }),
     destroy,
   };
 };
