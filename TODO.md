@@ -35,7 +35,6 @@
 - image input (for ipa)
   - example UI
 - storybook mocks
-  - mock for comfyui websocket
   - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
 - toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
 - ImageGrid: show spinner while images are loading
