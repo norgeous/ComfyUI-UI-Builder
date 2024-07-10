@@ -5,7 +5,12 @@ import InputText from '@/components/InputText';
 import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, WarningIcon } from '@/components/Icons';
 
-const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
+const InputSelectCkpt = ({
+  id = undefined,
+  value = undefined,
+  children = null,
+  ...props
+}) => {
   const { data } = useContext(ComfyBridgeContext);
 
   const ckptOptions =
@@ -24,6 +29,7 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
         </Tooltip>
       )}
       {data.objectInfo?.loading && <SpinnerIcon />}
+      {children}
     </InputText>
   );
 };
@@ -31,6 +37,7 @@ const InputSelectCkpt = ({ id = undefined, value = undefined, ...props }) => {
 InputSelectCkpt.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default InputSelectCkpt;

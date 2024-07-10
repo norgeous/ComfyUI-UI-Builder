@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Btn } from './styled';
+import { Btn } from './styles';
 
 const Button = ({
   wide = false,
