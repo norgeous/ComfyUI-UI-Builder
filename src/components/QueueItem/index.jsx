@@ -48,7 +48,7 @@ const QueueItem = ({
         </Button>
       )}
 
-      {!isComplete && (
+      {isProgressing && (
         <QueueTitle>
           <div>
             {node} {type}{' '}
@@ -56,13 +56,13 @@ const QueueItem = ({
               {promptId}
             </span>
           </div>
-          {isProgressing && <Progress value={value} max={max} />}
+          <Progress value={value} max={max} />
         </QueueTitle>
       )}
 
-      {(isQueued || isComplete) && (
-        <Tooltip lm text="Remove">
-          <Button aria-label="Remove" onClick={handleRemove}>
+      {isQueued && (
+        <Tooltip lm text="Cancel">
+          <Button aria-label="Cencel" onClick={handleRemove}>
             <DismissIcon />
           </Button>
         </Tooltip>
@@ -72,6 +72,14 @@ const QueueItem = ({
         <Tooltip lm text="Interrupt">
           <Button aria-label="Interrupt" onClick={handleRemove}>
             <InterruptIcon />
+          </Button>
+        </Tooltip>
+      )}
+
+      {isComplete && (
+        <Tooltip lm text="Remove">
+          <Button aria-label="Remove" onClick={handleRemove}>
+            <DismissIcon />
           </Button>
         </Tooltip>
       )}
