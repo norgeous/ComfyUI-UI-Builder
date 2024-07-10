@@ -14,6 +14,8 @@ import ErrorText from '@/components/ErrorText';
 import Tooltip from '@/components/Tooltip';
 import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 
+const MAXSEED = 10 ** 10;
+
 const FormControls = () => {
   const { bridge, data } = useContext(ComfyBridgeContext);
   const { error: promptError, loading: promptLoading } = data.prompt;
@@ -25,16 +27,13 @@ const FormControls = () => {
     config: { baseWorkflow },
   } = useContext(ConfigsContext);
 
-  const {
-    formState,
-    formState: { enableSeedRandomisation },
-    updateFormState,
-  } = useContext(FormContext);
+  const { formState, updateFormState } = useContext(FormContext);
 
   const handlePrompt = () => {
-    if (enableSeedRandomisation) {
-      const newSeed = Math.floor(Math.random() * 10 ** 10);
-      updateFormState({ seed: newSeed });
+    if (formState.seed.random) {
+      const newSeed = Math.floor(Math.random() * MAXSEED);
+      formState.seed.seed = newSeed; // a bit of a hack, so new seed is immediately available
+      updateFormState({ seed: { ...formState.seed, seed: newSeed } });
     }
 
     const adapted = executeAdapter({
@@ -62,6 +61,7 @@ const FormControls = () => {
   // auto prompting on change
   useEffect(() => {
     const isGenerating = Object.values(data.queue)
+      .filter(v => v)
       .map(({ node }) => node !== null)
       .some(v => v);
     if (auto && !isGenerating) handlePrompt();

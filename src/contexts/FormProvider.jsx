@@ -16,6 +16,7 @@ const FormProvider = ({ children = null }) => {
   }, [config]);
 
   const updateFormState = adjustment => {
+    console.log({ formState, adjustment });
     setFormState({
       ...formState,
       ...adjustment,

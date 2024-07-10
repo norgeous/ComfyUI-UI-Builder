@@ -8,7 +8,7 @@
 ## Now
 
 - fix prompt interrupt
-- seed > randomise dice icon doesnt randomise on generation or autogen?
+- add file upload endpoint to bridge
 - queue doesnt handle cached nodes very well
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
