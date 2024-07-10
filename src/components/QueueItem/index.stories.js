@@ -41,6 +41,6 @@ export const Complete = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByRole('button')[1]);
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };
