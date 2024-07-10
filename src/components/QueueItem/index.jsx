@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import { SpinnerIcon, DismissIcon } from '@/components/Icons';
+import { SpinnerIcon, DismissIcon, InterruptIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
 import { Img, QueueTitle } from './styled';
@@ -60,11 +60,21 @@ const QueueItem = ({
         </QueueTitle>
       )}
 
-      <Tooltip lm text="Remove">
-        <Button aria-label="Remove" onClick={handleRemove}>
-          <DismissIcon />
-        </Button>
-      </Tooltip>
+      {(isQueued || isComplete) && (
+        <Tooltip lm text="Remove">
+          <Button aria-label="Remove" onClick={handleRemove}>
+            <DismissIcon />
+          </Button>
+        </Tooltip>
+      )}
+
+      {isProgressing && (
+        <Tooltip lm text="Interrupt">
+          <Button aria-label="Interrupt" onClick={handleRemove}>
+            <InterruptIcon />
+          </Button>
+        </Tooltip>
+      )}
     </Layout>
   );
 };
