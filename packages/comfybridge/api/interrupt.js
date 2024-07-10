@@ -1,13 +1,15 @@
 import simpleFetch from '../utils/simpleFetch';
 
-const interrupt = ({ state, onChange }) => {
+const interrupt = ({ state, updateState }) => {
   simpleFetch({
     url: `${state.ws.comfyUrl}/interrupt`,
     options: {
       method: 'POST',
     },
-    onChange,
     adapter: res => res.json(),
+    onChange: newState => {
+      updateState('interrupt', newState);
+    },
   });
 };
 

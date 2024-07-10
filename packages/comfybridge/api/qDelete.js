@@ -1,6 +1,6 @@
 import simpleFetch from '../utils/simpleFetch';
 
-const queueDelete = ({ state, promptId, onChange }) => {
+const qDelete = ({ state, updateState, promptId }) => {
   simpleFetch({
     url: `${state.ws.comfyUrl}/queue`,
     options: {
@@ -10,9 +10,11 @@ const queueDelete = ({ state, promptId, onChange }) => {
         delete: [promptId],
       }),
     },
-    onChange,
     adapter: res => res.json(),
+    onChange: newState => {
+      updateState('qDelete', newState);
+    },
   });
 };
 
-export default queueDelete;
+export default qDelete;

@@ -1,6 +1,8 @@
 import connectWs from './api/websocket';
 import getObjectInfo from './api/objectInfo';
 import prompt from './api/prompt';
+import qDelete from './api/qDelete';
+import interrupt from './api/interrupt';
 
 // callback based object for communicating with comfyui api
 const comfybridge = ({ onChange = () => {} }) => {
@@ -53,10 +55,12 @@ const comfybridge = ({ onChange = () => {} }) => {
   return {
     state,
     updateState,
+    destroy,
 
     connect,
     prompt: ({ promptData }) => prompt({ state, updateState, promptData }),
-    destroy,
+    interrupt: () => interrupt({ state, updateState }),
+    qDelete: ({ promptId }) => qDelete({ state, updateState, promptId }),
   };
 };
 
