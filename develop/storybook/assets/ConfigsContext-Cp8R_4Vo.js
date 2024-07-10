@@ -1,0 +1,1 @@
+import{r as o}from"./index-BwDkhjyp.js";const e=o.createContext({config:{directoryName:void 0,baseWorkflow:void 0,configData:{formConfig:[]},formInitialState:{}},configs:[],setConfig:()=>{}});export{e as C};
