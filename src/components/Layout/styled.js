@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { bgfg } from '@/components/GlobalStyles';
+import bgfg from '@/components/GlobalStyles/bgfg';
 
 const gapSizes = { sm: '4px', md: '8px' };
 

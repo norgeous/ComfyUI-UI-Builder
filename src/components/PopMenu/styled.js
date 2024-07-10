@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgfg } from '@/components/GlobalStyles';
+import bgfg from '@/components/GlobalStyles/bgfg';
 
 export const Button = styled.button`
   cursor: pointer;

@@ -152,9 +152,3 @@ export const DisableAnimations = createGlobalStyle`
     caret-color: transparent !important;
   }
 `;
-
-// a bit like a mixin
-export const bgfg = level => css`
-  background: var(${`--bg${level}`});
-  color: var(${`--fg${level}`});
-`;
