@@ -1,4 +1,0 @@
-import{j as e}from"./jsx-runtime-Nms4Y4qS.js";import{r as f}from"./index-BwDkhjyp.js";import{C as d}from"./index-wo4bmeOh.js";import{c as l}from"./index-D0Aq9VeK.js";import{c as g}from"./index-BhwOTz_n.js";import{p as x}from"./styled-components.browser.esm-Cm6OPFyG.js";const u=x.div`
-  padding: 0 8px 8px;
-  font-size: 12px;
-`,a=()=>{const{config:s,configs:i,setConfig:c}=f.useContext(d),r=n=>{const o=i.find(({configData:{name:t}})=>t===n);c(o)},p=i.map(({configData:{emoji:n,name:o,version:t}})=>({label:`${n} ${o} ${t}`,value:o})),m=s.configData.name;return e.jsxs(l,{as:"header",column:!0,bgfg:2,children:[e.jsx(g,{id:"ui",label:"UI Builder",options:p,defaultValueIndex:0,value:m,onChange:r}),e.jsx(u,{className:"muted",children:s.configData.description})]})},v=a;a.__docgenInfo={description:"",methods:[],displayName:"UiSelector"};export{v as c};
