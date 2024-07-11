@@ -41,7 +41,11 @@ const QueueItem = ({
         onClick={handleSelect}
         style={{ width: 100, height: 40 }}
       >
-        {isQueued && <QueuedIcon />}
+        {isQueued && (
+          <div style={{ width: 37, height: 37 }}>
+            <QueuedIcon />
+          </div>
+        )}
         {isProgressing && !images && (
           <div style={{ width: 37, height: 37 }}>
             <SpinnerIcon />
