@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-Nms4Y4qS.js";import{P as t}from"./index-D3ylJrlI.js";import{r as h}from"./index-BwDkhjyp.js";import{C as j}from"./ComfyBridgeContext-CTMRF_Mz.js";import{c as y}from"./index-DhfeuN3W.js";import{c as n}from"./index-KviudHZg.js";import{a as b,D as f,e as C}from"./index-CvT9l5cF.js";import{c as s}from"./index-Dq9VOxrg.js";import{P as I}from"./styled-BVZT0ieL.js";import{p as x}from"./styled-components.browser.esm-Cm6OPFyG.js";const q=x.div`
+import{j as e}from"./jsx-runtime-Nms4Y4qS.js";import{P as t}from"./index-D3ylJrlI.js";import{r as h}from"./index-BwDkhjyp.js";import{C as j}from"./ComfyBridgeContext-CTMRF_Mz.js";import{c as y}from"./index-DhfeuN3W.js";import{c as n}from"./index-KviudHZg.js";import{a as b,D as f,e as C}from"./index-CvT9l5cF.js";import{c as s}from"./index-Dq9VOxrg.js";import{P as I}from"./styles-BVZT0ieL.js";import{p as x}from"./styled-components.browser.esm-Cm6OPFyG.js";const q=x.div`
   font-size: 10px;
   overflow: hidden;
   flex-grow: 1;
