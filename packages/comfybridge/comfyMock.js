@@ -151,7 +151,7 @@ const getMockJobEvents = ({ promptId }) => [
   // { type: 'execution_interrupted', data:{} },
 ];
 
-const mockQueue = [];
+let mockQueue = [];
 
 // queue eater
 setInterval(() => {
@@ -229,6 +229,17 @@ const interruptMock = http.get(`${window.location.origin}/interrupt`, () =>
   HttpResponse(),
 );
 
+const qDeleteMock = http.post(
+  `${window.location.origin}/queue`,
+  async ({ request }) => {
+    const bodyData = await request.json();
+    mockQueue = mockQueue.filter(
+      ({ data }) => data.prompt_id !== bodyData.delete[0],
+    );
+    return HttpResponse.json({});
+  },
+);
+
 const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
   const url = new URL(request.url);
   const width = url.searchParams.get('width') || 1024;
@@ -289,4 +300,11 @@ const imageMock = http.get(`${window.location.origin}/view`, ({ request }) => {
   });
 });
 
-export default [wsMock, objectInfoMock, promptMock, interruptMock, imageMock];
+export default [
+  wsMock,
+  objectInfoMock,
+  promptMock,
+  interruptMock,
+  qDeleteMock,
+  imageMock,
+];
