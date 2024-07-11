@@ -27,6 +27,14 @@ const QueueItem = ({
   const isComplete = type === 'executing' && node === null;
   const isProgressing = !isComplete && !isQueued;
 
+  const handleCancel = () => {
+    bridge.qDelete({ promptId });
+  };
+
+  const handleInterrupt = () => {
+    bridge.interrupt();
+  };
+
   const handleRemove = () => {
     bridge.updateState('queue', { [promptId]: undefined });
   };
@@ -68,7 +76,7 @@ const QueueItem = ({
 
       {isQueued && (
         <Tooltip lm text="Cancel">
-          <Button small aria-label="Cancel" onClick={handleRemove}>
+          <Button small aria-label="Cancel" onClick={handleCancel}>
             <DismissIcon />
           </Button>
         </Tooltip>
@@ -76,7 +84,7 @@ const QueueItem = ({
 
       {isProgressing && (
         <Tooltip lm text="Interrupt">
-          <Button small aria-label="Interrupt" onClick={handleRemove}>
+          <Button small aria-label="Interrupt" onClick={handleInterrupt}>
             <InterruptIcon />
           </Button>
         </Tooltip>
