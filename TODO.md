@@ -9,6 +9,7 @@
 
 - fix prompt interrupt
 - queue doesnt handle cached nodes very well
+- page refresh looses queue, it can be retrived via endpoint
 - add file upload endpoint to bridge
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
