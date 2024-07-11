@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HitArea = styled.button`
   border: none;
   background: transparent;
+  color: inherit;
   cursor: pointer;
   display: flex;
   gap: 4px;
