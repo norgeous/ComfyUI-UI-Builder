@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
-import { Input } from './styled';
+import { Input } from './styles';
 
 const InputText = ({
   id = undefined,

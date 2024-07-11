@@ -13,7 +13,7 @@ import {
   Sublabel,
   SublabelText,
   Pip,
-} from './styled';
+} from './styles';
 
 const InputRange = ({
   id = undefined,

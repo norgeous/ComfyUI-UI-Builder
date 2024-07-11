@@ -5,7 +5,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import { BugIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
 import Debug from '@/components/Debug';
-import { MenuItem } from '../PopMenu/styled';
+import { MenuItem } from '../PopMenu/styles';
 
 const DebugMenu = () => {
   const comfyBridge = useContext(ComfyBridgeContext);

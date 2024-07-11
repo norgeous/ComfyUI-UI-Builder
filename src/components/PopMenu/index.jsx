@@ -10,7 +10,7 @@ import {
   useInteractions,
 } from '@floating-ui/react';
 import Tooltip from '@/components/Tooltip';
-import { Button, Menu } from './styled';
+import { Button, Menu } from './styles';
 
 const PopMenu = ({
   className = undefined,

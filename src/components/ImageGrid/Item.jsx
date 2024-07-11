@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import SettingsContext from '@/contexts/SettingsContext';
-import { Img } from './styled';
+import { Img } from './styles';
 
 const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
   const {

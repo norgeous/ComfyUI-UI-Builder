@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import FormContext from '@/contexts/FormContext';
 import Input from '@/components/Input';
 import Collapsable from '@/components/Collapsable';
-import { Grid, GridItem } from './styled';
+import { Grid, GridItem } from './styles';
 
 const FormBuilder = () => {
   const { formConfig } = useContext(FormContext);

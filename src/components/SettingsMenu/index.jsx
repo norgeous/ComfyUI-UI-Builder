@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import SettingsContext from '@/contexts/SettingsContext';
 import { SettingsIcon } from '@/components/Icons';
 import PopMenu from '@/components/PopMenu';
-import { Label, Checkbox } from '@/components/InputCheckbox/styled';
+import { Label, Checkbox } from '@/components/InputCheckbox/styles';
 
 const SettingsMenu = () => {
   const {

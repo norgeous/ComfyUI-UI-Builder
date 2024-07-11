@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Info from '@/components/HeaderInfo';
-import { Wrap, Label } from './styled';
+import { Wrap, Label } from './styles';
 
 const InputHeader = ({
   id = undefined,

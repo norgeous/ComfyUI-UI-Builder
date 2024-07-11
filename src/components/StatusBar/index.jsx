@@ -5,7 +5,7 @@ import StatusLight from '@/components/StatusLight';
 import Tooltip from '@/components/Tooltip';
 import SettingsMenu from '@/components/SettingsMenu';
 import DebugMenu from '@/components/DebugMenu';
-import { Bar, Link, StatusText, Tray } from './styled';
+import { Bar, Link, StatusText, Tray } from './styles';
 
 const StatusBar = () => {
   const comfyBridge = useContext(ComfyBridgeContext);

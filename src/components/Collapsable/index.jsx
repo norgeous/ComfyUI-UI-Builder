@@ -8,7 +8,7 @@ import {
   HeaderText,
   Inner,
   Padding,
-} from './styled';
+} from './styles';
 
 const Collapsable = ({ title = '', defaultIsOpen = true, children = null }) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);

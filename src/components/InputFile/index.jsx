@@ -5,7 +5,7 @@ import Select from '@/components/InputSelect';
 import Layout from '@/components/Layout';
 import ErrorText from '@/components/ErrorText';
 import Button from '@/components/Button';
-import { Img, Input } from './styled';
+import { Img, Input } from './styles';
 
 const allowedFileTypes = [
   '.jpg',

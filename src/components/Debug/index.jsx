@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Pre } from './styled';
+import { Pre } from './styles';
 
 const Debug = ({ onClick = () => {}, data = undefined }) => (
   <Pre onClick={onClick}>{JSON.stringify(data, null, 2)}</Pre>

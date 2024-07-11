@@ -3,7 +3,7 @@ import ConfigsContext from '@/contexts/ConfigsContext';
 import Layout from '@/components/Layout';
 import Select from '@/components/InputSelect';
 import ResetButton from '@/components/ResetButton';
-import { Description } from './styled';
+import { Description } from './styles';
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);

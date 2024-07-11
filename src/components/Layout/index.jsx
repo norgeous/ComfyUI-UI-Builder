@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Flex } from './styled';
+import { Flex } from './styles';
 
 const Layout = ({
   pad = false,

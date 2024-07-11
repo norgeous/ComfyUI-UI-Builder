@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
 import Timeline from '@/components/Timeline';
-import { ContentArea, Main } from './styled';
+import { ContentArea, Main } from './styles';
 
 const MainContent = () => {
   const { data } = useContext(ComfyBridgeContext);

@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import { SpinnerIcon, DismissIcon, InterruptIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
-import { Img, QueueTitle } from './styled';
+import { Img, QueueTitle } from './styles';
 
 const QueueItem = ({
   promptId = undefined,

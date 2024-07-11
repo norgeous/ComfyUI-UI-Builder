@@ -4,7 +4,7 @@ import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
-import { Select } from './styled';
+import { Select } from './styles';
 
 const InputSelect = ({
   id = undefined,

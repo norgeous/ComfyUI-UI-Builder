@@ -1,3 +1,3 @@
-import { Progress } from './styled';
+import { Progress } from './styles';
 
 export default Progress;

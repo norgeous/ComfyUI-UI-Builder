@@ -4,7 +4,7 @@ import InputRefContext from '@/contexts/InputRefContext';
 import deepEqual from '@/utils/deepEqual';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
-import { Label, Checkbox } from './styled';
+import { Label, Checkbox } from './styles';
 
 const InputCheckbox = ({
   id = undefined,

@@ -8,7 +8,7 @@ import {
   shift,
   arrow,
 } from '@floating-ui/react';
-import { Arrow, TooltipText, TooltipWrap } from './styled';
+import { Arrow, TooltipText, TooltipWrap } from './styles';
 
 const Tooltip = ({
   className = undefined,
