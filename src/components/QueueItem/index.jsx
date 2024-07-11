@@ -29,6 +29,7 @@ const QueueItem = ({
 
   const handleCancel = () => {
     bridge.qDelete({ promptId });
+    bridge.updateState('queue', { [promptId]: undefined });
   };
 
   const handleInterrupt = () => {
