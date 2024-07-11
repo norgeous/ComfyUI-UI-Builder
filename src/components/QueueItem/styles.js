@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
+export const HitArea = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+`;
+
 export const QueueTitle = styled.div`
   font-size: 10px;
   overflow: hidden;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  text-align: left;
 
   & div {
     overflow: hidden;
@@ -15,12 +23,12 @@ export const QueueTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-width: 90px;
+  width: 50px;
 `;
 
 export const Img = styled.img.attrs({ crossOrigin: 'anonymous' })`
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 37px;
+  height: 37px;
   object-fit: contain;
 `;

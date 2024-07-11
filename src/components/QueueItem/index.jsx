@@ -3,10 +3,15 @@ import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import { SpinnerIcon, DismissIcon, InterruptIcon } from '@/components/Icons';
+import {
+  SpinnerIcon,
+  DismissIcon,
+  InterruptIcon,
+  QueuedIcon,
+} from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
-import { Img, QueueTitle } from './styles';
+import { HitArea, Img, QueueTitle } from './styles';
 
 const QueueItem = ({
   promptId = undefined,
@@ -19,47 +24,43 @@ const QueueItem = ({
   const { bridge } = useContext(ComfyBridgeContext);
 
   const isQueued = type === undefined;
-  const isError = false;
-  const isComplete = (type === 'executing' && node === null) || isError;
+  const isComplete = type === 'executing' && node === null;
   const isProgressing = !isComplete && !isQueued;
 
   const handleRemove = () => {
     bridge.updateState('queue', { [promptId]: undefined });
   };
 
-  return (
-    <Layout
-      center
-      pad
-      rounded
-      gap="md"
-      bgfg={3}
-      style={{ display: 'inline-flex' }}
-    >
-      {!!images?.length && (
-        <Button
-          small
-          aria-label="Select"
-          onClick={() => bridge.updateState('queueSelected', { promptId })}
-        >
-          {images && <Img alt="result" src={`${images[0]}`} />}
-        </Button>
-      )}
+  const handleSelect = () => bridge.updateState('queueSelected', { promptId });
 
-      {isProgressing && (
-        <>
-          <SpinnerIcon />
-          <QueueTitle>
-            <div>
-              {node}{' '}
-              <span className="muted" style={{ fontSize: 10 }}>
-                {promptId}
-              </span>
-            </div>
-            <Progress value={value} max={max} />
-          </QueueTitle>
-        </>
-      )}
+  return (
+    <Layout pad rounded bgfg={3} style={{ display: 'inline-flex' }}>
+      <HitArea
+        small
+        aria-label="Select"
+        onClick={handleSelect}
+        style={{ width: 100, height: 40 }}
+      >
+        {isQueued && <QueuedIcon />}
+        {isProgressing && !images && (
+          <div style={{ width: 37, height: 37 }}>
+            <SpinnerIcon />
+          </div>
+        )}
+        {images && <Img alt="result" src={`${images[0]}`} />}
+
+        <QueueTitle>
+          <div className="muted">{promptId}</div>
+          {isQueued && <div>Queued</div>}
+          {isComplete && <div>×{images.length} images</div>}
+          {isProgressing && (
+            <>
+              <div>{node}</div>
+              <Progress value={value} max={max} />
+            </>
+          )}
+        </QueueTitle>
+      </HitArea>
 
       {isQueued && (
         <Tooltip lm text="Cancel">
