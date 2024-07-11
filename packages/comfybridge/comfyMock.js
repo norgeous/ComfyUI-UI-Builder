@@ -148,7 +148,6 @@ const getMockJobEvents = ({ promptId }) => [
   },
   { type: 'status', data: { status: { exec_info: { queue_remaining: 0 } } } },
   { type: 'executing', data: { prompt_id: promptId, node: null } },
-  // { type: 'execution_interrupted', data:{} },
 ];
 
 // mock ws events queue
@@ -159,7 +158,7 @@ setInterval(() => {
   if (!mockQueue.length) return;
   const nextItem = mockQueue.shift();
   service.broadcast(JSON.stringify(nextItem));
-}, 150);
+}, 200);
 
 const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
   HttpResponse.json({
