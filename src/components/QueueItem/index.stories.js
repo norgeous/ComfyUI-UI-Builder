@@ -12,7 +12,7 @@ export const Queued = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByRole('button'));
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };
 
@@ -26,7 +26,7 @@ export const Loading = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByRole('button'));
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };
 
