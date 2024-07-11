@@ -208,6 +208,7 @@ Error generating stack: `+V.message+`
 `,D3=UU.button`
   border: none;
   background: transparent;
+  color: inherit;
   cursor: pointer;
   display: flex;
   gap: 4px;
