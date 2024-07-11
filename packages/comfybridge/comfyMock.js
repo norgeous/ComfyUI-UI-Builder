@@ -151,6 +151,7 @@ const getMockJobEvents = ({ promptId }) => [
   // { type: 'execution_interrupted', data:{} },
 ];
 
+// mock ws events queue
 let mockQueue = [];
 
 // queue eater
