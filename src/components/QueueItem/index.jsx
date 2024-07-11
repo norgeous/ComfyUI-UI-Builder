@@ -54,11 +54,13 @@ const QueueItem = ({
             <QueuedIcon />
           </div>
         )}
+
         {isProgressing && !images && (
           <div style={{ width: 37, height: 37 }}>
             <SpinnerIcon />
           </div>
         )}
+
         {images && <Img alt="result" src={`${images[0]}`} />}
 
         <QueueTitle>
