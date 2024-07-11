@@ -45,7 +45,6 @@ const QueueItem = ({
   return (
     <Layout pad rounded bgfg={3} style={{ display: 'inline-flex' }}>
       <HitArea
-        small
         aria-label="Select"
         onClick={handleSelect}
         style={{ width: 100, height: 40 }}
