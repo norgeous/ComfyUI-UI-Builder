@@ -7,7 +7,7 @@
 
 ## Now
 
-- fix prompt interrupt
+- fix prompt interrupt and mock
 - queue doesnt handle cached nodes very well
 - page refresh looses queue, it can be retrived via endpoint
 - add file upload endpoint to bridge
