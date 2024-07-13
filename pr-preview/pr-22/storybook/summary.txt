@@ -7,7 +7,7 @@ storybook v8.2.2
 info => Cleaning outputDir: storybook-static
 info => Loading presets
 info => Building manager..
-info => Manager built (186 ms)
+info => Manager built (163 ms)
 info => Building preview..
 info => Copying static files: msw-public at storybook-static
 info => Copying static files: ../../public at storybook-static
@@ -96,8 +96,8 @@ storybook-static/assets/index.stories-C_6EmfDq.js                      1.68 kB �
 storybook-static/assets/index-CAPIpDV3.js                              1.75 kB │ gzip:     0.76 kB
 storybook-static/assets/index-Cgu8Bfyj.js                              1.77 kB │ gzip:     0.83 kB
 storybook-static/assets/index-DI0YGQ3K.js                              1.81 kB │ gzip:     0.72 kB
-storybook-static/assets/index.stories-DWx-jLoL.js                      1.82 kB │ gzip:     0.81 kB
 storybook-static/assets/index-BAMY2Nnw.js                              1.82 kB │ gzip:     0.79 kB
+storybook-static/assets/index.stories-DWx-jLoL.js                      1.82 kB │ gzip:     0.81 kB
 storybook-static/assets/index-BP_XO-qm.js                              1.84 kB │ gzip:     0.67 kB
 storybook-static/assets/index-D0kTUbA9.js                              1.86 kB │ gzip:     0.94 kB
 storybook-static/assets/index.stories-D13yJ_ZA.js                      1.93 kB │ gzip:     0.85 kB
@@ -150,8 +150,8 @@ storybook-static/assets/axe-CnbmPkZc.js                              569.91 kB �
 storybook-static/assets/index-DFHy4GFg.js                            642.09 kB │ gzip:   148.13 kB
 storybook-static/assets/DocsRenderer-PKQXORMH-BNswL_2v.js            881.69 kB │ gzip:   280.71 kB
 storybook-static/assets/preview-CObTliIl.js                        6,074.83 kB │ gzip: 2,440.37 kB
-✓ built in 25.02s
-info => Preview built (26 s)
+✓ built in 23.67s
+info => Preview built (25 s)
 info => Output directory: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook/storybook-static
 
 Pass ✅
