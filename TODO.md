@@ -7,10 +7,6 @@
 
 ## Now
 
-- fix prompt interrupt and mock
-- queue doesnt handle cached nodes very well
-- page refresh looses queue, it can be retrived via endpoint
-- add file upload endpoint to bridge
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
 
@@ -29,6 +25,9 @@
   - save history to local storage toggle
   - save changes to local storage toggle
   - show prompt/settings as caption?
+- queue doesnt handle cached nodes very well
+- page refresh looses queue, it can be retrived via endpoint
+- add file upload endpoint to bridge
 
 ## Future
 
