@@ -9,6 +9,7 @@
 
 - comfy bridge readme
 - tidy up code (linting, remove Timeline or Queue component)
+- style the Queue item a bit more
 
 ## Next
 
