@@ -66,7 +66,7 @@ const QueueItem = ({
         <QueueTitle>
           <div className="muted">{promptId}</div>
           {isQueued && <div>Queued</div>}
-          {isComplete && <div>×{images.length} images</div>}
+          {isComplete && <div>×{images?.length || 0} images</div>}
           {isProgressing && (
             <>
               <div>{node}</div>

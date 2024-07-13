@@ -150,14 +150,39 @@ const getMockJobEvents = ({ promptId }) => [
   { type: 'executing', data: { prompt_id: promptId, node: null } },
 ];
 
-// mock ws events queue
-let mockQueue = [];
+const getInterrupted = ({ promptId }) => [
+  { type: 'execution_interrupted', data: { prompt_id: promptId } },
+  { type: 'status', data: { status: { exec_info: { queue_remaining: 0 } } } },
+  { type: 'executing', data: { node: null, prompt_id: promptId } },
+];
 
-// queue eater
+const state = {
+  currentId: undefined,
+  jobs: {},
+};
+
+const add = promptId => {
+  const mockJobEvents = getMockJobEvents({ promptId });
+  state.jobs[promptId] = [...mockJobEvents];
+};
+
+const interrupt = promptId => {
+  const interrupted = getInterrupted({ promptId });
+  state.jobs[promptId] = [...interrupted];
+};
+
+const remove = promptId => delete state.jobs[promptId];
+
 setInterval(() => {
-  if (!mockQueue.length) return;
+  const [firstId] = Object.keys(state.jobs);
+  state.currentId = firstId;
+
+  const mockQueue = state.jobs[state.currentId];
+  if (!mockQueue?.length) return;
   const nextItem = mockQueue.shift();
   service.broadcast(JSON.stringify(nextItem));
+
+  if (!mockQueue.length) remove(state.currentId);
 }, 200);
 
 const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
@@ -209,8 +234,7 @@ const objectInfoMock = http.get(`${window.location.origin}/object_info`, () =>
 
 const promptMock = http.post(`${window.location.origin}/prompt`, () => {
   const promptId = uuidv4();
-  const mockJobEvents = getMockJobEvents({ promptId });
-  mockQueue.push(...mockJobEvents);
+  add(promptId);
 
   return HttpResponse.json({
     prompt_id: promptId,
@@ -219,23 +243,16 @@ const promptMock = http.post(`${window.location.origin}/prompt`, () => {
   });
 });
 
-const interruptMock = http.get(`${window.location.origin}/interrupt`, () =>
-  // find the currently "executing" prompt id
-  // find items matching the prompt id in the websocket event queue
-  // replace them with one new item:
-  // { type: 'execution_interrupted', data:{ prompt_id: promptId } },
-  // {"type": "status", "data": {"status": {"exec_info": {"queue_remaining": 0}}}}
-  // {"type": "executing", "data": {"node": null, prompt_id: promptId}}
-  HttpResponse(),
-);
+const interruptMock = http.post(`${window.location.origin}/interrupt`, () => {
+  interrupt(state.currentId);
+  return HttpResponse.json({});
+});
 
 const qDeleteMock = http.post(
   `${window.location.origin}/queue`,
   async ({ request }) => {
     const bodyData = await request.json();
-    mockQueue = mockQueue.filter(
-      ({ data }) => data.prompt_id !== bodyData.delete[0],
-    );
+    remove(bodyData.delete[0]);
     return HttpResponse.json({});
   },
 );
