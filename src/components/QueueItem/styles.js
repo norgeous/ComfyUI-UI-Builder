@@ -7,6 +7,7 @@ export const HitArea = styled.button`
   cursor: pointer;
   display: flex;
   gap: 4px;
+  padding: 0;
 `;
 
 export const QueueTitle = styled.div`
