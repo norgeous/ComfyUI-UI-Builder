@@ -8,7 +8,7 @@ import{j as s}from"./jsx-runtime-Nms4Y4qS.js";import{P as t}from"./index-D3ylJrl
       width: 100%;
     `}
   border-radius: var(--radius);
-  padding: ${({$small:e})=>e?"1px":"8px"};
+  padding: ${({$small:e})=>e?"4px":"8px"};
   cursor: pointer;
   display: flex;
   justify-content: center;
