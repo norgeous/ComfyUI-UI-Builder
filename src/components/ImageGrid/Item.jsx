@@ -1,8 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Img } from './styled';
+import SettingsContext from '@/contexts/SettingsContext';
+import { Img } from './styles';
 
 const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
+  const {
+    settings: { scaleUp, pixelSmooth },
+  } = useContext(SettingsContext);
+
   const ref = useRef();
 
   useEffect(() => {
@@ -18,6 +23,8 @@ const Item = ({ scrollTo = false, onClick = () => {}, ...props }) => {
     <Img
       {...props} // eslint-disable-line react/jsx-props-no-spreading
       ref={ref}
+      $scaleUp={scaleUp}
+      $pixelSmooth={pixelSmooth}
       crossOrigin="anonymous"
       onClick={handleClick}
     />

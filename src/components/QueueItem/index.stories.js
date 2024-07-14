@@ -1,4 +1,4 @@
-import { fn, within, userEvent } from '@storybook/test';
+import { within, userEvent } from '@storybook/test';
 import component from '.';
 
 export default {
@@ -6,35 +6,41 @@ export default {
   component,
 };
 
-export const Loading = {
+export const Queued = {
   args: {
-    isLoading: true,
-    status: 'Running…',
-    progress: 0.25,
-    onInterrupt: fn(),
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.hover(canvas.getByRole('button'));
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };
 
-export const InterruptLoading = {
+export const Loading = {
   args: {
-    isLoading: true,
-    status: 'Running…',
-    progress: 0.5,
-    onInterrupt: fn(),
-    interruptLoading: true,
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    type: 'progress',
+    node: '7',
+    value: 4,
+    max: 28,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };
 
-export const InterruptError = {
+export const Complete = {
   args: {
-    isLoading: true,
-    status: 'Running…',
-    progress: 0.75,
-    onInterrupt: fn(),
-    interruptError: 'There was a problem with the interrupt',
+    promptId: 'baadb00b-babe-462f-cafe-d34dd00dcafe',
+    type: 'executing',
+    node: null,
+    value: 28,
+    max: 28,
+    images: ['/view?filename=01'],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.hover(canvas.getAllByRole('button')[1]);
   },
 };

@@ -8,7 +8,7 @@ import {
   shift,
   arrow,
 } from '@floating-ui/react';
-import { Arrow, TooltipText, TooltipWrap } from './styled';
+import { Arrow, TooltipText, TooltipWrap } from './styles';
 
 const Tooltip = ({
   className = undefined,
@@ -17,6 +17,7 @@ const Tooltip = ({
   wide = false,
   lm = false,
   children = null,
+  hidden = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef(null);
@@ -33,6 +34,8 @@ const Tooltip = ({
     whileElementsMounted: autoUpdate,
   });
 
+  if (!text) return children;
+
   return (
     <>
       <TooltipWrap
@@ -45,7 +48,7 @@ const Tooltip = ({
       >
         {children}
       </TooltipWrap>
-      {isOpen && (
+      {isOpen && !hidden && (
         <TooltipText ref={refs.setFloating} style={floatingStyles}>
           <Arrow ref={arrowRef} context={context} />
           {text}
@@ -62,6 +65,7 @@ Tooltip.propTypes = {
   lm: PropTypes.bool,
   wide: PropTypes.bool,
   children: PropTypes.node,
+  hidden: PropTypes.bool,
 };
 
 export default Tooltip;

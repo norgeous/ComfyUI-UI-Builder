@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { Btn } from './styled';
+import { Btn } from './styles';
 
 const Button = ({
   wide = false,
+  small = false,
   variant = undefined,
   children = null,
   ...props
@@ -11,6 +12,7 @@ const Button = ({
     {...props} // eslint-disable-line react/jsx-props-no-spreading
     $wide={wide}
     $variant={variant}
+    $small={small}
   >
     {children}
   </Btn>
@@ -19,6 +21,7 @@ const Button = ({
 Button.propTypes = {
   wide: PropTypes.bool,
   variant: PropTypes.string,
+  small: PropTypes.bool,
   children: PropTypes.node,
 };
 

@@ -18,7 +18,7 @@
       "id": "negativePrompt",
       "label": "Negative Prompt",
       "type": "textarea",
-      "defaultValue": "watermark, text",
+      "defaultValue": "",
       "colSpan": 2
     },
     {

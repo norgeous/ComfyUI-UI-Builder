@@ -1,11 +1,19 @@
 import MainContent from '@/components/MainContent';
+import FormHeader from '@/components/FormHeader';
 import Sidebar from '@/components/Sidebar';
-import { Page } from './styled';
+import StatusBar from '@/components/StatusBar';
+import { Page, Content } from './styles';
 
 const App = () => (
   <Page>
-    <MainContent />
-    <Sidebar />
+    <FormHeader />
+
+    <Content>
+      <MainContent />
+      <Sidebar />
+    </Content>
+
+    <StatusBar />
   </Page>
 );
 

@@ -1,5 +1,20 @@
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
+import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
+
+const { origin, pathname } = window.location;
+const path = pathname.substring(0, pathname.lastIndexOf('/'));
+const base = `${origin}${path}`;
+
+const options = {
+  serviceWorker: {
+    url: `${base}/mockServiceWorker.js`,
+    options: {
+      scope: `./`,
+    },
+  },
+};
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -31,6 +46,12 @@ const preview = {
       },
     },
   },
+
+  beforeAll: async () => {
+    initialize(options, [...comfyMock]);
+  },
+
+  loaders: [mswLoader],
 
   decorators: [withScreenshot, ProjectDecorator],
 };

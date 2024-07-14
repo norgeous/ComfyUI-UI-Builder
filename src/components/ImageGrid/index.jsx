@@ -1,75 +1,45 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import screenfull from 'screenfull';
-import { Container, Outer } from './styled';
+import { Container, Outer } from './styles';
 import Item from './Item';
+import calculateColumnCount from './calc';
+import useImageSize from './useImageSize';
 
 const gapSizePx = 8;
 
 const ImageGrid = ({ images = [] }) => {
-  const [imgDim, setImgDim] = useState({});
   const [open, setOpen] = useState();
   const [columnCount, setColumnCount] = useState(1);
   const ref = useRef();
+  const [naturalImageWidth, naturalImageHeight] = useImageSize(images[0]); // size of first image in batch
 
-  const onLoad = event => {
-    const { src, naturalWidth, naturalHeight } = event.target;
-    setImgDim(old => ({
-      ...old,
-      [src]: {
-        w: naturalWidth,
-        h: naturalHeight,
-        a: naturalHeight / naturalWidth,
-      },
-    }));
-  };
-
-  const calculateColumnCount = () => {
-    // wait until all images have loaded
-    if (images.length !== Object.keys(imgDim).length) return;
-
+  const calculate = useCallback(() => {
     if (!ref.current) return;
 
-    const { width, height } = ref.current.getBoundingClientRect();
+    const { width: containerWidth, height: containerHeight } =
+      ref.current.getBoundingClientRect();
 
-    const imgDims = Object.values(imgDim);
-
-    const newColumnCount =
-      imgDims
-        .map(({ w, h, a }, i) => {
-          const cc = i + 1;
-          const rowCount = Math.ceil(imgDims.length / cc);
-
-          const hGaps = gapSizePx * (cc - 1);
-          const vGaps = gapSizePx * (rowCount - 1);
-
-          // the maximal size of each cell in the grid, given the current layout
-          const cellWidthMax = (width - hGaps) / cc;
-          const cellHeightMax = (height - vGaps) / rowCount;
-
-          const aspect2 = 1 / a; // inverse aspect
-
-          const imgWidth = Math.min(w, cellWidthMax, cellHeightMax / a);
-          const imgHeight = Math.min(h, cellHeightMax, cellWidthMax / aspect2);
-          const imgArea = imgWidth * imgHeight;
-
-          return imgArea;
-        })
-        .reduce((iMax, x, i, arr) => (x > arr[iMax] ? i : iMax), 0) + 1; // find index of largest area and add 1
+    const newColumnCount = calculateColumnCount({
+      containerWidth,
+      containerHeight,
+      naturalImageWidth,
+      naturalImageHeight,
+      gapSizePx,
+      imageCount: images.length,
+    });
 
     setColumnCount(newColumnCount);
-  };
+  }, [images, naturalImageHeight, naturalImageWidth]);
 
-  useEffect(calculateColumnCount, [ref, imgDim, images]);
+  useEffect(calculate, [calculate]);
 
   useEffect(() => {
-    window.addEventListener('resize', calculateColumnCount);
+    window.addEventListener('resize', calculate);
     return () => {
-      window.removeEventListener('resize', calculateColumnCount);
+      window.removeEventListener('resize', calculate);
     };
-  }, [ref, imgDim, images]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => setImgDim({}), [images]);
+  }, [calculate]);
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
@@ -109,7 +79,6 @@ const ImageGrid = ({ images = [] }) => {
             alt=""
             src={image}
             onClick={() => setOpen(open !== undefined ? undefined : i)}
-            onLoad={onLoad}
             $open={open}
             scrollTo={isFullscreen && open === i}
           />

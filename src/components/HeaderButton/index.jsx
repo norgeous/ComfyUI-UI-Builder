@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Tooltip from '@/components/Tooltip';
-import { InputHeaderButton } from './styled';
+import { InputHeaderButton } from './styles';
 
 const HeaderButton = ({
   className = undefined,

@@ -1,84 +1,43 @@
-import { useContext, useState } from 'react';
-import WsContext from '@/contexts/WsContext';
-import FormContext from '@/contexts/FormContext';
-import ConfigsContext from '@/contexts/ConfigsContext';
-import ObjectInfoContext from '@/contexts/ObjectInfoContext';
-import AppContext from '@/contexts/AppContext';
-import { BugIcon, GithubIcon, StorybookIcon } from '@/components/Icons';
+import { useContext } from 'react';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
+import { GithubIcon, StorybookIcon } from '@/components/Icons';
 import StatusLight from '@/components/StatusLight';
-import PopMenu from '@/components/PopMenu';
-import Debug from '@/components/Debug';
-import { Bar, Link, StatusText, Tray } from './styled';
+import Tooltip from '@/components/Tooltip';
+import SettingsMenu from '@/components/SettingsMenu';
+import DebugMenu from '@/components/DebugMenu';
+import { Bar, Link, StatusText, Tray } from './styles';
 
 const StatusBar = () => {
-  const { wsStatus, comfyUrl } = useContext(WsContext);
-  const { formState } = useContext(FormContext);
-  const {
-    config: { baseWorkflow },
-  } = useContext(ConfigsContext);
-  const { objectInfoLoading, objectInfoError, objectInfo } =
-    useContext(ObjectInfoContext);
-  const { adapted, adaptedComfyWorkflow, bodyData } = useContext(AppContext);
-
-  const [debugData, setDebugData] = useState();
-  const debugOptions = [
-    { label: 'formState', onClick: () => setDebugData('formState') },
-    { label: 'adapted', onClick: () => setDebugData('adapted') },
-    {
-      label: 'baseWorkflow',
-      onClick: () => setDebugData('baseWorkflow'),
-    },
-    {
-      label: 'objectInfo',
-      onClick: () => setDebugData('objectInfo'),
-    },
-    {
-      label: 'adaptedComfyWorkflow',
-      onClick: () => setDebugData('adaptedComfyWorkflow'),
-    },
-    { label: 'bodyData', onClick: () => setDebugData('bodyData') },
-  ];
-
-  const debugDatum = {
-    formState,
-    adapted,
-    baseWorkflow,
-    objectInfo: {
-      objectInfoLoading,
-      objectInfoError,
-      objectInfo,
-    },
-    adaptedComfyWorkflow,
-    bodyData,
-  }[debugData];
+  const comfyBridge = useContext(ComfyBridgeContext);
 
   return (
     <Bar>
       <Tray $shrinkable>
-        <StatusLight status={wsStatus} />
-        <StatusText>{comfyUrl}</StatusText>
+        <StatusLight status={comfyBridge.data.ws.status} />
+        <StatusText>{comfyBridge.data.ws.statusText}</StatusText>
       </Tray>
       <Tray>
-        <Link
-          href="https://github.com/norgeous/ComfyUI-UI-Builder/"
-          target="_blank"
-        >
-          <GithubIcon aria-label="Github" />
-        </Link>
+        <Tooltip text="Github">
+          <Link
+            href="https://github.com/norgeous/ComfyUI-UI-Builder/"
+            target="_blank"
+          >
+            <GithubIcon aria-label="Github" />
+          </Link>
+        </Tooltip>
 
-        <Link
-          href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
-          target="_blank"
-        >
-          <StorybookIcon aria-label="Storybook" />
-        </Link>
+        <Tooltip text="Storybook">
+          <Link
+            href="https://norgeous.github.io/ComfyUI-UI-Builder/develop/storybook/"
+            target="_blank"
+          >
+            <StorybookIcon aria-label="Storybook" />
+          </Link>
+        </Tooltip>
 
-        <PopMenu aria-label="Debug Data Options" options={debugOptions}>
-          <BugIcon />
-        </PopMenu>
-        {debugData && (
-          <Debug onClick={() => setDebugData()} data={debugDatum} />
-        )}
+        <DebugMenu />
+
+        <SettingsMenu />
       </Tray>
     </Bar>
   );

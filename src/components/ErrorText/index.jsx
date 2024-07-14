@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { DismissIcon, WarningIcon } from '@/components/Icons';
 import { useState } from 'react';
-import { Box, DismissButton } from './styled';
+import { Box, DismissButton } from './styles';
 
 const ErrorText = ({ children }) => {
   const [hiddenByUser, setHiddenByUser] = useState(false);

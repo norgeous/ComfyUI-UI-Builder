@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Flex } from './styled';
+import { Flex } from './styles';
 
 const Layout = ({
   pad = false,
@@ -8,6 +8,7 @@ const Layout = ({
   center = false,
   scrollable = false,
   bgfg = undefined,
+  rounded = false,
   fullHeight = false,
   children = null,
   ...props
@@ -20,6 +21,7 @@ const Layout = ({
     $center={center}
     $scrollable={scrollable}
     $bgfg={bgfg}
+    $rounded={rounded}
     $fullHeight={fullHeight}
   >
     {children}
@@ -33,6 +35,7 @@ Layout.propTypes = {
   center: PropTypes.bool,
   scrollable: PropTypes.bool,
   bgfg: PropTypes.number,
+  rounded: PropTypes.bool,
   fullHeight: PropTypes.bool,
   children: PropTypes.node,
 };

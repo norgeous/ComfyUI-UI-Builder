@@ -1,21 +1,37 @@
 import { useContext } from 'react';
-import WsContext from '@/contexts/WsContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
-import StatusBar from '@/components/StatusBar';
-import { ContentArea, Main } from './styled';
+import Queue from '@/components/Queue';
+import { ContentArea, Main } from './styles';
 
 const MainContent = () => {
-  const { comfyUrl, output } = useContext(WsContext);
-  const images = (output?.images || []).map(
-    ({ filename }) => `${comfyUrl}/view?type=output&filename=${filename}`,
-  );
+  const { data } = useContext(ComfyBridgeContext);
+
+  const queue = Object.entries(data.queue)
+    .filter(([, item]) => item)
+    .map(([promptId, item]) => ({
+      promptId,
+      images: item.output?.images.map(image => {
+        const params = new URLSearchParams();
+        Object.entries(image).forEach(([key, value]) =>
+          params.append(key, value),
+        );
+
+        return `${data.ws.comfyUrl}/view?${params.toString()}`;
+      }),
+      ...item,
+    }))
+    .toReversed();
+
+  const selected = data.queueSelected.promptId;
+  const { images } = queue.find(({ promptId }) => promptId === selected) || {};
 
   return (
     <Main>
       <ContentArea>
         <ImageGrid images={images} />
       </ContentArea>
-      <StatusBar />
+      {!!queue.length && <Queue items={queue} />}
     </Main>
   );
 };

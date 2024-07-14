@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import ConfigsContext from '@/contexts/ConfigsContext';
+import Layout from '@/components/Layout';
 import Select from '@/components/InputSelect';
-import { Description } from './styled';
+import ResetButton from '@/components/ResetButton';
+import { Description } from './styles';
 
 const UiSelector = () => {
   const { config, configs, setConfig } = useContext(ConfigsContext);
@@ -20,8 +22,14 @@ const UiSelector = () => {
 
   const value = config.configData.name;
 
+  const handleReset = () => {
+    handleChange('Basic SDXL');
+  };
+
+  const showReset = value !== 'Basic SDXL';
+
   return (
-    <>
+    <Layout as="header" column bgfg={2}>
       <Select
         id="ui"
         label="UI Builder"
@@ -29,11 +37,13 @@ const UiSelector = () => {
         defaultValueIndex={0}
         value={value}
         onChange={handleChange}
-      />
+      >
+        {showReset && <ResetButton onClick={handleReset} />}
+      </Select>
       <Description className="muted">
         {config.configData.description}
       </Description>
-    </>
+    </Layout>
   );
 };
 

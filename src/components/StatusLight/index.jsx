@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Tooltip from '@/components/Tooltip';
-import { Light } from './styled';
+import { Light } from './styles';
 
 const captions = {
   DEFAULT: 'Status unknown',

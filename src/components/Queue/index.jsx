@@ -1,26 +1,20 @@
-import { useContext } from 'react';
-import AppContext from '@/contexts/AppContext';
-import WsContext from '@/contexts/WsContext';
+import PropTypes from 'prop-types';
+import Layout from '@/components/Layout';
 import QueueItem from '@/components/QueueItem';
 
-const Queue = () => {
-  const { progress, lastWsMessage, isGenerating } = useContext(WsContext);
+const Queue = ({ items = [] }) => (
+  <Layout pad gap="md" scrollable bgfg={2} style={{ flexGrow: 0 }}>
+    {items.map(item => (
+      <QueueItem
+        key={item.promptId}
+        {...item} // eslint-disable-line react/jsx-props-no-spreading
+      />
+    ))}
+  </Layout>
+);
 
-  const { executeInterrupt, interruptLoading, interruptError } =
-    useContext(AppContext);
-
-  if (!isGenerating) return null;
-
-  return (
-    <QueueItem
-      isLoading={isGenerating}
-      status={`${lastWsMessage} ${isGenerating && `${Math.round(progress * 100)}%`}`}
-      progress={progress}
-      onInterrupt={executeInterrupt}
-      interruptLoading={interruptLoading}
-      interruptError={interruptError}
-    />
-  );
+Queue.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 export default Queue;

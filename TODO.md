@@ -2,20 +2,14 @@
 
 ## Known Bugs
 
-- seed > randomise dice icon doesnt randomise on generation or autogen
-- the websocket is needlessly refreshing when switching workflows. pyramid order?
-- ImageGrid: stops listening to window resize (?) after hitting generate again
-- theme switching is not working inside of storybook
+- theme switching is not working inside of storybook when switching workflows in App story
 - comfy dungeon: ethnic bias broken vs original implimentation, use a PRNG based on seed to select one (or two) from the list
 
 ## Now
 
-- interrupt and queue features (styling 50% done already)
-  - using multiple instances, how should queue work? clientId adjustments...
-
 ## Next
 
-- autogen should fire when any form field changes and the queue is empty
+- header redo, smaller workflow selector
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
     - more work on adjust weight with CTRL+UP or CTRL+DOWN
@@ -24,6 +18,13 @@
     - fix how words are appended into prompt
       - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
       - how to handle when utterances are updated?
+- SettingsMenu
+  - save history to local storage toggle
+  - save changes to local storage toggle
+  - show prompt/settings as caption?
+- queue doesnt handle cached nodes very well
+- page refresh looses queue, it can be retrieved via /queue endpoint
+- add file upload endpoint to bridge
 
 ## Future
 
@@ -31,10 +32,8 @@
 - image input (for ipa)
   - example UI
 - storybook mocks
-  - mock for comfyui websocket
   - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
 - toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
-- ws reconnect / error message overlay or toaster
 - ImageGrid: show spinner while images are loading
 - ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)

@@ -1,0 +1,29 @@
+import styled from 'styled-components';
+
+// eslint-disable-next-line import/prefer-default-export
+export const Progress = styled.progress`
+  appearance: none;
+  display: block;
+  min-width: 40px;
+  width: 100%;
+  height: 4px;
+  border: 0;
+
+  // webkit (chrome)
+  &::-webkit-progress-bar {
+    background: var(--bg2);
+    border-radius: var(--radius);
+  }
+  &::-webkit-progress-value {
+    background: var(--accent);
+    border-radius: var(--radius);
+  }
+
+  // firefox
+  background: var(--bg2); // firefox only
+  border-radius: var(--radius); // firefox only
+  &::-moz-progress-bar {
+    background: var(--accent);
+    border-radius: var(--radius);
+  }
+`;

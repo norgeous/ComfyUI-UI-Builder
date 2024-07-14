@@ -1,49 +1,117 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import { SpinnerIcon, InterruptIcon, WarningIcon } from '@/components/Icons';
+import {
+  SpinnerIcon,
+  DismissIcon,
+  InterruptIcon,
+  QueuedIcon,
+} from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
-import { QueueTitle } from './styled';
-
-const getInterruptIcon = ({ interruptLoading, interruptError }) => {
-  if (interruptError) return <WarningIcon />;
-  if (interruptLoading) return <SpinnerIcon />;
-  return <InterruptIcon />;
-};
+import { HitArea, Img, QueueTitle, StatusIconContainer } from './styles';
 
 const QueueItem = ({
-  isLoading = false,
-  status = 'unknown',
-  progress = 0,
-  onInterrupt = () => {},
-  interruptLoading = false,
-  interruptError = '',
-}) => (
-  <Layout center gap="sm">
-    {isLoading && <SpinnerIcon />}
-    <QueueTitle>{status}</QueueTitle>
+  promptId = undefined,
+  type = undefined, // execution_start | execution_cached | executing | progress | executed
+  node = undefined, // node number string
+  value = undefined, // progress value
+  max = undefined, // progress max
+  images = undefined,
+}) => {
+  const { bridge } = useContext(ComfyBridgeContext);
 
-    <Progress value={progress} />
-    <Tooltip text={interruptError || 'Interrupt'}>
-      <Button
-        aria-label={interruptError || 'Interrupt'}
-        disabled={interruptLoading}
-        onClick={onInterrupt}
+  const isQueued = type === undefined;
+  const isComplete = type === 'executing' && node === null;
+  const isProgressing = !isComplete && !isQueued;
+
+  const handleCancel = () => {
+    bridge.qDelete({ promptId });
+    bridge.updateState('queue', { [promptId]: undefined });
+  };
+
+  const handleInterrupt = () => {
+    bridge.interrupt();
+  };
+
+  const handleRemove = () => {
+    bridge.updateState('queue', { [promptId]: undefined });
+  };
+
+  const handleSelect = () => bridge.updateState('queueSelected', { promptId });
+
+  return (
+    <Layout pad rounded bgfg={3} style={{ display: 'inline-flex' }}>
+      <HitArea
+        aria-label="Select"
+        onClick={handleSelect}
+        style={{ width: 100, height: 40 }}
       >
-        {getInterruptIcon({ interruptLoading, interruptError })}
-      </Button>
-    </Tooltip>
-  </Layout>
-);
+        {isQueued && (
+          <StatusIconContainer>
+            <QueuedIcon />
+          </StatusIconContainer>
+        )}
+
+        {isProgressing && !images && (
+          <StatusIconContainer>
+            <SpinnerIcon />
+          </StatusIconContainer>
+        )}
+
+        {images && <Img alt="result" src={`${images[0]}`} />}
+
+        <QueueTitle>
+          <div className="muted">{promptId}</div>
+          {isQueued && <div>Queued</div>}
+          {isComplete && <div>×{images?.length || 0} images</div>}
+          {isProgressing && (
+            <>
+              <div>{node}</div>
+              <Progress value={value} max={max} />
+            </>
+          )}
+        </QueueTitle>
+      </HitArea>
+
+      <Layout column>
+        {isQueued && (
+          <Tooltip lm text="Cancel">
+            <Button small aria-label="Cancel" onClick={handleCancel}>
+              <DismissIcon />
+            </Button>
+          </Tooltip>
+        )}
+
+        {isProgressing && (
+          <Tooltip lm text="Interrupt">
+            <Button small aria-label="Interrupt" onClick={handleInterrupt}>
+              <InterruptIcon />
+            </Button>
+          </Tooltip>
+        )}
+
+        {isComplete && (
+          <Tooltip lm text="Remove">
+            <Button small aria-label="Remove" onClick={handleRemove}>
+              <DismissIcon />
+            </Button>
+          </Tooltip>
+        )}
+      </Layout>
+    </Layout>
+  );
+};
 
 QueueItem.propTypes = {
-  isLoading: PropTypes.bool,
-  status: PropTypes.string,
-  progress: PropTypes.number,
-  onInterrupt: PropTypes.func,
-  interruptLoading: PropTypes.bool,
-  interruptError: PropTypes.string,
+  promptId: PropTypes.string,
+  type: PropTypes.string,
+  node: PropTypes.string,
+  value: PropTypes.number,
+  max: PropTypes.number,
+  images: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default QueueItem;

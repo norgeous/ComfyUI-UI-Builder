@@ -2,28 +2,36 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   useFloating,
-  flip,
+  autoUpdate,
+  offset,
+  autoPlacement,
   shift,
   useDismiss,
   useInteractions,
-  autoPlacement,
 } from '@floating-ui/react';
-import { Button, Menu, MenuItem } from './styled';
+import Tooltip from '@/components/Tooltip';
+import { Button, Menu } from './styles';
 
 const PopMenu = ({
   className = undefined,
+  tooltip = undefined,
   children = null,
-  options = [],
+  menuContents = null,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     placement: 'auto',
-    middleware: [autoPlacement(), flip(), shift({ padding: 14 })],
+    middleware: [
+      offset(4),
+      autoPlacement({ allowedPlacements: ['top', 'bottom'] }),
+      shift({ padding: 4 }),
+    ],
     open: isOpen,
     onOpenChange: newIsOpen => {
       setIsOpen(newIsOpen);
     },
+    whileElementsMounted: autoUpdate,
   });
 
   const dismiss = useDismiss(context);
@@ -31,7 +39,7 @@ const PopMenu = ({
   const { getReferenceProps, getFloatingProps } = useInteractions([dismiss]);
 
   return (
-    <>
+    <Tooltip text={tooltip} hidden={isOpen}>
       <Button
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         className={className}
@@ -47,22 +55,20 @@ const PopMenu = ({
           style={floatingStyles}
           {...getFloatingProps()} // eslint-disable-line react/jsx-props-no-spreading
         >
-          {options.map(({ label, onClick }) => (
-            <div key={label}>
-              <MenuItem onClick={onClick}>{label}</MenuItem>
-            </div>
-          ))}
+          {menuContents}
         </Menu>
       )}
-    </>
+    </Tooltip>
   );
 };
 
 PopMenu.propTypes = {
   className: PropTypes.string,
+  tooltip: PropTypes.string,
   lm: PropTypes.bool,
   wide: PropTypes.bool,
   children: PropTypes.node,
+  menuContents: PropTypes.node,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,

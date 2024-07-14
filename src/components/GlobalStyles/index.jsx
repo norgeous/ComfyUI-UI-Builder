@@ -140,3 +140,15 @@ export const GlobalStyle = createGlobalStyle`
     border: transparent;
   }
 `;
+
+export const DisableAnimations = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  input {
+    caret-color: transparent !important;
+  }
+`;

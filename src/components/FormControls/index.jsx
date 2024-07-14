@@ -1,43 +1,78 @@
 import { useContext, useEffect, useState } from 'react';
-import AppContext from '@/contexts/AppContext';
+import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
+
+import executeAdapter from '@/utils/executeAdapter';
+import comfyWorkflowToComfyPrompt, {
+  insertIntoComfyWorkFlow,
+} from '@ui-builder/comfybridge/utils/comfyWorkflowToComfyPrompt';
+
+import ConfigsContext from '@/contexts/ConfigsContext';
 import FormContext from '@/contexts/FormContext';
-import WsContext from '@/contexts/WsContext';
 import Layout from '@/components/Layout';
 import Button from '@/components/Button';
 import ErrorText from '@/components/ErrorText';
-import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
+import { SpinnerIcon, PauseIcon, PlayIcon } from '@/components/Icons';
+
+const MAXSEED = 10 ** 10;
 
 const FormControls = () => {
-  const { isGenerating } = useContext(WsContext);
+  const { bridge, data } = useContext(ComfyBridgeContext);
+  const { error: promptError, loading: promptLoading } = data.prompt;
+
   const [auto, setAuto] = useState(false);
 
   const {
-    formState: { positivePrompt, enableSeedRandomisation },
-    updateFormState,
-  } = useContext(FormContext);
+    config,
+    config: { baseWorkflow },
+  } = useContext(ConfigsContext);
 
-  const { executePrompt, promptLoading, promptError } = useContext(AppContext);
+  const { formState, updateFormState } = useContext(FormContext);
 
-  const handleClick = () => {
-    if (enableSeedRandomisation) {
-      const newSeed = Math.floor(Math.random() * 10 ** 10);
-      updateFormState({ seed: newSeed });
+  const handlePrompt = () => {
+    if (formState.seed.random) {
+      const newSeed = Math.floor(Math.random() * MAXSEED);
+      formState.seed.seed = newSeed; // a bit of a hack, so new seed is immediately available
+      updateFormState({ seed: { ...formState.seed, seed: newSeed } });
     }
-    executePrompt();
+
+    const adapted = executeAdapter({
+      objectInfo: data.objectInfo.data,
+      formState,
+      adapterConfig: config.configData.adapterConfig,
+    });
+
+    const clone = structuredClone({ ...baseWorkflow });
+
+    const adaptedComfyWorkflow = adapted.reduce(
+      (acc, { destination, value }) =>
+        insertIntoComfyWorkFlow(acc, data.objectInfo.data, destination, value),
+      clone,
+    );
+
+    const promptData = comfyWorkflowToComfyPrompt({
+      comfyWorkflow: adaptedComfyWorkflow,
+      objectInfo: data.objectInfo.data,
+    });
+
+    bridge.prompt({ promptData });
   };
 
-  // autoprompting
+  // auto prompting on change
   useEffect(() => {
-    if (auto && positivePrompt && !isGenerating) executePrompt();
-  }, [auto, positivePrompt]); // eslint-disable-line react-hooks/exhaustive-deps
+    const isGenerating = Object.values(data.queue)
+      .filter(v => v)
+      .map(({ node }) => node !== null)
+      .some(v => v);
+    if (auto && !isGenerating) handlePrompt();
+  }, [formState, auto]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
+    <Layout as="footer" pad column gap="md" bgfg={2}>
       {promptError && <ErrorText>{promptError}</ErrorText>}
       <Layout gap="md">
         {!auto && (
-          <Button wide onClick={handleClick}>
+          <Button wide onClick={handlePrompt}>
             {promptLoading ? <SpinnerIcon /> : 'Generate'}
           </Button>
         )}
@@ -52,7 +87,7 @@ const FormControls = () => {
           </Button>
         </Tooltip>
       </Layout>
-    </>
+    </Layout>
   );
 };
 

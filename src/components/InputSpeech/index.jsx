@@ -7,7 +7,7 @@ import InputHeader from '@/components/InputHeader';
 import ErrorText from '@/components/ErrorText';
 import { SpinnerIcon, MicMutedIcon, MicUnmutedIcon } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
-import { Textarea } from './styled';
+import { Textarea } from './styles';
 
 const InputTextarea = ({
   id = undefined,

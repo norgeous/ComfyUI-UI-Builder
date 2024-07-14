@@ -1,0 +1,20 @@
+import styled from 'styled-components';
+import bgfg from '@/components/GlobalStyles/bgfg';
+
+export const Main = styled.main`
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+`;
+
+export const ContentArea = styled.div`
+  ${bgfg(0)}
+  flex: 1 1 50%;
+  padding: 10px;
+  overflow: hidden;
+  background-size: 8px 8px;
+  background-position: center center;
+  background-image: radial-gradient(circle, var(--bg2) 1px, transparent 1px);
+`;

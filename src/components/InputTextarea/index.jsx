@@ -4,7 +4,7 @@ import InputRefContext from '@/contexts/InputRefContext';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import { ArrowDownIcon, ArrowUpIcon } from '@/components/Icons';
-import { Textarea } from './styled';
+import { Textarea } from './styles';
 
 // prevent ctrl+up moving to start of input
 // prevent ctrl+down moving to end of input
