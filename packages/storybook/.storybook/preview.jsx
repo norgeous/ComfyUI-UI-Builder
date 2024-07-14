@@ -1,6 +1,5 @@
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import { withScreenshot } from 'storycap';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import comfyMock from '@ui-builder/comfybridge/comfyMock';
 import ProjectDecorator from '../ProjectDecorator';
 
@@ -11,9 +10,7 @@ const base = `${origin}${path}`;
 const options = {
   serviceWorker: {
     url: `${base}/mockServiceWorker.js`,
-    // url: `./mockServiceWorker.js`,
     options: {
-      // scope: `${base}/`,
       scope: `./`,
     },
   },
@@ -54,13 +51,7 @@ const preview = {
     initialize(options, [...comfyMock]);
   },
 
-  loaders: [
-    mswLoader,
-    // () =>
-    //   getWorker().start(options, [
-    //     /* ...comfyMock */
-    //   ]),
-  ],
+  loaders: [mswLoader],
 
   decorators: [withScreenshot, ProjectDecorator],
 };
