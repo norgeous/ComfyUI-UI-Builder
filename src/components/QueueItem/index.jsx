@@ -11,7 +11,7 @@ import {
 } from '@/components/Icons';
 import Tooltip from '@/components/Tooltip';
 import Progress from '@/components/Progress';
-import { HitArea, Img, QueueTitle } from './styles';
+import { HitArea, Img, QueueTitle, StatusIconContainer } from './styles';
 
 const QueueItem = ({
   promptId = undefined,
@@ -50,15 +50,15 @@ const QueueItem = ({
         style={{ width: 100, height: 40 }}
       >
         {isQueued && (
-          <div style={{ width: 37, height: 37 }}>
+          <StatusIconContainer>
             <QueuedIcon />
-          </div>
+          </StatusIconContainer>
         )}
 
         {isProgressing && !images && (
-          <div style={{ width: 37, height: 37 }}>
+          <StatusIconContainer>
             <SpinnerIcon />
-          </div>
+          </StatusIconContainer>
         )}
 
         {images && <Img alt="result" src={`${images[0]}`} />}
@@ -76,29 +76,31 @@ const QueueItem = ({
         </QueueTitle>
       </HitArea>
 
-      {isQueued && (
-        <Tooltip lm text="Cancel">
-          <Button small aria-label="Cancel" onClick={handleCancel}>
-            <DismissIcon />
-          </Button>
-        </Tooltip>
-      )}
+      <Layout column>
+        {isQueued && (
+          <Tooltip lm text="Cancel">
+            <Button small aria-label="Cancel" onClick={handleCancel}>
+              <DismissIcon />
+            </Button>
+          </Tooltip>
+        )}
 
-      {isProgressing && (
-        <Tooltip lm text="Interrupt">
-          <Button small aria-label="Interrupt" onClick={handleInterrupt}>
-            <InterruptIcon />
-          </Button>
-        </Tooltip>
-      )}
+        {isProgressing && (
+          <Tooltip lm text="Interrupt">
+            <Button small aria-label="Interrupt" onClick={handleInterrupt}>
+              <InterruptIcon />
+            </Button>
+          </Tooltip>
+        )}
 
-      {isComplete && (
-        <Tooltip lm text="Remove">
-          <Button small aria-label="Remove" onClick={handleRemove}>
-            <DismissIcon />
-          </Button>
-        </Tooltip>
-      )}
+        {isComplete && (
+          <Tooltip lm text="Remove">
+            <Button small aria-label="Remove" onClick={handleRemove}>
+              <DismissIcon />
+            </Button>
+          </Tooltip>
+        )}
+      </Layout>
     </Layout>
   );
 };

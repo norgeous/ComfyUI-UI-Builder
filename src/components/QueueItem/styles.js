@@ -12,7 +12,6 @@ export const HitArea = styled.button`
 export const QueueTitle = styled.div`
   font-size: 10px;
   overflow: hidden;
-  /* flex-grow: 1; */
   text-align: left;
 
   & div {
@@ -32,4 +31,13 @@ export const Img = styled.img.attrs({ crossOrigin: 'anonymous' })`
   width: 37px;
   height: 37px;
   object-fit: contain;
+`;
+
+export const StatusIconContainer = styled.div`
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--accent);
 `;

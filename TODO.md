@@ -7,9 +7,6 @@
 
 ## Now
 
-- tidy up code
-- style the Queue item a bit more
-
 ## Next
 
 - header redo, smaller workflow selector
