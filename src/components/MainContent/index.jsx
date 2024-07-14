@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ComfyBridgeContext from '@ui-builder/comfybridge/react/ComfyBridgeContext';
 import ImageGrid from '@/components/ImageGrid';
-import Timeline from '@/components/Timeline';
+import Queue from '@/components/Queue';
 import { ContentArea, Main } from './styles';
 
 const MainContent = () => {
@@ -31,7 +31,7 @@ const MainContent = () => {
       <ContentArea>
         <ImageGrid images={images} />
       </ContentArea>
-      {!!queue.length && <Timeline items={queue} />}
+      {!!queue.length && <Queue items={queue} />}
     </Main>
   );
 };

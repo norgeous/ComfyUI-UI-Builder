@@ -1,10 +1,10 @@
 import component from '.';
 
 export default {
-  title: 'Timeline',
+  title: 'Queue',
   component,
 };
 
-export const Timeline = {
+export const Queue = {
   args: {},
 };

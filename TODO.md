@@ -7,7 +7,7 @@
 
 ## Now
 
-- tidy up code (linting, remove Timeline or Queue component)
+- tidy up code
 - style the Queue item a bit more
 
 ## Next
@@ -26,7 +26,7 @@
   - save changes to local storage toggle
   - show prompt/settings as caption?
 - queue doesnt handle cached nodes very well
-- page refresh looses queue, it can be retrived via endpoint
+- page refresh looses queue, it can be retrieved via /queue endpoint
 - add file upload endpoint to bridge
 
 ## Future
