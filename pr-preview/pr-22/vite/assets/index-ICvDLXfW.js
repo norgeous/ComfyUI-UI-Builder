@@ -212,6 +212,7 @@ Error generating stack: `+V.message+`
   cursor: pointer;
   display: flex;
   gap: 4px;
+  padding: 0;
 `,C3=UU.div`
   font-size: 10px;
   overflow: hidden;
