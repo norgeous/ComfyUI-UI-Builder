@@ -2,108 +2,52 @@
 [TEST] > @ui-builder/storybook@0.0.0 unittest
 [TEST] > wait-on tcp:6006 && test-storybook --stories-json --maxWorkers=1 --no-cache --ci
 [TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/imagegrid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/statuslight.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/tooltip.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/queueitem.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/popmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/button.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputrange.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputselectckpt.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputtextarea.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputcheckbox.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputmissing.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/settingsmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/headertoggle.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/headerbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/formcontrols.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/maincontent.test.js (15.525 s)
-[TEST]   ● MainContent › Main Content › smoke-test
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/imagegrid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/statuslight.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/tooltip.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/queueitem.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/popmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/button.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputrange.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputselectckpt.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputtextarea.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputcheckbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputmissing.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/settingsmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/headertoggle.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/headerbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/formcontrols.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/maincontent.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputspeech.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputselect.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputnumber.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/formbuilder.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/resetbutton.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/collapsable.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/formheader.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/headerinfo.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/statusbar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputtext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputseed.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/inputfile.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/errortext.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/debugmenu.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/timeline.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/progress.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/sidebar.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/pyramid.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/layout.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/icons.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/debug.test.js
+[TEST] PASS browser: chromium ../../../../../../../tmp/2ededd5e27314d7b07218a78fb532c7d/app.test.js
 [TEST] 
-[TEST]     thrown: "Exceeded timeout of 15000 ms for a test.
-[TEST]     Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
-[TEST] 
-[TEST]     [0m [90m 1 |[39m describe([32m"MainContent"[39m[33m,[39m () [33m=>[39m {
-[TEST]      [90m 2 |[39m   describe([32m"Main Content"[39m[33m,[39m () [33m=>[39m {
-[TEST]     [31m[1m>[22m[39m[90m 3 |[39m     it([32m"smoke-test"[39m[33m,[39m [36masync[39m () [33m=>[39m {
-[TEST]      [90m   |[39m     [31m[1m^[22m[39m
-[TEST]      [90m 4 |[39m       [36mconst[39m testFn [33m=[39m [36masync[39m () [33m=>[39m {
-[TEST]      [90m 5 |[39m         [36mconst[39m context [33m=[39m {
-[TEST]      [90m 6 |[39m           id[33m:[39m [32m"maincontent--main-content"[39m[33m,[39m[0m
-[TEST] 
-[TEST]       at it (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/maincontent.test.js:3:5)
-[TEST]       at describe (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/maincontent.test.js:2:3)
-[TEST]       at Object.describe (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/maincontent.test.js:1:1)
-[TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputspeech.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputselect.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputnumber.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/formbuilder.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/resetbutton.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputheader.test.js
-[TEST] FAIL browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js (15.539 s)
-[TEST]   ● Collapsable › Collapsable › smoke-test
-[TEST] 
-[TEST]     thrown: "Exceeded timeout of 15000 ms for a test.
-[TEST]     Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
-[TEST] 
-[TEST]     [0m [90m 1 |[39m describe([32m"Collapsable"[39m[33m,[39m () [33m=>[39m {
-[TEST]      [90m 2 |[39m   describe([32m"Collapsable"[39m[33m,[39m () [33m=>[39m {
-[TEST]     [31m[1m>[22m[39m[90m 3 |[39m     it([32m"smoke-test"[39m[33m,[39m [36masync[39m () [33m=>[39m {
-[TEST]      [90m   |[39m     [31m[1m^[22m[39m
-[TEST]      [90m 4 |[39m       [36mconst[39m testFn [33m=[39m [36masync[39m () [33m=>[39m {
-[TEST]      [90m 5 |[39m         [36mconst[39m context [33m=[39m {
-[TEST]      [90m 6 |[39m           id[33m:[39m [32m"collapsable--collapsable"[39m[33m,[39m[0m
-[TEST] 
-[TEST]       at it (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js:3:5)
-[TEST]       at describe (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js:2:3)
-[TEST]       at Object.describe (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js:1:1)
-[TEST] 
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/formheader.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/headerinfo.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/statusbar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputtext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputseed.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/inputfile.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/errortext.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/debugmenu.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/timeline.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/progress.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/sidebar.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/pyramid.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/layout.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/icons.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/debug.test.js
-[TEST] PASS browser: chromium ../../../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/app.test.js
-[TEST] 
-[TEST] Summary of all failing tests
-[TEST] FAIL ../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/maincontent.test.js (15.525 s)
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] 
-[TEST] FAIL ../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js (15.539 s)
-[TEST] 
-[TEST] 
-[TEST]     [0m [90m 1 |[39m describe([32m"Collapsable"[39m[33m,[39m () [33m=>[39m {
-[TEST]      [90m 2 |[39m   describe([32m"Collapsable"[39m[33m,[39m () [33m=>[39m {
-[TEST]      [90m   |[39m     [31m[1m^[22m[39m
-[TEST]      [90m 4 |[39m       [36mconst[39m testFn [33m=[39m [36masync[39m () [33m=>[39m {
-[TEST] 
-[TEST]       at it (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js:3:5)
-[TEST]       at describe (../../../../../tmp/299a9dd5761a28f1bcaebb31cc68493e/collapsable.test.js:2:3)
-[TEST] 
-[TEST] 
-[TEST] Test Suites: 2 failed, 1 skipped, 37 passed, 39 of 40 total
-[TEST] Tests:       2 failed, 1 skipped, 61 passed, 64 total
+[TEST] Test Suites: 1 skipped, 39 passed, 39 of 40 total
+[TEST] Tests:       1 skipped, 63 passed, 64 total
 [TEST] Snapshots:   0 total
-[TEST] Time:        75.569 s
+[TEST] Time:        43.448 s
 [TEST] Ran all test suites.
-[TEST] [test-storybook] Cleaning up /tmp/299a9dd5761a28f1bcaebb31cc68493e
-[TEST] npm error Lifecycle script `unittest` failed with error:
-[TEST] npm error Error: command failed
-[TEST] npm error   in workspace: @ui-builder/storybook@0.0.0
-[TEST] npm error   at location: /home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/packages/storybook
-[TEST] npm run unittest -- --ci exited with code 1
+[TEST] [test-storybook] Cleaning up /tmp/2ededd5e27314d7b07218a78fb532c7d
+[TEST] npm run unittest -- --ci exited with code 0
 
-Fail ❌
+Pass ✅
