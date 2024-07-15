@@ -22,17 +22,16 @@
   - save history to local storage toggle
   - save changes to local storage toggle
   - show prompt/settings as caption?
-- queue doesnt handle cached nodes very well
+- queue doesnt handle a fully cached job very well (incorrect display)
 - page refresh looses queue, it can be retrieved via /queue endpoint
 - add file upload endpoint to bridge
+- input ws / comfy address manually (settings page?)
 
 ## Future
 
 - preview "completed" prompt in sidebar?
 - image input (for ipa)
   - example UI
-- storybook mocks
-  - mock images for image grid component, so we can remove storycap skip parameter on image grid stories
 - toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
 - ImageGrid: show spinner while images are loading
 - ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
@@ -56,7 +55,7 @@
 - CI: report and check bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
-- pwa
+- pwa / vite pwa plugin
 - video input and output (for animatediff)
 - pm2 for single "dev" command
 - make SB a11y tests also test dark mode
