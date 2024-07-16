@@ -7,9 +7,6 @@
 
 ## Now
 
-## Next
-
-- header redo, smaller workflow selector
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
     - more work on adjust weight with CTRL+UP or CTRL+DOWN
@@ -18,6 +15,10 @@
     - fix how words are appended into prompt
       - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
       - how to handle when utterances are updated?
+
+## Next
+
+- header redo, smaller workflow selector
 - SettingsMenu
   - save history to local storage toggle
   - save changes to local storage toggle
