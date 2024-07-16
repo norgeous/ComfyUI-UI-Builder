@@ -21,6 +21,7 @@ import {
   FaXmark,
   FaGear,
   FaClockRotateLeft,
+  FaPaintbrush,
 } from 'react-icons/fa6';
 import { SiStorybook } from 'react-icons/si';
 
@@ -61,3 +62,4 @@ export const WarningIcon = styled(FaTriangleExclamation)(baseIconCss);
 export const DismissIcon = styled(FaXmark)(baseIconCss);
 export const QueuedIcon = styled(FaClockRotateLeft)(baseIconCss);
 export const SettingsIcon = styled(FaGear)(baseIconCss);
+export const ThemeIcon = styled(FaPaintbrush)(baseIconCss);
