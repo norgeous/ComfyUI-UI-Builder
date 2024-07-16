@@ -1,4 +1,0 @@
-import{j as n}from"./jsx-runtime-Nms4Y4qS.js";import{r as l}from"./index-BwDkhjyp.js";import{C as g}from"./ConfigsContext-Cp8R_4Vo.js";import{c as x}from"./index-DhfeuN3W.js";import{c as u}from"./index-CIAEQD6t.js";import{c as h}from"./index-7Jykwjsv.js";import{p as C}from"./styled-components.browser.esm-Cm6OPFyG.js";const D=C.div`
-  padding: 0 8px 8px;
-  font-size: 12px;
-`,r=()=>{const{config:s,configs:i,setConfig:p}=l.useContext(g),c=t=>{const o=i.find(({configData:{name:e}})=>e===t);p(o)},m=i.map(({configData:{emoji:t,name:o,version:e}})=>({label:`${t} ${o} ${e}`,value:o})),a=s.configData.name,f=()=>{c("Basic SDXL")},d=a!=="Basic SDXL";return n.jsxs(x,{as:"header",column:!0,bgfg:2,children:[n.jsx(u,{id:"ui",label:"UI Builder",options:m,defaultValueIndex:0,value:a,onChange:c,children:d&&n.jsx(h,{onClick:f})}),n.jsx(D,{className:"muted",children:s.configData.description})]})},R=r;r.__docgenInfo={description:"",methods:[],displayName:"UiSelector"};export{R as c};
