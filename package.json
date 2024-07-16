@@ -42,7 +42,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.8",
     "eslint-plugin-storybook": "^0.8.0",
-    "vite": "^5.3.3"
+    "vite": "^5.3.4"
   },
   "peerDependencies": {
     "@storybook/test": "^8.1.9"
