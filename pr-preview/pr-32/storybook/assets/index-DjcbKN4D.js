@@ -1,1 +1,0 @@
-import{j as o}from"./jsx-runtime-Nms4Y4qS.js";import{c as t}from"./index-DhfeuN3W.js";import{c as e}from"./index-Dqtyu3Q8.js";import{c as m}from"./index-BOOR5bT7.js";const s=()=>o.jsxs(t,{as:"aside",column:!0,fullHeight:!0,bgfg:1,children:[o.jsx(e,{}),o.jsx(m,{})]}),p=s;s.__docgenInfo={description:"",methods:[],displayName:"Sidebar"};export{p as c};
