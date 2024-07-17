@@ -25,7 +25,7 @@ const InputNumberRange = ({
   };
 
   const toggleButton = (
-    <HeaderButton label={isRange ? 'Edit' : 'Return to range slider'}>
+    <HeaderButton label={isRange ? 'Edit number' : 'Return to range slider'}>
       <EditIcon onClick={toggleIsRange} />
     </HeaderButton>
   );
@@ -41,6 +41,7 @@ const InputNumberRange = ({
     >
       {toggleButton}
       {children}
+      {isRange && 'Range'}
     </InputRange>
   ) : (
     <InputNumber
@@ -54,6 +55,7 @@ const InputNumberRange = ({
     >
       {toggleButton}
       {children}
+      {isRange && 'Range'}
     </InputNumber>
   );
 };
