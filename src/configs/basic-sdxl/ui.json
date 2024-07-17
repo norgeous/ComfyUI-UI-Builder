@@ -47,8 +47,8 @@
     {
       "group": "Generation Params",
       "id": "batchSize",
-      "label": "Results per generation",
-      "info": "Amount of results to generate in parallel",
+      "label": "Batch Size",
+      "info": "Amount of images to generate in parallel",
       "type": "numberRange",
       "defaultValue": 1,
       "min": 1,
