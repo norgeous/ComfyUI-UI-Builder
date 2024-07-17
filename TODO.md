@@ -65,6 +65,7 @@
   - how to make UIB workflows and example links
   - more screenshots of UIB
 - add lint staged + husky
+- InputRangeNumber doesnt handle the case when switching back to range with a manually entered number is outside the bounds of the range!
 
 ## Ideas
 
