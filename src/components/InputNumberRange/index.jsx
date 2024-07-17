@@ -20,13 +20,17 @@ const InputNumberRange = ({
   const ref = useContext(InputRefContext);
   const [isRange, setIsRange] = useState(true);
   const toggleIsRange = () => {
-    setIsRange(!isRange);
+    console.log('T');
+    setIsRange(oldIsRange => !oldIsRange);
     setTimeout(() => ref.current.focus(), 0);
   };
 
-  const toggleButton = (
-    <HeaderButton label={isRange ? 'Edit number' : 'Return to range slider'}>
-      <EditIcon onClick={toggleIsRange} />
+  const EditButton = () => (
+    <HeaderButton
+      label={isRange ? 'Edit number' : 'Return to range slider'}
+      onClick={toggleIsRange}
+    >
+      <EditIcon />
     </HeaderButton>
   );
 
@@ -39,9 +43,8 @@ const InputNumberRange = ({
       onChange={onChange}
       options={options}
     >
-      {toggleButton}
+      <EditButton />
       {children}
-      {isRange && 'Range'}
     </InputRange>
   ) : (
     <InputNumber
@@ -53,9 +56,8 @@ const InputNumberRange = ({
       min={min}
       max={max}
     >
-      {toggleButton}
+      <EditButton />
       {children}
-      {isRange && 'Range'}
     </InputNumber>
   );
 };
