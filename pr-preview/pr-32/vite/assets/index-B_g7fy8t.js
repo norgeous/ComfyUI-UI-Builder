@@ -302,7 +302,6 @@ Error generating stack: `+V.message+`
 `,x3=()=>{const{config:U,configs:F,setConfig:Q}=L.useContext(tV),B=d=>{const W=F.find(({configData:{name:Z}})=>Z===d);Q(W)},R=F.map(({configData:{emoji:d,name:W,version:Z}})=>({label:`${d} ${W} ${Z}`,value:W})),V=U.configData.name,l=()=>{B("Basic SDXL")},J=V!=="Basic SDXL";return z.jsxs(EF,{as:"header",column:!0,bgfg:2,children:[z.jsx(pd,{id:"ui",label:"UI Builder",options:R,defaultValueIndex:0,value:V,onChange:B,children:J&&z.jsx($N,{onClick:l})}),z.jsx(r3,{className:"muted",children:U.configData.description})]})},Y2=({type:U=void 0})=>z.jsxs("div",{children:["Component type ",z.jsx("strong",{children:U})," not found"]});Y2.propTypes={type:O.string};const o3=UU.div`
   display: flex;
   flex-direction: column;
-  gap: 3.33333333px; /* to make it the same height as a text input */
 `,v3=UU.div`
   height: 14px;
   padding-top: 6px;
