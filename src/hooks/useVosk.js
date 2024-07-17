@@ -18,8 +18,11 @@ const modelFileName = {
   Vietnamese: 'vosk-model-small-vn-0.3.tar.gz',
 };
 
+const pn = window.parent.location.pathname;
+const relativeBase = pn.substring(0, pn.lastIndexOf('/'));
+
 const useVosk = ({
-  modelBaseUrl = `${window.parent.location.pathname}vosk-models/`,
+  modelBaseUrl = `${relativeBase}/vosk-models/`,
   language = 'English',
 } = {}) => {
   const [targetId, setTargetId] = useState(undefined);
