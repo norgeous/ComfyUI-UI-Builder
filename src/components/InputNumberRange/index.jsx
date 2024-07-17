@@ -6,6 +6,17 @@ import InputRange from '@/components/InputRange';
 import { EditIcon } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
 
+const EditButton = ({ label = undefined, onClick = () => {} }) => (
+  <HeaderButton label={label} onClick={onClick}>
+    <EditIcon />
+  </HeaderButton>
+);
+
+EditButton.propTypes = {
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
 const InputNumberRange = ({
   id = undefined,
   label = undefined,
@@ -20,19 +31,11 @@ const InputNumberRange = ({
   const ref = useContext(InputRefContext);
   const [isRange, setIsRange] = useState(true);
   const toggleIsRange = () => {
-    console.log('T');
-    setIsRange(oldIsRange => !oldIsRange);
+    setIsRange(!isRange);
     setTimeout(() => ref.current.focus(), 0);
   };
 
-  const EditButton = () => (
-    <HeaderButton
-      label={isRange ? 'Edit number' : 'Return to range slider'}
-      onClick={toggleIsRange}
-    >
-      <EditIcon />
-    </HeaderButton>
-  );
+  const editLabel = isRange ? 'Edit number' : 'Return to range slider';
 
   return isRange ? (
     <InputRange
@@ -43,7 +46,7 @@ const InputNumberRange = ({
       onChange={onChange}
       options={options}
     >
-      <EditButton />
+      <EditButton label={editLabel} onClick={toggleIsRange} />
       {children}
     </InputRange>
   ) : (
@@ -56,7 +59,7 @@ const InputNumberRange = ({
       min={min}
       max={max}
     >
-      <EditButton />
+      <EditButton label={editLabel} onClick={toggleIsRange} />
       {children}
     </InputNumber>
   );
