@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const RangeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3.33333333px; /* to make it the same height as a text input */
 `;
 
 export const RangeInner = styled.div`
