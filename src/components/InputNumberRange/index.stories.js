@@ -14,7 +14,7 @@ export const Range = {
     label: 'My InputNumberRange Label',
     info: 'info text',
     defaultValue: 2,
-    min: 42,
+    min: 1,
     max: 420,
     options: [
       { label: '1', value: 1 },
@@ -31,8 +31,8 @@ export const Number = {
     id: 'demo',
     label: 'My InputNumberRange Label',
     info: 'info text',
-    defaultValue: 69,
-    min: 42,
+    defaultValue: 2,
+    min: 1,
     max: 420,
     options: [
       { label: '1', value: 1 },
