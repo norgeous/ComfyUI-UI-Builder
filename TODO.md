@@ -33,7 +33,6 @@
 - preview "completed" prompt in sidebar?
 - image input (for ipa)
   - example UI
-- toggle button for range, so that it can convert into manual number input (not all range inputs, specifically for batch size)
 - ImageGrid: show spinner while images are loading
 - ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
@@ -56,8 +55,9 @@
 - CI: report and check bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
-- pwa / vite pwa plugin
 - video input and output (for animatediff)
+- pwa / vite pwa plugin
+- fix incorrect items in debug menu. hide in production
 - pm2 for single "dev" command
 - make SB a11y tests also test dark mode
 - url routing, so can link to workflows directly in readme
@@ -65,6 +65,7 @@
   - how to make UIB workflows and example links
   - more screenshots of UIB
 - add lint staged + husky
+- InputRangeNumber doesnt handle the case when switching back to range with a manually entered number is outside the bounds of the range!
 
 ## Ideas
 
