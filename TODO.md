@@ -55,8 +55,9 @@
 - CI: report and check bundle size / dist dir size
 - save current formData to LS?
   - reset all to default button?
-- pwa / vite pwa plugin
 - video input and output (for animatediff)
+- pwa / vite pwa plugin
+- fix incorrect items in debug menu. hide in production
 - pm2 for single "dev" command
 - make SB a11y tests also test dark mode
 - url routing, so can link to workflows directly in readme
