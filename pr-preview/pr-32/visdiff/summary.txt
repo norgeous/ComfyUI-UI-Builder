@@ -1,5 +1,5 @@
 🎭 Changed items: 6
-🆕 New items: 6
+🆕 New items: 4
 🗑️ Deleted items: 0
 ✅ Passed items: 122
 
