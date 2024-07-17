@@ -6,13 +6,6 @@
 > ui-builder@0.0.0 lint
 > eslint . --ext .js,.jsx,.cjs --fix
 
-
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputNumberRange/index.jsx
-  23:5   warning  Unexpected console statement                                                                                                                                                                                                                                                                                                                no-console
-  28:22  error    Do not define components during render. React will see a new component type on every render and destroy the entire subtree’s DOM nodes and state (https://reactjs.org/docs/reconciliation.html#elements-of-different-types). Instead, move this component definition out of the parent component “InputNumberRange” and pass data as props  react/no-unstable-nested-components
-
-✖ 2 problems (1 error, 1 warning)
-
 Lint has modified 0 files
 
-Fail ❌
+Pass ✅
