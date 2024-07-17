@@ -49,8 +49,10 @@
       "id": "batchSize",
       "label": "Results per generation",
       "info": "Amount of results to generate in parallel",
-      "type": "range",
-      "defaultValueIndex": 0,
+      "type": "numberRange",
+      "defaultValue": 1,
+      "min": 1,
+      "max": 100,
       "options": [
         { "label": "1", "value": 1 },
         { "label": "2", "value": 2 },
@@ -58,10 +60,7 @@
         { "label": "4", "value": 4 },
         { "label": "6", "value": 6 },
         { "label": "8", "value": 8 },
-        { "label": "9", "value": 9 },
-        { "label": "10", "value": 10 },
-        { "label": "12", "value": 12 },
-        { "label": "20", "value": 20 }
+        { "label": "9", "value": 9 }
       ]
     },
     {

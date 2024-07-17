@@ -17,13 +17,15 @@ import InputFile from '@/components/InputFile';
 import InputSpeech from '@/components/InputSpeech';
 import InputSeed from '@/components/InputSeed';
 import InputCheckbox from '@/components/InputCheckbox';
+import InputNumberRange from '@/components/InputNumberRange';
 
 const components = {
   select: InputSelect,
-  range: InputRange,
   textarea: InputTextarea,
   text: InputText,
   number: InputNumber,
+  numberRange: InputNumberRange,
+  range: InputRange,
   checkbox: InputCheckbox,
   selectckpt: InputSelectCkpt,
   fileupload: InputFile,

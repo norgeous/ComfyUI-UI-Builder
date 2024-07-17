@@ -12,6 +12,8 @@ const InputNumber = ({
   value = undefined,
   onChange = () => {},
   children = null,
+  min = undefined,
+  max = undefined,
 }) => {
   const ref = useContext(InputRefContext);
 
@@ -25,6 +27,8 @@ const InputNumber = ({
         id={id}
         value={value}
         onChange={event => onChange(Number(event.target.value))}
+        min={min}
+        max={max}
       />
     </Layout>
   );
@@ -37,6 +41,8 @@ InputNumber.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func,
   children: PropTypes.node,
+  min: PropTypes.number,
+  max: PropTypes.number,
 };
 
 export default InputNumber;
