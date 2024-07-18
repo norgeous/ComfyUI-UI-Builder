@@ -83,8 +83,6 @@ const InputTextarea = ({
   return (
     <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
-        <ArrowUpIcon />
-        <ArrowDownIcon />
         {children}
       </InputHeader>
       <Textarea

@@ -10,6 +10,8 @@ import {
   MicMutedIcon,
   MicUnmutedIcon,
   LimitIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
 } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
 import HeaderToggle from '@/components/HeaderToggle';
@@ -38,6 +40,12 @@ const InputTextarea = ({
   return (
     <Layout pad column gap="sm">
       <InputHeader id={id} label={label} info={info}>
+        <HeaderButton label="Prompt weight up (CTRL+UP)" onClick={() => {}}>
+          <ArrowUpIcon />
+        </HeaderButton>
+        <HeaderButton label="Prompt weight down (CTRL+DOWN)" onClick={() => {}}>
+          <ArrowDownIcon />
+        </HeaderButton>
         {!vosk && !loading && (
           <HeaderButton
             label="Enable Speech Capture"
@@ -54,7 +62,7 @@ const InputTextarea = ({
         )}
         {vosk && (
           <HeaderButton
-            label={isUnmuted ? 'Unmuted' : 'Muted'}
+            label={isUnmuted ? 'Capturing...' : 'Muted'}
             onClick={() => setUnmutedId(isUnmuted ? undefined : id)}
           >
             {isUnmuted ? <MicUnmutedIcon /> : <MicMutedIcon />}
@@ -62,7 +70,7 @@ const InputTextarea = ({
         )}
         <HeaderToggle
           label="Limit text length to 20 words"
-          onClick={() => setUnmutedId(isUnmuted ? undefined : id)}
+          onClick={() => {}}
           value
         >
           <LimitIcon />
