@@ -5,8 +5,14 @@ import SpeechContext from '@/contexts/SpeechContext';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import ErrorText from '@/components/ErrorText';
-import { SpinnerIcon, MicMutedIcon, MicUnmutedIcon } from '@/components/Icons';
+import {
+  SpinnerIcon,
+  MicMutedIcon,
+  MicUnmutedIcon,
+  LimitIcon,
+} from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
+import HeaderToggle from '@/components/HeaderToggle';
 import { Textarea } from './styles';
 
 const InputTextarea = ({
@@ -54,6 +60,13 @@ const InputTextarea = ({
             {isUnmuted ? <MicUnmutedIcon /> : <MicMutedIcon />}
           </HeaderButton>
         )}
+        <HeaderToggle
+          label="Limit text length to 20 words"
+          onClick={() => setUnmutedId(isUnmuted ? undefined : id)}
+          value
+        >
+          <LimitIcon />
+        </HeaderToggle>
         {children}
       </InputHeader>
       {error && isTarget && <ErrorText>{error}</ErrorText>}
