@@ -17,7 +17,7 @@
       "group": "Prompt",
       "id": "negativePrompt",
       "label": "Negative Prompt",
-      "type": "textarea",
+      "type": "speech",
       "defaultValue": "",
       "colSpan": 2
     },
