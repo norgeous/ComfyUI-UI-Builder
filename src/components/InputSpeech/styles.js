@@ -9,12 +9,13 @@ export const Textarea = styled.textarea`
   box-sizing: border-box;
   width: 100%;
   border-radius: var(--radius);
-  min-height: 60px;
-  line-height: 21px;
-  padding: 4px 8px;
-  resize: vertical;
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+  min-height: 33.333px;
+  height: 0;
+  line-height: 21px;
+  padding: 4px 8px;
+  resize: vertical;
 `;
