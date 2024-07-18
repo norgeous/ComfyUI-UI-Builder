@@ -46,6 +46,7 @@ const InputTextarea = ({
         <HeaderButton label="Prompt weight down (CTRL+DOWN)" onClick={() => {}}>
           <ArrowDownIcon />
         </HeaderButton>
+
         {!vosk && !loading && (
           <HeaderButton
             label="Enable Speech Capture"
@@ -68,13 +69,15 @@ const InputTextarea = ({
             {isUnmuted ? <MicUnmutedIcon /> : <MicMutedIcon />}
           </HeaderButton>
         )}
+
         <HeaderToggle
           label="Limit text length to 20 words"
           onClick={() => {}}
-          value
+          value={false}
         >
           <LimitIcon />
         </HeaderToggle>
+
         {children}
       </InputHeader>
       {error && isTarget && <ErrorText>{error}</ErrorText>}
