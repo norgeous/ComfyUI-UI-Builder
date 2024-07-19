@@ -14,7 +14,6 @@ import {
   ArrowDownIcon,
 } from '@/components/Icons';
 import HeaderButton from '@/components/HeaderButton';
-import HeaderToggle from '@/components/HeaderToggle';
 import { Textarea } from './styles';
 
 const InputTextarea = ({
@@ -70,13 +69,13 @@ const InputTextarea = ({
           </HeaderButton>
         )}
 
-        <HeaderToggle
+        <HeaderButton
           label="Limit text length to 20 words"
           onClick={() => {}}
           value={false}
         >
           <LimitIcon />
-        </HeaderToggle>
+        </HeaderButton>
 
         {children}
       </InputHeader>
