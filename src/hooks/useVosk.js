@@ -96,7 +96,7 @@ const useVosk = ({
     error,
     vosk,
     // utterances,
-    // partial,
+    partial,
     // simpleOutput,
     tail,
   };
