@@ -14,7 +14,6 @@ const EditButton = ({ value = false, onChange = () => {} }) => (
 );
 
 EditButton.propTypes = {
-  label: PropTypes.string,
   value: PropTypes.bool,
   onChange: PropTypes.func,
 };
