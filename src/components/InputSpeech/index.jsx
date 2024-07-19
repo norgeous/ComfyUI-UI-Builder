@@ -16,6 +16,8 @@ import {
 import HeaderButton from '@/components/HeaderButton';
 import { Textarea } from './styles';
 
+const splice = (a, z, s1, s2) => `${s1.slice(0, a)}${s2}${s1.slice(z)}`;
+
 const InputTextarea = ({
   id = undefined,
   label = undefined,
@@ -26,15 +28,35 @@ const InputTextarea = ({
 }) => {
   const ref = useContext(InputRefContext);
 
-  const { targetId, unmutedId, setUnmutedId, loading, error, vosk, tail } =
-    useContext(SpeechContext);
+  const {
+    targetId,
+    unmutedId,
+    setUnmutedId,
+    loading,
+    error,
+    vosk,
+    partial,
+    // tail,
+  } = useContext(SpeechContext);
 
   const isTarget = targetId === id;
   const isUnmuted = unmutedId === id;
 
   useEffect(() => {
-    if (isTarget) onChange(tail);
-  }, [tail]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (isTarget) {
+      console.log(partial);
+      const [lastWord] = partial.split(' ').toReversed();
+      const start = ref.current.selectionStart;
+      const end = ref.current.selectionEnd;
+      const toAppend = ` ${lastWord}`;
+      const newValue = splice(start, end, value, toAppend).trim();
+      onChange(newValue);
+      setTimeout(() => {
+        ref.current.selectionStart = end + toAppend.length;
+        ref.current.selectionEnd = end + toAppend.length;
+      }, 0);
+    }
+  }, [partial]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Layout pad column gap="sm">
