@@ -16,10 +16,10 @@ import InputContext from '@/contexts/InputContext';
 
 const WeightControls = () => (
   <>
-    <HeaderButton label="Prompt weight up (CTRL+UP)" onClick={() => {}}>
+    <HeaderButton label="Prompt weight up (CTRL + UP)" onClick={() => {}}>
       <ArrowUpIcon />
     </HeaderButton>
-    <HeaderButton label="Prompt weight down (CTRL+DOWN)" onClick={() => {}}>
+    <HeaderButton label="Prompt weight down (CTRL + DOWN)" onClick={() => {}}>
       <ArrowDownIcon />
     </HeaderButton>
   </>
