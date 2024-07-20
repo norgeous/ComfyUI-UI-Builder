@@ -9,27 +9,27 @@ import InputMissing from '@/components/InputMissing';
 
 import InputSelect from '@/components/InputSelect';
 import InputRange from '@/components/InputRange';
-import InputTextarea from '@/components/InputTextarea';
-import InputText from '@/components/InputText';
+import InputText from '@/components/InputText2';
 import InputNumber from '@/components/InputNumber';
 import InputSelectCkpt from '@/components/InputSelectCkpt';
 import InputFile from '@/components/InputFile';
-import InputSpeech from '@/components/InputSpeech';
 import InputSeed from '@/components/InputSeed';
 import InputCheckbox from '@/components/InputCheckbox';
 import InputNumberRange from '@/components/InputNumberRange';
 
 const components = {
   select: InputSelect,
-  textarea: InputTextarea,
+
+  textarea: InputText,
   text: InputText,
+  speech: InputText,
+
   number: InputNumber,
   numberRange: InputNumberRange,
   range: InputRange,
   checkbox: InputCheckbox,
   selectckpt: InputSelectCkpt,
   fileupload: InputFile,
-  speech: InputSpeech,
   seed: InputSeed,
 };
 
