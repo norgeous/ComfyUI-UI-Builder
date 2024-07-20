@@ -7,7 +7,7 @@ const LimitControls = () => {
 
   return (
     <HeaderButton
-      label="Limit text length to 20 words"
+      label="Word Limit"
       onClick={() => setEnabled(!enabled)}
       value={enabled}
     >

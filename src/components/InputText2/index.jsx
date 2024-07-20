@@ -1,11 +1,13 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import Layout from '@/components/Layout';
 import InputHeader from '@/components/InputHeader';
 import InputContext from '@/contexts/InputContext';
 import { Input, Textarea } from './styles';
-import Controls from './Controls';
+import WeightControls from './controls/WeightControls';
+import SpeechControls from './controls/SpeechControls';
+import LimitControls from './controls/LimitControls';
 
 const InputText = ({
   id = undefined,
@@ -19,19 +21,26 @@ const InputText = ({
 }) => {
   const ref = useContext(InputRefContext);
 
+  const [extraInputProps, setExtraInputProps] = useState({});
   const context = useMemo(
-    () => ({ id, value, onChange }),
-    [id, onChange, value],
+    () => ({ id, value, onChange, extraInputProps, setExtraInputProps }),
+    [id, onChange, value, extraInputProps, setExtraInputProps],
+  );
+
+  const header = (
+    <InputHeader id={id} label={label} info={info}>
+      {controlOptions.includes('weight') && <WeightControls />}
+      {controlOptions.includes('speech') && <SpeechControls />}
+      {controlOptions.includes('limit') && <LimitControls />}
+      {children}
+    </InputHeader>
   );
 
   if (options.length) {
     return (
       <InputContext.Provider value={context}>
         <Layout pad column gap="sm">
-          <InputHeader id={id} label={label} info={info}>
-            <Controls controlOptions={controlOptions} />
-            {children}
-          </InputHeader>
+          {header}
           <Input
             ref={ref}
             id={id}
@@ -53,15 +62,13 @@ const InputText = ({
   return (
     <InputContext.Provider value={context}>
       <Layout pad column gap="sm">
-        <InputHeader id={id} label={label} info={info}>
-          <Controls controlOptions={controlOptions} />
-          {children}
-        </InputHeader>
+        {header}
         <Textarea
           ref={ref}
           id={id}
           value={value}
           onChange={event => onChange(event.target.value)}
+          {...extraInputProps} // eslint-disable-line react/jsx-props-no-spreading
         />
       </Layout>
     </InputContext.Provider>
