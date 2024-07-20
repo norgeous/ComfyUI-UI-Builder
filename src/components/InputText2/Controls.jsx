@@ -3,19 +3,13 @@ import WeightControls from './controls/WeightControls';
 import SpeechControls from './controls/SpeechControls';
 import LimitControls from './controls/LimitControls';
 
-const Controls = ({ controlOptions = [] }) => {
-  const showWeightControls = controlOptions.includes('weight');
-  const showSpeechControls = controlOptions.includes('speech');
-  const showLimitControls = controlOptions.includes('limit');
-
-  return (
-    <>
-      {showWeightControls && <WeightControls />}
-      {showSpeechControls && <SpeechControls />}
-      {showLimitControls && <LimitControls />}
-    </>
-  );
-};
+const Controls = ({ controlOptions = [] }) => (
+  <>
+    {controlOptions.includes('weight') && <WeightControls />}
+    {controlOptions.includes('speech') && <SpeechControls />}
+    {controlOptions.includes('limit') && <LimitControls />}
+  </>
+);
 
 Controls.propTypes = {
   controlOptions: PropTypes.arrayOf(
