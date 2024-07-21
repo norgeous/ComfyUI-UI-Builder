@@ -83,7 +83,9 @@ InputText.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   children: PropTypes.node,
-  controlOptions: PropTypes.arrayOf(PropTypes.oneOf(['weight'])),
+  controlOptions: PropTypes.arrayOf(
+    PropTypes.oneOf(['weight', 'speech', 'limit']),
+  ),
 };
 
 export default InputText;
