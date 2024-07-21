@@ -15,7 +15,7 @@
     - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
     - fix how words are appended into prompt
       - currently it just overrides the entire value, but ideally the last word said is appended into the exisiting value
-      - how to handle when utterances are updated?
+      - how to handle when the "partial" is updated?
 
 ## Next
 
