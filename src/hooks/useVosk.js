@@ -89,7 +89,7 @@ const useVosk = ({
                 }, [])
                 .join(' ');
 
-              if (difference.length) console.log(recentWords, correctionCount);
+              if (recentWords) console.log(correctionCount, recentWords);
 
               // const {partial, correctionCount} = oldWords.
               return result.partial;
