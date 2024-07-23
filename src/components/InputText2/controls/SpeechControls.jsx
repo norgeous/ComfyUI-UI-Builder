@@ -28,7 +28,7 @@ const SpeechControls = () => {
 
   useEffect(() => {
     if (isTarget) {
-      console.log(partial);
+      // console.log(partial);
       const [lastWord] = partial.split(' ').toReversed();
       const start = ref.current.selectionStart;
       const end = ref.current.selectionEnd;
