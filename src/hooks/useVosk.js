@@ -33,6 +33,7 @@ const useVosk = ({
   const [vosk, setVosk] = useState(undefined);
   const [utterances, setUtterances] = useState([]);
   const [partial, setPartial] = useState('');
+  const [lastPartial, setLastPartial] = useState('');
 
   // do nothing on mounting, waiting until unmutedId becomes set
   // once unmutedId is set, load vosk
@@ -48,6 +49,51 @@ const useVosk = ({
           });
           newVosk.recognizer.on('partialresult', ({ result }) => {
             setPartial(result.partial);
+            // const delta =
+            // console.log(delta);
+            // console.log([lastPartial, result.partial]);
+            setLastPartial(old => {
+              // const delta = result.partial
+              //   ? result.partial.replace(old, '').trim()
+              //   : '';
+
+              // if (delta) console.table([old, result.partial, delta]);
+
+              const oldWords = old.split(' ');
+              const newWords = result.partial.split(' ');
+
+              const length = Math.max(oldWords.length, newWords.length);
+
+              const comparisonArray = Array.from({ length }, (_, i) => [
+                oldWords[i] || '',
+                newWords[i] || '',
+              ]);
+
+              const difference = comparisonArray.reduce((acc, [o, n]) => {
+                if (o === n) return acc;
+                return [...acc, [o, n]];
+              }, []);
+
+              // const correctionCount =
+              // difference.length > 1 ? difference.length - 1 : 0;
+
+              const correctionCount = difference.reduce((acc, [o, n]) => {
+                if (o === '') return acc;
+                return acc + 1;
+              }, 0);
+
+              const recentWords = difference
+                .reduce((acc, [, n]) => {
+                  if (!n) return acc;
+                  return [...acc, n];
+                }, [])
+                .join(' ');
+
+              if (difference.length) console.log(recentWords, correctionCount);
+
+              // const {partial, correctionCount} = oldWords.
+              return result.partial;
+            });
           });
           setVosk(newVosk);
         })
