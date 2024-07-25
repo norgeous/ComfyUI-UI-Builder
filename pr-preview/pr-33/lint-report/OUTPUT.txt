@@ -7,15 +7,11 @@
 > eslint . --ext .js,.jsx,.cjs --fix
 
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputNumberRange/index.jsx
-  17:3  error  'label' PropType is defined but prop is never used  react/no-unused-prop-types
+/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputText2/controls/WeightControls.jsx
+  77:6  warning  React Hook useEffect has missing dependencies: 'setExtraInputProps' and 'specialControls'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputTextarea/index.jsx
-  6:10  error  'ArrowDownIcon' is defined but never used  no-unused-vars
-  6:25  error  'ArrowUpIcon' is defined but never used    no-unused-vars
-
-✖ 3 problems (3 errors, 0 warnings)
+✖ 1 problem (0 errors, 1 warning)
 
 Lint has modified 0 files
 
-Fail ❌
+Pass ✅
