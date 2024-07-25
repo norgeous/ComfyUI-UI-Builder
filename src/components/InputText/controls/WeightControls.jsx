@@ -59,9 +59,13 @@ const WeightControls = () => {
         ArrowUp: (weight + 0.1).toFixed(1),
         ArrowDown: (weight - 0.1).toFixed(1),
       }[event.key];
+
       const newSelection =
         newWeight !== '1.0' ? `(${text}:${newWeight})` : text;
+
       const newValue = `${before + newSelection + after}`;
+
+      // console.log({ value, newValue });
 
       onChange(newValue);
 
@@ -74,7 +78,7 @@ const WeightControls = () => {
 
   useEffect(() => {
     setExtraInputProps({ onKeyDown: preventer, onKeyUp: specialControls });
-  }, []);
+  }, [setExtraInputProps, specialControls]);
 
   return (
     <>
