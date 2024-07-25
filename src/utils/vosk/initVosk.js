@@ -3,9 +3,11 @@ import MicrophoneStream from 'microphone-stream';
 import AudioStreamer from './AudioStreamer';
 import audioBucket from './audioBucket';
 
-const initVosk = async ({ modelUrl }) => {
+const initVosk = async ({ modelUrl, onSpeech = () => {} }) => {
   // load vosk
   const model = await createModel(modelUrl);
+
+  let lastPartial = '';
 
   // setup vosk
   const recognizer = new model.KaldiRecognizer(48000);
@@ -46,6 +48,41 @@ const initVosk = async ({ modelUrl }) => {
     mediaStream.getTracks().forEach(track => track.stop());
     model.terminate();
   };
+
+  recognizer.on('partialresult', ({ result }) => {
+    const oldWords = lastPartial.split(' ');
+    const newWords = result.partial.split(' ');
+
+    lastPartial = result.partial; // save for next itteration
+
+    const length = Math.max(oldWords.length, newWords.length);
+
+    const comparisonArray = Array.from({ length }, (_, i) => [
+      oldWords[i] || '',
+      newWords[i] || '',
+    ]);
+
+    const difference = comparisonArray.reduce((acc, [o, n]) => {
+      if (o === n) return acc;
+      return [...acc, [o, n]];
+    }, []);
+
+    const correctionCount = difference.reduce((acc, [o]) => {
+      if (o === '') return acc;
+      return acc + 1;
+    }, 0);
+
+    const recentWords = difference
+      .reduce((acc, [, n]) => {
+        if (!n) return acc;
+        return [...acc, n];
+      }, [])
+      .join(' ');
+
+    if (recentWords) {
+      onSpeech({ correctionCount, recentWords });
+    }
+  });
 
   // returns "vosk"
   return {

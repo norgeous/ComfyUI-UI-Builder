@@ -31,9 +31,11 @@ const useVosk = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [vosk, setVosk] = useState(undefined);
-  const [utterances, setUtterances] = useState([]);
-  const [partial, setPartial] = useState('');
-  const [lastPartial, setLastPartial] = useState('');
+
+  const [lastSpeechEvent, setLastSpeechEvent] = useState({
+    correctionCount: 0,
+    recentWords: '',
+  });
 
   // do nothing on mounting, waiting until unmutedId becomes set
   // once unmutedId is set, load vosk
@@ -42,46 +44,8 @@ const useVosk = ({
       setError('');
       setLoading(true);
       const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
-      initVosk({ modelUrl })
+      initVosk({ modelUrl, onSpeech: setLastSpeechEvent })
         .then(newVosk => {
-          newVosk.recognizer.on('result', ({ result }) => {
-            setUtterances(utt => [...utt, result]);
-          });
-          newVosk.recognizer.on('partialresult', ({ result }) => {
-            setPartial(result.partial);
-            setLastPartial(old => {
-              const oldWords = old.split(' ');
-              const newWords = result.partial.split(' ');
-
-              const length = Math.max(oldWords.length, newWords.length);
-
-              const comparisonArray = Array.from({ length }, (_, i) => [
-                oldWords[i] || '',
-                newWords[i] || '',
-              ]);
-
-              const difference = comparisonArray.reduce((acc, [o, n]) => {
-                if (o === n) return acc;
-                return [...acc, [o, n]];
-              }, []);
-
-              const correctionCount = difference.reduce((acc, [o, n]) => {
-                if (o === '') return acc;
-                return acc + 1;
-              }, 0);
-
-              const recentWords = difference
-                .reduce((acc, [, n]) => {
-                  if (!n) return acc;
-                  return [...acc, n];
-                }, [])
-                .join(' ');
-
-              if (recentWords) console.log(-correctionCount, recentWords);
-
-              return result.partial;
-            });
-          });
           setVosk(newVosk);
         })
         .catch(e => {
@@ -102,25 +66,6 @@ const useVosk = ({
     vosk?.setMute(!unmutedId);
   }, [vosk, unmutedId]);
 
-  const simpleUtterances = utterances
-    .reduce(
-      (acc1, { result }) =>
-        result
-          ? [
-              ...acc1,
-              result
-                .reduce((acc2, { word }) => (word ? [...acc2, word] : acc2), [])
-                .join(' '),
-            ]
-          : acc1,
-      [],
-    )
-    .join(' ');
-
-  const simpleOutput = `${simpleUtterances} ${partial}`.trim();
-
-  const tail = simpleOutput.split(' ').slice(-25).join(' ');
-
   return {
     targetId,
     unmutedId,
@@ -128,10 +73,7 @@ const useVosk = ({
     loading,
     error,
     vosk,
-    // utterances,
-    partial,
-    // simpleOutput,
-    tail,
+    lastSpeechEvent,
   };
 };
 

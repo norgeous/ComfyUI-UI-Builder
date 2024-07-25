@@ -19,8 +19,7 @@ const SpeechControls = () => {
     loading,
     error,
     vosk,
-    partial,
-    // tail,
+    lastSpeechEvent,
   } = useContext(SpeechContext);
 
   const isTarget = targetId === id;
@@ -28,19 +27,22 @@ const SpeechControls = () => {
 
   useEffect(() => {
     if (isTarget) {
-      // console.log(partial);
-      const [lastWord] = partial.split(' ').toReversed();
+      const { correctionCount, recentWords } = lastSpeechEvent;
       const start = ref.current.selectionStart;
       const end = ref.current.selectionEnd;
-      const toAppend = ` ${lastWord}`;
-      const newValue = splice(start, end, value, toAppend).trim();
+      const toAppend = ` ${recentWords}`;
+      const valueArray = value.split(' ');
+      const correctedValue = valueArray
+        .slice(0, -correctionCount || valueArray.length)
+        .join(' ');
+      const newValue = splice(start, end, correctedValue, toAppend).trim();
       onChange(newValue);
       setTimeout(() => {
         ref.current.selectionStart = end + toAppend.length;
         ref.current.selectionEnd = end + toAppend.length;
       }, 0);
     }
-  }, [partial]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [lastSpeechEvent]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
