@@ -9,13 +9,13 @@ import InputMissing from '@/components/InputMissing';
 
 import InputSelect from '@/components/InputSelect';
 import InputRange from '@/components/InputRange';
-import InputText from '@/components/InputText2';
 import InputNumber from '@/components/InputNumber';
 import InputSelectCkpt from '@/components/InputSelectCkpt';
 import InputFile from '@/components/InputFile';
 import InputSeed from '@/components/InputSeed';
 import InputCheckbox from '@/components/InputCheckbox';
 import InputNumberRange from '@/components/InputNumberRange';
+import InputText from '@/components/InputText';
 
 const components = {
   select: InputSelect,
