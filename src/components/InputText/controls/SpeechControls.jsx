@@ -27,19 +27,23 @@ const SpeechControls = () => {
 
   useEffect(() => {
     if (isTarget) {
+      const { selectionStart, selectionEnd } = ref.current;
       const { correctionCount, recentWords } = lastSpeechEvent;
-      const start = ref.current.selectionStart;
-      const end = ref.current.selectionEnd;
       const toAppend = ` ${recentWords}`;
       const valueArray = value.split(' ');
       const correctedValue = valueArray
         .slice(0, -correctionCount || valueArray.length)
         .join(' ');
-      const newValue = splice(start, end, correctedValue, toAppend).trim();
+      const newValue = splice(
+        selectionStart,
+        selectionEnd,
+        correctedValue,
+        toAppend,
+      ).trim();
       onChange(newValue);
       setTimeout(() => {
-        ref.current.selectionStart = end + toAppend.length;
-        ref.current.selectionEnd = end + toAppend.length;
+        ref.current.selectionStart = selectionEnd + toAppend.length;
+        ref.current.selectionEnd = selectionEnd + toAppend.length;
       }, 0);
     }
   }, [lastSpeechEvent]); // eslint-disable-line react-hooks/exhaustive-deps
