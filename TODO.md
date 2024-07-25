@@ -9,10 +9,7 @@
 
 - combine InputTextarea, InputSpeech and InputText into a single type of input
   - up and down arrows for prompt weights are shown, but do nothing
-    - more work on adjust weight with CTRL+UP or CTRL+DOWN
-  - various problems with speech capture
-    - would be nice to be able to "unload" the speech model entirely, not just mute it
-    - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
+  - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
 
 ## Next
 
@@ -25,6 +22,7 @@
 - page refresh looses queue, it can be retrieved via /queue endpoint
 - add file upload endpoint to bridge
 - input ws / comfy address manually (settings page?)
+- would be nice to be able to "unload" the speech model entirely, not just mute it
 
 ## Future
 
