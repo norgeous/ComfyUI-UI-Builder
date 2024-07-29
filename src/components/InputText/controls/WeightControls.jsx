@@ -39,10 +39,8 @@ const updateWeight = ({ ref, value, direction, onChange }) => {
 
   setTimeout(() => {
     ref.current.focus();
-    // eslint-disable-next-line no-param-reassign
-    ref.current.selectionStart = selectionStart;
-    // eslint-disable-next-line no-param-reassign
-    ref.current.selectionEnd = selectionStart + newSelection.length;
+    ref.current.selectionStart = selectionStart; // eslint-disable-line no-param-reassign
+    ref.current.selectionEnd = selectionStart + newSelection.length; // eslint-disable-line no-param-reassign
   }, 0);
 };
 
