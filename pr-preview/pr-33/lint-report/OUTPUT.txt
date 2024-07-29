@@ -6,16 +6,6 @@
 > ui-builder@0.0.0 lint
 > eslint . --ext .js,.jsx,.cjs --fix
 
-
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputText/controls/WeightControls.jsx
-   7:7   error    Identifier 'updateWeight_old' is not in camel case     camelcase
-   7:7   error    'updateWeight_old' is assigned a value but never used  no-unused-vars
-  61:37  error    'direction' is defined but never used                  no-unused-vars
-  61:48  error    'onChange' is defined but never used                   no-unused-vars
-  73:3   warning  Unexpected console statement                           no-console
-
-✖ 5 problems (4 errors, 1 warning)
-
 Lint has modified 0 files
 
-Fail ❌
+Pass ✅
