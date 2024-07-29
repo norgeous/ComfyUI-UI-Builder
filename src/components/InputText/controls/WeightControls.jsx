@@ -4,48 +4,6 @@ import HeaderButton from '@/components/HeaderButton';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputContext from '@/contexts/InputContext';
 
-const updateWeight_old = ({ ref, value, direction, onChange }) => {
-  const { selectionStart, selectionEnd } = ref.current;
-
-  const before = value.slice(0, selectionStart);
-  const selection = value.slice(selectionStart, selectionEnd);
-  const after = value.slice(selectionEnd);
-
-  const delimiterIndex = selection.lastIndexOf(':');
-  const text = selection
-    .slice(0, delimiterIndex > 0 ? delimiterIndex : undefined)
-    .replace('(', '');
-
-  const weight =
-    Number(
-      selection
-        .slice(delimiterIndex + 1)
-        .trim()
-        .replace(')', ''),
-    ) || 1;
-
-  const newWeight = {
-    up: (weight + 0.1).toFixed(1),
-    dn: (weight - 0.1).toFixed(1),
-  }[direction];
-
-  const newSelection = newWeight !== '1.0' ? `(${text}:${newWeight})` : text;
-
-  const newValue = `${before + newSelection + after}`;
-
-  // console.log({ value, newValue });
-
-  onChange(newValue);
-
-  setTimeout(() => {
-    ref.current.focus();
-    ref.current.selectionStart = selectionStart; // eslint-disable-line no-param-reassign
-    ref.current.selectionEnd = selectionStart + newSelection.length; // eslint-disable-line no-param-reassign
-  }, 0);
-};
-
-// -----------------------------------
-
 const findWordIndex = (charIndex, words) => {
   const { index: wordIndex } = words.reduce(
     ({ total, index }, word, i) => {
@@ -70,9 +28,42 @@ const updateWeight = ({ ref, value, direction, onChange }) => {
   const selectionWords = words.slice(startWordIndex, endWordIndex + 1);
   const afterWords = words.slice(endWordIndex + 1);
 
-  console.log(
-    `${beforeWords.join(' ')} |${selectionWords.join(' ')}| ${afterWords.join(' ')}`.trim(),
-  );
+  const selection = selectionWords.join(' ');
+  const delimiterIndex = selection.lastIndexOf(':');
+  const textWithoutWeight = selection
+    .slice(0, delimiterIndex > 0 ? delimiterIndex : undefined)
+    .replace('(', '');
+
+  const oldWeight =
+    Number(
+      selection
+        .slice(delimiterIndex + 1)
+        .trim()
+        .replace(')', ''),
+    ) || 1;
+
+  const newWeight = {
+    up: (oldWeight + 0.1).toFixed(1),
+    dn: (oldWeight - 0.1).toFixed(1),
+  }[direction];
+
+  const newSelection =
+    newWeight !== '1.0'
+      ? `(${textWithoutWeight}:${newWeight})`
+      : textWithoutWeight;
+
+  const before = beforeWords.join(' ');
+  const after = afterWords.join(' ');
+
+  const newValue = [before, newSelection, after].join(' ');
+
+  onChange(newValue);
+
+  setTimeout(() => {
+    ref.current.focus();
+    ref.current.selectionStart = before.length + 1; // eslint-disable-line no-param-reassign
+    ref.current.selectionEnd = before.length + 1 + newSelection.length; // eslint-disable-line no-param-reassign
+  }, 0);
 };
 
 // prevent ctrl+up onKeyDown moving to start of input
