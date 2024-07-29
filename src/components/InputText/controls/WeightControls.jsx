@@ -34,14 +34,14 @@ const updateWeight = ({ ref, value, direction, onChange }) => {
     .slice(0, delimiterIndex > 0 ? delimiterIndex : undefined)
     .replace('(', '');
 
-  const possibleOldWeight = Number(
+  const oldWeightOrNaN = Number(
     selection
       .slice(delimiterIndex + 1)
       .trim()
       .replace(')', ''),
   );
 
-  const oldWeight = Number.isNaN(possibleOldWeight) ? 1 : possibleOldWeight;
+  const oldWeight = !Number.isNaN(oldWeightOrNaN) ? oldWeightOrNaN : 1;
 
   const newWeight = {
     up: (oldWeight + 0.1).toFixed(1),
