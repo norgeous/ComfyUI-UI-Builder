@@ -4,6 +4,48 @@ import HeaderButton from '@/components/HeaderButton';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputContext from '@/contexts/InputContext';
 
+const updateWeight = ({ ref, value, direction, onChange }) => {
+  const { selectionStart, selectionEnd } = ref.current;
+
+  const before = value.slice(0, selectionStart);
+  const selection = value.slice(selectionStart, selectionEnd);
+  const after = value.slice(selectionEnd);
+
+  const delimiterIndex = selection.lastIndexOf(':');
+  const text = selection
+    .slice(0, delimiterIndex > 0 ? delimiterIndex : undefined)
+    .replace('(', '');
+
+  const weight =
+    Number(
+      selection
+        .slice(delimiterIndex + 1)
+        .trim()
+        .replace(')', ''),
+    ) || 1;
+
+  const newWeight = {
+    up: (weight + 0.1).toFixed(1),
+    dn: (weight - 0.1).toFixed(1),
+  }[direction];
+
+  const newSelection = newWeight !== '1.0' ? `(${text}:${newWeight})` : text;
+
+  const newValue = `${before + newSelection + after}`;
+
+  // console.log({ value, newValue });
+
+  onChange(newValue);
+
+  setTimeout(() => {
+    ref.current.focus();
+    // eslint-disable-next-line no-param-reassign
+    ref.current.selectionStart = selectionStart;
+    // eslint-disable-next-line no-param-reassign
+    ref.current.selectionEnd = selectionStart + newSelection.length;
+  }, 0);
+};
+
 // prevent ctrl+up moving to start of input
 // prevent ctrl+down moving to end of input
 const preventer = event => {
@@ -33,59 +75,29 @@ const WeightControls = () => {
   //   ['|abc (def:1.1) ghi |jkl mno', 'up', '|(abc def ghi:1.2)| jkl mno'],
   // ];
 
-  const specialControls = event => {
-    if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
-      event.preventDefault();
-      const { selectionStart, selectionEnd } = ref.current;
-
-      const before = value.slice(0, selectionStart);
-      const selection = value.slice(selectionStart, selectionEnd);
-      const after = value.slice(selectionEnd);
-
-      const delimiterIndex = selection.lastIndexOf(':');
-      const text = selection
-        .slice(0, delimiterIndex > 0 ? delimiterIndex : undefined)
-        .replace('(', '');
-
-      const weight =
-        Number(
-          selection
-            .slice(delimiterIndex + 1)
-            .trim()
-            .replace(')', ''),
-        ) || 1;
-
-      const newWeight = {
-        ArrowUp: (weight + 0.1).toFixed(1),
-        ArrowDown: (weight - 0.1).toFixed(1),
-      }[event.key];
-
-      const newSelection =
-        newWeight !== '1.0' ? `(${text}:${newWeight})` : text;
-
-      const newValue = `${before + newSelection + after}`;
-
-      // console.log({ value, newValue });
-
-      onChange(newValue);
-
-      setTimeout(() => {
-        ref.current.selectionStart = selectionStart;
-        ref.current.selectionEnd = selectionStart + newSelection.length;
-      }, 0);
-    }
-  };
-
   useEffect(() => {
+    const specialControls = event => {
+      if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+        const direction = { ArrowUp: 'up', ArrowDown: 'dn' }[event.key];
+        updateWeight({ ref, value, onChange, direction });
+      }
+    };
     setExtraInputProps({ onKeyDown: preventer, onKeyUp: specialControls });
-  }, [setExtraInputProps, specialControls]);
+  }, [onChange, ref, setExtraInputProps, value]);
 
   return (
     <>
-      <HeaderButton label="Prompt weight up (CTRL + UP)" onClick={() => {}}>
+      <HeaderButton
+        label="Prompt weight up (CTRL + UP)"
+        onClick={() => updateWeight({ ref, value, onChange, direction: 'up' })}
+      >
         <ArrowUpIcon />
       </HeaderButton>
-      <HeaderButton label="Prompt weight down (CTRL + DOWN)" onClick={() => {}}>
+      <HeaderButton
+        label="Prompt weight down (CTRL + DOWN)"
+        onClick={() => updateWeight({ ref, value, onChange, direction: 'dn' })}
+      >
         <ArrowDownIcon />
       </HeaderButton>
     </>
