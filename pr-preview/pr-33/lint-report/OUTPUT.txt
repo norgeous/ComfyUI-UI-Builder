@@ -6,12 +6,6 @@
 > ui-builder@0.0.0 lint
 > eslint . --ext .js,.jsx,.cjs --fix
 
-
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputText/controls/WeightControls.jsx
-  77:6  warning  React Hook useEffect has missing dependencies: 'setExtraInputProps' and 'specialControls'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
-
-✖ 1 problem (0 errors, 1 warning)
-
 Lint has modified 0 files
 
 Pass ✅
