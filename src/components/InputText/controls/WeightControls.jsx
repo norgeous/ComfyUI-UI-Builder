@@ -4,7 +4,7 @@ import HeaderButton from '@/components/HeaderButton';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputContext from '@/contexts/InputContext';
 
-const updateWeight = ({ ref, value, direction, onChange }) => {
+const updateWeight_old = ({ ref, value, direction, onChange }) => {
   const { selectionStart, selectionEnd } = ref.current;
 
   const before = value.slice(0, selectionStart);
@@ -44,8 +44,39 @@ const updateWeight = ({ ref, value, direction, onChange }) => {
   }, 0);
 };
 
-// prevent ctrl+up moving to start of input
-// prevent ctrl+down moving to end of input
+// -----------------------------------
+
+const findWordIndex = (charIndex, words) => {
+  const { index: wordIndex } = words.reduce(
+    ({ total, index }, word, i) => {
+      const newTotal = total + word.length + 1;
+      const newIndex = newTotal > charIndex && index === -1 ? i : index;
+      return { total: newTotal, index: newIndex };
+    },
+    { total: 0, index: -1 },
+  );
+  return wordIndex;
+};
+
+const updateWeight = ({ ref, value, direction, onChange }) => {
+  const { selectionStart, selectionEnd } = ref.current;
+
+  const words = value.split(' ');
+
+  const startWordIndex = findWordIndex(selectionStart, words);
+  const endWordIndex = findWordIndex(selectionEnd, words);
+
+  const beforeWords = words.slice(0, startWordIndex);
+  const selectionWords = words.slice(startWordIndex, endWordIndex + 1);
+  const afterWords = words.slice(endWordIndex + 1);
+
+  console.log(
+    `${beforeWords.join(' ')} |${selectionWords.join(' ')}| ${afterWords.join(' ')}`.trim(),
+  );
+};
+
+// prevent ctrl+up onKeyDown moving to start of input
+// prevent ctrl+down onKeyDown moving to end of input
 const preventer = event => {
   if (event.ctrlKey && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
     event.preventDefault();
