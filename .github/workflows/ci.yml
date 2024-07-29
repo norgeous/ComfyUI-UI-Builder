@@ -355,7 +355,7 @@ jobs:
           key: ${{ inputs.CACHE_KEY_STORYBOOK }}
           fail-on-cache-miss: true
 
-      - name: ▶️ Playwright Install
+      - name: 🎬 Playwright Install
         if: steps.storybook_test_cache.outputs.cache-hit != 'true'
         run: |
           npx playwright install chromium
