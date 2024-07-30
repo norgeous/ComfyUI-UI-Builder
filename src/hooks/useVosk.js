@@ -31,8 +31,11 @@ const useVosk = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [vosk, setVosk] = useState(undefined);
-  const [utterances, setUtterances] = useState([]);
-  const [partial, setPartial] = useState('');
+
+  const [lastSpeechEvent, setLastSpeechEvent] = useState({
+    correctionCount: 0,
+    recentWords: '',
+  });
 
   // do nothing on mounting, waiting until unmutedId becomes set
   // once unmutedId is set, load vosk
@@ -41,14 +44,8 @@ const useVosk = ({
       setError('');
       setLoading(true);
       const modelUrl = `${modelBaseUrl}${modelFileName[language] || modelFileName.English}`;
-      initVosk({ modelUrl })
+      initVosk({ modelUrl, onSpeech: setLastSpeechEvent })
         .then(newVosk => {
-          newVosk.recognizer.on('result', ({ result }) => {
-            setUtterances(utt => [...utt, result]);
-          });
-          newVosk.recognizer.on('partialresult', ({ result }) => {
-            setPartial(result.partial);
-          });
           setVosk(newVosk);
         })
         .catch(e => {
@@ -69,25 +66,6 @@ const useVosk = ({
     vosk?.setMute(!unmutedId);
   }, [vosk, unmutedId]);
 
-  const simpleUtterances = utterances
-    .reduce(
-      (acc1, { result }) =>
-        result
-          ? [
-              ...acc1,
-              result
-                .reduce((acc2, { word }) => (word ? [...acc2, word] : acc2), [])
-                .join(' '),
-            ]
-          : acc1,
-      [],
-    )
-    .join(' ');
-
-  const simpleOutput = `${simpleUtterances} ${partial}`.trim();
-
-  const tail = simpleOutput.split(' ').slice(-25).join(' ');
-
   return {
     targetId,
     unmutedId,
@@ -95,10 +73,7 @@ const useVosk = ({
     loading,
     error,
     vosk,
-    // utterances,
-    // partial,
-    // simpleOutput,
-    tail,
+    lastSpeechEvent,
   };
 };
 

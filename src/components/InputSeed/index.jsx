@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputRefContext from '@/contexts/InputRefContext';
 import InputNumber from '@/components/InputNumber';
-import HeaderToggle from '@/components/HeaderToggle';
 import HeaderButton from '@/components/HeaderButton';
 import { RandomiseIcon, ShuffleIcon } from '@/components/Icons';
 
@@ -35,13 +34,13 @@ const InputSeed = ({
       value={seed}
       onChange={handleChangeSeed}
     >
-      <HeaderToggle
+      <HeaderButton
         label="Randomise"
         value={random}
-        onChange={handleChangeRandom}
+        onClick={handleChangeRandom}
       >
         <RandomiseIcon />
-      </HeaderToggle>
+      </HeaderButton>
       <HeaderButton label="Shuffle" onClick={handleShuffle}>
         <ShuffleIcon />
       </HeaderButton>

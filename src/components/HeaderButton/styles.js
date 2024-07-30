@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const InputHeaderButton = styled.button`
@@ -20,4 +20,11 @@ export const InputHeaderButton = styled.button`
   &:hover > * {
     opacity: 1;
   }
+  ${({ value }) =>
+    value &&
+    css`
+      > * {
+        opacity: 1;
+      }
+    `}
 `;

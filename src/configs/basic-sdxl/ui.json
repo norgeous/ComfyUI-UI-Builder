@@ -11,13 +11,14 @@
       "label": "Positive Prompt",
       "type": "speech",
       "defaultValue": "",
-      "colSpan": 2
+      "colSpan": 2,
+      "controlOptions": ["weight", "speech", "limit"]
     },
     {
       "group": "Prompt",
       "id": "negativePrompt",
       "label": "Negative Prompt",
-      "type": "textarea",
+      "type": "speech",
       "defaultValue": "",
       "colSpan": 2
     },

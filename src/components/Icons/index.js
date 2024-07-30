@@ -23,6 +23,7 @@ import {
   FaClockRotateLeft,
   FaPaintbrush,
   FaPencil,
+  FaArrowsLeftRightToLine,
 } from 'react-icons/fa6';
 import { SiStorybook } from 'react-icons/si';
 
@@ -65,3 +66,4 @@ export const QueuedIcon = styled(FaClockRotateLeft)(baseIconCss);
 export const SettingsIcon = styled(FaGear)(baseIconCss);
 export const ThemeIcon = styled(FaPaintbrush)(baseIconCss);
 export const EditIcon = styled(FaPencil)(baseIconCss);
+export const LimitIcon = styled(FaArrowsLeftRightToLine)(baseIconCss);

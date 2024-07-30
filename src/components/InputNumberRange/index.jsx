@@ -4,19 +4,18 @@ import InputRefContext from '@/contexts/InputRefContext';
 import InputNumber from '@/components/InputNumber';
 import InputRange from '@/components/InputRange';
 
-import HeaderToggle from '@/components/HeaderToggle';
+import HeaderButton from '@/components/HeaderButton';
 import { EditIcon } from '@/components/Icons';
 
-const EditButton = ({ value = false, onChange = () => {} }) => (
-  <HeaderToggle label="Edit" value={value} onChange={onChange}>
+const EditButton = ({ value = false, onClick = () => {} }) => (
+  <HeaderButton label="Edit" value={value} onClick={onClick}>
     <EditIcon />
-  </HeaderToggle>
+  </HeaderButton>
 );
 
 EditButton.propTypes = {
-  label: PropTypes.string,
   value: PropTypes.bool,
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 const InputNumberRange = ({
@@ -46,7 +45,7 @@ const InputNumberRange = ({
       onChange={onChange}
       options={options}
     >
-      <EditButton value={false} onChange={toggleIsRange} />
+      <EditButton value={false} onClick={toggleIsRange} />
       {children}
     </InputRange>
   ) : (
@@ -59,7 +58,7 @@ const InputNumberRange = ({
       min={min}
       max={max}
     >
-      <EditButton value onChange={toggleIsRange} />
+      <EditButton value onClick={toggleIsRange} />
       {children}
     </InputNumber>
   );
