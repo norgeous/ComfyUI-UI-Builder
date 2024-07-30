@@ -7,10 +7,6 @@
 
 ## Now
 
-- combine InputTextarea, InputSpeech and InputText into a single type of input
-  - up and down arrows for prompt weights are shown, but do nothing
-  - make an adjustable limit for tail, separate from "speech" entirely + how to do UI for this?
-
 ## Next
 
 - header redo, smaller workflow selector
