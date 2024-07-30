@@ -6,12 +6,6 @@
 > ui-builder@0.0.0 lint
 > eslint . --ext .js,.jsx,.cjs --fix
 
-
-/home/runner/work/ComfyUI-UI-Builder/ComfyUI-UI-Builder/src/components/InputNumberRange/index.jsx
-  17:3  error  'label' PropType is defined but prop is never used  react/no-unused-prop-types
-
-✖ 1 problem (1 error, 0 warnings)
-
 Lint has modified 0 files
 
-Fail ❌
+Pass ✅
