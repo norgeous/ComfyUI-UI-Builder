@@ -7,6 +7,9 @@
 
 ## Now
 
+- image input (for ipa)
+  - example UI
+
 ## Next
 
 - header redo, smaller workflow selector
@@ -23,8 +26,6 @@
 ## Future
 
 - preview "completed" prompt in sidebar?
-- image input (for ipa)
-  - example UI
 - ImageGrid: show spinner while images are loading
 - ImageGrid: currently images dont scale above their natural size, but might be nice to have a toggle button for this
 - ImageGrid: toggle for css pixel optimisation method (to see the raw pixels, useful for pixelart or debugging)
