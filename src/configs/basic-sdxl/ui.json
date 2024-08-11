@@ -20,7 +20,8 @@
       "label": "Negative Prompt",
       "type": "speech",
       "defaultValue": "",
-      "colSpan": 2
+      "colSpan": 2,
+      "controlOptions": ["weight", "speech", "limit"]
     },
     {
       "group": "Generation Params",
