@@ -1,0 +1,30 @@
+import{j as t}from"./jsx-runtime-Nms4Y4qS.js";import{r as c}from"./index-BwDkhjyp.js";import{P as f}from"./index-D3ylJrlI.js";import{I as $}from"./InputRefContext-5kgal7hN.js";import{c as V}from"./index-BLrka4M9.js";import{c as O}from"./index-t7wRVlRJ.js";import{d as T}from"./styled-components.browser.esm-CgTwxB-0.js";import{b as A}from"./bgfg-BUc8g66r.js";import{h as _,j as L,M as E,a as M,k as F,L as K}from"./index-CjMGYxTR.js";import{c as j}from"./index-_a3JP2zR.js";import{S as R}from"./SpeechContext-CGWUamV5.js";import{c as z}from"./index-D1HvzO9f.js";const w=c.createContext(null),B=T.input.attrs({type:"text"})`
+  ${A(4)}
+  border: 1px solid var(--bg5);
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  padding: 8px 4px;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+`,G=T.textarea`
+  ${A(4)}
+  border: 1px solid var(--bg5);
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: var(--radius);
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  min-height: 33.333px;
+  height: 0;
+  line-height: 21px;
+  padding: 4px 8px;
+  resize: vertical;
+`,N=(e,s)=>{const{index:o}=s.reduce(({total:n,index:i},r,l)=>{const a=n+r.length+1,p=a>e&&i===-1?l:i;return{total:a,index:p}},{total:0,index:-1});return o},S=({ref:e,value:s,direction:o,onChange:n})=>{const{selectionStart:i,selectionEnd:r}=e.current,l=s.split(" "),a=N(i,l),p=N(r,l),m=l.slice(0,a),h=l.slice(a,p+1),x=l.slice(p+1),u=h.join(" "),d=u.lastIndexOf(":"),g=u.slice(0,d>0?d:void 0).replace("(",""),y=Number(u.slice(d+1).trim().replace(")","")),I=Number.isNaN(y)?1:y,v={up:(I+.1).toFixed(1),dn:(I-.1).toFixed(1)}[o],b=v!=="1.0"?`(${g}:${v})`:g,C=m.join(" "),W=x.join(" "),D=[C,b,W].join(" ");n(D),setTimeout(()=>{e.current.focus(),e.current.selectionStart=C.length+1,e.current.selectionEnd=C.length+1+b.length},0)},H=e=>{e.ctrlKey&&["ArrowUp","ArrowDown"].includes(e.key)&&e.preventDefault()},P=()=>{const e=c.useContext($),{value:s,onChange:o,setExtraInputProps:n}=c.useContext(w);return c.useEffect(()=>{n({onKeyDown:H,onKeyUp:r=>{if(r.ctrlKey&&["ArrowUp","ArrowDown"].includes(r.key)){r.preventDefault();const l={ArrowUp:"up",ArrowDown:"dn"}[r.key];S({ref:e,value:s,onChange:o,direction:l})}}})},[o,e,n,s]),t.jsxs(t.Fragment,{children:[t.jsx(j,{label:"Prompt weight up (CTRL + UP)",onClick:()=>S({ref:e,value:s,onChange:o,direction:"up"}),children:t.jsx(_,{})}),t.jsx(j,{label:"Prompt weight down (CTRL + DOWN)",onClick:()=>S({ref:e,value:s,onChange:o,direction:"dn"}),children:t.jsx(L,{})})]})};P.__docgenInfo={description:"",methods:[],displayName:"WeightControls"};const J=(e,s,o,n)=>`${o.slice(0,e)}${n}${o.slice(s)}`,U=()=>{const{id:e,value:s,onChange:o}=c.useContext(w),n=c.useContext($),{targetId:i,unmutedId:r,setUnmutedId:l,loading:a,error:p,vosk:m,lastSpeechEvent:h}=c.useContext(R),x=i===e,u=r===e;return c.useEffect(()=>{if(x){const{selectionStart:d,selectionEnd:g}=n.current,{correctionCount:y,recentWords:I}=h,v=` ${I}`,b=s.split(" "),C=b.slice(0,-y||b.length).join(" "),W=J(d,g,C,v).trim();o(W),setTimeout(()=>{n.current.selectionStart=g+v.length,n.current.selectionEnd=g+v.length},0)}},[h]),t.jsxs(t.Fragment,{children:[!m&&!a&&t.jsx(j,{label:"Enable Speech Capture",onClick:()=>l(e),children:t.jsx(E,{})}),!m&&a&&x&&t.jsx(M,{}),!m&&a&&!x&&t.jsx(j,{label:"loading elsewhere",children:t.jsx(E,{})}),m&&t.jsx(j,{label:u?"Capturing...":"Muted",value:u,onClick:()=>l(u?void 0:e),children:u?t.jsx(E,{}):t.jsx(F,{})}),p&&x&&t.jsx(z,{children:p})]})};U.__docgenInfo={description:"",methods:[],displayName:"SpeechControls"};const q=()=>{const[e,s]=c.useState(!1),{value:o,onChange:n}=c.useContext(w);return c.useEffect(()=>{if(!e)return;const i=o.split(" ").slice(-30).join(" ");n(i)},[o]),t.jsx(j,{label:"Word Limit",onClick:()=>s(!e),value:e,children:t.jsx(K,{})})};q.__docgenInfo={description:"",methods:[],displayName:"LimitControls"};const k=({id:e=void 0,label:s=void 0,info:o=void 0,options:n=[],value:i=void 0,onChange:r=()=>{},children:l=null,controlOptions:a=[]})=>{const p=c.useContext($),[m,h]=c.useState({}),x=c.useMemo(()=>({id:e,value:i,onChange:r,extraInputProps:m,setExtraInputProps:h}),[e,r,i,m,h]),u=t.jsxs(O,{id:e,label:s,info:o,children:[a.includes("weight")&&t.jsx(P,{}),a.includes("speech")&&t.jsx(U,{}),a.includes("limit")&&t.jsx(q,{}),l]});return n.length?t.jsx(w.Provider,{value:x,children:t.jsxs(V,{pad:!0,column:!0,gap:"sm",children:[u,t.jsx(B,{ref:p,id:e,value:i,onChange:d=>r(d.target.value),list:n.length?`${e}-list`:void 0}),!!n.length&&t.jsx("datalist",{id:`${e}-list`,children:n.map(d=>t.jsx("option",{"aria-label":d,value:d},d))})]})}):t.jsx(w.Provider,{value:x,children:t.jsxs(V,{pad:!0,column:!0,gap:"sm",children:[u,t.jsx(G,{ref:p,id:e,value:i,onChange:d=>r(d.target.value),...m})]})})};k.propTypes={id:f.string,label:f.string,info:f.string,options:f.arrayOf(f.string),onChange:f.func,value:f.string,children:f.node,controlOptions:f.arrayOf(f.oneOf(["weight","speech","limit"]))};const ce=k;k.__docgenInfo={description:"",methods:[],displayName:"InputText",props:{id:{defaultValue:{value:"undefined",computed:!0},description:"",type:{name:"string"},required:!1},label:{defaultValue:{value:"undefined",computed:!0},description:"",type:{name:"string"},required:!1},info:{defaultValue:{value:"undefined",computed:!0},description:"",type:{name:"string"},required:!1},options:{defaultValue:{value:"[]",computed:!1},description:"",type:{name:"arrayOf",value:{name:"string"}},required:!1},value:{defaultValue:{value:"undefined",computed:!0},description:"",type:{name:"string"},required:!1},onChange:{defaultValue:{value:"() => {}",computed:!1},description:"",type:{name:"func"},required:!1},children:{defaultValue:{value:"null",computed:!1},description:"",type:{name:"node"},required:!1},controlOptions:{defaultValue:{value:"[]",computed:!1},description:"",type:{name:"arrayOf",value:{name:"enum",value:[{value:"'weight'",computed:!1},{value:"'speech'",computed:!1},{value:"'limit'",computed:!1}]}},required:!1}}};export{ce as c};
