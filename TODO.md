@@ -68,3 +68,14 @@
   - differential diffusion inpainting example
   - animatediff example
   - SD3M example
+  - Flux
+- integrate everything into 1 mega (SDXL only) workflow?
+  - text to image
+  - image to image
+  - text to video
+  - image to video
+  - video to video
+  - inpainting
+  - outpainting
+  - lora stacking
+  - controlnet
